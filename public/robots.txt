@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: policies/privacy-policies
+Disallow: policies/terms-and-conditions
+Disallow: policies/refund-and-cancellation
+Disallow: policies/copyright-policy
+Disallow: policies/privacy-policies
+Disallow: /cgi-bin/
+Sitemap: https://dholerainsider.com/sitemap.xml

@@ -1,0 +1,108 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .h-855 {
+    height: 855px;
+  }
+  .h-768 {
+    height: 768px;
+  }
+  .rounded-b-4xl {
+    border-bottom-right-radius: 90% 10%;
+    border-bottom-left-radius: 90% 10%;
+  }
+  .text-10xl {
+    font-size: 9.38rem;
+    line-height: 1;
+  }
+  
+  /* Custom animation for WhatsApp button */
+  .animate-spin-slow {
+    animation: spin 5s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Reset styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3072ff #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #3072ff;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #3072ff;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #3072ff;
+}
+
+/* Base styles */
+html,
+
+
+/* Remove default link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Add any custom color utilities you're using */
+@layer utilities {
+  .text-bluePText {
+    color: #64748b; /* or your preferred blue text color */
+  }
+  
+  .text-blueCardTitle {
+    color: #1e40af; /* or your preferred blue title color */
+  }
+  
+  .text-blueCardSubTitle {
+    color: #6b7280; /* or your preferred subtitle color */
+  }
+  
+  .text-cardText {
+    color: #374151; /* or your preferred card text color */
+  }
+}
