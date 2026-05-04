@@ -45,10 +45,8 @@ export default function BlogCard({ post }) {
 
           <div className="border-t border-gray-200 pt-4 mt-auto">
             <div className="flex justify-between text-sm">
-              <p className="text-sm text-gray-400">
-                <time>
-                  {formatDate(post.publishedAt)}
-                </time>
+              <p className="text-sm text-black">
+                {formatDate(post.publishedAt || post._createdAt)}
               </p>
               <span className="font-medium hover:underline text-teal-500">
                 Read More →
