@@ -82,7 +82,7 @@ const RightSidebar = ({ trendingBlogs }) => {
                     <h4 className="font-semibold text-sm text-gray-900 line-clamp-2">
                       {item.title}
                     </h4>
-                    <p className="text-xs text-gray-500 line-clamp-1 mt-1">
+                    <p className="text-xs text-black line-clamp-1 mt-1">
                       {item.description}
                     </p>
                   </div>
@@ -93,9 +93,9 @@ const RightSidebar = ({ trendingBlogs }) => {
 
           <div className="mt-6 pt-4 border-t border-gray-600">
             <Link href="/dholera-sir-updates">
-              <button className="w-full text-center rounded-xl text-white font-semibold bg-teal-800 hover:bg-teal-500 p-3 transition-colors">
+              <span className="w-full text-center rounded-xl text-white font-semibold bg-teal-800 hover:bg-teal-500 p-3 transition-colors">
                 Explore More
-              </button>
+              </span>
             </Link>
           </div>
         </div>
@@ -188,7 +188,7 @@ export default async function Post({ params }) {
                 imageNode
               )}
               {value.caption && (
-                <figcaption className="text-center text-sm text-gray-500 mt-2">
+                <figcaption className="text-center text-sm text-black mt-2">
                   {value.caption}
                 </figcaption>
               )}
@@ -454,13 +454,13 @@ export default async function Post({ params }) {
     };
 
     // Format date for display
-    const formattedDate = new Date(
-      post.publishedAt || post._createdAt,
-    ).toLocaleDateString("en-US", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+    const formattedDate = (dateString) => {
+    if (!dateString) return "Date not available";
+
+    const date = new Date(dateString);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
 
     return (
       <>
@@ -501,7 +501,7 @@ export default async function Post({ params }) {
                       <li className="inline-flex items-center">
                         <Link
                           href="/"
-                          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700"
+                          className="inline-flex items-center text-sm font-medium text-black hover:text-gray-700"
                         >
                           Home
                         </Link>
@@ -521,7 +521,7 @@ export default async function Post({ params }) {
                           </svg>
                           <Link
                             href="/dholera-sir-blogs"
-                            className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-700 md:ml-2"
+                            className="ml-1 text-sm font-medium text-black hover:text-gray-700 md:ml-2"
                           >
                             Blogs
                           </Link>
@@ -540,7 +540,7 @@ export default async function Post({ params }) {
                               clipRule="evenodd"
                             />
                           </svg>
-                          <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 line-clamp-1">
+                          <span className="ml-1 text-sm font-medium text-black md:ml-2 line-clamp-1">
                             {post.title}
                           </span>
                         </div>
@@ -569,7 +569,7 @@ export default async function Post({ params }) {
                   </h1>
 
                   {/* Publication date */}
-                  <div className="flex items-center gap-4 text-gray-500 text-sm mb-6">
+                  <div className="flex items-center gap-4 text-black text-sm mb-6">
                     <div className="flex items-center">
                       <svg
                         className="w-4 h-4 mr-1"
@@ -585,7 +585,7 @@ export default async function Post({ params }) {
                           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                         ></path>
                       </svg>
-                      <time className="text-gray-500">{formattedDate}</time>
+                      <p className="text-black">{formattedDate(post.publishedAt)}</p>
                     </div>
 
                     {post.readingTime && (
