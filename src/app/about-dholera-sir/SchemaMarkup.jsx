@@ -288,7 +288,6 @@ const SchemaMarkup = ({ post, relatedBlog = [] }) => {
         <meta property="og:image" content={urlFor(post.mainImage).width(1200).height(630).url()} />
       )}
       <meta property="article:published_time" content={post.publishedAt || post._createdAt} />
-      <meta property="article:modified_time" content={post._updatedAt} />
       {post.tags && post.tags.map(tag => (
         <meta key={tag} property="article:tag" content={tag} />
       ))}
