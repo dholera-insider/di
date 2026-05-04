@@ -115,11 +115,11 @@ export default function WestWyn_Estate() {
               Unbeatable connectivity in Dholera and future-ready growth
               potential.
             </p>
-            <button className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white mt-4 text-[14px] md:text-base font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+            <div className=" bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white mt-4 text-[14px] md:text-base font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
               <Link href="/residential-projects-in-dholera/westwyn-estate">
                 Explore More About WestWyn Estates
               </Link>
-            </button>
+            </div>
           </div>
 
           {/* Why Invest Section */}

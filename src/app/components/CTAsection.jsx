@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import CommonForm from "./CommonForm";
 import bg from "@/app/assets/home/pexels2.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CTAsection() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -64,16 +65,16 @@ export default function CTAsection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
             className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8"
           >
             {/* Call Now Button */}
-            <motion.a
+            <Link
               href="tel:+919211820887"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
               className="group relative bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-400/30 min-w-[200px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <svg
                   className="w-5 h-5"
@@ -84,18 +85,16 @@ export default function CTAsection() {
                 </svg>
                 Call Now
               </span>
-            </motion.a>
+            </Link>
 
             {/* WhatsApp Button */}
-            <motion.a
+            <Link
               href="https://wa.me/919211820887"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
               className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-green-400/30 min-w-[200px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <svg
                   className="w-5 h-5"
@@ -106,7 +105,7 @@ export default function CTAsection() {
                 </svg>
                 WhatsApp Now
               </span>
-            </motion.a>
+            </Link>
           </motion.div>
 
           {/* Get Callback Button */}
@@ -121,7 +120,7 @@ export default function CTAsection() {
               whileTap={{ scale: 0.95 }}
               className="group relative bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700 text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-teal-400/50 hover:border-teal-400 min-w-[250px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <svg
                   className="w-5 h-5"

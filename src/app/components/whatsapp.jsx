@@ -46,7 +46,6 @@ export default function Whatsapp() {
             <textPath
               href="#circlePath"
               startOffset="0%"
-              textAnchor="bold"
               className="tracking-wider"
             >
               {" "}
