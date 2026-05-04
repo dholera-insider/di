@@ -40,13 +40,13 @@ export default function BlogCard({ post }) {
               <div className="flex items-center justify-center">
                 <span className="inline-block w-2 h-2 rounded-full bg-teal-700 mr-2"></span>
                 <span className="text-black">
-                  <time>
+                  <p>
                     {new Date(post.publishedAt).toLocaleDateString("en-IN", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
                     })}
-                  </time>
+                  </p>
                 </span>
               </div>
               <span className="text-teal-500 font-medium">
