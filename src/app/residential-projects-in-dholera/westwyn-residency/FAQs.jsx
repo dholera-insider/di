@@ -88,13 +88,13 @@ export default function FAQSection() {
                     {faq.question}
                   </span>
 
-                  <div className="flex-shrink-0 transition-transform duration-200">
+                  <span className="flex-shrink-0 transition-transform duration-200">
                     {openIndex === index ? (
                       <Minus className="w-5 h-5 text-white" />
                     ) : (
                       <Plus className="w-5 h-5 text-white" />
                     )}
-                  </div>
+                  </span>
                 </button>
 
                 <div
