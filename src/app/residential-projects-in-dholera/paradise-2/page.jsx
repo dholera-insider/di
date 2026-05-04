@@ -8,6 +8,7 @@ import PopupScroll from "@/app/components/PopUpScroll";
 import BrochureDownload from "@/app/components/BrochureDownload";
 import { AnimatePresence } from "framer-motion";
 import { PhoneIcon } from "lucide-react";
+import Link from "next/link";
 
 const DocIconTeal = () => (
   <svg
@@ -106,11 +107,11 @@ export default function Hero() {
 
               {/* Title + Subtitle */}
               <div className="shrink-0">
-                <a href="/residential-projects-in-dholera/westwyn-estate">
+                <Link href="/residential-projects-in-dholera/westwyn-estate">
                   <h2 className="text-teal-900 text-2xl font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
                     WestWyn Estates
                   </h2>
-                </a>
+                </Link>
                 <div className="text-teal-700/70 text-xs mt-1">
                   Registry Ready Plot under ₹10 Lakh
                 </div>
@@ -138,13 +139,13 @@ export default function Hero() {
 
               {/* CTAs */}
               <div className="flex items-center gap-3 shrink-0">
-                <a
+                <Link
                   href="tel:+919958993549"
                   className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <PhoneIcon />
                   Site Visit
-                </a>
+                </Link>
 
                 <button
                   onClick={openBrochureForm}
@@ -176,14 +177,14 @@ export default function Hero() {
 
             {/* Title & Description */}
             <div>
-              <a href="/residential-projects-in-dholera/westwyn-estate">
+              <Link href="/residential-projects-in-dholera/westwyn-estate">
                 <p className="text-2xl font-bold text-teal-900 hover:text-teal-800 mb-2 leading-tight">
                   <span className="text-base font-bold text-teal-900">
                     Explore Our Latest Project
                   </span>{" "}
                   <br /> WestWyn Estates
                 </p>
-              </a>
+              </Link>
             </div>
 
             {/* Contact & Buttons */}

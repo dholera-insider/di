@@ -8,6 +8,7 @@ import PopupScroll from "@/app/components/PopUpScroll";
 import { AnimatePresence } from "framer-motion";
 import BrochureDownload from "@/app/components/BrochureDownload";
 import { PhoneIcon } from "lucide-react";
+import Link from "next/link";
 
 const DocIconTeal = () => (
   <svg
@@ -168,11 +169,11 @@ export default function Hero() {
 
               {/* Title + Subtitle */}
               <div className="shrink-0">
-                <a href="/residential-projects-in-dholera/westwyn-estate">
+                <Link href="/residential-projects-in-dholera/westwyn-estate">
                   <h2 className="text-teal-900 text-2xl font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
                     WestWyn Estates
                   </h2>
-                </a>
+                </Link>
                 <div className="text-teal-700/70 text-xs mt-1">
                   Registry Ready Plot under ₹10 Lakh
                 </div>
