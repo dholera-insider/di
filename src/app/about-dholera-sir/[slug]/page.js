@@ -46,18 +46,6 @@ const extractHeadings = (body) => {
     }));
 };
 
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-
-  const site = "dholera-insider";
-  const post = await getPostBySlug(slug, site);
-
-  return {
-    /*  title: post.title, */
-    /* description: post.metaDescription, */
-  };
-}
-
 // Replace your TrendingBlogItem component with this:
 const TrendingBlogItem = ({ post }) => {
   if (!post) {
@@ -99,58 +87,6 @@ const TrendingBlogItem = ({ post }) => {
 
 // And update your sidebar section to this:
 
-const RelatedBlogCard = ({ blog }) => {
-  return (
-    <Link href={`/dholera-sir-blogs/${blog.slug.current}`}>
-      <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 h-full">
-        <div className="relative h-48 overflow-hidden">
-          {blog.mainImage ? (
-            <Image
-              src={urlFor(blog.mainImage).width(400).height(250).url()}
-              alt={blog.title}
-              width={400}
-              height={250}
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
-              <span className="text-gray-400">No image</span>
-            </div>
-          )}
-          {blog.categories && blog.categories.length > 0 && (
-            <div className="absolute top-2 left-2">
-              <span className="px-3 py-1 bg-blue-50 text-blue-600 text-sm rounded-full bg-opacity-90">
-                News Headlines
-              </span>
-            </div>
-          )}
-        </div>
-        <div className="p-5">
-          <div className="text-sm text-gray-500 mb-2">
-            {new Date(blog.publishedAt || blog._createdAt).toLocaleDateString(
-              "en-US",
-              {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              },
-            )}
-          </div>
-          <h3 className="font-bold text-lg mb-2 text-gray-900 line-clamp-2">
-            {blog.title}
-          </h3>
-          <p className="text-gray-700 mb-4 line-clamp-3">{blog.description}</p>
-          <div className="flex items-center justify-between mt-auto">
-            <span className="text-teal-700 hover:text-teal-900 p-1 rounded-xl font-semibold bg-gray-800 inline-flex items-center">
-              Read more
-            </span>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-};
-
 export default async function BlogDetail({ params }) {
   const { slug } = await params;
   const site = "dholera-insider";
@@ -185,7 +121,7 @@ export default async function BlogDetail({ params }) {
       );
     }
 
-     const components = {
+    const components = {
       types: {
         image: ({ value }) => {
           if (!value?.asset) return null;
@@ -486,13 +422,13 @@ export default async function BlogDetail({ params }) {
     };
 
     // Format date for display
-    const formattedDate = new Date(
-      post.publishedAt || post._createdAt,
-    ).toLocaleDateString("en-US", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+    const formatDate = (dateString) => {
+      if (!dateString) return "Date not available";
+
+      const date = new Date(dateString);
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      return date.toLocaleDateString("en-US", options);
+    };
 
     return (
       <div className="bg-white min-h-screen">
@@ -608,7 +544,9 @@ export default async function BlogDetail({ params }) {
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                       ></path>
                     </svg>
-                    <time className="text-gray-500">{formattedDate}</time>
+                    <p className="text-black">
+                      {formatDate(post.publishedAt)}
+                    </p>
                   </div>
 
                   {post.readingTime && (
@@ -707,9 +645,9 @@ export default async function BlogDetail({ params }) {
                   </div>
                   <div className="mt-6 pt-4 border-t border-gray-600">
                     <Link href="/dholera-sir-blogs">
-                      <button className="w-full text-center rounded-xl text-white font-semibold bg-teal-800 hover:bg-teal-500 p-3 transition-colors">
+                      <span className="w-full text-center rounded-xl text-white font-semibold bg-teal-800 hover:bg-teal-500 p-3 transition-colors">
                         Read More
-                      </button>
+                      </span>
                     </Link>
                   </div>
                 </div>
