@@ -106,11 +106,11 @@ const RightSidebar = ({ trendingBlogs }) => {
           <p className="text-gray-700 mb-4 text-sm">
             Interested in our insights? Contact our experts
           </p>
-          <a href="tel:+919211820887">
-            <button className="w-full bg-teal-500 hover:bg-teal-700 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+          <Link href="tel:+919211820887">
+            <span className="w-full bg-teal-500 hover:bg-teal-700 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
               Contact Now
-            </button>
-          </a>
+            </span>
+          </Link>
         </div>
       </div>
     </aside>
