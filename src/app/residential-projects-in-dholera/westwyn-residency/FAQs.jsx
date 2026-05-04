@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -67,12 +68,12 @@ export default function FAQSection() {
             </p>
 
             <div className="pt-4">
-              <a
+              <Link
                 className="px-4 py-3 bg-teal-800 text-white font-medium rounded-md hover:bg-teal-950 transition"
                 href="tel:+918130371647"
               >
                 Give Us A Missed Call
-              </a>
+              </Link>
             </div>
           </div>
 
