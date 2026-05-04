@@ -2,11 +2,7 @@ import { getblogs, getUpdates, projectInfo } from "@/sanity/lib/api";
 import React from "react";
 import BlogCard from "./BlogCard";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import FormComponent from "./FormComponent";
 import hero from "@/app/assets/dholera-sir-blogs-banner-dholera-insider.webp";
-import LeadForm from "../about-dholera-sir/LeadForm";
-import TrendingBlogItem from "./TrendingBlog";
 
 export default async function page() {
   let fetchError = null;

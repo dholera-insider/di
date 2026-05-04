@@ -8,6 +8,7 @@ import PopupScroll from "@/app/components/PopUpScroll";
 import { AnimatePresence } from "framer-motion";
 import BrochureDownload from "@/app/components/BrochureDownload";
 import { PhoneIcon } from "lucide-react";
+import Link from "next/link";
 
 const DocIconTeal = () => (
   <svg
