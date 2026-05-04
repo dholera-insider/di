@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import Link from "next/link";
 
 
 const faqs = [
@@ -49,7 +50,7 @@ export default function FAQSection() {
               More Questions about Dholera Smart City Project?
             </p>
             <div className="pt-4">
-              <a className="px-2 py-3 bg-gradient-to-r from-teal-400 to-teal-600 text-white rounded-md" href="tel:+919211820887">Give Us A Missed Call</a>
+              <Link className="px-2 py-3 bg-gradient-to-r from-teal-400 to-teal-600 text-white rounded-md" href="tel:+919211820887">Give Us A Missed Call</Link>
             </div>
           </div>
 
@@ -64,13 +65,13 @@ export default function FAQSection() {
                   <span className="text-gray-900 font-medium pr-4 leading-relaxed">
                     {faq.question}
                   </span>
-                  <div className="flex-shrink-0 transition-transform duration-200">
+                  <span className="flex-shrink-0 transition-transform duration-200">
                     {openIndex === index ? (
                       <Minus className="w-5 h-5 text-gray-600" />
                     ) : (
                       <Plus className="w-5 h-5 text-gray-600" />
                     )}
-                  </div>
+                  </span>
                 </button>
 
                 <div
