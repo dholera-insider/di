@@ -322,9 +322,9 @@ export default function Aboutus() {
             {/* Left Content */}
             <div className="space-y-8 flex flex-col">
               <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100 flex-1 flex flex-col">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                   Our Mission
-                </h3>
+                </h2>
                 <p className="text-gray-700 leading-relaxed mb-6 flex-1">
                   At Dholera Insider, our mission is to empower investors,
                   businesses, and citizens with transparent, data-backed news
@@ -338,9 +338,9 @@ export default function Aboutus() {
             {/* Right Content */}
             <div className="space-y-8 flex flex-col">
               <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100 flex-1 flex flex-col">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                   Our Vision
-                </h3>
+                </h2>
                 <p className="text-gray-700 leading-relaxed mb-6 flex-1">
                   We envision a digitally connected, eco-friendly city where
                   innovation meets sustainability. Our goal is to be the most
@@ -388,9 +388,9 @@ export default function Aboutus() {
         {/* Core Values */}
         <section className="bg-white py-8 px-6">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-teal-900">
+            <h4 className="text-3xl md:text-4xl font-bold text-center mb-10 text-teal-900">
               Our Core Values
-            </h2>
+            </h4>
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
@@ -423,9 +423,9 @@ export default function Aboutus() {
 
         <section className="bg-white py-8 px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-teal-900">
+            <h4 className="text-3xl md:text-4xl font-bold text-center mb-10 text-teal-900">
               Our Commitment to Clients
-            </h2>
+            </h4>
             <div className="gap-8 text-gray-900 text-lg border-gray-100 border-2 shadow-lg p-4 rounded-xl">
               <p>
                 Our commitment is built on transparency, accuracy, and
@@ -450,9 +450,9 @@ export default function Aboutus() {
       <section className="py-16 bg-gradient-to-r from-gray-900 to-teal-900 animate-gradient-x">
         <div className="container mx-auto px-6 sm:px-12">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-white text-3xl sm:text-4xl font-bold text-center">
+            <h5 className="text-white text-3xl sm:text-4xl font-bold text-center">
               Know More About Dholera, With Dholera Insider
-            </h2>
+            </h5>
             {showPopup ? (
               <div className="text-center py-8">
                 <div className="mb-4 inline-block">
@@ -473,9 +473,9 @@ export default function Aboutus() {
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <p className="text-2xl font-bold text-white mb-2">
                   Thank You!
-                </h3>
+                </p>
                 <p className="text-gray-300">
                   Your request has been submitted successfully. We'll contact
                   you shortly.
