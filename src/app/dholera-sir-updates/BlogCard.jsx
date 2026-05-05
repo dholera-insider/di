@@ -3,6 +3,13 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
 export default function BlogCard({ blog }) {
+  const formatDate = (dateString) => {
+    if (!dateString) return "Date not available";
+
+    const date = new Date(dateString);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
   return (
     <Link
       href={
@@ -40,13 +47,9 @@ export default function BlogCard({ blog }) {
               <div className="flex items-center justify-center">
                 <span className="inline-block w-2 h-2 rounded-full bg-teal-700 mr-2"></span>
                 <span className="text-black">
-                  <time>
-                    {new Date(blog.publishedAt).toLocaleDateString("en-IN", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </time>
+                  <p className="text-sm text-black">
+                    {formatDate(blog.publishedAt || blog._createdAt)}
+                  </p>
                 </span>
               </div>
               <span className="text-teal-500 font-medium">
