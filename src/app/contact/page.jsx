@@ -736,9 +736,9 @@ const ContactUsPage = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors"
               >
-                <h4 className="text-lg font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
                   {faq.question}
-                </h4>
+                </h3>
                 <p className="text-gray-600">{faq.answer}</p>
               </motion.div>
             ))}
@@ -754,9 +754,9 @@ const ContactUsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-bold mb-4">
+            <h4 className="text-4xl font-bold mb-4">
               Ready to Start Your Investment Journey?
-            </h2>
+            </h4>
             <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
               Join hundreds of satisfied investors who have secured their future
               in India's first smart city.
