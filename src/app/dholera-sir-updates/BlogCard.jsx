@@ -47,9 +47,9 @@ export default function BlogCard({ blog }) {
               <div className="flex items-center justify-center">
                 <span className="inline-block w-2 h-2 rounded-full bg-teal-700 mr-2"></span>
                 <span className="text-black">
-                  <p className="text-sm text-black">
+                  <span className="text-sm text-black">
                     {formatDate(blog.publishedAt || blog._createdAt)}
-                  </p>
+                  </span>
                 </span>
               </div>
               <span className="text-teal-500 font-medium">
