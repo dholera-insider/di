@@ -18,8 +18,8 @@
 /out/
 
 /.env.local
-/.AGENTS.md
-/.AGENTS.md
+AGENTS.md
+
 # production
 /build
 
