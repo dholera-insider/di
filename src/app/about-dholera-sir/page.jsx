@@ -44,11 +44,11 @@ export default async function BlogsPage() {
   return (
     <>
       <title>
-        About Dholera Smart City | Overview, Growth & Future Potential
+        About Dholera Smart City Project, Investment & Future Growth
       </title>
       <meta
         name="description"
-        content="Learn what makes Dholera Smart City unique its vision, infrastructure, connectivity, and investment potential. Discover why Dholera SIR is a top destination for future growth."
+        content="Learn about Dholera SIR, Gujarat’s planned smart city and industrial investment region. Explore infrastructure, airport, expressway, industries, and plot investment opportunities."
       />
       <meta
         name="keywords"

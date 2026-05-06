@@ -11,6 +11,28 @@ import PrimeLocationSection from "./PrimeLocations";
 import { PhoneIcon } from "lucide-react";
 import FAQSection from "./FAQs";
 
+const featureIcons = {
+  "Plot Sizes": "🏠",
+  Price: "💰",
+  "Project Type": "🏗️",
+  Location: "📍",
+};
+
+const amenityIcons = {
+  "EV Charging Station": "🚗",
+  "Power & Water Supply": "⚡",
+  "Jogging Track & Yoga Deck": "🏃‍♂️",
+  "Kids Play Area": "🧒",
+  "Project Boundary": "🧱",
+  "Gated Community": "🏘️",
+  "Internal Roads": "🛣️",
+  "Senior Citizen Zone": "👵",
+  "App-Based Society Management": "📱",
+  "24/7 Security & CCTV Surveillance": "📹",
+  "Drainage System": "🚿",
+  "Clubhouse Lite": "🏡",
+};
+
 const DocIconTeal = () => (
   <svg
     width="15"
@@ -31,7 +53,7 @@ const DocIconTeal = () => (
 const FeatureCard = ({ icon, title, value }) => (
   <div className="bg-white rounded-xl p-4 border hover:bg-teal-700 group border-gray-200 text-center transition-colors duration-300 ease-in-out">
     <div className="w-12 h-12 bg-blue-100 group-hover:text-white group-hover:scale-110 rounded-full flex items-center justify-center mx-auto mb-2 transition-all duration-300 ease-in-out">
-      {icon}
+      {featureIcons[title] || icon}
     </div>
     <p className="group-hover:text-white group-hover:scale-110 font-semibold text-gray-900 text-sm mb-1 transition-all duration-300 ease-in-out">
       {title}
@@ -42,7 +64,7 @@ const FeatureCard = ({ icon, title, value }) => (
   </div>
 );
 
-export default function Hero() {
+export default function WestWynResidencyContentTemp() {
   const [brochureFormOpen, setIsBrochureFormOpen] = useState(false);
 
   const openBrochureForm = () => {
@@ -53,7 +75,7 @@ export default function Hero() {
     setIsBrochureFormOpen(false);
   };
 
-  const amenities = [
+    const amenities = [
     {
       icon: "🚗",
       title: "EV Charging Station",
@@ -134,38 +156,35 @@ export default function Hero() {
           }),
         }}
       />
-      <title>
-        WestWyn Residency - Premium Residential plots in Dholera Smart City
-      </title>
+      <title>WestWyn Residency Dholera | Registry Ready Plots in Dholera</title>
       <meta
         name="description"
-        content="Invest in WestWyn Residency Dholera. 100% title-clear & AUDA approved residential plots. Located 0 KM from SIR boundary. Immediate registry and possession available."
+        content="Buy premium registry-ready plots at WestWyn Residency Dholera. Residential plots in Pipariya with clear title, site visit support, and long-term investment potential."
       />
       <meta
         name="keywords"
-        content="WestWyn Residency Dholera, Dholera plots, Dholera Smart City, Dholera investment, investment in Dholera"
+        content="WestWyn Residency Dholera, registry ready plots in Dholera, residential plots in Pipariya, plots in Dholera under 10 lakh, Dholera investment"
       />
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/westwyn-residency"
       />
-      <div className="relative w-full h-[80vh] max-sm:h-[50vh]">
+      <div className="relative w-full h-[clamp(28rem,80svh,46rem)] max-sm:h-[clamp(24rem,62svh,34rem)]">
         <Image
           src={westwynEstate1}
-          alt="WestWyn Estates in Dholera SIR"
+          alt="WestWyn Residency in Dholera"
           className="w-full h-full object-cover max-sm:hidden"
           priority
         />
         <Image
           src={westwynEstate1M}
-          alt="WestWyn Estates in Dholera SIR"
+          alt="WestWyn Residency in Dholera"
           className="w-full h-full object-cover md:hidden"
           priority
         />
-        <div className="absolute bottom-0 left-0 right-0 p-4 hidden md:block">
-          <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-6xl mx-auto w-full">
-            <div className="flex items-center gap-5 px-6 py-4">
-              {/* Status */}
+        <div className="absolute bottom-0 left-0 right-0 hidden p-[clamp(0.75rem,1.5vw,1rem)] md:block">
+          <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-[calc(100vw-2rem)] lg:max-w-6xl mx-auto w-full">
+            <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1.25rem)] px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.75rem,1.5vw,1rem)]">
               <div className="flex items-center gap-2 shrink-0">
                 <span
                   className="relative flex"
@@ -174,30 +193,28 @@ export default function Hero() {
                   <span className="animate-ping absolute inline-flex rounded-full bg-teal-400 w-full h-full opacity-75" />
                   <span className="relative inline-flex rounded-full bg-teal-500 w-[10px] h-[10px]" />
                 </span>
-                <span className="text-teal-800 text-[11px] font-bold tracking-widest uppercase">
+                <span className="text-teal-800 text-[0.6875rem] font-bold tracking-widest uppercase">
                   Ongoing
                 </span>
               </div>
 
               <div className="w-px h-9 bg-teal-900/10 shrink-0" />
 
-              {/* Title + Subtitle */}
               <div className="shrink-0">
-                <a href="/residential-projects-in-dholera/westwyn-estate">
-                  <h2 className="text-teal-900 text-2xl font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
+                <a href="/residential-projects-in-dholera/westwyn-residency">
+                  <h2 className="text-teal-900 text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
                     WestWyn Residency
                   </h2>
                 </a>
                 <div className="text-teal-700/70 text-xs mt-1">
-                  Govt Approved Plot Starting From ₹8 Lakh
+                  Registry-ready plots in Pipariya, Dholera
                 </div>
               </div>
 
               <div className="w-px h-12 bg-teal-900/10 shrink-0" />
 
-              {/* Price */}
               <div className="shrink-0">
-                <div className="text-teal-900 text-[26px] font-extrabold leading-none">
+                <div className="text-teal-900 text-[1.625rem] font-extrabold leading-none">
                   ₹6,500{" "}
                   <span className="text-teal-900/40 text-xs font-normal">
                     /Sq.Yd
@@ -205,16 +222,13 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Spacer */}
               <div className="flex-1" />
-
               <div className="w-px h-12 bg-teal-900/10 shrink-0" />
 
-              {/* CTAs */}
               <div className="flex items-center gap-3 shrink-0">
                 <a
                   href="tel:+919958993549"
-                  className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all duration-200 hover:-translate-y-0.5"
+                  className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[0.8125rem] font-bold transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <PhoneIcon />
                   Enquire Now
@@ -222,7 +236,7 @@ export default function Hero() {
 
                 <button
                   onClick={openBrochureForm}
-                  className="flex items-center gap-2 bg-white hover:bg-teal-50 border border-teal-900/20 hover:border-teal-800 text-teal-900 px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+                  className="flex items-center gap-2 bg-white hover:bg-teal-50 border border-teal-900/20 hover:border-teal-800 text-teal-900 px-5 py-2.5 rounded-lg text-[0.8125rem] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                 >
                   <DocIconTeal />
                   Download Brochure
@@ -234,28 +248,25 @@ export default function Hero() {
       </div>
       <div className="md:hidden mt-6">
         <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/30 w-full">
-          <div className="grid gap-6 p-6">
-            {/* Categories & Price */}
+          <div className="grid gap-[clamp(1rem,3vw,1.5rem)] p-[clamp(1.25rem,4vw,1.5rem)]">
             <div>
               <div className="flex items-center gap-2 flex-wrap mb-3">
                 <span className="px-3 py-1.5 text-white bg-teal-900 rounded-full text-sm font-medium hover:bg-teal-800 transition-colors">
                   Residential
                 </span>
               </div>
-              <div className="text-3xl font-bold text-teal-900">
+              <div className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900">
                 ₹6,500
                 <span className="text-sm text-gray-600 ml-1">/Sq.Yd</span>
               </div>
             </div>
 
-            {/* Title & Description */}
             <div>
-              <p className="text-3xl font-bold text-teal-900 mb-2 leading-tight hover:text-teal-800 transition-colors">
-                Immediate Possession
+              <p className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900 mb-2 leading-tight hover:text-teal-800 transition-colors">
+                Registry-ready plots in Pipariya, Dholera
               </p>
             </div>
 
-            {/* Contact & Buttons */}
             <div className="flex flex-col justify-between">
               <div className="flex items-center gap-2 text-gray-700 text-base mb-4">
                 <button
@@ -265,42 +276,33 @@ export default function Hero() {
                   📄 Download Brochure
                 </button>
               </div>
-              {/* <div className="text-teal-900 text-xl text-center font-semibold hover:text-teal-800 transition-colors">
-                <p>Immediate Possession</p>
-              </div> */}
             </div>
           </div>
         </div>
       </div>
 
       <div className="relative">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920"
-            alt="WestWyn Estates"
+            alt="WestWyn Residency"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 py-12">
+        <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(2.5rem,6vw,3rem)]">
           <div className="max-w-7xl mx-auto">
-            {/* Heading */}
-            <h1 className="text-2xl md:text-4xl md:text-center font-bold text-white mb-6">
-              WestWyn Residency - Govt Approved Plots in Dholera
+            <h1 className="text-[clamp(1.5rem,3vw,2.25rem)] md:text-center font-bold text-white mb-6">
+              WestWyn Residency - Registry Ready Plots in Dholera
             </h1>
             <div className="max-w-5xl mx-auto">
-              <p className="text-lg text-gray-100 leading-relaxed">
-                If you are planning to invest in a fast-growing location,
-                WestWyn Residency in Dholera offers a practical and
-                well-connected opportunity. This government approved residential
-                plot project is designed for buyers who want a safe investment
-                with real growth potential. Located in Pipariya, this project
-                gives you access to key infrastructure while offering immediate
-                registry plots in Dholera, making the buying process simple and
-                transparent.
+              <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
+                WestWyn Residency is designed for buyers who want an affordable, legally verified, and well-connected Dholera investment opportunity. Located in Pipariya, Dholera, the project offers govt approved residential plots with clear title, NA/NOC status, and immediate registry support.
+              </p>
+              <br />
+              <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
+                If you are searching for plots in Dholera under ₹10 lakh, WestWyn Residency gives you a practical entry point into the Dholera Smart City growth corridor.
               </p>
               <br />
             </div>
@@ -309,127 +311,101 @@ export default function Hero() {
       </div>
 
       <div className="bg-gray-100 border-b">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
+        <div className="max-w-7xl mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(1.25rem,3vw,1.5rem)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[clamp(0.75rem,2vw,1rem)]">
             {projectFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
           </div>
         </div>
       </div>
-      <div>
-        <PrimeLocationSection />
-      </div>
-      <div>
-        <CommonForm title="Own a Registry Ready Plot in Dholera Under ₹10 Lakh" />
-      </div>
+
+      <PrimeLocationSection />
+
+      <CommonForm title="Own a Registry Ready Plot in Dholera Under â‚¹10 Lakh" />
 
       <div className="relative">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920"
-            alt="WestWyn Estates"
+            alt="WestWyn Residency"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
         </div>
-        <div className="relative z-10 container mx-auto px-4 py-4 md:py-8">
+        <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)]">
           <div className="max-w-6xl mx-auto">
-            {/* Why Invest Section */}
             <div className="mb-12">
-              <h2 className="text-xl md:text-4xl font-bold text-white mb-8">
+              <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-bold text-white mb-8">
                 Why Invest in WestWyn Residency?
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Dholera Growth Zone Advantage
+              <div className="grid md:grid-cols-2 gap-[clamp(1rem,2.5vw,1.5rem)]">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Affordable Entry in Dholera
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    Dholera Smart City is growing fast with major government
-                    backed infrastructure and industrial projects. WestWyn
-                    Residency is well placed to benefit from this growth, making
-                    it a strong choice for long term land value.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    WestWyn Residency is suitable for buyers who want to start with a smaller investment ticket while still entering a high-potential growth corridor.
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Well Connected Residential Location
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Govt Approved Plot Project
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    WestWyn Residency is located in Pipariya on a Major District
-                    Road with smooth access to the State Highway and expressway.
-                    It is close to Bhimnath Railway Station and the Dholera SIR
-                    boundary, giving buyers strong present day connectivity.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    The project offers government-approved residential plots with clear documentation, helping buyers invest with better confidence.
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Proximity to Industrial Developments
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Immediate Registry Support
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    The project is near key industrial zones such as Tata
-                    Semiconductor Plant, ReNew Solar Park, and Hebatpur
-                    Industrial Area. This supports future demand and long term
-                    value for residential plots.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    Registry-ready documentation allows buyers to move ahead with a smoother and more transparent buying process.
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Access to Key Infrastructure
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Close to Dholera SIR
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    WestWyn Residency enjoys good connectivity to the Ahmedabad
-                    Dholera Expressway, Activation Area, and airport corridor.
-                    This adds both convenience and future growth potential.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    The project’s proximity to Dholera SIR makes it attractive for buyers looking at future growth driven by smart city infrastructure and industrial development.
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Early Stage Entry Benefit
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Long-Term Investment Potential
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    Dholera is still developing, which gives buyers a chance to
-                    enter at an early stage. WestWyn Residency offers verified
-                    plots with clear documents at an accessible entry price.
-                  </p>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Clear and Verified Documentation
-                  </h3>
-                  <p className="text-gray-200 text-sm">
-                    WestWyn Residency offers plots with clear title, NA
-                    approval, and ready documentation. This reduces confusion
-                    and helps buyers move forward with confidence.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    As Dholera grows through infrastructure, industries, expressway connectivity, and airport development, nearby residential plots may benefit from rising demand.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Amenities Section */}
             <div>
-              <h2 className="text-xl md:text-4xl font-bold text-white mb-8">
-                Amenities
+              <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-bold text-white mb-8">
+                Project Amenities
               </h2>
+              <p className="mb-6 text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-100">
+                WestWyn Residency is planned with practical lifestyle and security amenities for future residential use.
+              </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[clamp(0.75rem,2vw,1rem)]">
                 {amenities.map((amenity, index) => (
                   <div
                     key={index}
-                    className="bg-teal-500/20 backdrop-blur-sm rounded-lg p-4 text-center border border-teal-400/30 hover:bg-teal-500/30 transition-all duration-300"
+                    className="bg-teal-500/20 backdrop-blur-sm rounded-lg p-[clamp(1rem,2vw,1.25rem)] text-center border border-teal-400/30 hover:bg-teal-500/30 transition-all duration-300"
                   >
                     <div className="text-xl md:text-4xl mb-2">
-                      {amenity.icon}
+                      {amenityIcons[amenity.title] || amenity.icon}
                     </div>
-                    <p className="text-white font-medium text-lg">
+                    <p className="text-white font-medium text-[clamp(1rem,1.8vw,1.125rem)] leading-[1.4]">
                       {amenity.title}
                     </p>
                   </div>
@@ -437,9 +413,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div>
-              <FAQSection />
-            </div>
+            <FAQSection />
           </div>
         </div>
       </div>
@@ -448,7 +422,7 @@ export default function Hero() {
         {brochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
             <BrochureDownload
-              title="Get WestWyn Estates Brochure"
+              title="Get WestWyn Residency Brochure"
               buttonName="Download Brochure"
               onClose={() => closeBrochureForm()}
               link="https://cdn.sanity.io/files/c3e1h345/projects/c9471499567c096befb9416aa99c7f0077900d11.pdf"

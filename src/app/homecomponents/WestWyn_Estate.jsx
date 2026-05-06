@@ -16,7 +16,7 @@ export default function WestWyn_Estate() {
       highlights: [
         "Developer - Dholera Insider",
         "Located in Polarpur, Dholera",
-        "Starting from \u20b910 lakh",
+        "Starting from ₹10 lakh",
         "Registry-ready documentation",
         "Near Dholera SIR and expressway",
         "Planned residential layout",
@@ -32,7 +32,7 @@ export default function WestWyn_Estate() {
       highlights: [
         "Developer - Dholera Insider",
         "Located in Pipariya, Dholera",
-        "Starting from \u20b98 lakh",
+        "Starting from ₹8 lakh",
         "Clear-title and registry-ready plots",
         "Near Dholera SIR and expressway",
         "Affordable investment option",

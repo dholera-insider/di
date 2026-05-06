@@ -20,19 +20,19 @@ const faqs = [
       "Yes, the plots come with NA, NOC, and clear title documentation and are designed to be registry-ready, ensuring transparency in the purchase process.",
   },
   {
-    question: "What is the booking process?",
+    question: "What amenities are available at WestWyn Estates?",
     answer:
-      "Interested buyers can reserve a plot by paying a token amount of ₹50,000. After booking, clients may visit the project site with our team. Once payment is completed, the documentation and registry process is initiated.",
+      "WestWyn Estates includes planned amenities such as internal roads, gated community planning, power and water supply, drainage system, security, kids play area, jogging track, yoga deck, senior citizen zone, and clubhouse lite.",
   },
   {
-    question: "Why are investors exploring Dholera SIR?",
+    question: "Is WestWyn Estates close to key Dholera infrastructure?",
     answer:
-      "The region is seeing large-scale development including projects such as the Dholera International Airport, industrial investments, and infrastructure upgrades, which are increasing interest in Dholera SIR investment opportunities.",
+      "Yes, the project is connected to Bhimnath Railway Junction, Dholera SIR boundary, Ahmedabad-Dholera Expressway, Dholera International Airport, RMS Multi-Specialty Hospital, and the Tata Semiconductor Plant.",
   },
   {
-    question: "How does Dholerainsider help investors buy plots in Dholera?",
+    question: "Can I get site visit and documentation support?",
     answer:
-      "Dholerainsider supports buyers with project consultation, plot selection, documentation guidance, and registry assistance to help ensure a smooth property purchase experience in Dholera SIR.",
+      "Yes, buyers can get support for current availability, pricing, plot size details, site visit schedule, documentation, and registry process for WestWyn Estates.",
   },
 ];
 
@@ -64,11 +64,9 @@ export default function FAQSection() {
       />
 
       <div className="">
-        <div className="flex flex-col md:flex-row px-4 md:px-8 py-4 md:py-8 gap-6 md:gap-12 max-w-7xl mx-auto">
-
-          {/* Left Section */}
-          <div className="w-full md:w-2/5 pl-2 pr-2">
-            <h2 className="text-[32px] font-semibold text-white mb-4">
+        <div className="flex flex-col md:flex-row px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)] gap-[clamp(1.5rem,4vw,3rem)] max-w-7xl mx-auto">
+          <div className="w-full md:w-2/5 md:pl-2 md:pr-2">
+            <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-semibold text-white mb-4">
               Frequently Asked Questions
             </h2>
 
@@ -86,12 +84,11 @@ export default function FAQSection() {
             </div>
           </div>
 
-          {/* Right Section */}
-          <div className="w-full md:w-3/5 md:pl-24 md:pr-4 md:mt-0 space-y-1">
+          <div className="w-full md:w-3/5 md:pl-[clamp(2rem,6vw,6rem)] md:pr-4 md:mt-0 space-y-1">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-white/20">
                 <button
-                  className="w-full py-4 flex justify-between items-center text-left hover:bg-white/5 transition-all duration-200"
+                  className="w-full py-[clamp(0.875rem,2vw,1rem)] flex justify-between items-center text-left hover:bg-white/5 transition-all duration-200"
                   onClick={() => toggleFAQ(index)}
                 >
                   <span className="text-white font-medium pr-4 leading-relaxed">
@@ -123,7 +120,6 @@ export default function FAQSection() {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </>

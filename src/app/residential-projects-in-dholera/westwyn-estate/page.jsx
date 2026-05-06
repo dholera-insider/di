@@ -130,12 +130,10 @@ export default function Hero() {
           }),
         }}
       />
-      <title>
-        WestWyn Estates - Premium Residential plots in Dholera Smart City
-      </title>
+      <title>Govt Approved Residential Plots in Dholera Westwyn Estates</title>
       <meta
         name="description"
-        content="Invest in WestWyn Estates Dholera. 100% title-clear & AUDA approved residential plots. Located 0 KM from SIR boundary. Immediate registry and possession available."
+        content="Govt approved residential plots in Dholera Westwyn Estates with clear title, registry-ready documentation, site visit support."
       />
       <meta
         name="keywords"
@@ -145,7 +143,7 @@ export default function Hero() {
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/westwyn-estate"
       />
-      <div className="relative w-full h-[80vh] max-sm:h-[50vh]">
+      <div className="relative w-full h-[clamp(28rem,80svh,46rem)] max-sm:h-[clamp(24rem,62svh,34rem)]">
         <Image
           src={westwynEstate1}
           alt="WestWyn Estates in Dholera SIR"
@@ -158,9 +156,9 @@ export default function Hero() {
           className="w-full h-full object-cover md:hidden"
           priority
         />
-        <div className="absolute bottom-0 left-0 right-0 p-4 hidden md:block">
-          <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-6xl mx-auto w-full">
-            <div className="flex items-center gap-5 px-6 py-4">
+        <div className="absolute bottom-0 left-0 right-0 hidden p-[clamp(0.75rem,1.5vw,1rem)] lg:block">
+          <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-[calc(100vw-2rem)] lg:max-w-6xl mx-auto w-full">
+            <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1.25rem)] px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.75rem,1.5vw,1rem)]">
               {/* Status */}
               <div className="flex items-center gap-2 shrink-0">
                 <span
@@ -170,7 +168,7 @@ export default function Hero() {
                   <span className="animate-ping absolute inline-flex rounded-full bg-teal-400 w-full h-full opacity-75" />
                   <span className="relative inline-flex rounded-full bg-teal-500 w-[10px] h-[10px]" />
                 </span>
-                <span className="text-teal-800 text-[11px] font-bold tracking-widest uppercase">
+                <span className="text-teal-800 text-[0.6875rem] font-bold tracking-widest uppercase">
                   Ongoing
                 </span>
               </div>
@@ -180,12 +178,13 @@ export default function Hero() {
               {/* Title + Subtitle */}
               <div className="shrink-0">
                 <a href="/residential-projects-in-dholera/westwyn-estate">
-                  <h2 className="text-teal-900 text-2xl font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
+                  <h2 className="text-teal-900 text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
                     WestWyn Estates
                   </h2>
                 </a>
                 <div className="text-teal-700/70 text-xs mt-1">
-                  Registry Ready Plot Starting From ₹10 Lakh
+                  Registry-ready plots in Polarpur, Dholera starting from ₹10
+                  lakh
                 </div>
               </div>
 
@@ -193,13 +192,13 @@ export default function Hero() {
 
               {/* Price */}
               <div className="shrink-0">
-                <div className="text-teal-900 text-[26px] font-extrabold leading-none">
+                <div className="text-teal-900 text-[1.625rem] font-extrabold leading-none">
                   ₹6,700{" "}
                   <span className="text-teal-900/40 text-xs font-normal">
                     /Sq.Yd
                   </span>
                 </div>
-                <div className="text-teal-900/40 text-[10px] tracking-widest uppercase mt-0.5">
+                <div className="text-teal-900/40 text-[0.625rem] tracking-widest uppercase mt-0.5">
                   Price
                 </div>
               </div>
@@ -213,7 +212,7 @@ export default function Hero() {
               <div className="flex items-center gap-3 shrink-0">
                 <a
                   href="tel:+919958993549"
-                  className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all duration-200 hover:-translate-y-0.5"
+                  className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[0.8125rem] font-bold transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <PhoneIcon />
                   Call Now
@@ -221,7 +220,7 @@ export default function Hero() {
 
                 <button
                   onClick={openBrochureForm}
-                  className="flex items-center gap-2 bg-white hover:bg-teal-50 border border-teal-900/20 hover:border-teal-800 text-teal-900 px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+                  className="flex items-center gap-2 bg-white hover:bg-teal-50 border border-teal-900/20 hover:border-teal-800 text-teal-900 px-5 py-2.5 rounded-lg text-[0.8125rem] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                 >
                   <DocIconTeal />
                   Brochure
@@ -231,9 +230,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="md:hidden mt-6">
+      <div className="lg:hidden mt-6">
         <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/30 w-full">
-          <div className="grid gap-6 p-6">
+          <div className="grid gap-[clamp(1rem,3vw,1.5rem)] p-[clamp(1.25rem,4vw,1.5rem)]">
             {/* Categories & Price */}
             <div>
               <div className="flex items-center gap-2 flex-wrap mb-3">
@@ -241,7 +240,7 @@ export default function Hero() {
                   Residential
                 </span>
               </div>
-              <div className="text-3xl font-bold text-teal-900">
+              <div className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900">
                 ₹6,700
                 <span className="text-sm text-gray-600 ml-1">/Sq.Yd</span>
               </div>
@@ -249,8 +248,8 @@ export default function Hero() {
 
             {/* Title & Description */}
             <div>
-              <p className="text-3xl font-bold text-teal-900 mb-2 leading-tight hover:text-teal-800 transition-colors">
-                Immediate Possession
+              <p className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900 mb-2 leading-tight hover:text-teal-800 transition-colors">
+                Registry-ready plots in Polarpur, Dholera starting from ₹10 lakh
               </p>
             </div>
 
@@ -284,24 +283,24 @@ export default function Hero() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 py-12">
+        <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(2.5rem,6vw,3rem)]">
           <div className="max-w-7xl mx-auto">
             {/* Heading */}
-            <h1 className="text-2xl md:text-4xl md:text-center font-bold text-white mb-6">
-              WestWyn Estates -{" "}
-              <span>Premium Residential Plots in Dholera</span>
+            <h1 className="text-[clamp(1.5rem,3vw,2.25rem)] md:text-center font-bold text-white mb-6">
+              WestWyn Estates :{" "}
+              <span>Registry-Ready plots in Polarpur, Dholera</span>
             </h1>
             <div className="max-w-5xl mx-auto">
-              <p className="text-lg text-gray-100 leading-relaxed">
+              <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
                 WestWyn Estates is a premium residential plotting project in
-                Polarpur, Dholera, Gujarat, designed for smart living and
-                long-term investment. The project offers direct entry from State
-                Highway-117 and is located just minutes from Bhimnath Railway
-                Station, ensuring convenient connectivity. It also provides good
-                access to major infrastructure and mega developments in the
-                region. Overall, WestWyn Estates is a suitable choice for those
-                exploring Dholera plots with strong future appreciation
-                potential.
+                Polarpur, Dholera, designed for buyers who want a secure and
+                future-ready investment near Dholera SIR. The project offers
+                residential plots with clear documentation, planned amenities,
+                and strong connectivity to important infrastructure locations in
+                Dholera. <br /><br /> Located with direct access from State
+                Highway-117 and close to Bhimnath Railway Junction, WestWyn
+                Estates is suitable for investors looking for registry-ready
+                plots in Dholera with long-term growth potential.
               </p>
               <br />
             </div>
@@ -310,8 +309,8 @@ export default function Hero() {
       </div>
 
       <div className="bg-gray-100 border-b">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
+        <div className="max-w-7xl mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(1.25rem,3vw,1.5rem)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[clamp(0.75rem,2vw,1rem)]">
             {projectFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
@@ -322,7 +321,7 @@ export default function Hero() {
         <PrimeLocationSection />
       </div>
       <div>
-        <CommonForm title="Own a Registry Ready Plot in Dholera Starting From ₹10 Lakh" />
+        <CommonForm title="Own a Registry Ready Plot in Dholera Starting from ₹10 Lakh" />
       </div>
 
       <div className="relative">
@@ -335,78 +334,66 @@ export default function Hero() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
         </div>
-        <div className="relative z-10 container mx-auto px-4 py-4 md:py-8">
+        <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)]">
           <div className="max-w-6xl mx-auto">
             {/* Why Invest Section */}
             <div className="mb-12">
-              <h2 className="text-xl md:text-4xl font-bold text-white mb-8">
+              <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-bold text-white mb-8">
                 Why Invest in WestWyn Estates?
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Dholera Investment Hub
+              <div className="grid md:grid-cols-2 gap-[clamp(1rem,2.5vw,1.5rem)]">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Strong Dholera Investment Location
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    Dholera Smart City is attracting ₹3+ lakh crore planned
-                    investments from government and global companies such as
-                    Tata Electronics, Tokyo Electron, and Tillman Global
-                    Holdings.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    WestWyn Estates is located near important infrastructure and
+                    industrial development routes, making it suitable for buyers
+                    looking at long-term investment in Dholera Smart City.
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Strategic Location
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Direct Highway Access
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    Direct entry from State Highway-117 with Bhimnath Railway
-                    Station just minutes away, providing convenient regional
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    The project offers direct access from State Highway-117,
+                    helping improve connectivity and future usability.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Close to Railway Connectivity
+                  </h3>
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    Its proximity to Bhimnath Railway Junction adds location
+                    strength for buyers who value accessible transport
                     connectivity.
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Nearby Industrial Zones
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Registry Ready Plots
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    Only 45 minutes from the Tata semiconductor plant and Renew
-                    energy projects in Dholera SIR, and 45 minutes from Hebatpur
-                    Industrial Area, supporting strong industrial growth.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    The project is positioned with clear-title, NA/NOC approved,
+                    and registry-ready documentation, helping buyers complete
+                    their investment process smoothly.
                   </p>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    High-Speed Connectivity
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                    Planned Community Amenities
                   </h3>
-                  <p className="text-gray-200 text-sm">
-                    40 minutes from the Ahmedabad–Dholera Expressway, 40 minutes
-                    from proposed metro/monorail connectivity, and about 50
-                    minutes from Dholera International Airport.
-                  </p>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    High Growth Potential
-                  </h3>
-                  <p className="text-gray-200 text-sm">
-                    Early-stage entry in the Dholera region positions investors
-                    ahead of large-scale infrastructure and industrial
-                    development.
-                  </p>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-lg md:text-xl font-semibold text-teal-300 mb-3">
-                    Planned Public Facilities
-                  </h3>
-                  <p className="text-gray-200 text-sm">
-                    Provision for schools, parks, hospitals, food courts, and
-                    daily-use amenities within the development.
+                  <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
+                    WestWyn Estates offers practical amenities such as internal
+                    roads, gated community planning, security, power, water,
+                    drainage, and lifestyle features for future residential use.
                   </p>
                 </div>
               </div>
@@ -414,20 +401,20 @@ export default function Hero() {
 
             {/* Amenities Section */}
             <div>
-              <h2 className="text-xl md:text-4xl font-bold text-white mb-8">
-                Amenities
+              <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-bold text-white mb-8">
+                Amenities at WestWyn Estates
               </h2>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[clamp(0.75rem,2vw,1rem)]">
                 {amenities.map((amenity, index) => (
                   <div
                     key={index}
-                    className="bg-teal-500/20 backdrop-blur-sm rounded-lg p-4 text-center border border-teal-400/30 hover:bg-teal-500/30 transition-all duration-300"
+                    className="bg-teal-500/20 backdrop-blur-sm rounded-lg p-[clamp(1rem,2vw,1.25rem)] text-center border border-teal-400/30 hover:bg-teal-500/30 transition-all duration-300"
                   >
                     <div className="text-xl md:text-4xl mb-2">
                       {amenity.icon}
                     </div>
-                    <p className="text-white font-medium text-lg">
+                    <p className="text-white font-medium text-[clamp(1rem,1.8vw,1.125rem)] leading-[1.4]">
                       {amenity.title}
                     </p>
                   </div>
@@ -441,7 +428,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <PopupScroll title="Get Registry Ready Plots in Dholera Starting From ₹10 Lakh" />
+      <PopupScroll title="Get current availability, pricing, plot size details, site visit schedule, and documentation support for WestWyn Estates." />
       <AnimatePresence>
         {brochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
