@@ -10,7 +10,7 @@ import Invest from "../homecomponents/Invest";
 import WhyDI from "../homecomponents/WhyDI";
 import WestWyn_Estate from "../homecomponents/WestWyn_Estate";
 import FAQSection from "../homecomponents/Faq";
-import LatestUpdates from "../components/BrowseBlogs";
+import LatestUpdates from "../homecomponents/FeaturedBlogs";
 import Dholera from "../homecomponents/Dholera";
 import TestimonialPagination from "../homecomponents/Testimonials";
 import Groundzero from "../homecomponents/Groundzero";

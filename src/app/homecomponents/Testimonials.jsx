@@ -116,7 +116,7 @@ const TestimonialPagination = () => {
   return (
     <div className="bg-white py-8">
       <div className="container mx-auto px-4">
-        <h2 className="text-center text-3xl font-bold text-teal-700 mb-12">
+        <h2 className="text-center text-[clamp(1.5rem,3vw,2.5rem)] leading-[clamp(2rem,4vw,3.5rem)] font-bold text-teal-700 mb-12">
           What Our Clients Say
         </h2>
 

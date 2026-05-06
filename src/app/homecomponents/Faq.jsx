@@ -1,10 +1,20 @@
 "use client";
+
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Link from "next/link";
 
-
 const faqs = [
+   {
+    question: "Is Dholera Smart City good for investment?",
+    answer:
+      "Yes, Dholera is considered a strong long-term investment option due to planned infrastructure, growing industrial development, and improving connectivity.",
+  },
+  {
+    question: "What is Dholera SIR?",
+    answer:
+      "Dholera SIR is a Special Investment Region, a planned smart city with residential, commercial, and industrial zones designed for future growth.",
+  },
   {
     question: "Is Dholera a safe investment?",
     answer:
@@ -27,74 +37,65 @@ const faqs = [
   },
 ];
 
-
 export default function FAQSection() {
-   const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-
   return (
-    <>
-      <div className="p-8">
-        <div className="flex flex-col md:flex-row px-4 md:px-8 py-12 md:py-20 gap-6 md:gap-12 max-w-7xl mx-auto">
-          
-          {/* Left Section (40%) */}
-          <div className="w-full md:w-2/5 pl-2 pr-2">
-            <h2 className="text-4xl max-sm:text-xl font-semibold text-black mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-gray-600 mb-2">
-              More Questions about Dholera Smart City Project?
-            </p>
-            <div className="pt-4">
-              <Link className="px-2 py-3 bg-gradient-to-r from-teal-400 to-teal-600 text-white rounded-md" href="tel:+919211820887">Give Us A Missed Call</Link>
-            </div>
-          </div>
+    <section className="bg-white px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
+      <div className="mx-auto grid max-w-7xl gap-[clamp(1.5rem,3vw,3rem)] md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+        <div>
+          <h2 className="mb-4 text-[clamp(1.5rem,3vw,2.5rem)] font-semibold leading-[clamp(2rem,4vw,3.5rem)] text-black">
+            FAQ
+          </h2>
+          <p className="mb-4 text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-600">
+            More Questions about Dholera Smart City Project?
+          </p>
+          <Link
+            className="inline-flex rounded-md bg-gradient-to-r from-teal-400 to-teal-600 px-[clamp(1rem,2vw,1.5rem)] py-3 text-[0.875rem] font-medium text-white"
+            href="tel:+919211820887"
+          >
+            Give Us A Missed Call
+          </Link>
+        </div>
 
-          {/* Right Section (60%) */}
-          <div className="w-full md:w-3/5 md:pl-24 md:pr-4  md:mt-0 space-y-1">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-gray-200">
-                <button
-                  className="w-full py-4 flex justify-between items-center text-left hover:bg-gray-50 transition-all duration-200"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <span className="text-gray-900 font-medium pr-4 leading-relaxed">
-                    {faq.question}
-                  </span>
-                  <span className="flex-shrink-0 transition-transform duration-200">
-                    {openIndex === index ? (
-                      <Minus className="w-5 h-5 text-gray-600" />
-                    ) : (
-                      <Plus className="w-5 h-5 text-gray-600" />
-                    )}
-                  </span>
-                </button>
+        <div className="space-y-1">
+          {faqs.map((faq, index) => (
+            <div key={faq.question} className="border-b border-gray-200">
+              <button
+                className="flex w-full items-center justify-between py-4 text-left transition-all duration-200 hover:bg-gray-50"
+                onClick={() => toggleFAQ(index)}
+              >
+                <span className="pr-4 text-[clamp(1rem,1.4vw,1.125rem)] font-medium leading-[1.7] text-gray-900">
+                  {faq.question}
+                </span>
+                <span className="flex-shrink-0 transition-transform duration-200">
+                  {openIndex === index ? (
+                    <Minus className="h-5 w-5 text-gray-600" />
+                  ) : (
+                    <Plus className="h-5 w-5 text-gray-600" />
+                  )}
+                </span>
+              </button>
 
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === index
-                      ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="pb-4 px-0">
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="pb-4">
+                  <p className="text-[0.875rem] leading-[1.7] text-gray-600">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
-            ))}
-            
-          </div>
+            </div>
+          ))}
         </div>
       </div>
-
-     
-    </>
+    </section>
   );
 }

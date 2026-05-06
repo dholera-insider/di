@@ -81,14 +81,14 @@ export default function App() {
         }}
       />
 
-      <title>Dholera Smart City Investment: Buy Premium residential plots In Dholera</title>
+      <title>Dholera Smart City Investment | Buy Govt Approved Plots in Dholera</title>
       <meta
         name="description"
-        content="Secure your future in India's first greenfield smart city. Explore verified residential plots in Dholera. Get latest price trends & ROI insights."
+        content="Dholera Smart City investment opportunities with Dholera Insider. Buy govt approved plots in Dholera with site visit, registry, and documentation."
       />
       <meta
         name="keywords"
-        content="Dholera Smart City, Dholera plots, plots in Dholera, Dholera SIR plots, Dholera land investment, Dholera Smart City investment, residential plots in Dholera, industrial plots in Dholera, Dholera real estate, Dholera investment opportunities, dholerainsider, Gujarat smart city plots, DMIC corridor, Investments in Dholera Smart City, dholera latest news, Dholera International Airport, Dholera Solar Park,  Ahmedabad Dholera Expressway, Dholera SIR, Dholera plot prices, Dholera Smart City Projects"
+        content="Dholera Smart City Investment, Dholera SIR, plots in Dholera, Dholera investment, buy plots in Dholera"
       />
       <link rel="canonical" href="https://www.dholerainsider.com" />
       <div>

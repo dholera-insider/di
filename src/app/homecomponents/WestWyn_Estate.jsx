@@ -1,218 +1,138 @@
 import React from "react";
-import sample1 from "@/app/assets/residential/estates.webp";
-import sample1M from "@/app/assets/home/estate.webp";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import westwynEstatesImage from "@/app/assets/residential/westwyn-estates-dholera-project-section.webp";
+import westwynResidencyImage from "@/app/assets/residential/westwyn-residency-dholera-project-section.webp";
 
 export default function WestWyn_Estate() {
+  const projects = [
+    {
+      title: "WestWyn Estates - Premium Residential Plots in Dholera",
+      buttonLabel: "View WestWyn Estates",
+      image: westwynEstatesImage,
+      description:
+        "WestWyn Estates is a premium residential plotting project developed by Dholera Insider in Polarpur, Dholera. Designed for buyers looking for direct developer-owned plots in the Dholera Smart City growth corridor, the project offers clear-title, registry-ready residential plots with strong location advantages.",
+      href: "/residential-projects-in-dholera/westwyn-estate",
+      highlights: [
+        "Developer - Dholera Insider",
+        "Located in Polarpur, Dholera",
+        "Starting from \u20b910 lakh",
+        "Registry-ready documentation",
+        "Near Dholera SIR and expressway",
+        "Planned residential layout",
+      ],
+    },
+    {
+      title: "WestWyn Residency - Affordable Residential Plots in Dholera",
+      buttonLabel: "View WestWyn Residency",
+      image: westwynResidencyImage,
+      description:
+        "WestWyn Residency is an affordable residential plotting project developed in Pipariya, Dholera. Near Dholera SIR and key connectivity routes, the project also offers an entry point for buyers who want to invest directly with the developer in Dholera Smart City's growth corridor. It offers clear-title, registry-ready residential plots with strong location advantages.",
+      href: "/residential-projects-in-dholera/westwyn-residency",
+      highlights: [
+        "Developer - Dholera Insider",
+        "Located in Pipariya, Dholera",
+        "Starting from \u20b98 lakh",
+        "Clear-title and registry-ready plots",
+        "Near Dholera SIR and expressway",
+        "Affordable investment option",
+      ],
+    },
+  ];
+
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900 pb-12">
-      {/* WestWyn Estate Section */}
-      <div className="pt-12 max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h3 className="text-4xl max-sm:text-xl font-bold text-teal-400 mb-4">
-            WestWyn Estates -{" "}
-            <span className="text-white">
-              {" "}
-              Invest in Dholera’s Fastest Growing Zone
-            </span>
-          </h3>
-          <div className="w-32 h-1 bg-gradient-to-r from-teal-400 to-teal-600 mx-auto rounded-full mb-6"></div>
+    <section className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900">
+      <div className="mx-auto max-w-7xl px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
+        <div className="mb-[clamp(1.5rem,3vw,3rem)] text-center">
+          <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-white">
+            Residential Plots in{" "}
+            <span className="text-teal-400">Dholera Smart City</span>
+          </h2>
+          <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-teal-400 to-teal-600" />
         </div>
 
-        {/* Image Section - Full Width Top */}
-        <div className="mb-12">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-            <div className="w-full md:h-[50vh] bg-gradient-to-br from-teal-900 to-gray-900 flex items-center justify-center">
-              <Image
-                src={sample1}
-                alt="WestWyn Estate in Dholera"
-                className="object-cover max-sm:hidden"
-              />
-              <Image
-                src={sample1M}
-                alt="WestWyn Estate in Dholera"
-                className="object-contain md:hidden"
-              />
-            </div>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 text-white">
-              <h3 className="text-2xl font-bold mb-2">WestWyn Estates</h3>
-              <p className="text-teal-300">
-                Direct Entry from State Highway 117
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-5xl mx-auto">
-          <p className="mb-8 text-white">
-            WestWyn Estates a premium residential plotting project in Polarpur,
-            Dholera, Gujarat, designed for smart living and long-term
-            investment. The project offers direct entry from State Highway-117
-            and is located just minutes from Bhimnath Railway Station, ensuring
-            convenient connectivity. It also provides good access to major
-            infrastructure and mega developments in the region. Overall, WestWyn
-            Estates is a suitable choice for those exploring Dholera plots with
-            strong future appreciation potential.
+        <div className=" max-w-7xl mx-auto mb-[clamp(1.5rem,3vw,3rem)] space-y-4 text-center">
+          <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
+            Residential plots in Dholera Smart City are gaining attention from
+            buyers who want early entry into Gujarat's planned smart city growth
+            corridor. With Dholera SIR, Ahmedabad-Dholera Expressway, Dholera
+            International Airport, railway connectivity, and industrial projects
+            shaping the region, plotted development is becoming a preferred
+            option for long-term real estate investment.
+          </p>
+          <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
+            Dholera Insider develops residential plot projects in prime
+            locations in Dholera with clear-title documentation, registry-ready
+            process, planned layouts, and direct developer inventory. Buyers can
+            explore affordable and premium plot options through WestWyn
+            Residency and WestWyn Estates.
           </p>
         </div>
 
-        {/* Two Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-8">
-          {/* Strategic Location Card */}
-          <div className="bg-gray-800/50 rounded-xl p-6 border-l-4 border-teal-400">
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Strategic Location
-            </h3>
-            <div className="grid gap-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-gray-100">
-                  Premium residential plots in Polarpur, Dholera
-                </span>
+        <div className="grid gap-[clamp(1.25rem,2.5vw,2.5rem)] lg:grid-cols-2">
+          {projects.map((project) => (
+            <article
+              key={project.title}
+              className="flex h-full flex-col overflow-hidden rounded-lg border border-white/15 bg-gray-800/50"
+            >
+              <div className="relative h-[14rem] w-full bg-gray-900 sm:h-[16rem]">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-gray-100">
-                  5 Minutes from Bhimnath Railway Junction
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-gray-100">
-                  15 Minutes from Dholera SIR boundary
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-gray-100">
-                  15 Minutes from RMS Multi-Specialty Hospital
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-gray-100">
-                  17 Minutes from Ahmedabad Dholera Expressway
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-gray-100">
-                  30 Minutes from Tata Semiconductor Plant
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                <span className="text-gray-100">
-                  45 Minutes from Dholera International Airport
-                </span>
-              </div>
-            </div>
-            <p className="text-teal-300 font-semibold mt-4 text-2xl">
-              Unbeatable connectivity in Dholera and future-ready growth
-              potential.
-            </p>
-            <div className=" bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white mt-4 text-[14px] md:text-base font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-              <Link href="/residential-projects-in-dholera/westwyn-estate">
-                Explore More About WestWyn Estates
-              </Link>
-            </div>
-          </div>
 
-          {/* Why Invest Section */}
-          <div className="bg-gray-800/50 rounded-xl p-6">
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Why Invest in WestWyn Estates?
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <div>
-                  <h4 className="text-teal-300 font-semibold">
-                    Prime Location
+              <div className="flex flex-1 flex-col p-[clamp(1.25rem,2.5vw,2rem)]">
+                <h3 className="mb-4 text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-white">
+                  {project.title}
+                </h3>
+                <p className="mb-6 text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
+                  {project.description}
+                </p>
+
+                <div className="mb-6">
+                  <h4 className="mb-3 text-[clamp(1rem,1.6vw,1.25rem)] font-semibold text-teal-300">
+                    Key Highlights
                   </h4>
-                  <p className="text-gray-200">
-                    Close proximity to Public Facilities and Transport: Bus
-                    stand, school, hospital, shopping complex, park, food
-                    courts.
-                  </p>
+                  <ul className="space-y-3">
+                    {project.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="flex items-start gap-3 text-gray-100"
+                      >
+                        <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-teal-400" />
+                        <span className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7]">
+                          {highlight}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+
+                {project.href ? (
+                  <Link
+                    href={project.href}
+                    className="mt-auto inline-flex w-fit rounded-lg bg-gradient-to-r from-teal-500 to-teal-600 px-[clamp(1.25rem,2.5vw,2rem)] py-3 text-[0.875rem] font-bold text-white transition-all duration-300 hover:from-teal-600 hover:to-teal-700"
+                  >
+                    {project.buttonLabel}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    className="mt-auto inline-flex w-fit cursor-not-allowed rounded-lg bg-gray-600 px-[clamp(1.25rem,2.5vw,2rem)] py-3 text-[0.875rem] font-bold text-white opacity-70"
+                  >
+                    {project.buttonLabel}
+                  </button>
+                )}
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <div>
-                  <h4 className="text-teal-300 font-semibold">
-                   Industrial proximity
-                  </h4>
-                  <p className="text-gray-200">
-                    Seamless connectivity to TATA Semiconductor Plant & ReNew Solar Plant. 25 minutes to Hebatpur Industrial Area
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <div>
-                  <h4 className="text-teal-300 font-semibold">
-                    Government-Backed Development
-                  </h4>
-                  <p className="text-gray-200">
-                    Part of India's first smart city under the Delhi–Mumbai
-                    Industrial Corridor (DMIC).
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <div>
-                  <h4 className="text-teal-300 font-semibold">
-                    Safe & Legal Investment
-                  </h4>
-                  <p className="text-gray-200">
-                    Fully NA/NOC approved, plan-passed, and clear-title
-                    registry-ready plots.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                </div>
-                <div>
-                  <h4 className="text-teal-300 font-semibold">
-                    Exceptional Growth
-                  </h4>
-                  <p className="text-gray-200">
-                    Early entry ensures rapid appreciation as demand rises.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
-
-        {/* Call to Action - Full Width Bottom */}
-        {/* <div className="bg-gradient-to-r from-teal-600/20 to-teal-800/20 rounded-xl p-8 text-center border border-teal-500/30">
-          <p className="text-xl text-white font-semibold mb-4">
-            WestWyn Estate is not just a plot; it's a secure and future-ready
-            investment opportunity in the heart of Gujarat's most ambitious
-            smart city.
-          </p>
-          <button className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-            Explore Plots under ₹ 10 Lakhs in Dholera
-          </button>
-        </div> */}
       </div>
-    </div>
+    </section>
   );
 }
