@@ -18,7 +18,7 @@
 /out/
 
 /.env.local
-/.ai-context.md
+/.AGENTS.md
 /.AGENTS.md
 # production
 /build

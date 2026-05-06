@@ -293,9 +293,9 @@ export default function Aboutus() {
 
       <main className="bg-gradient-to-b from-gray-900 via-emerald-900 to-teal-900 text-white min-h-screen">
         {/* Hero Section */}
-        <section className="text-center px-6 py-20 md:py-28 max-w-4xl mx-auto">
+        <section className="text-center px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] py-[clamp(5rem,calc(4rem+3vw),7rem)] max-w-4xl mx-auto">
           <motion.h1
-            className="text-3xl md:text-4xl pt-12 font-extrabold mb-6 leading-tight"
+            className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] pt-[clamp(3rem,calc(2.5rem+1.5vw),4rem)] font-extrabold mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -303,7 +303,7 @@ export default function Aboutus() {
             About <span className="text-teal-300">Dholera Insider</span>
           </motion.h1>
           <motion.p
-            className="text-lg text-teal-100 leading-relaxed"
+            className="text-[clamp(1rem,calc(0.95rem+0.25vw),1.125rem)] text-teal-100 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -315,17 +315,17 @@ export default function Aboutus() {
           </motion.p>
         </section>
 
-        <section className="bg-white py-8">
+        <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)]">
           <div
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto`}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] max-w-7xl mx-auto`}
           >
             {/* Left Content */}
-            <div className="space-y-8 flex flex-col">
-              <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100 flex-1 flex flex-col">
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+            <div className="space-y-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] flex flex-col">
+              <div className="bg-white rounded-3xl p-[clamp(1.5rem,calc(1.25rem+1vw),2rem)] shadow-xl border border-gray-100 flex-1 flex flex-col">
+                <h2 className="text-[clamp(1.25rem,calc(1.1rem+0.5vw),1.5rem)] font-bold text-gray-900 mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
                   Our Mission
                 </h2>
-                <p className="text-gray-700 leading-relaxed mb-6 flex-1">
+                <p className="text-gray-700 leading-relaxed mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] flex-1">
                   At Dholera Insider, our mission is to empower investors,
                   businesses, and citizens with transparent, data-backed news
                   about the Dholera Smart City project. We focus on accurate
@@ -336,12 +336,12 @@ export default function Aboutus() {
             </div>
 
             {/* Right Content */}
-            <div className="space-y-8 flex flex-col">
-              <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100 flex-1 flex flex-col">
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+            <div className="space-y-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] flex flex-col">
+              <div className="bg-white rounded-3xl p-[clamp(1.5rem,calc(1.25rem+1vw),2rem)] shadow-xl border border-gray-100 flex-1 flex flex-col">
+                <h2 className="text-[clamp(1.25rem,calc(1.1rem+0.5vw),1.5rem)] font-bold text-gray-900 mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
                   Our Vision
                 </h2>
-                <p className="text-gray-700 leading-relaxed mb-6 flex-1">
+                <p className="text-gray-700 leading-relaxed mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] flex-1">
                   We envision a digitally connected, eco-friendly city where
                   innovation meets sustainability. Our goal is to be the most
                   reliable media hub for everything happening in Dholera SIR,
@@ -356,26 +356,26 @@ export default function Aboutus() {
         <section>
           <div className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900">
             {/* Why Dholera Smart City Section */}
-            <div className="py-16 max-w-7xl mx-auto px-4">
+            <div className="py-[clamp(3rem,calc(2rem+3vw),4rem)] max-w-7xl mx-auto px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
               {/* Heading */}
-              <div className="text-center mb-12">
-                <h2 className="text-4xl max-sm:text-2xl font-bold text-white mb-4">
+              <div className="text-center mb-[clamp(2rem,calc(1.5rem+2vw),3rem)]">
+                <h2 className="text-[clamp(1.5rem,calc(1.25rem+1.2vw),2.25rem)] font-bold text-white mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
                   Why Choose Us
                 </h2>
-                <div className="w-32 h-1 bg-gradient-to-r from-teal-400 to-teal-600 mx-auto rounded-full"></div>
+                <div className="w-[clamp(6rem,calc(5rem+4vw),8rem)] h-1 bg-gradient-to-r from-teal-400 to-teal-600 mx-auto rounded-full"></div>
               </div>
 
               {/* 3 Column Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
                 {benefits.map((benefit, index) => (
                   <div
                     key={index}
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/15 transition-all duration-300 border border-white/20"
+                    className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,calc(1rem+1vw),1.5rem)] hover:bg-white/15 transition-all duration-300 border border-white/20"
                   >
-                    <h3 className="text-xl font-semibold text-teal-300 mb-3">
+                    <h3 className="text-[clamp(1.125rem,calc(1rem+0.6vw),1.25rem)] font-semibold text-teal-300 mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)]">
                       {benefit.title}
                     </h3>
-                    <p className="text-gray-100 text-sm leading-relaxed">
+                    <p className="text-gray-100 text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
@@ -386,12 +386,12 @@ export default function Aboutus() {
         </section>
 
         {/* Core Values */}
-        <section className="bg-white py-8 px-6">
+        <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
           <div className="max-w-6xl mx-auto">
-            <h4 className="text-3xl md:text-4xl font-bold text-center mb-10 text-teal-900">
+            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-teal-900">
               Our Core Values
             </h4>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)]">
               {[
                 {
                   title: "Transparency",
@@ -408,10 +408,10 @@ export default function Aboutus() {
               ].map((value, i) => (
                 <motion.div
                   key={i}
-                  className="bg-white/10 rounded-2xl p-6 shadow-lg backdrop-blur-md hover:bg-white/20 transition-all"
+                  className="bg-white/10 rounded-2xl p-[clamp(1.25rem,calc(1rem+1vw),1.5rem)] shadow-lg backdrop-blur-md hover:bg-white/20 transition-all"
                   whileHover={{ scale: 1.03 }}
                 >
-                  <h3 className="text-2xl font-semibold mb-3 text-teal-900">
+                  <h3 className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-semibold mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)] text-teal-900">
                     {value.title}
                   </h3>
                   <p className="text-gray-900 leading-relaxed">{value.desc}</p>
@@ -421,12 +421,12 @@ export default function Aboutus() {
           </div>
         </section>
 
-        <section className="bg-white py-8 px-6">
+        <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
           <div className="max-w-4xl mx-auto">
-            <h4 className="text-3xl md:text-4xl font-bold text-center mb-10 text-teal-900">
+            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-teal-900">
               Our Commitment to Clients
             </h4>
-            <div className="gap-8 text-gray-900 text-lg border-gray-100 border-2 shadow-lg p-4 rounded-xl">
+            <div className="gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] text-gray-900 text-[clamp(1rem,calc(0.95rem+0.25vw),1.125rem)] border-gray-100 border-2 shadow-lg p-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-xl">
               <p>
                 Our commitment is built on transparency, accuracy, and
                 reliability. Every update shared on our platform is carefully
@@ -447,19 +447,19 @@ export default function Aboutus() {
       </main>
 
       {/* Reach Out Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-900 to-teal-900 animate-gradient-x">
-        <div className="container mx-auto px-6 sm:px-12">
+      <section className="py-[clamp(3rem,calc(2rem+3vw),4rem)] bg-gradient-to-r from-gray-900 to-teal-900 animate-gradient-x">
+        <div className="container mx-auto px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-4xl mx-auto">
-            <h5 className="text-white text-3xl sm:text-4xl font-bold text-center">
+            <h5 className="text-white text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center">
               Know More About Dholera, With Dholera Insider
             </h5>
             {showPopup ? (
-              <div className="text-center py-8">
-                <div className="mb-4 inline-block">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+              <div className="text-center py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)]">
+                <div className="mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] inline-block">
+                  <div className="w-[clamp(3.5rem,calc(3rem+1.5vw),4rem)] h-[clamp(3.5rem,calc(3rem+1.5vw),4rem)] bg-green-500 rounded-full flex items-center justify-center mx-auto">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10 text-white"
+                      className="h-[clamp(2rem,calc(1.75rem+1vw),2.5rem)] w-[clamp(2rem,calc(1.75rem+1vw),2.5rem)] text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -473,7 +473,7 @@ export default function Aboutus() {
                     </svg>
                   </div>
                 </div>
-                <p className="text-2xl font-bold text-white mb-2">
+                <p className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-bold text-white mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]">
                   Thank You!
                 </p>
                 <p className="text-gray-300">
@@ -485,18 +485,18 @@ export default function Aboutus() {
               <form
                 onSubmit={handleSubmit}
                 id="contact-form-container"
-                className="mt-12 space-y-6"
+                className="mt-[clamp(2rem,calc(1.5rem+2vw),3rem)] space-y-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]"
               >
                 {errorMessage && (
-                  <div className="p-3 bg-red-500 bg-opacity-20 border border-red-400 text-red-100 rounded-lg text-sm">
+                  <div className="p-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] bg-red-500 bg-opacity-20 border border-red-400 text-red-100 rounded-lg text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)]">
                     {errorMessage}
                   </div>
                 )}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="block text-white text-sm font-medium mb-2"
+                      className="block text-white text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] font-medium mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]"
                     >
                       Full Name
                     </label>
@@ -506,7 +506,7 @@ export default function Aboutus() {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full px-[clamp(0.875rem,calc(0.75rem+0.5vw),1rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -514,7 +514,7 @@ export default function Aboutus() {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-white text-sm font-medium mb-2"
+                      className="block text-white text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] font-medium mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]"
                     >
                       Phone Number
                     </label>
@@ -525,7 +525,7 @@ export default function Aboutus() {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full px-[clamp(0.875rem,calc(0.75rem+0.5vw),1rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
                       placeholder="Enter your phone number"
                     />
                   </div>
@@ -537,7 +537,7 @@ export default function Aboutus() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+                    className="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 text-white font-bold py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-lg transition duration-300"
                   >
                     {isLoading ? "Submitting..." : "Get A Call Back"}
                   </button>
