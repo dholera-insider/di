@@ -1,9 +1,6 @@
-"use client";
-
-import { getblogs } from "@/sanity/lib/api";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { getblogs } from "@/sanity/lib/api";
 import { urlFor } from "@/sanity/lib/image";
 
 const RelatedBlogCard = ({ blog }) => {
@@ -57,55 +54,41 @@ const RelatedBlogCard = ({ blog }) => {
 
 const BlogSkeleton = () => (
   <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md">
-    <div className="h-48 animate-pulse bg-gradient-to-r from-gray-100 to-gray-200" />
+    <div className="h-48 bg-gradient-to-r from-gray-100 to-gray-200" />
     <div className="p-[clamp(1rem,2vw,1.5rem)]">
-      <div className="mb-3 h-4 w-1/4 animate-pulse rounded bg-gray-200" />
-      <div className="mb-3 h-6 w-3/4 animate-pulse rounded bg-gray-200" />
-      <div className="mb-2 h-4 w-full animate-pulse rounded bg-gray-200" />
-      <div className="h-4 w-2/3 animate-pulse rounded bg-gray-200" />
+      <div className="mb-3 h-4 w-1/4 rounded bg-gray-200" />
+      <div className="mb-3 h-6 w-3/4 rounded bg-gray-200" />
+      <div className="mb-2 h-4 w-full rounded bg-gray-200" />
+      <div className="h-4 w-2/3 rounded bg-gray-200" />
     </div>
   </div>
 );
 
-export default function FeaturedBlogs() {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default async function FeaturedBlogs() {
+  let blogs = [];
+  let hasError = false;
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        setLoading(true);
-        const getUpdates = await getblogs();
+  try {
+    const posts = await getblogs();
+    const safePosts = posts.map((post) => ({
+      ...post,
+      author: post.author || "Dholera Times",
+      mainImage: post.mainImage || null,
+      slug: post.slug || { current: "#" },
+    }));
 
-        const safePosts = getUpdates.map((post) => ({
-          ...post,
-          author: post.author || "Dholera Times",
-          mainImage: post.mainImage || null,
-          slug: post.slug || { current: "#" },
-        }));
+    blogs = safePosts
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt || b._createdAt) -
+          new Date(a.publishedAt || a._createdAt),
+      )
+      .slice(0, 4);
+  } catch (error) {
+    hasError = true;
+  }
 
-        const trendingBlogs = safePosts
-          .sort(
-            (a, b) =>
-              new Date(b.publishedAt || b._createdAt) -
-              new Date(a.publishedAt || a._createdAt)
-          )
-          .slice(0, 4);
-
-        setBlogs(trendingBlogs);
-      } catch (err) {
-        console.error("Error fetching blogs:", err);
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogs();
-  }, []);
-
-  if (error) {
+  if (hasError) {
     return (
       <section className="bg-gray-50 px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
         <div className="mx-auto max-w-7xl text-center">
@@ -135,15 +118,11 @@ export default function FeaturedBlogs() {
         </div>
 
         <div className="grid grid-cols-1 gap-[clamp(1rem,2vw,2rem)] md:grid-cols-4">
-          {loading
-            ? Array(4)
+          {blogs.length > 0
+            ? blogs.map((blog) => <RelatedBlogCard key={blog._id} blog={blog} />)
+            : Array(4)
                 .fill(0)
-                .map((_, i) => <BlogSkeleton key={i} />)
-            : blogs.length > 0
-              ? blogs.map((blog) => <RelatedBlogCard key={blog._id} blog={blog} />)
-              : Array(4)
-                  .fill(0)
-                  .map((_, i) => <BlogSkeleton key={i} />)}
+                .map((_, i) => <BlogSkeleton key={i} />)}
         </div>
 
         <div className="mt-[clamp(1.5rem,3vw,3rem)] text-center">

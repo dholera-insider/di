@@ -1,10 +1,16 @@
 "use client";
+
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
-import CommonForm from "./CommonForm";
 import bg from "@/app/assets/home/pexels2.jpg";
 import Image from "next/image";
 import Link from "next/link";
+
+const CommonForm = dynamic(() => import("./CommonForm"), {
+  ssr: false,
+  loading: () => <div className="min-h-[24rem]" />,
+});
 
 export default function CTAsection() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -19,65 +25,60 @@ export default function CTAsection() {
 
   return (
     <>
-      <div className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900 py-16 px-4 overflow-hidden">
+      <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900 px-4 py-16">
         <Image
           src={bg}
           alt="Background Image"
           fill
-          className="absolute object-cover inset-0 -z-10 opacity-30"
+          className="absolute inset-0 -z-10 object-cover opacity-30"
+          sizes="100vw"
         />
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 to-gray-900/20 pointer-events-none"></div>
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.1),transparent_50%)]"></div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-teal-900/20 to-gray-900/20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)] opacity-10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.1),transparent_50%)] opacity-10"></div>
 
-        {/* Animated floating elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-teal-500/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-teal-400/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        <div className="absolute left-10 top-10 h-20 w-20 animate-pulse rounded-full bg-teal-500/10 blur-xl"></div>
+        <div className="delay-1000 absolute bottom-10 right-10 h-32 w-32 animate-pulse rounded-full bg-teal-400/5 blur-2xl"></div>
 
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          {/* Main heading */}
+        <div className="relative z-10 mx-auto max-w-6xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h2 className="text-xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
+            <h2 className="mb-4 text-xl font-bold text-white drop-shadow-lg md:text-4xl">
               Expert Guidance for Smart Investor
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-teal-600 mx-auto rounded-full"></div>
+            <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-teal-400 to-teal-600"></div>
           </motion.div>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm text-gray-300 mb-12 leading-relaxed"
+            className="mb-12 text-sm leading-relaxed text-gray-300"
           >
             Have questions about Dholera investments? Our team is here to guide
             you every step of the way.
           </motion.p>
 
-          {/* Action buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8"
+            className="mb-8 flex flex-col items-center justify-center gap-6 md:flex-row"
           >
-            {/* Call Now Button */}
             <Link
               href="tel:+919211820887"
-              className="group relative bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-400/30 min-w-[200px]"
+              className="group relative min-w-[200px] rounded-xl border border-teal-400/30 bg-gradient-to-r from-teal-500 to-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-teal-600 hover:to-teal-700 hover:shadow-xl"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -87,17 +88,16 @@ export default function CTAsection() {
               </span>
             </Link>
 
-            {/* WhatsApp Button */}
             <Link
               href="https://wa.me/919211820887"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-green-400/30 min-w-[200px]"
+              className="group relative min-w-[200px] rounded-xl border border-green-400/30 bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-green-600 hover:to-green-700 hover:shadow-xl"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -108,22 +108,22 @@ export default function CTAsection() {
             </Link>
           </motion.div>
 
-          {/* Get Callback Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <motion.button
+              type="button"
               onClick={openContactForm}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700 text-white px-10 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-teal-400/50 hover:border-teal-400 min-w-[250px]"
+              className="group relative min-w-[250px] rounded-xl border-2 border-teal-400/50 bg-gradient-to-r from-gray-700 to-gray-800 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:border-teal-400 hover:from-gray-600 hover:to-gray-700 hover:shadow-xl"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-500/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -138,12 +138,11 @@ export default function CTAsection() {
             </motion.button>
           </motion.div>
 
-          {/* Additional info */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-sm text-gray-400 mt-8"
+            className="mt-8 text-sm text-gray-400"
           >
             Our investment advisors are available 24/7 to help you make the
             right choice
@@ -151,18 +150,17 @@ export default function CTAsection() {
         </div>
       </div>
 
-      {/* Enhanced Modal */}
       <AnimatePresence>
         {isContactFormOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeContactForm}
           >
             <motion.div
-              className="bg-gradient-to-br from-gray-800 via-slate-800 to-teal-900 rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto border border-teal-500/30"
+              className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-teal-500/30 bg-gradient-to-br from-gray-800 via-slate-800 to-teal-900 shadow-2xl"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -170,13 +168,13 @@ export default function CTAsection() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
-                {/* Close button */}
                 <button
+                  type="button"
                   onClick={closeContactForm}
-                  className="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-700/50 hover:bg-gray-600 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
+                  className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-700/50 text-white backdrop-blur-sm transition-colors duration-200 hover:bg-gray-600"
                 >
                   <svg
-                    className="w-4 h-4"
+                    className="h-4 w-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -190,13 +188,12 @@ export default function CTAsection() {
                   </svg>
                 </button>
 
-                {/* Form container */}
                 <div className="p-6">
-                  <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">
+                  <div className="mb-6 text-center">
+                    <h3 className="mb-2 text-2xl font-bold text-white">
                       Get A Call Back
                     </h3>
-                    <div className="w-16 h-1 bg-gradient-to-r from-teal-400 to-teal-600 mx-auto rounded-full"></div>
+                    <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-teal-400 to-teal-600"></div>
                   </div>
                   <CommonForm
                     title="Buy Residential Plots in Dholera Just 0 Km from SIR"
