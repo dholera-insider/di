@@ -87,6 +87,33 @@ const TrendingBlogItem = ({ post }) => {
 
 // And update your sidebar section to this:
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+      description: "",
+    };
+  }
+
+  return {
+    title: post.metaTitle || post.title,
+    description: post.metaDescription || "",
+    keywords: post.keywords || "",
+    robots: "index, dofollow",
+    alternates: {
+      canonical: `https://www.dholerainsider.com/about-dholera-sir/${post.slug.current}`,
+    },
+    openGraph: {
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || "",
+      images: post.ogImage ? [{ url: post.ogImage }] : [],
+    },
+  };
+}
+
 export default async function BlogDetail({ params }) {
   const { slug } = await params;
   const site = "dholera-insider";
@@ -432,16 +459,7 @@ export default async function BlogDetail({ params }) {
 
     return (
       <div className="bg-white min-h-screen">
-        <title>{post.metaTitle}</title>
-        <link
-          rel="canonical"
-          href={`https://www.dholerainsider.com/about-dholera-sir/${post.slug.current}`}
-        />
-        <SchemaMarkup post={post} />
-        <meta name="robots" content="index, dofollow" />
-        <meta name="description" content={post.metaDescription} />
-        <meta name="keywords" content={post.keywords} />
-        <meta name="publisher" content="Dholera Insider" />
+        
 
         {/* Sticky Nav Placeholder */}
         <div className="bg-white shadow-sm sticky top-0 z-30" />
