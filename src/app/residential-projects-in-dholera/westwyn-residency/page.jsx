@@ -9,6 +9,7 @@ import {
   WestWynResidencyBrochureButton,
   WestWynResidencyLeadWidgets,
 } from "./WestWynResidencyLeadWidgets";
+import Link from "next/link";
 
 const featureIcons = {
   "Plot Sizes": "🏠",
@@ -177,11 +178,11 @@ export default function WestWynResidencyContentTemp() {
               <div className="w-px h-9 bg-teal-900/10 shrink-0" />
 
               <div className="shrink-0">
-                <a href="/residential-projects-in-dholera/westwyn-residency">
+                <Link href="/residential-projects-in-dholera/westwyn-residency">
                   <h2 className="text-teal-900 text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
                     WestWyn Residency
                   </h2>
-                </a>
+                </Link>
                 <div className="text-teal-700/70 text-xs mt-1">
                   Registry-ready plots in Pipariya, Dholera
                 </div>
@@ -202,13 +203,13 @@ export default function WestWynResidencyContentTemp() {
               <div className="w-px h-12 bg-teal-900/10 shrink-0" />
 
               <div className="flex items-center gap-3 shrink-0">
-                <a
+                <Link
                   href="tel:+919958993549"
                   className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[0.8125rem] font-bold transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <PhoneIcon />
                   Enquire Now
-                </a>
+                </Link>
 
                 <WestWynResidencyBrochureButton
                   className="flex cursor-pointer items-center gap-2 rounded-lg border border-teal-900/20 bg-white px-5 py-2.5 text-[0.8125rem] font-semibold text-teal-900 transition-all duration-200 hover:-translate-y-0.5 hover:border-teal-800 hover:bg-teal-50"
@@ -302,7 +303,7 @@ export default function WestWynResidencyContentTemp() {
 
       <PrimeLocationSection />
 
-      <LazyCommonFormSection title="Own a Registry Ready Plot in Dholera Under â‚¹10 Lakh" />
+      <LazyCommonFormSection title="Own a Registry Ready Plot in Dholera Starting from ₹8 Lakh" />
 
       <div className="relative">
         <div className="absolute inset-0 z-0">
