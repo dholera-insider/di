@@ -2,14 +2,13 @@ import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
 import {
   getPostBySlug,
-  getblogs,
   getUpdates,
   projectInfo,
 } from "@/sanity/lib/api";
 import Link from "next/link";
 import Image from "next/image";
 import BlogSchemaMarkup from "../BlogSchemaMarkup";
-import SlugPageForm from "../../components/SlugPageForm";
+import LazySlugPageForm from "../../components/LazySlugPageForm";
 
 const URLFormatter = (text) => {
   if (!text) return "";
@@ -74,7 +73,7 @@ const RightSidebar = ({ trendingBlogs }) => {
                         width={64}
                         height={64}
                         className="w-full h-full"
-                        rel="preconnect"
+                        sizes="64px"
                       />
                     </div>
                   )}
@@ -160,16 +159,19 @@ export default async function Post({ params }) {
 
           const imageUrl =
             value.asset.url || urlFor(value).width(1200).height(800).url();
+          const dimensions = value.asset?.metadata?.dimensions;
 
           const imageNode = (
-            <img
+            <Image
               src={imageUrl}
               alt={value.alt || ""}
               className="w-full h-auto aspect-[3/2] rounded-lg my-6"
-              width={1200}
-              height={800}
+              width={dimensions?.width || 1200}
+              height={dimensions?.height || 800}
               loading="lazy"
-              rel="preconnect"
+              sizes="(max-width: 1024px) 100vw, 800px"
+              placeholder={value.asset?.metadata?.lqip ? "blur" : "empty"}
+              blurDataURL={value.asset?.metadata?.lqip}
             />
           );
 
@@ -478,14 +480,6 @@ export default async function Post({ params }) {
           <meta name="keywords" content={post.keywords} />
           <meta name="publisher" content="Dholera Insider" />
 
-          {/* Preload critical resources */}
-          {post.mainImage && (
-            <link
-              rel="preload"
-              as="image"
-              href={urlFor(post.mainImage).width(1200).height(675).url()}
-            />
-          )}
         </div>
         <div className="bg-white min-h-screen">
           <div className="bg-white shadow-sm sticky top-0 z-30" />
@@ -620,7 +614,7 @@ export default async function Post({ params }) {
                       height={800}
                       className="w-full h-auto aspect-[3/2]"
                       priority
-                      rel="preconnect"
+                      sizes="(max-width: 1024px) 100vw, 800px"
                     />
                   </div>
                 )}
@@ -632,7 +626,7 @@ export default async function Post({ params }) {
                   <div className="text-xl max-w-none">
                     <PortableText value={post.body} components={components} />
                   </div>
-                  <SlugPageForm />
+                  <LazySlugPageForm />
                   {/* Tags */}
                   {post.tags && post.tags.length > 0 && (
                     <div className="mt-12 pt-6 border-t border-gray-200">
@@ -698,7 +692,7 @@ export default async function Post({ params }) {
                                 width={400}
                                 height={250}
                                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                rel="preconnect"
+                                sizes="(max-width: 768px) 100vw, 33vw"
                               />
                             ) : (
                               <div className="w-full h-full bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
