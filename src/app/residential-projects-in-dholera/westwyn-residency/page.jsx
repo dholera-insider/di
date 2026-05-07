@@ -1,15 +1,14 @@
-"use client";
 import Image from "next/image";
-import React, { useState } from "react";
 import westwynEstate1 from "@/app/assets/residential/westwyn-residency-dholera-project-section.webp";
 import westwynEstate1M from "@/app/assets/residential/westwyn-residency-dholera-project-section-mobile.webp";
-import CommonForm from "@/app/components/CommonForm";
-import PopupScroll from "@/app/components/PopUpScroll";
-import { AnimatePresence } from "framer-motion";
-import BrochureDownload from "@/app/components/BrochureDownload";
+import LazyCommonFormSection from "@/app/components/LazyCommonFormSection";
 import PrimeLocationSection from "./PrimeLocations";
 import { PhoneIcon } from "lucide-react";
 import FAQSection from "./FAQs";
+import {
+  WestWynResidencyBrochureButton,
+  WestWynResidencyLeadWidgets,
+} from "./WestWynResidencyLeadWidgets";
 
 const featureIcons = {
   "Plot Sizes": "🏠",
@@ -33,23 +32,6 @@ const amenityIcons = {
   "Clubhouse Lite": "🏡",
 };
 
-const DocIconTeal = () => (
-  <svg
-    width="15"
-    height="15"
-    fill="none"
-    stroke="#134e4a"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-    />
-  </svg>
-);
-
 const FeatureCard = ({ icon, title, value }) => (
   <div className="bg-white rounded-xl p-4 border hover:bg-teal-700 group border-gray-200 text-center transition-colors duration-300 ease-in-out">
     <div className="w-12 h-12 bg-blue-100 group-hover:text-white group-hover:scale-110 rounded-full flex items-center justify-center mx-auto mb-2 transition-all duration-300 ease-in-out">
@@ -65,17 +47,7 @@ const FeatureCard = ({ icon, title, value }) => (
 );
 
 export default function WestWynResidencyContentTemp() {
-  const [brochureFormOpen, setIsBrochureFormOpen] = useState(false);
-
-  const openBrochureForm = () => {
-    setIsBrochureFormOpen(true);
-  };
-
-  const closeBrochureForm = () => {
-    setIsBrochureFormOpen(false);
-  };
-
-    const amenities = [
+  const amenities = [
     {
       icon: "🚗",
       title: "EV Charging Station",
@@ -173,14 +145,18 @@ export default function WestWynResidencyContentTemp() {
         <Image
           src={westwynEstate1}
           alt="WestWyn Residency in Dholera"
-          className="w-full h-full object-cover max-sm:hidden"
+          className="hidden h-full w-full object-cover sm:block"
           priority
+          fetchPriority="high"
+          sizes="(min-width: 640px) 100vw, 0vw"
         />
         <Image
           src={westwynEstate1M}
           alt="WestWyn Residency in Dholera"
-          className="w-full h-full object-cover md:hidden"
-          priority
+          className="block h-full w-full object-cover sm:hidden"
+          loading="eager"
+          fetchPriority="high"
+          sizes="(max-width: 639px) 100vw, 0vw"
         />
         <div className="absolute bottom-0 left-0 right-0 hidden p-[clamp(0.75rem,1.5vw,1rem)] md:block">
           <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-[calc(100vw-2rem)] lg:max-w-6xl mx-auto w-full">
@@ -234,13 +210,12 @@ export default function WestWynResidencyContentTemp() {
                   Enquire Now
                 </a>
 
-                <button
-                  onClick={openBrochureForm}
-                  className="flex items-center gap-2 bg-white hover:bg-teal-50 border border-teal-900/20 hover:border-teal-800 text-teal-900 px-5 py-2.5 rounded-lg text-[0.8125rem] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+                <WestWynResidencyBrochureButton
+                  className="flex cursor-pointer items-center gap-2 rounded-lg border border-teal-900/20 bg-white px-5 py-2.5 text-[0.8125rem] font-semibold text-teal-900 transition-all duration-200 hover:-translate-y-0.5 hover:border-teal-800 hover:bg-teal-50"
+                  showIcon
                 >
-                  <DocIconTeal />
                   Download Brochure
-                </button>
+                </WestWynResidencyBrochureButton>
               </div>
             </div>
           </div>
@@ -269,12 +244,9 @@ export default function WestWynResidencyContentTemp() {
 
             <div className="flex flex-col justify-between">
               <div className="flex items-center gap-2 text-gray-700 text-base mb-4">
-                <button
-                  onClick={openBrochureForm}
-                  className="flex-1 bg-teal-900 text-white hover:bg-teal-800 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5"
-                >
+                <WestWynResidencyBrochureButton className="flex-1 bg-teal-900 text-white hover:bg-teal-800 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5">
                   📄 Download Brochure
-                </button>
+                </WestWynResidencyBrochureButton>
               </div>
             </div>
           </div>
@@ -287,6 +259,8 @@ export default function WestWynResidencyContentTemp() {
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920"
             alt="WestWyn Residency"
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
         </div>
@@ -298,11 +272,17 @@ export default function WestWynResidencyContentTemp() {
             </h1>
             <div className="max-w-5xl mx-auto">
               <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
-                WestWyn Residency is designed for buyers who want an affordable, legally verified, and well-connected Dholera investment opportunity. Located in Pipariya, Dholera, the project offers govt approved residential plots with clear title, NA/NOC status, and immediate registry support.
+                WestWyn Residency is designed for buyers who want an affordable,
+                legally verified, and well-connected Dholera investment
+                opportunity. Located in Pipariya, Dholera, the project offers
+                govt approved residential plots with clear title, NA/NOC status,
+                and immediate registry support.
               </p>
               <br />
               <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
-                If you are searching for plots in Dholera under ₹10 lakh, WestWyn Residency gives you a practical entry point into the Dholera Smart City growth corridor.
+                If you are searching for plots in Dholera under ₹10 lakh,
+                WestWyn Residency gives you a practical entry point into the
+                Dholera Smart City growth corridor.
               </p>
               <br />
             </div>
@@ -322,7 +302,7 @@ export default function WestWynResidencyContentTemp() {
 
       <PrimeLocationSection />
 
-      <CommonForm title="Own a Registry Ready Plot in Dholera Under â‚¹10 Lakh" />
+      <LazyCommonFormSection title="Own a Registry Ready Plot in Dholera Under â‚¹10 Lakh" />
 
       <div className="relative">
         <div className="absolute inset-0 z-0">
@@ -330,6 +310,8 @@ export default function WestWynResidencyContentTemp() {
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920"
             alt="WestWyn Residency"
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
         </div>
@@ -346,7 +328,9 @@ export default function WestWynResidencyContentTemp() {
                     Affordable Entry in Dholera
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
-                    WestWyn Residency is suitable for buyers who want to start with a smaller investment ticket while still entering a high-potential growth corridor.
+                    WestWyn Residency is suitable for buyers who want to start
+                    with a smaller investment ticket while still entering a
+                    high-potential growth corridor.
                   </p>
                 </div>
 
@@ -355,7 +339,9 @@ export default function WestWynResidencyContentTemp() {
                     Govt Approved Plot Project
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
-                    The project offers government-approved residential plots with clear documentation, helping buyers invest with better confidence.
+                    The project offers government-approved residential plots
+                    with clear documentation, helping buyers invest with better
+                    confidence.
                   </p>
                 </div>
 
@@ -364,7 +350,8 @@ export default function WestWynResidencyContentTemp() {
                     Immediate Registry Support
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
-                    Registry-ready documentation allows buyers to move ahead with a smoother and more transparent buying process.
+                    Registry-ready documentation allows buyers to move ahead
+                    with a smoother and more transparent buying process.
                   </p>
                 </div>
 
@@ -373,7 +360,9 @@ export default function WestWynResidencyContentTemp() {
                     Close to Dholera SIR
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
-                    The project’s proximity to Dholera SIR makes it attractive for buyers looking at future growth driven by smart city infrastructure and industrial development.
+                    The project’s proximity to Dholera SIR makes it attractive
+                    for buyers looking at future growth driven by smart city
+                    infrastructure and industrial development.
                   </p>
                 </div>
 
@@ -382,7 +371,9 @@ export default function WestWynResidencyContentTemp() {
                     Long-Term Investment Potential
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
-                    As Dholera grows through infrastructure, industries, expressway connectivity, and airport development, nearby residential plots may benefit from rising demand.
+                    As Dholera grows through infrastructure, industries,
+                    expressway connectivity, and airport development, nearby
+                    residential plots may benefit from rising demand.
                   </p>
                 </div>
               </div>
@@ -393,7 +384,8 @@ export default function WestWynResidencyContentTemp() {
                 Project Amenities
               </h2>
               <p className="mb-6 text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-100">
-                WestWyn Residency is planned with practical lifestyle and security amenities for future residential use.
+                WestWyn Residency is planned with practical lifestyle and
+                security amenities for future residential use.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[clamp(0.75rem,2vw,1rem)]">
@@ -417,19 +409,7 @@ export default function WestWynResidencyContentTemp() {
           </div>
         </div>
       </div>
-      <PopupScroll title="Get Registry Ready Plots in Dholera Starting from ₹8 Lakh" />
-      <AnimatePresence>
-        {brochureFormOpen && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
-            <BrochureDownload
-              title="Get WestWyn Residency Brochure"
-              buttonName="Download Brochure"
-              onClose={() => closeBrochureForm()}
-              link="https://cdn.sanity.io/files/c3e1h345/projects/c9471499567c096befb9416aa99c7f0077900d11.pdf"
-            />
-          </div>
-        )}
-      </AnimatePresence>
+      <WestWynResidencyLeadWidgets />
     </>
   );
 }
