@@ -76,12 +76,10 @@ const PrimeLocationSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-teal-800 mb-4">
-            Well-Connected Residential Location in Dholera
+            Prime Locations
           </h2>
           <div className="w-24 h-1 bg-gray-900 mx-auto rounded-full"></div>
-          <p className="text-gray-900 mt-4 text-[clamp(1rem,1.5vw,1.125rem)] max-w-[42rem] mx-auto">
-            WestWyn Residency is strategically located to provide access to present and future growth points around Dholera SIR. Its connectivity to railway, expressway, airport, and industrial zones makes it suitable for both investors and future residential buyers.
-          </p>
+          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1rem,2.5vw,1.5rem)]">

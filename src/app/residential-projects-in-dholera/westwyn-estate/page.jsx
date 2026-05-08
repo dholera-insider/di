@@ -428,7 +428,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <PopupScroll title="Get current availability, pricing, plot size details, site visit schedule, and documentation support for WestWyn Estates." />
+      <PopupScroll title="Get Project Details" />
       <AnimatePresence>
         {brochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">

@@ -196,7 +196,7 @@ export default function CTAsection() {
                     <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-teal-400 to-teal-600"></div>
                   </div>
                   <CommonForm
-                    title="Buy Residential Plots in Dholera Just 0 Km from SIR"
+                    title="Buy Residential Plots in Dholera"
                     buttonName="Talk To DI Investment Advisor"
                     onClose={closeContactForm}
                     id="faq-form"
