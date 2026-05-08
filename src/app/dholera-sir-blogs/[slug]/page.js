@@ -1,10 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
-import {
-  getPostBySlug,
-  getUpdates,
-  projectInfo,
-} from "@/sanity/lib/api";
+import { getPostBySlug, getUpdates, projectInfo } from "@/sanity/lib/api";
 import Link from "next/link";
 import Image from "next/image";
 import BlogSchemaMarkup from "../BlogSchemaMarkup";
@@ -320,42 +316,56 @@ export default async function Post({ params }) {
       },
 
       block: {
-        h1: ({ children }) => (
-          <h1 className="text-2xl md:text-5xl font-black mt-8 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-4">
-            <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full"></span>
-            {children}
-          </h1>
-        ),
-        h2: ({ children }) => (
-          <h2 className="text-2xl md:text-3xl font-bold mt-8 mb-8 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-3">
-            <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full"></span>
-            {children}
-          </h2>
-        ),
-        h3: ({ children }) => (
-          <h3 className="text-3xl font-bold mt-12 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2">
-            <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full"></span>
-            {children}
-          </h3>
-        ),
-        h4: ({ children }) => (
-          <h4 className="text-2xl font-semibold mt-10 mb-4 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2">
-            <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full"></span>
-            {children}
-          </h4>
-        ),
-        h5: ({ children }) => (
-          <h5 className="text-xl font-semibold mt-8 mb-3 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2">
-            <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full"></span>
-            {children}
-          </h5>
-        ),
-        h6: ({ children }) => (
-          <h6 className="text-lg font-semibold mt-6 mb-2 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-1">
-            <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full"></span>
-            {children}
-          </h6>
-        ),
+        ...(() => {
+          const makeHeading =
+            (Tag, className) =>
+            ({ children }) => {
+              const getText = () => {
+                if (typeof children === "string") return children;
+                if (Array.isArray(children))
+                  return children
+                    .map((c) =>
+                      typeof c === "string" ? c : c?.props?.text || "",
+                    )
+                    .join("");
+                return "";
+              };
+              const id = URLFormatter(getText());
+              return (
+                <Tag id={id} className={className}>
+                  <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full" />
+                  {children}
+                </Tag>
+              );
+            };
+          return {
+            h1: makeHeading(
+              "h1",
+              "text-2xl md:text-5xl font-black mt-8 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-4",
+            ),
+            h2: makeHeading(
+              "h2",
+              "text-2xl md:text-3xl font-bold mt-8 mb-8 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-3",
+            ),
+            h3: makeHeading(
+              "h3",
+              "text-2xl md:text-3xl font-bold mt-12 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+            ),
+            h4: makeHeading(
+              "h4",
+              "text-2xl font-semibold mt-10 mb-4 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+            ),
+            h5: makeHeading(
+              "h5",
+              "text-xl font-semibold mt-8 mb-3 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+            ),
+            h6: makeHeading(
+              "h6",
+              "text-lg font-semibold mt-6 mb-2 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-1",
+            ),
+          };
+        })(),
+
         normal: ({ children }) => (
           <p className="mb-8 text-gray-700 leading-loose text-lg font-light tracking-wide">
             {children}
@@ -457,12 +467,12 @@ export default async function Post({ params }) {
 
     // Format date for display
     const formattedDate = (dateString) => {
-    if (!dateString) return "Date not available";
+      if (!dateString) return "Date not available";
 
-    const date = new Date(dateString);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString("en-US", options);
-  };
+      const date = new Date(dateString);
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      return date.toLocaleDateString("en-US", options);
+    };
 
     return (
       <>
@@ -479,7 +489,6 @@ export default async function Post({ params }) {
           <meta name="description" content={post.metaDescription} />
           <meta name="keywords" content={post.keywords} />
           <meta name="publisher" content="Dholera Insider" />
-
         </div>
         <div className="bg-white min-h-screen">
           <div className="bg-white shadow-sm sticky top-0 z-30" />
@@ -579,7 +588,9 @@ export default async function Post({ params }) {
                           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                         ></path>
                       </svg>
-                      <p className="text-black">{formattedDate(post.publishedAt)}</p>
+                      <p className="text-black">
+                        {formattedDate(post.publishedAt)}
+                      </p>
                     </div>
 
                     {post.readingTime && (

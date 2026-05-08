@@ -19,7 +19,7 @@ const HomePage = () => {
       <Invest />
       <Dholera />
       <WestWyn_Estate />
-      <LazyCommonFormSection title="Own a Govt Approved Plot in Dholera under â‚¹10 lakh" />
+      <LazyCommonFormSection title="Own a Govt Approved Plot in Dholera under ₹10 lakh" />
       <WhyDI />
       <LatestUpdates />
       <Groundzero />

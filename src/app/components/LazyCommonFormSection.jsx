@@ -39,11 +39,11 @@ export default function LazyCommonFormSection({ title }) {
   }, [shouldLoad]);
 
   return (
-    <div ref={containerRef} className="min-h-[32rem]">
+    <div ref={containerRef} className="">
       {shouldLoad ? (
         <CommonForm title={title} />
       ) : (
-        <div className="min-h-[32rem] bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900" />
+        <div className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900" />
       )}
     </div>
   );
