@@ -8,8 +8,8 @@ export default function Invest() {
       <div className="mx-auto max-w-7xl px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
         <div className="text-center">
           <h2 className="mx-auto max-w-7xl text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-white">
-            <span className="text-teal-400">Dholera Smart City</span> -
-            India's Future-Ready Investment Destination
+            <span className="text-teal-400">Dholera Smart City</span> - India's
+            Future-Ready Investment Destination
           </h2>
           <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-teal-400 to-teal-600" />
         </div>
@@ -25,11 +25,21 @@ export default function Invest() {
 
           <div className="space-y-[clamp(1rem,2vw,2rem)]">
             <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-              Dholera Smart City, also known as Dholera SIR (Special Investment Region), is India's first greenfield smart city being developed under the Delhi-Mumbai Industrial Corridor. It is a fully planned city being built from scratch with modern infrastructure like wide roads, underground utilities, and separate zones for residential, commercial, and industrial use. Dholera Smart City is supported by major projects such as the Dholera International Airport, Ahmedabad-Dholera Expressway, and the Tata Semiconductor Plant, which are expected to improve connectivity and bring industrial growth.
+              Dholera Smart City is India’s first planned greenfield smart city
+              under the Delhi-Mumbai Industrial Corridor (DMIC) Project. The
+              city is being developed with modern infrastructure, wide roads,
+              underground utilities, and dedicated residential, commercial, and
+              industrial zones. <br /> Major projects like the Dholera International Airport,
+              Ahmedabad-Dholera Expressway, and the Tata Semiconductor Plant
+              boosts connectivity, jobs, and industrial growth in Dholera.
             </p>
 
             <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-              With strong government support and future-focused planning, Dholera Smart City is becoming a popular choice for real estate investment. It offers a good mix of affordability, planned development, and long-term growth potential, making it suitable for buyers looking to invest early in a developing smart city.
+              Due to strong government support, planned infrastructure, and
+              future development potential, Dholera Smart City is becoming a
+              popular destination for real estate investment. Many investors
+              prefer Dholera for affordable plot prices, long-term growth
+              opportunities, and smart city development.
             </p>
           </div>
         </div>

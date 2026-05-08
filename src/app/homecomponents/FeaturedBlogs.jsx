@@ -45,7 +45,7 @@ const RelatedBlogCard = ({ blog }) => {
           href={`/dholera-sir-blogs/${blog.slug.current}`}
           className="mt-auto inline-flex w-full justify-center rounded-md bg-teal-700 px-[clamp(1rem,2vw,1.5rem)] py-2 text-[0.875rem] font-medium text-white transition-colors duration-300 hover:bg-teal-800"
         >
-          Read More
+          Explore More
         </Link>
       </div>
     </article>
@@ -93,7 +93,7 @@ export default async function FeaturedBlogs() {
       <section className="bg-gray-50 px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="mb-6 text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-teal-950">
-            Dholera Smart City Blogs & Investment Guides
+            Dholera Blogs & Investment Guides
           </h2>
           <p className="text-red-500">Error loading blogs. Please try again later.</p>
         </div>
@@ -109,7 +109,7 @@ export default async function FeaturedBlogs() {
             Featured Blogs
           </p>
           <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-teal-950">
-            Dholera Smart City Blogs & Investment Guides
+            Dholera Blogs & Investment Guides
           </h2>
           <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-teal-700" />
           <p className="mt-4 text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-600">

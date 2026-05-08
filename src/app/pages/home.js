@@ -17,7 +17,7 @@ const HomePage = () => {
     <div className="dark:bg-bgDark">
       <Hero />
       <Invest />
-      <Dholera />
+   
       <WestWyn_Estate />
       <LazyCommonFormSection title="Own a Govt Approved Plot in Dholera under ₹10 lakh" />
       <WhyDI />
