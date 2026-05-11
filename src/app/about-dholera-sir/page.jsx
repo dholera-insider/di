@@ -4,6 +4,7 @@ import heroM from "@/app/assets/hero/abt-sir-mob.png";
 
 import Image from "next/image";
 import BlogCard from "./BlogCard";
+import MobileBlogPagination from "./MobileBlogPagination";
 import TrendingBlogItem from "./TrendingBlog";
 import Link from "next/link";
 import LeadForm from "./LeadForm";
@@ -535,11 +536,12 @@ export default async function BlogsPage() {
                   <div className="w-24 h-1 bg-teal-700 mx-auto"></div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {safePosts.map((post) => (
                     <BlogCard key={post._id} post={post} />
                   ))}
                 </div>
+                <MobileBlogPagination posts={safePosts} />
               </section>
             )}
           </div>

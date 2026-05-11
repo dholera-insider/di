@@ -1,6 +1,7 @@
 import { getblogs, getUpdates, projectInfo } from "@/sanity/lib/api";
 import React from "react";
 import BlogCard from "./BlogCard";
+import MobileBlogPagination from "./MobileBlogPagination";
 import Image from "next/image";
 import hero from "@/app/assets/dholera-sir-blogs-banner-dholera-insider.webp";
 
@@ -101,11 +102,14 @@ export default async function page() {
                       {/* Blog Grid */}
                       <div className=" max-w-7xl mx-auto">
                         {safePosts.length > 0 ? (
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {safePosts.map((post) => (
-                              <BlogCard key={post._id} post={post} />
-                            ))}
-                          </div>
+                          <>
+                            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                              {safePosts.map((post) => (
+                                <BlogCard key={post._id} post={post} />
+                              ))}
+                            </div>
+                            <MobileBlogPagination posts={safePosts} />
+                          </>
                         ) : (
                           <div className="bg-white p-8 rounded-xl shadow-md text-center">
                             <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -127,9 +131,7 @@ export default async function page() {
                 <div className="bg-white/95 backdrop-blur-sm p-8 sm:p-12 rounded-2xl shadow-xl max-w-2xl mx-auto border border-gray-200">
                   {fetchError ? (
                     <>
-                      <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">
-                        ⚠️
-                      </div>
+                     
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
                         Unable to Load Blogs
                       </h3>
@@ -141,9 +143,7 @@ export default async function page() {
                     </>
                   ) : (
                     <>
-                      <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">
-                        📝
-                      </div>
+                      
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
                         Expert Content Coming Soon!
                       </h3>

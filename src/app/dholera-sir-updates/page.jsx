@@ -9,6 +9,7 @@ import CommonForm from "../components/CommonForm";
 import LeadForm from "../about-dholera-sir/LeadForm";
 import TrendingBlogItem from "./TrendingBlog";
 import BlogCard from "./BlogCard";
+import MobileUpdatesPagination from "./MobileUpdatesPagination";
 
 export default async function Blogs() {
   let fetchError = null;
@@ -45,7 +46,9 @@ export default async function Blogs() {
 
   return (
     <>
-      <title>Latest Dholera Smart City News 2026 | Updates on Projects & Growth</title>
+      <title>
+        Latest Dholera Smart City News 2026 | Updates on Projects & Growth
+      </title>
       <meta
         name="description"
         content="Get the Latest investment updates on Dholera Smart City - infrastructure news, expressway progress, airport updates, and industrial developments that helps to investors and residents."
@@ -94,7 +97,6 @@ export default async function Blogs() {
               <>
                 {/* All Posts Grid */}
                 <div>
-
                   <div className="px-4">
                     <div className="flex flex-col max-sm:flex-col-reverse lg:flex-row gap-8">
                       {/* Trending Section - Left Sidebar */}
@@ -102,20 +104,17 @@ export default async function Blogs() {
                       {/* Blog Grid */}
                       <div className="max-w-7xl mx-auto">
                         {safeBlogs.length > 0 ? (
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {safeBlogs.map((blog) => (
-                              <BlogCard key={blog._id} blog={blog} />
-                            ))}
-                          </div>
+                          <>
+                            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                              {safeBlogs.map((blog) => (
+                                <BlogCard key={blog._id} blog={blog} />
+                              ))}
+                            </div>
+                            <MobileUpdatesPagination blogs={safeBlogs} />
+                          </>
                         ) : (
                           <div className="bg-white p-8 rounded-xl shadow-md text-center">
-                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                              No Updates Available
-                            </h3>
-                            <p className="text-gray-600">
-                              Check back soon for the latest information about
-                              Dholera SIR.
-                            </p>
+                            ...
                           </div>
                         )}
                       </div>
