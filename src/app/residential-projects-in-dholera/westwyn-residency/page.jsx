@@ -213,11 +213,8 @@ export default function WestWynResidencyContentTemp() {
                   Enquire Now
                 </Link>
 
-                <WestWynResidencyBrochureButton
-                  className="flex cursor-pointer items-center gap-2 rounded-lg border border-teal-900/20 bg-white px-5 py-2.5 text-[0.8125rem] font-semibold text-teal-900 transition-all duration-200 hover:-translate-y-0.5 hover:border-teal-800 hover:bg-teal-50"
-                  showIcon
-                >
-                  Download Brochure
+                <WestWynResidencyBrochureButton className="flex cursor-pointer items-center gap-2 rounded-lg border border-teal-900/20 bg-white px-5 py-2.5 text-[0.8125rem] font-semibold text-teal-900 transition-all duration-200 hover:-translate-y-0.5 hover:border-teal-800 hover:bg-teal-50">
+                  <FileMinus /> Download Brochure
                 </WestWynResidencyBrochureButton>
               </div>
             </div>
