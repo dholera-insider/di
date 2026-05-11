@@ -45,12 +45,10 @@ export default function WestWyn_Estate() {
             Dholera International Airport, railway connectivity, and industrial
             projects shaping the region. Plots in Dholera are becoming a
             preferred option for long-term real estate investment.
-          </p>
-          <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-            Dholera Insider is a trusted real estate developer in Dholera
-            offering premium residential plots in prime locations, with
-            clear-title, registry-ready plots with planned layouts.Explore our
-            verified plot options WestWyn Residency and WestWyn Estates.
+            <br />
+            Dholera Insider is committed to delivering premium residential
+            plotting projects in Dholera. Explore our verified plot options
+            WestWyn Residency and WestWyn Estates in Dholera.
           </p>
         </div>
 

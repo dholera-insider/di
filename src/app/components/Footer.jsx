@@ -10,7 +10,7 @@ import {
   Linkedin,
   Youtube,
 } from "lucide-react";
-import "../about-us/about.css"
+import "../about-us/about.css";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -41,12 +41,13 @@ const Footer = () => {
               About Us
             </h3>
             <p className="text-white mb-4">
-              Your trusted source for insights, updates, and opportunities in
-              India's first planned smart city - Dholera.
+              Dholera Insider a trusted real estate developer in Dholera,
+              offering premium residential plots with clear titles, transparent
+              processes, and long-term investment potential.
             </p>
 
             {/* Newsletter Signup */}
-{/*             <div className="space-y-3 mt-6">
+            {/*             <div className="space-y-3 mt-6">
               <h4 className="text-lg font-semibold text-slate-200">
                 Stay Updated
               </h4>
@@ -105,14 +106,7 @@ const Footer = () => {
                   <span className="mr-2">›</span> About Us
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/residential-projects-in-dholera/westwyn-estate"
-                  className="text-white hover:text-blue-400 transition flex items-center"
-                >
-                  <span className="mr-2">›</span>Residential Projects
-                </Link>
-              </li>
+
               <li>
                 <Link
                   href="/about-dholera-sir"
@@ -123,18 +117,26 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/dholera-sir-updates"
                   className="text-white hover:text-blue-400 transition flex items-center"
                 >
-                  <span className="mr-2">›</span> Contact Us
+                  <span className="mr-2">›</span> Dholera Updates
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/sitemap.xml"
+                  href="/dholera-sir-blogs"
                   className="text-white hover:text-blue-400 transition flex items-center"
                 >
-                  <span className="mr-2">›</span> Sitemap
+                  <span className="mr-2">›</span> Dholera Blogs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-white hover:text-blue-400 transition flex items-center"
+                >
+                  <span className="mr-2">›</span> Contact Us
                 </Link>
               </li>
             </ul>
@@ -143,49 +145,25 @@ const Footer = () => {
           {/* Policies Column */}
           <div>
             <h3 className="text-xl font-semibold text-blue-400 mb-4 border-b border-blue-200 pb-2">
-              Policies
+              Our Projects
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/policies/privacy-policies"
+                  href="/residential-projects-in-dholera/westwyn-estate"
                   className="text-white hover:text-blue-400 transition flex items-center"
                 >
-                  <span className="mr-2">›</span> Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link                       
-                  href="/policies/terms-and-conditions"
-                  className="text-white hover:text-blue-400 transition flex items-center"
-                >
-                  <span className="mr-2">›</span> Terms & Conditions      
+                  <span className="mr-2">›</span>WestWyn Estates
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/policies/refund-and-cancellation"
+                  href="/residential-projects-in-dholera/westwyn-residency"
                   className="text-white hover:text-blue-400 transition flex items-center"
                 >
-                  <span className="mr-2">›</span> Refund & Cancellation
+                  <span className="mr-2">›</span>WestWyn Residency
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/policies/copyright-policy"
-                  className="text-white hover:text-blue-400 transition flex items-center"
-                >
-                  <span className="mr-2">›</span> Copyright Policy
-                </Link>
-              </li>
-              {/* <li>
-                <Link
-                  href="/policies/buy-back-policy"
-                  className="text-white hover:text-blue-400 transition flex items-center"
-                >
-                  <span className="mr-2">›</span> Buy Back Policy
-                </Link>
-              </li> */}
             </ul>
           </div>
 
@@ -200,7 +178,8 @@ const Footer = () => {
                   <MapPin size={18} />
                 </div>
                 <span className="text-white">
-                  620 JMD Megapolis, Sector-48, Sohna Road, Gurugram, India
+                  3rd Floor, H-110, Sector 63 Road, H Block, Sector 63, Noida,
+                  Uttar Pradesh 201301
                 </span>
               </li>
               <li className="flex items-center">

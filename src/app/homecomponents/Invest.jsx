@@ -9,7 +9,7 @@ export default function Invest() {
         <div className="text-center">
           <h2 className="mx-auto max-w-7xl text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-white">
             <span className="text-teal-400">Dholera Smart City</span> - India's
-            Future-Ready Investment Destination
+            Future Investment Hub
           </h2>
           <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-teal-400 to-teal-600" />
         </div>

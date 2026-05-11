@@ -24,7 +24,7 @@ export default function WhyDI() {
         <div className="flex flex-col-reverse items-center gap-[clamp(1.5rem,3vw,3rem)] py-[clamp(2rem,4vw,3.5rem)] md:grid md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
           <div className="space-y-[clamp(1rem,2vw,2rem)]">
             <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-              Dholera Insider is a leading estate developer offering verified
+              Dholera Insider is a leading Real Estate Developer offering verified
               plots in Dholera. We develop premium residential plot projects for
               buyers looking for direct developer inventory, registry ready
               documentation, clear guidance, and complete support before and

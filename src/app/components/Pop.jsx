@@ -410,7 +410,7 @@ export default function Popup({
               <div className="text-center">
 
                 <h2 className="text-xl md:text-2xl font-bold mb-1 leading-tight text-amber-200">
-                 Start Your Dholera Investment From ₹8 Lakh
+                Registry Ready Plots in Dholera
                 </h2>
 
                 {titleInfo.timeLeft && (
@@ -536,7 +536,7 @@ export default function Popup({
                   </motion.button>
 
                   <p className="text-xs text-gray-400 text-center">
-                    By submitting, you agree to receive calls/WhatsApp messages about our services
+                    We respect your privacy. Your details are safe with us.
                   </p>
                 </form>
               )}

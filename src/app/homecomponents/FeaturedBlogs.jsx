@@ -17,7 +17,9 @@ const RelatedBlogCard = ({ blog }) => {
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gray-200">
-            <span className="text-[0.875rem] text-gray-400">No image available</span>
+            <span className="text-[0.875rem] text-gray-400">
+              No image available
+            </span>
           </div>
         )}
       </div>
@@ -95,7 +97,9 @@ export default async function FeaturedBlogs() {
           <h2 className="mb-6 text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-teal-950">
             Dholera Blogs & Investment Guides
           </h2>
-          <p className="text-red-500">Error loading blogs. Please try again later.</p>
+          <p className="text-red-500">
+            Error loading blogs. Please try again later.
+          </p>
         </div>
       </section>
     );
@@ -105,21 +109,21 @@ export default async function FeaturedBlogs() {
     <section className="bg-gray-50 px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto mb-[clamp(1.5rem,3vw,3rem)] max-w-[56rem] text-center">
-          <p className="mb-2 text-[0.875rem] font-semibold uppercase tracking-wide text-teal-700">
-            Featured Blogs
-          </p>
+          
           <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-teal-950">
             Dholera Blogs & Investment Guides
           </h2>
           <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-teal-700" />
           <p className="mt-4 text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-600">
-            Stay updated with the latest insights on Dholera Smart City, plot prices, legal checks, project locations, expressway updates, airport development, and Dholera SIR investment opportunities.
+            Stay updated with the latest blogs on Dholera Smart City.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-[clamp(1rem,2vw,2rem)] md:grid-cols-4">
           {blogs.length > 0
-            ? blogs.map((blog) => <RelatedBlogCard key={blog._id} blog={blog} />)
+            ? blogs.map((blog) => (
+                <RelatedBlogCard key={blog._id} blog={blog} />
+              ))
             : Array(4)
                 .fill(0)
                 .map((_, i) => <BlogSkeleton key={i} />)}

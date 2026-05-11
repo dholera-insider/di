@@ -3,13 +3,15 @@ import westwynEstate1 from "@/app/assets/residential/westwyn-residency-dholera-p
 import westwynEstate1M from "@/app/assets/residential/westwyn-residency-dholera-project-section-mobile.webp";
 import LazyCommonFormSection from "@/app/components/LazyCommonFormSection";
 import PrimeLocationSection from "./PrimeLocations";
-import { PhoneIcon } from "lucide-react";
+import { PhoneIcon, FileMinus } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import FAQSection from "./FAQs";
 import {
   WestWynResidencyBrochureButton,
   WestWynResidencyLeadWidgets,
 } from "./WestWynResidencyLeadWidgets";
 import Link from "next/link";
+import { FaDocument } from "react-icons/fa";
 
 const featureIcons = {
   "Plot Sizes": "🏠",
@@ -222,37 +224,6 @@ export default function WestWynResidencyContentTemp() {
           </div>
         </div>
       </div>
-      <div className="md:hidden mt-6">
-        <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/30 w-full">
-          <div className="grid gap-[clamp(1rem,3vw,1.5rem)] p-[clamp(1.25rem,4vw,1.5rem)]">
-            <div>
-              <div className="flex items-center gap-2 flex-wrap mb-3">
-                <span className="px-3 py-1.5 text-white bg-teal-900 rounded-full text-sm font-medium hover:bg-teal-800 transition-colors">
-                  Residential
-                </span>
-              </div>
-              <div className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900">
-                ₹6,500
-                <span className="text-sm text-gray-600 ml-1">/Sq.Yd</span>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900 mb-2 leading-tight hover:text-teal-800 transition-colors">
-                Registry-ready plots in Pipariya, Dholera
-              </p>
-            </div>
-
-            <div className="flex flex-col justify-between">
-              <div className="flex items-center gap-2 text-gray-700 text-base mb-4">
-                <WestWynResidencyBrochureButton className="flex-1 bg-teal-900 text-white hover:bg-teal-800 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5">
-                  📄 Download Brochure
-                </WestWynResidencyBrochureButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="relative">
         <div className="absolute inset-0 z-0">
@@ -269,7 +240,7 @@ export default function WestWynResidencyContentTemp() {
         <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(2.5rem,6vw,3rem)]">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-[clamp(1.5rem,3vw,2.25rem)] md:text-center font-bold text-white mb-6">
-              WestWyn Residency - Registry Ready Plots in Dholera
+              WestWyn Residency
             </h1>
             <div className="max-w-5xl mx-auto">
               <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
@@ -277,7 +248,7 @@ export default function WestWynResidencyContentTemp() {
                 legally verified, and well-connected Dholera investment
                 opportunity. Located in Pipariya, Dholera, the project offers
                 govt approved residential plots with clear title, NA/NOC status,
-                and immediate registry support.
+                and immediate registry.
               </p>
               <br />
               <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
@@ -297,6 +268,26 @@ export default function WestWynResidencyContentTemp() {
             {projectFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 py-[clamp(1.5rem,4vw,2rem)]">
+        <div className="h-full px-[clamp(1rem,4vw,2rem)]">
+          <div className="flex flex-col items-center justify-center gap-[clamp(0.75rem,1.5vw,1rem)] sm:flex-row">
+            <WestWynResidencyBrochureButton
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-900 px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-teal-900 sm:w-auto"
+              
+            >
+                <FileMinus /> Download Brochure
+            </WestWynResidencyBrochureButton>
+
+            <Link
+              href="https://wa.me/918130371647"
+              className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-teal-900 bg-white px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-teal-900 transition-colors hover:bg-teal-900 hover:text-white sm:w-auto"
+            >
+              <FaWhatsapp className="text-lg" /> Book Site Visit
+            </Link>
           </div>
         </div>
       </div>

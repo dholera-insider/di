@@ -48,7 +48,7 @@ export default function CTAsection() {
             className="mb-8"
           >
             <h2 className="mb-4 text-xl font-bold text-white drop-shadow-lg md:text-4xl">
-              Expert Guidance for Smart Investor
+              Talk To Our Dholera Expert
             </h2>
             <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-teal-400 to-teal-600"></div>
           </motion.div>
