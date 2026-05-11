@@ -275,11 +275,8 @@ export default function WestWynResidencyContentTemp() {
       <div className="space-y-4 py-[clamp(1.5rem,4vw,2rem)]">
         <div className="h-full px-[clamp(1rem,4vw,2rem)]">
           <div className="flex flex-col items-center justify-center gap-[clamp(0.75rem,1.5vw,1rem)] sm:flex-row">
-            <WestWynResidencyBrochureButton
-              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-900 px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-teal-900 sm:w-auto"
-              
-            >
-                <FileMinus /> Download Brochure
+            <WestWynResidencyBrochureButton className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-900 px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-teal-900 sm:w-auto">
+              <FileMinus /> Download Brochure
             </WestWynResidencyBrochureButton>
 
             <Link
