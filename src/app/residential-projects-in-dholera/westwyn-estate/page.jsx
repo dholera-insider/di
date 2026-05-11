@@ -8,8 +8,14 @@ import PopupScroll from "@/app/components/PopUpScroll";
 import { AnimatePresence } from "framer-motion";
 import BrochureDownload from "@/app/components/BrochureDownload";
 import PrimeLocationSection from "./PrimeLocations";
-import { PhoneIcon } from "lucide-react";
 import FAQSection from "./FAQs";
+import {
+  WestWynResidencyBrochureButton,
+  WestWynResidencyLeadWidgets,
+} from "./WestWynResidencyLeadWidgets";
+import Link from "next/link";
+import { PhoneIcon, FileMinus } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const DocIconTeal = () => (
   <svg
@@ -230,46 +236,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="lg:hidden mt-6">
-        <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/30 w-full">
-          <div className="grid gap-[clamp(1rem,3vw,1.5rem)] p-[clamp(1.25rem,4vw,1.5rem)]">
-            {/* Categories & Price */}
-            <div>
-              <div className="flex items-center gap-2 flex-wrap mb-3">
-                <span className="px-3 py-1.5 text-white bg-teal-900 rounded-full text-sm font-medium hover:bg-teal-800 transition-colors">
-                  Residential
-                </span>
-              </div>
-              <div className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900">
-                ₹6,700
-                <span className="text-sm text-gray-600 ml-1">/Sq.Yd</span>
-              </div>
-            </div>
-
-            {/* Title & Description */}
-            <div>
-              <p className="text-[clamp(1.5rem,6vw,1.875rem)] font-bold text-teal-900 mb-2 leading-tight hover:text-teal-800 transition-colors">
-                Registry-ready plots in Polarpur, Dholera starting from ₹10 lakh
-              </p>
-            </div>
-
-            {/* Contact & Buttons */}
-            <div className="flex flex-col justify-between">
-              <div className="flex items-center gap-2 text-gray-700 text-base mb-4">
-                <button
-                  onClick={openBrochureForm}
-                  className="flex-1 bg-teal-900 text-white hover:bg-teal-800 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5"
-                >
-                  📄 Download Brochure
-                </button>
-              </div>
-              {/* <div className="text-teal-900 text-xl text-center font-semibold hover:text-teal-800 transition-colors">
-                <p>Immediate Possession</p>
-              </div> */}
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="relative">
         {/* Background Image */}
@@ -297,10 +263,11 @@ export default function Hero() {
                 future-ready investment near Dholera SIR. The project offers
                 residential plots with clear documentation, planned amenities,
                 and strong connectivity to important infrastructure locations in
-                Dholera. <br /><br /> Located with direct access from State
-                Highway-117 and close to Bhimnath Railway Junction, WestWyn
-                Estates is suitable for investors looking for registry-ready
-                plots in Dholera with long-term growth potential.
+                Dholera. <br />
+                <br /> Located with direct access from State Highway-117 and
+                close to Bhimnath Railway Junction, WestWyn Estates is suitable
+                for investors looking for registry-ready plots in Dholera with
+                long-term growth potential.
               </p>
               <br />
             </div>
@@ -317,6 +284,25 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+
+      <div className="space-y-4 py-[clamp(1.5rem,4vw,2rem)]">
+        <div className="h-full px-[clamp(1rem,4vw,2rem)]">
+          <div className="flex flex-col items-center justify-center gap-[clamp(0.75rem,1.5vw,1rem)] sm:flex-row">
+            <WestWynResidencyBrochureButton className="flex w-full hover:border-teal-900 hover:border-2 cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-900 px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-teal-900 sm:w-auto">
+              <FileMinus /> Download Brochure
+            </WestWynResidencyBrochureButton>
+
+            <Link
+              href="https://wa.me/919211820887"
+              className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-teal-900 bg-white px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-teal-900 transition-colors hover:bg-teal-900 hover:text-white sm:w-auto"
+            >
+              <FaWhatsapp className="text-lg" /> Enquire Now
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <div>
         <PrimeLocationSection />
       </div>
@@ -441,6 +427,7 @@ export default function Hero() {
           </div>
         )}
       </AnimatePresence>
+      <WestWynResidencyLeadWidgets />
     </>
   );
 }

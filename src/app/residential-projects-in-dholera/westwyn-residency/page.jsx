@@ -272,15 +272,15 @@ export default function WestWynResidencyContentTemp() {
       <div className="space-y-4 py-[clamp(1.5rem,4vw,2rem)]">
         <div className="h-full px-[clamp(1rem,4vw,2rem)]">
           <div className="flex flex-col items-center justify-center gap-[clamp(0.75rem,1.5vw,1rem)] sm:flex-row">
-            <WestWynResidencyBrochureButton className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-900 px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-teal-900 sm:w-auto">
+            <WestWynResidencyBrochureButton className="flex w-full hover:border-teal-900 hover:border-2 cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-900 px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-teal-900 sm:w-auto">
               <FileMinus /> Download Brochure
             </WestWynResidencyBrochureButton>
 
             <Link
-              href="https://wa.me/918130371647"
+              href="https://wa.me/919211820887"
               className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-teal-900 bg-white px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-teal-900 transition-colors hover:bg-teal-900 hover:text-white sm:w-auto"
             >
-              <FaWhatsapp className="text-lg" /> Book Site Visit
+              <FaWhatsapp className="text-lg" /> Enquire Now
             </Link>
           </div>
         </div>

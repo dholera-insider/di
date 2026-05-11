@@ -5,35 +5,30 @@ import { Plus, Minus } from "lucide-react";
 import Link from "next/link";
 
 const faqs = [
-   {
-    question: "Is Dholera Smart City good for investment?",
-    answer:
-      "Yes, Dholera is considered a strong long-term investment option due to planned infrastructure, growing industrial development, and improving connectivity.",
-  },
   {
     question: "What is Dholera SIR?",
     answer:
-      "Dholera SIR is a Special Investment Region, a planned smart city with residential, commercial, and industrial zones designed for future growth.",
+      "Dholera SIR, also called Dholera Special Investment Region, is a planned greenfield smart city in Gujarat located around 100 km from Ahmedabad. It includes residential, industrial, and commercial zones designed for future growth.",
   },
   {
-    question: "Is Dholera a safe investment?",
+    question: "Is Dholera a good investment in 2026?",
     answer:
-      "Absolutely. It’s a government-backed project with clear approvals, mega infrastructure, and strong growth drivers, making it a secure investment with clear titles and registry-ready plots.",
+      "Yes, Dholera is considered a strong long-term investment option in 2026 as it is India’s first greenfield smart city with major infrastructure projects, industrial growth, and increasing connectivity.",
   },
   {
-    question: "What industries are coming to Dholera?",
+    question: "What are the mega projects in Dholera?",
     answer:
-      "High-tech sectors like semiconductors, EVs, electronics, logistics, and IT are setting up here, driving employment and real estate demand.",
+      "Major projects in Dholera Smart City include Dholera International Airport, Ahmedabad-Dholera Expressway, Tata Semiconductor Plant, ABCD Building, Dholera Solar Park, and the proposed Dholera Monorail.",
   },
   {
-    question: "What is the minimum plot size available?",
+    question: "Why choose Dholera Insider for buying plots in Dholera?",
     answer:
-      "Most residential plots start from 100 sq. yards (900 sq. ft.), making it ideal for both first-time buyers and seasoned investors. Even those planning to buy under 10 lakh plot in Dholera can find options in projects like WestWyn Estate.",
+      "Dholera Insider is trusted for verified plots, transparent dealings, professional guidance, and long-term investment opportunities in Dholera Smart City.",
   },
   {
-    question: "How soon can I register my plot?",
+    question: "Which projects are offered by Dholera Insider?",
     answer:
-      "Plots in projects like WestWyn Estate are registry-ready, meaning you can complete your registry immediately after booking.",
+      "Dholera Insider offers premium plotted developments including WestWyn Residency and WestWyn Estates in Dholera.",
   },
 ];
 
@@ -49,7 +44,7 @@ export default function FAQSection() {
       <div className="mx-auto grid max-w-7xl gap-[clamp(1.5rem,3vw,3rem)] md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
         <div>
           <h2 className="mb-4 text-[clamp(1.5rem,3vw,2.5rem)] font-semibold leading-[clamp(2rem,4vw,3.5rem)] text-black">
-            FAQ
+            Frequently Asked Questions 
           </h2>
           <p className="mb-4 text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-600">
             More Questions about Dholera Smart City Project?
