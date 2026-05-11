@@ -405,7 +405,7 @@ const ContactUsPage = () => {
               Dholera investment journey.
             </p>
           </motion.div>
-
+  
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {contactMethods.map((method, index) => (
               <motion.a
