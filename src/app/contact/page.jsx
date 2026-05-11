@@ -15,13 +15,13 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
-    subject: "",
     message: "",
     interestedIn: "",
   });
@@ -159,7 +159,6 @@ const ContactUsPage = () => {
               phone: formData.phone,
               email: formData.email || "",
               source: "Dholera Insider",
-              subject: formData.subject || "",
               message: formData.message || "",
               interestedIn: formData.interestedIn || "",
             },
@@ -185,7 +184,6 @@ const ContactUsPage = () => {
             fullName: "",
             email: "",
             phone: "",
-            subject: "",
             message: "",
             interestedIn: "",
           });
@@ -288,17 +286,17 @@ const ContactUsPage = () => {
   ];
 
   const officeInfo = {
-    address: "Dholera SIR, Gujarat, India",
-    timing: "Monday - Saturday: 9:00 AM - 6:00 PM",
+    address: "3rd Floor, H-110, Sector 63 Rd, H Block, Sector 63, Noida, Uttar Pradesh 201301",
+    timing: "Monday - Sunday: 9:00 AM - 9:00 PM",
     description:
       "Visit our office for personalized consultation and site visits.",
   };
 
   const stats = [
-    { number: "500+", label: "Happy Clients" },
-    { number: "50+", label: "Projects Completed" },
-    { number: "10+", label: "Years Experience" },
-    { number: "24/7", label: "Customer Support" },
+    { number: "7+", label: "Projects" },
+    { number: "561+", label: "Happy Clients" },
+    { number: "5+", label: "Years Experience" },
+    { number: "2 Lakh+ Sq. Yd.", label: "Dholera Land Sold" },
   ];
 
   const faqs = [
@@ -366,12 +364,10 @@ const ContactUsPage = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-3xl md:text-4xl font-bold mb-6">
-              Get In <span className="text-emerald-400">Touch</span>
+              Why Choose{" "}
+              <span className="text-emerald-400">Dholera Insider</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8">
-              Ready to invest in India's first smart city? Let's discuss your
-              Dholera investment journey.
-            </p>
+
             <div className="flex flex-wrap justify-center gap-4">
               {stats.map((stat, index) => (
                 <motion.div
@@ -402,10 +398,11 @@ const ContactUsPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Multiple Ways to <span className="text-emerald-600">Connect</span>
+             Get in <span className="text-emerald-600">Touch</span>
             </h2>
             <p className="text-xl text-gray-600">
-              Choose your preferred method to get in touch with our experts
+              Ready to invest in India's first smart city? Let's discuss your
+              Dholera investment journey.
             </p>
           </motion.div>
 
@@ -561,19 +558,7 @@ const ContactUsPage = () => {
                     </select>
                   </div>
 
-                  <div>
-                    <label className="block text-gray-700 font-medium mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-                      placeholder="Brief subject of your inquiry"
-                    />
-                  </div>
+                 
 
                   <div>
                     <label className="block text-gray-700 font-medium mb-2">
@@ -651,9 +636,7 @@ const ContactUsPage = () => {
                         Office Hours
                       </h4>
                       <p className="text-gray-600">{officeInfo.timing}</p>
-                      <p className="text-sm text-gray-500 mt-1">
-                        Sunday: Closed
-                      </p>
+                      
                     </div>
                   </div>
 
@@ -679,7 +662,7 @@ const ContactUsPage = () => {
                 </p>
 
                 <div className="space-y-3">
-                  <a
+                  <Link
                     href="tel:+919211820887"
                     className="block bg-white/20 hover:bg-white/30 rounded-lg p-4 transition-colors"
                   >
@@ -689,9 +672,9 @@ const ContactUsPage = () => {
                         Call Now: +91 92118 20887
                       </span>
                     </div>
-                  </a>
+                  </Link>
 
-                  <a
+                  <Link
                     href="https://wa.me/919211820887"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -701,7 +684,7 @@ const ContactUsPage = () => {
                       <MessageSquare className="w-5 h-5" />
                       <span className="font-medium">WhatsApp Chat</span>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -710,7 +693,7 @@ const ContactUsPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -744,7 +727,7 @@ const ContactUsPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
@@ -762,14 +745,14 @@ const ContactUsPage = () => {
               in India's first smart city.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
+              <Link
                 href="tel:+919211820887"
                 className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold transition-colors flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
                 Call Now
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://wa.me/919211820887"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -777,7 +760,7 @@ const ContactUsPage = () => {
               >
                 <FaWhatsapp className="w-5 h-5" />
                 WhatsApp Us
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
