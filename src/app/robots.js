@@ -14,6 +14,5 @@ export default function robots() {
       },
     ],
     sitemap: "https://www.dholerainsider.com/sitemap.xml",
-    host: "https://www.dholerainsider.com",
   };
 }
