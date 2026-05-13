@@ -32,7 +32,6 @@ export default function Dholera() {
             What Makes Dholera Smart City Different from Other Cities in India
           </h2>
           <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-teal-400 to-teal-600" />
-          
         </div>
 
         <div className="grid grid-cols-1 gap-[clamp(1rem,2vw,2rem)] md:grid-cols-2">
