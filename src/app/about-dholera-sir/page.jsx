@@ -82,7 +82,7 @@ export default async function BlogsPage() {
 
         <div className="bg-white relative">
           <div className="pt-16 md:pt-16">
-            <div className="relative w-full  overflow-hidden shadow-lg aspect-[3/1]"> 
+            <div className="relative w-full  overflow-hidden shadow-lg aspect-[3/1]">
               <Image
                 src={hero}
                 alt="Dholera SIR Development"
@@ -114,10 +114,17 @@ export default async function BlogsPage() {
                   approximately 100 km from Ahmedabad, and developed under the{" "}
                   <strong>Delhi–Mumbai Industrial Corridor (DMIC)</strong>.
                   Spread over{" "}
-                  <strong className="text-teal-700">922.5 km²</strong>, Dholera
-                  Smart City Project is designed with an infrastructure-first approach,
-                  where roads, utilities, zoning, and governance are planned
-                  before population growth.
+                  <strong className="text-teal-700">922.5 km²</strong>,{" "}
+                  <Link
+                    href="/dholera-sir-blogs/pm-modi-dream-project-dholera-sir-india"
+                    title="Dholera Smart City Project"
+                    className="hover:text-teal-800"
+                  >
+                    Dholera Smart City Project
+                  </Link>
+                  is designed with an infrastructure-first approach, where
+                  roads, utilities, zoning, and governance are planned before
+                  population growth.
                 </p>
                 <p className="text-gray-800 text-base md:text-lg leading-relaxed">
                   Backed by the Government of Gujarat and the central
@@ -160,8 +167,8 @@ export default async function BlogsPage() {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-white/90 text-base">
-                      Dholera Smart City Project follows a smart, sustainable, and
-                      scalable development model with Plug & Play
+                      Dholera Smart City Project follows a smart, sustainable,
+                      and scalable development model with Plug & Play
                       infrastructure.
                     </p>
                   </div>
@@ -256,7 +263,15 @@ export default async function BlogsPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-3xl mb-3">🏢</div>
-                <h4 className="text-lg font-bold mb-2">ABCD Building</h4>
+                <h4 className="text-lg font-bold mb-2">
+                  <Link
+                    href="/about-dholera-sir/abcd-building-dholera-sir"
+                    title="ABCD Building"
+                    className="hover:text-teal-800"
+                  >
+                    ABCD Building
+                  </Link>
+                </h4>
                 <p className="text-gray-700 text-sm">
                   Administrative & Business Centre, Dholera - Single-window
                   system for investors
@@ -268,7 +283,13 @@ export default async function BlogsPage() {
                   <Image src={tata} alt="tata" height="30" />
                 </div>
                 <h4 className="text-lg font-bold mb-2">
-                  TATA Electronics Semiconductor Fab
+                  <Link
+                    href="/about-dholera-sir/tata-semiconductor-plant-in-dholera"
+                    title="TATA Electronics Semiconductor Fab"
+                    className="hover:text-teal-800"
+                  >
+                    TATA Electronics Semiconductor Fab
+                  </Link>
                 </h4>
                 <p className="text-gray-700 text-sm">
                   India's first semiconductor manufacturing project
@@ -278,7 +299,13 @@ export default async function BlogsPage() {
               <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-3xl mb-3">✈️</div>
                 <h4 className="text-lg font-bold mb-2">
-                  Dholera International Airport
+                  <Link
+                    href="/about-dholera-sir/dholera-international-airport-project-update-2025"
+                    title="Dholera International Airport"
+                    className="hover:text-teal-800"
+                  >
+                    Dholera International Airport
+                  </Link>
                 </h4>
                 <p className="text-gray-700 text-sm">
                   Global trade, cargo movement, and international travel
@@ -288,7 +315,13 @@ export default async function BlogsPage() {
               <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-3xl mb-3">🛣️</div>
                 <h4 className="text-lg font-bold mb-2">
-                  Ahmedabad–Dholera Expressway
+                  <Link
+                    href="/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity"
+                    title="Ahmedabad–Dholera Expressway"
+                    className="hover:text-teal-800"
+                  >
+                    Ahmedabad–Dholera Expressway
+                  </Link>
                 </h4>
                 <p className="text-gray-700 text-sm">
                   High-speed corridor cutting travel time to one hour
@@ -298,7 +331,13 @@ export default async function BlogsPage() {
               <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-3xl mb-3">🚇</div>
                 <h4 className="text-lg font-bold mb-2">
-                  High-Speed Monorail & Railway
+                  <Link
+                    href="/dholera-sir-blogs/how-connectivity-is-shaping-dholera-growth"
+                    title="High-Speed Monorail & Railway"
+                    className="hover:text-teal-800"
+                  >
+                    High-Speed Monorail & Railway
+                  </Link>
                 </h4>
                 <p className="text-gray-700 text-sm">
                   Links with Ahmedabad and major industrial hubs
@@ -307,7 +346,15 @@ export default async function BlogsPage() {
 
               <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-3xl mb-3">☀️</div>
-                <h4 className="text-lg font-bold mb-2">Dholera Solar Park</h4>
+                <h4 className="text-lg font-bold mb-2">
+                  <Link
+                    href="/about-dholera-sir/renewable-energy-solar-park-in-dholera"
+                    title="Dholera Solar Park"
+                    className="hover:text-teal-800"
+                  >
+                    Dholera Solar Park
+                  </Link>
+                </h4>
                 <p className="text-gray-700 text-sm">
                   One of India's largest renewable energy projects
                 </p>
@@ -316,7 +363,13 @@ export default async function BlogsPage() {
               <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-3xl mb-3">💧</div>
                 <h4 className="text-lg font-bold mb-2">
-                  Water Treatment Plant
+                  <Link
+                    href="/dholera-sir-blogs/dholera-smart-city-water-scarcity-solutions"
+                    title="Water Treatment Plant"
+                    className="hover:text-teal-800"
+                  >
+                    Water Treatment Plant
+                  </Link>
                 </h4>
                 <p className="text-gray-700 text-sm">
                   Reliable long-term water supply for industries and residents
@@ -326,10 +379,33 @@ export default async function BlogsPage() {
               <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-3xl mb-3">⚡</div>
                 <h4 className="text-lg font-bold mb-2">
-                  ReNew Power & Activation Area
+                  <Link
+                    href="/about-dholera-sir/renewable-energy-solar-park-in-dholera"
+                    title="ReNew Power & Activation Area"
+                    className="hover:text-teal-800"
+                  >
+                    ReNew Power & Activation Area
+                  </Link>
                 </h4>
                 <p className="text-gray-700 text-sm">
                   ₹2,000 crore solar plant + ready infrastructure hub
+                </p>
+              </div>
+
+              <div className="bg-white border-2 border-black rounded-lg p-5 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="text-3xl mb-3">🚢</div>
+                <h4 className="text-lg font-bold mb-2">
+                  <Link
+                    href="/dholera-sir-blogs/dholera-sea-port-connectivity-growth"
+                    title="Dholera Sea Port"
+                    className="hover:text-teal-800"
+                  >
+                    Dholera Sea Port
+                  </Link>
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  A planned greenfield port in the Gulf of Khambhat to support
+                  Dholera Connectivity.
                 </p>
               </div>
             </div>
@@ -486,8 +562,8 @@ export default async function BlogsPage() {
                   <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-white/90 text-base">
                     Trusted Local Expertise: Dholera Insiders brings deep
-                    on-ground knowledge of Dholera Smart City Project, ensuring accurate
-                    guidance and reliable investment insights.
+                    on-ground knowledge of Dholera Smart City Project, ensuring
+                    accurate guidance and reliable investment insights.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">

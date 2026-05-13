@@ -43,8 +43,16 @@ export default function WestWyn_Estate() {
             buyers who want early entry into Gujarat’s planned smart city growth
             corridor. With Dholera Infrastructure, Ahmedabad-Dholera Expressway,
             Dholera International Airport, railway connectivity, and industrial
-            projects shaping the region. Plots in Dholera are becoming a
-            preferred option for long-term real estate investment.
+            projects shaping the region.{" "}
+            <Link
+              href="https://www.dholerainsider.com/dholera-sir-blogs/westwyn-residency-dholera-guide"
+              title="Plots in Dholera"
+              className="text-teal-400"
+            >
+              Plots in Dholera
+            </Link>{" "}
+            are becoming a preferred option for long-term real estate
+            investment.
             <br />
             Dholera Insider is committed to delivering premium residential
             plotting projects in Dholera. Explore our verified plot options

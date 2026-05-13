@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import sample1 from "@/app/assets/home/Invest_in_dholera.webp";
+import Link from "next/link";
 
 export default function Invest() {
   return (
@@ -25,7 +26,7 @@ export default function Invest() {
 
           <div className="space-y-[clamp(1rem,2vw,2rem)]">
             <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-              Dholera Smart City is India’s first planned greenfield smart city
+              <Link href="/about-dholera-sir" title="Dholera Smart City" className="text-teal-400">Dholera Smart City</Link> is India’s first planned greenfield smart city
               under the Delhi-Mumbai Industrial Corridor (DMIC) Project. The
               city is being developed with modern infrastructure, wide roads,
               underground utilities, and dedicated residential, commercial, and

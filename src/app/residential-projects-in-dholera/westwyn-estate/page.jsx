@@ -188,7 +188,7 @@ export default function Hero() {
                     WestWyn Estates
                   </h2>
                 </a>
-                <div className="text-teal-700/70 text-xs mt-1">
+                <div className="text-teal-700/70 text-xs mt-1 font-bold">
                   Registry-ready plots in Polarpur, Dholera starting from ₹10
                   lakh
                 </div>
@@ -200,7 +200,7 @@ export default function Hero() {
               <div className="shrink-0">
                 <div className="text-teal-900 text-[1.625rem] font-extrabold leading-none">
                   ₹6,700{" "}
-                  <span className="text-teal-900/40 text-xs font-normal">
+                  <span className="text-teal-900/40 text-xs font-bold">
                     /Sq.Yd
                   </span>
                 </div>

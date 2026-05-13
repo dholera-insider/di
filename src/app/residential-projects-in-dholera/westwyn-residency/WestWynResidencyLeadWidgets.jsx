@@ -67,7 +67,7 @@ export function WestWynResidencyLeadWidgets() {
 
   return (
     <>
-      <PopupScroll title="Get Registry Ready Plots in Dholera Starting from ₹8 Lakh" />
+      <PopupScroll title="Book Your Plot in Dholera" />
       {brochureFormOpen && (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-50">
           <BrochureDownload

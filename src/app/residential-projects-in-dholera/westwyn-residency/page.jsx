@@ -185,7 +185,7 @@ export default function WestWynResidencyContentTemp() {
                     WestWyn Residency
                   </h2>
                 </Link>
-                <div className="text-teal-700/70 text-xs mt-1">
+                <div className="text-teal-700/70 text-xs mt-1 font-bold">
                   Registry-ready plots in Pipariya, Dholera
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function WestWynResidencyContentTemp() {
               <div className="shrink-0">
                 <div className="text-teal-900 text-[1.625rem] font-extrabold leading-none">
                   ₹6,500{" "}
-                  <span className="text-teal-900/40 text-xs font-normal">
+                  <span className="text-teal-900 text-xs font-bold">
                     /Sq.Yd
                   </span>
                 </div>
