@@ -138,7 +138,7 @@ export default function Hero() {
               {/* CTAs */}
               <div className="flex items-center gap-3 shrink-0">
                 <Link
-                  href="tel:+919958993549"
+                  href="tel:+919211820887"
                   className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <PhoneIcon />
