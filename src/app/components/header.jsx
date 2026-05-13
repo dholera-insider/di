@@ -50,7 +50,7 @@ const Header = () => {
   // Main navigation items (visible on desktop)
   const mainNavItems = [
     {
-      name: "Our Residential Projects",
+      name: "Residential Projects",
       key: "dholeraResidential",
       items: [
         {
@@ -100,35 +100,19 @@ const Header = () => {
         },
       ],
     },
-    {
-      name: "Inside Dholera",
-      key: "insideDholera",
-      items: [
         { name: "Dholera Blogs", href: "/dholera-sir-blogs" },
-        /* { name: "Dholera Updates", href: "/dholera-sir-updates" }, */
-        { name: "About Dholera SIR", href: "/about-dholera-sir" },
-        { name: "Dholera Updates", href: "/dholera-sir-updates" },
-      ],
-    },
-    { name: "Contact Us", href: "/contact" },
+    { name: "About Dholera", href: "/about-dholera-sir" },
+    { name: "Dholera Updates", href: "/dholera-sir-updates" },
+
   ];
 
   // Hamburger menu items
   const hamburgerMenuItems = [
+    { name: "Contact Us", href: "/contact" },
+
     { name: "About", href: "/about-us" },
     { name: "Gallery", href: "/gallery" },
-    {
-      name: "Get In Touch",
-      key: "getInTouch",
-      items: [
-        { name: "Call Now", href: "tel:+919211820887" },
-        { name: "WhatsApp Us", href: "https://wa.me/919211820887" },
-        {
-          name: "Book A Free Site Visit",
-          onClick: openContactForm,
-        },
-      ],
-    },
+   
   ];
 
   // Handlers
@@ -279,7 +263,7 @@ const Header = () => {
                 priority={true}
                 quality={85}
                 placeholder="blur"
-                fetchPriority="high" 
+                fetchPriority="high"
               />
             </motion.div>
           </Link>
@@ -590,7 +574,7 @@ const Header = () => {
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-4 px-6 text-xl font-bold text-white hover:text-orange-400 transition-all duration-300 hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-orange-400"
+                        className="block py-4 px-6 font-bold text-white hover:text-orange-400 transition-all duration-300 hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-orange-400"
                       >
                         {item.name}
                       </Link>

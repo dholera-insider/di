@@ -200,11 +200,11 @@ export default function Hero() {
               <div className="shrink-0">
                 <div className="text-teal-900 text-[1.625rem] font-extrabold leading-none">
                   ₹6,700{" "}
-                  <span className="text-teal-900/40 text-xs font-bold">
+                  <span className="text-teal-900 text-xs font-bold">
                     /Sq.Yd
                   </span>
                 </div>
-                <div className="text-teal-900/40 text-[0.625rem] tracking-widest uppercase mt-0.5">
+                <div className="text-teal-900 text-[0.625rem] font-bold tracking-widest uppercase mt-0.5">
                   Price
                 </div>
               </div>
