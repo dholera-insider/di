@@ -148,6 +148,10 @@ export default async function Post({ params }) {
       );
     }
 
+    // Codex responsive UI fix: keep headings compact when Sanity renders them inside list items.
+    const nestedListContentClass =
+      "flex-1 min-w-0 [&_p]:mb-0 [&_h1]:mt-0 [&_h1]:mb-2 [&_h1]:pl-4 [&_h1]:py-2 [&_h1]:text-[clamp(1.25rem,2vw,1.75rem)] [&_h1]:leading-[1.4] [&_h2]:mt-0 [&_h2]:mb-2 [&_h2]:pl-4 [&_h2]:py-2 [&_h2]:text-[clamp(1.125rem,2vw,1.5rem)] [&_h2]:leading-[1.4] [&_h3]:mt-0 [&_h3]:mb-2 [&_h3]:pl-4 [&_h3]:py-2 [&_h3]:text-[clamp(1.125rem,1.8vw,1.375rem)] [&_h3]:leading-[1.4] [&_h4]:mt-0 [&_h4]:mb-2 [&_h4]:pl-4 [&_h4]:py-2 [&_h4]:text-[clamp(1rem,1.6vw,1.25rem)] [&_h4]:leading-[1.4] [&_h5]:mt-0 [&_h5]:mb-2 [&_h5]:pl-4 [&_h5]:py-1 [&_h5]:text-[clamp(1rem,1.5vw,1.125rem)] [&_h5]:leading-[1.4] [&_h6]:mt-0 [&_h6]:mb-2 [&_h6]:pl-4 [&_h6]:py-1 [&_h6]:text-[1rem] [&_h6]:leading-[1.4]";
+
     const components = {
       types: {
         image: ({ value }) => {
@@ -200,7 +204,7 @@ export default async function Post({ params }) {
           }
 
           return (
-            <div className="overflow-x-auto my-12 bg-white rounded-2xl shadow-lg border border-gray-100">
+            <div className="overflow-x-auto my-[clamp(1.5rem,3vw,3rem)] bg-white rounded-xl shadow-lg border border-gray-100">
               <table className="min-w-full">
                 <tbody>
                   {value.rows.map((row, i) => {
@@ -222,7 +226,7 @@ export default async function Post({ params }) {
                         {row.cells.map((cell, j) => (
                           <td
                             key={j}
-                            className="px-6 py-4 text-gray-700 border-b border-gray-100 last:border-r-0"
+                            className="px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.875rem,1.5vw,1rem)] text-gray-700 border-b border-gray-100 last:border-r-0"
                           >
                             {cell || ""}
                           </td>
@@ -257,8 +261,8 @@ export default async function Post({ params }) {
         },
 
         code: ({ value }) => (
-          <div className="my-8 bg-gradient-to-br from-gray-900 to-black rounded-2xl p-1 shadow-2xl">
-            <pre className="bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto">
+          <div className="my-[clamp(1.5rem,3vw,2rem)] bg-gradient-to-br from-gray-900 to-black rounded-xl p-1 shadow-2xl">
+            <pre className="bg-gray-900 text-gray-100 p-[clamp(1rem,2vw,1.5rem)] rounded-xl overflow-x-auto">
               <code className="font-mono text-sm leading-relaxed">
                 {value.code}
               </code>
@@ -341,48 +345,48 @@ export default async function Post({ params }) {
           return {
             h1: makeHeading(
               "h1",
-              "text-2xl md:text-5xl font-black mt-8 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-4",
+              "text-[clamp(2rem,5vw,4rem)] font-black mt-[clamp(1.5rem,3vw,2rem)] mb-[clamp(1.25rem,2.5vw,1.5rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-[clamp(0.875rem,2vw,1rem)] leading-[1.2]",
             ),
             h2: makeHeading(
               "h2",
-              "text-2xl md:text-3xl font-bold mt-8 mb-8 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-3",
+              "text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-[clamp(1.5rem,3vw,2rem)] mb-[clamp(1.25rem,2.5vw,1.75rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-[clamp(0.75rem,1.5vw,1rem)] leading-[1.25]",
             ),
             h3: makeHeading(
               "h3",
-              "text-2xl md:text-3xl font-bold mt-12 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+              "text-[clamp(1.375rem,2.5vw,2rem)] font-bold mt-[clamp(1.75rem,3vw,2.5rem)] mb-[clamp(1rem,2vw,1.5rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2 leading-[1.3]",
             ),
             h4: makeHeading(
               "h4",
-              "text-2xl font-semibold mt-10 mb-4 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+              "text-[clamp(1.125rem,2vw,1.5rem)] font-semibold mt-[clamp(1.5rem,2.5vw,2rem)] mb-[clamp(0.875rem,1.8vw,1.25rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2 leading-[1.35]",
             ),
             h5: makeHeading(
               "h5",
-              "text-xl font-semibold mt-8 mb-3 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+              "text-[clamp(1rem,1.6vw,1.25rem)] font-semibold mt-[clamp(1.25rem,2vw,1.75rem)] mb-[clamp(0.75rem,1.5vw,1rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2 leading-[1.35]",
             ),
             h6: makeHeading(
               "h6",
-              "text-lg font-semibold mt-6 mb-2 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-1",
+              "text-[1rem] font-semibold mt-[clamp(1rem,1.8vw,1.5rem)] mb-2 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-1 leading-[1.35]",
             ),
           };
         })(),
 
         normal: ({ children }) => (
-          <p className="mb-8 text-gray-700 leading-loose text-lg font-light tracking-wide">
+          <p className="mb-[clamp(1rem,2vw,1.5rem)] text-gray-700 leading-[1.7] text-[clamp(1rem,1.4vw,1.125rem)] font-light tracking-wide">
             {children}
           </p>
         ),
         blockquote: ({ children }) => (
-          <blockquote className="relative my-12 p-8 bg-gradient-to-br from-teal-400/5 to-teal-500/10 rounded-2xl shadow-lg border border-teal-400/20">
+          <blockquote className="relative my-[clamp(1.5rem,3vw,3rem)] p-[clamp(1.25rem,3vw,2rem)] bg-gradient-to-br from-teal-400/5 to-teal-500/10 rounded-xl shadow-lg border border-teal-400/20">
             <div className="absolute top-4 left-6 text-6xl text-teal-400/30 font-serif">
               "
             </div>
-            <div className="pl-8 italic text-gray-700 text-xl leading-relaxed font-medium">
+            <div className="pl-[clamp(1.25rem,3vw,2rem)] italic text-gray-700 text-[clamp(1rem,1.6vw,1.25rem)] leading-[1.7] font-medium">
               {children}
             </div>
           </blockquote>
         ),
         centerAlign: ({ children }) => (
-          <p className="mb-8 text-gray-700 leading-loose text-lg text-center bg-gray-50 py-6 rounded-xl">
+          <p className="mb-[clamp(1.25rem,2.5vw,2rem)] text-gray-700 leading-[1.7] text-[clamp(1rem,1.4vw,1.125rem)] text-center bg-gray-50 py-[clamp(1rem,2vw,1.5rem)] rounded-xl">
             {children}
           </p>
         ),
@@ -390,10 +394,12 @@ export default async function Post({ params }) {
 
       list: {
         bullet: ({ children }) => (
-          <ul className="space-y-4 mb-10 pl-0">{children}</ul>
+          <ul className="space-y-[clamp(0.75rem,1.5vw,1.25rem)] mb-[clamp(1.25rem,2.5vw,2rem)] pl-0">
+            {children}
+          </ul>
         ),
         number: ({ children }) => (
-          <ol className="space-y-4 mb-10 pl-0 counter-reset-list">
+          <ol className="space-y-[clamp(0.75rem,1.5vw,1.25rem)] mb-[clamp(1.25rem,2.5vw,2rem)] pl-0 counter-reset-list">
             {children}
           </ol>
         ),
@@ -401,17 +407,18 @@ export default async function Post({ params }) {
 
       listItem: {
         bullet: ({ children }) => (
-          <li className="text-lg leading-relaxed text-gray-700 flex items-start gap-4 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300">
-            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full mt-2 flex-shrink-0"></div>
-            <div className="flex-1">{children}</div>
+          <li className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-700 flex items-start gap-[clamp(0.75rem,1.5vw,1rem)] p-[clamp(1rem,2vw,1.25rem)] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 overflow-hidden">
+            {/* Codex responsive UI fix: center the marker against the first text line, including nested headings. */}
+            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full mt-[clamp(0.75rem,1.5vw,0.95rem)] flex-shrink-0"></div>
+            <div className={nestedListContentClass}>{children}</div>
           </li>
         ),
         number: ({ children }) => (
-          <li className="text-lg leading-relaxed text-gray-700 flex items-start gap-4 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list">
-            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+          <li className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-700 flex items-start gap-[clamp(0.75rem,1.5vw,1rem)] p-[clamp(1rem,2vw,1.25rem)] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list overflow-hidden">
+            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full mt-[clamp(0.75rem,1.5vw,0.95rem)] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
               <span className="counter-content"></span>
             </div>
-            <div className="flex-1">{children}</div>
+            <div className={nestedListContentClass}>{children}</div>
           </li>
         ),
       },
@@ -633,11 +640,15 @@ export default async function Post({ params }) {
                 <TableOfContent headings={extractHeadings(post.body)} />
 
                 {/* Article Content */}
-                <div className="bg-white rounded-xl shadow-2xl pl-8 pr-8 border border-gray-200">
-                  <div className="text-xl max-w-none">
+                {/* Codex responsive UI fix: content-based padding prevents oversized blank space after Portable Text. */}
+                <div className="bg-white rounded-xl shadow-2xl px-[clamp(1rem,3vw,2rem)] pt-[clamp(1.5rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] border border-gray-200">
+                  <div className="max-w-none text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] [&>*:last-child]:mb-0">
                     <PortableText value={post.body} components={components} />
                   </div>
-                  <LazySlugPageForm />
+                  {/* Codex responsive UI fix: keep the form boundary tight without editing the form component. */}
+                  <div className="mt-[clamp(1rem,2vw,1.5rem)]">
+                    <LazySlugPageForm />
+                  </div>
                   {/* Tags */}
                   {post.tags && post.tags.length > 0 && (
                     <div className="mt-12 pt-6 border-t border-gray-200">
@@ -756,7 +767,7 @@ export default async function Post({ params }) {
           <p className="text-gray-600">Please try again later</p>
           <Link
             href="/dholera-sir-blogs"
-            className="mt-4 inline-block text-[#C69C21] hover:text-[#FDB913]"
+            className="mt-4 inline-block text-teal-900 hover:text-[#FDB913]"
           >
             ← Back to Blogs
           </Link>

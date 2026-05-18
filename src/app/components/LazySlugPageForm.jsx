@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 const SlugPageForm = dynamic(() => import("./SlugPageForm"), {
   ssr: false,
-  loading: () => <div className="min-h-[28rem]" />,
+  loading: () => null,
 });
 
 export default function LazySlugPageForm() {
@@ -36,9 +36,6 @@ export default function LazySlugPageForm() {
     return () => observer.disconnect();
   }, [shouldLoad]);
 
-  return (
-    <div ref={containerRef} className="min-h-[28rem]">
-      {shouldLoad ? <SlugPageForm /> : null}
-    </div>
-  );
+  // Codex responsive UI fix: avoid reserving a large blank block before the form loads.
+  return <div ref={containerRef}>{shouldLoad ? <SlugPageForm /> : null}</div>;
 }
