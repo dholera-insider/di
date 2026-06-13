@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "What is the starting price of plots?",
     answer:
-      "Plots at WestWyn Estates start from ₹10 Lakh, with plot sizes ranging approximately between 151 to 198 square yards.",
+      "Plots at WestWyn Estates start from ₹10 Lakh, with plot sizes ranging Approx 147-250 sq. yards",
   },
   {
     question: "Are the plots legally approved?",

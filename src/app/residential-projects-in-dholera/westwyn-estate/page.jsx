@@ -104,14 +104,10 @@ export default function Hero() {
       icon: "🚿",
       title: "Drainage System",
     },
-    {
-      icon: "🏡",
-      title: "Clubhouse Lite",
-    },
   ];
 
   const projectFeatures = [
-    { icon: "🏠", title: "Plot Size", value: "152 and 200 Sq.Yards" },
+    { icon: "🏠", title: "Plot Size", value: "Approx 147-250 sq. yards" },
     { icon: "💰", title: "Price", value: "₹6,700/Sq.Yd" },
     { icon: "🏗️", title: "Project Type", value: "Residential Plots" },
     { icon: "📍", title: "Location", value: "Polarpur, Dholera" },
@@ -264,10 +260,10 @@ export default function Hero() {
                 residential plots with clear documentation, planned amenities,
                 and strong connectivity to important infrastructure locations in
                 Dholera. <br />
-                <br /> Located with direct access from State Highway-117 and
-                close to Bhimnath Railway Junction, WestWyn Estates is suitable
-                for investors looking for registry-ready plots in Dholera with
-                long-term growth potential.
+                <br /> Located with direct access from bang on 150 ft wide
+                4-lane State Highway-117 and close to Bhimnath Railway Junction,
+                WestWyn Estates is suitable for investors looking for
+                registry-ready plots in Dholera with long-term growth potential.
               </p>
               <br />
             </div>
@@ -284,7 +280,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
 
       <div className="space-y-4 py-[clamp(1.5rem,4vw,2rem)]">
         <div className="h-full px-[clamp(1rem,4vw,2rem)]">
@@ -345,8 +340,9 @@ export default function Hero() {
                     Direct Highway Access
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
-                    The project offers direct access from State Highway-117,
-                    helping improve connectivity and future usability.
+                    The project offers direct access from 150 ft wide 4-lane
+                    State Highway (SH-117), helping improve connectivity and
+                    future usability.
                   </p>
                 </div>
 
@@ -366,9 +362,9 @@ export default function Hero() {
                     Registry Ready Plots
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
-                    The project is positioned with clear-title, NA/NOC approved,
-                    and registry-ready documentation, helping buyers complete
-                    their investment process smoothly.
+                    The project is positioned with NA/NOC, Title Clear, Plan
+                    Pass Approved, and registry-ready documentation, helping
+                    buyers complete their investment process smoothly.
                   </p>
                 </div>
 
