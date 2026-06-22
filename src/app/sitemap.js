@@ -42,7 +42,7 @@ export default async function sitemap() {
     { url: `${BASE_URL}/dholera-sir-updates`,     priority: 0.7, changeFrequency: "daily" },
     { url: `${BASE_URL}/about-dholera-sir`,       priority: 0.7, changeFrequency: "monthly" },
 
-    { url: `${BASE_URL}/residential-projects-in-dholera/maple`,             priority: 0.8, changeFrequency: "monthly" },
+/*     { url: `${BASE_URL}/residential-projects-in-dholera/maple`,             priority: 0.8, changeFrequency: "monthly" }, */
     { url: `${BASE_URL}/residential-projects-in-dholera/marina-bay`,        priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE_URL}/residential-projects-in-dholera/orchid`,            priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE_URL}/residential-projects-in-dholera/paradise`,          priority: 0.8, changeFrequency: "monthly" },
