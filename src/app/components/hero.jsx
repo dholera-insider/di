@@ -72,13 +72,13 @@ const Hero = () => {
         )}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCFA]/95 via-[#FDFCFA]/86 to-[#051A3A]/55"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCFA]/80 via-[#FDFCFA]/76 to-[#051A3A]/50"></div>
 
       <div className="relative max-w-7xl mx-auto z-10 flex min-h-screen items-center">
         <div className="container mx-auto px-4 py-28 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)] lg:gap-12">
             <div className="max-w-3xl">
-              <h1 className="mb-5 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.05] text-[#051A3A]">
+              <h1 className="mb-5 text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-[#051A3A]">
                 Decoding Dholera For NRI
               </h1>
              {/*  <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">

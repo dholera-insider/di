@@ -17,26 +17,40 @@ const countries = [
 export default function NRISupport() {
   const [current, setCurrent] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
+  const [step, setStep] = useState(3);
 
   useEffect(() => {
-    const updateVisibleCount = () => {
-      setVisibleCount(window.innerWidth < 1024 ? 2 : 4);
+    const updateConfig = () => {
+      const isMobile = window.innerWidth < 1024;
+      setVisibleCount(isMobile ? 2 : 4);
+      setStep(isMobile ? 2 : 3);
     };
-    updateVisibleCount();
-    window.addEventListener("resize", updateVisibleCount);
-    return () => window.removeEventListener("resize", updateVisibleCount);
+    updateConfig();
+    window.addEventListener("resize", updateConfig);
+    return () => window.removeEventListener("resize", updateConfig);
   }, []);
 
   const gap = 16;
   const maxIndex = Math.max(countries.length - visibleCount, 0);
   const cardWidth = `calc((100% - ${(visibleCount - 1) * gap}px) / ${visibleCount})`;
 
-  const next = () => setCurrent((prev) => Math.min(prev + 1, maxIndex));
-  const prev = () => setCurrent((prev) => Math.max(prev - 1, 0));
+  const next = () => setCurrent((prev) => Math.min(prev + step, maxIndex));
+  const prev = () => setCurrent((prev) => Math.max(prev - step, 0));
 
+  // Snap current to nearest valid page stop when config changes
   useEffect(() => {
     setCurrent((prev) => Math.min(prev, maxIndex));
   }, [maxIndex]);
+
+  // Compute dot stops: 0, step, 2*step, ..., maxIndex
+  const pageStops = [];
+  for (let i = 0; i <= maxIndex; i += step) {
+    pageStops.push(i);
+  }
+  if (pageStops[pageStops.length - 1] < maxIndex) {
+    pageStops.push(maxIndex);
+  }
+  const activeDot = pageStops.indexOf(current);
 
   return (
     <section className="bg-[#EEF2F9] py-4 px-4 sm:px-6 lg:px-8">
@@ -122,12 +136,12 @@ export default function NRISupport() {
 
         {/* Dot indicators */}
         <div className="mt-7 flex justify-center gap-2">
-          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+          {pageStops.map((stop, i) => (
             <button
-              key={i}
-              onClick={() => setCurrent(i)}
+              key={stop}
+              onClick={() => setCurrent(stop)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === current
+                i === activeDot
                   ? "w-7 bg-[#F6C343]"
                   : "w-2 bg-[#2B364D]/25 hover:bg-[#2B364D]/50"
               }`}

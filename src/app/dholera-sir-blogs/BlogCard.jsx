@@ -19,7 +19,7 @@ export default function BlogCard({ post }) {
       }
       className="group"
     >
-      <div className="bg-white rounded-[8px] shadow-md overflow-hidden h-full hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-200">
+      <div className="bg-white rounded-[8px] shadow-md overflow-hidden h-full hover:shadow-[#f6c343] hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-200">
         {/* Blog Image */}
         <div className="relative h-52">
           {post.mainImage ? (

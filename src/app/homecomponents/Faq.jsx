@@ -44,7 +44,7 @@ export default function FAQSection() {
       <div className="mx-auto grid max-w-7xl gap-[clamp(1.5rem,3vw,3rem)] md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
         <div>
           <h2 className="mb-4 text-[clamp(1.5rem,3vw,2.5rem)] font-semibold leading-[clamp(2rem,4vw,3.5rem)] text-[#051A3A]">
-            Frequently Asked Questions 
+            FAQs 
           </h2>
           <p className="mb-4 text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-[#2B364D]">
             More Questions about Dholera Smart City Project?

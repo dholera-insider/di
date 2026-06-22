@@ -28,11 +28,11 @@ export default function WhyDholera() {
     <section className="relative overflow-hidden bg-[#FDFCFA] py-4 px-4 sm:px-6 lg:px-8">
 
       {/* Watermark */}
-      <div className="pointer-events-none hidden md:block select-none absolute inset-0 md:flex items-center justify-center">
+      {/* <div className="pointer-events-none hidden md:block select-none absolute inset-0 md:flex items-center justify-center">
         <span className="whitespace-nowrap text-[clamp(5rem,16vw,15rem)] font-black uppercase tracking-[0.2em] text-[#051A3A]/[0.09]">
           DHOLERA
         </span>
-      </div>
+      </div> */}
 
       <div className="relative z-10 mx-auto max-w-7xl">
 

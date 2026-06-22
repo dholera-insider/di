@@ -5,7 +5,7 @@ import { FaHospitalAlt, FaIndustry } from "react-icons/fa";
 const LocationCard = ({ icon, distance, title, description, time }) => (
   <div className="bg-[#051A3A] rounded-xl p-[clamp(1.25rem,2.5vw,1.5rem)] shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out group hover:-translate-y-1">
     <div className="flex items-start gap-[clamp(0.75rem,2vw,1rem)]">
-      <div className="w-[clamp(3rem,5vw,3.5rem)] h-[clamp(3rem,5vw,3.5rem)] bg-[#F6C343]/15 group-hover:bg-[#2B364D] rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ease-in-out">
+      <div className="w-[clamp(3rem,5vw,3.5rem)] h-[clamp(3rem,5vw,3.5rem)] bg-[#F6C343] group-hover:bg-[#2B364D] rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ease-in-out">
         <div className="text-gray-900 group-hover:text-white transition-colors duration-300 ease-in-out">
           {icon}
         </div>

@@ -1,10 +1,8 @@
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
 import {
-  getblogs,
   getPostBySlug,
   getUpdates,
-  projectInfo,
 } from "@/sanity/lib/api";
 import Link from "next/link";
 import Image from "next/image";
@@ -49,6 +47,11 @@ const extractHeadings = (body) => {
         },
       ],
     }));
+};
+
+const getPostDateTime = (post) => {
+  const date = new Date(post?.publishedAt || post?._createdAt || 0);
+  return Number.isNaN(date.getTime()) ? 0 : date.getTime();
 };
 
 export async function generateMetadata({ params }) {
@@ -157,7 +160,7 @@ export default async function BlogDetail({ params }) {
   }
 
   try {
-    const [post, trendingBlogs, getPro] = await Promise.all([
+    const [post, trendingBlogs] = await Promise.all([
       getPostBySlug(slug, site),
       getUpdates(),
     ]);
@@ -501,6 +504,14 @@ export default async function BlogDetail({ params }) {
       year: "numeric",
     });
 
+    const latestUpdates = (trendingBlogs || [])
+      .filter((update) => {
+        const updateSlug = update?.slug?.current;
+        return updateSlug && updateSlug !== slug && update?._id !== post._id;
+      })
+      .sort((a, b) => getPostDateTime(b) - getPostDateTime(a))
+      .slice(0, 4);
+
     return (
       <div className="bg-white min-h-screen">
         <title>{post.metaTitle}</title>
@@ -700,10 +711,10 @@ export default async function BlogDetail({ params }) {
                     Dholera Latest Updates
                   </h3>
                   <div className="">
-                    {trendingBlogs && trendingBlogs.length > 0 ? (
-                      trendingBlogs.map((post) => (
-                        <div key={post._id} className="mb-3">
-                          <TrendingBlogItem post={post} />
+                    {latestUpdates.length > 0 ? (
+                      latestUpdates.map((update) => (
+                        <div key={update._id} className="mb-3">
+                          <TrendingBlogItem post={update} />
                         </div>
                       ))
                     ) : (
@@ -712,6 +723,12 @@ export default async function BlogDetail({ params }) {
                       </p>
                     )}
                   </div>
+                  <Link
+                    href="/dholera-sir-updates"
+                    className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-[#F6C343] px-4 py-3 text-sm font-bold text-[#051A3A] transition-colors hover:bg-[#e3ae25]"
+                  >
+                    Show More
+                  </Link>
                 </div>
               </div>
             </aside>
