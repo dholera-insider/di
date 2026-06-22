@@ -30,7 +30,7 @@ export default function WestWyn_Estate() {
       buttonLabel: "Sold Out",
       image: westwynResidencyImage,
       location: "Fedra-Pipli State Highway, Dholera",
-      size: "124, 154 and 187 Sq.Yards",
+      size: "Minimum 150 Sq.Yards",
       href: "/residential-projects-in-dholera/westwyn-county",
       price: "ReSelling From ₹12,000/sq yard",
       soldOut: true,
