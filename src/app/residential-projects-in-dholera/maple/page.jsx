@@ -75,6 +75,8 @@ export default function Hero() {
         href="https://www.dholerainsider.com/residential-projects-in-dholera/maple"
       />
 
+      <meta name="robots" content="noindex, nofollow" />
+
       <div className="relative w-full h-[80vh] max-sm:h-[50vh]">
         <Image
           src={westwynEstate1}
