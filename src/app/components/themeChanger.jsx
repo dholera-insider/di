@@ -17,7 +17,7 @@ const ThemeChanger = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="rounded-lg bg-gray-200 dark:bg-green-950 text-gray-800 dark:text-gray-200 transition-colors"
+      className="rounded-lg bg-gray-200 dark:bg-[#051A3A] text-gray-800 dark:text-gray-200 transition-colors"
       aria-label="Toggle theme"
     >
        {theme === 'dark' ? (

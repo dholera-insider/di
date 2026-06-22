@@ -15,7 +15,7 @@ const DocIconTeal = () => (
     width="15"
     height="15"
     fill="none"
-    stroke="#134e4a"
+    stroke="#051A3A"
     strokeWidth="2"
     viewBox="0 0 24 24"
   >
@@ -157,39 +157,39 @@ export default function Hero() {
                   className="relative flex"
                   style={{ width: 10, height: 10 }}
                 >
-                  <span className="animate-ping absolute inline-flex rounded-full bg-teal-400 w-full h-full opacity-75" />
-                  <span className="relative inline-flex rounded-full bg-teal-500 w-[10px] h-[10px]" />
+                  <span className="animate-ping absolute inline-flex rounded-full bg-[#F6C343] w-full h-full opacity-75" />
+                  <span className="relative inline-flex rounded-full bg-[#F6C343] w-[10px] h-[10px]" />
                 </span>
-                <span className="text-teal-800 text-[11px] font-bold tracking-widest uppercase">
+                <span className="text-[#051A3A] text-[11px] font-bold tracking-widest uppercase">
                   Ongoing
                 </span>
               </div>
 
-              <div className="w-px h-9 bg-teal-900/10 shrink-0" />
+              <div className="w-px h-9 bg-[#051A3A]/10 shrink-0" />
 
               {/* Title + Subtitle */}
               <div className="shrink-0">
                 <Link href="/residential-projects-in-dholera/westwyn-estate">
-                  <h2 className="text-teal-900 text-2xl font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
+                  <h2 className="text-[#051A3A] text-2xl font-bold leading-tight m-0 hover:text-[#2B364D] transition-colors">
                     WestWyn Estates
                   </h2>
                 </Link>
-                <div className="text-teal-700/70 text-xs mt-1">
+                <div className="text-[#051A3A]/70 text-xs mt-1">
                   Registry Ready Plot under ₹10 Lakh
                 </div>
               </div>
 
-              <div className="w-px h-12 bg-teal-900/10 shrink-0" />
+              <div className="w-px h-12 bg-[#051A3A]/10 shrink-0" />
 
               {/* Price */}
               <div className="shrink-0">
-                <div className="text-teal-900 text-[26px] font-extrabold leading-none">
+                <div className="text-[#051A3A] text-[26px] font-extrabold leading-none">
                   ₹6,500{" "}
-                  <span className="text-teal-900/40 text-xs font-normal">
+                  <span className="text-[#051A3A]/40 text-xs font-normal">
                     /Sq.Yd
                   </span>
                 </div>
-                <div className="text-teal-900/40 text-[10px] tracking-widest uppercase mt-0.5">
+                <div className="text-[#051A3A]/40 text-[10px] tracking-widest uppercase mt-0.5">
                   Starting Price
                 </div>
               </div>
@@ -197,13 +197,13 @@ export default function Hero() {
               {/* Spacer */}
               <div className="flex-1" />
 
-              <div className="w-px h-12 bg-teal-900/10 shrink-0" />
+              <div className="w-px h-12 bg-[#051A3A]/10 shrink-0" />
 
               {/* CTAs */}
               <div className="flex items-center gap-3 shrink-0">
                 <a
                   href="tel:+919211820887"
-                  className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all duration-200 hover:-translate-y-0.5"
+                  className="flex items-center gap-2 bg-[#051A3A] hover:bg-[#2B364D] text-white px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <PhoneIcon />
                   Site Visit
@@ -211,7 +211,7 @@ export default function Hero() {
 
                 <button
                   onClick={openBrochureForm}
-                  className="flex items-center gap-2 bg-white hover:bg-teal-50 border border-teal-900/20 hover:border-teal-800 text-teal-900 px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+                  className="flex items-center gap-2 bg-white hover:bg-[#F6C343]/15 border border-[#F6C343]/20 hover:border-[#051A3A] text-[#051A3A] px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                 >
                   <DocIconTeal />
                   Brochure
@@ -227,11 +227,11 @@ export default function Hero() {
             {/* Categories & Price */}
             <div>
               <div className="flex items-center gap-2 flex-wrap mb-3">
-                <span className="px-3 py-1.5 text-white bg-teal-900 rounded-full text-sm font-medium hover:bg-teal-800 transition-colors">
+                <span className="px-3 py-1.5 text-white bg-[#051A3A] rounded-full text-sm font-medium hover:bg-[#2B364D] transition-colors">
                   Residential
                 </span>
               </div>
-              <div className="text-3xl font-bold text-teal-900">
+              <div className="text-3xl font-bold text-[#051A3A]">
                 ₹11,000
                 <span className="text-sm text-gray-600 ml-1">/Sq.Yd</span>
               </div>
@@ -239,7 +239,7 @@ export default function Hero() {
 
             {/* Title & Description */}
             <div>
-              <p className="text-2xl font-bold text-teal-900 mb-2 leading-tight hover:text-teal-800 transition-colors">
+              <p className="text-2xl font-bold text-[#051A3A] mb-2 leading-tight hover:text-[#2B364D] transition-colors">
                 WestWyn County
               </p>
             </div>
@@ -249,12 +249,12 @@ export default function Hero() {
               <div className="flex items-center gap-2 text-gray-700 text-base mb-4">
                 <button
                   onClick={openBrochureForm}
-                  className="flex-1 bg-teal-900 text-white hover:bg-teal-800 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5"
+                  className="flex-1 bg-[#051A3A] text-white hover:bg-[#2B364D] px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5"
                 >
                   📄 Download Brochure
                 </button>
               </div>
-              <div className="text-teal-900 text-xl text-center font-semibold hover:text-teal-800 transition-colors">
+              <div className="text-[#051A3A] text-xl text-center font-semibold hover:text-[#2B364D] transition-colors">
                 <p>Immediate Possession</p>
               </div>
             </div>
@@ -270,7 +270,7 @@ export default function Hero() {
             alt="WestWyn County"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-[#2B364D]/95 to-[#051A3A]/95"></div>
         </div>
 
         {/* Content */}
@@ -317,7 +317,7 @@ export default function Hero() {
             alt="WestWyn County"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-[#2B364D]/95 to-[#051A3A]/95"></div>
         </div>
         <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-4xl mx-auto">
@@ -329,7 +329,7 @@ export default function Hero() {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-xl font-semibold text-teal-300 mb-3">
+                  <h3 className="text-xl font-semibold text-[#F6C343] mb-3">
                     Prime Location for Growth
                   </h3>
                   <p className="text-gray-200 text-sm">
@@ -342,7 +342,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-xl font-semibold text-teal-300 mb-3">
+                  <h3 className="text-xl font-semibold text-[#F6C343] mb-3">
                     Trusted Developer Legacy
                   </h3>
                   <p className="text-gray-200 text-sm">
@@ -354,7 +354,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-xl font-semibold text-teal-300 mb-3">
+                  <h3 className="text-xl font-semibold text-[#F6C343] mb-3">
                     Safe & Legal Investment
                   </h3>
                   <p className="text-gray-200 text-sm">
@@ -366,7 +366,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-xl font-semibold text-teal-300 mb-3">
+                  <h3 className="text-xl font-semibold text-[#F6C343] mb-3">
                     High Appreciation Potential
                   </h3>
                   <p className="text-gray-200 text-sm">
@@ -379,7 +379,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <h3 className="text-xl font-semibold text-teal-300 mb-3">
+                  <h3 className="text-xl font-semibold text-[#F6C343] mb-3">
                     Backed by Smart City Infrastructure
                   </h3>
                   <p className="text-gray-200 text-sm">
@@ -392,7 +392,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 ">
-                  <h3 className="text-xl font-semibold text-teal-300 mb-3">
+                  <h3 className="text-xl font-semibold text-[#F6C343] mb-3">
                     Trusted Developer Legacy
                   </h3>
                   <p className="text-gray-200 text-sm">
@@ -413,7 +413,7 @@ export default function Hero() {
                 {amenities.map((amenity, index) => (
                   <div
                     key={index}
-                    className="bg-teal-500/20 backdrop-blur-sm rounded-lg p-4 text-center border border-teal-400/30 hover:bg-teal-500/30 transition-all duration-300"
+                    className="bg-[#F6C343]/20 backdrop-blur-sm rounded-lg p-4 text-center border border-[#F6C343]/30 hover:bg-[#F6C343]/30 transition-all duration-300"
                   >
                     <div className="text-2xl mb-2">{amenity.icon}</div>
                     <p className="text-white font-medium text-sm">

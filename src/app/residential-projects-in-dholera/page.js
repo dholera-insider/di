@@ -62,7 +62,7 @@ export default async function Blogs() {
         </section>
       </div>
 
-      <div className="pt-6 sm:pt-10 px-4 relative bg-gradient-to-br from-green-700 via-green-900">
+      <div className="pt-6 sm:pt-10 px-4 relative bg-gradient-to-br from-[#051A3A] via-[#2B364D]">
         <div className="absolute inset-0"></div>
         <section className="relative flex flex-col justify-center items-center space-x-8">
           <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -77,7 +77,7 @@ export default async function Blogs() {
                   className={`bg-white shadow-xl ${
                     isSoldOut
                       ? "shadow-red-400 dark:shadow-red-900 opacity-75"
-                      : "shadow-green-400 dark:shadow-green-900"
+                      : "shadow-[#F6C343] dark:shadow-[#051A3A]"
                   } dark:bg-gray-900 mb-6 rounded-lg w-full max-w-xs sm:max-w-none relative`}
                 >
                   {isSoldOut && (

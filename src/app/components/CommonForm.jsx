@@ -3,6 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 // REMOVED: import { motion } from "framer-motion";
 import "../about-us/about.css";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "./InternationalPhoneInput";
 
 export default function CommonForm({ title }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -91,8 +95,8 @@ export default function CommonForm({ title }) {
       return false;
     }
 
-    if (!/^\d{10,15}$/.test(formData.phone)) {
-      setErrorMessage("Please enter a valid phone number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.phone)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -128,7 +132,7 @@ export default function CommonForm({ title }) {
           body: JSON.stringify({
             fields: {
               name: formData.fullName,
-              phone: formData.phone,
+              phone: getInternationalPhoneValue(formData.phone),
               source: "Dholera Insider",
             },
             source: "Dholera Insider Website",
@@ -244,7 +248,7 @@ export default function CommonForm({ title }) {
         }
       `}</style>
 
-      <section className="py-12 bg-gradient-to-r from-gray-900 to-teal-900 animate-gradient-x">
+      <section className="bg-[#051A3A] py-12">
         <div className="container mx-auto px-6 sm:px-8">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-white text-lg md:text-2xl font-bold text-center">
@@ -254,10 +258,10 @@ export default function CommonForm({ title }) {
               <div className="text-center py-8">
                 {/* CHANGED: Replaced motion.div with CSS animation */}
                 <div className="mb-4 inline-block success-icon">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#F6C343]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10 text-white"
+                      className="h-10 w-10 text-[#051A3A]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -274,7 +278,7 @@ export default function CommonForm({ title }) {
                 <h3 className="text-2xl font-bold text-white mb-2">
                   Thank You!
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-[#FDFCFA]/80">
                   Your request has been submitted successfully. We'll contact
                   you shortly.
                 </p>
@@ -285,7 +289,7 @@ export default function CommonForm({ title }) {
                 className="mt-12 max-w-4xl mx-auto space-y-6"
               >
                 {errorMessage && (
-                  <div className="p-3 bg-red-500 bg-opacity-20 border border-red-400 text-red-100 rounded-lg text-sm">
+                  <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
                     {errorMessage}
                   </div>
                 )}
@@ -304,7 +308,7 @@ export default function CommonForm({ title }) {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-4 py-3 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -316,15 +320,24 @@ export default function CommonForm({ title }) {
                     >
                       Phone Number
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
+                    <InternationalPhoneInput
                       value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder="Enter your phone number"
+                      onChange={(phone) => {
+                        setFormData((prevData) => ({
+                          ...prevData,
+                          phone,
+                        }));
+                        setErrorMessage("");
+
+                        if (!userInteracted) {
+                          setUserInteracted(true);
+                          loadRecaptcha();
+                        }
+                      }}
+                      inputProps={{
+                        id: "phone",
+                        name: "phone",
+                      }}
                     />
                   </div>
                 </div>
@@ -338,7 +351,7 @@ export default function CommonForm({ title }) {
                     type="submit"
                     disabled={isLoading}
                     onClick={handleSubmit}
-                    className="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+                    className="w-full rounded-lg bg-[#F6C343] px-6 py-3 font-bold text-[#051A3A] transition duration-300 hover:bg-[#FDFCFA] disabled:bg-[#6C7484] disabled:text-[#FDFCFA]"
                   >
                     {isLoading ? "Submitting..." : "Get A Call Back"}
                   </button>

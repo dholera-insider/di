@@ -25,7 +25,7 @@ export default function CTAsection() {
 
   return (
     <>
-      <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900 px-4 py-16">
+      <div className="relative overflow-hidden bg-[#051A3A] px-4 py-16">
         <Image
           src={bg}
           alt="Background Image"
@@ -33,12 +33,7 @@ export default function CTAsection() {
           className="absolute inset-0 -z-10 object-cover opacity-30"
           sizes="100vw"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-teal-900/20 to-gray-900/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)] opacity-10"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.1),transparent_50%)] opacity-10"></div>
-
-        <div className="absolute left-10 top-10 h-20 w-20 animate-pulse rounded-full bg-teal-500/10 blur-xl"></div>
-        <div className="delay-1000 absolute bottom-10 right-10 h-32 w-32 animate-pulse rounded-full bg-teal-400/5 blur-2xl"></div>
+        <div className="pointer-events-none absolute inset-0 bg-[#051A3A]/85"></div>
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
           <motion.div
@@ -50,14 +45,14 @@ export default function CTAsection() {
             <h2 className="mb-4 text-xl font-bold text-white drop-shadow-lg md:text-4xl">
               Talk To Our Dholera Expert
             </h2>
-            <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-teal-400 to-teal-600"></div>
+            <div className="mx-auto h-1 w-24 rounded-full bg-[#F6C343]"></div>
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12 text-sm leading-relaxed text-gray-300"
+            className="mb-12 text-sm leading-relaxed text-[#FDFCFA]/80"
           >
             Have questions about Dholera investments? Our team is here to guide
             you every step of the way.
@@ -73,7 +68,7 @@ export default function CTAsection() {
           >
             <Link
               href="tel:+919211820887"
-              className="group relative min-w-[200px] rounded-xl border border-teal-400/30 bg-gradient-to-r from-teal-500 to-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-teal-600 hover:to-teal-700 hover:shadow-xl"
+              className="group relative min-w-[200px] rounded-xl border border-[#F6C343]/40 bg-[#FDFCFA] px-8 py-4 text-lg font-semibold text-[#051A3A] shadow-lg transition-all duration-300 hover:bg-[#F6C343] hover:shadow-xl"
             >
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -92,7 +87,7 @@ export default function CTAsection() {
               href="https://wa.me/919211820887"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative min-w-[200px] rounded-xl border border-green-400/30 bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-green-600 hover:to-green-700 hover:shadow-xl"
+              className="group relative min-w-[200px]  rounded-xl border border-[#F6C343]/40 bg-[#2B364D] px-8 py-4 text-lg font-semibold text-[#FDFCFA] shadow-lg transition-all duration-300 hover:bg-[#F6C343] hover:text-[#051A3A] hover:shadow-xl"
             >
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -118,9 +113,9 @@ export default function CTAsection() {
               onClick={openContactForm}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative min-w-[250px] rounded-xl border-2 border-teal-400/50 bg-gradient-to-r from-gray-700 to-gray-800 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:border-teal-400 hover:from-gray-600 hover:to-gray-700 hover:shadow-xl"
+              className="group relative min-w-[250px] rounded-xl border-2 border-[#F6C343] bg-[#F6C343] px-10 py-4 text-lg font-semibold text-[#051A3A] shadow-lg transition-all duration-300 hover:bg-[#FDFCFA] hover:shadow-xl"
             >
-              <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-500/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+              <span className="absolute inset-0 rounded-xl bg-[#FDFCFA]/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <svg
                   className="h-5 w-5"
@@ -142,7 +137,7 @@ export default function CTAsection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-8 text-sm text-gray-400"
+            className="mt-8 text-sm text-[#6C7484]"
           >
             Our investment advisors are available 24/7 to help you make the
             right choice
@@ -160,7 +155,7 @@ export default function CTAsection() {
             onClick={closeContactForm}
           >
             <motion.div
-              className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-teal-500/30 bg-gradient-to-br from-gray-800 via-slate-800 to-teal-900 shadow-2xl"
+              className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-[#F6C343]/30 bg-[#051A3A] shadow-2xl"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -171,7 +166,7 @@ export default function CTAsection() {
                 <button
                   type="button"
                   onClick={closeContactForm}
-                  className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-700/50 text-white backdrop-blur-sm transition-colors duration-200 hover:bg-gray-600"
+                  className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#2B364D] text-[#FDFCFA] backdrop-blur-sm transition-colors duration-200 hover:bg-[#F6C343] hover:text-[#051A3A]"
                 >
                   <svg
                     className="h-4 w-4"
@@ -193,7 +188,7 @@ export default function CTAsection() {
                     <h3 className="mb-2 text-2xl font-bold text-white">
                       Get A Call Back
                     </h3>
-                    <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-teal-400 to-teal-600"></div>
+                    <div className="mx-auto h-1 w-16 rounded-full bg-[#F6C343]"></div>
                   </div>
                   <CommonForm
                     title="Buy Residential Plots in Dholera"

@@ -1,0 +1,102 @@
+import React from 'react';
+import { MapPin, Route,Plane, RailSymbol } from 'lucide-react';
+import { FaHospitalAlt, FaIndustry } from 'react-icons/fa';
+
+const LocationCard = ({ icon, distance, title, description, time }) => (
+  <div className="bg-teal-900 rounded-xl p-[clamp(1.25rem,2.5vw,1.5rem)] shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out group hover:-translate-y-1">
+    <div className="flex items-start gap-[clamp(0.75rem,2vw,1rem)]">
+      <div className="w-[clamp(3rem,5vw,3.5rem)] h-[clamp(3rem,5vw,3.5rem)] bg-teal-100 group-hover:bg-teal-700 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ease-in-out">
+        <div className="text-gray-900 group-hover:text-white transition-colors duration-300 ease-in-out">
+          {icon}
+        </div>
+      </div>
+      <div className="flex-1">
+        <div className="flex items-baseline gap-2 mb-2">
+          <span className="text-[clamp(1.125rem,2vw,1.25rem)] font-bold text-white">{distance}</span>
+        
+        </div>
+        <h3 className="font-semibold text-white text-[clamp(1rem,1.8vw,1.125rem)] mb-1">{title}</h3>
+        <p className="text-white text-sm">{description}</p>
+      </div>
+    </div>
+  </div>
+);
+  
+const PrimeLocationSection = () => {
+  const locations = [
+    {
+      icon: <RailSymbol size={28} />,
+      distance: "5 minutes",
+      title: "Bhimnath Railway Junction",
+      description: "Bhimnath Railway Junction",
+      time: "15 min"
+    },
+    {
+      icon: <Route size={28} />,
+      distance: "15 minutes",
+      title: "Dholera SIR boundary",
+      description: "High-growth development zone",
+      time: "30 min"
+    },
+    {
+      icon: <FaHospitalAlt size={28} />,
+      distance: "15 minutes",
+      title: "RMS Multi-Specialty Hospital",
+      description: "High-growth development zone",
+      time: "30 min"
+    },
+    {
+      icon: <MapPin size={28} />,
+      distance: "17 minutes",
+      title: "Ahmedabad-Dholera Expressway",
+      description: "Located at the entrance of India's Smart City",
+      time: null
+    },
+    {
+      icon: <FaIndustry size={28} />,
+      distance: "30 minutes",
+      title: "Tata Semiconductor Plant",
+      description: "Global connectivity advantage",
+      time: "57 min"
+    },
+    {
+      icon: <Plane size={28} />,
+      distance: "45 minutes",
+      title: "Dholera International Airport",
+      description: "Global connectivity advantage",
+      time: "57 min"
+    }
+  ];
+
+  return (
+    <section className="py-[clamp(2rem,4vw,3.5rem)] px-[1rem]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-teal-800 mb-4">
+            Location Highlights
+          </h2>
+          <div className="w-24 h-1 bg-gray-900 mx-auto rounded-full"></div>
+          <p className="text-gray-900 mt-4 text-[clamp(1rem,1.5vw,1.125rem)] max-w-[42rem] mx-auto">
+            Strategically positioned for connectivity to Dholera infrastructure locations
+          </p>
+        </div>
+
+        {/* Location Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1rem,2.5vw,1.5rem)]">
+          {locations.map((location, index) => (
+            <LocationCard
+              key={index}
+              icon={location.icon}
+              distance={location.distance}
+              title={location.title}
+              time={location.time}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default PrimeLocationSection;

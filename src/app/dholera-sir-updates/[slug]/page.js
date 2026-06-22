@@ -134,7 +134,7 @@ const RelatedBlogCard = ({ blog }) => {
           </h3>
           <p className="text-gray-700 mb-4 line-clamp-3">{blog.description}</p>
           <div className="flex items-center justify-between mt-auto">
-            <span className="text-teal-700 hover:text-teal-900 p-1 rounded-xl font-semibold bg-gray-800 inline-flex items-center">
+            <span className="text-[#051A3A] hover:text-[#2B364D] p-1 rounded-xl font-semibold bg-gray-800 inline-flex items-center">
               Read more
             </span>
           </div>
@@ -240,7 +240,7 @@ export default async function BlogDetail({ params }) {
                         key={i}
                         className={`hover:bg-gray-50 transition-colors duration-200 ${
                           i === 0
-                            ? "bg-gradient-to-r from-teal-400/10 to-teal-600/10 font-semibold"
+                            ? "bg-gradient-to-r from-[#F6C343]/10 to-[#e3ae25]/10 font-semibold"
                             : i % 2 === 0
                               ? "bg-gray-50/50"
                               : "bg-white"
@@ -299,7 +299,7 @@ export default async function BlogDetail({ params }) {
           <Link
             href={value.href}
             rel="noopener noreferrer"
-            className="text-teal-600 hover:text-teal-500 underline decoration-teal-400/30 hover:decoration-teal-400 decoration-2 underline-offset-4 transition-all duration-300 hover:bg-teal-400/5 px-1 py-0.5 rounded"
+            className="text-[#F6C343] hover:text-[#F6C343] underline decoration-[#F6C343]/30 hover:decoration-[#F6C343] decoration-2 underline-offset-4 transition-all duration-300 hover:bg-[#e3ae25]/5 px-1 py-0.5 rounded"
           >
             {children}
           </Link>
@@ -325,9 +325,9 @@ export default async function BlogDetail({ params }) {
               case "secondary":
                 return "bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 shadow-lg hover:shadow-xl";
               case "outline":
-                return "bg-transparent border-2 border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white shadow-md hover:shadow-lg";
+                return "bg-transparent border-2 border-[#F6C343] text-[#F6C343] hover:bg-[#e3ae25] hover:text-white shadow-md hover:shadow-lg";
               default:
-                return "bg-gradient-to-r from-teal-500 to-teal-400 hover:from-teal-400 hover:to-teal-500 shadow-lg hover:shadow-xl";
+                return "bg-gradient-to-r from-[#F6C343] to-[#e3ae25] hover:from-[#F6C343] hover:to-[#e3ae25] shadow-lg hover:shadow-xl";
             }
           };
 
@@ -360,7 +360,7 @@ export default async function BlogDetail({ params }) {
               const id = URLFormatter(getText());
               return (
                 <Tag id={id} className={className}>
-                  <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full" />
+                  <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-[#F6C343] to-[#e3ae25] rounded-full" />
                   {children}
                 </Tag>
               );
@@ -368,27 +368,27 @@ export default async function BlogDetail({ params }) {
           return {
             h1: makeHeading(
               "h1",
-              "text-2xl md:text-5xl font-black mt-8 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-4",
+              "text-2xl md:text-5xl font-black mt-8 mb-6 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-4",
             ),
             h2: makeHeading(
               "h2",
-              "text-2xl md:text-3xl font-bold mt-8 mb-8 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-3",
+              "text-2xl md:text-3xl font-bold mt-8 mb-8 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-3",
             ),
             h3: makeHeading(
               "h3",
-              "text-2xl md:text-3xl font-bold mt-12 mb-6 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+              "text-2xl md:text-3xl font-bold mt-12 mb-6 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2",
             ),
             h4: makeHeading(
               "h4",
-              "text-2xl font-semibold mt-10 mb-4 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+              "text-2xl font-semibold mt-10 mb-4 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2",
             ),
             h5: makeHeading(
               "h5",
-              "text-xl font-semibold mt-8 mb-3 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2",
+              "text-xl font-semibold mt-8 mb-3 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2",
             ),
             h6: makeHeading(
               "h6",
-              "text-lg font-semibold mt-6 mb-2 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-1",
+              "text-lg font-semibold mt-6 mb-2 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-1",
             ),
           };
         })(),
@@ -399,8 +399,8 @@ export default async function BlogDetail({ params }) {
           </p>
         ),
         blockquote: ({ children }) => (
-          <blockquote className="relative my-12 p-8 bg-gradient-to-br from-teal-400/5 to-teal-500/10 rounded-2xl shadow-lg border border-teal-400/20">
-            <div className="absolute top-4 left-6 text-6xl text-teal-400/30 font-serif">
+          <blockquote className="relative my-12 p-8 bg-gradient-to-br from-[#F6C343]/5 to-[#e3ae25]/10 rounded-2xl shadow-lg border border-[#F6C343]/20">
+            <div className="absolute top-4 left-6 text-6xl text-[#F6C343]/30 font-serif">
               "
             </div>
             <div className="pl-8 italic text-gray-700 text-xl leading-relaxed font-medium">
@@ -429,13 +429,13 @@ export default async function BlogDetail({ params }) {
       listItem: {
         bullet: ({ children }) => (
           <li className="text-lg leading-relaxed text-gray-700 flex items-start gap-4 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300">
-            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full mt-2 flex-shrink-0"></div>
             <div className="flex-1">{children}</div>
           </li>
         ),
         number: ({ children }) => (
           <li className="text-lg leading-relaxed text-gray-700 flex items-start gap-4 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list">
-            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+            <div className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
               <span className="counter-content"></span>
             </div>
             <div className="flex-1">{children}</div>

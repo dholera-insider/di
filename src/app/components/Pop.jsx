@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { FaUser, FaPhoneAlt, FaClock, FaMapMarkerAlt } from "react-icons/fa";
+import { FaUser, FaClock } from "react-icons/fa";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/app/assets/icons/logo.webp";
+import logo from "@/app/assets/icons/logo.png";
 import { useRouter, usePathname } from "next/navigation"
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "./InternationalPhoneInput";
 
 export default function Popup({
   onClose,
@@ -14,7 +18,7 @@ export default function Popup({
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "" });
-  const [showFormPopup, setShowFormPopup] = useState(true); 
+  const [showFormPopup, setShowFormPopup] = useState(true);
   const [showSubmissionSuccess, setShowSubmissionSuccess] = useState(false);
   const [submissionCount, setSubmissionCount] = useState(0);
   const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
@@ -150,8 +154,8 @@ export default function Popup({
       return false;
     }
 
-    if (!/^\d{10,15}$/.test(formData.phone)) {
-      setErrorMessage("Please enter a valid phone number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.phone)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -187,7 +191,7 @@ export default function Popup({
           body: JSON.stringify({
             fields: {
               name: formData.fullName,
-              phone: formData.phone,
+              phone: getInternationalPhoneValue(formData.phone),
               source: "Dholera Insider",
             },
             source: "Dholera Insider",
@@ -288,7 +292,7 @@ export default function Popup({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-gray-900 flex justify-center items-center z-[1001]"
+            className="fixed inset-0 bg-[#051A3A] flex justify-center items-center z-[1001]"
           >
             <motion.div
               initial={{ scale: 0.5, y: 50 }}
@@ -302,10 +306,10 @@ export default function Popup({
                 transition={{ delay: 0.2 }}
                 className="mb-6"
               >
-                <div className="w-24 h-24 bg-amber-200 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-24 h-24 bg-[#F6C343] rounded-full flex items-center justify-center mx-auto">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-12 w-12 text-black"
+                    className="h-12 w-12 text-[#051A3A]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -359,35 +363,18 @@ export default function Popup({
             initial={{ scale: 0.9, y: 50, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.9, y: 50, opacity: 0 }}
-            className="bg-gray-900 rounded-2xl shadow-2xl max-w-lg w-full relative overflow-visible border border-amber-200"
+            className="bg-[#051A3A] rounded-2xl shadow-2xl max-w-lg w-full relative overflow-visible border border-[#F6C343]"
             onClick={handleModalContentClick}
           >
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 z-20">
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="bg-gradient-to-r from-gray-900 via-emerald-900 to-teal-900 p-4 rounded-full shadow-2xl border-4 border-white relative"
-              >
-                <Image
-                  src={logo}
-                  alt="Logo"
-                  width={50}
-                  height={50}
-                  className="rounded-full"
-                />
-                {/* Shine effect */}
-                <div className="absolute top-2 left-2 w-4 h-4 bg-white opacity-40 rounded-full blur-sm"></div>
-              </motion.div>
-            </div>
+
 
             {/* Header Section with Gradient Background */}
-            <div className="bg-gradient-to-r from-gray-900 via-emerald-900 to-teal-900 text-white p-6 pb-8 pt-12 relative rounded-t-2xl">
+            <div className="bg-[#051A3A] text-white p-6 pb-8 pt-12 relative rounded-t-2xl">
               {/* Close Button */}
               <button
                 type="button"
                 onClick={handleClose}
-                className="absolute top-4 right-4 text-white/80 hover:text-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-200/50 rounded-full p-2 transition-all duration-200 hover:bg-gray-800 z-10"
+                className="absolute top-4 right-4 text-white/80 hover:text-[#F6C343] focus:outline-none focus:ring-2 focus:ring-[#F6C343]/50 rounded-full p-2 transition-all duration-200 hover:bg-[#FDFCFA]/10 z-10"
                 aria-label="Close form"
               >
                 <svg
@@ -409,12 +396,12 @@ export default function Popup({
               {/* Content Section */}
               <div className="text-center">
 
-                <h2 className="text-xl md:text-2xl font-bold mb-1 leading-tight text-amber-200">
+                <h2 className="text-xl md:text-2xl font-bold mb-1 leading-tight text-[#F6C343]">
                 Registry Ready Plots in Dholera
                 </h2>
 
                 {titleInfo.timeLeft && (
-                  <div className="bg-amber-200 text-black px-4 py-2 rounded-lg inline-flex items-center gap-2 font-bold mb-6">
+                  <div className="bg-[#F6C343] text-[#051A3A] px-4 py-2 rounded-lg inline-flex items-center gap-2 font-bold mb-6">
                     <FaClock className="text-sm" />
                     {formatTime(timeLeft)} left!
                   </div>
@@ -423,7 +410,7 @@ export default function Popup({
             </div>
 
             {/* Form Section */}
-            <div className="p-6 bg-gradient-to-r from-gray-900 via-emerald-900 to-teal-900 rounded-b-2xl">
+            <div className="p-6 bg-[#051A3A] rounded-b-2xl">
               {showSubmissionSuccess ? (
                 <div className="text-center py-8">
                   <motion.div
@@ -431,10 +418,10 @@ export default function Popup({
                     animate={{ scale: 1 }}
                     className="mb-4 inline-block"
                   >
-                    <div className="w-16 h-16 bg-amber-200 rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-16 h-16 bg-[#F6C343] rounded-full flex items-center justify-center mx-auto">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-10 w-10 text-black"
+                        className="h-10 w-10 text-[#051A3A]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -448,10 +435,10 @@ export default function Popup({
                       </svg>
                     </div>
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-amber-200 mb-2">
+                  <h3 className="text-2xl font-bold text-[#F6C343] mb-2">
                     Thank You!
                   </h3>
-                  <p className="text-gray-800">
+                  <p className="text-[#FDFCFA]/80">
                     Your request has been submitted successfully. We'll contact
                     you shortly.
                   </p>
@@ -462,7 +449,7 @@ export default function Popup({
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm"
+                      className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]"
                     >
                       {errorMessage}
                     </motion.div>
@@ -474,14 +461,14 @@ export default function Popup({
                     transition={{ delay: 0.4 }}
                     className="relative"
                   >
-                    <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-200" />
+                    <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#6C7484]" />
                     <input
                       name="fullName"
                       placeholder="Enter your full name"
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full p-3 pl-12 bg-gray-900 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-200 border border-gray-600 hover:border-amber-200 transition-colors"
+                      className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] p-3 pl-12 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                     />
                   </motion.div>
 
@@ -491,17 +478,17 @@ export default function Popup({
                     transition={{ delay: 0.5 }}
                     className="relative"
                   >
-                    <FaPhoneAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-200" />
-                    <input
-                      name="phone"
-                      type="tel"
-                      placeholder="Enter your phone number"
+                    <InternationalPhoneInput
                       value={formData.phone}
-                      onChange={handleChange}
-                      minLength="10"
-                      maxLength="15"
-                      required
-                      className="w-full p-3 pl-12 bg-gray-900 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-200 border border-gray-600 hover:border-amber-200 transition-colors"
+                      onChange={(phone) => {
+                        setFormData((prevData) => ({ ...prevData, phone }));
+                        setErrorMessage("");
+                      }}
+                      inputProps={{
+                        id: "phone",
+                        name: "phone",
+                        placeholder: "Enter phone number",
+                      }}
                     />
                   </motion.div>
 
@@ -519,11 +506,11 @@ export default function Popup({
                     type="submit"
                     id="popup"
                     disabled={isLoading || !recaptchaLoaded}
-                    className="w-full py-4 px-6 bg-amber-200 text-black rounded-xl hover:bg-amber-200/90 transition-all shadow-lg hover:shadow-amber-200/25 font-bold text-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-4 px-6 bg-[#F6C343] text-[#051A3A] rounded-lg hover:bg-[#FDFCFA] transition-all shadow-lg hover:shadow-[#F6C343]/25 font-bold text-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isLoading ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+                        <div className="w-5 h-5 border-2 border-[#051A3A]/30 border-t-[#051A3A] rounded-full animate-spin"></div>
                         Verifying...
                       </>
                     ) : recaptchaLoaded ? (
@@ -535,7 +522,7 @@ export default function Popup({
                     )}
                   </motion.button>
 
-                  <p className="text-xs text-gray-400 text-center">
+                  <p className="text-xs text-[#FDFCFA]/70 text-center">
                     We respect your privacy. Your details are safe with us.
                   </p>
                 </form>

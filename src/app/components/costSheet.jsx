@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import icon from "@/app/assets/images/pdfIcon.webp"
+import InternationalPhoneInput, { getInternationalPhoneValue } from "./InternationalPhoneInput";
 
 function formatIndianNumber(value) {
   return parseFloat(value).toLocaleString('en-IN', {
@@ -66,6 +67,7 @@ export default function CostSheet() {
     const doc = new jsPDF();
 
     const { name, phone, email, plc, plotNo, plotAreaYards, plotAreaFeet, totalPaymentYards, maintenanceRate, maintenanceCharge, legalFees, oneTimeMaintenance, totalCharges, plotTotalPayment } = formData;
+    const formattedPhone = getInternationalPhoneValue(phone);
 
     let startY = 40;
 
@@ -100,7 +102,7 @@ export default function CostSheet() {
         startY: startY,
         body: [
           ['Name', name],
-          ['Phone', phone],
+          ['Phone', formattedPhone],
           ['Email', email],
           ['PlotNo', plotNo],
           ['Plot Area (Sq. Yards)', plotAreaYards],
@@ -184,10 +186,10 @@ export default function CostSheet() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white shadow-xl shadow-gray-500 rounded-lg p-6 mt-10">
-      <p className="text-center text-3xl font-bold text-gray-700 mb-4">Plot Price Calculation</p>
+    <div className="max-w-3xl mx-auto bg-[#051A3A] shadow-xl shadow-gray-500 rounded-lg p-6 mt-10 border border-[#F6C343]">
+      <p className="text-center text-3xl font-bold text-white mb-4">Plot Price Calculation</p>
       <form>
-        <table className="w-full border-collapse">
+        <table className="w-full border-collapse overflow-hidden rounded-lg bg-[#FDFCFA] text-[#162033]">
           <tbody>
             {/* Name */}
             <tr className="border-b">
@@ -206,12 +208,17 @@ export default function CostSheet() {
             <tr className="border-b">
               <td className="p-2 font-semibold">Phone Number</td>
               <td className="p-2">
-                <input
-                  type="number"
-                  name="phone"
+                <InternationalPhoneInput
                   value={formData.phone}
-                  onChange={handleChange}
-                  className="border p-2 w-full rounded"
+                  onChange={(phone) =>
+                    setFormData((prevData) => ({ ...prevData, phone }))
+                  }
+                  inputClass="!w-full !h-[42px] !rounded !border !border-[#2B364D] !bg-[#FDFCFA] !py-2 !pl-14 !pr-2 !text-[#162033] placeholder:!text-[#6C7484] focus:!outline-none focus:!ring-2 focus:!ring-[#F6C343]"
+                  buttonClass="!rounded-l !border !border-[#2B364D] !bg-[#FDFCFA] hover:!bg-[#FDFCFA]"
+                  inputProps={{
+                    id: "phone",
+                    name: "phone",
+                  }}
                 />
               </td>
             </tr>
@@ -412,7 +419,7 @@ export default function CostSheet() {
         <button
           type="button"
           onClick={generatePDF}
-          className="bg-blue-600 text-white p-2 mt-6 w-full rounded hover:bg-blue-700 transition-colors"
+          className="bg-[#F6C343] text-[#051A3A] font-bold p-2 mt-6 w-full rounded hover:bg-[#FDFCFA] transition-colors"
         >
           Generate PDF
         </button>

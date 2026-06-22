@@ -107,13 +107,13 @@ export default function Info() {
       }}
     >
       {/* Teal overlay */}
-      <div className="absolute inset-0 bg-teal-900 bg-opacity-90" />
+      <div className="absolute inset-0 bg-[#051A3A] bg-opacity-90" />
 
       <div className="relative z-10 max-w-screen-xl mx-auto">
 
         {/* ── Header ── */}
         <div className="mb-6 max-w-3xl">
-          <p className="text-teal-400 pt-8 text-xs font-semibold tracking-widest uppercase mb-2">
+          <p className="text-[#F6C343] pt-8 text-xs font-semibold tracking-widest uppercase mb-2">
             Dholera Special Investment Region
           </p>
           <h1 className="text-4xl font-bold text-white leading-tight mb-3">
@@ -123,17 +123,17 @@ export default function Info() {
 
         {/* ── Vision Block ── */}
         <div className="mb-8 max-w-3xl">
-          <h2 className="text-teal-300 text-lg font-semibold mb-2">The Vision of Dholera SIR</h2>
-          <p className="text-teal-200 text-sm leading-relaxed">
+          <h2 className="text-[#F6C343] text-lg font-semibold mb-2">The Vision of Dholera SIR</h2>
+          <p className="text-[#FDFCFA]/85 text-sm leading-relaxed">
             Dholera Special Investment Region (SIR) represents India's smart city vision and is the first city developed under the Gujarat Special Investment Region (SIR) Act. Spread across 922.5 sq. km, it is a greenfield smart city and a key node of the Delhi–Mumbai Industrial Corridor (DMIC), being developed with strong support from the Government of India and the Government of Gujarat.
           </p>
-          <p className="text-teal-200 text-sm leading-relaxed mt-3">
+          <p className="text-[#FDFCFA]/85 text-sm leading-relaxed mt-3">
             Planned as a self-sustained global hub for manufacturing, innovation, and urban living, Dholera combines advanced technology, world-class infrastructure, and sustainable design setting a new benchmark for future Indian cities.
           </p>
-          <p className="text-teal-200 text-sm leading-relaxed mt-3">
+          <p className="text-[#FDFCFA]/85 text-sm leading-relaxed mt-3">
             Dholera isn't just a project - it represents India's response to the evolving needs of modern smart cities, bringing together digital governance, green energy, and inclusive growth.
           </p>
-          <div className="mt-6 h-px bg-teal-700" />
+          <div className="mt-6 h-px bg-[#051A3A]" />
         </div>
 
         {/* ── Stats Row ── */}
@@ -144,9 +144,9 @@ export default function Info() {
             /* { value: "2× Delhi", label: "Size Comparison" }, */
             { value: "2047", label: "Target Completion" },
           ].map((s) => (
-            <div key={s.label} className="bg-teal-800 bg-opacity-60 rounded-xl px-5 py-4 border border-teal-700">
+            <div key={s.label} className="bg-[#051A3A] bg-opacity-60 rounded-xl px-5 py-4 border border-[#F6C343]">
               <p className="text-white text-2xl font-bold">{s.value}</p>
-              <p className="text-teal-300 text-xs mt-1">{s.label}</p>
+              <p className="text-[#F6C343] text-xs mt-1">{s.label}</p>
             </div>
           ))}
         </div>
@@ -158,27 +158,27 @@ export default function Info() {
               <div className="bg-white rounded-2xl overflow-hidden flex flex-col h-full hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <div className="relative h-40 w-full">
                   <Image src={item.image} alt={item.title} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 bg-teal-800 bg-opacity-80 text-teal-100 text-xs font-semibold px-3 py-1 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A] via-transparent to-transparent" />
+                  <span className="absolute top-3 left-3 bg-[#051A3A] bg-opacity-80 text-[#FDFCFA]/85 text-xs font-semibold px-3 py-1 rounded-full">
                     {item.tag}
                   </span>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#F6C343]/15 text-[#051A3A] flex items-center justify-center flex-shrink-0">
                       {item.icon}
                     </div>
-                    <h3 className="text-teal-900 font-semibold text-base leading-tight">{item.title}</h3>
+                    <h3 className="text-[#051A3A] font-semibold text-base leading-tight">{item.title}</h3>
                   </div>
                   <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">{item.description}</p>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {item.highlights.map((h) => (
-                      <span key={h} className="bg-teal-50 text-teal-700 text-xs px-2 py-0.5 rounded-full border border-teal-100">{h}</span>
+                      <span key={h} className="bg-[#F6C343]/15 text-[#051A3A] text-xs px-2 py-0.5 rounded-full border border-[#F6C343]/25">{h}</span>
                     ))}
                   </div>
                   <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                    <span className="text-teal-700 text-xs font-semibold tracking-wide uppercase">View Details</span>
-                    <div className="w-7 h-7 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">
+                    <span className="text-[#051A3A] text-xs font-semibold tracking-wide uppercase">View Details</span>
+                    <div className="w-7 h-7 rounded-full bg-[#F6C343]/15 text-[#051A3A] flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
@@ -194,31 +194,31 @@ export default function Info() {
         <div className="mb-14">
           <div className="mb-6">
             <h2 className="text-white text-2xl font-bold mb-2">Why Dholera is the Future of India</h2>
-            <p className="text-teal-200 text-sm leading-relaxed max-w-2xl">
+            <p className="text-[#FDFCFA]/85 text-sm leading-relaxed max-w-2xl">
               Dholera offers the perfect balance of government support, strategic location, and affordability, making it one of India's most promising long-term development regions.
             </p>
           </div>
-          <p className="text-teal-400 text-xs font-semibold tracking-widest uppercase mb-4">Key Reasons Behind Dholera's Growth</p>
+          <p className="text-[#F6C343] text-xs font-semibold tracking-widest uppercase mb-4">Key Reasons Behind Dholera's Growth</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {whyReasons.map((r) => (
-              <div key={r.num} className="bg-teal-800 bg-opacity-50 border border-teal-700 rounded-xl p-5">
+              <div key={r.num} className="bg-[#051A3A] bg-opacity-50 border border-[#F6C343] rounded-xl p-5">
                 <div className="flex items-start gap-3">
-                  <span className="text-teal-400 text-lg font-bold leading-none">{r.num}.</span>
+                  <span className="text-[#F6C343] text-lg font-bold leading-none">{r.num}.</span>
                   <div>
                     <p className="text-white text-sm font-semibold mb-1">{r.title}</p>
-                    <p className="text-teal-200 text-xs leading-relaxed">{r.body}</p>
+                    <p className="text-[#FDFCFA]/85 text-xs leading-relaxed">{r.body}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-10 h-px bg-teal-700" />
+          <div className="mt-10 h-px bg-[#051A3A]" />
         </div>
 
         {/* ── Our Projects Section ── */}
         <div>
           <div className="mb-6">
-            <p className="text-teal-400 text-xs font-semibold tracking-widest uppercase mb-2">Our Projects</p>
+            <p className="text-[#F6C343] text-xs font-semibold tracking-widest uppercase mb-2">Our Projects</p>
             <h2 className="text-white text-2xl font-bold">Our Projects Near Dholera Smart City</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -227,27 +227,27 @@ export default function Info() {
                 <div className="bg-white rounded-2xl overflow-hidden flex flex-col h-full hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                   <div className="relative h-80 w-full">
                     <Image src={item.image} alt={item.title} fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 bg-teal-800 bg-opacity-80 text-teal-100 text-xs font-semibold px-3 py-1 rounded-full">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 bg-[#051A3A] bg-opacity-80 text-[#FDFCFA]/85 text-xs font-semibold px-3 py-1 rounded-full">
                       {item.tag}
                     </span>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <div className="flex items-start gap-2 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-8 h-8 rounded-full bg-[#F6C343]/15 text-[#051A3A] flex items-center justify-center flex-shrink-0 mt-0.5">
                         {item.icon}
                       </div>
-                      <h3 className="text-teal-900 font-semibold text-base leading-snug">{item.title}</h3>
+                      <h3 className="text-[#051A3A] font-semibold text-base leading-snug">{item.title}</h3>
                     </div>
                     <p className="text-gray-500 text-xs leading-relaxed mb-4 flex-1">{item.description}</p>
                     <div className="flex flex-wrap gap-1 mb-4">
                       {item.highlights.map((h) => (
-                        <span key={h} className="bg-teal-50 text-teal-700 text-xs px-2 py-0.5 rounded-full border border-teal-100">{h}</span>
+                        <span key={h} className="bg-[#F6C343]/15 text-[#051A3A] text-xs px-2 py-0.5 rounded-full border border-[#F6C343]/25">{h}</span>
                       ))}
                     </div>
                     <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                      <span className="text-teal-700 text-xs font-semibold tracking-wide uppercase">View Details</span>
-                      <div className="w-7 h-7 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center">
+                      <span className="text-[#051A3A] text-xs font-semibold tracking-wide uppercase">View Details</span>
+                      <div className="w-7 h-7 rounded-full bg-[#F6C343]/15 text-[#051A3A] flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                         </svg>

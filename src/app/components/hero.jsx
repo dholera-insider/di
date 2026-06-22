@@ -2,20 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { CheckCircle } from "lucide-react";
 import heroPoster from "@/app/assets/hero/idHero.webp";
-import Popup from "./Pop";
+import HeroLeadForm from "../homecomponents/HeroLeadForm";
+
+const trustPoints = [
+  "Legally Verified Residential Projects",
+  "Transparent Buying Process",
+  "Trusted by NRI Investors Worldwide",
+];
+
 const Hero = () => {
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  const [contactFormOpen, setContactFormOpen] = useState(false);
-
-  const openContactForm = () => {
-    setContactFormOpen(true);
-  };
-
-  const closeContactForm = () => {
-    setContactFormOpen(false);
-  };
 
   useEffect(() => {
     let timeoutId;
@@ -47,11 +45,11 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#FDFCFA]">
       <div className="absolute inset-0">
         <Image
           src={heroPoster}
-          alt=""
+          alt="Dholera residential plot projects for NRI investors"
           fill
           priority
           fetchPriority="high"
@@ -74,40 +72,47 @@ const Hero = () => {
         )}
       </div>
 
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCFA]/95 via-[#FDFCFA]/86 to-[#051A3A]/55"></div>
 
-      <div className="relative z-10 flex h-full items-center justify-center">
-        <div className="container mx-auto px-4 text-center text-white">
-          <div className="mx-auto max-w-4xl">
-            <h1 className="mb-6 text-2xl font-semibold md:text-4xl">
-              Buy Govt Approved Plots in Dholera
-            </h1>
+      <div className="relative max-w-7xl mx-auto z-10 flex min-h-screen items-center">
+        <div className="container mx-auto px-4 py-28 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)] lg:gap-12">
+            <div className="max-w-3xl">
+              <h1 className="mb-5 text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.05] text-[#051A3A]">
+                Decoding Dholera For NRI
+              </h1>
+             {/*  <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">
+                Decoding Dholera For NRI
+              </p> */}
 
-            <h2 className="mb-4 text-3xl font-bold text-teal-300 md:text-4xl">
-              Starting From ₹8 Lakh
-            </h2>
+              <p className="mb-6 max-w-2xl text-[clamp(1rem,1.5vw,1.125rem)] hidden md:block leading-[1.8] text-[#162033]">
+                Dholera Insider offers exclusive residential plot projects for
+                NRIs, with verified documentation, transparent pricing, and a
+                seamless remote buying experience.
+              </p>
 
-            <button
-              onClick={openContactForm}
-              className="mb-6 inline-block rounded-full bg-blue-600 px-6 py-2 text-sm font-medium transition duration-300 hover:bg-blue-700"
-            >
-            Book Your Plot Now
-            </button>
+              <div className="space-y-3">
+                <ul className="space-y-3">
+                  {trustPoints.map((point) => (
+                    <li
+                      key={point}
+                      className="flex items-start max-sm:font-semibold gap-3 text-[0.95rem] font-medium text-[#162033]"
+                    >
+                      <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#F6C343]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="w-full justify-self-center lg:justify-self-end">
+              <HeroLeadForm />
+            </div>
           </div>
         </div>
       </div>
-      {contactFormOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000] p-4">
-          <div className="w-full max-w-md">
-            <Popup
-              onClose={closeContactForm}
-              title="Get Full Project Details"
-              buttonName="Get Brochure"
-            />
-          </div>
-        </div>
-      )}
-    </div>
+    </section>
   );
 };
 

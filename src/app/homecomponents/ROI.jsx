@@ -34,10 +34,10 @@ const InvestmentTimeline = () => {
         "Infrastructure completion in progress",
         "Lowest risk, highest growth potential"
       ],
-      color: "bg-cyan-600",
-      bgColor: "bg-cyan-50",
-      borderColor: "border-cyan-200",
-      flipColor: "bg-cyan-600",
+      color: "bg-[#F6C343]",
+      bgColor: "bg-[#F6C343]/15",
+      borderColor: "border-[#F6C343]/25",
+      flipColor: "bg-[#F6C343]",
       progressPercentage: 0,
     },
     {
@@ -53,10 +53,10 @@ const InvestmentTimeline = () => {
         "Airport operational with domestic flights",
         "Expressway reduces travel time to 1 hour"
       ],
-      color: "bg-teal-400",
-      bgColor: "bg-teal-50",
-      borderColor: "border-teal-200",
-      flipColor: "bg-teal-400",
+      color: "bg-[#F6C343]",
+      bgColor: "bg-[#F6C343]/15",
+      borderColor: "border-[#F6C343]/25",
+      flipColor: "bg-[#F6C343]",
       progressPercentage: 33,
     },
     {
@@ -72,10 +72,10 @@ const InvestmentTimeline = () => {
         "50,000+ jobs created in region",
         "Semiconductor hub attracts global investment"
       ],
-      color: "bg-green-600",
-      bgColor: "bg-green-50",
-      borderColor: "border-green-200",
-      flipColor: "bg-green-600",
+      color: "bg-[#F6C343]",
+      bgColor: "bg-[#F6C343]/15",
+      borderColor: "border-[#F6C343]/25",
+      flipColor: "bg-[#F6C343]",
       progressPercentage: 66,
     },
     {
@@ -91,10 +91,10 @@ const InvestmentTimeline = () => {
         "Complete infrastructure operational",
         "Premium smart city premium pricing"
       ],
-      color: "bg-cyan-600",
-      bgColor: "bg-cyan-50",
-      borderColor: "border-cyan-200",
-      flipColor: "bg-cyan-600",
+      color: "bg-[#F6C343]",
+      bgColor: "bg-[#F6C343]/15",
+      borderColor: "border-[#F6C343]/25",
+      flipColor: "bg-[#F6C343]",
       progressPercentage: 100,
     },
   ];
@@ -212,7 +212,7 @@ const InvestmentTimeline = () => {
           />
           <div className="absolute right-0 top-1/2 transform -translate-y-1/2 -translate-x-1">
             <div className={`w-0 h-0 border-l-[6px] border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent transition-colors duration-500 ${
-              animatedItems.includes(index + 1) ? 'border-l-teal-400' : 'border-l-gray-400'
+              animatedItems.includes(index + 1) ? 'border-l-[#F6C343]' : 'border-l-gray-400'
             }`}></div>
           </div>
         </div>
@@ -251,9 +251,9 @@ const InvestmentTimeline = () => {
                 {milestone.year}
               </div>
               <div className={`text-lg font-semibold transition-all duration-500 ${
-                milestone.color === "bg-cyan-600" ? "text-cyan-600" :
-                milestone.color === "bg-teal-400" ? "text-teal-600" :
-                "text-green-600"
+                milestone.color === "bg-[#F6C343]" ? "text-[#F6C343]" :
+                milestone.color === "bg-[#F6C343]" ? "text-[#F6C343]" :
+                "text-[#F6C343]"
               } ${isAnimated ? 'animate-slide-up' : ''}`}>
                 {milestone.multiplier}
               </div>
@@ -320,7 +320,7 @@ const InvestmentTimeline = () => {
         {/* Animated background timeline for desktop */}
         <div className="hidden lg:block absolute top-16 left-0 right-0 h-1 bg-gray-200 z-0 overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-cyan-400 via-teal-400 to-green-400 transition-all duration-2000 ease-out"
+            className="h-full bg-gradient-to-r from-[#F6C343] via-[#F6C343] to-[#e3ae25] transition-all duration-2000 ease-out"
             style={{ width: `${progressWidth}%` }}
           />
         </div>
@@ -343,24 +343,24 @@ const InvestmentTimeline = () => {
       }`}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-            <ArrowUp className="w-6 h-6 mx-auto mb-2 text-cyan-600 group-hover:animate-bounce" />
-            <div className="text-[24px] text-cyan-600 mb-2 font-bold">
+            <ArrowUp className="w-6 h-6 mx-auto mb-2 text-[#F6C343] group-hover:animate-bounce" />
+            <div className="text-[24px] text-[#F6C343] mb-2 font-bold">
               {formatCurrency(counterValues.initial)}
             </div>
             <div className="text-gray-600">Initial Investment</div>
             <div className="text-sm text-gray-500 mt-1">(150 sq.ft plot)</div>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-            <TrendingUp className="w-6 h-6 mx-auto mb-2 text-green-600 group-hover:animate-bounce" />
-            <div className="text-[24px] text-green-600 mb-2 font-bold">
+            <TrendingUp className="w-6 h-6 mx-auto mb-2 text-[#F6C343] group-hover:animate-bounce" />
+            <div className="text-[24px] text-[#F6C343] mb-2 font-bold">
               {formatCurrency(counterValues.projected)}
             </div>
             <div className="text-gray-600">Projected Value by 2035</div>
             <div className="text-sm text-gray-500 mt-1">(10x returns)</div>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-            <Zap className="w-6 h-6 mx-auto mb-2 text-teal-600 group-hover:animate-spin" />
-            <div className="text-[24px] text-teal-600 mb-2 font-bold">
+            <Zap className="w-6 h-6 mx-auto mb-2 text-[#F6C343] group-hover:animate-spin" />
+            <div className="text-[24px] text-[#F6C343] mb-2 font-bold">
               {formatCurrency(counterValues.profit)}
             </div>
             <div className="text-gray-600">Potential Profit</div>

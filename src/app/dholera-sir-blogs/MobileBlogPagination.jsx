@@ -40,7 +40,7 @@ export default function MobileBlogPagination({ posts }) {
             type="button"
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
-            className="flex h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-[0.875rem] font-semibold text-gray-800 transition-colors hover:border-teal-900 hover:bg-teal-900 hover:text-black disabled:pointer-events-none disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400"
+            className="flex h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-[0.875rem] font-semibold text-gray-800 transition-colors hover:border-[#051A3A] hover:bg-[#2B364D] hover:text-black disabled:pointer-events-none disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400"
           >
             Prev
           </button>
@@ -53,7 +53,7 @@ export default function MobileBlogPagination({ posts }) {
             type="button"
             onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="flex h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-[0.875rem] font-semibold text-gray-800 transition-colors hover:border-teal-900 hover:bg-teal-900 hover:text-black disabled:pointer-events-none disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400"
+            className="flex h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-[0.875rem] font-semibold text-gray-800 transition-colors hover:border-[#051A3A] hover:bg-[#2B364D] hover:text-black disabled:pointer-events-none disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400"
           >
             Next
           </button>

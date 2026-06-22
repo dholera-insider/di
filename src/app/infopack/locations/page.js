@@ -7,13 +7,13 @@ import { FaMapMarkerAlt, FaVideo, FaBuilding } from "react-icons/fa";
   //naviagtion tab
 const FixedNavigation = ({ currentPage = "locations" }) => (
   <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-20 w-[95%] max-w-2xl">
-    <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-800 px-3 py-3 md:px-6 md:py-4">
+    <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-[#F6C343] px-3 py-3 md:px-6 md:py-4">
       <div className="flex items-center justify-center gap-2 md:gap-6">
         <Link
           href="/infopack/locations"
           className={`group flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-0.5 flex-1 md:flex-none justify-center border font-bold ${
             currentPage === "locations"
-              ? "bg-teal-800 text-white hover:shadow-teal-800 border-teal-800"
+              ? "bg-[#051A3A] text-white hover:shadow-[#051A3A] border-[#F6C343]"
               : "bg-white text-gray-600 hover:bg-gray-50 border-gray-300"
           }`}
         >
@@ -25,7 +25,7 @@ const FixedNavigation = ({ currentPage = "locations" }) => (
           href="/infopack/videos"
           className={`group flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-0.5 flex-1 md:flex-none justify-center border font-bold ${
             currentPage === "videos"
-              ? "bg-teal-800 text-white hover:shadow-teal-800 border-teal-800"
+              ? "bg-[#051A3A] text-white hover:shadow-[#051A3A] border-[#F6C343]"
               : "bg-white text-gray-600 hover:bg-gray-50 border-gray-300"
           }`}
         >
@@ -37,7 +37,7 @@ const FixedNavigation = ({ currentPage = "locations" }) => (
           href="/infopack/inventory"
           className={`group flex items-center gap-2 px-2 py-2 md:px-4 md:py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-0.5 flex-1 md:flex-none justify-center border font-bold ${
             currentPage === "inventory"
-              ? "bg-teal-800 text-white hover:shadow-teal-800 border-teal-800"
+              ? "bg-[#051A3A] text-white hover:shadow-[#051A3A] border-[#F6C343]"
               : "bg-white text-gray-600 hover:bg-gray-50 border-gray-300"
           }`}
         >
@@ -167,7 +167,7 @@ export default function LocationsComponent() {
               <span
                 className={`inline-flex items-center justify-center w-8 h-8 rounded-full transition-all duration-500 ${
                   expandedLocation === index
-                    ? "bg-teal-800 text-white"
+                    ? "bg-[#051A3A] text-white"
                     : "bg-gray-100 text-gray-500"
                 }`}
               >
@@ -230,7 +230,7 @@ export default function LocationsComponent() {
         {locations.map((location, index) => (
           <div
             key={index}
-            className="bg-teal-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="bg-[#051A3A] rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
             <div className="p-4 border-b border-gray-200">
               <h2 className="text-xl text-center font-semibold text-white">
@@ -249,7 +249,7 @@ export default function LocationsComponent() {
                 />
               </div>
             </div>
-            <div className="p-4 bg-teal-800 flex justify-center items-center">
+            <div className="p-4 bg-[#051A3A] flex justify-center items-center">
               <a
                 href={location.link}
                 target="_blank"
@@ -283,7 +283,7 @@ export default function LocationsComponent() {
               type="button"
               className={`px-4 py-2 text-sm font-medium rounded-l-lg border transition-all duration-300 ${
                 viewMode === "grid"
-                  ? "bg-teal-800 text-white border-teal-800"
+                  ? "bg-[#051A3A] text-white border-[#F6C343]"
                   : "bg-white text-gray-700 border-gray-200 hover:bg-gray-100"
               }`}
               onClick={() => setViewMode("grid")}
@@ -303,7 +303,7 @@ export default function LocationsComponent() {
               type="button"
               className={`px-4 py-2 text-sm font-medium rounded-r-lg border transition-all duration-300 ${
                 viewMode === "list"
-                  ? "bg-teal-800 text-white border-teal-800"
+                  ? "bg-[#051A3A] text-white border-[#F6C343]"
                   : "bg-white text-gray-700 border-gray-200 hover:bg-gray-100"
               }`}
               onClick={() => setViewMode("list")}

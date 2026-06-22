@@ -2,6 +2,10 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "./InternationalPhoneInput";
 
 export default function PopupScroll({title, subtitle}) {
   // Popup states
@@ -93,8 +97,8 @@ export default function PopupScroll({title, subtitle}) {
       return false;
     }
 
-    if (!/^\d{10,15}$/.test(formData.mobileNumber.replace(/\D/g, ''))) {
-      setErrorMessage("Please enter a valid mobile number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.mobileNumber)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -114,7 +118,7 @@ export default function PopupScroll({title, subtitle}) {
           body: JSON.stringify({
             fields: {
               name: formData.fullName,
-              phone: formData.mobileNumber,
+              phone: getInternationalPhoneValue(formData.mobileNumber),
               source: "Dholera Insider",
             },
             source: "Dholera Insider Popup",
@@ -211,7 +215,7 @@ export default function PopupScroll({title, subtitle}) {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-gradient-to-r from-gray-900 to-teal-900 animate-gradient-x rounded-xl p-8 max-w-md w-full shadow-2xl relative"
+            className="bg-[#051A3A] rounded-xl p-8 max-w-md w-full shadow-2xl border border-[#F6C343] relative"
             onClick={(e) => e.stopPropagation()}
           >
             {showThankYou ? (
@@ -221,10 +225,10 @@ export default function PopupScroll({title, subtitle}) {
                   animate={{ scale: 1 }}
                   className="mb-6"
                 >
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-[#F6C343] rounded-full flex items-center justify-center mx-auto">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8 text-white"
+                      className="h-8 w-8 text-[#051A3A]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -233,8 +237,8 @@ export default function PopupScroll({title, subtitle}) {
                     </svg>
                   </div>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">Thank You!</h3>
-                <p className="text-gray-600">We will contact you shortly.</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
+                <p className="text-[#FDFCFA]/80">We will contact you shortly.</p>
               </div>
             ) : (
               <>
@@ -242,7 +246,7 @@ export default function PopupScroll({title, subtitle}) {
                 <div className="text-center mb-6">
                   <button
                     onClick={handlePopupClose}
-                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
+                    className="absolute top-4 right-4 text-[#FDFCFA]/70 hover:text-[#F6C343] text-2xl"
                   >
                     ×
                   </button>
@@ -253,7 +257,7 @@ export default function PopupScroll({title, subtitle}) {
                 {/* Section 3: Form Fields */}
                 <form onSubmit={handleSubmit}>
                   {errorMessage && (
-                    <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm mb-4">
+                    <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA] mb-4">
                       {errorMessage}
                     </div>
                   )}
@@ -270,7 +274,7 @@ export default function PopupScroll({title, subtitle}) {
                         value={formData.fullName}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-4 py-3 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -279,15 +283,20 @@ export default function PopupScroll({title, subtitle}) {
                       <label htmlFor="mobileNumber" className="block text-white text-sm font-medium mb-2">
                         Mobile Number *
                       </label>
-                      <input
-                        type="tel"
-                        id="mobileNumber"
-                        name="mobileNumber"
+                      <InternationalPhoneInput
                         value={formData.mobileNumber}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        placeholder="Enter your mobile number"
+                        onChange={(phone) => {
+                          setFormData((prevData) => ({
+                            ...prevData,
+                            mobileNumber: phone,
+                          }));
+                          setErrorMessage("");
+                        }}
+                        inputProps={{
+                          id: "mobileNumber",
+                          name: "mobileNumber",
+                          placeholder: "Enter phone number",
+                        }}
                       />
                     </div>
                   </div>
@@ -302,8 +311,8 @@ export default function PopupScroll({title, subtitle}) {
                     disabled={isLoading || !recaptchaLoaded}
                     className={`w-full font-bold py-3 px-6 rounded-lg transition-all duration-300 ${
                       isLoading || !recaptchaLoaded
-                        ? "bg-gray-400 cursor-not-allowed text-gray-600"
-                        : "bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 text-white transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
+                        ? "bg-[#6C7484] cursor-not-allowed text-[#FDFCFA]"
+                        : "bg-[#F6C343] hover:bg-[#FDFCFA] disabled:bg-[#6C7484] text-[#051A3A] transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
                     }`}
                   >
                     {isLoading ? (

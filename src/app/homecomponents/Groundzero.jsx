@@ -169,9 +169,9 @@ export default function Groundzero() {
 
   return (
     <>
-      <div className='py-12 bg-white min-h-[480px]'>
+      <div className='min-h-[480px] bg-[#FDFCFA] py-12'>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className='text-[clamp(1.5rem,3vw,2.5rem)] leading-[clamp(2rem,4vw,3.5rem)] text-center font-bold text-gray-800 mb-4'>
+          <p className='mb-4 text-center text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-[#051A3A]'>
             Exclusive Updates of Dholera
           </p>
           {/* <p className='text-gray-600 text-sm md:text-lg text-center mb-12 max-w-5xl mx-auto'>
@@ -190,7 +190,7 @@ export default function Groundzero() {
                   className="flex-shrink-0 w-64 md:w-80 mx-3 snap-center cursor-pointer transform transition-all duration-300 hover:scale-105"
                   onClick={() => handleImageClick(index)}
                 >
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+                  <div className="overflow-hidden rounded-xl border border-[#2B364D]/15 bg-[#FDFCFA] shadow-lg transition-shadow duration-300 hover:shadow-2xl">
                     <div className="relative w-full h-48 md:h-56">
                       <Image 
                         src={image.src} 
@@ -202,7 +202,7 @@ export default function Groundzero() {
                       />
                     </div>
                     <div className="p-4">
-                      <p className="text-sm text-gray-600 truncate font-medium">{image.alt}</p>
+                      <p className="truncate text-sm font-medium text-[#2B364D]">{image.alt}</p>
                     </div>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function Groundzero() {
             {isClient && (
               <>
                 <button 
-                  className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hidden md:flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
+                  className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 transform items-center justify-center rounded-full bg-[#FDFCFA]/90 p-3 text-[#051A3A] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#F6C343] md:flex"
                   onClick={() => handleArrowClick('prev')}
                   aria-label="Previous slide"
                 >
@@ -222,7 +222,7 @@ export default function Groundzero() {
                   </svg>
                 </button>
                 <button 
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hidden md:flex items-center justify-center z-10 transition-all duration-300 hover:scale-110"
+                  className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 transform items-center justify-center rounded-full bg-[#FDFCFA]/90 p-3 text-[#051A3A] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#F6C343] md:flex"
                   onClick={() => handleArrowClick('next')}
                   aria-label="Next slide"
                 >
@@ -240,7 +240,7 @@ export default function Groundzero() {
               <button
                 key={index}
                 className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                  currentIndex === index ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
+                  currentIndex === index ? 'scale-125 bg-[#F6C343]' : 'bg-[#2B364D]/25 hover:bg-[#2B364D]/45'
                 }`}
                 onClick={() => handleDotClick(index)}
                 aria-label={`Go to slide ${index + 1}`}

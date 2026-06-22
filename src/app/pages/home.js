@@ -8,21 +8,23 @@ import WhyDI from "../homecomponents/WhyDI";
 import WestWyn_Estate from "../homecomponents/WestWyn_Estate";
 import FAQSection from "../homecomponents/Faq";
 import LatestUpdates from "../homecomponents/FeaturedBlogs";
-import Dholera from "../homecomponents/Dholera";
 import TestimonialPagination from "../homecomponents/Testimonials";
-import Groundzero from "../homecomponents/Groundzero";
+import RemoteBuying from "../homecomponents/RemoteBuying";
+import Icon from "../homecomponents/Icon";
+import { LegalSupport } from "../homecomponents/LegalSupport";
 
 const HomePage = () => {
   return (
-    <div className="dark:bg-bgDark">
+    <div className="bg-[#FDFCFA] text-[#162033] dark:bg-bgDark">
       <Hero />
+      {/* <Countries /> */}
+      <Icon />
       <Invest />
-   
       <WestWyn_Estate />
       <LazyCommonFormSection title="Own a Govt Approved Plot in Dholera" />
       <WhyDI />
-      <LatestUpdates />
-      <Groundzero />
+      <LegalSupport/>
+      <RemoteBuying />
       <CTAsection />
       <FAQSection />
       <TestimonialPagination />

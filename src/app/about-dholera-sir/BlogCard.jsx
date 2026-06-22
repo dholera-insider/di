@@ -33,13 +33,13 @@ export default function BlogCard({ post }) {
               className="object-cover"
             />
           ) : (
-            <div className="h-full bg-gradient-to-br from-teal-400 to-teal-600"></div>
+            <div className="h-full bg-gradient-to-br from-[#F6C343] to-[#e3ae25]"></div>
           )}
         </div>
 
         {/* Content */}
         <div className="p-6">
-          <h2 className="text-xl font-bold mb-3 text-black group-hover:text-teal-600 line-clamp-2 transition-colors">
+          <h2 className="text-xl font-bold mb-3 text-black group-hover:text-[#F6C343] line-clamp-2 transition-colors">
             {post.title}
           </h2>
 
@@ -47,14 +47,14 @@ export default function BlogCard({ post }) {
           <div className="border-t border-gray-200 pt-4 mt-auto">
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center justify-center">
-                <span className="inline-block w-2 h-2 rounded-full bg-teal-700 mr-2"></span>
+                <span className="inline-block w-2 h-2 rounded-full bg-[#051A3A] mr-2"></span>
                 <div className="text-black">
                   <p>
                     {formatDate(post.publishedAt)}
                   </p>
                 </div>
               </div>
-              <span className="text-teal-500 font-medium">
+              <span className="text-[#F6C343] font-medium">
                 Read More &rarr;
               </span>
             </div>

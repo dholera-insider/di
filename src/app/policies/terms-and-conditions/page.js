@@ -10,13 +10,13 @@ export default function TermsConditions() {
               <p className="text-4xl text-white font-bold text-center z-20 relative mt-16 drop-shadow-lg">
                 Terms & Conditions
               </p>
-              <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-teal-600 mt-4 rounded-full"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mt-4 rounded-full"></div>
             </div>
           </div>
 
           <div className="mt-10 text-lg space-y-5 pb-8 max-sm:mr-4 max-sm:ml-4">
             <div className="flex flex-col justify-center items-center mt-20">
-              <h1 className="md:text-9xl text-4xl text-teal-300 opacity-10 font-black text-center z-0 absolute left-0 w-full">
+              <h1 className="md:text-9xl text-4xl text-[#F6C343] opacity-10 font-black text-center z-0 absolute left-0 w-full">
                 Terms & Conditions
               </h1>
             </div>

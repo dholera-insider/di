@@ -1,5 +1,4 @@
 import HomePage from "./pages/home";
-import HomePopupController from "./components/HomePopupController";
 
 export default function App() {
   return (
@@ -91,7 +90,6 @@ export default function App() {
       <div>
         <HomePage />
       </div>
-      <HomePopupController />
     </>
   );
 }

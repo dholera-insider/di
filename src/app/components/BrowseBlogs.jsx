@@ -29,7 +29,7 @@ const RelatedBlogCard = ({ blog }) => {
       {/* Content */}
       <div className="flex flex-col flex-grow p-5">
         {/* Title */}
-        <h3 className="text-xl font-semibold mb-3 text-teal-950 line-clamp-2 h-14">
+        <h3 className="text-xl font-semibold mb-3 text-[#051A3A] line-clamp-2 h-14">
           {blog.title}
         </h3>
 
@@ -44,7 +44,7 @@ const RelatedBlogCard = ({ blog }) => {
           </time>
           <div>
             Posted By{" "}
-            <span className="font-medium text-teal-700">Dholera Insider</span>
+            <span className="font-medium text-[#051A3A]">Dholera Insider</span>
           </div>
         </div>
 
@@ -53,7 +53,7 @@ const RelatedBlogCard = ({ blog }) => {
           href={`/dholera-sir-blogs/${blog.slug.current}`}
           className="mt-auto"
         >
-          <button className="w-full px-4 py-2 text-white bg-teal-700 hover:bg-teal-800 transition-colors duration-300 rounded-md">
+          <button className="w-full px-4 py-2 text-white bg-[#051A3A] hover:bg-[#2B364D] transition-colors duration-300 rounded-md">
             Read More
           </button>
         </Link>
@@ -116,7 +116,7 @@ export default function LatestUpdates() {
   if (error) {
     return (
       <div className="max-w-7xl mx-auto py-16 px-4">
-        <p className="text-[28px] font-semibold mb-6 text-center text-teal-950">Featured Blogs</p>
+        <p className="text-[28px] font-semibold mb-6 text-center text-[#051A3A]">Featured Blogs</p>
         <div className="text-center text-red-500">
           <p>Error loading blogs. Please try again later.</p>
         </div>
@@ -127,9 +127,9 @@ export default function LatestUpdates() {
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 bg-gray-50">
       <div className="w-full px-2 mb-10 text-center">
-        <h3 className="font-bold text-2xl md:text-3xl mb-3 relative inline-block pb-2 text-teal-950">
+        <h3 className="font-bold text-2xl md:text-3xl mb-3 relative inline-block pb-2 text-[#051A3A]">
           Featured Blogs
-          <span className="absolute bottom-0 left-1/4 right-1/4 h-1 rounded-full bg-teal-700"></span>
+          <span className="absolute bottom-0 left-1/4 right-1/4 h-1 rounded-full bg-[#051A3A]"></span>
         </h3>
         <p className="text-sm md:text-base max-w-2xl mx-auto text-gray-600 mt-4">
           Handpicked reads to stay ahead with Expert views on Dholera

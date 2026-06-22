@@ -1,6 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { FaUser, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaUser, FaEnvelope } from "react-icons/fa";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "../components/InternationalPhoneInput";
 
 export default function LeadForm({ title, headline, buttonName, onClose }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -70,8 +74,8 @@ export default function LeadForm({ title, headline, buttonName, onClose }) {
       return false;
     }
 
-    if (!/^\d{10,15}$/.test(formData.phone.replace(/\D/g, ""))) {
-      setErrorMessage("Please enter a valid phone number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.phone)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -118,7 +122,7 @@ export default function LeadForm({ title, headline, buttonName, onClose }) {
           body: JSON.stringify({
             fields: {
               name: formData.fullName,
-              phone: formData.phone,
+              phone: getInternationalPhoneValue(formData.phone),
               email: formData.email,
               source: "Dholera Insider",
             },
@@ -210,16 +214,16 @@ export default function LeadForm({ title, headline, buttonName, onClose }) {
 
   return (
     <div className="relative">
-      <div className="bg-gradient-to-b from-blue-50 to-white p-8 shadow-2xl w-full mx-auto border border-gray-200 rounded-xl">
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
+      <div className="bg-[#051A3A] p-8 shadow-2xl w-full mx-auto border border-[#F6C343] rounded-xl">
+        <h2 className="text-2xl font-semibold text-center text-white mb-6">
           {title}
         </h2>
-        <h2 className="text-sm font-medium text-center text-gray-800 mb-6">
+        <h2 className="text-sm font-medium text-center text-[#FDFCFA]/80 mb-6">
           {headline}
         </h2>
 
         {errorMessage && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          <div className="mb-4 rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-[#FDFCFA]">
             {errorMessage}
           </div>
         )}
@@ -233,41 +237,43 @@ export default function LeadForm({ title, headline, buttonName, onClose }) {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name Input */}
             <div className="relative">
-              <FaUser className="absolute left-4 top-4 text-gray-500" />
+              <FaUser className="absolute left-4 top-4 text-[#6C7484]" />
               <input
                 name="fullName"
                 placeholder="Full Name *"
                 value={formData.fullName}
                 onChange={handleChange}
                 required
-                className="w-full p-4 pl-12 rounded-xl border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm"
+                className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] p-4 pl-12 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343] transition shadow-sm"
               />
             </div>
 
             {/* Email Input */}
             <div className="relative">
-              <FaEnvelope className="absolute left-4 top-4 text-gray-500" />
+              <FaEnvelope className="absolute left-4 top-4 text-[#6C7484]" />
               <input
                 name="email"
                 type="email"
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-4 pl-12 rounded-xl border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm"
+                className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] p-4 pl-12 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343] transition shadow-sm"
               />
             </div>
 
             {/* Phone Number Input */}
             <div className="relative">
-              <FaPhoneAlt className="absolute left-4 top-4 text-gray-500" />
-              <input
-                name="phone"
-                type="tel"
-                placeholder="Phone Number *"
+              <InternationalPhoneInput
                 value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full p-4 pl-12 rounded-xl border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm"
+                onChange={(phone) => {
+                  setFormData((prevData) => ({ ...prevData, phone }));
+                  setErrorMessage("");
+                }}
+                inputProps={{
+                  id: "phone",
+                  name: "phone",
+                  placeholder: "Phone Number *",
+                }}
               />
             </div>
 
@@ -282,8 +288,8 @@ export default function LeadForm({ title, headline, buttonName, onClose }) {
               disabled={isLoading || isDisabled || !recaptchaLoaded}
               className={`w-full p-4 text-white text-lg font-semibold rounded-xl shadow-md transition-all duration-300 ${
                 isLoading || isDisabled || !recaptchaLoaded
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-teal-700 hover:bg-teal-500 hover:shadow-lg active:scale-95"
+                  ? "bg-[#6C7484] cursor-not-allowed text-[#FDFCFA]"
+                  : "bg-[#F6C343] text-[#051A3A] hover:bg-[#FDFCFA] hover:shadow-lg active:scale-95"
               }`}
             >
               {isLoading ? "Submitting..." : "Get A Call Back"}
@@ -295,17 +301,17 @@ export default function LeadForm({ title, headline, buttonName, onClose }) {
       {/* Success Popup */}
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white p-8 rounded-xl max-w-md w-full shadow-lg">
-            <h3 className="text-2xl font-bold text-center text-gray-800 mb-4">
+          <div className="bg-[#051A3A] p-8 rounded-xl max-w-md w-full shadow-lg border border-[#F6C343]">
+            <h3 className="text-2xl font-bold text-center text-white mb-4">
               Thank You!
             </h3>
-            <p className="text-center text-gray-600 mb-6">
+            <p className="text-center text-[#FDFCFA]/80 mb-6">
               Your form has been submitted successfully. We'll get back to you
               soon.
             </p>
             <button
               onClick={() => setShowPopup(false)}
-              className="w-full bg-teal-700 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-300"
+              className="w-full bg-[#F6C343] hover:bg-[#FDFCFA] text-[#051A3A] font-semibold py-3 px-4 rounded-lg transition duration-300"
             >
               Close
             </button>

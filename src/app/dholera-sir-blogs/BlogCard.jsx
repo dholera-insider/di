@@ -33,13 +33,13 @@ export default function BlogCard({ post }) {
               className="object-cover"
             />
           ) : (
-            <div className="h-full bg-gradient-to-br from-teal-400 to-teal-600"></div>
+            <div className="h-full bg-gradient-to-br from-[#F6C343] to-[#e3ae25]"></div>
           )}
         </div>
 
         {/* Content */}
         <div className="p-6">
-          <h2 className="text-xl font-bold mb-3 text-black group-hover:text-teal-600 line-clamp-2 transition-colors">
+          <h2 className="text-xl font-bold mb-3 text-black group-hover:text-[#F6C343] line-clamp-2 transition-colors">
             {post.title}
           </h2>
 
@@ -48,7 +48,7 @@ export default function BlogCard({ post }) {
               <p className="text-sm text-black">
                 {formatDate(post.publishedAt || post._createdAt)}
               </p>
-              <span className="font-medium hover:underline text-teal-500">
+              <span className="font-medium hover:underline text-[#F6C343]">
                 Read More →
               </span>
             </div>

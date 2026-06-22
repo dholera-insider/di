@@ -16,6 +16,10 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "../components/InternationalPhoneInput";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -124,9 +128,8 @@ const ContactUsPage = () => {
       return false;
     }
 
-    // Phone validation - accept various formats (10-15 digits)
-    if (!/^\d{10,15}$/.test(formData.phone.replace(/\D/g, ""))) {
-      setErrorMessage("Please enter a valid phone number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.phone)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -156,7 +159,7 @@ const ContactUsPage = () => {
           body: JSON.stringify({
             fields: {
               name: formData.fullName,
-              phone: formData.phone,
+              phone: getInternationalPhoneValue(formData.phone),
               email: formData.email || "",
               source: "Dholera Insider",
               message: formData.message || "",
@@ -265,7 +268,7 @@ const ContactUsPage = () => {
       details: "+91 92118 20887",
       description: "Mon-Sun 10AM to 8PM",
       action: "tel:+919211820887",
-      color: "bg-emerald-500",
+      color: "bg-[#F6C343]",
     },
     {
       icon: FaWhatsapp,
@@ -273,7 +276,7 @@ const ContactUsPage = () => {
       details: "+91 92118 20887",
       description: "Quick responses 24/7",
       action: "https://wa.me/919211820887",
-      color: "bg-green-500",
+      color: "bg-[#F6C343]",
     },
     {
       icon: Mail,
@@ -354,7 +357,7 @@ const ContactUsPage = () => {
       <link rel="canonical" href="https://www.dholerainsider.com/contact" />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-emerald-900 to-teal-900 text-white py-20">
+      <section className="relative bg-gradient-to-br from-gray-900 via-[#2B364D] to-[#051A3A] text-white py-20">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="container mx-auto px-6 pt-16 relative z-10">
           <motion.div
@@ -365,7 +368,7 @@ const ContactUsPage = () => {
           >
             <h1 className="text-3xl md:text-4xl font-bold mb-6">
               Why Choose{" "}
-              <span className="text-emerald-400">Dholera Insider</span>
+              <span className="text-[#F6C343]">Dholera Insider</span>
             </h1>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -377,7 +380,7 @@ const ContactUsPage = () => {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className="bg-white/10 backdrop-blur-sm rounded-lg p-4 min-w-[120px]"
                 >
-                  <div className="text-2xl font-bold text-emerald-400">
+                  <div className="text-2xl font-bold text-[#F6C343]">
                     {stat.number}
                   </div>
                   <div className="text-sm text-gray-200">{stat.label}</div>
@@ -398,7 +401,7 @@ const ContactUsPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-             Get in <span className="text-emerald-600">Touch</span>
+             Get in <span className="text-[#F6C343]">Touch</span>
             </h2>
             <p className="text-xl text-gray-600">
               Ready to invest in India's first smart city? Let's discuss your
@@ -423,14 +426,14 @@ const ContactUsPage = () => {
                 >
                   <method.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#F6C343] transition-colors">
                   {method.title}
                 </h3>
-                <p className="text-lg font-semibold text-emerald-600 mb-2">
+                <p className="text-lg font-semibold text-[#F6C343] mb-2">
                   {method.details}
                 </p>
                 <p className="text-gray-600">{method.description}</p>
-                <div className="mt-4 inline-flex items-center text-emerald-600 font-medium group-hover:translate-x-1 transition-transform">
+                <div className="mt-4 inline-flex items-center text-[#F6C343] font-medium group-hover:translate-x-1 transition-transform">
                   Contact Now <ArrowRight className="w-4 h-4 ml-2" />
                 </div>
               </motion.a>
@@ -448,10 +451,10 @@ const ContactUsPage = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl p-8 shadow-xl"
+              className="rounded-2xl bg-[#051A3A] p-8 shadow-xl"
             >
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                Send Us a <span className="text-emerald-600">Message</span>
+              <h3 className="text-3xl font-bold text-white mb-6">
+                Send Us a <span className="text-[#F6C343]">Message</span>
               </h3>
 
               {showSuccess ? (
@@ -460,26 +463,26 @@ const ContactUsPage = () => {
                   animate={{ scale: 1, opacity: 1 }}
                   className="text-center py-8"
                 >
-                  <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 className="w-10 h-10 text-white" />
+                  <div className="w-20 h-20 bg-[#F6C343] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="w-10 h-10 text-[#051A3A]" />
                   </div>
-                  <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h4 className="text-2xl font-bold text-white mb-4">
                     Message Sent!
                   </h4>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-[#FDFCFA]/80 mb-6">
                     Thank you for your inquiry. We'll get back to you within 24
                     hours.
                   </p>
                   <button
                     onClick={() => setShowSuccess(false)}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                    className="bg-[#F6C343] hover:bg-[#FDFCFA] text-[#051A3A] px-6 py-3 rounded-lg font-medium transition-colors"
                   >
                     Send Another Message
                   </button>
                 </motion.div>
               ) : isDisabled ? (
                 <div className="text-center py-8">
-                  <p className="text-center text-red-600 font-semibold">
+                  <p className="text-center text-[#FDFCFA] font-semibold">
                     You have reached the maximum submission limit. Try again
                     after 24 hours.
                   </p>
@@ -487,14 +490,14 @@ const ContactUsPage = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {errorMessage && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 text-sm">
+                    <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-4 text-sm text-[#FDFCFA]">
                       {errorMessage}
                     </div>
                   )}
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-gray-700 font-medium mb-2">
+                      <label className="block text-white font-medium mb-2">
                         Full Name *
                       </label>
                       <input
@@ -503,28 +506,30 @@ const ContactUsPage = () => {
                         value={formData.fullName}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                        className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-4 py-3 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343] transition-colors"
                         placeholder="Enter your full name"
                       />
                     </div>
                     <div>
-                      <label className="block text-gray-700 font-medium mb-2">
+                      <label className="block text-white font-medium mb-2">
                         Phone Number *
                       </label>
-                      <input
-                        type="tel"
-                        name="phone"
+                      <InternationalPhoneInput
                         value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-                        placeholder="Enter your phone number"
+                        onChange={(phone) => {
+                          setFormData((prevData) => ({ ...prevData, phone }));
+                          setErrorMessage("");
+                        }}
+                        inputProps={{
+                          id: "phone",
+                          name: "phone",
+                        }}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-white font-medium mb-2">
                       Email Address
                     </label>
                     <input
@@ -532,20 +537,20 @@ const ContactUsPage = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                      className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-4 py-3 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343] transition-colors"
                       placeholder="Enter your email address"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-white font-medium mb-2">
                       I'm Interested In
                     </label>
                     <select
                       name="interestedIn"
                       value={formData.interestedIn}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                      className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-4 py-3 text-[#162033] focus:outline-none focus:ring-2 focus:ring-[#F6C343] transition-colors"
                     >
                       <option value="">Select your interest</option>
                       <option value="residential">Residential Plots</option>
@@ -561,7 +566,7 @@ const ContactUsPage = () => {
                  
 
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-white font-medium mb-2">
                       Message
                     </label>
                     <textarea
@@ -569,7 +574,7 @@ const ContactUsPage = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none"
+                      className="w-full resize-none rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-4 py-3 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343] transition-colors"
                       placeholder="Tell us more about your requirements..."
                     />
                   </div>
@@ -583,8 +588,8 @@ const ContactUsPage = () => {
                     disabled={isLoading || isDisabled || !recaptchaLoaded}
                     className={`w-full font-bold text-white py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 ${
                       isLoading || isDisabled || !recaptchaLoaded
-                        ? "bg-gray-400 cursor-not-allowed"
-                        : "bg-emerald-600 hover:bg-emerald-700"
+                        ? "bg-[#6C7484] cursor-not-allowed text-[#FDFCFA]"
+                        : "bg-[#F6C343] hover:bg-[#FDFCFA] text-[#051A3A]"
                     }`}
                   >
                     {isLoading ? (
@@ -613,13 +618,13 @@ const ContactUsPage = () => {
               {/* Office Details */}
               <div className="bg-white rounded-2xl p-8 shadow-xl">
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                  Visit Our <span className="text-emerald-600">Office</span>
+                  Visit Our <span className="text-[#F6C343]">Office</span>
                 </h3>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-emerald-100 p-3 rounded-lg">
-                      <MapPin className="w-6 h-6 text-emerald-600" />
+                    <div className="bg-[#F6C343]/15 p-3 rounded-lg">
+                      <MapPin className="w-6 h-6 text-[#F6C343]" />
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900 mb-2">Address</h4>
@@ -628,8 +633,8 @@ const ContactUsPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-emerald-100 p-3 rounded-lg">
-                      <Clock className="w-6 h-6 text-emerald-600" />
+                    <div className="bg-[#F6C343]/15 p-3 rounded-lg">
+                      <Clock className="w-6 h-6 text-[#F6C343]" />
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-900 mb-2">
@@ -640,11 +645,11 @@ const ContactUsPage = () => {
                     </div>
                   </div>
 
-                  <div className="bg-emerald-50 p-6 rounded-lg">
-                    <h4 className="font-bold text-emerald-800 mb-2">
+                  <div className="bg-[#F6C343]/15 p-6 rounded-lg">
+                    <h4 className="font-bold text-[#051A3A] mb-2">
                       Why Visit Us?
                     </h4>
-                    <p className="text-emerald-700 text-sm">
+                    <p className="text-[#051A3A] text-sm">
                       {officeInfo.description}
                     </p>
                   </div>
@@ -652,11 +657,11 @@ const ContactUsPage = () => {
               </div>
 
               {/* Quick Actions */}
-              <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 text-white">
+              <div className="bg-gradient-to-br from-[#F6C343] to-[#e3ae25] rounded-2xl p-8 text-white">
                 <h3 className="text-2xl font-bold mb-4">
                   Need Immediate Assistance?
                 </h3>
-                <p className="mb-6 text-emerald-100">
+                <p className="mb-6 text-[#FDFCFA]/85">
                   Our experts are ready to help you with your Dholera investment
                   queries.
                 </p>
@@ -703,7 +708,7 @@ const ContactUsPage = () => {
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Frequently Asked{" "}
-              <span className="text-emerald-600">Questions</span>
+              <span className="text-[#F6C343]">Questions</span>
             </h2>
             <p className="text-xl text-gray-600">
               Quick answers to common questions about Dholera investments
@@ -730,7 +735,7 @@ const ContactUsPage = () => {
       </section> */}
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] text-white">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -740,14 +745,14 @@ const ContactUsPage = () => {
             <h4 className="text-4xl font-bold mb-4">
               Ready to Start Your Investment Journey?
             </h4>
-            <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-[#FDFCFA]/85 mb-8 max-w-2xl mx-auto">
               Join hundreds of satisfied investors who have secured their future
               in India's first smart city.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="tel:+919211820887"
-                className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold transition-colors flex items-center gap-2"
+                className="bg-white text-[#F6C343] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold transition-colors flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
                 Call Now
@@ -756,7 +761,7 @@ const ContactUsPage = () => {
                 href="https://wa.me/919211820887"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-700 hover:bg-emerald-800 px-8 py-4 rounded-lg font-bold transition-colors flex items-center gap-2"
+                className="bg-[#051A3A] hover:bg-[#2B364D] px-8 py-4 rounded-lg font-bold transition-colors flex items-center gap-2"
               >
                 <FaWhatsapp className="w-5 h-5" />
                 WhatsApp Us

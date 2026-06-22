@@ -5,13 +5,13 @@ import { FaMapMarkerAlt, FaVideo, FaBuilding } from "react-icons/fa";
 
 const FixedNavigation = ({ currentPage = "home" }) => (
   <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-20 w-[95%] max-w-2xl">
-    <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-teal-800 px-3 py-3 md:px-6 md:py-4">
+    <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-[#F6C343] px-3 py-3 md:px-6 md:py-4">
       <div className="flex items-center justify-center gap-2 md:gap-6">
         <Link
           href="/infopack/locations"
           className={`group flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-0.5 flex-1 md:flex-none justify-center border font-bold ${
             currentPage === "locations"
-              ? "bg-teal-800 text-white hover:shadow-teal-800 border-teal-800"
+              ? "bg-[#051A3A] text-white hover:shadow-[#051A3A] border-[#F6C343]"
               : "bg-white text-gray-600 hover:bg-gray-50 border-gray-300"
           }`}
         >
@@ -23,7 +23,7 @@ const FixedNavigation = ({ currentPage = "home" }) => (
           href="/infopack/videos"
           className={`group flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-0.5 flex-1 md:flex-none justify-center border font-bold ${
             currentPage === "videos"
-              ? "bg-teal-800 text-white hover:shadow-teal-800 border-teal-800"
+              ? "bg-[#051A3A] text-white hover:shadow-[#051A3A] border-[#F6C343]"
               : "bg-white text-gray-600 hover:bg-gray-50 border-gray-300"
           }`}
         >
@@ -35,7 +35,7 @@ const FixedNavigation = ({ currentPage = "home" }) => (
           href="/infopack/inventory"
           className={`group flex items-center gap-2 px-2 py-2 md:px-4 md:py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-0.5 flex-1 md:flex-none justify-center border font-bold ${
             currentPage === "inventory"
-              ? "bg-teal-800 text-white hover:shadow-teal-800 border-teal-800"
+              ? "bg-[#051A3A] text-white hover:shadow-[#051A3A] border-[#F6C343]"
               : "bg-white text-gray-600 hover:bg-gray-50 border-gray-300"
           }`}
         >

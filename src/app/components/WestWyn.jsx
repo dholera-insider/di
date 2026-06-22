@@ -217,7 +217,7 @@ export default function Westwyn() {
               135deg,
               #1f2937 0%,
               #374151 50%,
-              #0f766e 100%
+              #051A3A 100%
             );
             border-radius: 0.5rem;
             width: 100%;
@@ -225,7 +225,7 @@ export default function Westwyn() {
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(20, 184, 166, 0.2);
+            border: 1px solid rgba(246, 195, 67, 0.2);
           }
 
           /* Add spacing between sections */
@@ -272,17 +272,17 @@ export default function Westwyn() {
           objectFit="cover"
           className="absolute inset-0 -z-10 opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/60 to-teal-900/60 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/60 to-[#051A3A]/60 pointer-events-none"></div>
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_70%_80%,rgba(246, 195, 67, 0.1),transparent_50%)]"></div>
 
         {/* Header Section */}
         <section className="max-w-7xl pt-8 mx-auto px-4 mb-16 relative z-10">
           <div className="text-center space-y-4">
-            <h1 className="text-xl md:text-4xl font-bold bg-gradient-to-r from-gray-100 to-teal-100 bg-clip-text text-transparent drop-shadow-lg">
+            <h1 className="text-xl md:text-4xl font-bold bg-gradient-to-r from-gray-100 to-[#e3ae25] bg-clip-text text-transparent drop-shadow-lg">
               WestWyn County
             </h1>
-            <div className="bg-gradient-to-r from-teal-400 to-teal-600 w-48 mx-auto h-1 rounded-full"></div>
+            <div className="bg-gradient-to-r from-[#F6C343] to-[#e3ae25] w-48 mx-auto h-1 rounded-full"></div>
             <p className="font-light italic text-gray-200 text-lg max-w-2xl mx-auto leading-relaxed">
               Platinum-rated, AUDA-approved plots on Fedra-Pipli Highway in
               Dholera's growth zone — built for smart investors.
@@ -291,28 +291,28 @@ export default function Westwyn() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4">
-          <div className="fade-in-up bg-gradient-to-r from-gray-800/60 to-teal-800/40 border-2 border-teal-500/30 md:rounded-2xl shadow-2xl p-8 backdrop-blur-sm">
+          <div className="fade-in-up bg-gradient-to-r from-gray-800/60 to-[#051A3A]/40 border-2 border-[#F6C343]/30 md:rounded-2xl shadow-2xl p-8 backdrop-blur-sm">
             <div className="grid grid-cols-2 md:grid-cols-4 text-center">
               <div className="mb-2">
-                <div className="text-3xl font-bold bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent text-center drop-shadow-lg">
+                <div className="text-3xl font-bold bg-gradient-to-r from-[#F6C343] to-[#e3ae25] bg-clip-text text-transparent text-center drop-shadow-lg">
                   200+
                 </div>
                 <div className="text-gray-200 text-sm">Sq. Yards Plots</div>
               </div>
               <div className="mb-2">
-                <div className="text-3xl font-bold bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent text-center drop-shadow-lg">
+                <div className="text-3xl font-bold bg-gradient-to-r from-[#F6C343] to-[#e3ae25] bg-clip-text text-transparent text-center drop-shadow-lg">
                   24x7
                 </div>
                 <div className="text-gray-200 text-sm">Security</div>
               </div>
               <div className="mb-2">
-                <div className="text-3xl font-bold bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent text-center drop-shadow-lg">
+                <div className="text-3xl font-bold bg-gradient-to-r from-[#F6C343] to-[#e3ae25] bg-clip-text text-transparent text-center drop-shadow-lg">
                   100%
                 </div>
                 <div className="text-gray-200 text-sm">Legal Approval</div>
               </div>
               <div className="mb-2">
-                <div className="text-3xl font-bold bg-gradient-to-r from-teal-300 to-teal-400 bg-clip-text text-transparent text-center drop-shadow-lg">
+                <div className="text-3xl font-bold bg-gradient-to-r from-[#F6C343] to-[#e3ae25] bg-clip-text text-transparent text-center drop-shadow-lg">
                   70+
                 </div>
                 <div className="text-gray-200 text-sm">Plots</div>
@@ -327,7 +327,7 @@ export default function Westwyn() {
             {/* Left Side - Features */}
             <div className="space-y-8">
               <div className="">
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-100 to-teal-100 bg-clip-text text-transparent mb-6 drop-shadow-lg">
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-100 to-[#e3ae25] bg-clip-text text-transparent mb-6 drop-shadow-lg">
                   Why Choose WestWyn County?
                 </h2>
                 <p className="text-gray-200 mb-8 leading-relaxed">
@@ -343,7 +343,7 @@ export default function Westwyn() {
                     key={index}
                     className="westwyn-feature-card feature-item flex items-start space-x-4 p-6 rounded-xl shadow-lg"
                   >
-                    <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-gradient-to-br from-teal-500/20 to-teal-600/20 rounded-lg border border-teal-400/30">
+                    <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-gradient-to-br from-[#F6C343]/20 to-[#e3ae25]/20 rounded-lg border border-[#F6C343]/30">
                       <div className="relative w-12 h-12">
                         <Image
                           src={feature.icon}
@@ -370,7 +370,7 @@ export default function Westwyn() {
             <div className="lg:pl-8">
               <div className="relative">
                 {/* Main Project Image */}
-                <div className="relative h-96 lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl border border-teal-500/30">
+                <div className="relative h-96 lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl border border-[#F6C343]/30">
                   <Image
                     src={projectImage}
                     alt="WestWyn County Project"
@@ -388,10 +388,10 @@ export default function Westwyn() {
                       Premium Plotting Project
                     </p>
                     <div className="flex items-center space-x-4 mt-3">
-                      <span className="bg-gradient-to-r from-teal-500 to-teal-600 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                      <span className="bg-gradient-to-r from-[#F6C343] to-[#e3ae25] px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                         AUDA Approved
                       </span>
-                      <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                      <span className="bg-gradient-to-r from-[#F6C343] to-[#e3ae25] px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                         Possession Ready
                       </span>
                     </div>
@@ -401,7 +401,7 @@ export default function Westwyn() {
                 {/* Enhanced Floating Info Cards */}
                 <div className="westwyn-floating-card absolute -top-4 -right-4 rounded-xl shadow-xl p-6 max-w-48 border border-white/20">
                   <div className="text-center">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-teal-600 to-teal-700 bg-clip-text text-transparent drop-shadow">
+                    <div className="text-2xl font-bold bg-gradient-to-r from-[#F6C343] to-[#051A3A] bg-clip-text text-transparent drop-shadow">
                       ₹18L+
                     </div>
                     <div className="text-sm text-gray-700 font-medium">

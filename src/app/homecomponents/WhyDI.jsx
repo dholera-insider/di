@@ -1,75 +1,108 @@
-import React from "react";
-import Image from "next/image";
-import sample1 from "@/app/assets/home/Invest_in_dholera2.webp";
-import Link from "next/link";
+import {
+  Building2,
+  FileCheck,
+  Users,
+  ClipboardList,
+  MapPin,
+  Globe,
+} from "lucide-react";
 
-export default function WhyDI() {
-
-  const COUNTERS = [
-  { value: "7+ Projects", label: "Successfully Sold Out" },
-  { value: "2 Lakh+ Sq. Yd", label: "Dholera Land Sold" },
-  { value: "957+ Plots", label: "Registry Delivered" },
-  { value: "561+ Clients", label: "Investor Client Base" },
+const features = [
+  {
+    Icon: Building2,
+    title: "Exclusive Residential Plot Projects",
+    description:
+      "Access carefully selected residential plotted developments in and around Dholera, designed for long-term investment and future residential use.",
+  },
+  {
+    Icon: FileCheck,
+    title: "Transparent Documentation",
+    description:
+      "Receive complete project information, including layout plans, pricing, legal documents, NA/NOC details, and registry guidance before making any investment decision.",
+  },
+  {
+    Icon: Users,
+    title: "Dedicated NRI Support",
+    description:
+      "From your first enquiry to property registration, our team provides personalized assistance for overseas Indian investors across different countries and time zones.",
+  },
+  {
+    Icon: ClipboardList,
+    title: "End-to-End Buying Assistance",
+    description:
+      "We guide you through every stage of your investment journey—from project selection and document verification to booking, payment, registry, and post-purchase support.",
+  },
+  {
+    Icon: MapPin,
+    title: "Strategic Project Locations",
+    description:
+      "Our residential projects are located in well-connected areas near major infrastructure developments, offering strong long-term investment potential.",
+  },
+  {
+    Icon: Globe,
+    title: "100% Remote Buying Process",
+    description:
+      "Buy your residential plot from anywhere in the world through secure digital consultations, online documentation, and remote booking assistance.",
+  },
 ];
 
+export default function WhyDI() {
   return (
-    <section className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900">
-      <div className="mx-auto max-w-7xl px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
-        <div className="text-center">
-          <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-white">
-            Why Choose <span className="text-teal-400">Dholera Insider</span>
-          </h2>
-          <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-teal-400 to-teal-600" />
-        </div>
+    <section className="bg-[#FDFCFA] py-20 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-5 lg:gap-20">
 
-        <div className="flex flex-col-reverse items-center gap-[clamp(1.5rem,3vw,3rem)] py-[clamp(2rem,4vw,3.5rem)] md:grid md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-          <div className="space-y-[clamp(1rem,2vw,2rem)]">
-            <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-              <Link
-                href="/about-us"
-                title="Dholera Insider"
-                className="text-teal-400"
-              >
-                Dholera Insider
-              </Link>{" "}
-              is a leading Real Estate Developer offering verified
-              plots in Dholera. We develop premium residential plot projects for
-              buyers looking for direct developer inventory, registry ready
-              documentation, clear guidance, and complete support before and
-              after booking.{" "}
+          {/* Left — sticky header */}
+          <div className="lg:col-span-2 lg:sticky lg:top-24 lg:self-start">
+            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
+              Exclusive Channel Partner
             </p>
+            <h2 className="mb-5 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
+              Why Investors Choose Dholera Insider
+            </h2>
+            <div className="mb-6 h-px w-14 bg-[#F6C343]" />
+            <p className="mb-4 text-[clamp(0.875rem,1.1vw,0.95rem)] leading-relaxed text-[#2B364D]/70">
+              At Dholera Insider, the exclusive Channel Partner of BookMyAssets
+              for NRI investors, we go beyond simply showcasing projects. We
+              provide exclusive residential plot opportunities, verified project
+              information, and dedicated support to make investing in Dholera
+              simple, transparent, and secure.
+            </p>
+            <p className="text-[clamp(0.875rem,1.1vw,0.95rem)] leading-relaxed text-[#2B364D]/70">
+              Whether you are buying your first property in India or expanding
+              your investment portfolio, our team is committed to helping you
+              make an informed decision.
+            </p>
+          </div>
 
-            <div className="px-[calc(0.5rem+1vw)] max-w-7xl mx-auto">
-              <div className="grid grid-cols-2 gap-[calc(0.75rem+0.5vw)]">
-                {COUNTERS.map(({ value, label }) => (
-                  <div
-                    key={label}
-                    className="
-                    flex flex-col justify-center items-center
-                    p-[calc(0.75rem+0.2vw)]
-                    bg-white rounded-2xl shadow-md
-                    hover:shadow-xl transition-shadow
-                  "
-                  >
-                    <div className="text-[clamp(1.25rem,2.5vw,1.5rem)] font-bold text-teal-600 mb-2">
-                      {value}
-                    </div>
-                    <p className="text-[clamp(0.75rem,1.5vw,0.875rem)] text-gray-700 font-medium text-center">
-                      {label}
-                    </p>
-                  </div>
-                ))}
+          {/* Right — feature list */}
+          <div className="lg:col-span-3 divide-y divide-[#051A3A]/10">
+            {features.map(({ Icon, title, description }) => (
+              <div
+                key={title}
+                className="group flex gap-5 py-7 first:pt-0 last:pb-0 transition-colors duration-300"
+              >
+                {/* Icon pill */}
+                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F6C343]/15 transition-colors duration-300 group-hover:bg-[#051A3A]">
+                  <Icon
+                    className="h-5 w-5 text-[#051A3A] transition-colors duration-300 group-hover:text-[#F6C343]"
+                    strokeWidth={1.5}
+                  />
+                </div>
+
+                {/* Text */}
+                <div>
+                  <h3 className="mb-2 text-sm font-bold text-[#051A3A]">
+                    {title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[#2B364D]/60 transition-colors duration-300 group-hover:text-[#2B364D]/90">
+                    {description}
+                  </p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          <div className="w-full">
-            <Image
-              src={sample1}
-              alt="Dholera Insider"
-              className="h-auto w-full rounded-lg object-cover"
-            />
-          </div>
         </div>
       </div>
     </section>

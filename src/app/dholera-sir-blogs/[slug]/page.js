@@ -88,7 +88,7 @@ const RightSidebar = ({ trendingBlogs }) => {
 
           <div className="mt-6 pt-4 border-t border-gray-600">
             <Link href="/dholera-sir-updates">
-              <span className="w-full text-center rounded-xl text-white font-semibold bg-teal-800 hover:bg-teal-500 p-3 transition-colors">
+              <span className="w-full text-center rounded-xl text-white font-semibold bg-[#051A3A] hover:bg-[#e3ae25] p-3 transition-colors">
                 Explore More
               </span>
             </Link>
@@ -96,13 +96,13 @@ const RightSidebar = ({ trendingBlogs }) => {
         </div>
 
         {/* Contact/CTA Card */}
-        <div className="bg-gradient-to-br from-teal-600/10 to-teal-900/10 rounded-xl p-6 border border-teal-400/20">
+        <div className="bg-gradient-to-br from-[#F6C343]/10 to-[#051A3A]/10 rounded-xl p-6 border border-[#F6C343]/20">
           <h4 className="font-bold text-lg mb-3 text-gray-900">Get In Touch</h4>
           <p className="text-gray-700 mb-4 text-sm">
             Interested in our insights? Contact our experts
           </p>
           <Link href="tel:+919211820887">
-            <span className="w-full bg-teal-500 hover:bg-teal-700 text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+            <span className="w-full bg-[#F6C343] hover:bg-[#2B364D] text-white px-4 py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
               Contact Now
             </span>
           </Link>
@@ -217,7 +217,7 @@ export default async function Post({ params }) {
                         key={i}
                         className={`hover:bg-gray-50 transition-colors duration-200 ${
                           i === 0
-                            ? "bg-gradient-to-r from-teal-400/10 to-teal-600/10 font-semibold"
+                            ? "bg-gradient-to-r from-[#F6C343]/10 to-[#e3ae25]/10 font-semibold"
                             : i % 2 === 0
                               ? "bg-gray-50/50"
                               : "bg-white"
@@ -276,7 +276,7 @@ export default async function Post({ params }) {
           <Link
             href={value.href}
             rel="noopener noreferrer"
-            className="text-teal-600 hover:text-teal-500 underline decoration-teal-400/30 hover:decoration-teal-400 decoration-2 underline-offset-4 transition-all duration-300 hover:bg-teal-400/5 px-1 py-0.5 rounded"
+            className="text-[#F6C343] hover:text-[#F6C343] underline decoration-[#F6C343]/30 hover:decoration-[#F6C343] decoration-2 underline-offset-4 transition-all duration-300 hover:bg-[#e3ae25]/5 px-1 py-0.5 rounded"
           >
             {children}
           </Link>
@@ -302,9 +302,9 @@ export default async function Post({ params }) {
               case "secondary":
                 return "bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 shadow-lg hover:shadow-xl";
               case "outline":
-                return "bg-transparent border-2 border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white shadow-md hover:shadow-lg";
+                return "bg-transparent border-2 border-[#F6C343] text-[#F6C343] hover:bg-[#e3ae25] hover:text-white shadow-md hover:shadow-lg";
               default:
-                return "bg-gradient-to-r from-teal-500 to-teal-400 hover:from-teal-400 hover:to-teal-500 shadow-lg hover:shadow-xl";
+                return "bg-gradient-to-r from-[#F6C343] to-[#e3ae25] hover:from-[#F6C343] hover:to-[#e3ae25] shadow-lg hover:shadow-xl";
             }
           };
 
@@ -337,7 +337,7 @@ export default async function Post({ params }) {
               const id = URLFormatter(getText());
               return (
                 <Tag id={id} className={className}>
-                  <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-teal-500 to-teal-400 rounded-full" />
+                  <span className="absolute -left-1 top-0 w-1 h-full bg-gradient-to-b from-[#F6C343] to-[#e3ae25] rounded-full" />
                   {children}
                 </Tag>
               );
@@ -345,27 +345,27 @@ export default async function Post({ params }) {
           return {
             h1: makeHeading(
               "h1",
-              "text-[clamp(2rem,5vw,4rem)] font-black mt-[clamp(1.5rem,3vw,2rem)] mb-[clamp(1.25rem,2.5vw,1.5rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-[clamp(0.875rem,2vw,1rem)] leading-[1.2]",
+              "text-[clamp(2rem,5vw,4rem)] font-black mt-[clamp(1.5rem,3vw,2rem)] mb-[clamp(1.25rem,2.5vw,1.5rem)] text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-[clamp(0.875rem,2vw,1rem)] leading-[1.2]",
             ),
             h2: makeHeading(
               "h2",
-              "text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-[clamp(1.5rem,3vw,2rem)] mb-[clamp(1.25rem,2.5vw,1.75rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-[clamp(0.75rem,1.5vw,1rem)] leading-[1.25]",
+              "text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-[clamp(1.5rem,3vw,2rem)] mb-[clamp(1.25rem,2.5vw,1.75rem)] text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-[clamp(0.75rem,1.5vw,1rem)] leading-[1.25]",
             ),
             h3: makeHeading(
               "h3",
-              "text-[clamp(1.375rem,2.5vw,2rem)] font-bold mt-[clamp(1.75rem,3vw,2.5rem)] mb-[clamp(1rem,2vw,1.5rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2 leading-[1.3]",
+              "text-[clamp(1.375rem,2.5vw,2rem)] font-bold mt-[clamp(1.75rem,3vw,2.5rem)] mb-[clamp(1rem,2vw,1.5rem)] text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2 leading-[1.3]",
             ),
             h4: makeHeading(
               "h4",
-              "text-[clamp(1.125rem,2vw,1.5rem)] font-semibold mt-[clamp(1.5rem,2.5vw,2rem)] mb-[clamp(0.875rem,1.8vw,1.25rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2 leading-[1.35]",
+              "text-[clamp(1.125rem,2vw,1.5rem)] font-semibold mt-[clamp(1.5rem,2.5vw,2rem)] mb-[clamp(0.875rem,1.8vw,1.25rem)] text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2 leading-[1.35]",
             ),
             h5: makeHeading(
               "h5",
-              "text-[clamp(1rem,1.6vw,1.25rem)] font-semibold mt-[clamp(1.25rem,2vw,1.75rem)] mb-[clamp(0.75rem,1.5vw,1rem)] text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-2 leading-[1.35]",
+              "text-[clamp(1rem,1.6vw,1.25rem)] font-semibold mt-[clamp(1.25rem,2vw,1.75rem)] mb-[clamp(0.75rem,1.5vw,1rem)] text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2 leading-[1.35]",
             ),
             h6: makeHeading(
               "h6",
-              "text-[1rem] font-semibold mt-[clamp(1rem,1.8vw,1.5rem)] mb-2 text-gray-800 relative border-l-4 border-teal-400 pl-6 bg-gradient-to-r from-teal-400/5 to-transparent py-1 leading-[1.35]",
+              "text-[1rem] font-semibold mt-[clamp(1rem,1.8vw,1.5rem)] mb-2 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-1 leading-[1.35]",
             ),
           };
         })(),
@@ -376,8 +376,8 @@ export default async function Post({ params }) {
           </p>
         ),
         blockquote: ({ children }) => (
-          <blockquote className="relative my-[clamp(1.5rem,3vw,3rem)] p-[clamp(1.25rem,3vw,2rem)] bg-gradient-to-br from-teal-400/5 to-teal-500/10 rounded-xl shadow-lg border border-teal-400/20">
-            <div className="absolute top-4 left-6 text-6xl text-teal-400/30 font-serif">
+          <blockquote className="relative my-[clamp(1.5rem,3vw,3rem)] p-[clamp(1.25rem,3vw,2rem)] bg-gradient-to-br from-[#F6C343]/5 to-[#e3ae25]/10 rounded-xl shadow-lg border border-[#F6C343]/20">
+            <div className="absolute top-4 left-6 text-6xl text-[#F6C343]/30 font-serif">
               "
             </div>
             <div className="pl-[clamp(1.25rem,3vw,2rem)] italic text-gray-700 text-[clamp(1rem,1.6vw,1.25rem)] leading-[1.7] font-medium">
@@ -409,13 +409,13 @@ export default async function Post({ params }) {
         bullet: ({ children }) => (
           <li className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-700 flex items-start gap-[clamp(0.75rem,1.5vw,1rem)] p-[clamp(1rem,2vw,1.25rem)] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 overflow-hidden">
             {/* Codex responsive UI fix: center the marker against the first text line, including nested headings. */}
-            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full mt-[clamp(0.75rem,1.5vw,0.95rem)] flex-shrink-0"></div>
+            <div className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full mt-[clamp(0.75rem,1.5vw,0.95rem)] flex-shrink-0"></div>
             <div className={nestedListContentClass}>{children}</div>
           </li>
         ),
         number: ({ children }) => (
           <li className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-700 flex items-start gap-[clamp(0.75rem,1.5vw,1rem)] p-[clamp(1rem,2vw,1.25rem)] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list overflow-hidden">
-            <div className="w-3 h-3 bg-gradient-to-r from-teal-500 to-teal-400 rounded-full mt-[clamp(0.75rem,1.5vw,0.95rem)] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+            <div className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full mt-[clamp(0.75rem,1.5vw,0.95rem)] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
               <span className="counter-content"></span>
             </div>
             <div className={nestedListContentClass}>{children}</div>
@@ -689,7 +689,7 @@ export default async function Post({ params }) {
                 </h2>
                 <Link
                   href="/dholera-sir-updates"
-                  className="rounded-xl text-white font-semibold bg-teal-700 hover:bg-teal-900 px-4 py-2"
+                  className="rounded-xl text-white font-semibold bg-[#051A3A] hover:bg-[#2B364D] px-4 py-2"
                 >
                   View all
                 </Link>
@@ -729,7 +729,7 @@ export default async function Post({ params }) {
                             <p className="text-gray-700 mb-4 line-clamp-3">
                               {blog.description}
                             </p>
-                            <span className="text-teal-700 hover:text-teal-900 p-1 rounded-xl font-semibold bg-gray-800 inline-flex items-center">
+                            <span className="text-[#051A3A] hover:text-[#2B364D] p-1 rounded-xl font-semibold bg-gray-800 inline-flex items-center">
                               Read more
                             </span>
                           </div>
@@ -767,7 +767,7 @@ export default async function Post({ params }) {
           <p className="text-gray-600">Please try again later</p>
           <Link
             href="/dholera-sir-blogs"
-            className="mt-4 inline-block text-teal-900 hover:text-[#FDB913]"
+            className="mt-4 inline-block text-[#051A3A] hover:text-[#FDB913]"
           >
             ← Back to Blogs
           </Link>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import logo from "@/app/assets/icons/logo.webp";
+import logo from "@/app/assets/icons/logo.png";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { getPosts, getSub, projectInfo } from "@/sanity/lib/api";
 import { AnimatePresence, motion } from "framer-motion";
@@ -38,8 +38,8 @@ const Header = () => {
       <span
         className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ml-2 ${
           status === "sold-out"
-            ? "bg-red-500/20 text-red-300 border border-red-500/30"
-            : "bg-green-500/20 text-green-300 border border-green-500/30"
+            ? "bg-[#faf8f3] text-[#0b1d3a] border border-[#faf8f3]"
+            : "bg-[#0b1d3a] text-[#faf8f3] border border-[#faf8f3]"
         }`}
       >
         {status === "sold-out" ? "Sold Out" : status}
@@ -49,8 +49,9 @@ const Header = () => {
 
   // Main navigation items (visible on desktop)
   const mainNavItems = [
+    /* { name: "NRI Investor", href: "/nri-investor" }, */
     {
-      name: "Residential Projects",
+      name: "Our Projects",
       key: "dholeraResidential",
       items: [
         {
@@ -68,7 +69,7 @@ const Header = () => {
           href: "/residential-projects-in-dholera/westwyn-county",
           status: "sold-out",
         },
-        {
+        /* {
           name: "Paradise",
           href: "/residential-projects-in-dholera/paradise",
           status: "sold-out",
@@ -97,7 +98,7 @@ const Header = () => {
           name: "Pride",
           href: "/residential-projects-in-dholera/pride",
           status: "sold-out",
-        },
+        }, */
       ],
     },
         { name: "Dholera Blogs", href: "/dholera-sir-blogs" },
@@ -112,7 +113,7 @@ const Header = () => {
 
     { name: "About", href: "/about-us" },
     { name: "Gallery", href: "/gallery" },
-   
+
   ];
 
   // Handlers
@@ -207,15 +208,15 @@ const Header = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 left-0 w-full h-20 backdrop-blur-lg bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95 border-b border-white/10 flex justify-between items-center z-50"
+        className="fixed top-0 left-0 w-full h-20 backdrop-blur-lg bg-[#0b1d3a] border-b border-[#faf8f3]/10 flex justify-between items-center z-50"
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="relative h-14 w-14 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full animate-pulse shadow-lg"></div>
+          <div className="relative h-14 w-14 bg-[#faf8f3]/30 rounded-full animate-pulse shadow-lg"></div>
           <div className="hidden sm:flex space-x-6">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="h-6 w-16 bg-white/20 rounded animate-pulse"
+                className="h-6 w-16 bg-[#faf8f3]/20 rounded animate-pulse"
               ></div>
             ))}
           </div>
@@ -234,12 +235,12 @@ const Header = () => {
         className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-out
           ${
             scrolled
-              ? "h-20 backdrop-blur-xl bg-gradient-to-r from-slate-900/98 via-emerald-900/98 to-teal-900/98 border-b border-white/20 shadow-2xl"
-              : "h-20 max-sm:h-20 backdrop-blur-md bg-gradient-to-r from-slate-900/90 via-emerald-900/90 to-teal-900/90"
+              ? "h-20 backdrop-blur-xl bg-[#0b1d3a] border-b border-[#faf8f3]/20 shadow-2xl"
+              : "h-20 max-sm:h-20 backdrop-blur-md bg-[#0b1d3a]"
           }`}
       >
         {/* Glassmorphism overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-emerald-900/90 to-teal-900/90"></div>
+        <div className="absolute inset-0 bg-[#0b1d3a]"></div>
 
         <div className="container mx-auto px-6 h-full flex justify-between items-center relative">
           {/* Enhanced Logo */}
@@ -253,12 +254,12 @@ const Header = () => {
                   : "h-24 max-sm:h-24 w-24 max-sm:w-24"
               }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-teal-400/20 rounded-full blur-lg group-hover:blur-xl transition-all duration-300"></div>
+              <div className="absolute inset-0  blur-lg group-hover:blur-xl transition-all duration-300"></div>
               <Image
                 src={logo}
                 alt="Dholera Insider Logo"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
                 className="object-contain relative z-10 drop-shadow-2xl max-sm:pt-4 max-sm:h-20 max-sm:w-20"
                 priority={true}
                 quality={85}
@@ -283,22 +284,14 @@ const Header = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="dropdown-trigger group flex items-center px-5 py-3 text-white font-semibold tracking-wide transition-all duration-300 relative"
+                      className="dropdown-trigger group flex items-center px-5 py-3 text-[#faf8f3] font-semibold tracking-wide transition-all duration-300 relative"
                       onClick={(e) => toggleDropdown(item.key, e)}
                     >
                       <span className="relative z-10 drop-shadow-lg">
                         {item.name}
                       </span>
-                      <motion.div
-                        animate={{
-                          rotate: activeDropdown === item.key ? 180 : 0,
-                        }}
-                        transition={{ duration: 0.3 }}
-                        className="ml-2 relative z-10"
-                      >
-                        <AiOutlineDown className="drop-shadow-lg" />
-                      </motion.div>
-                      <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/20 to-teal-500/0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+
+                      <div className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                     </motion.button>
 
                     <AnimatePresence>
@@ -308,10 +301,10 @@ const Header = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.2, ease: "easeOut" }}
-                          className="absolute top-full left-0 mt-4 w-72 backdrop-blur-xl bg-slate-900/95 border border-white/20 rounded-2xl shadow-2xl py-4 z-50 dropdown-container"
+                          className="absolute top-full left-0 mt-4 w-72 backdrop-blur-xl bg-[#0b1d3a] border border-[#faf8f3]/20 rounded-2xl shadow-2xl py-4 z-50 dropdown-container"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <div className="absolute -top-2 left-8 w-4 h-4 bg-slate-900/95 border-l border-t border-white/20 rotate-45"></div>
+                          <div className="absolute -top-2 left-8 w-4 h-4 bg-[#0b1d3a] border-l border-t border-[#faf8f3]/20 rotate-45"></div>
 
                           {item.items.map((subItem, subIndex) => (
                             <motion.div
@@ -322,15 +315,16 @@ const Header = () => {
                                 delay: 0.05 * subIndex,
                                 duration: 0.3,
                               }}
-                              className="border-b border-white/10 last:border-0"
+                              className="border-b border-[#faf8f3]/10 last:border-0"
                             >
                               <Link
                                 href={subItem.href}
-                                className="flex items-center justify-between px-6 py-3 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-teal-500/20 text-sm text-white transition-all duration-200 group"
+                                className="flex items-center justify-between px-6 py-3 hover:bg-[#faf8f3]/10 text-sm text-[#faf8f3] transition-all duration-200 group"
                                 onClick={() => setActiveDropdown(null)}
                               >
                                 <span>{subItem.name}</span>
                                 <StatusBadge status={subItem.status} />
+
                               </Link>
                             </motion.div>
                           ))}
@@ -341,13 +335,13 @@ const Header = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className="group relative px-5 py-3 text-white font-semibold tracking-wide transition-all duration-300"
+                    className="group relative px-5 py-3 text-[#faf8f3] font-semibold tracking-wide transition-all duration-300"
                   >
                     <span className="relative z-10 drop-shadow-lg">
                       {item.name}
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/20 to-teal-500/0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                    <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-400 to-teal-400 transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
+                    <div className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                    <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#faf8f3] transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
                   </Link>
                 )}
               </motion.div>
@@ -362,14 +356,14 @@ const Header = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="dropdown-trigger group flex items-center px-5 py-3 text-white font-semibold tracking-wide transition-all duration-300 relative"
+                className="dropdown-trigger group flex items-center px-5 py-3 text-[#faf8f3] font-semibold tracking-wide transition-all duration-300 relative"
                 onHoverStart={(e) => toggleDropdown("hamburgerMenu", e)}
               >
                 <span className="relative z-10 drop-shadow-lg">
                   <MenuIcon />
                 </span>
 
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/20 to-teal-500/0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
               </motion.button>
 
               <AnimatePresence>
@@ -379,10 +373,10 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full right-0 mt-4 w-72 backdrop-blur-xl bg-slate-900/95 border border-white/20 rounded-2xl shadow-2xl py-4 z-50 max-h-96 overflow-y-auto dropdown-container"
+                    className="absolute top-full right-0 mt-4 w-72 backdrop-blur-xl bg-[#0b1d3a] border border-[#faf8f3]/20 rounded-2xl shadow-2xl py-4 z-50 max-h-96 overflow-y-auto dropdown-container"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="absolute -top-2 right-8 w-4 h-4 bg-slate-900/95 border-l border-t border-white/20 rotate-45"></div>
+                    <div className="absolute -top-2 right-8 w-4 h-4 bg-[#0b1d3a] border-l border-t border-[#faf8f3]/20 rotate-45"></div>
 
                     {hamburgerMenuItems.map((item, index) => {
                       if (item.items) {
@@ -392,9 +386,9 @@ const Header = () => {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.1 * index, duration: 0.3 }}
-                            className="border-b border-white/10 last:border-0"
+                            className="border-b border-[#faf8f3]/10 last:border-0"
                           >
-                            <div className="px-6 py-3 font-semibold text-white bg-gradient-to-r from-orange-500/10 to-transparent">
+                            <div className="px-6 py-3 font-semibold text-[#faf8f3] bg-[#faf8f3]/10">
                               {item.name}
                             </div>
                             <div className="pl-6 pb-2">
@@ -407,7 +401,7 @@ const Header = () => {
                                         subItem.onClick();
                                         setActiveDropdown(null);
                                       }}
-                                      className="block w-full text-left px-4 py-2 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-teal-500/20 text-sm text-white transition-all duration-200 rounded-lg mx-2"
+                                      className="block w-full text-left px-4 py-2 hover:bg-[#faf8f3]/10 text-sm text-[#faf8f3] transition-all duration-200 rounded-lg mx-2"
                                     >
                                       {subItem.name}
                                     </button>
@@ -417,7 +411,7 @@ const Header = () => {
                                   <Link
                                     key={subItem.name}
                                     href={subItem.href}
-                                    className="block px-4 py-2 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-teal-500/20 text-sm text-white transition-all duration-200 rounded-lg mx-2"
+                                    className="block px-4 py-2 hover:bg-[#faf8f3]/10 text-sm text-[#faf8f3] transition-all duration-200 rounded-lg mx-2"
                                     onClick={() => setActiveDropdown(null)}
                                   >
                                     {subItem.name}
@@ -437,7 +431,7 @@ const Header = () => {
                         >
                           <Link
                             href={item.href}
-                            className="block px-6 py-3 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-teal-500/20 text-sm text-white transition-all duration-200"
+                            className="block px-6 py-3 hover:bg-[#faf8f3]/10  text-sm text-[#faf8f3] transition-all duration-200"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -455,7 +449,7 @@ const Header = () => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="lg:hidden relative z-[101] p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+            className="lg:hidden relative z-[101] p-3 rounded-xl backdrop-blur-sm bg-[#faf8f3]/10 border border-[#faf8f3]/20 text-[#faf8f3] hover:bg-[#faf8f3]/20 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -481,10 +475,10 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed inset-0 bg-slate-900/95 backdrop-blur-2xl z-50 overflow-y-auto"
+            className="fixed inset-0 bg-[#0b1d3a] backdrop-blur-2xl z-50 overflow-y-auto"
           >
             {/* Mobile Menu Header */}
-            <div className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95 border-b border-white/10 flex items-center justify-between px-6 z-[102]">
+            <div className="fixed top-0 left-0 right-0 h-20 bg-[#0b1d3a] border-b border-[#faf8f3]/10 flex items-center justify-between px-6 z-[102]">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                 <div className="relative h-14 w-14">
                   <Image
@@ -498,7 +492,7 @@ const Header = () => {
 
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+                className="p-3 rounded-xl backdrop-blur-sm bg-[#faf8f3]/10 border border-[#faf8f3]/20 text-[#faf8f3] hover:bg-[#faf8f3]/20 transition-all duration-300"
               >
                 <AiOutlineClose className="text-2xl" />
               </button>
@@ -507,8 +501,8 @@ const Header = () => {
             {/* Mobile Menu Content */}
             <div className="pt-20 px-6 py-8 space-y-2 ">
               <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl animate-pulse"></div>
+                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#faf8f3]/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-[#faf8f3]/10 rounded-full blur-2xl animate-pulse"></div>
               </div>
 
               <div className="relative space-y-2">
@@ -520,9 +514,9 @@ const Header = () => {
                     transition={{ delay: 0.1 * index, duration: 0.4 }}
                   >
                     {item.items ? (
-                      <div className=" rounded-xl overflow-hidden  border border-white/20 ">
+                      <div className=" rounded-xl overflow-hidden  border border-[#faf8f3]/20 ">
                         <button
-                          className="w-full flex justify-between items-center py-4 px-6 font-bold text-white hover:text-orange-400 hover:bg-white/5 transition-all duration-300"
+                          className="w-full flex justify-between items-center py-4 px-6 font-bold text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-300"
                           onClick={() =>
                             setMobileActiveDropdown(
                               mobileActiveDropdown === item.key
@@ -550,7 +544,7 @@ const Header = () => {
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.3 }}
-                              className="bg-white/5 border-t border-white/10"
+                              className="bg-[#faf8f3]/5 border-t border-[#faf8f3]/10"
                             >
                               <ul className="py-2">
                                 {item.items.map((subItem) => (
@@ -558,7 +552,7 @@ const Header = () => {
                                     <Link
                                       href={subItem.href}
                                       onClick={() => setMobileMenuOpen(false)}
-                                      className="flex items-center justify-between py-3 px-8 text-gray-200 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-teal-500/20 hover:bg-white/5 transition-all duration-200"
+                                      className="flex items-center justify-between py-3 px-8 text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-200"
                                     >
                                       <span>{subItem.name}</span>
                                       <StatusBadge status={subItem.status} />
@@ -574,7 +568,7 @@ const Header = () => {
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-4 px-6 font-bold text-white hover:text-orange-400 transition-all duration-300 hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-orange-400"
+                        className="block py-4 px-6 font-bold text-[#faf8f3] hover:text-[#faf8f3] transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 border-[#0b1d3a] hover:border-[#faf8f3]"
                       >
                         {item.name}
                       </Link>
@@ -586,7 +580,7 @@ const Header = () => {
                   initial={{ opacity: 0, scaleX: 0 }}
                   animate={{ opacity: 1, scaleX: 1 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-6"
+                  className="h-px bg-[#faf8f3]/20 my-6"
                 ></motion.div>
 
                 {hamburgerMenuItems.map((item, index) => {
@@ -597,10 +591,10 @@ const Header = () => {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 + 0.1 * index, duration: 0.4 }}
-                        className="border border-white/10 rounded-xl overflow-hidden bg-white/5"
+                        className="border border-[#faf8f3]/10 rounded-xl overflow-hidden bg-[#faf8f3]/5"
                       >
                         <button
-                          className="w-full flex justify-between items-center py-4 px-6 font-bold text-white hover:text-orange-400 hover:bg-white/5 transition-all duration-300"
+                          className="w-full flex justify-between items-center py-4 px-6 font-bold text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-300"
                           onClick={() =>
                             setMobileActiveDropdown(
                               mobileActiveDropdown === item.key
@@ -628,7 +622,7 @@ const Header = () => {
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.3 }}
-                              className="bg-white/5 border-t border-white/10"
+                              className="bg-[#faf8f3]/5 border-t border-[#faf8f3]/10"
                             >
                               <ul className="py-2">
                                 {item.items.map((subItem) => {
@@ -640,7 +634,7 @@ const Header = () => {
                                             subItem.onClick();
                                             setMobileActiveDropdown(null);
                                           }}
-                                          className="block w-full text-left py-3 px-8 text-gray-200 hover:text-orange-400 hover:bg-white/5 transition-all duration-200"
+                                          className="block w-full text-left py-3 px-8 text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-200"
                                         >
                                           {subItem.name}
                                         </button>
@@ -652,7 +646,7 @@ const Header = () => {
                                       <Link
                                         href={subItem.href}
                                         onClick={() => setMobileMenuOpen(false)}
-                                        className="block py-3 px-8 text-gray-200 hover:text-orange-400 hover:bg-white/5 transition-all duration-200"
+                                        className="block py-3 px-8 text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-200"
                                       >
                                         {subItem.name}
                                       </Link>
@@ -676,7 +670,7 @@ const Header = () => {
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-4 px-6 font-semibold text-white hover:text-orange-400 transition-all duration-300 hover:bg-white/5 rounded-xl border-l-4 border-transparent hover:border-teal-400"
+                        className="block py-4 px-6 font-semibold text-[#faf8f3] hover:text-[#faf8f3] transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 border-[#0b1d3a] hover:border-[#faf8f3]"
                       >
                         {item.name}
                       </Link>
@@ -696,7 +690,7 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm z-[1000]"
+            className="fixed inset-0 flex items-center justify-center bg-[#0b1d3a]/70 backdrop-blur-sm z-[1000]"
           >
             <ContactForm onClose={closeContactForm} />
           </motion.div>

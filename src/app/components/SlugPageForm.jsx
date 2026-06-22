@@ -2,6 +2,10 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "./InternationalPhoneInput";
 
 export default function SlugPageForm() {
   // Popup states
@@ -96,8 +100,8 @@ export default function SlugPageForm() {
       return false;
     }
 
-    if (!/^\d{10,15}$/.test(formData.mobileNumber.replace(/\D/g, ''))) {
-      setErrorMessage("Please enter a valid mobile number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.mobileNumber)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -117,7 +121,7 @@ export default function SlugPageForm() {
           body: JSON.stringify({
             fields: {
               name: formData.fullName,
-              phone: formData.mobileNumber,
+              phone: getInternationalPhoneValue(formData.mobileNumber),
               source: "Dholera Insider",
             },
             source: "Dholera Insider Popup",
@@ -235,7 +239,7 @@ export default function SlugPageForm() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-xl p-8 max-w-md w-full shadow-2xl relative"
+              className="bg-[#051A3A] rounded-xl p-8 max-w-md w-full shadow-2xl border border-[#F6C343] relative"
               onClick={(e) => e.stopPropagation()}
             >
               {showThankYou ? (
@@ -245,10 +249,10 @@ export default function SlugPageForm() {
                     animate={{ scale: 1 }}
                     className="mb-6"
                   >
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-16 h-16 bg-[#F6C343] rounded-full flex items-center justify-center mx-auto">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8 text-white"
+                        className="h-8 w-8 text-[#051A3A]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -257,8 +261,8 @@ export default function SlugPageForm() {
                       </svg>
                     </div>
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Thank You!</h3>
-                  <p className="text-gray-600">We will contact you shortly.</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
+                  <p className="text-[#FDFCFA]/80">We will contact you shortly.</p>
                 </div>
               ) : (
                 <>
@@ -266,13 +270,13 @@ export default function SlugPageForm() {
                   <div className="text-center mb-6">
                     <button
                       onClick={handlePopupClose}
-                      className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
+                      className="absolute top-4 right-4 text-[#FDFCFA]/70 hover:text-[#F6C343] text-2xl"
                     >
                       ×
                     </button>
                     
                     {/* Section 2: Sub-heading CTA */}
-                    <p className="text-xl md:text-2xl text-gray-700 font-semibold">
+                    <p className="text-xl md:text-2xl text-white font-semibold">
                       Own Premium Residential Plots in Dholera
                     </p>
                   </div>
@@ -280,14 +284,14 @@ export default function SlugPageForm() {
                   {/* Section 3: Form Fields */}
                   <form onSubmit={handleSubmit}>
                     {errorMessage && (
-                      <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm mb-4">
+                        <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA] mb-4">
                         {errorMessage}
                       </div>
                     )}
 
                     <div className="space-y-4 mb-6">
                       <div>
-                        <label htmlFor="fullName" className="block text-gray-700 text-sm font-medium mb-2">
+                        <label htmlFor="fullName" className="block text-white text-sm font-medium mb-2">
                           Full Name *
                         </label>
                         <input
@@ -297,24 +301,29 @@ export default function SlugPageForm() {
                           value={formData.fullName}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                          className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-4 py-3 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                           placeholder="Enter your full name"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="mobileNumber" className="block text-gray-700 text-sm font-medium mb-2">
+                        <label htmlFor="mobileNumber" className="block text-white text-sm font-medium mb-2">
                           Mobile Number *
                         </label>
-                        <input
-                          type="tel"
-                          id="mobileNumber"
-                          name="mobileNumber"
+                        <InternationalPhoneInput
                           value={formData.mobileNumber}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
-                          placeholder="Enter your mobile number"
+                          onChange={(phone) => {
+                            setFormData((prevData) => ({
+                              ...prevData,
+                              mobileNumber: phone,
+                            }));
+                            setErrorMessage("");
+                          }}
+                          inputProps={{
+                            id: "mobileNumber",
+                            name: "mobileNumber",
+                            placeholder: "Enter phone number",
+                          }}
                         />
                       </div>
                     </div>
@@ -329,8 +338,8 @@ export default function SlugPageForm() {
                       disabled={isLoading || !recaptchaLoaded}
                       className={`w-full font-bold py-3 px-6 rounded-lg transition-all duration-300 ${
                         isLoading || !recaptchaLoaded
-                          ? "bg-gray-400 cursor-not-allowed text-gray-600"
-                          : "bg-teal-700 hover:bg-teal-500 text-white transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
+                          ? "bg-[#6C7484] cursor-not-allowed text-[#FDFCFA]"
+                          : "bg-[#F6C343] hover:bg-[#FDFCFA] text-[#051A3A] transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
                       }`}
                     >
                       {isLoading ? (
@@ -348,7 +357,7 @@ export default function SlugPageForm() {
 
                     {/* Section 5: Privacy Notice */}
                     <div className="text-center mt-4">
-                      <p className="text-xs text-gray-500">
+                        <p className="text-xs text-[#FDFCFA]/70">
                         We respect your privacy. Your details are safe with us.
                       </p>
                     </div>

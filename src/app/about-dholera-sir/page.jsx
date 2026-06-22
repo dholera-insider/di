@@ -103,7 +103,7 @@ export default async function BlogsPage() {
               <h1 className="text-2xl md:text-3xl font-bold text-black mb-3">
                 What is Dholera SIR?
               </h1>
-              <div className="w-24 h-1 bg-teal-700 mx-auto"></div>
+              <div className="w-24 h-1 bg-[#051A3A] mx-auto"></div>
             </div>
 
             <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-black rounded-xl p-6 md:p-8 shadow-xl">
@@ -114,11 +114,11 @@ export default async function BlogsPage() {
                   approximately 100 km from Ahmedabad, and developed under the{" "}
                   <strong>Delhi–Mumbai Industrial Corridor (DMIC)</strong>.
                   Spread over{" "}
-                  <strong className="text-teal-700">922.5 km²</strong>,{" "}
+                  <strong className="text-[#051A3A]">922.5 km²</strong>,{" "}
                   <Link
                     href="/dholera-sir-blogs/pm-modi-dream-project-dholera-sir-india"
                     title="Dholera Smart City Project"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     Dholera Smart City Project
                   </Link>
@@ -141,8 +141,8 @@ export default async function BlogsPage() {
           {/* Vision & Connectivity Section */}
           <section className="mb-8">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-teal-900 text-white rounded-xl p-6 md:p-7">
-                <div className="inline-block bg-teal-700 text-white px-4 py-2 rounded-lg text-sm font-bold mb-4">
+              <div className="bg-[#051A3A] text-white rounded-xl p-6 md:p-7">
+                <div className="inline-block bg-[#051A3A] text-white px-4 py-2 rounded-lg text-sm font-bold mb-4">
                   VISION
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold mb-4">
@@ -183,8 +183,8 @@ export default async function BlogsPage() {
                 </div>
               </div>
 
-              <div className="bg-teal-700 text-white rounded-xl p-6 md:p-7">
-                <div className="inline-block bg-teal-900 text-white px-4 py-2 rounded-lg text-sm font-bold mb-4">
+              <div className="bg-[#051A3A] text-white rounded-xl p-6 md:p-7">
+                <div className="inline-block bg-[#051A3A] text-white px-4 py-2 rounded-lg text-sm font-bold mb-4">
                   CONNECTIVITY
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold mb-4">
@@ -230,10 +230,10 @@ export default async function BlogsPage() {
               <h2 className="text-xl md:text-2xl font-bold text-black mb-3">
                 Infrastructure, Industries & Economic Growth
               </h2>
-              <div className="w-24 h-1 bg-teal-700 mx-auto mb-3"></div>
+              <div className="w-24 h-1 bg-[#051A3A] mx-auto mb-3"></div>
             </div>
 
-            <div className="bg-teal-900 p-4 text-white rounded-xl text-base">
+            <div className="bg-[#051A3A] p-4 text-white rounded-xl text-base">
               <p>
                 The idea behind Dholera SIR is to build India’s first fully
                 planned smart city with a strong focus on infrastructure and
@@ -257,7 +257,7 @@ export default async function BlogsPage() {
               <h2 className="text-2xl md:text-3xl font-bold text-black mb-3">
                 Mega Projects in Dholera Smart City
               </h2>
-              <div className="w-24 h-1 bg-teal-700 mx-auto"></div>
+              <div className="w-24 h-1 bg-[#051A3A] mx-auto"></div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -267,7 +267,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/about-dholera-sir/abcd-building-dholera-sir"
                     title="ABCD Building"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     ABCD Building
                   </Link>
@@ -286,7 +286,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/about-dholera-sir/tata-semiconductor-plant-in-dholera"
                     title="TATA Electronics Semiconductor Fab"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     TATA Electronics Semiconductor Fab
                   </Link>
@@ -302,7 +302,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/about-dholera-sir/dholera-international-airport-project-update-2025"
                     title="Dholera International Airport"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     Dholera International Airport
                   </Link>
@@ -318,7 +318,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity"
                     title="Ahmedabad–Dholera Expressway"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     Ahmedabad–Dholera Expressway
                   </Link>
@@ -334,7 +334,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/dholera-sir-blogs/how-connectivity-is-shaping-dholera-growth"
                     title="High-Speed Monorail & Railway"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     High-Speed Monorail & Railway
                   </Link>
@@ -350,7 +350,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/about-dholera-sir/renewable-energy-solar-park-in-dholera"
                     title="Dholera Solar Park"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     Dholera Solar Park
                   </Link>
@@ -366,7 +366,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/dholera-sir-blogs/dholera-smart-city-water-scarcity-solutions"
                     title="Water Treatment Plant"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     Water Treatment Plant
                   </Link>
@@ -382,7 +382,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/about-dholera-sir/renewable-energy-solar-park-in-dholera"
                     title="ReNew Power & Activation Area"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     ReNew Power & Activation Area
                   </Link>
@@ -398,7 +398,7 @@ export default async function BlogsPage() {
                   <Link
                     href="/dholera-sir-blogs/dholera-sea-port-connectivity-growth"
                     title="Dholera Sea Port"
-                    className="hover:text-teal-800"
+                    className="hover:text-[#2B364D]"
                   >
                     Dholera Sea Port
                   </Link>
@@ -416,21 +416,21 @@ export default async function BlogsPage() {
           {/* Investment Landscape Section */}
           <section id="investment" className="mb-8">
             <div className="text-center mb-6">
-              <div className="inline-block bg-teal-700 text-white px-4 py-2 rounded-full text-sm md:text-lg font-bold mb-3 uppercase tracking-wider">
+              <div className="inline-block bg-[#051A3A] text-white px-4 py-2 rounded-full text-sm md:text-lg font-bold mb-3 uppercase tracking-wider">
                 INVESTMENT OPPORTUNITIES
               </div>
               <h2 className="text-xl md:text-3xl font-bold text-black mb-3">
                 Major Investments in Dholera Smart City
               </h2>
-              <div className="w-24 h-1 bg-teal-700 mx-auto mb-3"></div>
+              <div className="w-24 h-1 bg-[#051A3A] mx-auto mb-3"></div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Tata Electronics */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-700 hover:to-teal-600 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-700 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#e3ae25] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">Tata Electronics</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     Semiconductor
                   </span>
                 </div>
@@ -440,10 +440,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* ReNew Power */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-900 hover:to-teal-800 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-900 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#051A3A] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">ReNew Power</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     ₹2,000 crore
                   </span>
                 </div>
@@ -453,10 +453,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* INOX Air Products */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-700 hover:to-teal-600 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-700 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#e3ae25] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">INOX Air Products</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     Industrial
                   </span>
                 </div>
@@ -466,10 +466,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* Reliance Industries */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-900 hover:to-teal-800 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-900 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#051A3A] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">Reliance Industries</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     Major Investor
                   </span>
                 </div>
@@ -479,10 +479,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* Adani Group */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-700 hover:to-teal-600 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-700 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#e3ae25] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">Adani Group</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     Infrastructure
                   </span>
                 </div>
@@ -492,10 +492,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* Mahindra Lifespaces */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-900 hover:to-teal-800 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-900 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#051A3A] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">Mahindra Lifespaces</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     Real Estate
                   </span>
                 </div>
@@ -505,10 +505,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* Tsingshan */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-700 hover:to-teal-600 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-700 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#e3ae25] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">Tsingshan (China)</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     ₹21,000 crore
                   </span>
                 </div>
@@ -518,10 +518,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* Intel */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-900 hover:to-teal-800 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-900 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#051A3A] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">Intel (USA)</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     Technology
                   </span>
                 </div>
@@ -531,10 +531,10 @@ export default async function BlogsPage() {
               </div>
 
               {/* Fujifilm */}
-              <div className="bg-white hover:bg-gradient-to-br hover:from-teal-700 hover:to-teal-600 text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-teal-700 transition-all duration-300 group">
+              <div className="bg-white hover:bg-gradient-to-br hover:from-[#051A3A] hover:to-[#e3ae25] text-black hover:text-white rounded-lg p-5 border-2 border-black hover:border-[#051A3A] transition-all duration-300 group">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold">Fujifilm (Japan)</h4>
-                  <span className="bg-teal-700 group-hover:bg-white text-white group-hover:text-teal-900 px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-[#051A3A] group-hover:bg-white text-white group-hover:text-[#2B364D] px-3 py-1 rounded-full text-xs font-bold">
                     Manufacturing
                   </span>
                 </div>
@@ -547,7 +547,7 @@ export default async function BlogsPage() {
 
           {/* Dholera Insiders Section */}
           <section className="mb-8">
-            <div className="bg-gradient-to-br from-teal-700 via-teal-600 to-teal-700 rounded-2xl p-8 md:p-12 shadow-2xl">
+            <div className="bg-gradient-to-br from-[#051A3A] via-[#F6C343] to-[#051A3A] rounded-2xl p-8 md:p-12 shadow-2xl">
               {/* Header */}
               <div className="text-center mb-10">
                 <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white drop-shadow-lg">
@@ -609,7 +609,7 @@ export default async function BlogsPage() {
                   <h2 className="text-2xl md:text-3xl font-bold text-black mb-3">
                     Featured Blogs
                   </h2>
-                  <div className="w-24 h-1 bg-teal-700 mx-auto"></div>
+                  <div className="w-24 h-1 bg-[#051A3A] mx-auto"></div>
                 </div>
 
                 <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -1,13 +1,16 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import usernameIcon from "../assets/icons/Icon.png";
-import callIcon from "../assets/icons/callIcon.png";
 import emailIcon from "../assets/icons/email.png";
 import messageIcon from "../assets/icons/message.png";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "./InternationalPhoneInput";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,7 +21,11 @@ const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   phoneNumber: yup
     .string()
-    .matches(/^[0-9]*$/, "Invalid phone number, please enter numbers only")
+    .test(
+      "valid-phone",
+      "Please enter a valid international phone number",
+      (value) => isValidInternationalPhone(value || ""),
+    )
     .required("Phone number is required"),
   message: yup.string().required("Message is required"),
 });
@@ -29,12 +36,16 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    control,
   } = useForm({ resolver: yupResolver(schema) });
   const [submitting, setSubmitting] = useState(false);
   const onSubmit = async (data) => {
     try {
       setSubmitting(true);
-      console.log(data);
+      console.log({
+        ...data,
+        phoneNumber: getInternationalPhoneValue(data.phoneNumber),
+      });
       toast.success("Form submitted successfully!");
       reset();
     } catch (error) {
@@ -45,9 +56,9 @@ const Form = () => {
   };
 
   return (
-    <div id="contact" className="relative p-4 mb-4 bg-gradient-to-br from-transparent via-blue-900 to-transparent " >
+    <div id="contact" className="relative p-4 mb-4 bg-[#051A3A]" >
       <div className="flex justify-center items-center  p-3">
-        <button className="mt-[90px] mb-4 bg-orange-200 hover:bg-orange-600 px-4 py-1 rounded-2xl text-orange-500 hover:text-white h-8 w-28 font-black text-xs uppercase cursor-pointer ">
+        <button className="mt-[90px] mb-4 bg-[#F6C343] hover:bg-[#FDFCFA] px-4 py-1 rounded-2xl text-[#051A3A] h-8 w-28 font-black text-xs uppercase cursor-pointer ">
           contacts
         </button>
       </div>
@@ -56,7 +67,7 @@ const Form = () => {
           <p className=" text-8xl  sm:text-10xl text-black opacity-5 font-black text-center z-0 absolute top-0 left-0 w-full uppercase dark:text-white">
             contacts
           </p>
-          <p className="text-4xl text-white font-bold text-center z-20 relative capitalize mt-7 sm:mt-14 dark:text-gray-300">
+          <p className="text-4xl text-white font-bold text-center z-20 relative capitalize mt-7 sm:mt-14">
             get in touch now
           </p>
         </div>
@@ -84,7 +95,7 @@ const Form = () => {
                     {...register("firstName")}
                     name="firstName"
                     placeholder="First Name"
-                    className="flex justify-between items-center rounded-xl py-[15px] px-[30px] shadow-md sm:w-[320px] h-[60px] capitalize mb-5 sm:mb-0 dark:bg-black"
+                    className="flex justify-between items-center rounded-lg border border-[#2B364D] bg-[#FDFCFA] py-[15px] px-[30px] shadow-md sm:w-[320px] h-[60px] capitalize mb-5 sm:mb-0 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                   />
                   <Image
                     src={usernameIcon}
@@ -105,7 +116,7 @@ const Form = () => {
                     {...register("lastName")}
                     name="lastName"
                     placeholder="Last Name"
-                    className="flex justify-between items-center  rounded-xl py-[15px] px-[30px] shadow-md sm:w-[320px] h-[60px] capitalize mb-5 sm:mb-0 dark:bg-black"
+                    className="flex justify-between items-center rounded-lg border border-[#2B364D] bg-[#FDFCFA] py-[15px] px-[30px] shadow-md sm:w-[320px] h-[60px] capitalize mb-5 sm:mb-0 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                   />
                   <Image
                     src={usernameIcon}
@@ -129,7 +140,7 @@ const Form = () => {
                     {...register("email")}
                     name="email"
                     placeholder="Email Address"
-                    className="flex justify-between items-center  rounded-xl py-[15px] px-[30px] shadow-md sm:w-[320px] h-[60px] capitalize  mb-5  sm:mb-0 dark:bg-black"
+                    className="flex justify-between items-center rounded-lg border border-[#2B364D] bg-[#FDFCFA] py-[15px] px-[30px] shadow-md sm:w-[320px] h-[60px] capitalize mb-5 sm:mb-0 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                   />
                   <Image
                     src={emailIcon}
@@ -146,16 +157,21 @@ const Form = () => {
 
               <div className="flex flex-col">
                 <label className="relative">
-                  <input
-                    {...register("phoneNumber")}
+                  <Controller
                     name="phoneNumber"
-                    placeholder="Phone Number"
-                    className="flex justify-between items-center  rounded-xl py-[15px] px-[30px] shadow-md sm:w-[320px] h-[60px] mb-5  sm:mb-0 dark:bg-black"
-                  />
-                  <Image
-                    src={callIcon}
-                    alt="phone icon"
-                    className="w-5 h-5 absolute right-5 top-1/2 transform -translate-y-1/2"
+                    control={control}
+                    render={({ field }) => (
+                      <InternationalPhoneInput
+                        value={field.value}
+                        onChange={field.onChange}
+                        containerClass="sm:w-[320px] w-full"
+                        inputProps={{
+                          id: "phoneNumber",
+                          name: "phoneNumber",
+                          placeholder: "Phone Number",
+                        }}
+                      />
+                    )}
                   />
                 </label>
                 {errors.phoneNumber && (
@@ -175,7 +191,7 @@ const Form = () => {
                     {...register("message")}
                     name="message"
                     placeholder="Your Message"
-                    className="flex justify-between items-center  rounded-xl py-[15px] px-[30px] shadow-md sm:w-[670px] h-[60px] overflow-ellipsis overflow-hidden dark:bg-black"
+                    className="flex justify-between items-center rounded-lg border border-[#2B364D] bg-[#FDFCFA] py-[15px] px-[30px] shadow-md sm:w-[670px] h-[60px] overflow-ellipsis overflow-hidden text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                   />
                   <Image
                     src={messageIcon}
@@ -192,7 +208,7 @@ const Form = () => {
             </div>
             <button
               type="submit"
-              className="flex justify-cente max-sm:translate-x-14 items-center py-[15px] px-[35px] bg-[#3361FF] hover:bg-[#11266e] rounded-[30px] capitalize text-white mt-7 sm:mt-0"
+              className="flex justify-cente max-sm:translate-x-14 items-center py-[15px] px-[35px] bg-[#F6C343] hover:bg-[#FDFCFA] rounded-[30px] capitalize text-[#051A3A] font-bold mt-7 sm:mt-0"
             >
               send request
             </button>

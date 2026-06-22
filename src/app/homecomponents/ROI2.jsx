@@ -140,14 +140,14 @@ const InvestmentTimeline = () => {
   };
 
   return (
-    <div className="w-full bg-gradient-to-b from-white via-teal-50/30 to-white py-16 px-4 overflow-hidden" id="timeline-container">
+    <div className="w-full bg-gradient-to-b from-white via-[#F6C343]/30 to-white py-16 px-4 overflow-hidden" id="timeline-container">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
         }`}>
           <h2 className="text-4xl max-sm:text-xl font-bold text-gray-900 mb-4">
-            Your Path to <span className="text-teal-600">10x Returns</span>
+            Your Path to <span className="text-[#F6C343]">10x Returns</span>
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
             Track your investment's journey as Dholera transforms into India's premier smart city
@@ -167,19 +167,19 @@ const InvestmentTimeline = () => {
               {/* Card */}
               <div 
                 className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 cursor-pointer overflow-hidden group ${
-                  activeIndex === index ? 'border-teal-500 ring-4 ring-teal-100' : 'border-gray-200 hover:border-teal-300'
+                  activeIndex === index ? 'border-[#F6C343] ring-4 ring-[#F6C343]/25' : 'border-gray-200 hover:border-[#F6C343]'
                 }`}
                 onClick={() => handleCardClick(index)}
               >
                 {/* Background Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent transition-opacity duration-500 ${
+                <div className={`absolute inset-0 bg-gradient-to-br from-[#F6C343]/5 to-transparent transition-opacity duration-500 ${
                   activeIndex === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'
                 }`}></div>
 
                 <div className="relative z-10">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-6">
-                    <div className={`flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 text-white shadow-lg transition-transform duration-500 ${
+                    <div className={`flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-[#F6C343] to-[#e3ae25] text-white shadow-lg transition-transform duration-500 ${
                       activeIndex === index ? 'scale-110 rotate-6' : 'group-hover:scale-105'
                     }`}>
                       {milestone.icon}
@@ -187,11 +187,11 @@ const InvestmentTimeline = () => {
                     <div className="text-right">
                       <div className="text-sm font-semibold text-gray-500 mb-1">{milestone.year}</div>
                       <div className={`text-2xl font-bold transition-colors duration-300 ${
-                        activeIndex === index ? 'text-teal-600' : 'text-gray-900'
+                        activeIndex === index ? 'text-[#F6C343]' : 'text-gray-900'
                       }`}>
                         {milestone.multiplier}
                       </div>
-                      <div className="text-xl font-bold text-teal-500 mt-1">{milestone.price}</div>
+                      <div className="text-xl font-bold text-[#F6C343] mt-1">{milestone.price}</div>
                     </div>
                   </div>
 
@@ -205,11 +205,11 @@ const InvestmentTimeline = () => {
                     activeIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
                   }`}>
                     <div className="border-t border-gray-200 pt-4 mt-4">
-                      <div className="text-sm font-semibold text-teal-600 mb-3">Key Benefits:</div>
+                      <div className="text-sm font-semibold text-[#F6C343] mb-3">Key Benefits:</div>
                       <ul className="space-y-2">
                         {milestone.details.map((detail, i) => (
                           <li key={i} className="flex items-start text-sm text-gray-700">
-                            <div className="w-1.5 h-1.5 bg-teal-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <div className="w-1.5 h-1.5 bg-[#F6C343] rounded-full mt-2 mr-3 flex-shrink-0"></div>
                             {detail}
                           </li>
                         ))}
@@ -221,7 +221,7 @@ const InvestmentTimeline = () => {
                 {/* Progress Indicator */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-100">
                   <div 
-                    className={`h-full bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-700 ${
+                    className={`h-full bg-gradient-to-r from-[#F6C343] to-[#e3ae25] transition-all duration-700 ${
                       activeIndex === index ? 'w-full' : 'w-0'
                     }`}
                   ></div>
@@ -231,7 +231,7 @@ const InvestmentTimeline = () => {
               {/* Connection Line for larger screens */}
               {index < milestones.length - 1 && (
                 <div className="hidden lg:block absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                  <div className="w-px h-8 bg-gradient-to-b from-teal-500 to-transparent"></div>
+                  <div className="w-px h-8 bg-gradient-to-b from-[#F6C343] to-transparent"></div>
                 </div>
               )}
             </div>
@@ -239,7 +239,7 @@ const InvestmentTimeline = () => {
         </div>
 
         {/* Investment Summary */}
-        <div className={`bg-gradient-to-br from-teal-500 to-teal-600 rounded-3xl p-8 text-white shadow-2xl transition-all duration-1000 ${
+        <div className={`bg-gradient-to-br from-[#F6C343] to-[#e3ae25] rounded-3xl p-8 text-white shadow-2xl transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="flex items-center gap-3 mb-4">

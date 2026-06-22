@@ -1,49 +1,82 @@
-import React from "react";
-import Image from "next/image";
-import sample1 from "@/app/assets/home/Invest_in_dholera.webp";
-import Link from "next/link";
+import { Building2, Landmark, Cpu, Zap } from "lucide-react";
 
-export default function Invest() {
+const highlights = [
+  {
+    number: "01",
+    label: "India's First Special Investment Region (SIR)",
+    Icon: Landmark,
+  },
+  {
+    number: "02",
+    label: "Government-Planned Infrastructure",
+    Icon: Building2,
+  },
+  {
+    number: "03",
+    label: "India's First Semiconductor Hub",
+    Icon: Cpu,
+  },
+  {
+    number: "04",
+    label: "Plug & Play Infrastructure",
+    Icon: Zap,
+  },
+];
+
+export default function WhyDholera() {
   return (
-    <section className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900">
-      <div className="mx-auto max-w-7xl px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
-        <div className="text-center">
-          <h2 className="mx-auto max-w-7xl text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-white">
-            <span className="text-teal-400">Dholera Smart City</span> - India's
-            Future Investment Hub
+    <section className="relative overflow-hidden bg-[#FDFCFA] py-4 px-4 sm:px-6 lg:px-8">
+
+      {/* Watermark */}
+      <div className="pointer-events-none hidden md:block select-none absolute inset-0 md:flex items-center justify-center">
+        <span className="whitespace-nowrap text-[clamp(5rem,16vw,15rem)] font-black uppercase tracking-[0.2em] text-[#051A3A]/[0.09]">
+          DHOLERA
+        </span>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+
+        {/* Centered header */}
+        <div className="mb-16 text-center">
+          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
+            NRI Investment Destination
+          </p>
+          <h2 className="mb-5 text-[clamp(1.75rem,4vw,3rem)] font-bold leading-tight text-[#051A3A]">
+            Why NRIs Choose Dholera
           </h2>
-          <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-teal-400 to-teal-600" />
+          <div className="mx-auto mb-6 h-px w-16 bg-[#F6C343]" />
+          <p className="mx-auto max-w-2xl text-[clamp(0.9rem,1.2vw,1.05rem)] leading-relaxed text-[#2B364D]/70">
+            Dholera is India's first Greenfield Smart City and one of the country's
+            largest planned infrastructure developments. With major industrial
+            investments, world-class connectivity, and long-term urban planning, it
+            has become an attractive destination for NRI property investors.
+          </p>
         </div>
 
-        <div className="mx-auto grid max-w-7xl items-center gap-[clamp(1.5rem,3vw,3rem)] py-[clamp(2rem,4vw,3.5rem)] md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-          <div className="w-full">
-            <Image
-              src={sample1}
-              alt="Dholera Smart City Investment"
-              className="h-auto w-full rounded-lg object-cover"
-            />
-          </div>
+        {/* Highlights — bordered horizontal strip */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 border-t border-b border-[#051A3A]/10 divide-y divide-[#051A3A]/10 lg:divide-y-0 lg:divide-x">
+          {highlights.map(({ number, label, Icon }) => (
+            <div
+              key={number}
+              className="group flex flex-col gap-5 px-8 py-4 transition-colors duration-300 hover:bg-[#051A3A]/[0.03]"
+            >
+              <span className="font-mono text-4xl font-black leading-none text-[#051A3A] transition-colors group-hover:text-[#F6C343]">
+                {number}
+              </span>
+              <div className="flex items-center gap-3">
 
-          <div className="space-y-[clamp(1rem,2vw,2rem)]">
-            <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-              <Link href="/about-dholera-sir" title="Dholera Smart City" className="text-teal-400">Dholera Smart City</Link> is India’s first planned greenfield smart city
-              under the Delhi-Mumbai Industrial Corridor (DMIC) Project. The
-              city is being developed with modern infrastructure, wide roads,
-              underground utilities, and dedicated residential, commercial, and
-              industrial zones. <br /> Major projects like the Dholera International Airport,
-              Ahmedabad-Dholera Expressway, and the Tata Semiconductor Plant
-              boosts connectivity, jobs, and industrial growth in Dholera.
-            </p>
-
-            <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">
-              Due to strong government support, planned infrastructure, and
-              future development potential, Dholera Smart City is becoming a
-              popular destination for real estate investment. Many investors
-              prefer Dholera for affordable plot prices, long-term growth
-              opportunities, and smart city development.
-            </p>
-          </div>
+              <Icon
+                className="h-7 w-7 text-[#F6C343]"
+                strokeWidth={1.25}
+                />
+              <p className="text-sm font-medium leading-relaxed text-[#2B364D] transition-colors group-hover:text-[#051A3A]">
+                {label}
+              </p>
+                </div>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );

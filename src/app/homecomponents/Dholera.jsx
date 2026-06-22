@@ -25,13 +25,13 @@ export default function Dholera() {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900">
+    <section className="bg-gradient-to-br from-gray-900 via-slate-800 to-[#051A3A]">
       <div className="mx-auto max-w-7xl px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
         <div className="mb-[clamp(1.5rem,3vw,3rem)] text-center">
           <h2 className="max-w-7xl mx-auto text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-white">
             What Makes Dholera Smart City Different from Other Cities in India
           </h2>
-          <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-teal-400 to-teal-600" />
+          <div className="mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-[#F6C343] to-[#e3ae25]" />
           
         </div>
 
@@ -41,7 +41,7 @@ export default function Dholera() {
               key={benefit.title}
               className="h-full rounded-lg border border-white/20 bg-white/10 p-[clamp(1.25rem,2.5vw,2rem)] backdrop-blur-sm transition-all duration-300 hover:bg-white/15"
             >
-              <h3 className="mb-3 text-[clamp(1.125rem,2vw,1.5rem)] font-semibold leading-[1.4] text-teal-300">
+              <h3 className="mb-3 text-[clamp(1.125rem,2vw,1.5rem)] font-semibold leading-[1.4] text-[#F6C343]">
                 {benefit.title}
               </h3>
               <p className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-100">

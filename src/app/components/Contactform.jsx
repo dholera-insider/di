@@ -1,9 +1,13 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { FaUser, FaPhoneAlt } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import logo from "@/app/assets/icons/logo.webp";
+import logo from "@/app/assets/icons/logo.png";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "./InternationalPhoneInput";
 
 export default function ContactForm({ onClose }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -87,8 +91,8 @@ export default function ContactForm({ onClose }) {
       return false;
     }
 
-    if (!/^\d{10,15}$/.test(formData.phone)) {
-      setErrorMessage("Please enter a valid phone number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.phone)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -123,7 +127,7 @@ export default function ContactForm({ onClose }) {
           },
           body: JSON.stringify({
             fullName: formData.fullName,
-            phone: formData.phone,
+            phone: getInternationalPhoneValue(formData.phone),
             recaptchaToken: token,
             source: "Dholera Insider",
           }),
@@ -210,7 +214,7 @@ export default function ContactForm({ onClose }) {
         initial={{ scale: 0.9, y: 50 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 50 }}
-        className="bg-gradient-to-r from-gray-900 via-emerald-900 to-teal-900 text-emerald-100 p-8 rounded-xl shadow-2xl border border-emerald-700 max-w-md w-full relative"
+        className="bg-[#051A3A] text-[#FDFCFA] p-8 rounded-xl shadow-2xl border border-[#F6C343] max-w-md w-full relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -219,7 +223,7 @@ export default function ContactForm({ onClose }) {
             e.stopPropagation();
             onClose();
           }}
-          className="absolute top-4 right-4 text-emerald-300 hover:text-white focus:outline-none"
+          className="absolute top-4 right-4 text-[#FDFCFA]/80 hover:text-[#F6C343] focus:outline-none"
           aria-label="Close form"
         >
           <svg
@@ -243,7 +247,7 @@ export default function ContactForm({ onClose }) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="bg-gradient-to-r from-gray-900 to-teal-900 p-2 shadow-lg border border-emerald-700 rounded-full"
+            className="bg-[#051A3A] p-2 shadow-lg border border-[#F6C343] rounded-full"
           >
             <Image src={logo} alt="Logo" width={60} height={60} className="" />
           </motion.div>
@@ -258,7 +262,7 @@ export default function ContactForm({ onClose }) {
           <h2 className="text-xl md:text-3xl font-bold text-white mb-2">
             Book A Site Visit
           </h2>
-          <p className="text-emerald-100 text-sm">
+          <p className="text-[#FDFCFA]/80 text-sm">
             Get Expert Guidance on Dholera Investment
           </p>
         </motion.div>
@@ -270,10 +274,10 @@ export default function ContactForm({ onClose }) {
               animate={{ scale: 1 }}
               className="mb-4 inline-block"
             >
-              <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-[#F6C343] rounded-full flex items-center justify-center mx-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10 text-white"
+                  className="h-10 w-10 text-[#051A3A]"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -288,7 +292,7 @@ export default function ContactForm({ onClose }) {
               </div>
             </motion.div>
             <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
-            <p className="text-emerald-100">
+            <p className="text-[#FDFCFA]/80">
               Your request has been submitted successfully. We'll contact you
               shortly.
             </p>
@@ -296,35 +300,35 @@ export default function ContactForm({ onClose }) {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             {errorMessage && (
-              <div className="p-3 bg-red-500 bg-opacity-20 border border-red-400 text-red-100 rounded-lg text-sm">
+              <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
                 {errorMessage}
               </div>
             )}
 
             <div className="relative">
-              <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300" />
+              <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#6C7484]" />
               <input
                 name="fullName"
                 placeholder="Full Name"
                 value={formData.fullName}
                 onChange={handleChange}
                 required
-                className="w-full p-4 pl-12 bg-gray-800 bg-opacity-70 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 border border-emerald-700 hover:border-emerald-400 transition-colors"
+                className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] p-4 pl-12 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
               />
             </div>
 
             <div className="relative">
-              <FaPhoneAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-300" />
-              <input
-                name="phone"
-                type="tel"
-                placeholder="Phone Number"
+              <InternationalPhoneInput
                 value={formData.phone}
-                onChange={handleChange}
-                minLength="10"
-                maxLength="15"
-                required
-                className="w-full p-4 pl-12 bg-gray-800 bg-opacity-70 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 border border-emerald-700 hover:border-emerald-400 transition-colors"
+                onChange={(phone) => {
+                  setFormData((prevData) => ({ ...prevData, phone }));
+                  setErrorMessage("");
+                }}
+                inputProps={{
+                  id: "phone",
+                  name: "phone",
+                  placeholder: "Phone Number",
+                }}
               />
             </div>
 
@@ -335,7 +339,7 @@ export default function ContactForm({ onClose }) {
             <button
               type="submit"
               disabled={isLoading || !recaptchaLoaded}
-              className="w-full py-3 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg hover:from-emerald-600 hover:to-teal-700 transition-all shadow-lg hover:shadow-emerald-500/20 font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full py-3 px-6 bg-[#F6C343] text-[#051A3A] rounded-lg hover:bg-[#FDFCFA] transition-all shadow-lg hover:shadow-[#F6C343]/20 font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isLoading
                 ? "Verifying..."

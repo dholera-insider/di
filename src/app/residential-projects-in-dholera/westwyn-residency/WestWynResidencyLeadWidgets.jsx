@@ -23,7 +23,7 @@ const DocIconTeal = () => (
     width="15"
     height="15"
     fill="none"
-    stroke="#134e4a"
+    stroke="#051A3A"
     strokeWidth="2"
     viewBox="0 0 24 24"
   >

@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 const CommonForm = dynamic(() => import("./CommonForm"), {
   ssr: false,
   loading: () => (
-    <div className="min-h-[32rem] bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900" />
+    <div className="min-h-[32rem] bg-[#051A3A]" />
   ),
 });
 
@@ -43,7 +43,7 @@ export default function LazyCommonFormSection({ title }) {
       {shouldLoad ? (
         <CommonForm title={title} />
       ) : (
-        <div className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900" />
+        <div className="bg-[#051A3A]" />
       )}
     </div>
   );

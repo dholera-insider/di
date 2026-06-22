@@ -32,41 +32,41 @@ export default function About() {
   ];
 
   return (
-    <div className='bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900 min-h-screen pb-8'>
+    <div className='bg-gradient-to-br from-gray-900 via-slate-800 to-[#051A3A] min-h-screen pb-8'>
       {/* Why Dholera Smart City Section */}
       <div className="pt-16 max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl max-sm:text-3xl font-bold text-white mb-4">
-            Why <span className="text-teal-400">Dholera Smart City</span>?
+            Why <span className="text-[#F6C343]">Dholera Smart City</span>?
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-teal-400 to-teal-600 mx-auto rounded-full"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mx-auto rounded-full"></div>
         </div>
-        
-        <div className="bg-gradient-to-br from-gray-800/40 to-teal-900/20 rounded-3xl p-8 backdrop-blur-sm border border-teal-500/20 shadow-2xl">
+
+        <div className="bg-gradient-to-br from-gray-800/40 to-[#051A3A]/20 rounded-3xl p-8 backdrop-blur-sm border border-[#F6C343]/20 shadow-2xl">
           <p className="text-gray-300 text-lg leading-relaxed mb-8 text-center">
-            <span className="font-bold text-teal-400">Dholera Smart City</span> is not just a plan — it's a powerful opportunity. 
-            Backed by the government and built with world-class infrastructure, this futuristic city is attracting investors 
+            <span className="font-bold text-[#F6C343]">Dholera Smart City</span> is not just a plan — it's a powerful opportunity.
+            Backed by the government and built with world-class infrastructure, this futuristic city is attracting investors
             from across India and abroad. Here's why smart investors are choosing Dholera:
           </p>
 
           <div className="space-y-3 mt-8">
             {reasons.map((reason, index) => (
-              <div 
+              <div
                 key={index}
-                className="bg-gradient-to-br from-gray-700/30 to-teal-800/20 rounded-2xl border border-teal-500/10 transition-all duration-300 overflow-hidden hover:border-teal-500/30"
+                className="bg-gradient-to-br from-gray-700/30 to-[#051A3A]/20 rounded-2xl border border-[#F6C343]/10 transition-all duration-300 overflow-hidden hover:border-[#F6C343]/30"
               >
                 <button
                   onClick={() => toggleDropdown(index)}
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                 >
                   <div className="flex items-center">
-                    <div className="w-8 h-8 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
                       {index + 1}
                     </div>
-                    <h3 className="text-xl font-bold text-teal-400">{reason.title}</h3>
+                    <h3 className="text-xl font-bold text-[#F6C343]">{reason.title}</h3>
                   </div>
                   <svg
-                    className={`w-6 h-6 text-teal-400 transition-transform duration-300 ${
+                    className={`w-6 h-6 text-[#F6C343] transition-transform duration-300 ${
                       activeDropdown === index ? 'transform rotate-180' : ''
                     }`}
                     fill="none"
@@ -84,8 +84,8 @@ export default function About() {
                 </button>
                 <div
                   className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                    activeDropdown === index 
-                      ? 'max-h-96 opacity-100' 
+                    activeDropdown === index
+                      ? 'max-h-96 opacity-100'
                       : 'max-h-0 opacity-0'
                   }`}
                 >
@@ -98,11 +98,11 @@ export default function About() {
               </div>
             ))}
           </div>
-          
+
           {/* Learn More Button */}
           <div className="flex justify-center mt-12">
             <Link href="/inside-dholera">
-              <button className="bg-gradient-to-r from-teal-400 to-teal-600 hover:from-teal-500 hover:to-teal-700 px-8 py-3 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+              <button className="bg-gradient-to-r from-[#F6C343] to-[#e3ae25] hover:from-[#F6C343] hover:to-[#051A3A] px-8 py-3 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                 Learn More
               </button>
             </Link>

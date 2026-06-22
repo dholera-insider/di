@@ -10,7 +10,7 @@ export default function Copyright() {
               <h1 className="text-4xl text-white font-bold text-center z-20 relative mt-16 drop-shadow-lg">
                 Refund & Cancellation Policy
               </h1>
-              <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-teal-600 mt-4 rounded-full"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mt-4 rounded-full"></div>
             </div>
           </div>
 
@@ -35,7 +35,7 @@ export default function Copyright() {
               and company policies.
             </p>
             <div className="flex flex-col justify-center items-center mt-20">
-              <p className="md:text-9xl text-5xl text-teal-300 opacity-10 font-black text-center z-0 absolute left-0 w-full">
+              <p className="md:text-9xl text-5xl text-[#F6C343] opacity-10 font-black text-center z-0 absolute left-0 w-full">
                 Refund & Cancellation Policy
               </p>
             </div>

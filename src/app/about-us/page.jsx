@@ -2,6 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "./about.css";
+import InternationalPhoneInput, {
+  getInternationalPhoneValue,
+  isValidInternationalPhone,
+} from "../components/InternationalPhoneInput";
 
 const benefits = [
   {
@@ -117,9 +121,8 @@ export default function Aboutus() {
       return false;
     }
 
-    // Simple phone validation
-    if (!/^\d{10,15}$/.test(formData.phone)) {
-      setErrorMessage("Please enter a valid phone number (10-15 digits)");
+    if (!isValidInternationalPhone(formData.phone)) {
+      setErrorMessage("Please enter a valid international phone number");
       return false;
     }
 
@@ -157,7 +160,7 @@ export default function Aboutus() {
           body: JSON.stringify({
             fields: {
               name: formData.fullName,
-              phone: formData.phone,
+              phone: getInternationalPhoneValue(formData.phone),
               source: "Dholera Insider",
             },
             source: "Dholera Insider Website",
@@ -291,7 +294,7 @@ export default function Aboutus() {
         }}
       />
 
-      <main className="bg-gradient-to-b from-gray-900 via-emerald-900 to-teal-900 text-white min-h-screen">
+      <main className="bg-gradient-to-b from-gray-900 via-[#2B364D] to-[#051A3A] text-white min-h-screen">
         {/* Hero Section */}
         <section className="text-center px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] py-[clamp(5rem,calc(4rem+3vw),7rem)] max-w-4xl mx-auto">
           <motion.h1
@@ -300,10 +303,10 @@ export default function Aboutus() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            About <span className="text-teal-300">Dholera Insider</span>
+            About <span className="text-[#F6C343]">Dholera Insider</span>
           </motion.h1>
           <motion.p
-            className="text-[clamp(1rem,calc(0.95rem+0.25vw),1.125rem)] text-teal-100 leading-relaxed"
+            className="text-[clamp(1rem,calc(0.95rem+0.25vw),1.125rem)] text-[#FDFCFA]/85 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -354,7 +357,7 @@ export default function Aboutus() {
         </section>
 
         <section>
-          <div className="bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900">
+          <div className="bg-gradient-to-br from-gray-900 via-slate-800 to-[#051A3A]">
             {/* Why Dholera Smart City Section */}
             <div className="py-[clamp(3rem,calc(2rem+3vw),4rem)] max-w-7xl mx-auto px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
               {/* Heading */}
@@ -362,7 +365,7 @@ export default function Aboutus() {
                 <h2 className="text-[clamp(1.5rem,calc(1.25rem+1.2vw),2.25rem)] font-bold text-white mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
                   Why Choose Us
                 </h2>
-                <div className="w-[clamp(6rem,calc(5rem+4vw),8rem)] h-1 bg-gradient-to-r from-teal-400 to-teal-600 mx-auto rounded-full"></div>
+                <div className="w-[clamp(6rem,calc(5rem+4vw),8rem)] h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mx-auto rounded-full"></div>
               </div>
 
               {/* 3 Column Grid */}
@@ -372,7 +375,7 @@ export default function Aboutus() {
                     key={index}
                     className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,calc(1rem+1vw),1.5rem)] hover:bg-white/15 transition-all duration-300 border border-white/20"
                   >
-                    <h3 className="text-[clamp(1.125rem,calc(1rem+0.6vw),1.25rem)] font-semibold text-teal-300 mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)]">
+                    <h3 className="text-[clamp(1.125rem,calc(1rem+0.6vw),1.25rem)] font-semibold text-[#F6C343] mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)]">
                       {benefit.title}
                     </h3>
                     <p className="text-gray-100 text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] leading-relaxed">
@@ -388,7 +391,7 @@ export default function Aboutus() {
         {/* Core Values */}
         <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
           <div className="max-w-6xl mx-auto">
-            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-teal-900">
+            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-[#051A3A]">
               Our Core Values
             </h4>
             <div className="grid md:grid-cols-3 gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)]">
@@ -411,7 +414,7 @@ export default function Aboutus() {
                   className="bg-white/10 rounded-2xl p-[clamp(1.25rem,calc(1rem+1vw),1.5rem)] shadow-lg backdrop-blur-md hover:bg-white/20 transition-all"
                   whileHover={{ scale: 1.03 }}
                 >
-                  <h3 className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-semibold mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)] text-teal-900">
+                  <h3 className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-semibold mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)] text-[#051A3A]">
                     {value.title}
                   </h3>
                   <p className="text-gray-900 leading-relaxed">{value.desc}</p>
@@ -423,7 +426,7 @@ export default function Aboutus() {
 
         <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
           <div className="max-w-4xl mx-auto">
-            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-teal-900">
+            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-[#051A3A]">
               Our Commitment to Clients
             </h4>
             <div className="gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] text-gray-900 text-[clamp(1rem,calc(0.95rem+0.25vw),1.125rem)] border-gray-100 border-2 shadow-lg p-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-xl">
@@ -447,7 +450,7 @@ export default function Aboutus() {
       </main>
 
       {/* Reach Out Section */}
-      <section className="py-[clamp(3rem,calc(2rem+3vw),4rem)] bg-gradient-to-r from-gray-900 to-teal-900 animate-gradient-x">
+      <section className="py-[clamp(3rem,calc(2rem+3vw),4rem)] bg-[#051A3A]">
         <div className="container mx-auto px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-4xl mx-auto">
             <h5 className="text-white text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center">
@@ -456,10 +459,10 @@ export default function Aboutus() {
             {showPopup ? (
               <div className="text-center py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)]">
                 <div className="mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] inline-block">
-                  <div className="w-[clamp(3.5rem,calc(3rem+1.5vw),4rem)] h-[clamp(3.5rem,calc(3rem+1.5vw),4rem)] bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-[clamp(3.5rem,calc(3rem+1.5vw),4rem)] h-[clamp(3.5rem,calc(3rem+1.5vw),4rem)] bg-[#F6C343] rounded-full flex items-center justify-center mx-auto">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-[clamp(2rem,calc(1.75rem+1vw),2.5rem)] w-[clamp(2rem,calc(1.75rem+1vw),2.5rem)] text-white"
+                      className="h-[clamp(2rem,calc(1.75rem+1vw),2.5rem)] w-[clamp(2rem,calc(1.75rem+1vw),2.5rem)] text-[#051A3A]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -476,7 +479,7 @@ export default function Aboutus() {
                 <p className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-bold text-white mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]">
                   Thank You!
                 </p>
-                <p className="text-gray-300">
+                <p className="text-[#FDFCFA]/80">
                   Your request has been submitted successfully. We'll contact
                   you shortly.
                 </p>
@@ -488,7 +491,7 @@ export default function Aboutus() {
                 className="mt-[clamp(2rem,calc(1.5rem+2vw),3rem)] space-y-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]"
               >
                 {errorMessage && (
-                  <div className="p-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] bg-red-500 bg-opacity-20 border border-red-400 text-red-100 rounded-lg text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)]">
+                  <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] text-[#FDFCFA]">
                     {errorMessage}
                   </div>
                 )}
@@ -506,7 +509,7 @@ export default function Aboutus() {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full px-[clamp(0.875rem,calc(0.75rem+0.5vw),1rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-[clamp(0.875rem,calc(0.75rem+0.5vw),1rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -518,15 +521,16 @@ export default function Aboutus() {
                     >
                       Phone Number
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
+                    <InternationalPhoneInput
                       value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-[clamp(0.875rem,calc(0.75rem+0.5vw),1rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder="Enter your phone number"
+                      onChange={(phone) => {
+                        setFormData((prevData) => ({ ...prevData, phone }));
+                        setErrorMessage("");
+                      }}
+                      inputProps={{
+                        id: "phone",
+                        name: "phone",
+                      }}
                     />
                   </div>
                 </div>
@@ -537,7 +541,7 @@ export default function Aboutus() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 text-white font-bold py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-lg transition duration-300"
+                    className="w-full rounded-lg bg-[#F6C343] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] font-bold text-[#051A3A] transition duration-300 hover:bg-[#FDFCFA] disabled:bg-[#6C7484] disabled:text-[#FDFCFA]"
                   >
                     {isLoading ? "Submitting..." : "Get A Call Back"}
                   </button>

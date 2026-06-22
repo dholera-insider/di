@@ -22,7 +22,7 @@ const DocIconTeal = () => (
     width="15"
     height="15"
     fill="none"
-    stroke="#134e4a"
+    stroke="#051A3A"
     strokeWidth="2"
     viewBox="0 0 24 24"
   >
@@ -35,7 +35,7 @@ const DocIconTeal = () => (
 );
 
 const FeatureCard = ({ icon, title, value }) => (
-  <div className="bg-white rounded-xl p-4 border hover:bg-teal-700 group border-gray-200 text-center transition-colors duration-300 ease-in-out">
+  <div className="bg-white rounded-xl p-4 border hover:bg-[#2B364D] group border-gray-200 text-center transition-colors duration-300 ease-in-out">
     <div className="w-12 h-12 bg-blue-100 group-hover:text-white group-hover:scale-110 rounded-full flex items-center justify-center mx-auto mb-2 transition-all duration-300 ease-in-out">
       {icon}
     </div>
@@ -167,40 +167,40 @@ export default function Hero() {
                   className="relative flex"
                   style={{ width: 10, height: 10 }}
                 >
-                  <span className="animate-ping absolute inline-flex rounded-full bg-teal-400 w-full h-full opacity-75" />
-                  <span className="relative inline-flex rounded-full bg-teal-500 w-[10px] h-[10px]" />
+                  <span className="animate-ping absolute inline-flex rounded-full bg-[#F6C343] w-full h-full opacity-75" />
+                  <span className="relative inline-flex rounded-full bg-[#F6C343] w-[10px] h-[10px]" />
                 </span>
-                <span className="text-teal-800 text-[0.6875rem] font-bold tracking-widest uppercase">
+                <span className="text-[#051A3A] text-[0.6875rem] font-bold tracking-widest uppercase">
                   Ongoing
                 </span>
               </div>
 
-              <div className="w-px h-9 bg-teal-900/10 shrink-0" />
+              <div className="w-px h-9 bg-[#051A3A]/10 shrink-0" />
 
               {/* Title + Subtitle */}
               <div className="shrink-0">
                 <a href="/residential-projects-in-dholera/westwyn-estate">
-                  <h2 className="text-teal-900 text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight m-0 hover:text-teal-800 transition-colors">
+                  <h2 className="text-[#051A3A] text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight m-0 hover:text-[#2B364D] transition-colors">
                     WestWyn Estates
                   </h2>
                 </a>
-                <div className="text-teal-700/70 text-xs mt-1 font-bold">
+                <div className="text-[#051A3A]/70 text-xs mt-1 font-bold">
                   Registry-ready plots in Polarpur, Dholera starting from ₹10
                   lakh
                 </div>
               </div>
 
-              <div className="w-px h-12 bg-teal-900/10 shrink-0" />
+              <div className="w-px h-12 bg-[#051A3A]/10 shrink-0" />
 
               {/* Price */}
               <div className="shrink-0">
-                <div className="text-teal-900 text-[1.625rem] font-extrabold leading-none">
+                <div className="text-[#051A3A] text-[1.625rem] font-extrabold leading-none">
                   ₹6,700{" "}
-                  <span className="text-teal-900 text-xs font-bold">
+                  <span className="text-[#051A3A] text-xs font-bold">
                     /Sq.Yd
                   </span>
                 </div>
-                <div className="text-teal-900 text-[0.625rem] font-bold tracking-widest uppercase mt-0.5">
+                <div className="text-[#051A3A] text-[0.625rem] font-bold tracking-widest uppercase mt-0.5">
                   Price
                 </div>
               </div>
@@ -208,13 +208,13 @@ export default function Hero() {
               {/* Spacer */}
               <div className="flex-1" />
 
-              <div className="w-px h-12 bg-teal-900/10 shrink-0" />
+              <div className="w-px h-12 bg-[#051A3A]/10 shrink-0" />
 
               {/* CTAs */}
               <div className="flex items-center gap-3 shrink-0">
                 <a
                   href="tel:+919211820887"
-                  className="flex items-center gap-2 bg-teal-900 hover:bg-teal-800 text-white px-5 py-2.5 rounded-lg text-[0.8125rem] font-bold transition-all duration-200 hover:-translate-y-0.5"
+                  className="flex items-center gap-2 bg-[#051A3A] hover:bg-[#2B364D] text-white px-5 py-2.5 rounded-lg text-[0.8125rem] font-bold transition-all duration-200 hover:-translate-y-0.5"
                 >
                   <PhoneIcon />
                   Call Now
@@ -222,7 +222,7 @@ export default function Hero() {
 
                 <button
                   onClick={openBrochureForm}
-                  className="flex items-center gap-2 bg-white hover:bg-teal-50 border border-teal-900/20 hover:border-teal-800 text-teal-900 px-5 py-2.5 rounded-lg text-[0.8125rem] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+                  className="flex items-center gap-2 bg-white hover:bg-[#F6C343]/15 border border-[#F6C343]/20 hover:border-[#051A3A] text-[#051A3A] px-5 py-2.5 rounded-lg text-[0.8125rem] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                 >
                   <DocIconTeal />
                   Brochure
@@ -241,7 +241,7 @@ export default function Hero() {
             alt="WestWyn Estates"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-[#2B364D]/95 to-[#051A3A]/95"></div>
         </div>
 
         {/* Content */}
@@ -284,13 +284,13 @@ export default function Hero() {
       <div className="space-y-4 py-[clamp(1.5rem,4vw,2rem)]">
         <div className="h-full px-[clamp(1rem,4vw,2rem)]">
           <div className="flex flex-col items-center justify-center gap-[clamp(0.75rem,1.5vw,1rem)] sm:flex-row">
-            <WestWynResidencyBrochureButton className="flex w-full hover:border-teal-900 hover:border-2 cursor-pointer items-center justify-center gap-2 rounded-xl bg-teal-900 px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-teal-900 sm:w-auto">
+            <WestWynResidencyBrochureButton className="flex w-full hover:border-[#051A3A] hover:border-2 cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#051A3A] px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-white transition-colors hover:bg-white hover:text-[#2B364D] sm:w-auto">
               <FileMinus /> Download Brochure
             </WestWynResidencyBrochureButton>
 
             <Link
               href="https://wa.me/919211820887"
-              className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-teal-900 bg-white px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-teal-900 transition-colors hover:bg-teal-900 hover:text-white sm:w-auto"
+              className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-[#F6C343] bg-white px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-[#051A3A] transition-colors hover:bg-[#2B364D] hover:text-white sm:w-auto"
             >
               <FaWhatsapp className="text-lg" /> Enquire Now
             </Link>
@@ -313,7 +313,7 @@ export default function Hero() {
             alt="WestWyn Estates"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/95 to-teal-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-[#2B364D]/95 to-[#051A3A]/95"></div>
         </div>
         <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)]">
           <div className="max-w-6xl mx-auto">
@@ -325,7 +325,7 @@ export default function Hero() {
 
               <div className="grid md:grid-cols-2 gap-[clamp(1rem,2.5vw,1.5rem)]">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
-                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-[#F6C343] mb-3">
                     Strong Dholera Investment Location
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
@@ -336,7 +336,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
-                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-[#F6C343] mb-3">
                     Direct Highway Access
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
@@ -347,7 +347,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
-                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-[#F6C343] mb-3">
                     Close to Railway Connectivity
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
@@ -358,7 +358,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
-                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-[#F6C343] mb-3">
                     Registry Ready Plots
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
@@ -369,7 +369,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,2.5vw,1.5rem)] border border-white/20">
-                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-teal-300 mb-3">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.25rem)] font-semibold text-[#F6C343] mb-3">
                     Planned Community Amenities
                   </h3>
                   <p className="text-gray-200 text-[0.875rem] leading-[1.7]">
@@ -391,7 +391,7 @@ export default function Hero() {
                 {amenities.map((amenity, index) => (
                   <div
                     key={index}
-                    className="bg-teal-500/20 backdrop-blur-sm rounded-lg p-[clamp(1rem,2vw,1.25rem)] text-center border border-teal-400/30 hover:bg-teal-500/30 transition-all duration-300"
+                    className="bg-[#F6C343]/20 backdrop-blur-sm rounded-lg p-[clamp(1rem,2vw,1.25rem)] text-center border border-[#F6C343]/30 hover:bg-[#F6C343]/30 transition-all duration-300"
                   >
                     <div className="text-xl md:text-4xl mb-2">
                       {amenity.icon}
