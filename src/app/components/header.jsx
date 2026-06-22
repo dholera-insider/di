@@ -258,8 +258,8 @@ const Header = () => {
               <Image
                 src={logo}
                 alt="Dholera Insider Logo"
-                width={80}
-                height={80}
+                width={100}
+                height={100}
                 className="object-contain relative z-10 drop-shadow-2xl max-sm:pt-4 max-sm:h-20 max-sm:w-20"
                 priority={true}
                 quality={85}
