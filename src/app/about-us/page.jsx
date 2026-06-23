@@ -9,34 +9,34 @@ import InternationalPhoneInput, {
 
 const benefits = [
   {
-    title: "Dholera-Focused Expertise",
+    title: "Verified Residential Plot Projects",
     description:
-      "We work exclusively within Dholera Smart City, allowing us to offer deeper insights into planning zones, growth corridors, and future-ready locations. Our focused approach helps investors make informed, location-driven decisions.",
+      "Every project we present is carefully verified to ensure legal clarity and reliable documentation, giving you greater confidence in your investment.",
   },
   {
-    title: "Infrastructure-Led Plot Selection",
+    title: "Exclusive Access Through BookMyAssets",
     description:
-      "Every plot we offer is evaluated based on infrastructure proximity—including the activation area, expressway connectivity, airport zone, and upcoming industrial clusters. This ensures alignment with Dholera’s long-term development roadmap.",
+      "As the exclusive channel partner of BookMyAssets, we connect you with premium residential plot projects and trusted real estate opportunities in Dholera Smart City.",
   },
   {
-    title: "Legally Aligned & Verified Listings",
+    title: "Transparent Pricing",
     description:
-      "We prioritize clarity and compliance. All listed plots are checked for zoning, documentation, and development status to reduce risk and ensure a smooth, transparent buying experience.",
+      "We believe in complete transparency. You'll receive clear pricing, detailed project information, and no hidden surprises throughout the buying process.",
   },
   {
-    title: "Market & Policy Insights",
+    title: "Dedicated NRI Support",
     description:
-      "As a dedicated Dholera insights platform, we track government announcements, policy updates, and the latest Dholera developments to help investors understand how planning and infrastructure decisions impact future value.",
+      "Our services are designed specifically for NRIs. From virtual consultations and project selection to documentation and registration support, we make investing in Dholera simple from anywhere in the world.",
   },
   {
-    title: "Long-Term Investment Approach",
+    title: "Expert Guidance",
     description:
-      "Our recommendations are driven by future growth potential, not short-term speculation. We focus on plots positioned to benefit from planned infrastructure, industrial expansion, and sustainable urban development.",
+      "Our experienced team helps you understand the market, compare projects, and choose the right residential plot based on your investment goals.",
   },
   {
-    title: "Dedicated Investor Support",
+    title: "End-to-End Assistance",
     description:
-      "From initial consultation to site visits and documentation guidance, we offer end-to-end support throughout your investment journey—ensuring clarity, confidence, and continued assistance even after booking.",
+      "From your first inquiry to final registration and beyond, we're with you every step of the way to ensure a smooth and stress-free experience.",
   },
 ];
 
@@ -258,24 +258,23 @@ export default function Aboutus() {
 
   return (
     <div>
-      {/* Hero Section */}
+      {/* SEO */}
       <title>
-        About Dholera Insider – Your Trusted Dholera Real Estate Partner
+        About Dholera Insider – Your Trusted NRI Real Estate Partner
       </title>
       <meta
         name="title"
-        content="About Dholera Insider – Your Trusted Dholera Real Estate Partner"
+        content="About Dholera Insider – Your Trusted NRI Real Estate Partner"
       />
       <meta
         name="description"
-        content="Learn about Dholera Insider’s role in Dholera real estate and how our smart city consultants guide investors in Dholera Smart City."
+        content="Learn how Dholera Insider helps NRIs invest in verified residential plots in Dholera Smart City with transparency, expert guidance, and end-to-end support."
       />
       <meta
         name="keywords"
-        content="Dholera real estate, smart city consultants, Dholera Smart City, Dholera investment, investment in Dholera."
+        content="Dholera real estate, NRI investment, Dholera Smart City, verified plots, BookMyAssets channel partner"
       />
       <link rel="canonical" href="https://www.dholerainsider.com/about-us" />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -284,177 +283,325 @@ export default function Aboutus() {
             "@type": "WebSite",
             name: "Dholera Insider",
             url: "https://dholerainsider.com/",
-            potentialAction: {
-              "@type": "SearchAction",
-              target:
-                "https://dholerainsider.com/about-us?search_term_string={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
           }),
         }}
       />
 
-      <main className="bg-gradient-to-b from-gray-900 via-[#2B364D] to-[#051A3A] text-white min-h-screen">
-        {/* Hero Section */}
-        <section className="text-center px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] py-[clamp(5rem,calc(4rem+3vw),7rem)] max-w-4xl mx-auto">
-          <motion.h1
-            className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] pt-[clamp(3rem,calc(2.5rem+1.5vw),4rem)] font-extrabold mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] leading-tight"
-            initial={{ opacity: 0, y: 20 }}
+      {/* ── HERO ── navy, typographic, no gradients */}
+      <section className="bg-[#051A3A] relative overflow-hidden">
+        {/* subtle dot-grid texture */}
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #F6C343 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div className="relative max-w-5xl mx-auto px-[clamp(1.5rem,calc(1rem+2vw),3rem)] pt-[clamp(8rem,calc(6rem+4vw),11rem)] pb-[clamp(4rem,calc(3rem+3vw),6rem)]">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.45 }}
+            className="text-[#F6C343] text-[clamp(0.65rem,calc(0.6rem+0.15vw),0.75rem)] uppercase tracking-[0.22em] font-bold mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]"
+          >
+            About Us
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-white font-bold text-[clamp(2rem,calc(1.5rem+2.5vw),3.75rem)] leading-[1.1] max-w-3xl"
           >
             About <span className="text-[#F6C343]">Dholera Insider</span>
           </motion.h1>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            style={{ transformOrigin: "left" }}
+            className="w-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] h-[3px] bg-[#F6C343] my-[clamp(1.25rem,calc(1rem+1vw),1.75rem)] rounded-full"
+          />
           <motion.p
-            className="text-[clamp(1rem,calc(0.95rem+0.25vw),1.125rem)] text-[#FDFCFA]/85 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl"
           >
-            Dholera Insider is your trusted source for authentic, real-time
-            insights into Gujarat’s first smart city - Dholera SIR. We bring you
-            verified updates, investment opportunities, and exclusive coverage
-            to help you make informed decisions.
+            At Dholera Insider, we help NRIs invest in verified residential
+            plots in Dholera Smart City with confidence. Our goal is to make
+            property investment simple, transparent, and secure, no matter where
+            you live.
           </motion.p>
-        </section>
-
-        <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)]">
-          <div
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] max-w-7xl mx-auto`}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl mt-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)]"
           >
-            {/* Left Content */}
-            <div className="space-y-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] flex flex-col">
-              <div className="bg-white rounded-3xl p-[clamp(1.5rem,calc(1.25rem+1vw),2rem)] shadow-xl border border-gray-100 flex-1 flex flex-col">
-                <h2 className="text-[clamp(1.25rem,calc(1.1rem+0.5vw),1.5rem)] font-bold text-gray-900 mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
-                  Our Mission
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] flex-1">
-                  At Dholera Insider, our mission is to empower investors,
-                  businesses, and citizens with transparent, data-backed news
-                  about the Dholera Smart City project. We focus on accurate
-                  updates, infrastructure progress, and opportunities that shape
-                  the future of sustainable urban growth in India.
-                </p>
-              </div>
-            </div>
+            Whether you&apos;re planning to build your dream home, secure your
+            family&apos;s future, or grow your investment portfolio, we provide
+            trusted guidance at every step. From exploring projects to
+            completing documentation, our team ensures a smooth and hassle-free
+            buying experience.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+            className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl mt-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)]"
+          >
+            As the exclusive channel partner of BookMyAssets, we offer access to
+            carefully selected residential plot projects backed by professional
+            support and verified documentation. Our commitment is to help every
+            investor make informed decisions with complete peace of mind.
+          </motion.p>
+        </div>
+      </section>
 
-            {/* Right Content */}
-            <div className="space-y-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] flex flex-col">
-              <div className="bg-white rounded-3xl p-[clamp(1.5rem,calc(1.25rem+1vw),2rem)] shadow-xl border border-gray-100 flex-1 flex flex-col">
-                <h2 className="text-[clamp(1.25rem,calc(1.1rem+0.5vw),1.5rem)] font-bold text-gray-900 mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
-                  Our Vision
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] flex-1">
-                  We envision a digitally connected, eco-friendly city where
-                  innovation meets sustainability. Our goal is to be the most
-                  reliable media hub for everything happening in Dholera SIR,
-                  from real estate trends to government initiatives and upcoming
-                  investments.
+      {/* ── IDENTITY BAR ── signature gold strip */}
+      <div className="bg-[#F6C343]">
+        <div className="max-w-5xl mx-auto px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#051A3A]/20">
+            {[
+              { title: "Exclusive Channel Partner", sub: "of BookMyAssets" },
+              { title: "100% Verified Plots", sub: "Legal clarity guaranteed" },
+              {
+                title: "End-to-End NRI Support",
+                sub: "Inquiry to registration",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="py-[clamp(0.875rem,calc(0.7rem+0.75vw),1.125rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] text-center"
+              >
+                <p className="text-[#051A3A] font-bold text-[clamp(0.875rem,calc(0.82rem+0.25vw),1rem)]">
+                  {item.title}
+                </p>
+                <p className="text-[#051A3A]/60 text-[clamp(0.7rem,calc(0.65rem+0.15vw),0.8rem)] mt-0.5">
+                  {item.sub}
                 </p>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <main>
+        {/* ── MISSION + PARTNERSHIP ── off-white, split columns */}
+        <section className="bg-[#FDFCFA] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-x-[clamp(3rem,calc(2rem+3vw),5rem)] gap-y-[clamp(2.5rem,calc(2rem+2vw),3.5rem)]">
+            {/* Mission */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
+            >
+              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-2">
+                Our Mission
+              </p>
+              <h2 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-[#051A3A] leading-snug mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
+                Making NRI real estate investment simple from anywhere in the
+                world
+              </h2>
+              <div className="w-10 h-[3px] bg-[#F6C343] mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-full" />
+              <p className="text-gray-600 text-[clamp(0.875rem,calc(0.82rem+0.25vw),1rem)] leading-relaxed">
+                Our mission is to make NRI property investment in Dholera easy,
+                transparent, and reliable. We believe that buying property from
+                overseas should never be complicated. That&apos;s why we focus
+                on providing verified opportunities, honest advice, and
+                end-to-end assistance throughout the investment journey. Every
+                recommendation we make is based on trust, transparency, and
+                long-term value.
+              </p>
+            </motion.div>
+
+            {/* Partnership */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.1 }}
+              className="lg:border-l lg:border-[#051A3A]/10 lg:pl-[clamp(3rem,calc(2rem+3vw),5rem)]"
+            >
+              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-2">
+                Our Partnership
+              </p>
+              <h2 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-[#051A3A] leading-snug mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
+                Backed by BookMyAssets - quality and trust you can rely on
+              </h2>
+              <div className="w-10 h-[3px] bg-[#F6C343] mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-full" />
+              <p className="text-gray-600 text-[clamp(0.875rem,calc(0.82rem+0.25vw),1rem)] leading-relaxed">
+                Our partnership with BookMyAssets reflects our commitment to
+                trust and quality. As its exclusive channel partner, Dholera
+                Insider brings verified residential plot opportunities directly
+                to NRI investors with professional guidance and dependable
+                support. Together, we focus on delivering a transparent buying
+                process, verified documentation, and personalized assistance
+                that helps investors make confident decisions.
+              </p>
+            </motion.div>
           </div>
         </section>
 
-        <section>
-          <div className="bg-gradient-to-br from-gray-900 via-slate-800 to-[#051A3A]">
-            {/* Why Dholera Smart City Section */}
-            <div className="py-[clamp(3rem,calc(2rem+3vw),4rem)] max-w-7xl mx-auto px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
-              {/* Heading */}
-              <div className="text-center mb-[clamp(2rem,calc(1.5rem+2vw),3rem)]">
-                <h2 className="text-[clamp(1.5rem,calc(1.25rem+1.2vw),2.25rem)] font-bold text-white mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
-                  Why Choose Us
-                </h2>
-                <div className="w-[clamp(6rem,calc(5rem+4vw),8rem)] h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mx-auto rounded-full"></div>
-              </div>
-
-              {/* 3 Column Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
-                {benefits.map((benefit, index) => (
-                  <div
-                    key={index}
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-[clamp(1.25rem,calc(1rem+1vw),1.5rem)] hover:bg-white/15 transition-all duration-300 border border-white/20"
-                  >
-                    <h3 className="text-[clamp(1.125rem,calc(1rem+0.6vw),1.25rem)] font-semibold text-[#F6C343] mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)]">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-100 text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+        {/* ── WHY CHOOSE US ── navy, editorial row list */}
+        <section className="bg-[#051A3A] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex items-center justify-between border-b border-white/15 pb-[clamp(0.75rem,calc(0.6rem+0.5vw),1rem)] mb-[clamp(0.25rem,0.5vw,0.5rem)]">
+              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold">
+                Why Choose Us
+              </p>
+              <p className="text-white/30 text-xs">
+                {benefits.length} reasons to invest with us
+              </p>
             </div>
-          </div>
-        </section>
-
-        {/* Core Values */}
-        <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
-          <div className="max-w-6xl mx-auto">
-            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-[#051A3A]">
-              Our Core Values
-            </h4>
-            <div className="grid md:grid-cols-3 gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)]">
-              {[
-                {
-                  title: "Transparency",
-                  desc: "We ensure that every report, insight, and update we publish is backed by verified data - empowering investors with factual information to make confident and strategic investment choices in Dholera Smart City Project.",
-                },
-                {
-                  title: "Expertise",
-                  desc: "Our team leverages years of experience and in-depth knowledge of Dholera SIR to provide investors with actionable insights, market analysis, and strategic guidance for informed decision-making.",
-                },
-                {
-                  title: "Community",
-                  desc: "We believe in building a strong and informed investor community - connecting citizens, developers, and policymakers to create meaningful collaboration and long-term growth within Dholera SIR.",
-                },
-              ].map((value, i) => (
+            <div>
+              {benefits.map((b, i) => (
                 <motion.div
                   key={i}
-                  className="bg-white/10 rounded-2xl p-[clamp(1.25rem,calc(1rem+1vw),1.5rem)] shadow-lg backdrop-blur-md hover:bg-white/20 transition-all"
-                  whileHover={{ scale: 1.03 }}
+                  initial={{ opacity: 0, x: -14 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.38, delay: i * 0.07 }}
+                  className="border-b border-white/10 py-[clamp(1rem,calc(0.85rem+0.75vw),1.5rem)] flex flex-col md:grid md:grid-cols-[2.5rem,1.5fr,2.5fr] gap-x-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] gap-y-1 hover:bg-white/[0.04] -mx-4 px-4 transition-colors rounded-md"
                 >
-                  <h3 className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-semibold mb-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)] text-[#051A3A]">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-900 leading-relaxed">{value.desc}</p>
+                  <span className="hidden md:block text-[#F6C343]/45 text-[0.68rem] font-mono font-semibold tracking-widest pt-0.5">
+                    0{i + 1}
+                  </span>
+                  <p className="text-white font-semibold text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.975rem)]">
+                    {b.title}
+                  </p>
+                  <p className="text-white/55 text-[clamp(0.8rem,calc(0.75rem+0.15vw),0.875rem)] leading-relaxed">
+                    {b.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-white py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
-          <div className="max-w-4xl mx-auto">
-            <h4 className="text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center mb-[clamp(2rem,calc(1.5rem+1.5vw),2.5rem)] text-[#051A3A]">
-              Our Commitment to Clients
-            </h4>
-            <div className="gap-[clamp(1.25rem,calc(1rem+1.5vw),2rem)] text-gray-900 text-[clamp(1rem,calc(0.95rem+0.25vw),1.125rem)] border-gray-100 border-2 shadow-lg p-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-xl">
-              <p>
-                Our commitment is built on transparency, accuracy, and
-                reliability. Every update shared on our platform is carefully
-                reviewed to ensure it reflects verified progress related to the
-                Dholera Smart City project.
+        {/* ── VALUES ── off-white, 4-col bordered cards */}
+        <section className="bg-[#FDFCFA] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-[clamp(2rem,calc(1.5rem+2vw),3rem)]">
+              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-1.5">
+                Our Values
               </p>
-              <p>
-                We aim to empower our readers with trustworthy insights into
-                ongoing and upcoming opportunities, supported by factual
-                reporting and long-term vision. By consistently sharing relevant
-                Dholera latest news and development updates, we help individuals
-                and businesses make informed decisions aligned with Dholera’s
-                growth roadmap.
-              </p>
+              <h3 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-[#051A3A]">
+                What guides every decision we make
+              </h3>
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[clamp(0.875rem,calc(0.75rem+0.75vw),1.25rem)]">
+              {[
+                {
+                  title: "Trust",
+                  desc: "We build lasting relationships through honest advice and dependable service.",
+                },
+                {
+                  title: "Transparency",
+                  desc: "Clear communication, verified information, and straightforward pricing are at the heart of everything we do.",
+                },
+                {
+                  title: "Integrity",
+                  desc: "We recommend opportunities that align with your investment goals and always put your interests first.",
+                },
+                {
+                  title: "Commitment",
+                  desc: "Our support doesn't end after your purchase. We're committed to assisting you throughout your investment journey.",
+                },
+              ].map((v, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className="border border-[#051A3A]/10 rounded-2xl p-[clamp(1.25rem,calc(1rem+0.75vw),1.5rem)] hover:border-[#F6C343] hover:shadow-[0_4px_20px_rgba(246,195,67,0.12)] transition-all duration-300 group"
+                >
+                  <div className="w-[clamp(2rem,calc(1.75rem+0.5vw),2.25rem)] h-[clamp(2rem,calc(1.75rem+0.5vw),2.25rem)] rounded-full bg-[#F6C343]/15 group-hover:bg-[#F6C343]/25 flex items-center justify-center mb-[clamp(0.75rem,calc(0.6rem+0.5vw),1rem)] transition-colors">
+                    <span className="text-[#F6C343] font-bold text-sm">
+                      {v.title[0]}
+                    </span>
+                  </div>
+                  <h4 className="text-[#051A3A] font-bold text-[clamp(0.9rem,calc(0.85rem+0.2vw),1rem)] mb-1.5">
+                    {v.title}
+                  </h4>
+                  <p className="text-gray-500 text-[clamp(0.78rem,calc(0.73rem+0.2vw),0.875rem)] leading-relaxed">
+                    {v.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHY NRIs TRUST ── navy, pill-style rows */}
+        <section className="bg-[#051A3A] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-[clamp(2rem,calc(1.5rem+2vw),3rem)]">
+              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-1.5">
+                Trust
+              </p>
+              <h3 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-white">
+                Why NRIs trust Dholera Insider
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(0.5rem,calc(0.4rem+0.5vw),0.75rem)]">
+              {[
+                "Exclusive Channel Partner of BookMyAssets",
+                "Verified residential plot projects",
+                "Transparent pricing and documentation",
+                "Dedicated support for overseas investors",
+                "Professional guidance from start to finish",
+                "Secure and hassle-free remote buying experience",
+                "Focus on long-term investment value",
+              ].map((pt, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: i * 0.06 }}
+                  className="flex items-center gap-[clamp(0.625rem,calc(0.5rem+0.5vw),0.875rem)] bg-white/[0.05] hover:bg-white/10 transition-colors rounded-lg px-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)] py-[clamp(0.625rem,calc(0.5rem+0.5vw),0.875rem)]"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-[clamp(0.875rem,calc(0.8rem+0.3vw),1rem)] h-[clamp(0.875rem,calc(0.8rem+0.3vw),1rem)] text-[#F6C343] shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-white/80 text-[clamp(0.8rem,calc(0.75rem+0.15vw),0.875rem)]">
+                    {pt}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+            <p className="mt-[clamp(1.5rem,calc(1.25rem+1vw),2rem)] text-white/40 text-[clamp(0.78rem,calc(0.73rem+0.2vw),0.875rem)] leading-relaxed max-w-2xl">
+              Our priority is to help every NRI investor make confident real
+              estate decisions backed by trust, transparency, and expert
+              support.
+            </p>
           </div>
         </section>
       </main>
 
-      {/* Reach Out Section */}
-      <section className="py-[clamp(3rem,calc(2rem+3vw),4rem)] bg-[#051A3A]">
+      {/* ── CTA FORM ── warm off-white #faf8f3 */}
+      <section className="bg-[#faf8f3] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)]">
         <div className="container mx-auto px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-4xl mx-auto">
-            <h5 className="text-white text-[clamp(1.875rem,calc(1.5rem+1.2vw),2.25rem)] font-bold text-center">
-              Know More About Dholera, With Dholera Insider
+            <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold text-center mb-2">
+              Get Started
+            </p>
+            <h5 className="text-[#051A3A] text-[clamp(1.75rem,calc(1.375rem+1.5vw),2.5rem)] font-bold text-center">
+              Ready to Invest in Dholera?
             </h5>
             {showPopup ? (
               <div className="text-center py-[clamp(2rem,calc(1.5rem+1.5vw),3rem)]">
@@ -476,22 +623,22 @@ export default function Aboutus() {
                     </svg>
                   </div>
                 </div>
-                <p className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-bold text-white mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]">
+                <p className="text-[clamp(1.25rem,calc(1.1rem+0.8vw),1.5rem)] font-bold text-[#051A3A] mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]">
                   Thank You!
                 </p>
-                <p className="text-[#FDFCFA]/80">
-                  Your request has been submitted successfully. We'll contact
-                  you shortly.
+                <p className="text-gray-500">
+                  Your request has been submitted successfully. We&apos;ll
+                  contact you shortly.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
                 id="contact-form-container"
-                className="mt-[clamp(2rem,calc(1.5rem+2vw),3rem)] space-y-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]"
+                className="space-y-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]"
               >
                 {errorMessage && (
-                  <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] text-[#FDFCFA]">
+                  <div className="rounded-xl border border-red-200 bg-red-50 p-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] text-red-700">
                     {errorMessage}
                   </div>
                 )}
@@ -499,7 +646,7 @@ export default function Aboutus() {
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="block text-white text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] font-medium mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]"
+                      className="block text-[#051A3A] text-[clamp(0.7rem,calc(0.65rem+0.15vw),0.78rem)] font-bold uppercase tracking-[0.12em] mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]"
                     >
                       Full Name
                     </label>
@@ -509,15 +656,14 @@ export default function Aboutus() {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] px-[clamp(0.875rem,calc(0.75rem+0.5vw),1rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
+                      className="w-full rounded-xl border border-[#051A3A]/20 bg-white px-[clamp(0.875rem,calc(0.75rem+0.5vw),1rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] text-[#051A3A] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#F6C343] focus:border-transparent transition-shadow"
                       placeholder="Enter your name"
                     />
                   </div>
-
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-white text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.95rem)] font-medium mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]"
+                      className="block text-[#051A3A] text-[clamp(0.7rem,calc(0.65rem+0.15vw),0.78rem)] font-bold uppercase tracking-[0.12em] mb-[clamp(0.375rem,calc(0.3rem+0.4vw),0.5rem)]"
                     >
                       Phone Number
                     </label>
@@ -527,10 +673,7 @@ export default function Aboutus() {
                         setFormData((prevData) => ({ ...prevData, phone }));
                         setErrorMessage("");
                       }}
-                      inputProps={{
-                        id: "phone",
-                        name: "phone",
-                      }}
+                      inputProps={{ id: "phone", name: "phone" }}
                     />
                   </div>
                 </div>
@@ -541,7 +684,7 @@ export default function Aboutus() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full rounded-lg bg-[#F6C343] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] py-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)] font-bold text-[#051A3A] transition duration-300 hover:bg-[#FDFCFA] disabled:bg-[#6C7484] disabled:text-[#FDFCFA]"
+                    className="w-full rounded-xl bg-[#051A3A] px-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] py-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)] font-bold text-white transition-all duration-300 hover:bg-[#F6C343] hover:text-[#051A3A] disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed"
                   >
                     {isLoading ? "Submitting..." : "Get A Call Back"}
                   </button>
