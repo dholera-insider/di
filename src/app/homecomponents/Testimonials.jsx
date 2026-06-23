@@ -14,48 +14,47 @@ import saransh from "@/assests/testimonials/saransh-pal.webp"; */
 const testimonials = [
   {
     quote:
-      "I had many questions before investing in Dholera, but the Dholera Insiders team made everything simple and clear. From site details to documentation, they handled it professionally. The process was smooth, and I feel confident about the long-term potential of my investment.",
-    name: "Naman Gupta",
-    location: "India",
-    // avatar: naman,
+      "Buying property from abroad felt challenging at first, but Dholera Insider made the process simple and clear. Their team was transparent, responsive, and guided me at every step.",
+    name: "Rajesh Patel",
+    location: "USA",
+    designation: "IT Consultant",
   },
   {
     quote:
-      "What I liked most about Dholera Insiders was their honest guidance. There was no pressure, just clear information and realistic expectations. The pricing was reasonable, the paperwork was transparent, and the overall experience was stress-free.",
-    name: "Rakesh Verma",
-    location: "India",
-    // avatar: rakesh,
+      "I appreciated the clear communication and verified project details. Everything was explained honestly, which gave me more confidence in my Dholera investment.",
+    name: "Mehul Shah",
+    location: "Canada",
+    designation: "Business Owner",
   },
   {
     quote:
-      "Dholera Insiders helped me understand why Dholera Smart City is a long-term opportunity, not just a trend. Their team explained the development plans clearly and supported me until registration. I’m happy with my decision and would recommend them to serious investors.",
-    name: "Harshit Sharma",
-    location: "India",
-    // avatar: harshit,
+      "The remote buying experience was smooth and professional. From documentation to booking, Dholera Insider handled everything with proper follow-up.",
+    name: "Priya Desai",
+    location: "Australia",
+    designation: "Finance Professional",
   },
   {
     quote:
-      "As a first-time land investor, I was nervous, but Dholera Insiders made the journey easy. They were responsive, knowledgeable, and always available to clarify doubts. The project location and future growth prospects give me real confidence.",
-    name: "Nitin",
-    location: "India",
-    // avatar: nitin,
+      "As an NRI, trust was my biggest concern. Dholera Insider answered my questions patiently and helped me understand the right residential plot option.",
+    name: "Amit Mehta",
+    location: "UAE",
+    designation: "Senior Engineer",
   },
   {
     quote:
-      "The team at Dholera Insiders stands out for their professionalism and market knowledge. They guided me in choosing the right plot based on my budget and goals. Everything was well-managed, and the investment already feels well-timed.",
-    name: "Sapna Chaudhary",
-    location: "India",
-    // avatar: sapna,
+      "Their guidance and transparent approach made investing in Dholera easier than I expected. I would recommend them to NRIs who want clear information before investing.",
+    name: "Neha Joshi",
+    location: "United Kingdom",
+    designation: "Healthcare Professional",
   },
   {
     quote:
-      "My experience with Dholera Insiders was very positive. They focus on facts, not hype, which I really appreciated. From the first discussion to final purchase, the process was smooth and well-organized. I see strong future value in Dholera Smart City.",
-    name: "Ankit Kumar",
-    location: "India",
-    // avatar: ankit,
+      "The team was knowledgeable, supportive, and always available whenever I needed help. The complete experience, from enquiry to booking, felt seamless.",
+    name: "Kunal Bhatt",
+    location: "Singapore",
+    designation: "Real Estate Investor",
   },
 ];
-
 
 const TestimonialPagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -218,7 +217,7 @@ const TestimonialPagination = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="overflow-hidden rounded-xl border border-[#2B364D]/10 bg-[#FDFCFA] shadow-lg transition-shadow duration-300 hover:shadow-xl"
+                  className="overflow-hidden py-6 rounded-xl border border-[#2B364D]/10 bg-[#FDFCFA] shadow-lg transition-shadow duration-300 hover:shadow-xl"
                 >
                   {/* Avatar */}
                   {/* <div className="flex justify-center mt-4 mb-4">

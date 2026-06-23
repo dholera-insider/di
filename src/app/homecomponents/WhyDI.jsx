@@ -54,9 +54,7 @@ export default function WhyDI() {
 
           {/* Left — sticky header */}
           <div className="lg:col-span-2 lg:sticky lg:top-24 lg:self-start">
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
-              Exclusive Channel Partner
-            </p>
+            
             <h2 className="mb-5 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
               Why Investors Choose Dholera Insider
             </h2>
