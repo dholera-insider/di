@@ -108,7 +108,7 @@ export default function Hero() {
 
   const projectFeatures = [
     { icon: "🏠", title: "Plot Size", value: "Approx 147-250 sq. yards" },
-    { icon: "💰", title: "Price", value: "₹6,700/Sq.Yd" },
+    { icon: "💰", title: "Price", value: "₹7,000/Sq.Yd" },
     { icon: "🏗️", title: "Project Type", value: "Residential Plots" },
     { icon: "📍", title: "Location", value: "Polarpur, Dholera" },
   ];
@@ -195,7 +195,7 @@ export default function Hero() {
               {/* Price */}
               <div className="shrink-0">
                 <div className="text-[#051A3A] text-[1.625rem] font-extrabold leading-none">
-                  ₹6,700{" "}
+                  ₹7,000{" "}
                   <span className="text-[#051A3A] text-xs font-bold">
                     /Sq.Yd
                   </span>
