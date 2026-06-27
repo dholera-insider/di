@@ -312,7 +312,7 @@ const DholeraBulkLandPage = () => {
           {/* FAQ Section */}
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-[#051A3A] dark:text-[#F6C343] mb-8 pb-2 border-b-2 border-[#F6C343] inline-block">
-              Frequently Asked Questions
+              FAQs
             </h2>
 
             <div className="space-y-8">

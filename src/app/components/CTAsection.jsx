@@ -87,7 +87,7 @@ export default function CTAsection() {
               href="https://wa.me/919211820887"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative min-w-[200px]  rounded-xl border border-[#F6C343]/40 bg-[#2B364D] px-8 py-4 text-lg font-semibold text-[#FDFCFA] shadow-lg transition-all duration-300 hover:bg-[#F6C343] hover:text-[#051A3A] hover:shadow-xl"
+              className="group relative min-w-[200px]  rounded-xl border border-[#F6C343]/40 bg-green-400 px-8 py-4 text-lg font-semibold text-[#FDFCFA] shadow-lg transition-all duration-300 hover:bg-[#F6C343] hover:text-[#051A3A] hover:shadow-xl"
             >
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               <span className="relative z-10 flex items-center justify-center gap-2">

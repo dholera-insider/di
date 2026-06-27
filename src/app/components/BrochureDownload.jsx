@@ -377,24 +377,6 @@ const onRecaptchaSuccess = async (token) => {
               </svg>
             </button>
 
-            {/* Logo */}
-            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="bg-[#051A3A] p-2 rounded-xl shadow-lg border border-[#F6C343]"
-              >
-                <Image
-                  src={logo}
-                  alt="Logo"
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
-              </motion.div>
-            </div>
-
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}

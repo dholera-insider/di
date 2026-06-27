@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import westwynEstate1 from "@/app/assets/residential/westwyn-estates-dholera-project-section.webp";
 import westwynEstate1M from "@/app/assets/residential/westwyn-estates-dholera-project-section-mobile.webp";
 import CommonForm from "@/app/components/CommonForm";
-import PopupScroll from "@/app/components/PopUpScroll";
 import { AnimatePresence } from "framer-motion";
 import BrochureDownload from "@/app/components/BrochureDownload";
 import PrimeLocationSection from "./PrimeLocations";
@@ -410,7 +409,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <PopupScroll title="Get Project Details" />
       <AnimatePresence>
         {brochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
