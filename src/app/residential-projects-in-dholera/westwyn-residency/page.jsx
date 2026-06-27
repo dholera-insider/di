@@ -162,7 +162,7 @@ export default function WestWynResidencyContentTemp() {
           sizes="(max-width: 639px) 100vw, 0vw"
         />
         <div className="absolute bottom-0 left-0 right-0 hidden p-[clamp(0.75rem,1.5vw,1rem)] md:block">
-          <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-[calc(100vw-2rem)] lg:max-w-6xl mx-auto w-full">
+          <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-[calc(100vw-2rem)] lg:max-w-7xl mx-auto w-full">
             <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1.25rem)] px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.75rem,1.5vw,1rem)]">
               <div className="flex items-center gap-2 shrink-0">
                 <span
@@ -302,8 +302,34 @@ export default function WestWynResidencyContentTemp() {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-[#2B364D]/95 to-[#051A3A]/95"></div>
         </div>
         <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)]">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-12">
+          <div className="max-w-7xl mx-auto">
+            <div>
+              <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-bold text-white mb-4">
+                Project Amenities
+              </h2>
+              <p className="mb-6 text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-100">
+                WestWyn Residency is planned with practical lifestyle and
+                security amenities for future residential use.
+              </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[clamp(0.75rem,2vw,1rem)]">
+                {amenities.map((amenity, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#F6C343]/20 backdrop-blur-sm rounded-lg p-[clamp(1rem,2vw,1.25rem)] text-center border border-[#F6C343]/30 hover:bg-[#F6C343]/30 transition-all duration-300"
+                  >
+                    <div className="text-xl md:text-4xl mb-2">
+                      {amenityIcons[amenity.title] || amenity.icon}
+                    </div>
+                    <p className="text-white font-medium text-[clamp(1rem,1.8vw,1.125rem)] leading-[1.4]">
+                      {amenity.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8">
               <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-bold text-white mb-8">
                 Why Invest in WestWyn Residency?
               </h2>
@@ -365,35 +391,12 @@ export default function WestWynResidencyContentTemp() {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-bold text-white mb-8">
-                Project Amenities
-              </h2>
-              <p className="mb-6 text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-100">
-                WestWyn Residency is planned with practical lifestyle and
-                security amenities for future residential use.
-              </p>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[clamp(0.75rem,2vw,1rem)]">
-                {amenities.map((amenity, index) => (
-                  <div
-                    key={index}
-                    className="bg-[#F6C343]/20 backdrop-blur-sm rounded-lg p-[clamp(1rem,2vw,1.25rem)] text-center border border-[#F6C343]/30 hover:bg-[#F6C343]/30 transition-all duration-300"
-                  >
-                    <div className="text-xl md:text-4xl mb-2">
-                      {amenityIcons[amenity.title] || amenity.icon}
-                    </div>
-                    <p className="text-white font-medium text-[clamp(1rem,1.8vw,1.125rem)] leading-[1.4]">
-                      {amenity.title}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <FAQSection />
           </div>
         </div>
+      </div>
+
+      <div>
+        <FAQSection />
       </div>
       <WestWynResidencyLeadWidgets />
     </>

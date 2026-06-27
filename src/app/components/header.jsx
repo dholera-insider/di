@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import logo from "@/app/assets/icons/logo.png";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
@@ -11,6 +12,7 @@ import ContactForm from "@/app/components/Contactform";
 import { MenuIcon } from "lucide-react";
 
 const Header = () => {
+  const pathname = usePathname();
   const [header, setHeader] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -50,6 +52,7 @@ const Header = () => {
   // Main navigation items (visible on desktop)
   const mainNavItems = [
     /* { name: "NRI Investor", href: "/nri-investor" }, */
+    { name: "Home", href: "/" },
     {
       name: "Our Projects",
       key: "dholeraResidential",
@@ -115,6 +118,19 @@ const Header = () => {
     { name: "Gallery", href: "/gallery" },
 
   ];
+
+  const isLinkActive = (href) => {
+    if (!href) return false;
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
+  const isNavItemActive = (item) => {
+    if (item.items) {
+      return item.items.some((subItem) => isLinkActive(subItem.href));
+    }
+    return isLinkActive(item.href);
+  };
 
   // Handlers
   const handleHeader = () => setHeader(!header);
@@ -284,14 +300,31 @@ const Header = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="dropdown-trigger group flex items-center px-5 py-3 text-[#faf8f3] font-semibold tracking-wide transition-all duration-300 relative"
+                      className={`dropdown-trigger group flex items-center px-5 py-3 font-semibold tracking-wide transition-all duration-300 relative ${
+                        isNavItemActive(item)
+                          ? "text-[#F6C343]"
+                          : "text-[#faf8f3]"
+                      }`}
                       onClick={(e) => toggleDropdown(item.key, e)}
                     >
                       <span className="relative z-10 drop-shadow-lg">
                         {item.name}
                       </span>
 
-                      <div className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                      <div
+                        className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+                          isNavItemActive(item)
+                            ? "bg-[#faf8f3]/10 opacity-100"
+                            : "bg-[#faf8f3]/10 opacity-0 group-hover:opacity-100"
+                        }`}
+                      ></div>
+                      <div
+                        className={`absolute bottom-0 h-0.5 bg-[#F6C343] transition-all duration-300 ${
+                          isNavItemActive(item)
+                            ? "left-0 w-full"
+                            : "left-1/2 w-0 group-hover:left-0 group-hover:w-full"
+                        }`}
+                      ></div>
                     </motion.button>
 
                     <AnimatePresence>
@@ -319,7 +352,11 @@ const Header = () => {
                             >
                               <Link
                                 href={subItem.href}
-                                className="flex items-center justify-between px-6 py-3 hover:bg-[#faf8f3]/10 text-sm text-[#faf8f3] transition-all duration-200 group"
+                                className={`flex items-center justify-between px-6 py-3 text-sm transition-all duration-200 group ${
+                                  isLinkActive(subItem.href)
+                                    ? "bg-[#faf8f3]/10 text-[#F6C343]"
+                                    : "text-[#faf8f3] hover:bg-[#faf8f3]/10"
+                                }`}
                                 onClick={() => setActiveDropdown(null)}
                               >
                                 <span>{subItem.name}</span>
@@ -335,13 +372,27 @@ const Header = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className="group relative px-5 py-3 text-[#faf8f3] font-semibold tracking-wide transition-all duration-300"
+                    className={`group relative px-5 py-3 font-semibold tracking-wide transition-all duration-300 ${
+                      isNavItemActive(item) ? "text-[#F6C343]" : "text-[#faf8f3]"
+                    }`}
                   >
                     <span className="relative z-10 drop-shadow-lg">
                       {item.name}
                     </span>
-                    <div className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                    <div className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#faf8f3] transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
+                    <div
+                      className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+                        isNavItemActive(item)
+                          ? "bg-[#faf8f3]/10 opacity-100"
+                          : "bg-[#faf8f3]/10 opacity-0 group-hover:opacity-100"
+                      }`}
+                    ></div>
+                    <div
+                      className={`absolute bottom-0 h-0.5 bg-[#F6C343] transition-all duration-300 ${
+                        isNavItemActive(item)
+                          ? "left-0 w-full"
+                          : "left-1/2 w-0 group-hover:w-full group-hover:left-0"
+                      }`}
+                    ></div>
                   </Link>
                 )}
               </motion.div>
@@ -431,7 +482,11 @@ const Header = () => {
                         >
                           <Link
                             href={item.href}
-                            className="block px-6 py-3 hover:bg-[#faf8f3]/10  text-sm text-[#faf8f3] transition-all duration-200"
+                            className={`block px-6 py-3 text-sm transition-all duration-200 ${
+                              isNavItemActive(item)
+                                ? "bg-[#faf8f3]/10 text-[#F6C343]"
+                                : "text-[#faf8f3] hover:bg-[#faf8f3]/10"
+                            }`}
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -514,9 +569,19 @@ const Header = () => {
                     transition={{ delay: 0.1 * index, duration: 0.4 }}
                   >
                     {item.items ? (
-                      <div className=" rounded-xl overflow-hidden  border border-[#faf8f3]/20 ">
+                      <div
+                        className={`rounded-xl overflow-hidden border ${
+                          isNavItemActive(item)
+                            ? "border-[#F6C343]/70 bg-[#faf8f3]/10"
+                            : "border-[#faf8f3]/20"
+                        }`}
+                      >
                         <button
-                          className="w-full flex justify-between items-center py-4 px-6 font-bold text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-300"
+                          className={`w-full flex justify-between items-center py-4 px-6 font-bold hover:bg-[#faf8f3]/10 transition-all duration-300 ${
+                            isNavItemActive(item)
+                              ? "text-[#F6C343]"
+                              : "text-[#faf8f3] hover:text-[#faf8f3]"
+                          }`}
                           onClick={() =>
                             setMobileActiveDropdown(
                               mobileActiveDropdown === item.key
@@ -552,7 +617,11 @@ const Header = () => {
                                     <Link
                                       href={subItem.href}
                                       onClick={() => setMobileMenuOpen(false)}
-                                      className="flex items-center justify-between py-3 px-8 text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-200"
+                                      className={`flex items-center justify-between py-3 px-8 transition-all duration-200 ${
+                                        isLinkActive(subItem.href)
+                                          ? "bg-[#faf8f3]/10 text-[#F6C343]"
+                                          : "text-[#faf8f3] hover:bg-[#faf8f3]/10"
+                                      }`}
                                     >
                                       <span>{subItem.name}</span>
                                       <StatusBadge status={subItem.status} />
@@ -568,7 +637,11 @@ const Header = () => {
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-4 px-6 font-bold text-[#faf8f3] hover:text-[#faf8f3] transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 border-[#0b1d3a] hover:border-[#faf8f3]"
+                        className={`block py-4 px-6 font-bold transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 ${
+                          isNavItemActive(item)
+                            ? "border-[#F6C343] bg-[#faf8f3]/10 text-[#F6C343]"
+                            : "border-[#0b1d3a] text-[#faf8f3] hover:text-[#faf8f3] hover:border-[#faf8f3]"
+                        }`}
                       >
                         {item.name}
                       </Link>
@@ -591,10 +664,18 @@ const Header = () => {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 + 0.1 * index, duration: 0.4 }}
-                        className="border border-[#faf8f3]/10 rounded-xl overflow-hidden bg-[#faf8f3]/5"
+                        className={`border rounded-xl overflow-hidden ${
+                          isNavItemActive(item)
+                            ? "border-[#F6C343]/70 bg-[#faf8f3]/10"
+                            : "border-[#faf8f3]/10 bg-[#faf8f3]/5"
+                        }`}
                       >
                         <button
-                          className="w-full flex justify-between items-center py-4 px-6 font-bold text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-300"
+                          className={`w-full flex justify-between items-center py-4 px-6 font-bold hover:bg-[#faf8f3]/10 transition-all duration-300 ${
+                            isNavItemActive(item)
+                              ? "text-[#F6C343]"
+                              : "text-[#faf8f3] hover:text-[#faf8f3]"
+                          }`}
                           onClick={() =>
                             setMobileActiveDropdown(
                               mobileActiveDropdown === item.key
@@ -646,7 +727,11 @@ const Header = () => {
                                       <Link
                                         href={subItem.href}
                                         onClick={() => setMobileMenuOpen(false)}
-                                        className="block py-3 px-8 text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-200"
+                                        className={`block py-3 px-8 transition-all duration-200 ${
+                                          isLinkActive(subItem.href)
+                                            ? "bg-[#faf8f3]/10 text-[#F6C343]"
+                                            : "text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10"
+                                        }`}
                                       >
                                         {subItem.name}
                                       </Link>
@@ -670,7 +755,11 @@ const Header = () => {
                       <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-4 px-6 font-semibold text-[#faf8f3] hover:text-[#faf8f3] transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 border-[#0b1d3a] hover:border-[#faf8f3]"
+                        className={`block py-4 px-6 font-semibold transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 ${
+                          isNavItemActive(item)
+                            ? "border-[#F6C343] bg-[#faf8f3]/10 text-[#F6C343]"
+                            : "border-[#0b1d3a] text-[#faf8f3] hover:text-[#faf8f3] hover:border-[#faf8f3]"
+                        }`}
                       >
                         {item.name}
                       </Link>

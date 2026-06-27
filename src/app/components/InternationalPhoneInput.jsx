@@ -14,10 +14,10 @@ export default function InternationalPhoneInput({
   value,
   onChange,
   inputProps,
-  containerClass = "w-full",
+  containerClass = "relative z-20 w-full overflow-visible",
   inputClass = "!w-full !h-[50px] !rounded-lg !border !border-[#2B364D] !bg-[#FDFCFA] !py-3 !pl-14 !pr-4 !text-[#162033] placeholder:!text-[#6C7484] focus:!outline-none focus:!ring-2 focus:!ring-[#F6C343]",
   buttonClass = "!rounded-l-lg !border !border-[#2B364D] !bg-[#FDFCFA] hover:!bg-[#FDFCFA]",
-  dropdownClass = "!text-[#162033]",
+  dropdownClass = "!z-[10000] !max-h-60 !bg-white !text-[#162033] !shadow-2xl",
 }) {
   return (
     <PhoneInput

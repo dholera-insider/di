@@ -66,11 +66,11 @@ export default function FAQSection() {
       <div className="">
         <div className="flex flex-col md:flex-row px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)] gap-[clamp(1.5rem,4vw,3rem)] max-w-7xl mx-auto">
           <div className="w-full md:w-2/5 md:pl-2 md:pr-2">
-            <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-semibold text-white mb-4">
+            <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-semibold text-[#2B364D] mb-4">
               FAQs
             </h2>
 
-            <p className="text-gray-200 mb-2">
+            <p className="text-[#2B364D] mb-2">
               Got questions about WestWyn Estates?
             </p>
 
@@ -91,15 +91,15 @@ export default function FAQSection() {
                   className="w-full py-[clamp(0.875rem,2vw,1rem)] flex justify-between items-center text-left hover:bg-white/5 transition-all duration-200"
                   onClick={() => toggleFAQ(index)}
                 >
-                  <span className="text-white font-medium pr-4 leading-relaxed">
+                  <span className="text-[#2B364D] font-medium pr-4 leading-relaxed">
                     {faq.question}
                   </span>
 
                   <span className="flex-shrink-0 transition-transform duration-200">
                     {openIndex === index ? (
-                      <Minus className="w-5 h-5 text-white" />
+                      <Minus className="w-5 h-5 text-[#F6C343]" />
                     ) : (
-                      <Plus className="w-5 h-5 text-white" />
+                      <Plus className="w-5 h-5 text-[#F6C343]" />
                     )}
                   </span>
                 </button>
@@ -112,7 +112,7 @@ export default function FAQSection() {
                   }`}
                 >
                   <div className="pb-4">
-                    <p className="text-gray-200 text-sm leading-relaxed">
+                    <p className="text-[#2B364D] text-sm leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>

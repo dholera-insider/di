@@ -91,22 +91,6 @@ export default function Aboutus() {
         parseInt(localStorage.getItem("lastSubmissionTime") || "0", 10),
       );
     }
-
-    // Prevent modal close when clicking inside
-    const handleClickInside = (e) => {
-      e.stopPropagation();
-    };
-
-    const formElement = document.getElementById("contact-form-container");
-    if (formElement) {
-      formElement.addEventListener("click", handleClickInside);
-    }
-
-    return () => {
-      if (formElement) {
-        formElement.removeEventListener("click", handleClickInside);
-      }
-    };
   }, []);
 
   const handleChange = (e) => {

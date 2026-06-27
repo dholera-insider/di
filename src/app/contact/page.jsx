@@ -296,10 +296,10 @@ const ContactUsPage = () => {
   };
 
   const stats = [
-    { number: "7+", label: "Projects" },
-    { number: "561+", label: "Happy Clients" },
-    { number: "5+", label: "Years Experience" },
-    { number: "2 Lakh+ Sq. Yd.", label: "Dholera Land Sold" },
+    { number: "3", label: "Projects" },
+    { number: "584", label: "Happy Clients" },
+    { number: "6+", label: "Years Experience" },
+    { number: "2.1 Lakh+ Sq. Yd.", label: "Dholera Land Sold" },
   ];
 
   const faqs = [
