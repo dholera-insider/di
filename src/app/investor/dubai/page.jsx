@@ -145,6 +145,7 @@ export default function DubaiNriPage() {
 
   return (
     <main className="bg-[#FDFCFA] text-[#162033]">
+      <meta name="robots" content="noindex, nofollow" />
       {/* HERO */}
       <section className="px-[clamp(1.25rem,5vw,2rem)] pt-[clamp(3rem,8vw,5.5rem)] pb-[clamp(2.5rem,6vw,4rem)]">
         <div className="mx-auto max-w-7xl">
