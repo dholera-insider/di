@@ -5,6 +5,8 @@ import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
 } from "../components/InternationalPhoneInput";
+import Image from "next/image";
+import tick from "@/app/assets/icons/verify.png"
 
 const benefits = [
   {
@@ -491,19 +493,12 @@ export default function Aboutus() {
                   key={i}
                   className="flex items-center gap-[clamp(0.625rem,calc(0.5rem+0.5vw),0.875rem)] bg-white/[0.05] hover:bg-white/10 transition-colors rounded-lg px-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)] py-[clamp(0.625rem,calc(0.5rem+0.5vw),0.875rem)]"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-[clamp(0.875rem,calc(0.8rem+0.3vw),1rem)] h-[clamp(0.875rem,calc(0.8rem+0.3vw),1rem)] text-[#F6C343] shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-white/80 text-[clamp(0.875rem,calc(0.85rem+0.1vw),0.9375rem)]">
+                  <Image
+                    src={tick}
+                    alt="blue tick"
+                    className="w-8 md:w-10 h-8 md:h-10"
+                  />
+                  <span className="text-white/80 text-[clamp(0.9rem,calc(0.85rem+0.7vw),1.2rem)]">
                     {pt}
                   </span>
                 </div>
