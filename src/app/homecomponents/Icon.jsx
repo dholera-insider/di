@@ -2,16 +2,22 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import icon from "@/app/assets/building.svg";
+import icon from "@/app/assets/svg/Bahrain.svg";
+import icon2 from "@/app/assets/svg/Dubai.svg";
+import icon3 from "@/app/assets/svg/kuwait.svg";
+import icon4 from "@/app/assets/svg/Oman.svg";
+import icon5 from "@/app/assets/svg/Qatar.svg";
+import icon6 from "@/app/assets/svg/Saudi Arabia.svg";
+import icon7 from "@/app/assets/svg/Singapore.svg";
 
 const countries = [
-  { name: "UAE", flag: "https://flagcdn.com/ae.svg", icon: icon },
+  { name: "UAE", flag: "https://flagcdn.com/ae.svg", icon: icon2 },
   { name: "Bahrain", flag: "https://flagcdn.com/bh.svg", icon: icon },
-  { name: "Singapore", flag: "https://flagcdn.com/sg.svg", icon: icon },
-  { name: "Kuwait", flag: "https://flagcdn.com/kw.svg", icon: icon },
-  { name: "Oman", flag: "https://flagcdn.com/om.svg", icon: icon },
-  { name: "Saudi Arabia", flag: "https://flagcdn.com/sa.svg", icon: icon },
-  { name: "Qatar", flag: "https://flagcdn.com/qa.svg", icon: icon },
+  { name: "Singapore", flag: "https://flagcdn.com/sg.svg", icon: icon7 },
+  { name: "Kuwait", flag: "https://flagcdn.com/kw.svg", icon: icon3 },
+  { name: "Oman", flag: "https://flagcdn.com/om.svg", icon: icon4 },
+  { name: "Saudi Arabia", flag: "https://flagcdn.com/sa.svg", icon: icon6 },
+  { name: "Qatar", flag: "https://flagcdn.com/qa.svg", icon: icon5 },
 ];
 
 export default function NRISupport() {
@@ -22,8 +28,8 @@ export default function NRISupport() {
   useEffect(() => {
     const updateConfig = () => {
       const isMobile = window.innerWidth < 1024;
-      setVisibleCount(isMobile ? 2 : 4);
-      setStep(isMobile ? 2 : 3);
+      setVisibleCount(isMobile ? 1 : 4);
+      setStep(isMobile ? 1 : 3);
     };
     updateConfig();
     window.addEventListener("resize", updateConfig);
@@ -82,7 +88,7 @@ export default function NRISupport() {
           </button>
 
           {/* Track */}
-          <div className="overflow-hidden flex-1 py-3">
+          <div className="overflow-hidden flex-1 py-2">
             <div
               className="flex gap-4 transition-transform duration-500 ease-in-out"
               style={{
@@ -92,32 +98,36 @@ export default function NRISupport() {
               {countries.map((country) => (
                 <div
                   key={country.name}
-                  className="group flex flex-col items-center gap-4 rounded-2xl border border-[#2B364D]/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#051A3A] hover:border-[#051A3A] hover:shadow-xl cursor-pointer"
+                  className="group flex flex-col items-center gap-4 rounded-2xl border border-[#2B364D]/10 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1.5 bg-[#051A3A] hover:border-[#051A3A] hover:shadow-xl cursor-pointer"
                   style={{ flex: `0 0 ${cardWidth}` }}
                 >
-                  {/* Flag */}
-                  <div className="overflow-hidden rounded-lg shadow ring-1 ring-black/10">
-                    <img
-                      src={country.flag}
-                      alt={`${country.name} flag`}
-                      className="h-10 w-14 object-cover"
-                    />
-                  </div>
-
-                  {/* Country name */}
-                  <p className="text-sm font-semibold text-[#051A3A] group-hover:text-white transition-colors">
-                    {country.name}
-                  </p>
+                
 
                   {/* Gold divider */}
-                  <div className="h-px w-10 bg-[#F6C343] opacity-50 group-hover:opacity-100 transition-opacity" />
 
                   {/* Icon */}
                   <Image
                     src={country.icon}
                     alt={`${country.name} investment guide`}
-                    className="h-10 w-10 object-contain opacity-50 group-hover:opacity-100 group-hover:brightness-[100] group-hover:invert transition-all sm:h-12 sm:w-12"
+                    className="h-[170px] w-[170px] object-contain invert transition-all"
                   />
+
+                  <div className="flex justify-center items-center space-x-4">
+
+                  {/* Flag */}
+                  <div className="overflow-hidden rounded-lg shadow ring-1 ring-black/10">
+                    <img
+                      src={country.flag}
+                      alt={`${country.name} flag`}
+                      className="h-8 w-14 object-cover"
+                      />
+                  </div>
+
+                  {/* Country name */}
+                  <p className="text-sm font-semibold text-white group-hover:text-white transition-colors">
+                    {country.name}
+                  </p>
+                      </div>
                 </div>
               ))}
             </div>
