@@ -169,9 +169,9 @@ export default function Hero() {
 
               {/* Title + Subtitle */}
               <div className="shrink-0">
-                <Link href="/residential-projects-in-dholera/westwyn-county">
+                <Link href="/residential-projects-in-dholera/westwyn-estates">
                   <h2 className="text-[#051A3A] text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight m-0 hover:text-[#2B364D] transition-colors">
-                    WestWyn County
+                    WestWyn Estates
                   </h2>
                 </Link>
                 <div className="text-[#051A3A]/70 text-xs mt-1 font-bold">
