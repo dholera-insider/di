@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import "./about.css";
 import InternationalPhoneInput, {
   getInternationalPhoneValue,
@@ -134,7 +133,7 @@ export default function Aboutus() {
   const onRecaptchaSuccess = async (token) => {
     try {
       const response = await fetch(
-        "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
+        "",
         {
           method: "POST",
           headers: {
@@ -284,63 +283,32 @@ export default function Aboutus() {
           }}
         />
         <div className="relative max-w-5xl mx-auto px-[clamp(1.5rem,calc(1rem+2vw),3rem)] pt-[clamp(8rem,calc(6rem+4vw),11rem)] pb-[clamp(4rem,calc(3rem+3vw),6rem)]">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-            className="text-[#F6C343] text-[clamp(0.65rem,calc(0.6rem+0.15vw),0.75rem)] uppercase tracking-[0.22em] font-bold mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]"
-          >
+          <p className="text-[#F6C343] text-[clamp(0.7rem,calc(0.65rem+0.2vw),0.8rem)] uppercase tracking-[0.22em] font-bold mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)]">
             About Us
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-white font-bold text-[clamp(2rem,calc(1.5rem+2.5vw),3.75rem)] leading-[1.1] max-w-3xl"
-          >
+          </p>
+          <h1 className="text-white font-bold text-[clamp(2rem,calc(1.5rem+2.5vw),3.75rem)] leading-[1.1] max-w-3xl">
             About <span className="text-[#F6C343]">Dholera Insider</span>
-          </motion.h1>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            style={{ transformOrigin: "left" }}
-            className="w-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] h-[3px] bg-[#F6C343] my-[clamp(1.25rem,calc(1rem+1vw),1.75rem)] rounded-full"
-          />
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl"
-          >
+          </h1>
+          <div className="w-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] h-[3px] bg-[#F6C343] my-[clamp(1.25rem,calc(1rem+1vw),1.75rem)] rounded-full" />
+          <p className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl">
             At Dholera Insider, we help NRIs invest in verified residential
             plots in Dholera Smart City with confidence. Our goal is to make
             property investment simple, transparent, and secure, no matter where
             you live.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl mt-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)]"
-          >
+          </p>
+          <p className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl mt-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)]">
             Whether you&apos;re planning to build your dream home, secure your
             family&apos;s future, or grow your investment portfolio, we provide
             trusted guidance at every step. From exploring projects to
             completing documentation, our team ensures a smooth and hassle-free
             buying experience.
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
-            className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl mt-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)]"
-          >
+          </p>
+          <p className="text-white/75 text-[clamp(0.95rem,calc(0.875rem+0.35vw),1.15rem)] leading-relaxed max-w-2xl mt-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)]">
             As the exclusive channel partner of BookMyAssets, we offer access to
             carefully selected residential plot projects backed by professional
             support and verified documentation. Our commitment is to help every
             investor make informed decisions with complete peace of mind.
-          </motion.p>
+          </p>
         </div>
       </section>
 
@@ -363,7 +331,7 @@ export default function Aboutus() {
                 <p className="text-[#051A3A] font-bold text-[clamp(0.875rem,calc(0.82rem+0.25vw),1rem)]">
                   {item.title}
                 </p>
-                <p className="text-[#051A3A]/60 text-[clamp(0.7rem,calc(0.65rem+0.15vw),0.8rem)] mt-0.5">
+                <p className="text-[#051A3A]/60 text-[clamp(0.8125rem,calc(0.78rem+0.15vw),0.875rem)] mt-0.5">
                   {item.sub}
                 </p>
               </div>
@@ -377,13 +345,8 @@ export default function Aboutus() {
         <section className="bg-[#FDFCFA] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-x-[clamp(3rem,calc(2rem+3vw),5rem)] gap-y-[clamp(2.5rem,calc(2rem+2vw),3.5rem)]">
             {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55 }}
-            >
-              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-2">
+            <div>
+              <p className="text-[#F6C343] text-[clamp(0.7rem,calc(0.65rem+0.2vw),0.8rem)] uppercase tracking-[0.2em] font-bold mb-2">
                 Our Mission
               </p>
               <h2 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-[#051A3A] leading-snug mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
@@ -391,7 +354,7 @@ export default function Aboutus() {
                 world
               </h2>
               <div className="w-10 h-[3px] bg-[#F6C343] mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-full" />
-              <p className="text-gray-600 text-[clamp(0.875rem,calc(0.82rem+0.25vw),1rem)] leading-relaxed">
+              <p className="text-gray-600 text-[clamp(0.9375rem,calc(0.9rem+0.2vw),1rem)] leading-relaxed">
                 Our mission is to make NRI property investment in Dholera easy,
                 transparent, and reliable. We believe that buying property from
                 overseas should never be complicated. That&apos;s why we focus
@@ -400,24 +363,18 @@ export default function Aboutus() {
                 recommendation we make is based on trust, transparency, and
                 long-term value.
               </p>
-            </motion.div>
+            </div>
 
             {/* Partnership */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-              className="lg:border-l lg:border-[#051A3A]/10 lg:pl-[clamp(3rem,calc(2rem+3vw),5rem)]"
-            >
-              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-2">
+            <div className="lg:border-l lg:border-[#051A3A]/10 lg:pl-[clamp(3rem,calc(2rem+3vw),5rem)]">
+              <p className="text-[#F6C343] text-[clamp(0.7rem,calc(0.65rem+0.2vw),0.8rem)] uppercase tracking-[0.2em] font-bold mb-2">
                 Our Partnership
               </p>
               <h2 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-[#051A3A] leading-snug mb-[clamp(0.75rem,calc(0.6rem+0.6vw),1rem)]">
                 Backed by BookMyAssets - quality and trust you can rely on
               </h2>
               <div className="w-10 h-[3px] bg-[#F6C343] mb-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] rounded-full" />
-              <p className="text-gray-600 text-[clamp(0.875rem,calc(0.82rem+0.25vw),1rem)] leading-relaxed">
+              <p className="text-gray-600 text-[clamp(0.9375rem,calc(0.9rem+0.2vw),1rem)] leading-relaxed">
                 Our partnership with BookMyAssets reflects our commitment to
                 trust and quality. As its exclusive channel partner, Dholera
                 Insider brings verified residential plot opportunities directly
@@ -426,7 +383,7 @@ export default function Aboutus() {
                 process, verified documentation, and personalized assistance
                 that helps investors make confident decisions.
               </p>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -434,7 +391,7 @@ export default function Aboutus() {
         <section className="bg-[#051A3A] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between border-b border-white/15 pb-[clamp(0.75rem,calc(0.6rem+0.5vw),1rem)] mb-[clamp(0.25rem,0.5vw,0.5rem)]">
-              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold">
+              <p className="text-[#F6C343] text-[clamp(0.7rem,calc(0.65rem+0.2vw),0.8rem)] uppercase tracking-[0.2em] font-bold">
                 Why Choose Us
               </p>
               <p className="text-white/30 text-xs">
@@ -443,12 +400,8 @@ export default function Aboutus() {
             </div>
             <div>
               {benefits.map((b, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, x: -14 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.38, delay: i * 0.07 }}
                   className="border-b border-white/10 py-[clamp(1rem,calc(0.85rem+0.75vw),1.5rem)] flex flex-col md:grid md:grid-cols-[2.5rem,1.5fr,2.5fr] gap-x-[clamp(1rem,calc(0.75rem+1vw),1.5rem)] gap-y-1 hover:bg-white/[0.04] -mx-4 px-4 transition-colors rounded-md"
                 >
                   <span className="hidden md:block text-[#F6C343]/45 text-[0.68rem] font-mono font-semibold tracking-widest pt-0.5">
@@ -457,10 +410,10 @@ export default function Aboutus() {
                   <p className="text-white font-semibold text-[clamp(0.875rem,calc(0.82rem+0.2vw),0.975rem)]">
                     {b.title}
                   </p>
-                  <p className="text-white/55 text-[clamp(0.8rem,calc(0.75rem+0.15vw),0.875rem)] leading-relaxed">
+                  <p className="text-white/55 text-[clamp(0.875rem,calc(0.85rem+0.15vw),0.9375rem)] leading-relaxed">
                     {b.description}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -470,7 +423,7 @@ export default function Aboutus() {
         <section className="bg-[#FDFCFA] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-5xl mx-auto">
             <div className="mb-[clamp(2rem,calc(1.5rem+2vw),3rem)]">
-              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-1.5">
+              <p className="text-[#F6C343] text-[clamp(0.7rem,calc(0.65rem+0.2vw),0.8rem)] uppercase tracking-[0.2em] font-bold mb-1.5">
                 Our Values
               </p>
               <h3 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-[#051A3A]">
@@ -496,26 +449,18 @@ export default function Aboutus() {
                   desc: "Our support doesn't end after your purchase. We're committed to assisting you throughout your investment journey.",
                 },
               ].map((v, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
                   className="border border-[#051A3A]/10 rounded-2xl p-[clamp(1.25rem,calc(1rem+0.75vw),1.5rem)] hover:border-[#F6C343] hover:shadow-[0_4px_20px_rgba(246,195,67,0.12)] transition-all duration-300 group"
                 >
-                  <div className="w-[clamp(2rem,calc(1.75rem+0.5vw),2.25rem)] h-[clamp(2rem,calc(1.75rem+0.5vw),2.25rem)] rounded-full bg-[#F6C343]/15 group-hover:bg-[#F6C343]/25 flex items-center justify-center mb-[clamp(0.75rem,calc(0.6rem+0.5vw),1rem)] transition-colors">
-                    <span className="text-[#F6C343] font-bold text-sm">
-                      {v.title[0]}
-                    </span>
-                  </div>
+                  
                   <h4 className="text-[#051A3A] font-bold text-[clamp(0.9rem,calc(0.85rem+0.2vw),1rem)] mb-1.5">
                     {v.title}
                   </h4>
-                  <p className="text-gray-500 text-[clamp(0.78rem,calc(0.73rem+0.2vw),0.875rem)] leading-relaxed">
+                  <p className="text-gray-500 text-[clamp(0.875rem,calc(0.85rem+0.15vw),0.9375rem)] leading-relaxed">
                     {v.desc}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -525,7 +470,7 @@ export default function Aboutus() {
         <section className="bg-[#051A3A] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)] px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-5xl mx-auto">
             <div className="mb-[clamp(2rem,calc(1.5rem+2vw),3rem)]">
-              <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold mb-1.5">
+              <p className="text-[#F6C343] text-[clamp(0.7rem,calc(0.65rem+0.2vw),0.8rem)] uppercase tracking-[0.2em] font-bold mb-1.5">
                 Trust
               </p>
               <h3 className="text-[clamp(1.25rem,calc(1rem+1.1vw),1.75rem)] font-bold text-white">
@@ -542,12 +487,8 @@ export default function Aboutus() {
                 "Secure and hassle-free remote buying experience",
                 "Focus on long-term investment value",
               ].map((pt, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, x: -8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: i * 0.06 }}
                   className="flex items-center gap-[clamp(0.625rem,calc(0.5rem+0.5vw),0.875rem)] bg-white/[0.05] hover:bg-white/10 transition-colors rounded-lg px-[clamp(0.875rem,calc(0.75rem+0.5vw),1.125rem)] py-[clamp(0.625rem,calc(0.5rem+0.5vw),0.875rem)]"
                 >
                   <svg
@@ -562,13 +503,13 @@ export default function Aboutus() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span className="text-white/80 text-[clamp(0.8rem,calc(0.75rem+0.15vw),0.875rem)]">
+                  <span className="text-white/80 text-[clamp(0.875rem,calc(0.85rem+0.1vw),0.9375rem)]">
                     {pt}
                   </span>
-                </motion.div>
+                </div>
               ))}
             </div>
-            <p className="mt-[clamp(1.5rem,calc(1.25rem+1vw),2rem)] text-white/40 text-[clamp(0.78rem,calc(0.73rem+0.2vw),0.875rem)] leading-relaxed max-w-2xl">
+            <p className="mt-[clamp(1.5rem,calc(1.25rem+1vw),2rem)] text-white/40 text-[clamp(0.875rem,calc(0.85rem+0.15vw),0.9375rem)] leading-relaxed max-w-2xl">
               Our priority is to help every NRI investor make confident real
               estate decisions backed by trust, transparency, and expert
               support.
@@ -581,7 +522,7 @@ export default function Aboutus() {
       <section className="bg-[#faf8f3] py-[clamp(3.5rem,calc(2.5rem+3vw),5.5rem)]">
         <div className="container mx-auto px-[clamp(1.5rem,calc(1rem+2vw),3rem)]">
           <div className="max-w-4xl mx-auto">
-            <p className="text-[#F6C343] text-[clamp(0.6rem,calc(0.55rem+0.15vw),0.7rem)] uppercase tracking-[0.2em] font-bold text-center mb-2">
+            <p className="text-[#F6C343] text-[clamp(0.7rem,calc(0.65rem+0.2vw),0.8rem)] uppercase tracking-[0.2em] font-bold text-center mb-2">
               Get Started
             </p>
             <h5 className="text-[#051A3A] text-[clamp(1.75rem,calc(1.375rem+1.5vw),2.5rem)] font-bold text-center">
