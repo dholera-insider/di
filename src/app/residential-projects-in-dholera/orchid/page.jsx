@@ -67,6 +67,7 @@ export default function Hero() {
         name="keywords"
         content="Orchid Dholera, Dholera Activation Area, Dholera plots, Dholera investment, smart city Dholera"
       />
+      <meta name="robots" content="noindex, nofollow" />
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/orchid"

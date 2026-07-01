@@ -69,6 +69,7 @@ export default function Hero() {
         name="keywords"
         content="Paradise 2 Dholera, Dholera plots, smart city Gujarat, Dholera investment, investment in Dholera"
       />
+      <meta name="robots" content="noindex, nofollow" />
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/paradise-2"

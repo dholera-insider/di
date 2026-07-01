@@ -68,6 +68,7 @@ export default function Hero() {
         name="keywords"
         content="Marina Bay Dholera, Dholera plots, smart city Gujarat, Dholera Smart City, Dholera investment"
       />
+      <meta name="robots" content="noindex, nofollow" />
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/marina-bay"

@@ -43,11 +43,7 @@ export default async function sitemap() {
     { url: `${BASE_URL}/about-dholera-sir`,       priority: 0.7, changeFrequency: "monthly" },
 
 /*     { url: `${BASE_URL}/residential-projects-in-dholera/maple`,             priority: 0.8, changeFrequency: "monthly" }, */
-    { url: `${BASE_URL}/residential-projects-in-dholera/marina-bay`,        priority: 0.8, changeFrequency: "monthly" },
-    { url: `${BASE_URL}/residential-projects-in-dholera/orchid`,            priority: 0.8, changeFrequency: "monthly" },
-    { url: `${BASE_URL}/residential-projects-in-dholera/paradise`,          priority: 0.8, changeFrequency: "monthly" },
-    { url: `${BASE_URL}/residential-projects-in-dholera/paradise-2`,        priority: 0.8, changeFrequency: "monthly" },
-    { url: `${BASE_URL}/residential-projects-in-dholera/pride`,             priority: 0.8, changeFrequency: "monthly" },
+
     { url: `${BASE_URL}/residential-projects-in-dholera/westwyn-county`,    priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE_URL}/residential-projects-in-dholera/westwyn-estate`,    priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE_URL}/residential-projects-in-dholera/westwyn-residency`, priority: 0.8, changeFrequency: "monthly" },

@@ -69,6 +69,7 @@ export default function Hero() {
         name="keywords"
         content="Pride Dholera, Dholera plots, smart city Gujarat, Dholera investment, Dholera Smart City"
       />
+      <meta name="robots" content="noindex, nofollow" />
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/pride"
