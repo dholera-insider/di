@@ -229,7 +229,7 @@ export default function Hero() {
                 </span>
               </div>
               <div className="text-3xl font-bold text-[#051A3A]">
-                ₹11,000
+                ReSale Price ₹12,000
                 <span className="text-sm text-gray-600 ml-1">/Sq.Yd</span>
               </div>
             </div>
@@ -279,24 +279,22 @@ export default function Hero() {
             </h1>
 
             <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
-              WestWyn County brings a secure and future-ready investment
-              opportunity in Dholera SIR, offering 100% government-approved,
-              clear-title plots. Backed by the vision of Dholera Smart City
-              Project, it caters to both Indian and NRI investors with
-              registry-ready documentation, flexible payment plans, resale
-              support, and buy-back assistance*. It’s a hassle-free way to own a
-              piece of India’s most ambitious greenfield smart city.
+              WestWyn County is a premium residential plotting project in
+              Dholera, strategically located on the Fedra-Pipli State Highway.
+              The project has already been fully sold out, which reflects its
+              strong market demand and buyer confidence.
+            </p>
+            <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
+              For buyers who could not book during the original launch, We are
+              offering verified resale plots in WestWyn County. These plots are
+              suitable for both future residential construction and long-term
+              land investment in Dholera’s fast-developing real estate zone.
             </p>
 
             <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-200 leading-relaxed">
-              Located on the Fedra–Pipli State Highway (100 ft road), WestWyn
-              County enjoys one of the most connected addresses in Dholera. The
-              project is just 15 minutes away from Dholera International Airport
-              and the Ahmedabad–Dholera Expressway, giving residents and
-              investors direct access to Gujarat’s next big economic hub.
-              Surrounded by upcoming residential sectors, industrial hubs, and
-              commercial projects, this location combines convenience with
-              long-term value growth.
+              With clear documentation, immediate possession, and a prime
+              location advantage, WestWyn County resale plots are a reliable
+              option for buyers looking for residential plots in Dholera.
             </p>
           </div>
         </div>
@@ -330,7 +328,9 @@ export default function Hero() {
                     key={index}
                     className="bg-[#F6C343]/20 backdrop-blur-sm rounded-lg p-[clamp(1rem,2vw,1.25rem)] text-center border border-[#F6C343]/30 hover:bg-[#F6C343]/30 transition-all duration-300"
                   >
-                    <div className="text-xl md:text-4xl mb-2">{amenity.icon}</div>
+                    <div className="text-xl md:text-4xl mb-2">
+                      {amenity.icon}
+                    </div>
                     <p className="text-white font-medium text-[clamp(1rem,1.8vw,1.125rem)] leading-[1.4]">
                       {amenity.title}
                     </p>
