@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import BrochureDownload from "@/app/components/BrochureDownload";
 import { Space_Grotesk, Inter } from "next/font/google";
 import {
   Plus,
@@ -205,8 +206,7 @@ const legalDocs = [
   "NA/NOC details",
   "7/12 extract or relevant land record",
   "Ownership proof",
-  "Project map",
-  "Plot layout",
+  "Plan layout",
   "Registry process details",
   "Payment schedule",
   "Developer details",
@@ -262,6 +262,7 @@ const faqs = [
 
 export default function DubaiNriPage() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [legalDocumentsFormOpen, setLegalDocumentsFormOpen] = useState(false);
   const toggleFAQ = (index) => setOpenIndex(openIndex === index ? null : index);
 
   return (
@@ -515,7 +516,7 @@ export default function DubaiNriPage() {
 
       {/* LEGAL DOCUMENTS */}
       <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto gap-12 lg:gap-16 items-center">
           <div>
             <Eyebrow>Documentation</Eyebrow>
             <h2
@@ -534,7 +535,7 @@ export default function DubaiNriPage() {
             </p>
 
             <p
-              className="mt-7 mb-4 text-sm font-mono font-medium uppercase tracking-[0.14em]"
+              className="mt-7 mb-4 text-sm font-medium uppercase "
               style={{ color: "#051A3A" }}
             >
               Before buying a Dholera plot, you should ask for:
@@ -558,6 +559,15 @@ export default function DubaiNriPage() {
                 </span>
               ))}
             </div>
+
+            <button
+              type="button"
+              onClick={() => setLegalDocumentsFormOpen(true)}
+              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#F6C343] px-6 py-3 text-base font-semibold text-[#051A3A] shadow-sm transition-colors hover:bg-[#e7b536] focus:outline-none focus:ring-2 focus:ring-[#051A3A] focus:ring-offset-2"
+            >
+              <FileText className="h-5 w-5" aria-hidden="true" />
+              Check Documents
+            </button>
 
             <div
               className="mt-8 flex gap-3 p-5"
@@ -594,15 +604,30 @@ export default function DubaiNriPage() {
               </p>
             </div>
           </div>
-          <div>
+          {/* <div>
             <ImagePlaceholder
               label="Sample documentation visual"
               ratio="aspect-[4/3]"
               tone="light"
             />
-          </div>
+          </div> */}
         </div>
       </section>
+
+      {legalDocumentsFormOpen && (
+        <BrochureDownload
+          title="Get the Legal Documents Checklist"
+          subtitle="Share your details to download the Dholera plot document verification checklist."
+          buttonName="Download Checklist"
+          thankYouMessage="Your request was submitted successfully."
+          source="Dubai Investor Legal Documents Checklist"
+          link="/pdf/Legal%20Verification%20Estates.pdf"
+          downloadFilename="Legal Verification Estates.pdf"
+          downloadLabel="legal documents checklist"
+          redirectPath={null}
+          onClose={() => setLegalDocumentsFormOpen(false)}
+        />
+      )}
 
       {/* DOCUMENTS REQUIRED FROM BUYER */}
       <section

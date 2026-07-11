@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/app/assets/icons/logo.webp";
-import { useRouter, usePathname } from "next/navigation"
+import { useRouter } from "next/navigation"
 import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
@@ -19,7 +19,10 @@ export default function BrochureDownload({
   thankYouMessage = "Your request has been submitted successfully.",
   source = "Dholera Insider",
   link ,
-  ids
+  ids,
+  downloadFilename = "brochure.pdf",
+  downloadLabel = "brochure",
+  redirectPath = "/residential-projects-in-dholera/westwyn-estate",
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "" });
@@ -32,7 +35,6 @@ export default function BrochureDownload({
   const recaptchaRef = useRef(null);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   const router = useRouter();
-  const pathname = usePathname();
 
   // PDF download URL
   const pdfUrl = link;
@@ -43,7 +45,7 @@ export default function BrochureDownload({
       // Create a temporary anchor element
       const link = document.createElement('a');
       link.href = pdfUrl;
-      link.download = 'brochure.pdf'; // You can customize the filename
+      link.download = downloadFilename;
       link.target = '_blank';
       
       // Append to body, click, and remove
@@ -163,9 +165,9 @@ const onRecaptchaSuccess = async (token) => {
           fields: {
             name: formData.fullName,
             phone: getInternationalPhoneValue(formData.phone),
-            source: "Dholera Insider",
+            source,
           },
-          source: "Dholera Insider",
+          source,
           tags: ["Dholera Investment", "Website Lead", "Dholera Insider"],
           recaptchaToken: token,
         }),
@@ -195,11 +197,9 @@ const onRecaptchaSuccess = async (token) => {
         setShowThankYou(false);
         handleClose();
 
-        // Get current pathname for return URL
-        const currentPath = pathname || window.location.pathname;
-        
-        // Push to thank-you route with return URL
-        router.push(`/residential-projects-in-dholera/westwyn-estate`);
+        if (redirectPath) {
+          router.push(redirectPath);
+        }
       }, 2000);
     } else {
       throw new Error("Error submitting form");
@@ -325,7 +325,7 @@ const onRecaptchaSuccess = async (token) => {
                 transition={{ delay: 0.8 }}
                 className="text-md opacity-80 mt-2"
               >
-                Your brochure is downloading...
+                Your {downloadLabel} is downloading...
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -418,7 +418,7 @@ const onRecaptchaSuccess = async (token) => {
                   you shortly.
                 </p>
                 <p className="text-[#F6C343] text-sm mt-2">
-                  Your brochure is downloading...
+                  Your {downloadLabel} is downloading...
                 </p>
               </div>
             ) : (
