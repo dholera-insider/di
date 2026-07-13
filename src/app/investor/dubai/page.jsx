@@ -1,5 +1,6 @@
 "use client";
 
+import img1 from "@/app/assets/dholera-plots-roi.webp"
 import { useState } from "react";
 import Link from "next/link";
 import BrochureDownload from "@/app/components/BrochureDownload";
@@ -30,6 +31,7 @@ import {
   MapPin,
   PhoneCall,
 } from "lucide-react";
+import Image from "next/image";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -311,9 +313,18 @@ export default function DubaiNriPage() {
           </div>
           <div>
             <RouteLine />
-            <div className="mt-4">
-              <ImagePlaceholder label="Dubai skyline to Dholera site visual" ratio="aspect-[4/3]" tone="light" />
-            </div>
+            <div className="lg:order-1">
+  <div className="relative aspect-[5/4] w-full overflow-hidden">
+    <Image
+      src={img1}
+      alt="Dholera plots ROI growth chart"
+      fill
+      className="object-cover"
+      sizes="(max-width: 1024px) 100vw, 50vw"
+      priority={false}
+    />
+  </div>
+</div>
           </div>
         </div>
       </section>
@@ -378,8 +389,17 @@ export default function DubaiNriPage() {
             </ul>
           </div>
           <div className="lg:order-1">
-            <ImagePlaceholder label="Dholera SIR infrastructure visual" ratio="aspect-[4/3]" tone="dark" />
-          </div>
+  <div className="relative aspect-[5/4] w-full overflow-hidden">
+    <Image
+      src={img1}
+      alt="Dholera plots ROI growth chart"
+      fill
+      className="object-cover"
+      sizes="(max-width: 1024px) 100vw, 50vw"
+      priority={false}
+    />
+  </div>
+</div>
         </div>
       </section>
 
