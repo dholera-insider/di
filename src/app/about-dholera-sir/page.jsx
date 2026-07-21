@@ -114,7 +114,7 @@ export default async function BlogsPage() {
                   approximately 100 km from Ahmedabad, and developed under the{" "}
                   <strong>Delhi–Mumbai Industrial Corridor (DMIC)</strong>.
                   Spread over{" "}
-                  <strong className="text-[#051A3A]">922.5 km²</strong>,{" "}
+                  <strong className="text-[#051A3A]">920 km²</strong>,{" "}
                   <Link
                     href="/dholera-sir-blogs/pm-modi-dream-project-dholera-sir-india"
                     title="Dholera Smart City Project"

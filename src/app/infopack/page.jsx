@@ -125,7 +125,7 @@ export default function Info() {
         <div className="mb-8 max-w-3xl">
           <h2 className="text-[#F6C343] text-lg font-semibold mb-2">The Vision of Dholera SIR</h2>
           <p className="text-[#FDFCFA]/85 text-sm leading-relaxed">
-            Dholera Special Investment Region (SIR) represents India's smart city vision and is the first city developed under the Gujarat Special Investment Region (SIR) Act. Spread across 922.5 sq. km, it is a greenfield smart city and a key node of the Delhi–Mumbai Industrial Corridor (DMIC), being developed with strong support from the Government of India and the Government of Gujarat.
+            Dholera Special Investment Region (SIR) represents India's smart city vision and is the first city developed under the Gujarat Special Investment Region (SIR) Act. Spread across 920 sq. km, it is a greenfield smart city and a key node of the Delhi–Mumbai Industrial Corridor (DMIC), being developed with strong support from the Government of India and the Government of Gujarat.
           </p>
           <p className="text-[#FDFCFA]/85 text-sm leading-relaxed mt-3">
             Planned as a self-sustained global hub for manufacturing, innovation, and urban living, Dholera combines advanced technology, world-class infrastructure, and sustainable design setting a new benchmark for future Indian cities.
@@ -139,7 +139,7 @@ export default function Info() {
         {/* ── Stats Row ── */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
           {[
-            { value: "922.5 km²", label: "Smart City Area" },
+            { value: "920 km²", label: "Smart City Area" },
             { value: "₹1L Cr+", label: "Planned Investment" },
             /* { value: "2× Delhi", label: "Size Comparison" }, */
             { value: "2047", label: "Target Completion" },
