@@ -20,7 +20,7 @@ const HomePage = () => {
       {/* <Countries /> */}
       <Icon />
       <Invest />
-      <WestWyn_Estate />
+      {/* <WestWyn_Estate /> */}
       <LazyCommonFormSection title="Own a Govt Approved Plot in Dholera" />
       <WhyDI />
       <LegalSupport/>

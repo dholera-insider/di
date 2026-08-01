@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import westwynEstatesImage from "@/app/assets/residential/westwyn-estates-dholera-project-section.webp";
 import westwynResidencyImage from "@/app/assets/residential/westwyn-residency-dholera-project-section.webp";
+import westwynCountyImage from "@/app/assets/westwyn-county-mob1.webp";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 
 export default function WestWyn_Estate() {
@@ -28,7 +29,7 @@ export default function WestWyn_Estate() {
     {
       title: "WestWyn County",
       buttonLabel: "Sold Out",
-      image: westwynResidencyImage,
+      image: westwynCountyImage,
       location: "Fedra-Pipli State Highway, Dholera",
       size: "Minimum 150 Sq.Yards",
       href: "/residential-projects-in-dholera/westwyn-county",
