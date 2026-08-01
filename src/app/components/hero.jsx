@@ -45,7 +45,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#FDFCFA]">
+    <section className="relative min-h-screen w-full overflow-hidden ">
       <div className="absolute inset-0">
         <Image
           src={heroPoster}
@@ -72,7 +72,7 @@ const Hero = () => {
         )}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCFA]/80 via-[#FDFCFA]/76 to-[#051A3A]/50"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCFA]/20 via-[#FDFCFA]/30 to-[#051A3A]/50"></div>
 
       <div className="relative max-w-7xl mx-auto z-10 flex min-h-screen items-center">
         <div className="container mx-auto px-4 py-28 sm:px-6 lg:px-8">
