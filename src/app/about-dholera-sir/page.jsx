@@ -547,7 +547,7 @@ export default async function BlogsPage() {
 
           {/* Dholera Insiders Section */}
           <section className="mb-8">
-            <div className="bg-gradient-to-br from-[#051A3A] via-[#F6C343] to-[#051A3A] rounded-2xl p-8 md:p-12 shadow-2xl">
+            <div className="bg-[#051A3A] rounded-2xl p-8 md:p-12 shadow-2xl">
               {/* Header */}
               <div className="text-center mb-10">
                 <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white drop-shadow-lg">

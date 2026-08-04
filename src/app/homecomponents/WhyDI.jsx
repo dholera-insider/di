@@ -59,14 +59,14 @@ export default function WhyDI() {
               Why Investors Choose Dholera Insider
             </h2>
             <div className="mb-6 h-px w-14 bg-[#F6C343]" />
-            <p className="mb-4 text-[clamp(0.875rem,1.1vw,0.95rem)] leading-relaxed text-[#2B364D]/70">
+            <p className="mb-4 text-[clamp(0.90rem,1vw,1.15rem)] leading-relaxed text-[#2B364D]/70">
               At Dholera Insider, the exclusive Channel Partner of BookMyAssets
               for NRI investors, we go beyond simply showcasing projects. We
               provide exclusive residential plot opportunities, verified project
               information, and dedicated support to make investing in Dholera
               simple, transparent, and secure.
             </p>
-            <p className="text-[clamp(0.875rem,1.1vw,0.95rem)] leading-relaxed text-[#2B364D]/70">
+            <p className="text-[clamp(0.90rem,1vw,1.15rem)] leading-relaxed text-[#2B364D]/70">
               Whether you are buying your first property in India or expanding
               your investment portfolio, our team is committed to helping you
               make an informed decision.
@@ -83,14 +83,14 @@ export default function WhyDI() {
                 {/* Icon pill */}
                 <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F6C343]/15 transition-colors duration-300 group-hover:bg-[#051A3A]">
                   <Icon
-                    className="h-5 w-5 text-[#051A3A] transition-colors duration-300 group-hover:text-[#F6C343]"
+                    className="h-8 w-8 text-[#051A3A] transition-colors duration-300 group-hover:text-[#F6C343]"
                     strokeWidth={1.5}
                   />
                 </div>
 
                 {/* Text */}
                 <div>
-                  <h3 className="mb-2 text-sm font-bold text-[#051A3A]">
+                  <h3 className="mb-2 text-lg font-bold text-[#051A3A]">
                     {title}
                   </h3>
                   <p className="text-sm leading-relaxed text-[#2B364D]/60 transition-colors duration-300 group-hover:text-[#2B364D]/90">

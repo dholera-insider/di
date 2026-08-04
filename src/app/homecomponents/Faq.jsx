@@ -50,7 +50,7 @@ export default function FAQSection() {
             More Questions about Dholera Smart City Project?
           </p>
           <Link
-            className="inline-flex rounded-md bg-[#F6C343] px-[clamp(1rem,2vw,1.5rem)] py-3 text-[0.875rem] font-semibold text-[#051A3A] transition-colors hover:bg-[#e3ae25]"
+            className="inline-flex rounded-md bg-[#F6C343] px-[clamp(1rem,2vw,1.5rem)] py-3 text-base font-semibold text-[#051A3A] transition-colors hover:bg-[#e3ae25]"
             href="tel:+919211820887"
           >
             Give Us A Missed Call
