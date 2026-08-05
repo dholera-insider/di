@@ -51,8 +51,8 @@ const body = Inter({
   variable: "--font-body",
 });
 
-const PHONE_NUMBER = "+918130371647";
-const WHATSAPP_URL = "https://wa.me/918130371647";
+const PHONE_NUMBER = "+919211820887";
+const WHATSAPP_URL = "https://wa.me/919211820887";
 
 const sectionLinks = [
   { label: "Why Dholera", href: "#why-dholera" },
