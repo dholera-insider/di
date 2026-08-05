@@ -40,6 +40,7 @@ import BrochureDownload from "@/app/components/BrochureDownload";
 import { FaWhatsapp, FaWhatsappSquare } from "react-icons/fa";
 import county from "@/app/assets/dholera-residential/county-desktop.webp";
 import residency from "@/app/assets/dholera-residential/residency-desktop.webp";
+import estates from "@/app/assets/dholera-residential/westwyn-estates-dholera-entry-gate.webp";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -167,7 +168,7 @@ const projects = [
     location: "State Highway 117",
     sizes: "147 sq yd - 250 sq yd",
     status: "Available",
-    image: county,
+    image: estates,
     accent: "from-[#6b4a16] to-[#051A3A]",
   },
   {
