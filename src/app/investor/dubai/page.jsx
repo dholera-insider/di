@@ -40,7 +40,7 @@ import BrochureDownload from "@/app/components/BrochureDownload";
 import { FaWhatsapp, FaWhatsappSquare } from "react-icons/fa";
 import county from "@/app/assets/dholera-residential/county-desktop.webp";
 import residency from "@/app/assets/dholera-residential/residency-desktop.webp";
-import estates from "@/app/assets/dholera-residential/westwyn-estates-dholera-entry-gate.webp";
+import estates from "@/app/assets/dholera-residential/estates-desktop.webp";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
