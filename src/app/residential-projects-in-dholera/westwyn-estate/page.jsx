@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import westwynEstate1 from "@/app/assets/residential/westwyn-estates-dholera-project-section.webp";
-import westwynEstate1M from "@/app/assets/residential/westwyn-estates-dholera-project-section-mobile.webp";
+import westwynEstate1 from "@/app/assets/dholera-residential/estates-desktop.webp";
+import westwynEstate1M from "@/app/assets/dholera-residential/estates-mobile.webp";
 import CommonForm from "@/app/components/CommonForm";
 import { AnimatePresence } from "framer-motion";
 import BrochureDownload from "@/app/components/BrochureDownload";
@@ -13,25 +13,8 @@ import {
   WestWynResidencyLeadWidgets,
 } from "./WestWynResidencyLeadWidgets";
 import Link from "next/link";
-import { PhoneIcon, FileMinus } from "lucide-react";
+import { FileMinus, MapPin } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-
-const DocIconTeal = () => (
-  <svg
-    width="15"
-    height="15"
-    fill="none"
-    stroke="#051A3A"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-    />
-  </svg>
-);
 
 const FeatureCard = ({ icon, title, value }) => (
   <div className="bg-white rounded-xl p-4 border hover:bg-[#2B364D] group border-gray-200 text-center transition-colors duration-300 ease-in-out">
@@ -144,90 +127,78 @@ export default function Hero() {
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/westwyn-estate"
       />
-      <div className="relative w-full h-[clamp(28rem,80svh,46rem)] max-sm:h-[clamp(24rem,62svh,34rem)]">
-        <Image
-          src={westwynEstate1}
-          alt="WestWyn Estates in Dholera SIR"
-          className="w-full h-full object-cover max-sm:hidden"
-          priority
-        />
-        <Image
-          src={westwynEstate1M}
-          alt="WestWyn Estates in Dholera SIR"
-          className="w-full h-full object-cover md:hidden"
-          priority
-        />
-        <div className="absolute bottom-0 left-0 right-0 hidden p-[clamp(0.75rem,1.5vw,1rem)] lg:block">
-          <div className="bg-white/95 backdrop-blur-md rounded-t-2xl shadow-2xl border border-white/30 max-w-[calc(100vw-2rem)] lg:max-w-7xl mx-auto w-full">
-            <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1.25rem)] px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.75rem,1.5vw,1rem)]">
-              {/* Status */}
-              <div className="flex items-center gap-2 shrink-0">
-                <span
-                  className="relative flex"
-                  style={{ width: 10, height: 10 }}
-                >
-                  <span className="animate-ping absolute inline-flex rounded-full bg-[#F6C343] w-full h-full opacity-75" />
-                  <span className="relative inline-flex rounded-full bg-[#F6C343] w-[10px] h-[10px]" />
-                </span>
-                <span className="text-[#051A3A] text-[0.6875rem] font-bold tracking-widest uppercase">
-                  Ongoing
-                </span>
-              </div>
+      <section
+        className="grid overflow-hidden bg-[#051A3A] lg:grid-cols-[minmax(23rem,38%)_minmax(0,62%)]"
+        aria-labelledby="westwyn-estates-hero-title"
+      >
+        <div className="order-2 flex items-center px-5 py-10 sm:px-8 sm:py-14 lg:order-1 lg:min-h-[clamp(34rem,40vw,48rem)] lg:px-[clamp(2.5rem,4vw,5rem)] lg:py-16">
+          <div className="w-full max-w-xl">
+            <h1
+              id="westwyn-estates-hero-title"
+              className="m-0 text-[#F6C343]"
+            >
+              <span className="block text-[clamp(2.35rem,5vw,4.25rem)] font-bold leading-[0.95] tracking-[-0.035em]">
+                WestWyn
+              </span>
+              <span className="mt-2 block text-[clamp(1.35rem,2.7vw,2.3rem)] font-medium leading-none tracking-[0.3em] sm:tracking-[0.38em]">
+                Estates
+              </span>
+            </h1>
 
-              <div className="w-px h-9 bg-[#051A3A]/10 shrink-0" />
+            <div className="mt-5 flex items-center gap-2.5 text-sm font-semibold text-white sm:text-base">
+              <MapPin
+                className="h-5 w-5 shrink-0 text-[#F6C343]"
+                aria-hidden="true"
+              />
+              <span>State Highway 117, Polarpur</span>
+            </div>
 
-              {/* Title + Subtitle */}
-              <div className="shrink-0">
-                <a href="/residential-projects-in-dholera/westwyn-estate">
-                  <h2 className="text-[#051A3A] text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight m-0 hover:text-[#2B364D] transition-colors">
-                    WestWyn Estates
-                  </h2>
-                </a>
-                <div className="text-[#051A3A]/70 text-xs mt-1 font-bold">
-                  Registry-ready plots in Polarpur, Dholera starting from ₹10
-                  lakh
-                </div>
-              </div>
+            <div className="my-8 h-px w-20 bg-[#F6C343]" aria-hidden="true" />
 
-              <div className="w-px h-12 bg-[#051A3A]/10 shrink-0" />
+            <p className="text-[clamp(1.75rem,3.3vw,2.8rem)] font-bold leading-[1.12] tracking-[-0.025em] text-white">
+              Registry-Ready. Future-Ready.
+            </p>
 
-              {/* Price */}
-              <div className="shrink-0">
-                <div className="text-[#051A3A] text-[1.625rem] font-extrabold leading-none">
-                  ₹7,000{" "}
-                  <span className="text-[#051A3A] text-xs font-bold">
-                    /Sq.Yd
-                  </span>
-                </div>
-              </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col 2xl:flex-row">
+              <Link
+                href="https://wa.me/919211820887?text=I%20want%20details%20about%20WestWyn%20Estates"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-lg bg-[#22C967] px-5 py-3 text-center text-sm font-bold text-white shadow-lg shadow-black/20 transition-colors hover:bg-[#1db85c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#051A3A]"
+                aria-label="Get WestWyn Estates details on WhatsApp"
+              >
+                <FaWhatsapp className="h-5 w-5 shrink-0" aria-hidden="true" />
+                Get Details on WhatsApp
+              </Link>
 
-              {/* Spacer */}
-              <div className="flex-1" />
-
-              <div className="w-px h-12 bg-[#051A3A]/10 shrink-0" />
-
-              {/* CTAs */}
-              <div className="flex items-center gap-3 shrink-0">
-                <a
-                  href="tel:+919211820887"
-                  className="flex items-center gap-2 bg-[#051A3A] hover:bg-[#2B364D] text-white px-5 py-2.5 rounded-lg text-[0.8125rem] font-bold transition-all duration-200 hover:-translate-y-0.5"
-                >
-                  <PhoneIcon />
-                  Call Now
-                </a>
-
-                <button
-                  onClick={openBrochureForm}
-                  className="flex items-center gap-2 bg-white hover:bg-[#F6C343]/15 border border-[#F6C343]/20 hover:border-[#051A3A] text-[#051A3A] px-5 py-2.5 rounded-lg text-[0.8125rem] font-semibold transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
-                >
-                  <DocIconTeal />
-                  Brochure
-                </button>
-              </div>
+             
             </div>
           </div>
         </div>
-      </div>
+
+        <div className="relative order-1 aspect-[9/11] w-full sm:aspect-[3/2] lg:order-2 lg:aspect-auto lg:min-h-[clamp(34rem,40vw,48rem)]">
+          <picture>
+            <source
+              media="(max-width: 639px)"
+              srcSet={westwynEstate1M.src}
+              type="image/webp"
+            />
+            <Image
+              src={westwynEstate1}
+              alt="Entrance and internal road at WestWyn Estates, Polarpur"
+              fill
+              className="object-cover"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(min-width: 1024px) 62vw, 100vw"
+            />
+          </picture>
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 hidden w-16 bg-gradient-to-r from-[#051A3A]/25 to-transparent lg:block"
+            aria-hidden="true"
+          />
+        </div>
+      </section>
 
       <div className="relative">
         {/* Background Image */}
@@ -244,10 +215,10 @@ export default function Hero() {
         <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(2.5rem,6vw,3rem)]">
           <div className="max-w-7xl mx-auto">
             {/* Heading */}
-            <h1 className="text-[clamp(1.5rem,3vw,2.25rem)] md:text-center font-bold text-white mb-6">
+            <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] md:text-center font-bold text-white mb-6">
               WestWyn Estates :{" "}
               <span>Registry-Ready plots in Polarpur, Dholera</span>
-            </h1>
+            </h2>
             <div className="max-w-5xl mx-auto">
               <p className="text-[clamp(1rem,1.5vw,1.125rem)] text-gray-100 leading-relaxed">
                 WestWyn Estates is a premium residential plotting project in
