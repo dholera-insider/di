@@ -38,6 +38,8 @@ import heroImage from "@/app/assets/dholera-dubai.webp";
 import roiImage from "@/app/assets/dholera-plots-roi.webp";
 import BrochureDownload from "@/app/components/BrochureDownload";
 import { FaWhatsapp, FaWhatsappSquare } from "react-icons/fa";
+import county from "@/app/assets/dholera-residential/county-desktop.webp";
+import residency from "@/app/assets/dholera-residential/residency-desktop.webp";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -153,25 +155,28 @@ const projects = [
   {
     name: "WestWyn County",
     label: "Premium plotted community",
-    location: "Dholera growth region",
-    sizes: "Multiple plot sizes",
-    status: "Re-Selling",
+    location: "Fedra-Pipli State Highway",
+    sizes: "149 sq yd - 325 sq yd",
+    status: "Reselling",
+    image: county,
     accent: "from-[#0b376f] to-[#051A3A]",
   },
   {
     name: "WestWyn Estates",
     label: "Residential plot investment",
-    location: "Dholera growth region",
-    sizes: "Flexible configurations",
+    location: "State Highway 117",
+    sizes: "147 sq yd - 250 sq yd",
     status: "Available",
+    image: county,
     accent: "from-[#6b4a16] to-[#051A3A]",
   },
   {
     name: "WestWyn Residency",
     label: "Future-ready plotted living",
-    location: "Dholera growth region",
-    sizes: "Curated plot options",
+    location: "1.5 km from DFC",
+    sizes: "124, 152 & 187 sq yd",
     status: "Available",
+    image: residency,
     accent: "from-[#176147] to-[#051A3A]",
   },
 ];
@@ -646,35 +651,21 @@ export default function DubaiNriPage() {
                 key={project.name}
                 className="group overflow-hidden rounded-[24px] border border-[#051A3A]/10 bg-white shadow-[0_16px_45px_rgba(5,26,58,.06)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(5,26,58,.12)]"
               >
-                <div
-                  className={`relative h-52 overflow-hidden bg-gradient-to-br ${project.accent} p-6`}
-                >
-                  <div
-                    className="absolute inset-0 opacity-10"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-                      backgroundSize: "28px 28px",
-                    }}
+                <div className="relative h-60 overflow-hidden bg-[#E8EDF3] sm:h-[272px]">
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} residential plotted project in Dholera`}
+                    width={450}
+                    height={550}
+                    className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                   />
-                  <div className="relative flex h-full flex-col justify-between">
-                    <span className="self-start rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white/80 backdrop-blur">
-                      Project {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex items-end justify-between">
-                      <div>
-                        <p className="text-sm font-semibold text-white/60">
-                          {project.label}
-                        </p>
-                        <h3 className="mt-1 font-[var(--font-display)] text-xl font-bold tracking-[-0.03em] text-white">
-                          {project.name}
-                        </h3>
-                      </div>
-                      <Building2
-                        className="h-11 w-11 text-[#F6C343]"
-                        strokeWidth={1.35}
-                      />
-                    </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#051A3A]/90 via-[#051A3A]/45 to-transparent p-6 pt-20">
+                    
+                    
+                    <h3 className="mt-1 font-[var(--font-display)] text-xl font-bold tracking-[-0.03em] text-white">
+                      {project.name}
+                    </h3>
                   </div>
                 </div>
 
@@ -702,7 +693,7 @@ export default function DubaiNriPage() {
                       </dt>
                       <dd
                         className={`text-right font-semibold ${
-                          ["sold out", "Re-Selling"].includes(
+                          ["sold out", "Reselling"].includes(
                             project.status,
                           )
                             ? "text-red-600"
