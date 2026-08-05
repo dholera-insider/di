@@ -1,37 +1,43 @@
 "use client";
 
-import img1 from "@/app/assets/dholera-plots-roi.webp";
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import BrochureDownload from "@/app/components/BrochureDownload";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import {
-  Plus,
-  Minus,
-  ShieldCheck,
-  FileText,
-  Building2,
-  Headset,
-  Globe2,
+  ArrowDown,
+  ArrowRight,
   BadgeCheck,
-  Sparkles,
+  Book,
+  Building2,
+  CalendarCheck2,
+  Check,
+  ChevronDown,
+  CircleCheckBig,
+  FileCheck2,
+  FileText,
+  Globe2,
+  Headphones,
   Landmark,
-  Rocket,
-  Signal,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Plane,
+  SearchCheck,
+  ShieldCheck,
+  Sparkles,
+  Star,
   TrendingUp,
-  ImageIcon,
-  Wallet,
   UserCheck,
   Users,
-  Search,
-  PlayCircle,
-  CalendarClock,
-  FileCheck2,
-  Clock,
-  MapPin,
-  PhoneCall,
+  Video,
+  WalletCards,
 } from "lucide-react";
-import Image from "next/image";
+
+import heroImage from "@/app/assets/dholera-dubai.webp";
+import roiImage from "@/app/assets/dholera-plots-roi.webp";
+import BrochureDownload from "@/app/components/BrochureDownload";
+import { FaWhatsapp, FaWhatsappSquare } from "react-icons/fa";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -41,211 +47,96 @@ const display = Space_Grotesk({
 
 const body = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
 });
 
-const CheckIcon = ({ className = "" }) => (
-  <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
-    <circle cx="10" cy="10" r="10" fill="currentColor" opacity="0.12" />
-    <path
-      d="M6 10.2l2.4 2.4L14 7"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+const PHONE_NUMBER = "+918130371647";
+const WHATSAPP_URL = "https://wa.me/918130371647";
 
-const dotGrid = {
-  backgroundImage:
-    "radial-gradient(rgba(246,195,67,0.16) 1px, transparent 1px)",
-  backgroundSize: "22px 22px",
-};
-
-function CornerTicks({ color }) {
-  const base = "absolute w-4 h-4";
-  return (
-    <>
-      <span
-        className={`${base} top-0 left-0 border-t-2 border-l-2`}
-        style={{ borderColor: color }}
-        aria-hidden="true"
-      />
-      <span
-        className={`${base} top-0 right-0 border-t-2 border-r-2`}
-        style={{ borderColor: color }}
-        aria-hidden="true"
-      />
-      <span
-        className={`${base} bottom-0 left-0 border-b-2 border-l-2`}
-        style={{ borderColor: color }}
-        aria-hidden="true"
-      />
-      <span
-        className={`${base} bottom-0 right-0 border-b-2 border-r-2`}
-        style={{ borderColor: color }}
-        aria-hidden="true"
-      />
-    </>
-  );
-}
-
-function ImagePlaceholder({ label, ratio = "aspect-[4/5]", tone = "light" }) {
-  const dark = tone === "dark";
-  return (
-    <div
-      className={`relative ${ratio} w-full overflow-hidden`}
-      style={{
-        backgroundColor: dark ? "rgba(253,252,250,0.04)" : "#EEF1F6",
-        border: `1px dashed ${dark ? "rgba(246,195,67,0.4)" : "rgba(5,26,58,0.28)"}`,
-      }}
-    >
-      <div className="absolute inset-3 sm:inset-4 pointer-events-none">
-        <CornerTicks color={dark ? "#F6C343" : "#051A3A"} />
-      </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 px-8 text-center">
-        <ImageIcon
-          className="h-7 w-7"
-          style={{ color: dark ? "#F6C343" : "#051A3A", opacity: 0.55 }}
-          strokeWidth={1.5}
-        />
-        <span
-          className="text-[11px] font-mono tracking-[0.12em] uppercase leading-relaxed"
-          style={{ color: dark ? "rgba(253,252,250,0.6)" : "#6C7484" }}
-        >
-          {label}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function Eyebrow({ children, dark = false }) {
-  return (
-    <span
-      className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-mono font-medium tracking-[0.16em] uppercase mb-4"
-      style={{ color: "#F6C343" }}
-    >
-      <span
-        className="h-1.5 w-1.5 rounded-full"
-        style={{ backgroundColor: "#F6C343" }}
-        aria-hidden="true"
-      />
-      {children}
-    </span>
-  );
-}
-
-function RouteLine() {
-  return (
-    <div className="w-full max-w-[300px]">
-      <svg viewBox="0 0 300 24" className="w-full h-auto" aria-hidden="true">
-        <line
-          x1="6"
-          y1="12"
-          x2="294"
-          y2="12"
-          stroke="#F6C343"
-          strokeWidth="1.5"
-          strokeDasharray="3 6"
-        />
-        <circle cx="6" cy="12" r="4" fill="#051A3A" />
-        <circle cx="294" cy="12" r="4" fill="#F6C343" />
-      </svg>
-      <div
-        className="flex justify-between text-[10px] font-mono uppercase tracking-[0.12em] mt-1"
-        style={{ color: "#6C7484" }}
-      >
-        <span>Dubai</span>
-        <span>Dholera, India</span>
-      </div>
-    </div>
-  );
-}
-
-/* Trust badge strip — mirrors the reference sites' "100% Transparent / Legally Verified / End-to-End Support" row */
-const trustBadges = [
-  { icon: ShieldCheck, label: "100% Transparent Process" },
-  { icon: BadgeCheck, label: "Legally Verified Projects" },
-  { icon: Headset, label: "End-to-End NRI Support" },
+const sectionLinks = [
+  { label: "Why Dholera", href: "#why-dholera" },
+  { label: "Documentation", href: "#documentation" },
+  { label: "Our Projects", href: "#our-projects" },
+  { label: "Buying Process", href: "#buying-process" },
 ];
 
-/* Quick stats — mirrors the reference sites' "500+ / 25+ / 7+ / 100%" bar */
+const trustSignals = [
+  { icon: ShieldCheck, label: "Full Documentation" },
+  { icon: BadgeCheck, label: "Approved Project" },
+  { icon: Globe2, label: "Remote NRI assistance" },
+];
+
 const stats = [
-  { icon: Users, value: "500+", label: "Happy NRI families" },
-  { icon: Globe2, value: "25+", label: "Countries served" },
-  { icon: Clock, value: "7+", label: "Years of advisory" },
-  { icon: ShieldCheck, value: "100%", label: "Transparent process" },
+  { value: "500+", label: "NRI families assisted" },
+  { value: "25+", label: "Countries served" },
+  { value: "7+", label: "Years of advisory" },
+  { value: "100%", label: "Transparent process" },
 ];
 
-const whyChoosing = [
+const dholeraReasons = [
   {
-    icon: Sparkles,
-    text: "Opportunity to invest early in a developing smart city",
-  },
-  { icon: BadgeCheck, text: "Verified residential plot projects" },
-  { icon: Wallet, text: "Affordable entry compared to many metro cities" },
-  { icon: TrendingUp, text: "Excellent long-term appreciation potential" },
-  { icon: Globe2, text: "A simple remote buying process" },
-  { icon: UserCheck, text: "Professional guidance designed for NRIs" },
-];
-
-const insiderCards = [
-  {
-    icon: BadgeCheck,
-    tint: "#F6C343",
-    title: "Verified Residential Plot Projects",
-    body: "Every project we recommend is carefully verified, helping you invest with confidence.",
+    icon: Landmark,
+    title: "Planned infrastructure",
+    description:
+      "A future-focused urban region planned around modern roads, utilities, and civic infrastructure.",
   },
   {
-    icon: ShieldCheck,
-    tint: "#4C9F70",
-    title: "Complete Transparency",
-    body: "From pricing to documentation, we ensure every detail is shared clearly with no hidden surprises.",
-  },
-  {
-    icon: Headset,
-    tint: "#3E7CB1",
-    title: "Dedicated Support for Dubai NRIs",
-    body: "We understand the unique needs of investors living in Dubai. Our team provides online consultations, virtual project presentations, and continuous assistance throughout the buying process.",
+    icon: Plane,
+    title: "Strategic connectivity",
+    description:
+      "Connectivity-led growth supported by major transport and industrial infrastructure around the region.",
   },
   {
     icon: Building2,
-    tint: "#B4772E",
-    title: "End-to-End Assistance",
-    body: "From your first enquiry to registration and construction, we guide you through every step, making your investment journey smooth and hassle-free.",
+    title: "Economic ecosystem",
+    description:
+      "Large-scale industrial development can support long-term residential and commercial demand.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Early-stage opportunity",
+    description:
+      "An opportunity for patient investors who understand development timelines and long-term holding.",
+  },
+  {
+    icon: WalletCards,
+    title: "Accessible entry points",
+    description:
+      "Multiple plot sizes and payment plans make project comparison easier for different budgets.",
+  },
+  {
+    icon: Video,
+    title: "Remote-friendly buying",
+    description:
+      "Virtual consultations, document sharing, and guided site reviews simplify investing from abroad.",
   },
 ];
 
-const steps = [
-  { num: "01", icon: Users, text: "Connect with our investment advisors." },
+const documentChecks = [
   {
-    num: "02",
-    icon: Search,
-    text: "Explore verified residential plot projects in Dholera.",
+    title: "Title and ownership",
+    description:
+      "Review the title chain, ownership proof, and seller authority.",
   },
   {
-    num: "03",
-    icon: PlayCircle,
-    text: "Attend a virtual project presentation and receive complete project details.",
+    title: "Land-use approvals",
+    description:
+      "Check the applicable NA, NOC, layout, and planning documents.",
   },
   {
-    num: "04",
-    icon: Wallet,
-    text: "Book your residential plot with the token amount ₹50000.",
-    sub: "Complete Your KYC",
+    title: "Project registration",
+    description:
+      "Verify the project and developer details wherever registration applies.",
   },
   {
-    num: "05",
-    icon: CalendarClock,
-    text: "Complete payment according to the payment plan",
+    title: "Commercial clarity",
+    description:
+      "Confirm the final cost sheet, payment plan, and registry process.",
   },
-  { num: "06", icon: FileCheck2, text: "Get your plot registered." },
 ];
 
-const legalDocs = [
+const legalDocuments = [
   "Title documents",
   "NA/NOC details",
   "7/12 extract or relevant land record",
@@ -258,715 +149,849 @@ const legalDocs = [
   "Final cost sheet",
 ];
 
-const buyerDocs = ["Aadhar Card", "Pan Card"];
-
-/* Why Invest — converted to an icon-card grid, matching the reference sites' feature-grid pattern */
-const highlights = [
-  { icon: Landmark, label: "Planned smart city infrastructure" },
-  { icon: ShieldCheck, label: "Strong government support" },
-  { icon: Sparkles, label: "India's first semiconductor plant" },
+const projects = [
   {
-    icon: Signal,
-    label: "Excellent connectivity through major infrastructure projects",
+    name: "WestWyn County",
+    label: "Premium plotted community",
+    location: "Dholera growth region",
+    sizes: "Multiple plot sizes",
+    status: "Re-Selling",
+    accent: "from-[#0b376f] to-[#051A3A]",
   },
-  { icon: TrendingUp, label: "Growing demand for residential properties" },
-  { icon: Rocket, label: "Long-term investment potential" },
+  {
+    name: "WestWyn Estates",
+    label: "Residential plot investment",
+    location: "Dholera growth region",
+    sizes: "Flexible configurations",
+    status: "Available",
+    accent: "from-[#6b4a16] to-[#051A3A]",
+  },
+  {
+    name: "WestWyn Residency",
+    label: "Future-ready plotted living",
+    location: "Dholera growth region",
+    sizes: "Curated plot options",
+    status: "Available",
+    accent: "from-[#176147] to-[#051A3A]",
+  },
 ];
 
-const trustPoints = [
-  "Verified residential plot projects in Dholera",
-  "Transparent pricing and documentation",
-  "Professional investment guidance",
-  "Dedicated support for NRIs",
-  "Secure remote buying experience",
-  "Personalized assistance from enquiry to plot registry",
+const buyingSteps = [
+  {
+    number: "01",
+    icon: Phone,
+    title: "Discovery call",
+    description: "Share your budget, timeline, and investment preferences.",
+  },
+  {
+    number: "02",
+    icon: SearchCheck,
+    title: "Project shortlist",
+    description: "Compare suitable projects, plot sizes, and payment options.",
+  },
+  {
+    number: "03",
+    icon: Book,
+    title: "Document review",
+    description:
+      "Receive the relevant documents before making a booking decision.",
+  },
+  {
+    number: "04",
+    icon: Video,
+    title: "Virtual or site visit",
+    description: "Review the location remotely or arrange an on-ground visit.",
+  },
+  {
+    number: "05",
+    icon: CalendarCheck2,
+    title: "Complete Payment",
+    description: "Review the location remotely or arrange an on-ground visit.",
+  },
+  {
+    number: "06",
+    icon: FileCheck2,
+    title: "Booking and registry",
+    description:
+      "Complete KYC, payments, agreements, and registry with guidance.",
+  },
+];
+
+// Static class names keep the curved mobile workflow responsive while allowing
+// Tailwind to discover every generated position and colour at build time.
+const mobileWorkflowLayout = [
+  {
+    top: "top-0",
+    node: "left-0 bg-[#D9D8F2]",
+    card: "left-8 right-0 pl-14 pr-4",
+  },
+  {
+    top: "top-[126px]",
+    node: "right-0 bg-[#C9EFE8]",
+    card: "left-0 right-8 pl-4 pr-14",
+  },
+  {
+    top: "top-[252px]",
+    node: "left-0 bg-[#F2D9D0]",
+    card: "left-8 right-0 pl-14 pr-4",
+  },
+  {
+    top: "top-[378px]",
+    node: "right-0 bg-[#F4DEB3]",
+    card: "left-0 right-8 pl-4 pr-14",
+  },
+  {
+    top: "top-[504px]",
+    node: "left-0 bg-[#F6CDB6]",
+    card: "left-8 right-0 pl-14 pr-4",
+  },
+  {
+    top: "top-[630px]",
+    node: "right-0 bg-[#D7E6F4]",
+    card: "left-0 right-8 pl-4 pr-14",
+  },
 ];
 
 const faqs = [
   {
-    q: "Can NRIs in Dubai invest in property or land in India?",
-    a: "Yes. NRIs living in the UAE can freely invest in residential and commercial properties.",
+    question: "Can I review a project without travelling to India?",
+    answer:
+      "Yes. We can arrange an online consultation, project presentation, document sharing, and a guided virtual location review before you decide whether to visit.",
   },
   {
-    q: "Is Dholera a good investment for NRIs?",
-    a: "Yes Dholera is a good Investment for NRI as it is India's First greenfield Smart City backed by government, expressway, airport, and industrial development.",
+    question: "Will I receive documents before booking?",
+    answer:
+      "Our process is designed to share the relevant project and commercial documents before a booking decision. We also recommend independent legal verification for your circumstances.",
   },
   {
-    q: "What documents should NRIs check before booking a plot in Dholera?",
-    a: "Before Booking a plot in Dholera Check title documents, NA/NOC details, project ownership proof, layout/map, payment terms, registry process details, and plan pass.",
+    question: "How do I compare different plot options?",
+    answer:
+      "We compare location, project status, plot size, pricing, payment schedule, documentation, and your intended holding period in one clear shortlist.",
   },
   {
-    q: "Can an NRI buy a Dholera plot without visiting India?",
-    a: "Yes, NRIs can buy a plot in dholera remotely by reviewing the project map, legal documents, price sheet, and payment process. However, a personal site visit or family verification is strongly recommended before final decision-making.",
-  },
-  {
-    q: "Why should I choose Dholera Insider for Dholera Investment?",
-    a: "Dholera Insider helps NRIs invest in verified residential plots in Dholera Smart City through a secure, transparent, and fully remote process.",
+    question: "Can my family visit the site on my behalf?",
+    answer:
+      "Yes. A family member can attend a guided site visit while you join remotely, subject to the project team's scheduling and site-access process.",
   },
 ];
 
+function SectionLabel({ children, inverse = false }) {
+  return (
+    <div
+      className={`mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] ${
+        inverse
+          ? "border-white/10 bg-white/5 text-[#F6C343]"
+          : "border-[#051A3A]/10 bg-[#051A3A]/[0.035] text-[#8A6508]"
+      }`}
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-[#F6C343]" />
+      {children}
+    </div>
+  );
+}
+
+function SectionHeading({
+  eyebrow,
+  title,
+  copy,
+  inverse = false,
+  centered = false,
+}) {
+  return (
+    <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+      <SectionLabel inverse={inverse}>{eyebrow}</SectionLabel>
+      <h2
+        className={`font-[var(--font-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] ${
+          inverse ? "text-white" : "text-[#051A3A]"
+        }`}
+      >
+        {title}
+      </h2>
+      {copy && (
+        <p
+          className={`mt-5 text-base leading-7 sm:text-lg ${
+            inverse ? "text-white/70" : "text-[#48546A]"
+          }`}
+        >
+          {copy}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function PrimaryButton({ children, onClick, className = "" }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3.5 text-sm font-bold text-[#051A3A] shadow-[0_12px_30px_rgba(246,195,67,0.22)] transition hover:-translate-y-0.5 hover:bg-[#FFD365] focus:outline-none focus:ring-2 focus:ring-[#F6C343] focus:ring-offset-2 focus:ring-offset-[#051A3A] ${className}`}
+    >
+      {children}
+      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+    </button>
+  );
+}
+
 export default function DubaiNriPage() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [legalDocumentsFormOpen, setLegalDocumentsFormOpen] = useState(false);
-  const toggleFAQ = (index) => setOpenIndex(openIndex === index ? null : index);
+  const [documentsOpen, setDocumentsOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(0);
 
   return (
     <main
-      className={`${display.variable} ${body.variable}`}
-      style={{ backgroundColor: "#FDFCFA", fontFamily: "var(--font-body)" }}
+      className={`${display.variable} ${body.variable} min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
+      style={{ fontFamily: "var(--font-body)" }}
     >
-      <meta name="robots" content="noindex, nofollow" />
-      <meta name="description" content="" />
-
       {/* HERO */}
-      <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] pt-[clamp(3rem,7vw,5.5rem)] pb-[clamp(2rem,4vw,3rem)]">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
-          <div>
-            <Eyebrow>Dubai &rarr; India &middot; Dholera SIR</Eyebrow>
-            <h1
-              className="font-bold tracking-tight text-[clamp(2.5rem,5.5vw,3.75rem)] leading-[1.05]"
-              style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
-            >
-              Dholera Residential Plots for Dubai NRIs
-            </h1>
-            <p
-              className="mt-5 text-[clamp(1.15rem,2vw,1.35rem)] font-semibold leading-snug"
-              style={{ color: "#2B364D" }}
-            >
-              Invest in India&apos;s First Greenfield Smart City from Dubai
-            </p>
-            <p
-              className="mt-5 text-[clamp(1.05rem,1.7vw,1.2rem)] leading-relaxed"
-              style={{ color: "#162033" }}
-            >
-              Living in Dubai doesn&apos;t mean you have to miss the opportunity
-              to invest in India&apos;s future. At Dholera Insider, we help
-              Dubai NRIs invest in verified residential plots in Dholera Smart
-              City through a secure, transparent, and fully remote process.
-            </p>
+      <section className="relative isolate overflow-hidden bg-[#051A3A]">
+        <div
+          className="absolute inset-0 -z-20 opacity-30"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 15% 25%, rgba(246,195,67,.18), transparent 24%), radial-gradient(circle at 80% 10%, rgba(65,125,200,.24), transparent 30%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 -z-10 opacity-[0.055]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.75) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.75) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button
-                type="button"
-                className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-lg transition-transform hover:scale-[1.02]"
-                style={{ backgroundColor: "#051A3A", color: "#F6C343" }}
-              >
-                Connect With Our Advisors
-              </button>
-              <Link
-                href="tel:+918130371647"
-                className="inline-flex items-center gap-2 px-6 py-4 font-semibold text-base transition-colors"
-                style={{
-                  border: "1px solid rgba(5,26,58,0.25)",
-                  color: "#051A3A",
-                }}
-              >
-                <PhoneCall className="h-4 w-4" strokeWidth={2} />
-                Give Us A Missed Call
-              </Link>
-            </div>
+        <div className="mx-auto max-w-7xl px-5 pb-16 pt-6 sm:px-8 lg:px-10 lg:pb-24">
+          <div className="grid items-center gap-12 pt-14 lg:grid-cols-[1.02fr_.98fr] lg:gap-16 lg:pt-20">
+            <div>
+              <SectionLabel inverse>Dubai to Dholera</SectionLabel>
+              <h1 className="max-w-3xl font-[var(--font-display)] text-[clamp(2.25rem,4.5vw,4.25rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
+                Verified plots in Dholera, made clear for NRIs.
+              </h1>
+              <p className="mt-6 max-w-2xl text-[clamp(1rem,1.8vw,1.25rem)] leading-8 text-white/70">
+                Compare projects, review essential documents, and complete your
+                buying journey from Dubai with one dedicated advisory team.
+              </p>
 
-            {/* Trust badge strip */}
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-              {trustBadges.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-2">
-                  <Icon
-                    className="h-4 w-4 shrink-0"
-                    style={{ color: "#F6C343" }}
-                    strokeWidth={2}
-                  />
-                  <span
-                    className="text-sm font-medium"
-                    style={{ color: "#2B364D" }}
-                  >
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <RouteLine />
-            <div className="lg:order-1">
-              <div className="relative aspect-[5/4] w-full overflow-hidden">
-                <Image
-                  src={img1}
-                  alt="Dholera plots ROI growth chart"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority={false}
-                />
+              <div className="mt-8 flex flex-wrap items-center gap-5">
+                <Link
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3.5 text-sm font-bold text-[#051A3A] shadow-[0_12px_30px_rgba(246,195,67,0.22)] transition hover:-translate-y-0.5 hover:bg-[#FFD365] focus:outline-none focus:ring-2 focus:ring-[#F6C343] focus:ring-offset-2 focus:ring-offset-[#051A3A] `}
+                >
+                  <FaWhatsapp className="h-6 w-6 text-[#051A3A]" />
+                  Connect with Our RM
+                </Link>
+                <a
+                  href="#our-projects"
+                  className="group inline-flex min-h-12 items-center gap-2 text-sm font-bold text-white transition hover:text-[#F6C343]"
+                >
+                  Explore our projects
+                  <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </div>
+
+              <div className="mt-10 grid gap-3 sm:grid-cols-3">
+                {trustSignals.map(({ icon: Icon, label }) => (
+                  <div
+                    key={label}
+                    className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.045] px-3.5 py-3 text-sm font-medium text-white/80 backdrop-blur"
+                  >
+                    <Icon className="h-6 w-6 shrink-0 text-[#F6C343]" />
+                    {label}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative mx-auto w-full max-w-2xl lg:mx-0">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_30px_90px_rgba(0,0,0,.35)]">
+                <Image
+                  src={heroImage}
+                  alt="Dholera investment opportunity for Dubai NRIs"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/60 via-transparent to-transparent" />
+              </div>
+
+              {/* <div className="absolute -bottom-7 left-4 right-4 rounded-2xl border border-white/10 bg-white p-4 shadow-2xl sm:left-8 sm:right-auto sm:w-[350px] sm:p-5">
+                <div className="flex items-start gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#F6C343]/20">
+                    <ShieldCheck className="h-6 w-6 text-[#8A6508]" />
+                  </span>
+                  <div>
+                    <p className="font-[var(--font-display)] font-bold text-[#051A3A]">
+                      Documents before decisions
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-[#667085]">
+                      Review title, approvals, layout, pricing, and process
+                      before you book.
+                    </p>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)]">
-        <div
-          className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 py-6"
-          style={{
-            borderTop: "1px solid rgba(5,26,58,0.1)",
-            borderBottom: "1px solid rgba(5,26,58,0.1)",
-          }}
-        >
-          {stats.map(({ icon: Icon, value, label }) => (
-            <div key={label} className="flex items-center gap-3">
-              <span
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
-                style={{ backgroundColor: "rgba(246,195,67,0.16)" }}
-              >
-                <Icon
-                  className="h-5 w-5"
-                  style={{ color: "#F6C343" }}
-                  strokeWidth={2}
-                />
-              </span>
-              <div>
-                <p
-                  className="text-xl font-bold leading-none"
-                  style={{
-                    color: "#051A3A",
-                    fontFamily: "var(--font-display)",
-                  }}
-                >
-                  {value}
-                </p>
-                <p
-                  className="mt-1 text-xs leading-tight"
-                  style={{ color: "#6C7484" }}
-                >
-                  {label}
-                </p>
-              </div>
+      {/* STICKY SECTION NAV */}
+      <nav
+        className="sticky top-0 z-40 border-b border-[#051A3A]/10 bg-[#F8F7F3]/95 shadow-[0_8px_30px_rgba(5,26,58,.06)] backdrop-blur"
+        aria-label="Page sections"
+      >
+        <div className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-5 py-2 sm:px-8 lg:px-10">
+          {sectionLinks.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap rounded-lg px-4 py-2.5 text-sm font-semibold text-[#48546A] transition hover:bg-white hover:text-[#051A3A]"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      {/* STATS */}
+      <section className="border-b border-[#051A3A]/10 bg-white">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 px-5 sm:px-8 lg:grid-cols-4 lg:px-10">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`py-7 ${index % 2 === 0 ? "pr-4" : "border-l border-[#051A3A]/10 pl-4"} lg:border-l lg:px-8 ${index === 0 ? "lg:border-l-0 lg:pl-0" : ""}`}
+            >
+              <p className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-xs font-medium text-[#667085] sm:text-sm">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* WHY DUBAI NRIs ARE CHOOSING DHOLERA */}
+      {/* 01   WHY DHOLERA */}
       <section
-        className="relative overflow-hidden px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]"
-        style={{ backgroundColor: "#051A3A" }}
+        id="why-dholera"
+        className="scroll-mt-20 px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
       >
-        <div className="absolute inset-0" style={dotGrid} aria-hidden="true" />
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-center">
-          <div className="lg:order-2">
-            <Eyebrow>The Opportunity</Eyebrow>
-            <h2
-              className="font-bold text-[clamp(1.9rem,3.6vw,2.6rem)] leading-tight"
-              style={{ color: "#FDFCFA", fontFamily: "var(--font-display)" }}
-            >
-              Why Dubai NRIs Are Choosing Dholera
-            </h2>
-
-            <p
-              className="mt-7 mb-4 text-sm font-mono font-medium uppercase tracking-[0.14em]"
-              style={{ color: "#F6C343" }}
-            >
-              For Dubai-based investors, Dholera offers:
-            </p>
-            <ul className="space-y-3">
-              {whyChoosing.map(({ icon: Icon, text }) => (
-                <li key={text} className="flex items-center gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
-                    <Icon
-                      className="h-8 w-8"
-                      style={{ color: "#F6C343" }}
-                      strokeWidth={2}
-                    />
-                  </span>
-                  <span style={{ color: "#FDFCFA", opacity: 0.92 }}>
-                    {text}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="lg:order-1">
-            <div className="relative aspect-[5/4] w-full overflow-hidden">
-              <Image
-                src={img1}
-                alt="Dholera plots ROI growth chart"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority={false}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE DHOLERA INSIDER */}
-      <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]">
-        <div className="max-w-7xl mx-auto">
-          <Eyebrow>Why Dholera Insider</Eyebrow>
-          <h2
-            className="font-bold text-[clamp(1.9rem,3.6vw,2.6rem)] leading-tight"
-            style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
-          >
-            Why Choose Dholera Insider?
-          </h2>
-          <p
-            className="mt-5 max-w-2xl text-[clamp(1.1rem,1.8vw,1.25rem)] leading-relaxed"
-            style={{ color: "#162033" }}
-          >
-            Buying property from another country requires trust, clarity, and
-            reliable support. That&apos;s exactly what we provide.
-          </p>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-4">
-            {insiderCards.map(({ icon: Icon, title, body, tint }) => (
-              <div
-                key={title}
-                className="relative p-6"
-                style={{
-                  border: "1px solid rgba(5,26,58,0.12)",
-                  backgroundColor: "#FDFCFA",
-                }}
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full">
-                  <Icon
-                    className="h-9 w-9"
-                    style={{ color: tint }}
-                    strokeWidth={2}
-                  />
-                </div>
-                <h3
-                  className="mt-4 text-lg font-semibold"
-                  style={{
-                    color: "#2B364D",
-                    fontFamily: "var(--font-display)",
-                  }}
-                >
-                  {title}
-                </h3>
-                <p
-                  className="mt-2 text-sm leading-relaxed"
-                  style={{ color: "#162033" }}
-                >
-                  {body}
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-end gap-8 lg:grid-cols-[1fr_.8fr]">
+            <SectionHeading
+              eyebrow="01 · Why Dholera"
+              title="A long-term opportunity built around infrastructure."
+              copy="Dholera is best considered with a patient, evidence-led view: understand the region, verify the specific project, and choose a plot aligned with your time horizon."
+            />
+            <div className="lg:justify-self-end">
+              <div className="flex items-start gap-3 rounded-2xl border border-[#051A3A]/10 bg-white p-5 shadow-[0_16px_40px_rgba(5,26,58,.06)]">
+                <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[#B78B13]" />
+                <p className="max-w-md text-sm leading-6 text-[#48546A]">
+                  We focus on project-specific verification and transparent
+                  comparisons not blanket return promises.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {dholeraReasons.map(({ icon: Icon, title, description }) => (
+              <article
+                key={title}
+                className="group rounded-2xl border border-[#051A3A]/10 bg-white p-6 shadow-[0_14px_35px_rgba(5,26,58,.045)] transition duration-300 hover:-translate-y-1 hover:border-[#F6C343]/60 hover:shadow-[0_20px_50px_rgba(5,26,58,.09)]"
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#051A3A] text-[#F6C343] transition group-hover:bg-[#F6C343] group-hover:text-[#051A3A]">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 font-[var(--font-display)] text-lg font-bold tracking-[-0.02em] text-[#051A3A]">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-[#667085]">
+                  {description}
+                </p>
+              </article>
             ))}
           </div>
+
+          {/*  <div className="mt-12 grid overflow-hidden rounded-[28px] bg-[#051A3A] lg:grid-cols-[.9fr_1.1fr]">
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+              <SectionLabel inverse>Investor perspective</SectionLabel>
+              <h3 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-white sm:text-3xl">
+                Growth potential deserves context.
+              </h3>
+              <p className="mt-5 max-w-xl text-base leading-7 text-white/70">
+                Evaluate location, approvals, development stage, price, and
+                holding period together. The right decision is the one you can
+                verify and comfortably hold.
+              </p>
+              <a
+                href="#documentation"
+                className="mt-7 inline-flex items-center gap-2 self-start text-sm font-bold text-[#F6C343]"
+              >
+                See what to verify <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="relative min-h-[320px] lg:min-h-[430px]">
+              <Image
+                src={roiImage}
+                alt="Dholera plot investment context"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 55vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#051A3A]/30 to-transparent lg:from-[#051A3A]/50" />
+            </div>
+          </div> */}
         </div>
       </section>
 
-      {/* HOW DUBAI NRIs CAN BUY — connected step flow, vertical on mobile / horizontal on desktop */}
+      {/* 02   DOCUMENTATION */}
       <section
-        className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]"
-        style={{ backgroundColor: "#EEF1F6" }}
+        id="documentation"
+        className="scroll-mt-20 bg-[#051A3A] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
       >
-        <div className="max-w-7xl mx-auto">
-          <Eyebrow>Our Process &middot; 6 Steps</Eyebrow>
-          <h2
-            className="font-bold text-[clamp(1.9rem,3.6vw,2.6rem)] leading-tight"
-            style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
-          >
-            How Dubai NRIs Can Buy Residential Plots in Dholera
-          </h2>
-          <p
-            className="mt-2 text-sm font-mono uppercase tracking-[0.12em]"
-            style={{ color: "#6C7484" }}
-          >
-            (Step by step process to buy plot in Dholera)
-          </p>
-          <p
-            className="mt-5 text-[clamp(1.1rem,1.8vw,1.25rem)] leading-relaxed"
-            style={{ color: "#162033" }}
-          >
-            Investing from Dubai is easier than ever.
-          </p>
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-[.95fr_1.05fr] lg:gap-16">
+            <div>
+              <SectionHeading
+                eyebrow="02 · Documentation"
+                title="Proof first. Payment second."
+                copy="Distance should not reduce clarity. Ask for the relevant documents, understand what each one means, stances."
+                inverse
+              />
 
-          <div className="mt-10 relative">
-            <span
-              className="absolute md:hidden left-[27px] top-6 bottom-6 w-0 border-l"
-              style={{
-                borderLeftStyle: "dashed",
-                borderColor: "rgba(5,26,58,0.35)",
-              }}
-              aria-hidden="true"
-            />
-            <span
-              className="hidden md:block absolute top-6 left-[8%] right-[8%] h-0 border-t"
-              style={{
-                borderTopStyle: "dashed",
-                borderColor: "rgba(5,26,58,0.35)",
-              }}
-              aria-hidden="true"
-            />
-
-            <div className="relative flex flex-col gap-8 md:flex-row md:justify-between md:gap-4">
-              {steps.map(({ num, icon: Icon, text, sub }) => (
-                <div
-                  key={num}
-                  className="relative z-10 flex items-start gap-4 md:flex-col md:items-center md:text-center md:gap-3 md:w-[15%]"
-                >
+              <div className="mt-9 space-y-4">
+                {documentChecks.map((item, index) => (
                   <div
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
-                    style={{ backgroundColor: "#051A3A" }}
+                    key={item.title}
+                    className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.045] p-5"
                   >
-                    <Icon
-                      className="h-5 w-5"
-                      style={{ color: "#F6C343" }}
-                      strokeWidth={2}
-                    />
-                  </div>
-                  <div className="pt-1 md:pt-0">
-                    <span
-                      className="block text-[11px] font-mono tracking-[0.1em]"
-                      style={{ color: "#6C7484" }}
-                    >
-                      {num}
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#F6C343] text-sm font-bold text-[#051A3A]">
+                      {index + 1}
                     </span>
-                    <p
-                      className="mt-1 text-sm sm:text-base leading-snug font-semibold"
-                      style={{ color: "#2B364D" }}
-                    >
-                      {text}
-                    </p>
-                    {sub && (
-                      <span
-                        className="mt-2 inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-bold"
-                        style={{ backgroundColor: "#F6C343", color: "#051A3A" }}
-                      >
-                        {sub}
-                      </span>
-                    )}
+                    <div>
+                      <h3 className="font-[var(--font-display)] font-bold text-white">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-6 text-white/60">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="self-start rounded-[28px] border border-[#F6C343]/25 bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,.25)] sm:p-8">
+              <div className="flex items-start justify-between gap-5 border-b border-[#051A3A]/10 pb-6">
+                <div>
+                  <h3 className="mt-2 font-[var(--font-display)] text-3xl font-bold tracking-[-0.03em] text-[#051A3A]">
+                    Essential project documents
+                  </h3>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LEGAL DOCUMENTS */}
-      <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]">
-        <div className="max-w-7xl mx-auto gap-12 lg:gap-16 items-center">
-          <div>
-            <Eyebrow>Documentation</Eyebrow>
-            <h2
-              className="font-bold text-[clamp(1.9rem,3.6vw,2.6rem)] leading-tight"
-              style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
-            >
-              Legal Documents You Should Check Before Buying
-            </h2>
-            <p
-              className="mt-5 text-[clamp(1.1rem,1.8vw,1.25rem)] leading-relaxed"
-              style={{ color: "#162033" }}
-            >
-              For Dubai NRIs, legal safety is usually the biggest concern. You
-              are far from India, so you need document clarity before making any
-              booking decision.
-            </p>
-
-            <p
-              className="mt-7 mb-4 text-sm font-medium uppercase "
-              style={{ color: "#051A3A" }}
-            >
-              Before buying a Dholera plot, you should ask for:
-            </p>
-            <div className="flex flex-wrap gap-2.5">
-              {legalDocs.map((doc) => (
-                <span
-                  key={doc}
-                  className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
-                  style={{
-                    border: "1px solid rgba(5,26,58,0.2)",
-                    color: "#051A3A",
-                    backgroundColor: "#FDFCFA",
-                  }}
-                >
-                  <CheckIcon
-                    className="h-3.5 w-3.5"
-                    style={{ color: "#F6C343" }}
-                  />
-                  {doc}
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F6C343]/20">
+                  <ShieldCheck className="h-7 w-7 text-[#8A6508]" />
                 </span>
-              ))}
-            </div>
+              </div>
 
-            <button
-              type="button"
-              onClick={() => setLegalDocumentsFormOpen(true)}
-              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#F6C343] px-6 py-3 text-base font-semibold text-[#051A3A] shadow-sm transition-colors hover:bg-[#e7b536] focus:outline-none focus:ring-2 focus:ring-[#051A3A] focus:ring-offset-2"
-            >
-              <FileText className="h-5 w-5" aria-hidden="true" />
-              Check Documents
-            </button>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {legalDocuments.map((document) => (
+                  <div
+                    key={document}
+                    className="flex items-center gap-3 rounded-xl border border-[#051A3A]/10 bg-[#F8F7F3] px-4 py-3.5 text-sm font-semibold text-[#344054]"
+                  >
+                    <CircleCheckBig className="h-4 w-4 shrink-0 text-[#2E8B57]" />
+                    {document}
+                  </div>
+                ))}
+              </div>
 
-            <div
-              className="mt-8 flex gap-3 p-5"
-              style={{
-                border: "1px solid rgba(180,35,24,0.25)",
-                backgroundColor: "rgba(180,35,24,0.04)",
-              }}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="mt-0.5 h-5 w-5 shrink-0"
-                style={{ color: "#B42318" }}
-                aria-hidden="true"
+              <PrimaryButton
+                onClick={() => setDocumentsOpen(true)}
+                className="mt-7 w-full"
               >
-                <path
-                  d="M12 9v4m0 4h.01M10.3 3.86l-8.2 14.2A1 1 0 0 0 2.97 19.5h18.06a1 1 0 0 0 .87-1.44l-8.2-14.2a1 1 0 0 0-1.74 0Z"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "#162033" }}
-              >
-                At Dholera Insider, our goal is to help NRI buyers review the
-                important documents before they move forward.{" "}
-                <span className="font-semibold" style={{ color: "#B42318" }}>
-                  You should not feel pressured to book a plot before
-                  understanding what you are buying.
-                </span>
+                Request Legal Documents
+              </PrimaryButton>
+
+              <p className="mt-4 text-center text-xs leading-5 text-[#667085]">
+                Documents vary by project. Independent legal and financial
+                advice is recommended before purchase.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {legalDocumentsFormOpen && (
-        <BrochureDownload
-          title="Get the Legal Documents Checklist"
-          subtitle="Share your details to download the Dholera plot document verification checklist."
-          buttonName="Download Checklist"
-          thankYouMessage="Your request was submitted successfully."
-          source="Dubai Investor Legal Documents Checklist"
-          link="/pdf/Legal%20Verification%20Estates.pdf"
-          downloadFilename="Legal Verification Estates.pdf"
-          downloadLabel="legal documents checklist"
-          redirectPath={null}
-          onClose={() => setLegalDocumentsFormOpen(false)}
-        />
-      )}
-
-      {/* DOCUMENTS REQUIRED FROM BUYER */}
+      {/* 03   OUR PROJECTS */}
       <section
-        className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(2.5rem,5vw,4rem)]"
-        style={{ backgroundColor: "#EEF1F6" }}
+        id="our-projects"
+        className="scroll-mt-20 px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
       >
-        <div className="max-w-7xl mx-auto">
-          <Eyebrow>From the Buyer</Eyebrow>
-          <h2
-            className="font-bold text-[clamp(1.4rem,2.8vw,1.9rem)] leading-tight"
-            style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
-          >
-            Documents Required from Buyer / Investor Living in Dubai
-          </h2>
-          <div className="mt-5 flex flex-wrap gap-3">
-            {buyerDocs.map((doc) => (
-              <span
-                key={doc}
-                className="rounded-full px-5 py-2 text-sm font-semibold"
-                style={{
-                  border: "1px solid rgba(5,26,58,0.15)",
-                  backgroundColor: "#FDFCFA",
-                  color: "#2B364D",
-                }}
-              >
-                {doc}
-              </span>
-            ))}
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
+            <SectionHeading
+              eyebrow="03 · Our projects"
+              title="Compare verified plot opportunities clearly."
+              copy="Start with a focused shortlist. We help you compare the essentials without burying the decision in sales material."
+            />
           </div>
-        </div>
-      </section>
 
-      {/* WHY INVEST — icon-card grid (reference-inspired feature grid) */}
-      <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]">
-        <div className="max-w-7xl mx-auto">
-          <Eyebrow>The Bigger Picture</Eyebrow>
-          <h2
-            className="font-bold text-[clamp(1.9rem,3.6vw,2.6rem)] leading-tight max-w-2xl"
-            style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
-          >
-            Why Invest in Dholera Smart City?
-          </h2>
-          <p
-            className="mt-5 max-w-2xl text-[clamp(1.1rem,1.8vw,1.25rem)] leading-relaxed"
-            style={{ color: "#162033" }}
-          >
-            Dholera Smart City is one of India&apos;s most ambitious urban
-            development projects, planned with world-class infrastructure and
-            modern connectivity. For Dubai NRIs, it represents an opportunity to
-            invest in the growth of a future-ready city.
-          </p>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {highlights.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-start gap-3 p-5"
-                style={{ backgroundColor: "#EEF1F6" }}
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {projects.map((project, index) => (
+              <article
+                key={project.name}
+                className="group overflow-hidden rounded-[24px] border border-[#051A3A]/10 bg-white shadow-[0_16px_45px_rgba(5,26,58,.06)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(5,26,58,.12)]"
               >
-                <span
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
-                  style={{ backgroundColor: "#051A3A" }}
+                <div
+                  className={`relative h-52 overflow-hidden bg-gradient-to-br ${project.accent} p-6`}
                 >
-                  <Icon
-                    className="h-5 w-5"
-                    style={{ color: "#F6C343" }}
-                    strokeWidth={2}
+                  <div
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
+                      backgroundSize: "28px 28px",
+                    }}
                   />
-                </span>
-                <span
-                  className="pt-2 text-sm font-medium leading-snug"
-                  style={{ color: "#2B364D" }}
-                >
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY TRUST US */}
-      <section
-        className="relative overflow-hidden px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]"
-        style={{ backgroundColor: "#051A3A" }}
-      >
-        <div className="absolute inset-0" style={dotGrid} aria-hidden="true" />
-        <div className="relative max-w-7xl mx-auto">
-          <Eyebrow>Why Dubai NRIs Trust Us</Eyebrow>
-          <h2
-            className="font-bold text-[clamp(1.9rem,3.6vw,2.6rem)] leading-tight"
-            style={{ color: "#FDFCFA", fontFamily: "var(--font-display)" }}
-          >
-            Why Dubai NRIs Trust Dholera Insider
-          </h2>
-
-          <div className="mt-7 grid sm:grid-cols-2 gap-3">
-            {trustPoints.map((item) => (
-              <div
-                key={item}
-                className="p-4"
-                style={{
-                  backgroundColor: "rgba(253,252,250,0.05)",
-                  border: "1px solid rgba(246,195,67,0.25)",
-                }}
-              >
-                <div className="flex items-start gap-3">
-                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-[#F6C343]" />
-                  <span
-                    className="text-base leading-snug"
-                    style={{ color: "#FDFCFA" }}
-                  >
-                    {item}
-                  </span>
+                  <div className="relative flex h-full flex-col justify-between">
+                    <span className="self-start rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white/80 backdrop-blur">
+                      Project {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <p className="text-sm font-semibold text-white/60">
+                          {project.label}
+                        </p>
+                        <h3 className="mt-1 font-[var(--font-display)] text-xl font-bold tracking-[-0.03em] text-white">
+                          {project.name}
+                        </h3>
+                      </div>
+                      <Building2
+                        className="h-11 w-11 text-[#F6C343]"
+                        strokeWidth={1.35}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                <div className="p-6">
+                  <dl className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between gap-4">
+                      <dt className="flex items-center gap-2 text-[#667085]">
+                        <MapPin className="h-4 w-4" /> Location
+                      </dt>
+                      <dd className="text-right font-semibold text-[#344054]">
+                        {project.location}
+                      </dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
+                      <dt className="flex items-center gap-2 text-[#667085]">
+                        <Building2 className="h-4 w-4" /> Plot options
+                      </dt>
+                      <dd className="text-right font-semibold text-[#344054]">
+                        {project.sizes}
+                      </dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
+                      <dt className="flex items-center gap-2 text-[#667085]">
+                        <FileText className="h-4 w-4" /> Status
+                      </dt>
+                      <dd
+                        className={`text-right font-semibold ${
+                          ["sold out", "Re-Selling"].includes(
+                            project.status,
+                          )
+                            ? "text-red-600"
+                            : "text-[#2E7D54]"
+                        }`}
+                      >
+                        {project.status}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <Link
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group mt-6 inline-flex w-full items-center justify-between rounded-xl border border-[#051A3A]/10 px-4 py-3.5 text-sm font-bold text-[#051A3A] transition hover:border-[#F6C343] hover:bg-[#F6C343]/10"
+                  >
+                    <FaWhatsapp className="h-6 w-6 text-[#051A3A]" />
+                    Connect with Our RM
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
-
-          <p
-            className="mt-6 max-w-2xl text-[clamp(1.1rem,1.8vw,1.25rem)] leading-relaxed"
-            style={{ color: "#FDFCFA", opacity: 0.92 }}
-          >
-            Our focus is to help every Dubai NRI invest with confidence through
-            reliable information, trusted projects, and exceptional service.
-          </p>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          <h2
-            className="font-bold text-[clamp(1.75rem,3.4vw,2.3rem)] leading-tight"
-            style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
-          >
-            Start Your Investment Journey from Dubai
-          </h2>
-          <button
-            type="button"
-            className="mt-7 inline-flex items-center gap-2 px-8 py-4 font-semibold text-lg transition-transform hover:scale-[1.02]"
-            style={{ backgroundColor: "#F6C343", color: "#051A3A" }}
-          >
-            Connect With Our Advisors
-          </button>
-        </div>
-      </section>
+      {/* 04   BUYING PROCESS */}
+      <section
+        id="buying-process"
+        className="scroll-mt-20 border-y border-[#051A3A]/10 bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+      >
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="04 · Buying process"
+            title="A clear path from first call to registry."
+            copy="Every stage has a purpose, an output, and a decision point so you always know what happens next."
+            centered
+          />
 
-      {/* FAQ */}
-      <section className="px-6 sm:px-10 lg:px-[clamp(2rem,6vw,5rem)] py-[clamp(3rem,6vw,5rem)]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-[clamp(1.5rem,4vw,3rem)]">
-          <div className="w-full md:w-2/5">
-            <Eyebrow>Questions</Eyebrow>
-            <h2
-              className="font-bold text-[clamp(1.5rem,3vw,2rem)] leading-tight"
-              style={{ color: "#051A3A", fontFamily: "var(--font-display)" }}
+          {/* Curved workflow chart inspired by the supplied reference — mobile only. */}
+          <div className="relative mx-auto mt-12 h-[748px] w-full max-w-md lg:hidden">
+            <svg
+              viewBox="0 0 360 730"
+              preserveAspectRatio="none"
+              className="pointer-events-none absolute inset-x-0 top-0 h-[730px] w-full"
+              aria-hidden="true"
             >
-              FAQs
-            </h2>
-            <div className="pt-6">
-              <Link
-                className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-sm transition-colors"
-                style={{ backgroundColor: "#051A3A", color: "#F6C343" }}
-                href="tel:+918130371647"
-              >
-                Give Us A Missed Call
-              </Link>
+              <path
+                d="M32 48 C176 42 330 105 328 174 C326 245 35 230 32 300 C29 372 326 356 328 426 C330 498 35 482 32 552 C29 623 196 600 328 678"
+                fill="none"
+                stroke="#F6C343"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="9 11"
+                opacity="0.5"
+              />
+              <circle cx="32" cy="48" r="4" fill="#F6C343" />
+              <circle cx="328" cy="678" r="4" fill="#F6C343" />
+            </svg>
+
+            {buyingSteps.map(
+              ({ number, icon: Icon, title, description }, index) => {
+                const layout = mobileWorkflowLayout[index];
+
+                return (
+                  <article
+                    key={number}
+                    className={`absolute inset-x-0 h-[112px] ${layout.top}`}
+                  >
+                    <div
+                      className={`absolute top-0 z-10 min-h-[112px] rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] py-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)] ${layout.card}`}
+                    >
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span className="inline-flex rounded-full bg-[#051A3A] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#F6C343]">
+                          Step {number}
+                        </span>
+                        <h3 className="font-[var(--font-display)] text-sm font-bold leading-tight text-[#051A3A]">
+                          {title}
+                        </h3>
+                      </div>
+                      <p className="mt-2 text-xs leading-5 text-[#667085]">
+                        {description}
+                      </p>
+                    </div>
+
+                    <span
+                      className={`absolute top-4 z-20 grid h-16 w-16 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${layout.node}`}
+                    >
+                      <Icon className="h-7 w-7" strokeWidth={1.8} />
+                    </span>
+                  </article>
+                );
+              },
+            )}
+          </div>
+
+          {/* Existing horizontal workflow remains unchanged on desktop. */}
+          <div className="relative mt-14 hidden lg:block">
+            <div className="absolute left-6 top-7 h-px w-[calc(100%-3rem)] bg-[#051A3A]/10" />
+            <div className="grid grid-cols-6 gap-5">
+              {buyingSteps.map(({ number, icon: Icon, title, description }) => (
+                <article
+                  key={number}
+                  className="relative rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-5 lg:border-0 lg:bg-transparent lg:p-0 lg:text-center"
+                >
+                  <div className="flex items-center gap-4 lg:flex-col lg:gap-5">
+                    <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full border-4 border-white bg-[#051A3A] text-[#F6C343] shadow-[0_8px_20px_rgba(5,26,58,.18)]">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
+                        Step {number}
+                      </span>
+                      <h3 className="mt-1 font-[var(--font-display)] text-base font-bold text-[#051A3A]">
+                        {title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-[#667085] lg:px-2">
+                    {description}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
 
-          <div className="w-full md:w-3/5 space-y-1">
-            {faqs.map((faq, index) => (
-              <div
-                key={faq.q}
-                style={{ borderBottom: "1px solid rgba(5,26,58,0.12)" }}
-              >
-                <button
-                  className="w-full py-[clamp(0.875rem,2vw,1rem)] flex justify-between items-center text-left transition-colors"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <span
-                    className="font-medium pr-4 leading-relaxed"
-                    style={{ color: "#051A3A" }}
-                  >
-                    {faq.q}
-                  </span>
-                  <span className="flex-shrink-0">
-                    {openIndex === index ? (
-                      <Minus className="w-5 h-5" style={{ color: "#F6C343" }} />
-                    ) : (
-                      <Plus className="w-5 h-5" style={{ color: "#F6C343" }} />
-                    )}
-                  </span>
-                </button>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === index
-                      ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="pb-4">
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "#162033" }}
-                    >
-                      {faq.a}
-                    </p>
-                  </div>
-                </div>
+          <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-[24px] bg-[#051A3A] px-6 py-7 text-center sm:flex-row sm:px-8 sm:text-left">
+            <div className="flex items-center gap-4">
+              <span className="hidden h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/10 text-[#F6C343] sm:grid">
+                <UserCheck className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-[var(--font-display)] text-lg font-bold text-white">
+                  One advisor throughout your journey
+                </p>
+                <p className="mt-1 text-sm text-white/60">
+                  No handoff maze. No guessing who to contact next.
+                </p>
               </div>
-            ))}
+            </div>
+            <Link
+              href={`tel:${PHONE_NUMBER}`}
+              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-[#F6C343] px-5 text-sm font-bold text-[#051A3A] transition hover:bg-[#FFD365]"
+            >
+              <Phone className="h-4 w-4" /> Book a consultation
+            </Link>
           </div>
         </div>
       </section>
+
+      {/* SOCIAL PROOF + FAQ */}
+      <section className="px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
+          <div>
+            <SectionLabel>Investor confidence</SectionLabel>
+            <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
+              Clarity earns trust.
+            </h2>
+            <div className="mt-7 rounded-[24px] border border-[#051A3A]/10 bg-white p-6 shadow-[0_16px_45px_rgba(5,26,58,.06)]">
+              <div
+                className="flex gap-1 text-[#F6C343]"
+                aria-label="5 out of 5 stars"
+              >
+                {[0, 1, 2, 3, 4].map((star) => (
+                  <Star key={star} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <blockquote className="mt-5 font-[var(--font-display)] text-xl font-semibold leading-8 text-[#051A3A]">
+                “The process was clear, the documents were shared early, and my
+                family could visit while I joined from Dubai.”
+              </blockquote>
+              <div className="mt-5 flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-[#051A3A] text-sm font-bold text-[#F6C343]">
+                  AS
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-[#344054]">A. Sharma</p>
+                  <p className="text-xs text-[#667085]">Dubai, UAE</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <SectionLabel>Frequently asked questions</SectionLabel>
+            <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
+              Questions before you begin.
+            </h2>
+            <div className="mt-7 divide-y divide-[#051A3A]/10 border-y border-[#051A3A]/10">
+              {faqs.map((faq, index) => {
+                const isOpen = openFaq === index;
+                return (
+                  <div key={faq.question}>
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                      className="flex w-full items-center justify-between gap-5 py-5 text-left"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${index}`}
+                    >
+                      <span className="font-[var(--font-display)] font-bold text-[#051A3A]">
+                        {faq.question}
+                      </span>
+                      <ChevronDown
+                        className={`h-5 w-5 shrink-0 text-[#9A740D] transition-transform ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    <div
+                      id={`faq-answer-${index}`}
+                      className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="max-w-2xl pb-5 text-sm leading-7 text-[#667085]">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="px-5 pb-24 sm:px-8 lg:px-10 lg:pb-32">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[30px] border border-[#F6C343]/30 bg-[#051A3A] px-6 py-12 text-center sm:px-10 lg:py-16">
+          <div
+            className="absolute inset-0 opacity-[0.06]"
+            style={{
+              backgroundImage: "radial-gradient(#fff 1px, transparent 1px)",
+              backgroundSize: "22px 22px",
+            }}
+          />
+          <div className="relative mx-auto max-w-3xl">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F6C343]">
+              <Check className="h-4 w-4" /> Start with the facts
+            </span>
+            <h2 className="mt-4 font-[var(--font-display)] text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-white">
+              Review the documents before you choose a plot.
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/60">
+              Get the project shortlist, document checklist, and a clear
+              next-step plan for investing from Dubai.
+            </p>
+            <PrimaryButton
+              onClick={() => setDocumentsOpen(true)}
+              className="mt-8"
+            >
+              Request legal documents
+            </PrimaryButton>
+          </div>
+        </div>
+      </section>
+
+      {/* MOBILE ACTION BAR */}
+      <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-[#051A3A]/10 bg-white/95 p-2 shadow-[0_-10px_30px_rgba(5,26,58,.12)] backdrop-blur sm:hidden">
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#2E9B58] text-sm font-bold text-white"
+        >
+          <FaWhatsapp className="h-6 w-6" /> WhatsApp
+        </a>
+        <Link
+          href={`tel:${PHONE_NUMBER}`}
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#051A3A] text-sm font-bold text-white"
+        >
+          <Phone className="h-6 w-6 text-[#F6C343]" /> Call
+        </Link>
+      </div>
+
+      {documentsOpen && (
+        <BrochureDownload
+          title="Get the Dholera Document Pack"
+          subtitle="Share your details to receive the project document checklist and available sample documents."
+          buttonName="Request Documents"
+          thankYouMessage="Your request was submitted successfully."
+          source="Dubai NRI   Dholera Document Pack"
+          link="/pdf/Legal%20Verification%20Estates.pdf"
+          downloadFilename="Dholera Legal Documents Checklist.pdf"
+          downloadLabel="Dholera documents checklist"
+          redirectPath={null}
+          onClose={() => setDocumentsOpen(false)}
+        />
+      )}
     </main>
   );
 }
