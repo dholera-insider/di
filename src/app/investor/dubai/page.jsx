@@ -347,7 +347,7 @@ export default function DubaiNriPage() {
         content="Explore verified residential plots in Dholera Smart City from Dubai. Get transparent pricing, legal guidance, and dedicated support for UAE NRI investors."
       />
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-[#051A3A]">
+      <section className="relative isolate overflow-hidden bg-[#051A3A] py-8 md:py-12">
         <div
           className="absolute inset-0 -z-20 opacity-30"
           style={{
@@ -364,8 +364,8 @@ export default function DubaiNriPage() {
           }}
         />
 
-        <div className="mx-auto max-w-7xl px-5 pb-16 pt-6 sm:px-8 lg:px-10 lg:pb-24">
-          <div className="grid items-center gap-12 pt-14 lg:grid-cols-[1.02fr_.98fr] lg:gap-16 lg:pt-20">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-16">
             <div>
               <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel>
               <h1 className="max-w-3xl font-[var(--font-display)] text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
@@ -439,7 +439,7 @@ export default function DubaiNriPage() {
       {/* 01   WHY DHOLERA */}
       <section
         id="why-dholera"
-        className="relative isolate scroll-mt-20 overflow-hidden bg-white px-5 py-8 sm:px-8 lg:px-10 lg:py-12"
+        className="relative isolate scroll-mt-20 overflow-hidden bg-white px-5 py-8 sm:px-8 md:py-12 lg:px-10"
       >
         <div
           className="absolute inset-0 -z-10 opacity-70"
@@ -498,7 +498,7 @@ export default function DubaiNriPage() {
       {/* 02   DOCUMENTATION */}
       <section
         id="documentation"
-        className="scroll-mt-20 bg-[#051A3A] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+        className="scroll-mt-20 bg-[#051A3A] px-5 py-8 sm:px-8 md:py-12 lg:px-10"
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-[.95fr_1.05fr] lg:gap-16">
@@ -580,7 +580,7 @@ export default function DubaiNriPage() {
       {/* 03   OUR PROJECTS */}
       <section
         id="our-projects"
-        className="scroll-mt-20 px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+        className="scroll-mt-20 px-5 py-8 sm:px-8 md:py-12 lg:px-10"
       >
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
@@ -665,7 +665,7 @@ export default function DubaiNriPage() {
       {/* 04   BUYING PROCESS */}
       <section
         id="buying-process"
-        className="scroll-mt-20 border-y border-[#051A3A]/10 bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+        className="scroll-mt-20 border-y border-[#051A3A]/10 bg-white px-5 py-8 sm:px-8 md:py-12 lg:px-10"
       >
         <div className="mx-auto max-w-7xl">
           <SectionHeading
@@ -783,7 +783,7 @@ export default function DubaiNriPage() {
       </section>
 
       {/* SOCIAL PROOF + FAQ */}
-      <section className="px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <section className="px-5 py-8 sm:px-8 md:py-12 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
           <div>
             <SectionLabel>Dholera Investment from Dubai</SectionLabel>
@@ -848,7 +848,7 @@ export default function DubaiNriPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="px-5 pb-24 sm:px-8 lg:px-10 lg:pb-32">
+      <section className="px-5 py-8 sm:px-8 md:py-12 lg:px-10">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[30px] border border-[#F6C343]/30 bg-[#051A3A] px-6 py-12 text-center sm:px-10 lg:py-16">
           <div
             className="absolute inset-0 opacity-[0.06]"
