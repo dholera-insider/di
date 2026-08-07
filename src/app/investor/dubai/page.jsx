@@ -58,98 +58,81 @@ const PHONE_NUMBER = "+919211820887";
 const WHATSAPP_URL = "https://wa.me/919211820887";
 
 const sectionLinks = [
-  { label: "Why Dholera", href: "#why-dholera" },
-  { label: "Documentation", href: "#documentation" },
-  { label: "Our Projects", href: "#our-projects" },
-  { label: "Buying Process", href: "#buying-process" },
+  { label: "Why Invest in Dholera?", href: "#why-dholera" },
+  { label: "Build a Long Term Asset in India", href: "#documentation" },
+  { label: "Explore Residential Projects", href: "#our-projects" },
+  {
+    label: "Your Dholera Investment Journey from Dubai",
+    href: "#buying-process",
+  },
 ];
 
 const trustSignals = [
-  { icon: ShieldCheck, label: "Full Documentation" },
-  { icon: BadgeCheck, label: "Approved Project" },
-  { icon: Globe2, label: "Remote NRI assistance" },
+  { icon: ShieldCheck, label: "Verified Residential Plot Projects" },
+  { icon: BadgeCheck, label: "Transparent Pricing & Documentation" },
+  { icon: Globe2, label: "Dedicated Support for Dubai NRIs" },
 ];
 
 const stats = [
-  { value: "500+", label: "NRI families assisted" },
-  { value: "25+", label: "Countries served" },
-  { value: "7+", label: "Years of advisory" },
-  { value: "100%", label: "Transparent process" },
+  { value: "✔", label: "Strategic Project Locations" },
+  { value: "✔", label: "100% Remote Buying Process" },
+  { value: "✔", label: "Exclusive Channel Partner of BookMyAssets" },
+  { value: "✔", label: "Verified Residential Plot Projects" },
 ];
 
 const dholeraReasons = [
   {
-    icon: Landmark,
-    title: "Planned infrastructure",
-    description:
-      "A future-focused urban region planned around modern roads, utilities, and civic infrastructure.",
-  },
-  {
-    icon: Plane,
-    title: "Strategic connectivity",
-    description:
-      "Connectivity-led growth supported by major transport and industrial infrastructure around the region.",
-  },
-  {
     icon: Building2,
-    title: "Economic ecosystem",
-    description:
-      "Large-scale industrial development can support long-term residential and commercial demand.",
+    title: "Tata Semiconductor Project",
+    description: "",
   },
   {
     icon: TrendingUp,
-    title: "Early-stage opportunity",
-    description:
-      "An opportunity for patient investors who understand development timelines and long-term holding.",
+    title: "Ahmedabad-Dholera Expressway",
+    description: "",
+  },
+  {
+    icon: Plane,
+    title: "Dholera International Airport",
+    description: "",
   },
   {
     icon: WalletCards,
-    title: "Accessible entry points",
-    description:
-      "Multiple plot sizes and payment plans make project comparison easier for different budgets.",
-  },
-  {
-    icon: Video,
-    title: "Remote-friendly buying",
-    description:
-      "Virtual consultations, document sharing, and guided site reviews simplify investing from abroad.",
+    title: "Government-Planned Infrastructure",
+    description: "",
   },
 ];
 
 const documentChecks = [
   {
-    title: "Title and ownership",
-    description:
-      "Review the title chain, ownership proof, and seller authority.",
+    title: "Build a future villa or family home",
+    description: "",
   },
   {
-    title: "Land-use approvals",
-    description:
-      "Check the applicable NA, NOC, layout, and planning documents.",
+    title: "Hold land for long-term appreciation",
+    description: "",
   },
   {
-    title: "Project registration",
-    description:
-      "Verify the project and developer details wherever registration applies.",
+    title: "Diversify your investment portfolio",
+    description: "",
   },
   {
-    title: "Commercial clarity",
-    description:
-      "Confirm the final cost sheet, payment plan, and registry process.",
+    title: "Plan for retirement in India",
+    description: "",
+  },
+  {
+    title: "Create a lasting family asset",
+    description: "",
   },
 ];
 
 const legalDocuments = [
-  "Title documents",
-  "NA/NOC details",
-  "7/12 extract or relevant land record",
-  "Ownership proof",
-  "Plan layout",
-  "Registry process details",
-  "Payment schedule",
-  "Developer details",
-  "Approved plan pass",
-  "Final cost sheet",
+  "Clear Title",
+  "NA/NOC",
+  "Approved Plan Pass",
+  "Sale Deed",
+  "Immediate Possesion",
+  "Plots Registry",
 ];
 
 const projects = [
@@ -186,40 +169,36 @@ const buyingSteps = [
   {
     number: "01",
     icon: Phone,
-    title: "Discovery call",
-    description: "Share your budget, timeline, and investment preferences.",
+    title: "Connect With Our RM",
+    description:
+      "Speak with our Dholera expert to understand the right residential plot based on your investment plans.",
   },
   {
     number: "02",
     icon: SearchCheck,
-    title: "Project shortlist",
-    description: "Compare suitable projects, plot sizes, and payment options.",
+    title: "Compare Verified Projects",
+    description:
+      "Review project locations, pricing, plot sizes, and nearby infrastructure through virtual presentations.",
   },
   {
     number: "03",
     icon: Book,
-    title: "Document review",
+    title: "Review Legal Documents",
     description:
-      "Receive the relevant documents before making a booking decision.",
+      "Understand the title documents, NA/NOC, layout plan, and registry process before making your decision.",
   },
   {
     number: "04",
     icon: Video,
-    title: "Virtual or site visit",
-    description: "Review the location remotely or arrange an on-ground visit.",
+    title: "Reserve Your Plot",
+    description:
+      "Choose your preferred plot and complete the booking process with transparent pricing.",
   },
   {
     number: "05",
     icon: CalendarCheck2,
-    title: "Complete Payment",
-    description: "Review the location remotely or arrange an on-ground visit.",
-  },
-  {
-    number: "06",
-    icon: FileCheck2,
-    title: "Booking and registry",
-    description:
-      "Complete KYC, payments, agreements, and registry with guidance.",
+    title: "Complete Registration",
+    description: "Get you plot Registry",
   },
 ];
 
@@ -260,25 +239,39 @@ const mobileWorkflowLayout = [
 
 const faqs = [
   {
-    question: "Can I review a project without travelling to India?",
+    question: "Can I buy a Dholera plot from Dubai?",
     answer:
-      "Yes. We can arrange an online consultation, project presentation, document sharing, and a guided virtual location review before you decide whether to visit.",
+      "Yes. NRIs living in Dubai can buy residential plots in Dholera. Dholera Insider helps you explore verified projects, review legal documents, and complete the buying process remotely.",
   },
   {
-    question: "Will I receive documents before booking?",
+    question: "Is Dholera a good investment for Dubai NRIs?",
     answer:
-      "Our process is designed to share the relevant project and commercial documents before a booking decision. We also recommend independent legal verification for your circumstances.",
+      "Dholera is considered a promising long-term investment opportunity due to its planned infrastructure, industrial development, and future growth potential. Investors should always review project documents before making a decision.",
   },
   {
-    question: "How do I compare different plot options?",
+    question: "What documents should NRI buyers verify?",
     answer:
-      "We compare location, project status, plot size, pricing, payment schedule, documentation, and your intended holding period in one clear shortlist.",
+      "Before investing, review the title documents, NA/NOC, approved layout plan, sale deed, ownership details, and registry process to ensure complete transparency.",
   },
   {
-    question: "Can my family visit the site on my behalf?",
+    question: "Can I buy a Dholera plot from Dubai without visiting India?",
     answer:
-      "Yes. A family member can attend a guided site visit while you join remotely, subject to the project team's scheduling and site-access process.",
+      "Yes. Most of the buying process can be completed remotely through virtual consultations, online documentation, and registration support.",
   },
+  {
+    question: "Why choose Dholera Insider?",
+    answer:
+      "Dholera Insider is the exclusive channel partner of BookMyAssets for NRI investors. We provide verified residential plot projects & Bulk Land Deals, transparent documentation, and dedicated support to help you invest with confidence.",
+  },
+];
+
+const dholeraInsiderReasons = [
+  "Verified Residential Plot Projects",
+  "Transparent Pricing & Documentation",
+  "Strategic Project Locations",
+  "Dedicated Support for Dubai NRIs",
+  "100% Remote Buying Process",
+  "Exclusive Channel Partner of BookMyAssets",
 ];
 
 function SectionLabel({ children, inverse = false }) {
@@ -348,6 +341,11 @@ export default function DubaiNriPage() {
       className={`${display.variable} ${body.variable} min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
       style={{ fontFamily: "var(--font-body)" }}
     >
+      <title>Dholera Investment from Dubai | Verified Plots for UAE NRIs</title>
+      <meta
+        name="description"
+        content="Explore verified residential plots in Dholera Smart City from Dubai. Get transparent pricing, legal guidance, and dedicated support for UAE NRI investors."
+      />
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-[#051A3A]">
         <div
@@ -369,32 +367,25 @@ export default function DubaiNriPage() {
         <div className="mx-auto max-w-7xl px-5 pb-16 pt-6 sm:px-8 lg:px-10 lg:pb-24">
           <div className="grid items-center gap-12 pt-14 lg:grid-cols-[1.02fr_.98fr] lg:gap-16 lg:pt-20">
             <div>
-              <SectionLabel inverse>Dubai to Dholera</SectionLabel>
-              <h1 className="max-w-3xl font-[var(--font-display)] text-[clamp(2.25rem,4.5vw,4.25rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
-                Verified plots in Dholera, made clear for NRIs.
+              <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel>
+              <h1 className="max-w-3xl font-[var(--font-display)] text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
+                Dholera Investment from Dubai
               </h1>
               <p className="mt-6 max-w-2xl text-[clamp(1rem,1.8vw,1.25rem)] leading-8 text-white/70">
-                Compare projects, review essential documents, and complete your
-                buying journey from Dubai with one dedicated advisory team.
+                Looking for a smart way to diversify your investments in India?
+                Dholera Insider helps Dubai NRIs explore verified residential
+                plots in Dholera Smart City with transparent information, legal
+                clarity, and a smooth remote buying process.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-5">
                 <Link
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#our-projects"
                   className={`group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3.5 text-sm font-bold text-[#051A3A] shadow-[0_12px_30px_rgba(246,195,67,0.22)] transition hover:-translate-y-0.5 hover:bg-[#FFD365] focus:outline-none focus:ring-2 focus:ring-[#F6C343] focus:ring-offset-2 focus:ring-offset-[#051A3A] `}
                 >
-                  <FaWhatsapp className="h-6 w-6 text-[#051A3A]" />
-                  Connect with Our RM
+                  Explore Residential Projects
+                  <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
                 </Link>
-                <a
-                  href="#our-projects"
-                  className="group inline-flex min-h-12 items-center gap-2 text-sm font-bold text-white transition hover:text-[#F6C343]"
-                >
-                  Explore our projects
-                  <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
               </div>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-3">
@@ -422,23 +413,6 @@ export default function DubaiNriPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/60 via-transparent to-transparent" />
               </div>
-
-              {/* <div className="absolute -bottom-7 left-4 right-4 rounded-2xl border border-white/10 bg-white p-4 shadow-2xl sm:left-8 sm:right-auto sm:w-[350px] sm:p-5">
-                <div className="flex items-start gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#F6C343]/20">
-                    <ShieldCheck className="h-6 w-6 text-[#8A6508]" />
-                  </span>
-                  <div>
-                    <p className="font-[var(--font-display)] font-bold text-[#051A3A]">
-                      Documents before decisions
-                    </p>
-                    <p className="mt-1 text-sm leading-6 text-[#667085]">
-                      Review title, approvals, layout, pricing, and process
-                      before you book.
-                    </p>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -462,96 +436,62 @@ export default function DubaiNriPage() {
         </div>
       </nav>
 
-      {/* STATS */}
-      <section className="border-b border-[#051A3A]/10 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 px-5 sm:px-8 lg:grid-cols-4 lg:px-10">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`py-7 ${index % 2 === 0 ? "pr-4" : "border-l border-[#051A3A]/10 pl-4"} lg:border-l lg:px-8 ${index === 0 ? "lg:border-l-0 lg:pl-0" : ""}`}
-            >
-              <p className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-xs font-medium text-[#667085] sm:text-sm">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* 01   WHY DHOLERA */}
       <section
         id="why-dholera"
-        className="scroll-mt-20 px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+        className="relative isolate scroll-mt-20 overflow-hidden bg-white px-5 py-8 sm:px-8 lg:px-10 lg:py-12"
       >
+        <div
+          className="absolute inset-0 -z-10 opacity-70"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 8% 18%, rgba(246,195,67,.14), transparent 25%), radial-gradient(circle at 92% 82%, rgba(65,125,200,.12), transparent 30%)",
+          }}
+        />
+
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-end gap-8 lg:grid-cols-[1fr_.8fr]">
-            <SectionHeading
-              eyebrow="01 · Why Dholera"
-              title="A long-term opportunity built around infrastructure."
-              copy="Dholera is best considered with a patient, evidence-led view: understand the region, verify the specific project, and choose a plot aligned with your time horizon."
+          <div className="relative overflow-hidden rounded-[30px] bg-[#051A3A] px-6 py-8 shadow-[0_28px_80px_rgba(5,26,58,.18)] sm:px-9 sm:py-10 lg:px-12 lg:py-12">
+            <div
+              className="absolute inset-0 opacity-[0.055]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
+                backgroundSize: "34px 34px",
+              }}
             />
-            <div className="lg:justify-self-end">
-              <div className="flex items-start gap-3 rounded-2xl border border-[#051A3A]/10 bg-white p-5 shadow-[0_16px_40px_rgba(5,26,58,.06)]">
-                <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[#B78B13]" />
-                <p className="max-w-md text-sm leading-6 text-[#48546A]">
-                  We focus on project-specific verification and transparent
-                  comparisons not blanket return promises.
+
+            <div className="relative grid items-center gap-10 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
+              <div>
+                <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel>
+                <h2 className="max-w-3xl font-[var(--font-display)] text-[clamp(1.9rem,4vw,3.35rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">
+                  Why Dubai Investors Are Looking at Dholera
+                </h2>
+                <p className="mt-6 max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
+                  Dubai offers many investment opportunities, but many NRIs
+                  also want to build long-term assets in India. As India's First
+                  Greenfield Smart City, Dholera is attracting investors
+                  looking to enter a government-planned growth corridor at an
+                  early stage.
                 </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 lg:gap-4">
+                {stats.map((stat) => (
+                  <article
+                    key={stat.label}
+                    className="min-h-36 rounded-2xl border border-white/10 bg-white/[0.065] p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#F6C343]/45 hover:bg-white/[0.09] sm:p-6"
+                  >
+                    <span className="grid h-10 w-10 place-items-center rounded-full bg-[#F6C343] font-[var(--font-display)] text-lg font-bold text-[#051A3A] shadow-[0_8px_20px_rgba(246,195,67,.18)]">
+                      {stat.value}
+                    </span>
+                    <h3 className="mt-5 font-[var(--font-display)] text-base font-bold leading-6 text-white sm:text-lg">
+                      {stat.label}
+                    </h3>
+                  </article>
+                ))}
               </div>
             </div>
           </div>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {dholeraReasons.map(({ icon: Icon, title, description }) => (
-              <article
-                key={title}
-                className="group rounded-2xl border border-[#051A3A]/10 bg-white p-6 shadow-[0_14px_35px_rgba(5,26,58,.045)] transition duration-300 hover:-translate-y-1 hover:border-[#F6C343]/60 hover:shadow-[0_20px_50px_rgba(5,26,58,.09)]"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#051A3A] text-[#F6C343] transition group-hover:bg-[#F6C343] group-hover:text-[#051A3A]">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 font-[var(--font-display)] text-lg font-bold tracking-[-0.02em] text-[#051A3A]">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-[#667085]">
-                  {description}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          {/*  <div className="mt-12 grid overflow-hidden rounded-[28px] bg-[#051A3A] lg:grid-cols-[.9fr_1.1fr]">
-            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-              <SectionLabel inverse>Investor perspective</SectionLabel>
-              <h3 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-white sm:text-3xl">
-                Growth potential deserves context.
-              </h3>
-              <p className="mt-5 max-w-xl text-base leading-7 text-white/70">
-                Evaluate location, approvals, development stage, price, and
-                holding period together. The right decision is the one you can
-                verify and comfortably hold.
-              </p>
-              <a
-                href="#documentation"
-                className="mt-7 inline-flex items-center gap-2 self-start text-sm font-bold text-[#F6C343]"
-              >
-                See what to verify <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-            <div className="relative min-h-[320px] lg:min-h-[430px]">
-              <Image
-                src={roiImage}
-                alt="Dholera plot investment context"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 55vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#051A3A]/30 to-transparent lg:from-[#051A3A]/50" />
-            </div>
-          </div> */}
         </div>
       </section>
 
@@ -564,13 +504,17 @@ export default function DubaiNriPage() {
           <div className="grid gap-12 lg:grid-cols-[.95fr_1.05fr] lg:gap-16">
             <div>
               <SectionHeading
-                eyebrow="02 · Documentation"
-                title="Proof first. Payment second."
-                copy="Distance should not reduce clarity. Ask for the relevant documents, understand what each one means, stances."
+                eyebrow="Dholera Investment from Dubai"
+                title="Build a Long Term Asset in India"
+                copy="For many NRIs living in Dubai, owning land in India is more than an investment, it's a long term asset."
                 inverse
               />
 
-              <div className="mt-9 space-y-4">
+              <p className="mt-7 text-base leading-7 text-white/70 sm:text-lg">
+                A residential plot in Dholera gives you the flexibility to:
+              </p>
+
+              <div className="mt-5 space-y-4">
                 {documentChecks.map((item, index) => (
                   <div
                     key={item.title}
@@ -596,7 +540,7 @@ export default function DubaiNriPage() {
               <div className="flex items-start justify-between gap-5 border-b border-[#051A3A]/10 pb-6">
                 <div>
                   <h3 className="mt-2 font-[var(--font-display)] text-3xl font-bold tracking-[-0.03em] text-[#051A3A]">
-                    Essential project documents
+                    What documents should NRI buyers verify?
                   </h3>
                 </div>
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F6C343]/20">
@@ -620,12 +564,13 @@ export default function DubaiNriPage() {
                 onClick={() => setDocumentsOpen(true)}
                 className="mt-7 w-full"
               >
-                Request Legal Documents
+                Schedule a Call
               </PrimaryButton>
 
               <p className="mt-4 text-center text-xs leading-5 text-[#667085]">
-                Documents vary by project. Independent legal and financial
-                advice is recommended before purchase.
+                Before investing, review the title documents, NA/NOC, approved
+                layout plan, sale deed, ownership details, and registry process
+                to ensure complete transparency.
               </p>
             </div>
           </div>
@@ -640,9 +585,8 @@ export default function DubaiNriPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
             <SectionHeading
-              eyebrow="03 · Our projects"
-              title="Compare verified plot opportunities clearly."
-              copy="Start with a focused shortlist. We help you compare the essentials without burying the decision in sales material."
+              eyebrow="Dholera Investment from Dubai"
+              title="Explore Residential Projects"
             />
           </div>
 
@@ -662,8 +606,6 @@ export default function DubaiNriPage() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#051A3A]/90 via-[#051A3A]/45 to-transparent p-6 pt-20">
-                    
-                    
                     <h3 className="mt-1 font-[var(--font-display)] text-xl font-bold tracking-[-0.03em] text-white">
                       {project.name}
                     </h3>
@@ -694,9 +636,7 @@ export default function DubaiNriPage() {
                       </dt>
                       <dd
                         className={`text-right font-semibold ${
-                          ["sold out", "Reselling"].includes(
-                            project.status,
-                          )
+                          ["sold out", "Reselling"].includes(project.status)
                             ? "text-red-600"
                             : "text-[#2E7D54]"
                         }`}
@@ -712,8 +652,8 @@ export default function DubaiNriPage() {
                     rel="noreferrer"
                     className="group mt-6 inline-flex w-full items-center justify-between rounded-xl border border-[#051A3A]/10 px-4 py-3.5 text-sm font-bold text-[#051A3A] transition hover:border-[#F6C343] hover:bg-[#F6C343]/10"
                   >
-                    <FaWhatsapp className="h-6 w-6 text-[#051A3A]" />
-                    Connect with Our RM
+                    <FaWhatsapp className="h-6 w-6 text-green-400" />
+                    Get A Call Back
                   </Link>
                 </div>
               </article>
@@ -729,22 +669,21 @@ export default function DubaiNriPage() {
       >
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="04 · Buying process"
-            title="A clear path from first call to registry."
-            copy="Every stage has a purpose, an output, and a decision point so you always know what happens next."
+            eyebrow="Dholera Investment from Dubai"
+            title="Your Dholera Investment Journey from Dubai"
             centered
           />
 
           {/* Curved workflow chart inspired by the supplied reference — mobile only. */}
-          <div className="relative mx-auto mt-12 h-[748px] w-full max-w-md lg:hidden">
+          <div className="relative mx-auto mt-12 h-[622px] w-full max-w-md lg:hidden">
             <svg
-              viewBox="0 0 360 730"
+              viewBox="0 0 360 604"
               preserveAspectRatio="none"
-              className="pointer-events-none absolute inset-x-0 top-0 h-[730px] w-full"
+              className="pointer-events-none absolute inset-x-0 top-0 h-[604px] w-full"
               aria-hidden="true"
             >
               <path
-                d="M32 48 C176 42 330 105 328 174 C326 245 35 230 32 300 C29 372 326 356 328 426 C330 498 35 482 32 552 C29 623 196 600 328 678"
+                d="M32 48 C176 42 330 105 328 174 C326 245 35 230 32 300 C29 372 326 356 328 426 C330 498 150 500 32 552"
                 fill="none"
                 stroke="#F6C343"
                 strokeWidth="4"
@@ -753,7 +692,7 @@ export default function DubaiNriPage() {
                 opacity="0.5"
               />
               <circle cx="32" cy="48" r="4" fill="#F6C343" />
-              <circle cx="328" cy="678" r="4" fill="#F6C343" />
+              <circle cx="32" cy="552" r="4" fill="#F6C343" />
             </svg>
 
             {buyingSteps.map(
@@ -795,7 +734,7 @@ export default function DubaiNriPage() {
           {/* Existing horizontal workflow remains unchanged on desktop. */}
           <div className="relative mt-14 hidden lg:block">
             <div className="absolute left-6 top-7 h-px w-[calc(100%-3rem)] bg-[#051A3A]/10" />
-            <div className="grid grid-cols-6 gap-5">
+            <div className="grid grid-cols-5 gap-5">
               {buyingSteps.map(({ number, icon: Icon, title, description }) => (
                 <article
                   key={number}
@@ -829,10 +768,7 @@ export default function DubaiNriPage() {
               </span>
               <div>
                 <p className="font-[var(--font-display)] text-lg font-bold text-white">
-                  One advisor throughout your journey
-                </p>
-                <p className="mt-1 text-sm text-white/60">
-                  No handoff maze. No guessing who to contact next.
+                  Schedule a Call
                 </p>
               </div>
             </div>
@@ -840,7 +776,7 @@ export default function DubaiNriPage() {
               href={`tel:${PHONE_NUMBER}`}
               className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-[#F6C343] px-5 text-sm font-bold text-[#051A3A] transition hover:bg-[#FFD365]"
             >
-              <Phone className="h-4 w-4" /> Book a consultation
+              <Phone className="h-4 w-4" /> Connect With Our RM
             </Link>
           </div>
         </div>
@@ -850,39 +786,29 @@ export default function DubaiNriPage() {
       <section className="px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
           <div>
-            <SectionLabel>Investor confidence</SectionLabel>
+            <SectionLabel>Dholera Investment from Dubai</SectionLabel>
             <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
-              Clarity earns trust.
+              Why Choose Dholera Insider?
             </h2>
             <div className="mt-7 rounded-[24px] border border-[#051A3A]/10 bg-white p-6 shadow-[0_16px_45px_rgba(5,26,58,.06)]">
-              <div
-                className="flex gap-1 text-[#F6C343]"
-                aria-label="5 out of 5 stars"
-              >
-                {[0, 1, 2, 3, 4].map((star) => (
-                  <Star key={star} className="h-4 w-4 fill-current" />
+              <div className="space-y-3">
+                {dholeraInsiderReasons.map((reason) => (
+                  <div
+                    key={reason}
+                    className="flex items-center gap-3 rounded-xl border border-[#051A3A]/10 bg-[#F8F7F3] px-4 py-3.5 text-sm font-semibold text-[#344054]"
+                  >
+                    <CircleCheckBig className="h-4 w-4 shrink-0 text-[#2E8B57]" />
+                    {reason}
+                  </div>
                 ))}
-              </div>
-              <blockquote className="mt-5 font-[var(--font-display)] text-xl font-semibold leading-8 text-[#051A3A]">
-                “The process was clear, the documents were shared early, and my
-                family could visit while I joined from Dubai.”
-              </blockquote>
-              <div className="mt-5 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-[#051A3A] text-sm font-bold text-[#F6C343]">
-                  AS
-                </span>
-                <div>
-                  <p className="text-sm font-bold text-[#344054]">A. Sharma</p>
-                  <p className="text-xs text-[#667085]">Dubai, UAE</p>
-                </div>
               </div>
             </div>
           </div>
 
           <div>
-            <SectionLabel>Frequently asked questions</SectionLabel>
+            <SectionLabel>Dholera Investment from Dubai</SectionLabel>
             <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
-              Questions before you begin.
+              FAQs
             </h2>
             <div className="mt-7 divide-y divide-[#051A3A]/10 border-y border-[#051A3A]/10">
               {faqs.map((faq, index) => {
@@ -933,20 +859,22 @@ export default function DubaiNriPage() {
           />
           <div className="relative mx-auto max-w-3xl">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F6C343]">
-              <Check className="h-4 w-4" /> Start with the facts
+              <Check className="h-4 w-4" /> Dholera Investment from Dubai
             </span>
             <h2 className="mt-4 font-[var(--font-display)] text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-white">
-              Review the documents before you choose a plot.
+              Invest with Confidence from Dubai
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/60">
-              Get the project shortlist, document checklist, and a clear
-              next-step plan for investing from Dubai.
+              You don't have to travel frequently to explore residential plot
+              opportunities in Dholera. With virtual project presentations,
+              transparent documentation, and expert guidance, Dholera Insider
+              makes investing from Dubai simple and convenient.
             </p>
             <PrimaryButton
               onClick={() => setDocumentsOpen(true)}
               className="mt-8"
             >
-              Request legal documents
+              Speak with a Dholera Investment Expert
             </PrimaryButton>
           </div>
         </div>
@@ -972,9 +900,9 @@ export default function DubaiNriPage() {
 
       {documentsOpen && (
         <BrochureDownload
-          title="Get the Dholera Document Pack"
-          subtitle="Share your details to receive the project document checklist and available sample documents."
-          buttonName="Request Documents"
+          title="Speak with a Dholera Investment Expert"
+          subtitle="Dholera Insider helps Dubai NRIs explore verified residential plots in Dholera Smart City with transparent information, legal clarity, and a smooth remote buying process."
+          buttonName="Schedule a Video Call"
           thankYouMessage="Your request was submitted successfully."
           source="Dubai NRI   Dholera Document Pack"
           link="/pdf/Legal%20Verification%20Estates.pdf"
