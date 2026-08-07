@@ -202,39 +202,12 @@ const buyingSteps = [
   },
 ];
 
-// Static class names keep the curved mobile workflow responsive while allowing
-// Tailwind to discover every generated position and colour at build time.
-const mobileWorkflowLayout = [
-  {
-    top: "top-0",
-    node: "left-0 bg-[#D9D8F2]",
-    card: "left-8 right-0 pl-14 pr-4",
-  },
-  {
-    top: "top-[126px]",
-    node: "right-0 bg-[#C9EFE8]",
-    card: "left-0 right-8 pl-4 pr-14",
-  },
-  {
-    top: "top-[252px]",
-    node: "left-0 bg-[#F2D9D0]",
-    card: "left-8 right-0 pl-14 pr-4",
-  },
-  {
-    top: "top-[378px]",
-    node: "right-0 bg-[#F4DEB3]",
-    card: "left-0 right-8 pl-4 pr-14",
-  },
-  {
-    top: "top-[504px]",
-    node: "left-0 bg-[#F6CDB6]",
-    card: "left-8 right-0 pl-14 pr-4",
-  },
-  {
-    top: "top-[630px]",
-    node: "right-0 bg-[#D7E6F4]",
-    card: "left-0 right-8 pl-4 pr-14",
-  },
+const mobileWorkflowColors = [
+  "bg-[#D9D8F2]",
+  "bg-[#C9EFE8]",
+  "bg-[#F2D9D0]",
+  "bg-[#F4DEB3]",
+  "bg-[#F6CDB6]",
 ];
 
 const faqs = [
@@ -479,12 +452,12 @@ export default function DubaiNriPage() {
                 {stats.map((stat) => (
                   <article
                     key={stat.label}
-                    className="min-h-36 rounded-2xl border border-white/10 bg-white/[0.065] p-5 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#F6C343]/45 hover:bg-white/[0.09] sm:p-6"
+                    className="flex min-h-20 items-center justify-start gap-3 rounded-2xl border border-white/10 bg-white/[0.065] p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#F6C343]/45 hover:bg-white/[0.09] sm:p-5"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-[#F6C343] font-[var(--font-display)] text-lg font-bold text-[#051A3A] shadow-[0_8px_20px_rgba(246,195,67,.18)]">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F6C343] font-[var(--font-display)] text-lg font-bold text-[#051A3A] shadow-[0_8px_20px_rgba(246,195,67,.18)]">
                       {stat.value}
                     </span>
-                    <h3 className="mt-5 font-[var(--font-display)] text-base font-bold leading-6 text-white sm:text-lg">
+                    <h3 className="font-[var(--font-display)] text-sm font-bold leading-5 text-white">
                       {stat.label}
                     </h3>
                   </article>
@@ -674,60 +647,40 @@ export default function DubaiNriPage() {
             centered
           />
 
-          {/* Curved workflow chart inspired by the supplied reference — mobile only. */}
-          <div className="relative mx-auto mt-12 h-[622px] w-full max-w-md lg:hidden">
-            <svg
-              viewBox="0 0 360 604"
-              preserveAspectRatio="none"
-              className="pointer-events-none absolute inset-x-0 top-0 h-[604px] w-full"
+          {/* Mobile workflow keeps natural card heights and consistent gaps. */}
+          <div className="relative mx-auto mt-10 grid w-full max-w-md gap-5 lg:hidden">
+            <span
+              className="pointer-events-none absolute bottom-7 left-6 top-7 border-l-2 border-dashed border-[#F6C343]/50"
               aria-hidden="true"
-            >
-              <path
-                d="M32 48 C176 42 330 105 328 174 C326 245 35 230 32 300 C29 372 326 356 328 426 C330 498 150 500 32 552"
-                fill="none"
-                stroke="#F6C343"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeDasharray="9 11"
-                opacity="0.5"
-              />
-              <circle cx="32" cy="48" r="4" fill="#F6C343" />
-              <circle cx="32" cy="552" r="4" fill="#F6C343" />
-            </svg>
+            />
 
             {buyingSteps.map(
-              ({ number, icon: Icon, title, description }, index) => {
-                const layout = mobileWorkflowLayout[index];
-
-                return (
-                  <article
-                    key={number}
-                    className={`absolute inset-x-0 h-[112px] ${layout.top}`}
+              ({ number, icon: Icon, title, description }, index) => (
+                <article
+                  key={number}
+                  className="relative z-10 grid grid-cols-[3rem_1fr] items-start gap-4"
+                >
+                  <span
+                    className={`grid h-12 w-12 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${mobileWorkflowColors[index]}`}
                   >
-                    <div
-                      className={`absolute top-0 z-10 min-h-[112px] rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] py-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)] ${layout.card}`}
-                    >
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                        <span className="inline-flex rounded-full bg-[#051A3A] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#F6C343]">
-                          Step {number}
-                        </span>
-                        <h3 className="font-[var(--font-display)] text-sm font-bold leading-tight text-[#051A3A]">
-                          {title}
-                        </h3>
-                      </div>
-                      <p className="mt-2 text-xs leading-5 text-[#667085]">
-                        {description}
-                      </p>
-                    </div>
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                  </span>
 
-                    <span
-                      className={`absolute top-4 z-20 grid h-16 w-16 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${layout.node}`}
-                    >
-                      <Icon className="h-7 w-7" strokeWidth={1.8} />
-                    </span>
-                  </article>
-                );
-              },
+                  <div className="rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)]">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <span className="inline-flex rounded-full bg-[#051A3A] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#F6C343]">
+                        Step {number}
+                      </span>
+                      <h3 className="font-[var(--font-display)] text-sm font-bold leading-tight text-[#051A3A]">
+                        {title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-[#667085]">
+                      {description}
+                    </p>
+                  </div>
+                </article>
+              ),
             )}
           </div>
 
