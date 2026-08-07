@@ -2,9 +2,13 @@ import DholeraBahrainPage from "./Bahrain";
 
 
 export const metadata = {
-  title: "Dholera Investment from Bahrain | Dholera Insider",
+  title: "Dholera Investment from Bahrain",
   description:
-    "Planning to make a Dholera investment from Bahrain? Dholera Insider helps Bahrain-based NRIs invest in verified residential plot projects with complete transparency and expert support.",
+    "Invest in Dholera Smart City from Bahrain with verified plots, transparent pricing, legal guidance, and complete NRI assistance from start to finish.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function Page() {

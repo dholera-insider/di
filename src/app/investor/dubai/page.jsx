@@ -319,6 +319,7 @@ export default function DubaiNriPage() {
         name="description"
         content="Explore verified residential plots in Dholera Smart City from Dubai. Get transparent pricing, legal guidance, and dedicated support for UAE NRI investors."
       />
+      <meta name="robots" content="noindex, nofollow" />
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-[#051A3A] py-8 md:py-12">
         <div
