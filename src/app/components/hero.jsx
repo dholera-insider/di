@@ -7,9 +7,9 @@ import heroPoster from "@/app/assets/hero/idHero.webp";
 import HeroLeadForm from "../homecomponents/HeroLeadForm";
 
 const trustPoints = [
-  "Legally Verified Residential Projects",
-  "Transparent Buying Process",
-  "Trusted by NRI Investors Worldwide",
+  "Verified Residential Projects",
+  "Registry Ready Plots",
+  "Trusted NRI Guidance",
 ];
 
 const Hero = () => {
@@ -81,14 +81,14 @@ const Hero = () => {
               <h1 className="mb-5 text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-[#051A3A]">
                 Decoding Dholera For NRI
               </h1>
-             {/*  <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">
+              {/*  <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">
                 Decoding Dholera For NRI
               </p> */}
 
               <p className="mb-6 max-w-2xl text-[clamp(1rem,1.5vw,1.125rem)] hidden md:block leading-[1.8] text-[#162033]">
-                Dholera Insider offers exclusive residential plot projects for
-                NRIs, with verified documentation, transparent pricing, and a
-                seamless remote buying experience.
+                Dholera Insider helps NRIs explore verified residential plots in
+                Dholera Smart City with transparent information, legal clarity,
+                and a smooth remote buying experience.
               </p>
 
               <div className="space-y-3">
@@ -103,6 +103,15 @@ const Hero = () => {
                     </li>
                   ))}
                 </ul>
+
+                <a
+                  href="https://wa.me/919211820887?text=Hello%2C%20I%20would%20like%20a%20free%20consultation%20about%20Dholera%20investment."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#F6C343] px-6 py-3 text-base font-bold text-[#051A3A] shadow-lg transition-colors hover:bg-[#FDFCFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#051A3A] focus-visible:ring-offset-2"
+                >
+                  Get Free Consultation
+                </a>
               </div>
             </div>
 

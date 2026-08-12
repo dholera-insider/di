@@ -64,14 +64,13 @@ export default function NRISupport() {
         {/* Header */}
         <div className="mb-6 text-center">
           <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[#051A3A] mb-4">
-            Dedicated Support for NRIs
+            NRI Support Across Multiple Countries
           </h2>
           <div className="mx-auto mb-4 h-1 w-14 rounded-full bg-[#F6C343]" />
-          <p className="max-w-2xl mx-auto text-[#2B364D]/80 leading-relaxed text-[clamp(0.9rem,1.2vw,1rem)]">
-            Every country has different documentation requirements, investment
-            concerns, and buying processes. Dholera Insider provides
-            country-specific guidance to help overseas Indians invest with
-            clarity and confidence. Explore dedicated guides for NRIs in:
+          <p className="max-w-2xl mx-auto text-[#2B364D] leading-relaxed text-[clamp(0.9rem,1.2vw,1rem)]">
+            Wherever you live, investing in Dholera should be simple
+            <br />
+            Explore dedicated investment guidance designed for NRIs living in:
           </p>
         </div>
 
@@ -101,8 +100,6 @@ export default function NRISupport() {
                   className="group flex flex-col items-center gap-4 rounded-2xl border border-[#2B364D]/10 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1.5 bg-[#051A3A] hover:border-[#051A3A] hover:shadow-xl cursor-pointer"
                   style={{ flex: `0 0 ${cardWidth}` }}
                 >
-                
-
                   {/* Gold divider */}
 
                   {/* Icon */}
@@ -113,21 +110,20 @@ export default function NRISupport() {
                   />
 
                   <div className="flex justify-center items-center space-x-4">
-
-                  {/* Flag */}
-                  <div className="overflow-hidden rounded-lg shadow ring-1 ring-black/10">
-                    <img
-                      src={country.flag}
-                      alt={`${country.name} flag`}
-                      className="h-8 w-14 object-cover"
+                    {/* Flag */}
+                    <div className="overflow-hidden rounded-lg shadow ring-1 ring-black/10">
+                      <img
+                        src={country.flag}
+                        alt={`${country.name} flag`}
+                        className="h-8 w-14 object-cover"
                       />
-                  </div>
+                    </div>
 
-                  {/* Country name */}
-                  <p className="text-sm font-semibold text-white group-hover:text-white transition-colors">
-                    {country.name}
-                  </p>
-                      </div>
+                    {/* Country name */}
+                    <p className="text-sm font-semibold text-white group-hover:text-white transition-colors">
+                      {country.name}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

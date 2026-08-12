@@ -1,12 +1,13 @@
 import React from "react";
+import Link from "next/link";
 
 const steps = [
-  { number: "01", label: "Speak with our Dholera experts" },
-  { number: "02", label: "Explore our projects" },
-  { number: "03", label: "Review legal documents" },
-  { number: "04", label: "Reserve your preferred plot" },
-  { number: "05", label: "Complete payment" },
-  { number: "06", label: "Registry & ownership" },
+  { number: "01", label: "Speak With RM" },
+  { number: "02", label: "Explore Projects" },
+  { number: "03", label: "Review Documents" },
+  { number: "04", label: "Book Your Plot" },
+  { number: "05", label: "Complete Payment" },
+  { number: "06", label: "Get Registry" },
 ];
 
 export default function RemoteBuying() {
@@ -21,24 +22,26 @@ export default function RemoteBuying() {
               Remote Buying
             </p>
             <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
-              Buy Your Dholera Plot From Anywhere
+              Buy Your Dholera Plot from Anywhere
             </h2>
           </div>
           <div>
             <div className="mb-5 h-px w-14 bg-[#F6C343]" />
             <p className="text-base leading-relaxed text-[#2B364D]">
-              You don't have to travel to India to begin your investment
-              journey. Our remote buying process is designed to make purchasing
-              a residential plot simple and convenient for NRIs worldwide.
+              You don't need to travel to India to begin your investment
+              journey.
             </p>
           </div>
         </div>
 
         {/* Step timeline */}
         <div className="relative">
+          <h3 className="mb-8 text-center text-xl font-bold text-[#051A3A] sm:text-2xl">
+            Simple Buying Process
+          </h3>
 
           {/* Connecting line — desktop only */}
-          <div className="absolute top-5 left-0 right-0 hidden h-px bg-[#051A3A]/15 lg:block" />
+          <div className="absolute left-0 right-0 top-[4.75rem] hidden h-px bg-[#051A3A]/15 lg:block" />
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-4">
             {steps.map(({ number, label }) => (
@@ -57,6 +60,15 @@ export default function RemoteBuying() {
             ))}
           </div>
 
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/contact"
+            className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#051A3A] px-7 py-3 text-base font-bold text-[#FDFCFA] shadow-lg transition-colors hover:bg-[#F6C343] hover:text-[#051A3A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"
+          >
+            Know the Buying Process
+          </Link>
         </div>
       </div>
     </section>

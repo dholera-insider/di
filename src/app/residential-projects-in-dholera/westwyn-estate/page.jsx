@@ -90,7 +90,7 @@ export default function Hero() {
 
   const projectFeatures = [
     { icon: "🏠", title: "Plot Size", value: "Approx 147-250 sq. yards" },
-    { icon: "💰", title: "Price", value: "₹7,000/Sq.Yd" },
+    { icon: "💰", title: "Price", value: "₹7,500/Sq.Yd" },
     { icon: "🏗️", title: "Project Type", value: "Residential Plots" },
     { icon: "📍", title: "Location", value: "Polarpur, Dholera" },
   ];

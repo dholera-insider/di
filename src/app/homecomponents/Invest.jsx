@@ -1,25 +1,31 @@
-import { Building2, Landmark, Cpu, Zap } from "lucide-react";
+import Link from "next/link";
+import { Building2, Cpu, Home, Landmark, Plane } from "lucide-react";
 
 const highlights = [
   {
     number: "01",
-    label: "India's First Special Investment Region (SIR)",
+    label: "India's First Greenfield Smart City",
     Icon: Landmark,
   },
   {
     number: "02",
-    label: "Government-Planned Infrastructure",
-    Icon: Building2,
-  },
-  {
-    number: "03",
-    label: "India's First Semiconductor Hub",
+    label: "Tata Semiconductor Project",
     Icon: Cpu,
   },
   {
+    number: "03",
+    label: "Airport, Expressway, Rail and DFC Connectivity",
+    Icon: Plane,
+  },
+  {
     number: "04",
-    label: "Plug & Play Infrastructure",
-    Icon: Zap,
+    label: "Government Planned Development",
+    Icon: Building2,
+  },
+  {
+    number: "05",
+    label: "Future Residential Growth",
+    Icon: Home,
   },
 ];
 
@@ -42,7 +48,7 @@ export default function WhyDholera() {
             NRI Investment Destination
           </p>
           <h2 className="mb-5 text-[clamp(1.75rem,4vw,3rem)] font-bold leading-tight text-[#051A3A]">
-            Why NRIs Choose Dholera
+            Why Invest in Dholera?
           </h2>
           <div className="mx-auto mb-6 h-px w-16 bg-[#F6C343]" />
           <p className="mx-auto max-w-2xl text-[clamp(0.9rem,1.2vw,1.05rem)] leading-relaxed text-[#2B364D]/70">
@@ -54,7 +60,7 @@ export default function WhyDholera() {
         </div>
 
         {/* Highlights — bordered horizontal strip */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 border-t border-b border-[#051A3A]/10 divide-y divide-[#051A3A]/10 lg:divide-y-0 lg:divide-x">
+        <div className="grid grid-cols-1 border-y border-[#051A3A]/10 divide-y divide-[#051A3A]/10 lg:grid-cols-5 lg:divide-x lg:divide-y-0">
           {highlights.map(({ number, label, Icon }) => (
             <div
               key={number}
@@ -75,6 +81,15 @@ export default function WhyDholera() {
                 </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/about-dholera-sir"
+            className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#051A3A] px-7 py-3 text-base font-bold text-[#FDFCFA] shadow-lg transition-colors hover:bg-[#F6C343] hover:text-[#051A3A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"
+          >
+            About Dholera
+          </Link>
         </div>
 
       </div>
