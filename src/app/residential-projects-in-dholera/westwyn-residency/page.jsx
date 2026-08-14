@@ -139,6 +139,8 @@ export default function WestWynResidencyContentTemp() {
         name="keywords"
         content="WestWyn Residency Dholera, registry ready plots in Dholera, residential plots in Pipariya, plots in Dholera under 10 lakh, Dholera investment"
       />
+      <meta name="robots" content="noindex, nofollow" />
+
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/westwyn-residency"

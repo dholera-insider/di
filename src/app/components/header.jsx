@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import logo from "@/app/assets/icons/logo.png";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
-import { getPosts, getSub, projectInfo } from "@/sanity/lib/api";
 import { AnimatePresence, motion } from "framer-motion";
 import ContactForm from "@/app/components/Contactform";
 import { MenuIcon } from "lucide-react";
@@ -18,9 +17,6 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState(null);
-  const [projects, setProjects] = useState([]);
-  const [insideDholeraProjects, setInsideDholeraProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   const openContactForm = () => {
@@ -53,58 +49,7 @@ const Header = () => {
   const mainNavItems = [
     /* { name: "NRI Investor", href: "/nri-investor" }, */
     { name: "Home", href: "/" },
-    {
-      name: "Our Projects",
-      key: "dholeraResidential",
-      items: [
-        {
-          name: "WestWyn Residency",
-          href: "/residential-projects-in-dholera/westwyn-residency",
-          status: "available",
-        },
-        {
-          name: "WestWyn Estates",
-          href: "/residential-projects-in-dholera/westwyn-estate",
-          status: "available",
-        },
-        {
-          name: "WestWyn County",
-          href: "/residential-projects-in-dholera/westwyn-county",
-          status: "sold-out",
-        },
-        /* {
-          name: "Paradise",
-          href: "/residential-projects-in-dholera/paradise",
-          status: "sold-out",
-        },
-        {
-          name: "Paradise 2",
-          href: "/residential-projects-in-dholera/paradise-2",
-          status: "sold-out",
-        },
-        {
-          name: "Orchid",
-          href: "/residential-projects-in-dholera/orchid",
-          status: "sold-out",
-        },
-        {
-          name: "Marina bay",
-          href: "/residential-projects-in-dholera/marina-bay",
-          status: "sold-out",
-        },
-        {
-          name: "Maple",
-          href: "/residential-projects-in-dholera/maple",
-          status: "sold-out",
-        },
-        {
-          name: "Pride",
-          href: "/residential-projects-in-dholera/pride",
-          status: "sold-out",
-        }, */
-      ],
-    },
-        { name: "Dholera Blogs", href: "/dholera-sir-blogs" },
+    { name: "Dholera Blogs", href: "/dholera-sir-blogs" },
     { name: "About Dholera", href: "/about-dholera-sir" },
     { name: "Dholera Updates", href: "/dholera-sir-updates" },
 
@@ -154,36 +99,6 @@ const Header = () => {
     );
   };
 
-  // Data fetching
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [projectsData, subProjectsData, insideDholeraData] =
-          await Promise.all([projectInfo(), getSub(), getPosts()]);
-
-        const processProjects = (data) => {
-          const available = data.filter(
-            (project) =>
-              !project.categories?.some((cat) => cat.title === "Sold Out"),
-          );
-          const soldOut = data.filter((project) =>
-            project.categories?.some((cat) => cat.title === "Sold Out"),
-          );
-          return [...available, ...soldOut];
-        };
-
-        setProjects(processProjects([...projectsData, ...subProjectsData]));
-        setInsideDholeraProjects(processProjects(insideDholeraData));
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY >= 50);
@@ -217,29 +132,6 @@ const Header = () => {
       document.body.style.overflow = "auto";
     };
   }, [mobileMenuOpen, isContactFormOpen]);
-
-  // Loading state
-  if (loading) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 left-0 w-full h-20 backdrop-blur-lg bg-[#0b1d3a] border-b border-[#faf8f3]/10 flex justify-between items-center z-50"
-      >
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="relative h-14 w-14 bg-[#faf8f3]/30 rounded-full animate-pulse shadow-lg"></div>
-          <div className="hidden sm:flex space-x-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="h-6 w-16 bg-[#faf8f3]/20 rounded animate-pulse"
-              ></div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
 
   return (
     <>

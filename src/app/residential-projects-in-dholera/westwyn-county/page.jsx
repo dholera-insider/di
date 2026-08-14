@@ -115,6 +115,8 @@ export default function Hero() {
         name="keywords"
         content="WestWyn County Dholera, Dholera plots, Dholera Smart City, Dholera investment, smart city Gujarat"
       />
+      <meta name="robots" content="noindex, nofollow" />
+
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/westwyn-county"

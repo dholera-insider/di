@@ -72,20 +72,20 @@ const Hero = () => {
         )}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCFA]/20 via-[#FDFCFA]/30 to-[#051A3A]/50"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
       <div className="relative max-w-7xl mx-auto z-10 flex min-h-screen items-center">
         <div className="container mx-auto px-4 py-28 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)] lg:gap-12">
             <div className="max-w-3xl">
-              <h1 className="mb-5 text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] text-[#051A3A]">
+              <h1 className="mb-5 text-[clamp(2rem,4.5vw,4.5rem)] font-bold leading-[1.05] text-white">
                 Decoding Dholera For NRI
               </h1>
               {/*  <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">
                 Decoding Dholera For NRI
               </p> */}
 
-              <p className="mb-6 max-w-2xl text-[clamp(1rem,1.5vw,1.125rem)] hidden md:block leading-[1.8] text-[#162033]">
+              <p className="mb-6 max-w-2xl text-[clamp(1rem,1.5vw,1.125rem)] hidden md:block leading-[1.8] text-white">
                 Dholera Insider helps NRIs explore verified residential plots in
                 Dholera Smart City with transparent information, legal clarity,
                 and a smooth remote buying experience.
@@ -96,9 +96,9 @@ const Hero = () => {
                   {trustPoints.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start max-sm:font-semibold gap-3 text-[0.95rem] font-medium text-[#162033]"
+                      className="flex items-start max-sm:font-semibold gap-3 text-[0.95rem] font-medium text-white"
                     >
-                      <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#F6C343]" />
+                      <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-white" />
                       <span>{point}</span>
                     </li>
                   ))}
@@ -108,7 +108,7 @@ const Hero = () => {
                   href="https://wa.me/919211820887?text=Hello%2C%20I%20would%20like%20a%20free%20consultation%20about%20Dholera%20investment."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#F6C343] px-6 py-3 text-base font-bold text-[#051A3A] shadow-lg transition-colors hover:bg-[#FDFCFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#051A3A] focus-visible:ring-offset-2"
+                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#F6C343] px-6 py-3 text-base font-bold text-white shadow-lg transition-colors hover:bg-[#FDFCFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#051A3A] focus-visible:ring-offset-2"
                 >
                   Get Free Consultation
                 </a>

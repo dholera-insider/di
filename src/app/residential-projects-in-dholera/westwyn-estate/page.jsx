@@ -123,6 +123,8 @@ export default function Hero() {
         name="keywords"
         content="WestWyn Estates Dholera, Dholera plots, Dholera Smart City, Dholera investment, investment in Dholera"
       />
+      <meta name="robots" content="noindex, nofollow" />
+
       <link
         rel="canonical"
         href="https://www.dholerainsider.com/residential-projects-in-dholera/westwyn-estate"
