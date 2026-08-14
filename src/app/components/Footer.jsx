@@ -34,7 +34,7 @@ const Footer = () => {
         </div> */}
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* About Us Column */}
           <div>
             <h3 className="text-xl font-semibold text-[#faf8f3] mb-4 border-b border-[#faf8f3]/30 pb-2">
@@ -137,31 +137,6 @@ const Footer = () => {
                   className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
                 >
                   <span className="mr-2">›</span> Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Policies Column */}
-          <div>
-            <h3 className="text-xl font-semibold text-[#faf8f3] mb-4 border-b border-[#faf8f3]/30 pb-2">
-              Our Projects
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/residential-projects-in-dholera/westwyn-estate"
-                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
-                >
-                  <span className="mr-2">›</span>WestWyn Estates
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/residential-projects-in-dholera/westwyn-residency"
-                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
-                >
-                  <span className="mr-2">›</span>WestWyn Residency
                 </Link>
               </li>
             </ul>

@@ -44,10 +44,6 @@ export default async function sitemap() {
 
 /*     { url: `${BASE_URL}/residential-projects-in-dholera/maple`,             priority: 0.8, changeFrequency: "monthly" }, */
 
-    { url: `${BASE_URL}/residential-projects-in-dholera/westwyn-county`,    priority: 0.8, changeFrequency: "monthly" },
-    { url: `${BASE_URL}/residential-projects-in-dholera/westwyn-estate`,    priority: 0.8, changeFrequency: "monthly" },
-    { url: `${BASE_URL}/residential-projects-in-dholera/westwyn-residency`, priority: 0.8, changeFrequency: "monthly" },
-
   ].map((page) => ({ ...page, lastModified: new Date() }));
 
   // ✅ Dynamic URLs

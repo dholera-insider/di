@@ -155,7 +155,7 @@ export default function Hero() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col 2xl:flex-row">
               <Link
-                href="https://wa.me/919211820887?text=I%20want%20details%20about%20WestWyn%20County"
+                href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-lg bg-[#22C967] px-5 py-3 text-center text-sm font-bold text-white shadow-lg shadow-black/20 transition-colors hover:bg-[#1db85c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#051A3A]"
@@ -235,7 +235,7 @@ export default function Hero() {
       </div>
 
       <div>
-        <CommonForm title="Invest in Premium Residential Plots in Dholera Smart City" />
+        <CommonForm title="Start Your Dholera Investment" />
       </div>
 
       <div className="relative">
@@ -357,12 +357,12 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <PopupScroll title="Invest in Verified Plots in Dholera Under ₹10 Lakh" />
+      <PopupScroll title="Book Your Plot Now" />
       <AnimatePresence>
         {brochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
             <BrochureDownload
-              title="Get WestWyn County Brochure"
+              title="Get Dholera Project Details"
               buttonName="Download Brochure"
               onClose={() => closeBrochureForm()}
               link="https://cdn.sanity.io/files/c3e1h345/projects/9f32c6d0d835cfc039e42a741e63894f87fd48ce.pdf"

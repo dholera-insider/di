@@ -10,7 +10,9 @@ const CommonForm = dynamic(() => import("./CommonForm"), {
   ),
 });
 
-export default function LazyCommonFormSection({ title }) {
+export default function LazyCommonFormSection({
+  title = "Start Your Dholera Investment",
+}) {
   const containerRef = useRef(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 

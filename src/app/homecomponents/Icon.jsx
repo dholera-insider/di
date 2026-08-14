@@ -12,12 +12,12 @@ import icon7 from "@/app/assets/svg/Singapore.svg";
 
 const countries = [
   { name: "UAE", flag: "https://flagcdn.com/ae.svg", icon: icon2 },
-  { name: "Bahrain", flag: "https://flagcdn.com/bh.svg", icon: icon },
-  { name: "Singapore", flag: "https://flagcdn.com/sg.svg", icon: icon7 },
-  { name: "Kuwait", flag: "https://flagcdn.com/kw.svg", icon: icon3 },
-  { name: "Oman", flag: "https://flagcdn.com/om.svg", icon: icon4 },
   { name: "Saudi Arabia", flag: "https://flagcdn.com/sa.svg", icon: icon6 },
+  { name: "Bahrain", flag: "https://flagcdn.com/bh.svg", icon: icon },
+  { name: "Kuwait", flag: "https://flagcdn.com/kw.svg", icon: icon3 },
   { name: "Qatar", flag: "https://flagcdn.com/qa.svg", icon: icon5 },
+  { name: "Oman", flag: "https://flagcdn.com/om.svg", icon: icon4 },
+  { name: "Singapore", flag: "https://flagcdn.com/sg.svg", icon: icon7 },
 ];
 
 export default function NRISupport() {
@@ -36,7 +36,7 @@ export default function NRISupport() {
     return () => window.removeEventListener("resize", updateConfig);
   }, []);
 
-  const gap = 16;
+  const gap = 24;
   const maxIndex = Math.max(countries.length - visibleCount, 0);
   const cardWidth = `calc((100% - ${(visibleCount - 1) * gap}px) / ${visibleCount})`;
 
@@ -59,18 +59,16 @@ export default function NRISupport() {
   const activeDot = pageStops.indexOf(current);
 
   return (
-    <section className="bg-[#EEF2F9] py-4 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#EEF2F9] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-6 text-center">
+        <div className="mb-10 text-center md:mb-12">
           <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[#051A3A] mb-4">
-            NRI Support Across Multiple Countries
+            Invest in Dholera From Anywhere
           </h2>
           <div className="mx-auto mb-4 h-1 w-14 rounded-full bg-[#F6C343]" />
           <p className="max-w-2xl mx-auto text-[#2B364D] leading-relaxed text-[clamp(0.9rem,1.2vw,1rem)]">
-            Wherever you live, investing in Dholera should be simple
-            <br />
-            Explore dedicated investment guidance designed for NRIs living in:
+            Get dedicated support designed for NRI investors.
           </p>
         </div>
 
@@ -89,7 +87,7 @@ export default function NRISupport() {
           {/* Track */}
           <div className="overflow-hidden flex-1 py-2">
             <div
-              className="flex gap-4 transition-transform duration-500 ease-in-out"
+              className="flex gap-6 transition-transform duration-500 ease-in-out"
               style={{
                 transform: `translateX(calc(-${current} * (${cardWidth} + ${gap}px)))`,
               }}
@@ -141,7 +139,7 @@ export default function NRISupport() {
         </div>
 
         {/* Dot indicators */}
-        <div className="mt-7 flex justify-center gap-2">
+        <div className="mt-6 flex justify-center gap-2">
           {pageStops.map((stop, i) => (
             <button
               key={stop}

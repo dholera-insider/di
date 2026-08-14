@@ -7,7 +7,10 @@ import InternationalPhoneInput, {
   isValidInternationalPhone,
 } from "./InternationalPhoneInput";
 
-export default function PopupScroll({title, subtitle}) {
+export default function PopupScroll({
+  title = "Book Your Plot Now",
+  subtitle,
+}) {
   // Popup states
   const [showFormPopup, setShowFormPopup] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);

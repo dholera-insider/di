@@ -169,7 +169,7 @@ export default async function Blogs() {
       </div>
 
       {/* Common Form at the bottom */}
-      <CommonForm title="Secure Your Investment In India's First GreenField SmartCity" />
+      <CommonForm title="Start Your Dholera Investment" />
     </>
   );
 }

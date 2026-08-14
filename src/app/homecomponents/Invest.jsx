@@ -31,7 +31,7 @@ const highlights = [
 
 export default function WhyDholera() {
   return (
-    <section className="relative overflow-hidden bg-[#FDFCFA] py-4 px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-[#FDFCFA] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
 
       {/* Watermark */}
       {/* <div className="pointer-events-none hidden md:block select-none absolute inset-0 md:flex items-center justify-center">
@@ -43,20 +43,11 @@ export default function WhyDholera() {
       <div className="relative z-10 mx-auto max-w-7xl">
 
         {/* Centered header */}
-        <div className="mb-16 text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
-            NRI Investment Destination
-          </p>
-          <h2 className="mb-5 text-[clamp(1.75rem,4vw,3rem)] font-bold leading-tight text-[#051A3A]">
+        <div className="mb-10 text-center md:mb-12">
+          <h2 className="mb-4 text-[clamp(1.75rem,4vw,3rem)] font-bold leading-tight text-[#051A3A]">
             Why Invest in Dholera?
           </h2>
-          <div className="mx-auto mb-6 h-px w-16 bg-[#F6C343]" />
-          <p className="mx-auto max-w-2xl text-[clamp(0.9rem,1.2vw,1.05rem)] leading-relaxed text-[#2B364D]/70">
-            Dholera is India's first Greenfield Smart City and one of the country's
-            largest planned infrastructure developments. With major industrial
-            investments, world-class connectivity, and long-term urban planning, it
-            has become an attractive destination for NRI property investors.
-          </p>
+          <div className="mx-auto h-px w-16 bg-[#F6C343]" />
         </div>
 
         {/* Highlights — bordered horizontal strip */}
@@ -83,7 +74,7 @@ export default function WhyDholera() {
           ))}
         </div>
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <Link
             href="/about-dholera-sir"
             className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#051A3A] px-7 py-3 text-base font-bold text-[#FDFCFA] shadow-lg transition-colors hover:bg-[#F6C343] hover:text-[#051A3A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"

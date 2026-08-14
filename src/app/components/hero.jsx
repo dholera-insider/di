@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import heroPoster from "@/app/assets/hero/idHero.webp";
 import HeroLeadForm from "../homecomponents/HeroLeadForm";
@@ -79,13 +80,13 @@ const Hero = () => {
           <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)] lg:gap-12">
             <div className="max-w-3xl">
               <h1 className="mb-5 text-[clamp(2rem,4.5vw,4.5rem)] font-bold leading-[1.05] text-white">
-                Decoding Dholera For NRI
+                Decoding Dholera for NRIs
               </h1>
               {/*  <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">
                 Decoding Dholera For NRI
               </p> */}
 
-              <p className="mb-6 max-w-2xl text-[clamp(1rem,1.5vw,1.125rem)] hidden md:block leading-[1.8] text-white">
+              <p className="mb-6 max-w-2xl hidden md:block text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.8] text-white">
                 Dholera Insider helps NRIs explore verified residential plots in
                 Dholera Smart City with transparent information, legal clarity,
                 and a smooth remote buying experience.
@@ -104,14 +105,17 @@ const Hero = () => {
                   ))}
                 </ul>
 
-                <a
-                  href="https://wa.me/919211820887?text=Hello%2C%20I%20would%20like%20a%20free%20consultation%20about%20Dholera%20investment."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#F6C343] px-6 py-3 text-base font-bold text-white shadow-lg transition-colors hover:bg-[#FDFCFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#051A3A] focus-visible:ring-offset-2"
-                >
-                  Get Free Consultation
-                </a>
+                <div className="mt-6 flex flex-col hidden md:block gap-3 sm:flex-row">
+                  <a
+                    href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#F6C343] px-6 py-3 text-base font-bold text-[#051A3A] shadow-lg transition-colors hover:bg-[#FDFCFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"
+
+                  >
+                    Get Free Consultation
+                  </a>
+                </div>
               </div>
             </div>
 

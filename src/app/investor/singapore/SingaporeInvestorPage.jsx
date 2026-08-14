@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
-  ArrowRight,
   BadgeCheck,
   Building2,
   Check,
@@ -14,14 +12,14 @@ import {
   SearchCheck,
 } from "lucide-react";
 
-import residencyImage from "@/app/assets/residential/westwyn-residency-dholera-project-section.webp";
+import residencyImage from "@/app/assets/investor/dholera-insider-singapore-banner.webp";
 import estatesImage from "@/app/assets/residential/westwyn-estates-dholera-project-section.webp";
 import countyImage from "@/app/assets/residential2/county.webp";
 import { SingaporeFaq } from "./SingaporeInteractive";
 import { FaWhatsapp } from "react-icons/fa";
 
 const WHATSAPP_URL =
-  "https://wa.me/918130371647?text=Hello%2C%20I%20would%20like%20to%20explore%20Dholera%20investment%20from%20Singapore.";
+  "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
 
 const investmentReasons = [
   { icon: Landmark, label: "India's First Greenfield Smart City" },
@@ -162,13 +160,6 @@ export default function SingaporeInvestorPage() {
               in Dholera Smart City with complete transparency, verified
               documentation, and expert guidance.
             </p>
-            <Link
-              href="#why-invest"
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              Explore Verified Projects
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
           </div>
           <ProjectImages />
         </div>

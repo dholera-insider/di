@@ -6,7 +6,12 @@ import InternationalPhoneInput, {
   isValidInternationalPhone,
 } from "../components/InternationalPhoneInput";
 
-export default function LeadForm({ title, headline, buttonName, onClose }) {
+export default function LeadForm({
+  title = "Talk to a Dholera Expert",
+  headline,
+  buttonName,
+  onClose,
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [submissionCount, setSubmissionCount] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);

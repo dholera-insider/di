@@ -30,7 +30,7 @@ export default function FormComponent() {
         <div className=" bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-4">
           <div className="text-center sm:text-left">
             <h3 className="text-lg font-semibold text-white mb-1">
-              Ready to Invest?
+              Start Your Dholera Investment
             </h3>
             <p className="text-white/80 text-sm">
               Get expert guidance & exclusive opportunities
@@ -57,7 +57,7 @@ export default function FormComponent() {
         {isContactFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
             <ContactForm
-              title=""
+              title="Talk to a Dholera Expert"
               buttonName="Get A Call Back"
               onClose={() => closeContactForm()}
             />
@@ -69,7 +69,7 @@ export default function FormComponent() {
         {isBrochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
             <BrochureDownload
-              title=""
+              title="Get Dholera Project Details"
               buttonName="Get A Call Back"
               onClose={() => closeBrochureForm()}
             />

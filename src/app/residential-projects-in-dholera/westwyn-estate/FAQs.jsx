@@ -77,7 +77,7 @@ export default function FAQSection() {
             <div className="pt-4">
               <Link
                 className="px-4 py-3 bg-[#051A3A] text-white font-medium rounded-md hover:bg-[#2B364D] transition"
-                href="tel:+918130371647"
+                href="tel:+919211820887"
               >
                 Give Us A Missed Call
               </Link>

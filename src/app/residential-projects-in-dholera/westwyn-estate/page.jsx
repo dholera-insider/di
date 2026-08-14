@@ -163,7 +163,7 @@ export default function Hero() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col 2xl:flex-row">
               <Link
-                href="https://wa.me/919211820887?text=I%20want%20details%20about%20WestWyn%20Estates"
+                href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-lg bg-[#22C967] px-5 py-3 text-center text-sm font-bold text-white shadow-lg shadow-black/20 transition-colors hover:bg-[#1db85c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#051A3A]"
@@ -258,7 +258,7 @@ export default function Hero() {
             </WestWynResidencyBrochureButton>
 
             <Link
-              href="https://wa.me/919211820887"
+              href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
               className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-[#F6C343] bg-white px-[clamp(1rem,2.5vw,1.25rem)] py-3 text-[0.9375rem] font-medium text-[#051A3A] transition-colors hover:bg-[#2B364D] hover:text-white sm:w-auto"
             >
               <FaWhatsapp className="text-lg" /> Enquire Now
@@ -271,7 +271,7 @@ export default function Hero() {
         <PrimeLocationSection />
       </div>
       <div>
-        <CommonForm title="Own a Registry Ready Plot in Dholera Starting from ₹10 Lakh" />
+        <CommonForm title="Start Your Dholera Investment" />
       </div>
 
       <div className="relative">
@@ -383,7 +383,7 @@ export default function Hero() {
         {brochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
             <BrochureDownload
-              title="Get WestWyn Estates Brochure"
+              title="Get Dholera Project Details"
               buttonName="Download Brochure"
               onClose={() => closeBrochureForm()}
               link="https://cdn.sanity.io/files/c3e1h345/projects/c9471499567c096befb9416aa99c7f0077900d11.pdf"

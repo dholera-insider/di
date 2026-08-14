@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter, Space_Grotesk } from "next/font/google";
 import {
-  ArrowDown,
   ArrowRight,
   BadgeCheck,
   Book,
@@ -55,12 +54,12 @@ const body = Inter({
 });
 
 const PHONE_NUMBER = "+919211820887";
-const WHATSAPP_URL = "https://wa.me/919211820887";
+const WHATSAPP_URL =
+  "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
 
 const sectionLinks = [
   { label: "Why Invest in Dholera?", href: "#why-dholera" },
   { label: "Build a Long Term Asset in India", href: "#documentation" },
-  { label: "Explore Residential Projects", href: "#our-projects" },
   {
     label: "Your Dholera Investment Journey from Dubai",
     href: "#buying-process",
@@ -338,7 +337,7 @@ export default function DubaiNriPage() {
           }}
         />
 
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl px-5 pt-20 sm:px-8 lg:px-10">
           <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-16">
             <div>
               <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel>
@@ -351,16 +350,6 @@ export default function DubaiNriPage() {
                 plots in Dholera Smart City with transparent information, legal
                 clarity, and a smooth remote buying process.
               </p>
-
-              <div className="mt-8 flex flex-wrap items-center gap-5">
-                <Link
-                  href="#our-projects"
-                  className={`group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3.5 text-sm font-bold text-[#051A3A] shadow-[0_12px_30px_rgba(246,195,67,0.22)] transition hover:-translate-y-0.5 hover:bg-[#FFD365] focus:outline-none focus:ring-2 focus:ring-[#F6C343] focus:ring-offset-2 focus:ring-offset-[#051A3A] `}
-                >
-                  Explore Residential Projects
-                  <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-                </Link>
-              </div>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-3">
                 {trustSignals.map(({ icon: Icon, label }) => (
@@ -547,91 +536,6 @@ export default function DubaiNriPage() {
                 to ensure complete transparency.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 03   OUR PROJECTS */}
-      <section
-        id="our-projects"
-        className="scroll-mt-20 px-5 py-8 sm:px-8 md:py-12 lg:px-10"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
-            <SectionHeading
-              eyebrow="Dholera Investment from Dubai"
-              title="Explore Residential Projects"
-            />
-          </div>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <article
-                key={project.name}
-                className="group overflow-hidden rounded-[24px] border border-[#051A3A]/10 bg-white shadow-[0_16px_45px_rgba(5,26,58,.06)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(5,26,58,.12)]"
-              >
-                <div className="relative h-60 overflow-hidden bg-[#E8EDF3] sm:h-[272px]">
-                  <Image
-                    src={project.image}
-                    alt={`${project.name} residential plotted project in Dholera`}
-                    width={450}
-                    height={550}
-                    className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]"
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#051A3A]/90 via-[#051A3A]/45 to-transparent p-6 pt-20">
-                    <h3 className="mt-1 font-[var(--font-display)] text-xl font-bold tracking-[-0.03em] text-white">
-                      {project.name}
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <dl className="space-y-3 text-sm">
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="flex items-center gap-2 text-[#667085]">
-                        <MapPin className="h-4 w-4" /> Location
-                      </dt>
-                      <dd className="text-right font-semibold text-[#344054]">
-                        {project.location}
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="flex items-center gap-2 text-[#667085]">
-                        <Building2 className="h-4 w-4" /> Plot options
-                      </dt>
-                      <dd className="text-right font-semibold text-[#344054]">
-                        {project.sizes}
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="flex items-center gap-2 text-[#667085]">
-                        <FileText className="h-4 w-4" /> Status
-                      </dt>
-                      <dd
-                        className={`text-right font-semibold ${
-                          ["sold out", "Reselling"].includes(project.status)
-                            ? "text-red-600"
-                            : "text-[#2E7D54]"
-                        }`}
-                      >
-                        {project.status}
-                      </dd>
-                    </div>
-                  </dl>
-
-                  <Link
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group mt-6 inline-flex w-full items-center justify-between rounded-xl border border-[#051A3A]/10 px-4 py-3.5 text-sm font-bold text-[#051A3A] transition hover:border-[#F6C343] hover:bg-[#F6C343]/10"
-                  >
-                    <FaWhatsapp className="h-6 w-6 text-green-400" />
-                    Get A Call Back
-                  </Link>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>
@@ -854,7 +758,7 @@ export default function DubaiNriPage() {
 
       {documentsOpen && (
         <BrochureDownload
-          title="Speak with a Dholera Investment Expert"
+          title="Talk to a Dholera Expert"
           subtitle="Dholera Insider helps Dubai NRIs explore verified residential plots in Dholera Smart City with transparent information, legal clarity, and a smooth remote buying process."
           buttonName="Schedule a Video Call"
           thankYouMessage="Your request was submitted successfully."

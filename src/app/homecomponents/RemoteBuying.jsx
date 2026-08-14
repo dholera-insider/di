@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 const steps = [
   { number: "01", label: "Speak With RM" },
@@ -12,11 +11,11 @@ const steps = [
 
 export default function RemoteBuying() {
   return (
-    <section className="bg-[#EEF2F9] py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#EEF2F9] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
 
         {/* Header — split */}
-        <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-end lg:gap-20">
+        <div className="mb-4 text-center grid grid-cols-1 gap-6 md:mb-4 lg:items-end lg:gap-16">
           <div>
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
               Remote Buying
@@ -25,13 +24,12 @@ export default function RemoteBuying() {
               Buy Your Dholera Plot from Anywhere
             </h2>
           </div>
-          <div>
-            <div className="mb-5 h-px w-14 bg-[#F6C343]" />
+          {/* <div>
             <p className="text-base leading-relaxed text-[#2B364D]">
               You don't need to travel to India to begin your investment
               journey.
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Step timeline */}
@@ -43,7 +41,7 @@ export default function RemoteBuying() {
           {/* Connecting line — desktop only */}
           <div className="absolute left-0 right-0 top-[4.75rem] hidden h-px bg-[#051A3A]/15 lg:block" />
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-4">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
             {steps.map(({ number, label }) => (
               <div
                 key={number}
@@ -63,12 +61,14 @@ export default function RemoteBuying() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <Link
-            href="/contact"
+          <a
+            href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#051A3A] px-7 py-3 text-base font-bold text-[#FDFCFA] shadow-lg transition-colors hover:bg-[#F6C343] hover:text-[#051A3A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"
           >
-            Know the Buying Process
-          </Link>
+            Connect with RM
+          </a>
         </div>
       </div>
     </section>

@@ -238,7 +238,7 @@ export default function Hero() {
       </div>
 
       <div>
-        <CommonForm title="Registry Ready Plots Under ₹10 Lakh" />
+        <CommonForm title="Start Your Dholera Investment" />
       </div>
 
       <div className="relative">
@@ -324,12 +324,12 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <PopupScroll title="Invest in Verified Plots in Dholera Under ₹10 Lakh" />
+      <PopupScroll title="Book Your Plot Now" />
       <AnimatePresence>
         {brochureFormOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
             <BrochureDownload
-              title="Get WestWyn Estates Brochure"
+              title="Get Dholera Project Details"
               buttonName="Download Brochure"
               onClose={() => closeBrochureForm()}
               link="https://cdn.sanity.io/files/c3e1h345/projects/c9471499567c096befb9416aa99c7f0077900d11.pdf"

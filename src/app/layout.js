@@ -51,7 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Header />
         {children}
         <Footer />
-        {/* <Whatsapp /> */}
+        <Whatsapp />
       </body>
     </html>
   );

@@ -11,7 +11,7 @@ import InternationalPhoneInput, {
 
 export default function Popup({
   onClose,
-  title,
+  title = "Book Your Plot Now",
   thankYouTitle = "Thank You!",
   thankYouMessage = "Your request has been submitted successfully.",
   source = "Dholera Insider",
@@ -397,7 +397,7 @@ export default function Popup({
               <div className="text-center">
 
                 <h2 className="text-xl md:text-2xl font-bold mb-1 leading-tight text-[#F6C343]">
-                Registry Ready Plots in Dholera
+                {title}
                 </h2>
 
                 {titleInfo.timeLeft && (

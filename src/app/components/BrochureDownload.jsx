@@ -12,7 +12,7 @@ import InternationalPhoneInput, {
 
 export default function BrochureDownload({
   onClose,
-  title,
+  title = "Get Dholera Project Details",
   subtitle = "",
   buttonName,
   thankYouTitle = "Thank You!",

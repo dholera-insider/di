@@ -188,7 +188,7 @@ export default function HeroLeadForm() {
     <div className="w-full rounded-2xl border border-[#F6C343] bg-[#051A3A] p-5 shadow-2xl shadow-[#051A3A]/25 sm:p-6">
       <div className="mb-5 text-center">
         <h2 className="text-xl font-bold leading-tight text-[#FDFCFA] md:text-2xl">
-          Registry Ready Plots in Dholera
+          Buy Registry Ready Plots in Dholera
         </h2>
 
       </div>

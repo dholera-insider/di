@@ -76,14 +76,14 @@ export default function App() {
         }}
       />
 
-      <title>Dholera Smart City Investment | Buy Govt Approved Plots in Dholera</title>
+      <title>Dholera Investment for NRI | Verified Residential Plots</title>
       <meta
         name="description"
-        content="Dholera Smart City investment opportunities with Dholera Insider. Buy govt approved plots in Dholera with site visit, registry, and documentation."
+        content="Dholera Insider helps NRIs explore verified residential plots in Dholera Smart City with transparent information, legal clarity, and a smooth remote buying experience."
       />
       <meta
         name="keywords"
-        content="Dholera Smart City Investment, Dholera SIR, plots in Dholera, Dholera investment, buy plots in Dholera"
+        content="Dholera Investment for NRI, Dholera plots for NRI, Dholera residential plots, NRI investment in Dholera, Buy Dholera plot from abroad, Dholera Smart City investment, Dholera property investment, Buy plot in Dholera, Dholera real estate for NRIs, Dholera plot investment, Invest in Dholera from abroad, Dholera Smart City for NRI investors, Residential plots in Dholera"
       />
       <link rel="canonical" href="https://www.dholerainsider.com" />
 

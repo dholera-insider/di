@@ -277,7 +277,7 @@ export default function SlugPageForm() {
                     
                     {/* Section 2: Sub-heading CTA */}
                     <p className="text-xl md:text-2xl text-white font-semibold">
-                      Own Premium Residential Plots in Dholera
+                      Get Dholera Project Details
                     </p>
                   </div>
 

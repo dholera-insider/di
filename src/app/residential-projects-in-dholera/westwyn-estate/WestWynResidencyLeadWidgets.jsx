@@ -67,11 +67,11 @@ export function WestWynResidencyLeadWidgets() {
 
   return (
     <>
-      <PopupScroll title="Book Your Plot in Dholera" />
+      <PopupScroll title="Book Your Plot Now" />
       {brochureFormOpen && (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-50">
           <BrochureDownload
-            title="Get WestWyn Estates Brochure"
+            title="Get Dholera Project Details"
             buttonName="Download Brochure"
             onClose={() => setBrochureFormOpen(false)}
             link="https://cdn.sanity.io/files/c3e1h345/projects/c9471499567c096befb9416aa99c7f0077900d11.pdf"

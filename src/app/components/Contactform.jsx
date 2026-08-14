@@ -9,7 +9,10 @@ import InternationalPhoneInput, {
   isValidInternationalPhone,
 } from "./InternationalPhoneInput";
 
-export default function ContactForm({ onClose }) {
+export default function ContactForm({
+  onClose,
+  title = "Talk to a Dholera Expert",
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "" });
   const [showPopup, setShowPopup] = useState(false);
@@ -208,6 +211,9 @@ export default function ContactForm({ onClose }) {
     <div
       className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 p-4 z-[1000]"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-form-title"
     >
       <motion.div
         id="contact-form-container"
@@ -248,8 +254,11 @@ export default function ContactForm({ onClose }) {
           transition={{ delay: 0.3 }}
           className="text-center mb-6"
         >
-          <h2 className="text-xl md:text-3xl font-bold text-white mb-2">
-            Book A Site Visit
+          <h2
+            id="contact-form-title"
+            className="text-xl md:text-3xl font-bold text-white mb-2"
+          >
+            {title}
           </h2>
           <p className="text-[#FDFCFA]/80 text-sm">
             Get Expert Guidance on Dholera Investment

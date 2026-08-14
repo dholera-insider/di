@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import projectImage from "@/app/assets/residential/westwyn-residency-dholera-project-section.webp";
+import projectImage from "@/app/assets/investor/dholera-insider-bahrain-banner.webp";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -35,7 +35,7 @@ const body = Geist({
 });
 
 const WHATSAPP_URL =
-  "https://wa.me/918130371647?text=Hello%2C%20I%20would%20like%20to%20explore%20Dholera%20investment%20from%20Bahrain.";
+  "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
 
 const dholeraReasons = [
   { icon: Landmark, label: "India’s First Planned Smart City" },
@@ -260,13 +260,6 @@ export default function DholeraBahrainPage() {
               City with transparent information, legal guidance, and a simple
               remote buying process.
             </p>
-            <a
-              href="#why-dholera"
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              Explore Residential Projects
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
           </div>
           <ProjectImage />
         </div>

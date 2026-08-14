@@ -113,11 +113,20 @@ const TestimonialPagination = () => {
   };
 
   return (
-    <div className="bg-[#FDFCFA] py-8">
+    <div className="bg-[#FDFCFA] py-[clamp(3.5rem,6vw,5rem)]">
       <div className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-[#051A3A]">
-          What Our Clients Say
-        </h2>
+        <div className="mb-10 text-center md:mb-12">
+          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
+            Testimonials
+          </p>
+          <h2 className="mb-4 text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-[#051A3A]">
+            What Our NRI Investors Say
+          </h2>
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-[#2B364D] sm:text-base">
+            Read how overseas Indian investors made informed property decisions
+            with Dholera Insider.
+          </p>
+        </div>
 
         {/* Mobile Slider View */}
         {isMobile && (
@@ -210,7 +219,7 @@ const TestimonialPagination = () => {
             </button>
 
             {/* Testimonial Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <div className="grid grid-cols-1 gap-6 px-4 md:grid-cols-3">
               {currentTestimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}

@@ -8,7 +8,7 @@ import InternationalPhoneInput, {
   isValidInternationalPhone,
 } from "./InternationalPhoneInput";
 
-export default function CommonForm({ title }) {
+export default function CommonForm({ title = "Start Your Dholera Investment" }) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "" });
   const [showPopup, setShowPopup] = useState(false);

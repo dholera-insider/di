@@ -132,7 +132,7 @@ export default async function Blogs() {
             })}
           </div>
         </section>
-        <CommonForm title="Book Dholera's Most Premium Plots" />
+        <CommonForm title="Start Your Dholera Investment" />
       </div>
     </>
   );

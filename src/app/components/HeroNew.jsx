@@ -137,7 +137,7 @@ const HeroNew = () => {
           <div className="w-full max-w-md">
             <Popup
               onClose={closeContactForm}
-              title="Get NRI Project Details"
+              title="Get Dholera Project Details"
               buttonName="Get Details"
             />
           </div>

@@ -44,7 +44,7 @@ export default function HomePopupController() {
   return (
     <Popup
       onClose={() => setpopShowForm(false)}
-      title="Exclusive Deal: Own a plot at â‚¹11,000/sq. yard â€” hurry, limited units! â€“  left"
+      title="Book Your Plot Now"
       buttonName="Get A Call Back"
       className="font-medium"
     />

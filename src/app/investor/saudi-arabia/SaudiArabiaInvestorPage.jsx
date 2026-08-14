@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter, Space_Grotesk } from "next/font/google";
 import {
-  ArrowDown,
   BadgeCheck,
   Building2,
   Check,
@@ -23,7 +22,7 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import heroImage from "@/app/assets/residential/westwyn-residency-dholera-project-section.webp";
+import heroImage from "@/app/assets/investor/dholera-insider-saudi-arabia-banner.webp";
 import countyImage from "@/app/assets/dholera-residential/county-desktop.webp";
 import estatesImage from "@/app/assets/dholera-residential/estates-desktop.webp";
 import residencyImage from "@/app/assets/dholera-residential/residency-desktop.webp";
@@ -42,7 +41,7 @@ const body = Inter({
 
 const PHONE_NUMBER = "+919211820887";
 const WHATSAPP_URL =
-  "https://wa.me/919211820887?text=Hello%2C%20I%20would%20like%20to%20explore%20Dholera%20investment%20from%20Saudi%20Arabia.";
+  "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
 
 const sectionLinks = [
   { label: "Why Invest in Dholera?", href: "#why-invest" },
@@ -50,7 +49,6 @@ const sectionLinks = [
     label: "Why Saudi NRIs Are Choosing Dholera",
     href: "#why-saudi-nris",
   },
-  { label: "Explore Our Projects", href: "#projects" },
   {
     label: "Your Investment Journey from Saudi Arabia",
     href: "#investment-journey",
@@ -234,7 +232,7 @@ export default function SaudiArabiaInvestorPage() {
           }}
         />
 
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-16">
+        <div className="mx-auto grid max-w-7xl pt-20 items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-16">
           <div>
             <SectionLabel inverse>Dholera Investment from Saudi Arabia</SectionLabel>
             <h1 className="max-w-3xl font-[var(--font-saudi-display)] text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
@@ -246,13 +244,6 @@ export default function SaudiArabiaInvestorPage() {
               Dholera Smart City with transparent information, legal guidance,
               and dedicated support from enquiry to registration.
             </p>
-            <a
-              href="#projects"
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3.5 text-sm font-bold text-[#051A3A] shadow-[0_12px_30px_rgba(246,195,67,0.22)] transition hover:-translate-y-0.5 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              Explore Our Projects
-              <ArrowDown className="h-4 w-4" aria-hidden="true" />
-            </a>
           </div>
 
           <div className="relative mx-auto w-full max-w-[800px]">
@@ -351,87 +342,6 @@ export default function SaudiArabiaInvestorPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="projects"
-        className="scroll-mt-20 px-5 py-8 sm:px-8 md:py-12 lg:px-10"
-      >
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            label="Dholera Investment from Saudi Arabia"
-            title="Explore Our Projects"
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {projects.map((project) => (
-              <article
-                key={project.name}
-                className="group overflow-hidden rounded-[24px] border border-[#051A3A]/10 bg-white shadow-[0_16px_45px_rgba(5,26,58,.06)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(5,26,58,.12)]"
-              >
-                <div className="relative h-60 overflow-hidden bg-[#E8EDF3] sm:h-[272px]">
-                  <Image
-                    src={project.image}
-                    alt={`${project.name} residential plotted project in Dholera`}
-                    width={450}
-                    height={550}
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#051A3A]/90 via-[#051A3A]/45 to-transparent p-6 pt-20">
-                    <h3 className="font-[var(--font-saudi-display)] text-xl font-bold text-white">
-                      {project.name}
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <dl className="space-y-3 text-sm">
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="flex items-center gap-2 text-[#667085]">
-                        <MapPin className="h-4 w-4" /> Location
-                      </dt>
-                      <dd className="text-right font-semibold text-[#344054]">
-                        {project.location}
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="flex items-center gap-2 text-[#667085]">
-                        <Building2 className="h-4 w-4" /> Plot options
-                      </dt>
-                      <dd className="text-right font-semibold text-[#344054]">
-                        {project.sizes}
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <dt className="flex items-center gap-2 text-[#667085]">
-                        <FileText className="h-4 w-4" /> Status
-                      </dt>
-                      <dd
-                        className={`text-right font-semibold ${
-                          project.status === "Reselling"
-                            ? "text-red-600"
-                            : "text-[#2E7D54]"
-                        }`}
-                      >
-                        {project.status}
-                      </dd>
-                    </div>
-                  </dl>
-
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#051A3A]/10 px-4 py-3.5 text-sm font-bold text-[#051A3A] transition hover:border-[#F6C343] hover:bg-[#F6C343]/10"
-                  >
-                    <FaWhatsapp className="h-5 w-5" /> Explore Our Projects
-                  </a>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>

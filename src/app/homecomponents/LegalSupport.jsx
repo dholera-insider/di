@@ -18,27 +18,19 @@ const legalServices = [
 
 export function LegalSupport() {
   return (
-    <section className="bg-[#051A3A] py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#051A3A] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-5 lg:items-start lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:items-start lg:gap-16">
           {/* Left — heading + description */}
           <div className="lg:col-span-2">
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
-              Verified Documentation
-            </p>
-            <h2 className="mb-5 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-white">
+            <h2 className="mb-4 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-white">
               Buy with Complete Confidence
             </h2>
-            <div className="mb-6 h-px w-14 bg-[#F6C343]" />
-            <p className="text-base leading-relaxed text-white/80">
-              Review the title, approvals, sale documentation, registry status,
-              and possession details available for your selected project before
-              making a purchase decision.
-            </p>
+            <div className="h-px w-14 bg-[#F6C343]" />
           </div>
 
           {/* Right — 2×4 checklist */}
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-3">
             {legalServices.map(({ label, Icon }) => (
               <div
                 key={label}
