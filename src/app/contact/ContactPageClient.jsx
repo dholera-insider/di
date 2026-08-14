@@ -370,19 +370,19 @@ export default function ContactPageClient({ faqs = [] }) {
         </div>
       </section>
 
-      <section className="bg-[#EEF2F9] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      <section className="bg-[#EEF2F9] px-4 py-[clamp(2.75rem,5vw,4rem)] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-8 text-center">
-            <h2 className="text-[clamp(1.75rem,3.4vw,2.75rem)] font-bold text-[#051A3A]">
+          <div className="mb-6 text-center">
+            <h2 className="text-[clamp(1.625rem,3vw,2.25rem)] font-bold text-[#051A3A]">
               Send Us Your Enquiry
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-[#2B364D]">
+            <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-[#2B364D] sm:text-base">
               Complete the enquiry form and our team will get back to you with
               the information you need.
             </p>
           </div>
 
-          <div className="rounded-2xl bg-[#051A3A] p-5 shadow-[0_20px_50px_rgba(5,26,58,.2)] sm:p-8">
+          <div className="rounded-2xl bg-[#051A3A] p-5 shadow-[0_20px_50px_rgba(5,26,58,.2)] sm:p-6">
             {showSuccess ? (
               <div className="py-8 text-center text-white" role="status">
                 <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#F6C343]">
@@ -410,10 +410,10 @@ export default function ContactPageClient({ faqs = [] }) {
                 24 hours.
               </p>
             ) : (
-              <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+              <form onSubmit={handleSubmit} className="grid gap-4 md:grid-cols-3">
                 {errorMessage && (
                   <div
-                    className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-4 text-sm text-white sm:col-span-2"
+                    className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-white md:col-span-3"
                     role="alert"
                   >
                     {errorMessage}
@@ -421,7 +421,7 @@ export default function ContactPageClient({ faqs = [] }) {
                 )}
 
                 <div>
-                  <label htmlFor="fullName" className="mb-2 block font-medium text-white">
+                  <label htmlFor="fullName" className="mb-1.5 block text-sm font-medium text-white">
                     Full Name
                   </label>
                   <input
@@ -432,12 +432,12 @@ export default function ContactPageClient({ faqs = [] }) {
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="min-h-12 w-full rounded-lg border border-white/15 bg-white px-4 py-3 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
+                    className="min-h-11 w-full rounded-lg border border-white/15 bg-white px-3 py-2.5 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="country" className="mb-2 block font-medium text-white">
+                  <label htmlFor="country" className="mb-1.5 block text-sm font-medium text-white">
                     Country
                   </label>
                   <input
@@ -448,27 +448,12 @@ export default function ContactPageClient({ faqs = [] }) {
                     value={formData.country}
                     onChange={handleChange}
                     required
-                    className="min-h-12 w-full rounded-lg border border-white/15 bg-white px-4 py-3 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
+                    className="min-h-11 w-full rounded-lg border border-white/15 bg-white px-3 py-2.5 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="mb-2 block font-medium text-white">
-                    Email Address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="min-h-12 w-full rounded-lg border border-white/15 bg-white px-4 py-3 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="mb-2 block font-medium text-white">
+                  <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-white">
                     Phone Number
                   </label>
                   <InternationalPhoneInput
@@ -488,50 +473,28 @@ export default function ContactPageClient({ faqs = [] }) {
                   />
                 </div>
 
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="interestedProject"
-                    className="mb-2 block font-medium text-white"
-                  >
-                    Interested Project
-                  </label>
-                  <select
-                    id="interestedProject"
-                    name="interestedProject"
-                    value={formData.interestedProject}
-                    onChange={handleChange}
-                    className="min-h-12 w-full rounded-lg border border-white/15 bg-white px-4 py-3 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
-                  >
-                    <option value="">Select a project</option>
-                    <option value="WestWyn Estates">WestWyn Estates</option>
-                    <option value="WestWyn Residency">WestWyn Residency</option>
-                    <option value="WestWyn County">WestWyn County</option>
-                    <option value="Need Guidance">Need Guidance</option>
-                  </select>
-                </div>
-
-                <div className="sm:col-span-2">
-                  <label htmlFor="message" className="mb-2 block font-medium text-white">
+                <div className="md:col-span-3">
+                  <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-white">
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={5}
+                    rows={3}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full resize-y rounded-lg border border-white/15 bg-white px-4 py-3 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
+                    className="w-full resize-y rounded-lg border border-white/15 bg-white px-3 py-2.5 text-[#162033] outline-none transition focus:border-[#F6C343] focus:ring-2 focus:ring-[#F6C343]/40"
                   />
                 </div>
 
-                <div className="flex justify-center sm:col-span-2">
+                <div className="flex justify-center md:col-span-3">
                   <div ref={recaptchaRef} />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isLoading || isDisabled || !recaptchaLoaded}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#F6C343] px-6 py-3 font-bold text-[#051A3A] transition-colors hover:bg-white disabled:cursor-not-allowed disabled:bg-[#6C7484] disabled:text-white sm:col-span-2"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#F6C343] px-6 py-2.5 font-bold text-[#051A3A] transition-colors hover:bg-white disabled:cursor-not-allowed disabled:bg-[#6C7484] disabled:text-white md:col-span-3"
                 >
                   <Send className="h-5 w-5" aria-hidden="true" />
                   {isLoading ? "Sending..." : "Request a Call Back"}
