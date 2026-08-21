@@ -55,11 +55,12 @@ const Header = () => {
       items: [
         { name: "Bahrain", href: "/investor/bahrain" },
         { name: "Dubai", href: "/investor/dubai" },
-        { name: "Kuwait", href: "/investor/kuwait" },
         { name: "Oman", href: "/investor/oman" },
-        { name: "Qatar", href: "/investor/qatar" },
-        { name: "Saudi Arabia", href: "/investor/saudi-arabia" },
+        { name: "Kuwait", href: "/investor/kuwait" },
         { name: "Singapore", href: "/investor/singapore" },
+        { name: "Qatar", href: "/investor/qatar" },
+        /*  { name: "Hong Kong", href: "/investor/hong-kong" }, */
+        { name: "Saudi Arabia", href: "/investor/saudi-arabia" },
       ],
     },
     { name: "Dholera Blogs", href: "/dholera-sir-blogs" },

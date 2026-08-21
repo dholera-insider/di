@@ -178,7 +178,7 @@ function Skyline() {
 }
 
 function BahrainFaq() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
   const headingId = useId();
 
   return (
@@ -191,7 +191,7 @@ function BahrainFaq() {
           id={headingId}
           className="font-[var(--font-bahrain-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
         >
-          FAQs
+          FAQ
         </h2>
         <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
           {faqItems.map((item, index) => {
@@ -210,7 +210,12 @@ function BahrainFaq() {
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                   >
-                    <span>{item.question}</span>
+                    <span className="flex items-start gap-3">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
+                        Q
+                      </span>
+                      <span>{item.question}</span>
+                    </span>
                     <ChevronDown
                       className={`h-5 w-5 shrink-0 transition-transform ${
                         isOpen ? "rotate-180" : ""
@@ -225,9 +230,14 @@ function BahrainFaq() {
                   aria-labelledby={buttonId}
                   hidden={!isOpen}
                 >
-                  <p className="max-w-3xl pb-5 text-sm leading-7 text-[#051A3A]/70 sm:text-base">
-                    {item.answer}
-                  </p>
+                  <div className="flex max-w-3xl items-start gap-3 pb-5">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
+                      A
+                    </span>
+                    <p className="text-sm leading-7 text-[#051A3A]/70 sm:text-base">
+                      {item.answer}
+                    </p>
+                  </div>
                 </div>
               </article>
             );

@@ -207,7 +207,7 @@ function SectionHeading({ label, title, centered = false, inverse = false }) {
 }
 
 export default function SaudiArabiaInvestorPage() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
   const faqHeadingId = useId();
 
   return (
@@ -458,7 +458,6 @@ export default function SaudiArabiaInvestorPage() {
           </div>
 
           <div aria-labelledby={faqHeadingId}>
-            <SectionLabel>Dholera Investment from Saudi Arabia</SectionLabel>
             <h2
               id={faqHeadingId}
               className="font-[var(--font-saudi-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] text-[#051A3A]"
@@ -482,7 +481,12 @@ export default function SaudiArabiaInvestorPage() {
                         aria-expanded={isOpen}
                         aria-controls={answerId}
                       >
-                        <span>{item.question}</span>
+                        <span className="flex items-start gap-3">
+                          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
+                            Q
+                          </span>
+                          <span>{item.question}</span>
+                        </span>
                         <ChevronDown
                           className={`h-5 w-5 shrink-0 text-[#9A740D] transition-transform ${
                             isOpen ? "rotate-180" : ""
@@ -497,9 +501,14 @@ export default function SaudiArabiaInvestorPage() {
                       aria-labelledby={buttonId}
                       hidden={!isOpen}
                     >
-                      <p className="max-w-3xl pb-5 text-sm leading-7 text-[#667085]">
-                        {item.answer}
-                      </p>
+                      <div className="flex max-w-3xl items-start gap-3 pb-5">
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
+                          A
+                        </span>
+                        <p className="text-sm leading-7 text-[#667085]">
+                          {item.answer}
+                        </p>
+                      </div>
                     </div>
                   </article>
                 );

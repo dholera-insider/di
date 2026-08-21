@@ -46,7 +46,7 @@ const WHATSAPP_URL =
 const sectionLinks = [
   { label: "Why Dholera", href: "#why-dholera" },
   { label: "Why Dholera Insider", href: "#why-us" },
-  { label: "FAQs", href: "#faqs" },
+  { label: "FAQ", href: "#faqs" },
 ];
 
 const trustSignals = [
@@ -121,7 +121,7 @@ function PrimaryButton({ children, onClick, className = "" }) {
 
 export default function QatarInvestorPage() {
   const [formOpen, setFormOpen] = useState(false);
-  const [openFaq, setOpenFaq] = useState(0);
+  const [openFaq, setOpenFaq] = useState(-1);
 
   return (
     <main
@@ -305,14 +305,9 @@ export default function QatarInvestorPage() {
       >
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.65fr_1.35fr] lg:gap-16">
           <div>
-            <SectionLabel>Dholera Plots for NRI in Qatar</SectionLabel>
             <h2 className="font-[var(--font-qatar-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold tracking-[-0.04em] text-[#051A3A]">
-              Frequently Asked Questions
+              FAQ
             </h2>
-            <p className="mt-5 text-base leading-7 text-[#667085]">
-              Practical answers for Qatar NRIs considering residential plots in
-              Dholera Smart City.
-            </p>
           </div>
 
           <div className="divide-y divide-[#051A3A]/10 border-y border-[#051A3A]/10">
@@ -327,8 +322,11 @@ export default function QatarInvestorPage() {
                     aria-expanded={isOpen}
                     aria-controls={`qatar-faq-answer-${index}`}
                   >
-                    <span className="font-[var(--font-qatar-display)] font-bold text-[#051A3A]">
-                      {faq.question}
+                    <span className="flex items-start gap-3 font-[var(--font-qatar-display)] font-bold text-[#051A3A]">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
+                        Q
+                      </span>
+                      <span>{faq.question}</span>
                     </span>
                     <ChevronDown
                       className={`h-5 w-5 shrink-0 text-[#9A740D] transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -339,9 +337,14 @@ export default function QatarInvestorPage() {
                     className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                   >
                     <div className="overflow-hidden">
-                      <p className="max-w-3xl pb-5 text-sm leading-7 text-[#667085]">
-                        {faq.answer}
-                      </p>
+                      <div className="flex max-w-3xl items-start gap-3 pb-5">
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
+                          A
+                        </span>
+                        <p className="text-sm leading-7 text-[#667085]">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

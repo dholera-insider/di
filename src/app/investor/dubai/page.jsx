@@ -306,7 +306,7 @@ function PrimaryButton({ children, onClick, className = "" }) {
 
 export default function DubaiNriPage() {
   const [documentsOpen, setDocumentsOpen] = useState(false);
-  const [openFaq, setOpenFaq] = useState(0);
+  const [openFaq, setOpenFaq] = useState(-1);
 
   return (
     <main
@@ -663,9 +663,8 @@ export default function DubaiNriPage() {
           </div>
 
           <div>
-            <SectionLabel>Dholera Investment from Dubai</SectionLabel>
             <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
-              FAQs
+              FAQ
             </h2>
             <div className="mt-7 divide-y divide-[#051A3A]/10 border-y border-[#051A3A]/10">
               {faqs.map((faq, index) => {
@@ -679,8 +678,11 @@ export default function DubaiNriPage() {
                       aria-expanded={isOpen}
                       aria-controls={`faq-answer-${index}`}
                     >
-                      <span className="font-[var(--font-display)] font-bold text-[#051A3A]">
-                        {faq.question}
+                      <span className="flex items-start gap-3 font-[var(--font-display)] font-bold text-[#051A3A]">
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
+                          Q
+                        </span>
+                        <span>{faq.question}</span>
                       </span>
                       <ChevronDown
                         className={`h-5 w-5 shrink-0 text-[#9A740D] transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -691,9 +693,14 @@ export default function DubaiNriPage() {
                       className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                     >
                       <div className="overflow-hidden">
-                        <p className="max-w-2xl pb-5 text-sm leading-7 text-[#667085]">
-                          {faq.answer}
-                        </p>
+                        <div className="flex max-w-2xl items-start gap-3 pb-5">
+                          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
+                            A
+                          </span>
+                          <p className="text-sm leading-7 text-[#667085]">
+                            {faq.answer}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
