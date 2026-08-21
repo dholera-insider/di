@@ -4,10 +4,6 @@ export const metadata = {
   title: "Dholera Investment from Saudi Arabia",
   description:
     "Explore verified residential plots in Dholera from Saudi Arabia. Invest with transparent pricing, verified documents, and dedicated NRI support through Dholera Insider.",
-  robots: {
-    index: false,
-    follow: false,
-  },
 };
 
 export default function SaudiArabiaPage() {

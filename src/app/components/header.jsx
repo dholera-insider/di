@@ -49,6 +49,19 @@ const Header = () => {
   const mainNavItems = [
     /* { name: "NRI Investor", href: "/nri-investor" }, */
     { name: "Home", href: "/" },
+    {
+      name: "Investor",
+      key: "investor",
+      items: [
+        { name: "Bahrain", href: "/investor/bahrain" },
+        { name: "Dubai", href: "/investor/dubai" },
+        { name: "Kuwait", href: "/investor/kuwait" },
+        { name: "Oman", href: "/investor/oman" },
+        { name: "Qatar", href: "/investor/qatar" },
+        { name: "Saudi Arabia", href: "/investor/saudi-arabia" },
+        { name: "Singapore", href: "/investor/singapore" },
+      ],
+    },
     { name: "Dholera Blogs", href: "/dholera-sir-blogs" },
     { name: "About Dholera", href: "/about-dholera-sir" },
     { name: "Dholera Updates", href: "/dholera-sir-updates" },
@@ -198,10 +211,18 @@ const Header = () => {
                           : "text-[#faf8f3]"
                       }`}
                       onClick={(e) => toggleDropdown(item.key, e)}
+                      aria-expanded={activeDropdown === item.key}
+                      aria-haspopup="menu"
                     >
                       <span className="relative z-10 drop-shadow-lg">
                         {item.name}
                       </span>
+                      <AiOutlineDown
+                        className={`relative z-10 ml-2 text-sm transition-transform duration-300 ${
+                          activeDropdown === item.key ? "rotate-180" : ""
+                        }`}
+                        aria-hidden="true"
+                      />
 
                       <div
                         className={`absolute inset-0 rounded-lg transition-all duration-300 ${
@@ -228,6 +249,7 @@ const Header = () => {
                           transition={{ duration: 0.2, ease: "easeOut" }}
                           className="absolute top-full left-0 mt-4 w-72 backdrop-blur-xl bg-[#0b1d3a] border border-[#faf8f3]/20 rounded-2xl shadow-2xl py-4 z-50 dropdown-container"
                           onClick={(e) => e.stopPropagation()}
+                          role="menu"
                         >
                           <div className="absolute -top-2 left-8 w-4 h-4 bg-[#0b1d3a] border-l border-t border-[#faf8f3]/20 rotate-45"></div>
 
@@ -250,6 +272,7 @@ const Header = () => {
                                     : "text-[#faf8f3] hover:bg-[#faf8f3]/10"
                                 }`}
                                 onClick={() => setActiveDropdown(null)}
+                                role="menuitem"
                               >
                                 <span>{subItem.name}</span>
                                 <StatusBadge status={subItem.status} />

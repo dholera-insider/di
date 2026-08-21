@@ -1,4 +1,5 @@
 import ContactPageClient from "./ContactPageClient";
+import { contactPageSchema } from "../schemaMarkup";
 
 export const metadata = {
   title: "Contact Dholera Insider | Dholera Investment for NRIs",
@@ -59,6 +60,10 @@ const faqSchema = {
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

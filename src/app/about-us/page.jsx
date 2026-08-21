@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { aboutPageSchema } from "../schemaMarkup";
 import {
   ArrowRight,
   BadgeCheck,
@@ -121,20 +122,6 @@ const trustPoints = [
   "Professional Guidance",
   "End-to-End Investment Assistance",
 ];
-
-const aboutPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  name: "About Dholera Insider",
-  url: "https://www.dholerainsider.com/about-us",
-  description:
-    "Dholera Insider is a dedicated platform created exclusively for NRIs looking to invest in verified residential plots in Dholera Smart City.",
-  mainEntity: {
-    "@type": "Organization",
-    name: "Dholera Insider",
-    url: "https://www.dholerainsider.com",
-  },
-};
 
 function SectionHeading({
   eyebrow,
