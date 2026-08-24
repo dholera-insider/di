@@ -2,7 +2,7 @@
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-const preferredCountries = ["in", "ae", "om", "bh", "sa", "qa", "kw", "sg"];
+const preferredCountries = ["in", "ae", "om", "bh", "sa", "qa", "kw", "sg", "hk"];
 
 export const getInternationalPhoneValue = (phone) =>
   phone ? `+${phone.replace(/\D/g, "")}` : "";
