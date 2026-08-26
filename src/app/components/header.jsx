@@ -113,6 +113,13 @@ const Header = () => {
     );
   };
 
+  // Close open navigation UI whenever the App Router changes pages.
+  useEffect(() => {
+    setActiveDropdown(null);
+    setMobileActiveDropdown(null);
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY >= 50);
