@@ -113,7 +113,7 @@ const TestimonialPagination = () => {
   };
 
   return (
-    <div className="bg-[#FDFCFA] py-[clamp(3.5rem,6vw,5rem)]">
+    <div className="overflow-x-clip bg-[#FDFCFA] py-[clamp(3.5rem,6vw,5rem)]">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center md:mb-12">
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
@@ -205,7 +205,7 @@ const TestimonialPagination = () => {
             <button
               onClick={prevPage}
               disabled={currentPage === 1}
-              className={`absolute left-0 top-1/2 -translate-x-12 -translate-y-1/2 rounded-full p-2 ${currentPage === 1 ? "cursor-not-allowed text-[#6C7484]" : "text-[#051A3A] hover:bg-[#051A3A] hover:text-[#FDFCFA]"}`}
+              className={`absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 ${currentPage === 1 ? "cursor-not-allowed text-[#6C7484]" : "text-[#051A3A] hover:bg-[#051A3A] hover:text-[#FDFCFA]"}`}
             >
               <ChevronLeft className="h-8 w-8" />
             </button>
@@ -213,13 +213,13 @@ const TestimonialPagination = () => {
             <button
               onClick={nextPage}
               disabled={currentPage === totalPages}
-              className={`absolute right-0 top-1/2 translate-x-12 -translate-y-1/2 rounded-full p-2 ${currentPage === totalPages ? "cursor-not-allowed text-[#6C7484]" : "text-[#051A3A] hover:bg-[#051A3A] hover:text-[#FDFCFA]"}`}
+              className={`absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full p-2 ${currentPage === totalPages ? "cursor-not-allowed text-[#6C7484]" : "text-[#051A3A] hover:bg-[#051A3A] hover:text-[#FDFCFA]"}`}
             >
               <ChevronRight className="h-8 w-8" />
             </button>
 
             {/* Testimonial Cards */}
-            <div className="grid grid-cols-1 gap-6 px-4 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 px-12 md:grid-cols-3">
               {currentTestimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}
