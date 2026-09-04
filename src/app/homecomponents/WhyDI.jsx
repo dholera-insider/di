@@ -37,9 +37,6 @@ export default function WhyDI() {
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-2 lg:sticky lg:top-24 lg:self-start">
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
-              Why Dholera Insider
-            </p>
             <h2 className="mb-4 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
               Why Choose Dholera Insider?
             </h2>
@@ -53,9 +50,6 @@ export default function WhyDI() {
           </div>
 
           <div className="lg:col-span-3">
-            <h3 className="mb-6 text-xl font-bold text-[#051A3A]">
-              What Makes Us Different
-            </h3>
             <div className="divide-y divide-[#051A3A]/10">
               {features.map(({ Icon, title, description }) => (
                 <div key={title} className="group flex gap-5 py-6 first:pt-0">

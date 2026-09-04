@@ -1,88 +1,247 @@
 import Link from "next/link";
-import { Building2, Cpu, Home, Landmark, Plane } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Cpu,
+  Home,
+  Landmark,
+  Plane,
+} from "lucide-react";
 
 const highlights = [
   {
-    number: "01",
-    label: "India's First Greenfield Smart City",
+    title: "India's First Greenfield Smart City",
+    description: "Greenfield smart city planning built for long term development.",
     Icon: Landmark,
   },
   {
-    number: "02",
-    label: "Tata Semiconductor Project",
+    title: "Tata Semiconductor Project",
+    description: "A major industrial project strengthening Dholera's ecosystem.",
     Icon: Cpu,
   },
   {
-    number: "03",
-    label: "Airport, Expressway, Rail and DFC Connectivity",
+    title: "Strong Multi Modal Connectivity",
+    description: "Airport, expressway, rail and DFC connectivity around Dholera.",
     Icon: Plane,
   },
   {
-    number: "04",
-    label: "Government Planned Development",
+    title: "Government Planned Development",
+    description: "Planned infrastructure and development supporting future growth.",
     Icon: Building2,
   },
   {
-    number: "05",
-    label: "Future Residential Growth",
+    title: "Future Residential Growth",
+    description: "Long term residential potential as Dholera continues to develop.",
     Icon: Home,
   },
 ];
 
 export default function WhyDholera() {
   return (
-    <section className="relative overflow-hidden bg-[#FDFCFA] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
-
-      {/* Watermark */}
-      {/* <div className="pointer-events-none hidden md:block select-none absolute inset-0 md:flex items-center justify-center">
-        <span className="whitespace-nowrap text-[clamp(5rem,16vw,15rem)] font-black uppercase tracking-[0.2em] text-[#051A3A]/[0.09]">
-          DHOLERA
-        </span>
-      </div> */}
-
+    <section
+      aria-labelledby="why-dholera-heading"
+      className="
+        relative
+        overflow-hidden
+        bg-[#FDFCFA]
+        px-4
+        py-14
+        sm:px-6
+        sm:py-16
+        lg:px-8
+        lg:py-20
+      "
+    >
       <div className="relative z-10 mx-auto max-w-7xl">
-
-        {/* Centered header */}
-        <div className="mb-10 text-center md:mb-12">
-          <h2 className="mb-4 text-[clamp(1.75rem,4vw,3rem)] font-bold leading-tight text-[#051A3A]">
+        {/* Header */}
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+          <h2
+            id="why-dholera-heading"
+            className="
+              text-[clamp(2rem,4vw,3rem)]
+              font-bold
+              leading-[1.15]
+              tracking-tight
+              text-[#051A3A]
+            "
+          >
             Why Invest in Dholera?
           </h2>
-          <div className="mx-auto h-px w-16 bg-[#F6C343]" />
+          <div className="mx-auto mt-5 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+
         </div>
 
-        {/* Highlights — bordered horizontal strip */}
-        <div className="grid grid-cols-1 border-y border-[#051A3A]/10 divide-y divide-[#051A3A]/10 lg:grid-cols-5 lg:divide-x lg:divide-y-0">
-          {highlights.map(({ number, label, Icon }) => (
-            <div
-              key={number}
-              className="group flex flex-col gap-5 px-8 py-4 transition-colors duration-300 hover:bg-[#051A3A]/[0.03]"
+        {/* Investment Highlights */}
+        <ul
+          className="
+            grid
+            grid-cols-1
+            gap-4
+            sm:grid-cols-2
+            sm:gap-5
+            lg:grid-cols-3
+            xl:grid-cols-5
+          "
+        >
+          {highlights.map(({ title, description, Icon }) => (
+            <li
+              key={title}
+              className="
+                group
+                relative
+                flex
+                items-start
+                gap-4
+                overflow-hidden
+                rounded-2xl
+                border
+                border-[#051A3A]/10
+                bg-white
+                p-5
+                shadow-[0_5px_20px_rgba(5,26,58,0.05)]
+                transition-[border-color,box-shadow,transform]
+                duration-300
+                motion-safe:hover:-translate-y-1
+                hover:border-[#F6C343]/70
+                hover:shadow-[0_12px_30px_rgba(5,26,58,0.10)]
+                motion-reduce:transform-none
+                motion-reduce:transition-none
+
+                sm:min-h-[205px]
+                sm:flex-col
+                sm:p-6
+              "
             >
-              <span className="font-mono text-4xl font-black leading-none text-[#051A3A] transition-colors group-hover:text-[#F6C343]">
-                {number}
-              </span>
-              <div className="flex items-center gap-3">
+              {/* Gold top detail */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  left-0
+                  top-0
+                  h-[3px]
+                  w-0
+                  bg-[#F6C343]
+                  transition-all
+                  duration-300
+                  motion-safe:group-hover:w-full
+                  motion-reduce:transition-none
+                "
+              />
 
-              <Icon
-                className="h-7 w-7 text-[#F6C343]"
-                strokeWidth={1.25}
+              {/* Icon */}
+              <div
+                className="
+                  flex
+                  h-12
+                  w-12
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-xl
+                  border
+                  border-[#F6C343]/30
+                  bg-[#FFF8DF]
+                  text-[#C99C18]
+
+                  sm:h-14
+                  sm:w-14
+                "
+              >
+                <Icon
+                  aria-hidden="true"
+                  className="h-6 w-6 sm:h-7 sm:w-7"
+                  strokeWidth={1.7}
                 />
-              <p className="text-sm font-medium leading-relaxed text-[#2B364D] transition-colors group-hover:text-[#051A3A]">
-                {label}
-              </p>
-                </div>
-            </div>
-          ))}
-        </div>
+              </div>
 
-        <div className="mt-10 flex justify-center">
+              {/* Content */}
+              <div className="min-w-0">
+                <h3
+                  className="
+                    text-[17px]
+                    font-bold
+                    leading-6
+                    text-[#051A3A]
+                    sm:text-lg
+                  "
+                >
+                  {title}
+                </h3>
+
+                <p
+                  className="
+                    mt-2
+                    text-[15px]
+                    leading-6
+                    text-[#5B6475]
+                    sm:text-base
+                  "
+                >
+                  {description}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+      
+
+        {/* CTA */}
+        <div className="mt-8 flex justify-center sm:mt-10">
           <Link
             href="/about-dholera-sir"
-            className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#051A3A] px-7 py-3 text-base font-bold text-[#FDFCFA] shadow-lg transition-colors hover:bg-[#F6C343] hover:text-[#051A3A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"
+            className="
+              group
+              inline-flex
+              min-h-[52px]
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-[#051A3A]
+              px-7
+              py-3
+              text-base
+              font-bold
+              text-white
+              shadow-[0_8px_20px_rgba(5,26,58,0.16)]
+              transition-[background-color,color,box-shadow,transform]
+              duration-300
+
+              hover:bg-[#F6C343]
+              hover:text-[#051A3A]
+              hover:shadow-[0_10px_25px_rgba(5,26,58,0.18)]
+
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-[#F6C343]
+              focus-visible:ring-offset-2
+
+              motion-safe:hover:-translate-y-0.5
+              motion-reduce:transform-none
+              motion-reduce:transition-none
+
+              sm:w-auto
+            "
           >
             About Dholera
+
+            <ArrowRight
+              aria-hidden="true"
+              className="
+                h-5
+                w-5
+                transition-transform
+                duration-300
+                motion-safe:group-hover:translate-x-1
+                motion-reduce:transition-none
+              "
+              strokeWidth={2}
+            />
           </Link>
         </div>
-
       </div>
     </section>
   );

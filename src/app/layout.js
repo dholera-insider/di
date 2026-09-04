@@ -1,12 +1,20 @@
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/Footer";
 import Script from "next/script";
 import Whatsapp from "./components/whatsapp";
 
-const poppins = Poppins({
-  weight: "400",
+// const poppins = Poppins({
+//   weight: "400",
+//   subsets: ["latin"],
+//   display: "swap",
+//   preload: true,
+// });
+
+const manrope = Manrope({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
   preload: true,
@@ -41,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
 
-      <body className={poppins.className}>
+      <body className={manrope.className}>
         {/* tag manager */}
         <noscript
           dangerouslySetInnerHTML={{

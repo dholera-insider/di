@@ -77,41 +77,113 @@ const Hero = () => {
 
       <div className="relative max-w-7xl mx-auto z-10 flex min-h-screen items-center">
         <div className="container mx-auto px-4 py-28 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)] lg:gap-12">
-            <div className="max-w-3xl">
-              <h1 className="mb-5 text-[clamp(2rem,4.5vw,4.5rem)] font-bold leading-[1.05] text-white">
+          <div
+            className="
+              grid
+              items-start
+              gap-8
+              lg:grid-cols-[minmax(0,1fr)_minmax(22rem,26rem)]
+              lg:gap-12
+            "
+          >
+            {/* Left Content */}
+            <div className="w-full min-w-0 max-w-3xl">
+              {/* Heading */}
+              <h1
+                className="
+                  mb-4
+                  max-w-2xl
+                  text-[clamp(2.45rem,3vw,3rem)]
+                  font-bold
+                  leading-[1.12]
+                  tracking-tight
+                  text-[#FDFCFA]
+                  sm:mb-5
+                "
+              >
                 Decoding Dholera for NRIs
               </h1>
-              {/*  <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">
-                Decoding Dholera For NRI
-              </p> */}
 
-              <p className="mb-6 max-w-2xl hidden md:block text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.8] text-white">
+          
+
+              {/* Description */}
+              <p
+                className="
+                  mb-5
+                  hidden
+                  max-w-2xl
+                  text-[clamp(1rem,1.25vw,1.125rem)]
+                  leading-[1.7]
+                  text-white
+                  md:block
+                  lg:mb-6
+                "
+              >
                 Dholera Insider helps NRIs explore verified residential plots in
                 Dholera Smart City with transparent information, legal clarity,
                 and a smooth remote buying experience.
               </p>
 
-              <div className="space-y-3">
-                <ul className="space-y-3">
+              {/* Trust Points */}
+              <div>
+                <ul className="space-y-2.5 sm:space-y-3">
                   {trustPoints.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start max-sm:font-semibold gap-3 text-[0.95rem] font-medium text-white"
+                      className="
+                        flex
+                        items-start
+                        gap-3
+                        text-[0.95rem]
+                        font-medium
+                        leading-6
+                        text-white
+                        max-sm:font-semibold
+                        sm:text-base
+                      "
                     >
-                      <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-white" />
-                      <span>{point}</span>
+                      <CheckCircle
+                        className="
+                          mt-0.5
+                          h-5
+                          w-5
+                          flex-shrink-0
+                          text-white
+                        "
+                      />
+
+                      <span className="min-w-0">{point}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-6 flex flex-col hidden md:block gap-3 sm:flex-row">
+                {/* CTA */}
+                <div className="mt-5 hidden md:flex lg:mt-6">
                   <a
                     href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#F6C343] px-6 py-3 text-base font-bold text-[#051A3A] shadow-lg transition-colors hover:bg-[#FDFCFA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"
-
+                    className="
+                      inline-flex
+                      min-h-12
+                      items-center
+                      justify-center
+                      rounded-lg
+                      bg-[#F6C343]
+                      px-6
+                      py-3
+                      text-base
+                      font-bold
+                      text-[#051A3A]
+                      shadow-lg
+                      transition-colors
+                      duration-200
+                      hover:bg-[#FDFCFA]
+                      focus-visible:outline-none
+                      focus-visible:ring-2
+                      focus-visible:ring-[#F6C343]
+                      focus-visible:ring-offset-2
+                    "
                   >
                     Get Free Consultation
                   </a>
@@ -119,7 +191,18 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="w-full justify-self-center lg:justify-self-end">
+            {/* Hero Lead Form */}
+            <div
+              className="
+                w-full
+                min-w-0
+                max-w-[26rem]
+                justify-self-center
+                self-start
+                lg:w-full
+                lg:justify-self-end
+              "
+            >
               <HeroLeadForm />
             </div>
           </div>

@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ContactForm from "@/app/components/Contactform";
 import { MenuIcon } from "lucide-react";
 
+
 const Header = () => {
   const pathname = usePathname();
   const [header, setHeader] = useState(false);
@@ -195,6 +196,8 @@ const Header = () => {
                 placeholder="blur"
                 fetchPriority="high"
               />
+
+
             </motion.div>
           </Link>
 

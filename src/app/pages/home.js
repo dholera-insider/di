@@ -26,7 +26,6 @@ const HomePage = () => {
       <TestimonialPagination />
       <CTAsection />
       <FAQSection />
-      <ScrollToTopButton />
     </div>
   );
 };

@@ -116,9 +116,9 @@ const TestimonialPagination = () => {
     <div className="overflow-x-clip bg-[#FDFCFA] py-[clamp(3.5rem,6vw,5rem)]">
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center md:mb-12">
-          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
+          {/* <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">
             Testimonials
-          </p>
+          </p> */}
           <h2 className="mb-4 text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-[#051A3A]">
             What Our NRI Investors Say
           </h2>
@@ -144,8 +144,8 @@ const TestimonialPagination = () => {
                 {/* <div className="flex justify-center -mt-16 mb-4">
                   <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-[#F6C343]">
                     <Image
-                      src={testimonials[currentMobileIndex].avatar}
-                      alt={testimonials[currentMobileIndex].name}
+                      src={"testimonials[currentMobileIndex].avatar"}
+                      alt={"Avtar"}
                     />
                   </div>
                 </div> */}
