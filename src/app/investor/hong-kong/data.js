@@ -10,7 +10,7 @@ export const hongKongFaqs = [
       "Dholera may suit NRIs looking for long term property investment in a developing smart city with major infrastructure and industrial projects.",
   },
   {
-    question: "Can I invest in Dholera from Hong Kong without visiting India?",
+    question: "Can I buy a Dholera plot without visiting India?",
     answer:
       "Much of the initial process can be handled remotely through virtual consultations, project information and document review, subject to the required legal and registration formalities.",
   },
@@ -20,7 +20,8 @@ export const hongKongFaqs = [
       "Check the location, title, ownership, NA/NOC, approvals, project layout, development status, total cost and registration process.",
   },
   {
-    question: "How does Dholera Insider help Hong Kong NRIs?",
+    question:
+      "Why choose Dholera Insider for Dholera investment from Hong Kong?",
     answer:
       "Dholera Insider helps Hong Kong NRIs explore residential plots, understand project details and receive support from project selection through registration.",
   },

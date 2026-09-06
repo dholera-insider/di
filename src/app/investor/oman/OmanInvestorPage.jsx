@@ -262,7 +262,15 @@ export default function OmanInvestorPage() {
         className="scroll-mt-28 border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
       >
         <div className="mx-auto max-w-7xl">
-          <h2 className="mx-auto max-w-3xl text-center font-[var(--font-oman-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em]">
+          <h2 className="
+           w-full
+                  text-left
+                  font-[var(--font-bahrain-display)]
+                  text-[clamp(1.75rem,3vw,2.65rem)]
+                  font-bold
+                  leading-[1.12]
+                  tracking-[-0.035em]
+                  ">
             How to Buy a Dholera Plot from Oman
           </h2>
 

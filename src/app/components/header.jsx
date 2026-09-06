@@ -60,7 +60,7 @@ const Header = () => {
         { name: "Kuwait", href: "/investor/kuwait" },
         { name: "Singapore", href: "/investor/singapore" },
         { name: "Qatar", href: "/investor/qatar" },
-        /*  { name: "Hong Kong", href: "/investor/hong-kong" }, */
+        { name: "Hong Kong", href: "/investor/hong-kong" }, 
         { name: "Saudi Arabia", href: "/investor/saudi-arabia" },
       ],
     },

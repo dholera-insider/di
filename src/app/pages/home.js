@@ -1,7 +1,5 @@
 import Hero from "../components/hero";
 import CTAsection from "../components/CTAsection";
-import ScrollToTopButton from "../components/ScrollToTopButton";
-
 import Invest from "../homecomponents/Invest";
 import WhyDI from "../homecomponents/WhyDI";
 import WestWyn_Estate from "../homecomponents/WestWyn_Estate";
@@ -11,6 +9,9 @@ import RemoteBuying from "../homecomponents/RemoteBuying";
 import Icon from "../homecomponents/Icon";
 import { LegalSupport } from "../homecomponents/LegalSupport";
 import CommonForm from "../components/CommonForm";
+import DholeraInvestmentForm from "../homecomponents/DholeraInvesmentForm";
+
+
 
 const HomePage = () => {
   return (
@@ -18,9 +19,8 @@ const HomePage = () => {
       <Hero />
       <Icon />
       <Invest />
-      <CommonForm/>
+      <DholeraInvestmentForm/>
       <LegalSupport />
-      
       <RemoteBuying />
       <WhyDI />
       <TestimonialPagination />

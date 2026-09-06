@@ -1,6 +1,8 @@
 import { Geist, Space_Grotesk } from "next/font/google";
 
-import socialImage from "@/app/assets/about-dholera-sir-banner-dholera-insider.webp";
+import socialImage from "@/app/assets/investor/dholera-insider-hong-kong-banner.webp";
+
+
 import HongKongInvestorPage from "./HongKongInvestorPage";
 import { hongKongFaqs } from "./data";
 
@@ -22,14 +24,13 @@ export const metadata = {
   description:
     "Explore Dholera investment from Hong Kong with residential plots, clear project information and dedicated NRI support from Dholera Insider.",
   keywords: [
-    "Dholera Investment from Hong Kong",
-    "Dholera Plots for NRI in Hong Kong",
-    "Buy Dholera Plot from Hong Kong",
-    "Dholera Smart City Investment Hong Kong",
-    "Dholera Residential Plots for Hong Kong NRIs",
-    "Dholera Property Investment from Hong Kong",
-    "Invest in Dholera from Hong Kong",
-    "Dholera Plot Investment for NRIs",
+     "Dholera Plots for NRI in Hong Kong",
+     "Buy Dholera Plot from Hong Kong",
+     "Dholera Smart City Investment Hong Kong",
+     "Dholera Residential Plots for Hong Kong NRIs",
+     "Dholera Property Investment from Hong Kong",
+     "Invest in Dholera from Hong Kong",
+     "Dholera Plot Investment for NRIs"
   ],
   alternates: {
     canonical: "https://www.dholerainsider.com/investor/hong-kong",

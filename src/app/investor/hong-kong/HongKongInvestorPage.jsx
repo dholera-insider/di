@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import heroImage from "@/app/assets/about-dholera-sir-banner-dholera-insider.webp";
+import heroImage from "@/app/assets/investor/dholera-insider-hong-kong-banner.webp";
 import { HongKongFaq } from "./HongKongInteractive";
 
 const WHATSAPP_URL =
@@ -34,27 +34,35 @@ const journeySteps = [
   {
     number: "1",
     icon: MessageCircle,
-    text: "Discuss your investment goals and requirements.",
+    title: "Talk to a Dholera Expert",
+    description: "Discuss your investment goals and requirements.",
   },
   {
     number: "2",
     icon: SearchCheck,
-    text: "Review project locations, plot sizes and development details.",
+    title: "Explore Residential Projects",
+    description:
+      "Review project locations, plot sizes and development details.",
   },
   {
     number: "3",
     icon: FileCheck2,
-    text: "Get guidance on the relevant project and ownership documents.",
+    title: "Understand the Documents",
+    description:
+      "Get guidance on the relevant project and ownership documents.",
   },
   {
     number: "4",
     icon: MapPin,
-    text: "Select a property based on your requirements and investment plan.",
+    title: "Choose Your Plot",
+    description:
+      "Select a property based on your requirements and investment plan.",
   },
   {
     number: "5",
     icon: BadgeCheck,
-    text: "Complete the full payment and get your plot registry.",
+    title: "Complete Payment and Get Registry",
+    description: "Complete the full payment and get your plot registry.",
   },
 ];
 
@@ -165,7 +173,7 @@ export default function HongKongInvestorPage() {
       >
         <div className="mx-auto max-w-7xl">
           <h2 className="font-[var(--font-hong-kong-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
-            Dholera Smart City Investment Hong Kong
+            Why Dholera ?
           </h2>
           <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
             {investmentReasons.map(({ icon: Icon, label }) => (
@@ -190,8 +198,22 @@ export default function HongKongInvestorPage() {
         className="scroll-mt-28 border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
       >
         <div className="mx-auto max-w-7xl">
-          <h2 className="mx-auto max-w-3xl text-center font-[var(--font-hong-kong-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em]">
-            Buy Dholera Plot from Hong Kong
+          {/* <h2 className="mx-auto max-w-3xl text-center font-[var(--font-bahrain-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em]">
+                  Your Dholera Investment Journey from Bahrain
+                </h2> */}
+
+          <h2
+            className="
+                  w-full
+                  text-left
+                  font-[var(--font-bahrain-display)]
+                  text-[clamp(1.75rem,3vw,2.65rem)]
+                  font-bold
+                  leading-[1.12]
+                  tracking-[-0.035em]
+                "
+          >
+            Your Dholera Investment Journey from Bahrain
           </h2>
 
           <div className="relative mx-auto mt-10 grid w-full max-w-md gap-5 lg:hidden">
@@ -199,45 +221,83 @@ export default function HongKongInvestorPage() {
               className="pointer-events-none absolute bottom-7 left-6 top-7 border-l-2 border-dashed border-[#F6C343]/50"
               aria-hidden="true"
             />
-            {journeySteps.map(({ number, icon: Icon, text }, index) => (
-              <article
-                key={number}
-                className="relative z-10 grid grid-cols-[3rem_1fr] items-start gap-4"
-              >
-                <span
-                  className={`grid h-12 w-12 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${mobileJourneyColors[index]}`}
+
+            {journeySteps.map(
+              ({ number, icon: Icon, title, description }, index) => (
+                <article
+                  key={number}
+                  className="relative z-10 grid grid-cols-[3rem_1fr] items-start gap-4"
                 >
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <div className="rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)]">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
-                    Step {number}
+                  <span
+                    className={`grid h-12 w-12 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${mobileJourneyColors[index]}`}
+                  >
+                    <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-2 font-[var(--font-hong-kong-display)] text-sm font-bold leading-6 text-[#051A3A]">
-                    {text}
-                  </h3>
-                </div>
-              </article>
-            ))}
+
+                  <div className="rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)]">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <span className="inline-flex rounded-full bg-[#051A3A] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#F6C343]">
+                        Step {number}
+                      </span>
+                      <h3 className="font-[var(--font-bahrain-display)] text-sm font-bold leading-tight text-[#051A3A]">
+                        {title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-[#051A3A]/65">
+                      {description}
+                    </p>
+                  </div>
+                </article>
+              ),
+            )}
           </div>
 
           <div className="relative mt-14 hidden lg:block">
             <div className="absolute left-6 top-7 h-px w-[calc(100%-3rem)] bg-[#051A3A]/10" />
             <div className="grid grid-cols-5 gap-5">
-              {journeySteps.map(({ number, icon: Icon, text }) => (
-                <article key={number} className="relative text-center">
-                  <span className="relative z-10 mx-auto grid h-14 w-14 place-items-center rounded-full border-4 border-white bg-[#051A3A] text-[#F6C343] shadow-[0_8px_20px_rgba(5,26,58,.18)]">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <span className="mt-5 inline-block text-[11px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
-                    Step {number}
-                  </span>
-                  <h3 className="mt-2 font-[var(--font-hong-kong-display)] text-base font-bold leading-6 text-[#051A3A]">
-                    {text}
-                  </h3>
-                </article>
-              ))}
+              {journeySteps.map(
+                ({ number, icon: Icon, title, description }) => (
+                  <article key={number} className="relative text-center">
+                    <div className="flex flex-col items-center gap-5">
+                      <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full border-4 border-white bg-[#051A3A] text-[#F6C343] shadow-[0_8px_20px_rgba(5,26,58,.18)]">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <div>
+                        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
+                          Step {number}
+                        </span>
+                        <h3 className="mt-1 font-[var(--font-bahrain-display)] text-base font-bold text-[#051A3A]">
+                          {title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="mt-4 px-2 text-sm leading-6 text-[#051A3A]/65">
+                      {description}
+                    </p>
+                  </article>
+                ),
+              )}
             </div>
+          </div>
+
+          <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-[24px] bg-[#051A3A] px-6 py-7 text-center sm:flex-row sm:px-8 sm:text-left">
+            <div className="flex items-center gap-4">
+              <span className="hidden h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/10 text-[#F6C343] sm:grid">
+                <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <p className="font-[var(--font-bahrain-display)] text-lg font-bold text-white">
+                Get Investment Guidance
+              </p>
+            </div>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-[#F6C343] px-5 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+              Get Investment Guidance
+            </a>
           </div>
         </div>
       </section>
@@ -246,7 +306,7 @@ export default function HongKongInvestorPage() {
         <Skyline />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
           <h2 className="font-[var(--font-hong-kong-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
-            Dholera Residential Plots for Hong Kong NRIs
+            Why Choose Dholera Insider ?
           </h2>
           <div>
             <div className="divide-y divide-white/15 border-y border-white/15">
@@ -262,6 +322,7 @@ export default function HongKongInvestorPage() {
                 </div>
               ))}
             </div>
+
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -271,6 +332,10 @@ export default function HongKongInvestorPage() {
               <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
               Talk to a Dholera Investment Expert
             </a>
+
+            {/* <p className="mt-3 text-sm font-bold">
+                Your Future in India Can Start From Hong Kong
+              </p> */}
           </div>
         </div>
       </section>

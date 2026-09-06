@@ -23,10 +23,19 @@ export function LegalSupport() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:items-start lg:gap-16">
           {/* Left — heading + description */}
           <div className="lg:col-span-2">
-            <h2 className="mb-4 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-white">
-              Buy with Complete Confidence
-            </h2>
-            <div className="h-px w-14 bg-[#F6C343]" />
+            <h2 className="mb-4 text-center text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-white sm:text-left">
+                Buy with Complete Confidence
+              </h2>
+
+            <div
+              className="
+                mx-auto
+                h-px
+                w-14
+                bg-[#F6C343]
+                sm:mx-0
+              "
+            />
           </div>
 
           {/* Right — 2×4 checklist */}

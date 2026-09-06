@@ -33,7 +33,7 @@ import {
   WalletCards,
 } from "lucide-react";
 
-import heroImage from "@/app/assets/dholera-dubai.webp";
+import heroImage from "@/app/assets/investor/dholera-insider-dubai-banner.webp";
 import roiImage from "@/app/assets/dholera-plots-roi.webp";
 import BrochureDownload from "@/app/components/BrochureDownload";
 import { FaWhatsapp, FaWhatsappSquare } from "react-icons/fa";
@@ -269,18 +269,20 @@ function SectionHeading({
   centered = false,
 }) {
   return (
-    <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <SectionLabel inverse={inverse}>{eyebrow}</SectionLabel>
+    <div className="max-w-5xl text-left">
+      {/* <SectionLabel inverse={inverse}>{eyebrow}</SectionLabel> */}
+
       <h2
-        className={`font-[var(--font-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] ${
+        className={`font-[var(--font-display)] text-left text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] ${
           inverse ? "text-white" : "text-[#051A3A]"
         }`}
       >
         {title}
       </h2>
+
       {copy && (
         <p
-          className={`mt-5 text-base leading-7 sm:text-lg ${
+          className={`mt-5 text-left text-base leading-7 sm:text-lg ${
             inverse ? "text-white/70" : "text-[#48546A]"
           }`}
         >
@@ -339,7 +341,7 @@ export default function DubaiNriPage() {
         <div className="mx-auto max-w-7xl px-5 pt-20 sm:px-8 lg:px-10">
           <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-16">
             <div>
-              <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel>
+              {/* <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel> */}
               <h1 className="max-w-3xl font-[var(--font-display)] text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
                 Dholera Investment from Dubai
               </h1>
@@ -380,24 +382,6 @@ export default function DubaiNriPage() {
         </div>
       </section>
 
-      {/* STICKY SECTION NAV */}
-      <nav
-        className="sticky top-0 z-40 border-b border-[#051A3A]/10 bg-[#F8F7F3]/95 shadow-[0_8px_30px_rgba(5,26,58,.06)] backdrop-blur"
-        aria-label="Page sections"
-      >
-        <div className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-5 py-2 sm:px-8 lg:px-10">
-          {sectionLinks.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="whitespace-nowrap rounded-lg px-4 py-2.5 text-sm font-semibold text-[#48546A] transition hover:bg-white hover:text-[#051A3A]"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </nav>
-
       {/* 01   WHY DHOLERA */}
       <section
         id="why-dholera"
@@ -424,16 +408,16 @@ export default function DubaiNriPage() {
 
             <div className="relative grid items-center gap-10 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
               <div>
-                <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel>
+                {/* <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel> */}
                 <h2 className="max-w-3xl font-[var(--font-display)] text-[clamp(1.9rem,4vw,3.35rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">
                   Why Dubai Investors Are Looking at Dholera
                 </h2>
                 <p className="mt-6 max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-                  Dubai offers many investment opportunities, but many NRIs
-                  also want to build long-term assets in India. As India's First
-                  Greenfield Smart City, Dholera is attracting investors
-                  looking to enter a government-planned growth corridor at an
-                  early stage.
+                  Dubai offers many investment opportunities, but many NRIs also
+                  want to build long-term assets in India. As India's First
+                  Greenfield Smart City, Dholera is attracting investors looking
+                  to enter a government-planned growth corridor at an early
+                  stage.
                 </p>
               </div>
 
@@ -643,7 +627,6 @@ export default function DubaiNriPage() {
       <section className="px-5 py-8 sm:px-8 md:py-12 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
           <div>
-            <SectionLabel>Dholera Investment from Dubai</SectionLabel>
             <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
               Why Choose Dholera Insider?
             </h2>
@@ -745,7 +728,7 @@ export default function DubaiNriPage() {
       </section>
 
       {/* MOBILE ACTION BAR */}
-      <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-[#051A3A]/10 bg-white/95 p-2 shadow-[0_-10px_30px_rgba(5,26,58,.12)] backdrop-blur sm:hidden">
+      {/* <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-[#051A3A]/10 bg-white/95 p-2 shadow-[0_-10px_30px_rgba(5,26,58,.12)] backdrop-blur sm:hidden">
         <a
           href={WHATSAPP_URL}
           target="_blank"
@@ -760,7 +743,7 @@ export default function DubaiNriPage() {
         >
           <Phone className="h-6 w-6 text-[#F6C343]" /> Call
         </Link>
-      </div>
+      </div> */}
 
       {documentsOpen && (
         <BrochureDownload

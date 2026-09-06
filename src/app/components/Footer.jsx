@@ -41,9 +41,9 @@ const Footer = () => {
               About Us
             </h3>
             <p className="text-[#faf8f3] mb-4">
-              Dholera Insider a trusted real estate developer in Dholera,
-              offering premium residential plots with clear titles, transparent
-              processes, and long-term investment potential.
+              Dholera Insider helps NRIs explore verified residential 
+              plots in Dholera with clear documentation,
+              transparent processes, and dedicated investment support. 
             </p>
 
             {/* Newsletter Signup */}
@@ -64,32 +64,48 @@ const Footer = () => {
             </div> */}
 
             {/* Social Media Icons */}
-            <div className="flex space-x-4 mt-6">
-              <Link
-                href="https://www.facebook.com/profile.php?id=61578651603291"
-                className="text-[#faf8f3]/70 hover:text-[#faf8f3] transition"
-              >
-                <Facebook size={20} />
-              </Link>
-              <Link
-                href="https://x.com/Dholera_Insider"
-                className="text-[#faf8f3]/70 hover:text-[#faf8f3] transition"
-              >
-                <Twitter size={20} />
-              </Link>
-              <Link
-                href="https://www.instagram.com/dholerainsider/"
-                className="text-[#faf8f3]/70 hover:text-[#faf8f3] transition"
-              >
-                <Instagram size={20} />
-              </Link>
-              <Link
-                href="https://www.youtube.com/@DholeraInsider"
-                className="text-[#faf8f3]/70 hover:text-[#faf8f3] transition"
-              >
-                <Youtube size={20} />
-              </Link>
-            </div>
+          
+              <div className="mt-6 flex items-center justify-start gap-4">
+                <Link
+                  href="https://www.facebook.com/profile.php?id=61578651603291"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-7 items-center justify-center text-[#faf8f3]/70 transition hover:text-[#faf8f3]"
+                >
+                  <Facebook size={20} className="block" />
+                </Link>
+
+                <Link
+                  href="https://x.com/Dholera_Insider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                  className="flex h-7 items-center justify-center text-[#faf8f3]/70 transition hover:text-[#faf8f3]"
+                >
+                  <Twitter size={20} className="block" />
+                </Link>
+
+                <Link
+                  href="https://www.instagram.com/dholerainsider/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-7 items-center justify-center text-[#faf8f3]/70 transition hover:text-[#faf8f3]"
+                >
+                  <Instagram size={20} className="block" />
+                </Link>
+
+                <Link
+                  href="https://www.youtube.com/@DholeraInsider"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="flex h-7 items-center justify-center text-[#faf8f3]/70 transition hover:text-[#faf8f3]"
+                >
+                  <Youtube size={26} className="block" />
+                </Link>
+              </div>
           </div>
 
           {/* Quick Links Column */}
