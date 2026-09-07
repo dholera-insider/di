@@ -1,28 +1,34 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Building2, Landmark, Factory, Route, TrendingUp } from "lucide-react";
+import {
+  Building2,
+  Landmark,
+  Factory,
+  Route,
+  Plane,
+} from "lucide-react";
 
 const benefits = [
   {
-    title: "India’s First Planned Smart City",
+    title: "India's First Greenfield Smart City",
     icon: Building2,
   },
   {
-    title: "Government-Backed Development",
-    icon: Landmark,
-  },
-  {
-    title: "Major Industrial Investments",
+    title: "Tata Semiconductor Project",
     icon: Factory,
   },
   {
-    title: "World-Class Connectivity",
+    title: "Ahmedabad-Dholera Expressway",
     icon: Route,
   },
   {
-    title: "Long-Term Investment Potential",
-    icon: TrendingUp,
+    title: "Dholera International Airport",
+    icon: Plane,
+  },
+  {
+    title: "Government Planned Infrastructure",
+    icon: Landmark,
   },
 ];
 
@@ -55,7 +61,6 @@ export default function WhyDholera() {
           if (!entry.isIntersecting) return;
 
           entry.target.classList.remove("opacity-0", "translate-y-4");
-
           entry.target.classList.add("opacity-100", "translate-y-0");
 
           observer.unobserve(entry.target);
@@ -120,6 +125,7 @@ export default function WhyDholera() {
       />
 
       <div className="relative mx-auto w-full max-w-5xl">
+
         {/* Heading */}
         <div
           data-reveal
@@ -134,8 +140,6 @@ export default function WhyDholera() {
           "
         >
           <div className="flex items-center gap-3">
-           
-
             <h2
               id="why-dholera-heading"
               className="
@@ -148,7 +152,7 @@ export default function WhyDholera() {
                 lg:text-[40px]
               "
             >
-              Why Dholera ?
+              Why Dubai Investors Are Looking at Dholera
             </h2>
           </div>
         </div>
@@ -323,9 +327,6 @@ export default function WhyDholera() {
                       "
                     />
                   </div>
-
-                  {/* Right arrow */}
-                  
                 </div>
               </li>
             );

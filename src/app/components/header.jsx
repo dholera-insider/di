@@ -51,7 +51,7 @@ const Header = () => {
     /* { name: "NRI Investor", href: "/nri-investor" }, */
     { name: "Home", href: "/" },
     {
-      name: "Investor",
+      name: "NRI Investors",
       key: "investor",
       items: [
         { name: "Bahrain", href: "/investor/bahrain" },

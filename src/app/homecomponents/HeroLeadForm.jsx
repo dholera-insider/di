@@ -188,7 +188,7 @@ export default function HeroLeadForm() {
     <div className="w-full rounded-2xl border border-[#F6C343] bg-[#051A3A] p-5 shadow-2xl shadow-[#051A3A]/25 sm:p-6">
       <div className="mb-5 text-center">
         <h2 className="text-xl font-bold leading-tight text-[#FDFCFA] md:text-2xl">
-          Buy Registry Ready Plots in Dholera
+         Start Your Dholera Investment
         </h2>
 
       </div>
@@ -273,7 +273,7 @@ export default function HeroLeadForm() {
             )}
           </button>
 
-          <p className="text-center text-xs leading-5 text-[#6C7484]">
+          <p className="text-center text-xs leading-5 text-[#FDFCFA]">
             We respect your privacy. Your details are safe with us.
           </p>
         </form>

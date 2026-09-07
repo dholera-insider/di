@@ -263,61 +263,52 @@ export default function RemoteBuying() {
         </div>
 
         {/* CTA */}
-        <div
-          className="
-            mt-9
-            flex
-            flex-col
-            items-center
-            justify-center
-            gap-3
-            sm:mt-10
-          "
-        >
-          <a
-            href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
             className="
-              group
-              inline-flex
-              min-h-[54px]
-              w-full
+              mt-9
+              flex
+              flex-col
               items-center
               justify-center
-              gap-2.5
-              rounded-xl
-              bg-[#051A3A]
-              px-7
-              py-3.5
-              text-[16px]
-              font-bold
-              text-[#FDFCFA]
-              shadow-[0_8px_22px_rgba(5,26,58,0.16)]
-              transition-all
-              duration-300
-              hover:bg-[#F6C343]
-              hover:text-[#051A3A]
-              hover:shadow-[0_10px_26px_rgba(5,26,58,0.18)]
-              focus-visible:outline-none
-              focus-visible:ring-2
-              focus-visible:ring-[#F6C343]
-              focus-visible:ring-offset-2
-              motion-safe:hover:-translate-y-0.5
-              motion-reduce:transform-none
-              motion-reduce:transition-none
-              sm:w-auto
-              sm:min-w-[190px]
+              gap-3
+              sm:mt-10
             "
           >
-            {/* <MessageCircle
-              aria-hidden="true"
-              className="h-5 w-5"
-              strokeWidth={2}
-            /> */}
-            Connect with RM
-          </a>
-        </div>
+            <a
+              href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+              target="_blank"
+              rel="noopener noreferrer"
+            className="
+            group
+            inline-flex
+            min-h-[54px]
+            w-full
+            items-center
+            justify-center
+            gap-2.5
+            rounded-xl
+            bg-[#F6C343]
+            px-7
+            py-3.5
+            text-[16px]
+            font-bold
+            text-[#051A3A]
+            transition-colors
+            duration-300
+            hover:bg-[#051A3A]
+            hover:text-white
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-[#F6C343]
+            focus-visible:ring-offset-2
+            motion-reduce:transition-none
+            sm:w-auto
+            sm:min-w-[190px]
+          "
+            >
+              Connect with RM
+            </a>
+          </div>
       </div>
     </section>
   );

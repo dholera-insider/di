@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Inter, Space_Grotesk } from "next/font/google";
 import {
   ArrowRight,
-  BadgeCheck,
+  CheckCircle2,
   Book,
   Building2,
   CalendarCheck2,
@@ -15,7 +15,7 @@ import {
   CircleCheckBig,
   FileCheck2,
   FileText,
-  Globe2,
+  Globe,
   Headphones,
   Landmark,
   MapPin,
@@ -32,6 +32,8 @@ import {
   Video,
   WalletCards,
 } from "lucide-react";
+
+import WhyDholera from "./why";
 
 import heroImage from "@/app/assets/investor/dholera-insider-dubai-banner.webp";
 import roiImage from "@/app/assets/dholera-plots-roi.webp";
@@ -54,12 +56,19 @@ const body = Inter({
 });
 
 const PHONE_NUMBER = "+919211820887";
+
 const WHATSAPP_URL =
   "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
 
 const sectionLinks = [
-  { label: "Why Invest in Dholera?", href: "#why-dholera" },
-  { label: "Build a Long Term Asset in India", href: "#documentation" },
+  {
+    label: "Why Invest in Dholera?",
+    href: "#why-dholera",
+  },
+  {
+    label: "Build a Long Term Asset in India",
+    href: "#documentation",
+  },
   {
     label: "Your Dholera Investment Journey from Dubai",
     href: "#buying-process",
@@ -67,18 +76,50 @@ const sectionLinks = [
 ];
 
 const trustSignals = [
-  { icon: ShieldCheck, label: "Verified Residential Plot Projects" },
-  { icon: BadgeCheck, label: "Transparent Pricing & Documentation" },
-  { icon: Globe2, label: "Dedicated Support for Dubai NRIs" },
+  {
+    icon: ShieldCheck,
+    label: "Verified Residential Plot Projects",
+  },
+  {
+    icon: CheckCircle2,
+    label: "Transparent Pricing & Documentation",
+  },
+  {
+    icon: Globe,
+    label: "Dedicated Support for Dubai NRIs",
+  },
 ];
 
-const stats = [
-  { value: "✔", label: "Strategic Project Locations" },
-  { value: "✔", label: "100% Remote Buying Process" },
-  { value: "✔", label: "Exclusive Channel Partner of BookMyAssets" },
-  { value: "✔", label: "Verified Residential Plot Projects" },
-];
 
+
+const journeySteps = [
+  {
+    number: "1",
+    icon: Phone,
+    title: "Connect With Our RM",
+  },
+  {
+    number: "2",
+    icon: SearchCheck,
+    title: "Compare Verified Projects",
+  },
+  {
+    number: "3",
+    icon: FileCheck2,
+    title: "Review Legal Documents",
+  },
+  {
+    number: "4",
+    icon: MapPin,
+    title: "Reserve Your Plot",
+  },
+  {
+    number: "5",
+    icon: CheckCircle2,
+    title: "Complete Registration",
+  },
+  
+];
 const dholeraReasons = [
   {
     icon: Building2,
@@ -102,29 +143,41 @@ const dholeraReasons = [
   },
 ];
 
+const mobileJourneyColors = [
+  "bg-[#D9D8F2]",
+  "bg-[#C9EFE8]",
+  "bg-[#F2D9D0]",
+  "bg-[#F4DEB3]",
+  "bg-[#F6CDB6]",
+];
+
 const documentChecks = [
   {
+    icon: Building2,
     title: "Build a future villa or family home",
     description: "",
   },
   {
+    icon: TrendingUp,
     title: "Hold land for long-term appreciation",
     description: "",
   },
   {
+    icon: WalletCards,
     title: "Diversify your investment portfolio",
     description: "",
   },
   {
+    icon: Landmark,
     title: "Plan for retirement in India",
     description: "",
   },
   {
+    icon: ShieldCheck,
     title: "Create a lasting family asset",
     description: "",
   },
 ];
-
 const legalDocuments = [
   "Clear Title",
   "NA/NOC",
@@ -238,12 +291,42 @@ const faqs = [
 ];
 
 const dholeraInsiderReasons = [
-  "Verified Residential Plot Projects",
-  "Transparent Pricing & Documentation",
-  "Strategic Project Locations",
-  "Dedicated Support for Dubai NRIs",
-  "100% Remote Buying Process",
-  "Exclusive Channel Partner of BookMyAssets",
+  {
+    title: "Verified Residential Plot Projects",
+    icon: Building2,
+    iconBg: "bg-[#FFF3D6]",
+    iconColor: "text-[#B77900]",
+  },
+  {
+    title: "Transparent Pricing & Documentation",
+    icon: FileCheck2,
+    iconBg: "bg-[#E3F2FF]",
+    iconColor: "text-[#1769AA]",
+  },
+  {
+    title: "Strategic Project Locations",
+    icon: MapPin,
+    iconBg: "bg-[#E5F3FF]",
+    iconColor: "text-[#205C9E]",
+  },
+  {
+    title: "Dedicated Support for Dubai NRIs",
+    icon: Headphones,
+    iconBg: "bg-[#FFF0CF]",
+    iconColor: "text-[#9A6A00]",
+  },
+  {
+    title: "100% Remote Buying Process",
+    icon: Globe,
+    iconBg: "bg-[#E9F7EE]",
+    iconColor: "text-[#237A4B]",
+  },
+  {
+    title: "Exclusive Channel Partner of BookMyAssets",
+    icon: CheckCircle2,
+    iconBg: "bg-[#EEE8FF]",
+    iconColor: "text-[#6550A8]",
+  },
 ];
 
 function SectionLabel({ children, inverse = false }) {
@@ -316,12 +399,18 @@ export default function DubaiNriPage() {
       style={{ fontFamily: "var(--font-body)" }}
     >
       <title>Dholera Investment from Dubai | Verified Plots for UAE NRIs</title>
+
       <meta
         name="description"
         content="Explore verified residential plots in Dholera Smart City from Dubai. Get transparent pricing, legal guidance, and dedicated support for UAE NRI investors."
       />
-      {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-[#051A3A] py-8 md:py-12">
+
+      {/* Main Hero Section */}
+
+      {/* <section className="relative isolate overflow-hidden bg-[#051A3A] text-white lg:py-12"> */}
+
+      <section className="relative isolate overflow-hidden bg-[#051A3A] pt-20 text-white lg:py-12">
+        {/* Background Glow */}
         <div
           className="absolute inset-0 -z-20 opacity-30"
           style={{
@@ -329,6 +418,8 @@ export default function DubaiNriPage() {
               "radial-gradient(circle at 15% 25%, rgba(246,195,67,.18), transparent 24%), radial-gradient(circle at 80% 10%, rgba(65,125,200,.24), transparent 30%)",
           }}
         />
+
+        {/* Background Grid */}
         <div
           className="absolute inset-0 -z-10 opacity-[0.055]"
           style={{
@@ -338,412 +429,1051 @@ export default function DubaiNriPage() {
           }}
         />
 
-        <div className="mx-auto max-w-7xl px-5 pt-20 sm:px-8 lg:px-10">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-16">
-            <div>
-              {/* <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel> */}
-              <h1 className="max-w-3xl font-[var(--font-display)] text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.02] tracking-[-0.05em] text-white">
-                Dholera Investment from Dubai
-              </h1>
-              <p className="mt-6 max-w-2xl text-[clamp(1rem,1.8vw,1.25rem)] leading-8 text-white/70">
-                Looking for a smart way to diversify your investments in India?
-                Dholera Insider helps Dubai NRIs explore verified residential
-                plots in Dholera Smart City with transparent information, legal
-                clarity, and a smooth remote buying process.
-              </p>
+        {/* 
+          Mobile:
+          - Full-width image first
+          - Content underneath
 
-              <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                {trustSignals.map(({ icon: Icon, label }) => (
-                  <div
-                    key={label}
-                    className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.045] px-3.5 py-3 text-sm font-medium text-white/80 backdrop-blur"
-                  >
-                    <Icon className="h-6 w-6 shrink-0 text-[#F6C343]" />
-                    {label}
-                  </div>
-                ))}
-              </div>
-            </div>
+          Desktop:
+          - Text left
+          - Image right
+        */}
 
-            <div className="relative mx-auto w-full max-w-2xl lg:mx-0">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_30px_90px_rgba(0,0,0,.35)]">
+        <div className="mx-auto max-w-7xl lg:px-10 lg:pt-20">
+          <div className="grid items-center lg:grid-cols-[1.02fr_.98fr] lg:gap-16">
+            {/* =========================
+                IMAGE
+                First on mobile
+                Right side on desktop
+            ========================== */}
+
+            <div className="order-1 w-full lg:order-2">
+              <div
+                className="
+                  relative
+                  aspect-[4/3]
+                  w-full
+                  overflow-hidden
+                  bg-white/5
+
+                  lg:mx-0
+                  lg:rounded-[28px]
+                  lg:border
+                  lg:border-white/10
+                  lg:shadow-[0_30px_90px_rgba(0,0,0,.35)]
+                "
+              >
                 <Image
                   src={heroImage}
                   alt="Dholera investment opportunity for Dubai NRIs"
                   fill
                   priority
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 48vw"
+                  sizes="(max-width: 1023px) 100vw, 48vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/60 via-transparent to-transparent" />
+
+                {/* Image overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/35 via-transparent to-transparent lg:from-[#051A3A]/60" />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 01   WHY DHOLERA */}
-      <section
-        id="why-dholera"
-        className="relative isolate scroll-mt-20 overflow-hidden bg-white px-5 py-8 sm:px-8 md:py-12 lg:px-10"
-      >
-        <div
-          className="absolute inset-0 -z-10 opacity-70"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 8% 18%, rgba(246,195,67,.14), transparent 25%), radial-gradient(circle at 92% 82%, rgba(65,125,200,.12), transparent 30%)",
-          }}
-        />
+            {/* =========================
+                CONTENT
+                Second on mobile
+                Left side on desktop
+            ========================== */}
 
-        <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[30px] bg-[#051A3A] px-6 py-8 shadow-[0_28px_80px_rgba(5,26,58,.18)] sm:px-9 sm:py-10 lg:px-12 lg:py-12">
             <div
-              className="absolute inset-0 opacity-[0.055]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-                backgroundSize: "34px 34px",
-              }}
-            />
+              className="
+                order-2
+                px-5
+                pb-10
+                pt-8
 
-            <div className="relative grid items-center gap-10 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
-              <div>
-                {/* <SectionLabel inverse>Dholera Investment from Dubai</SectionLabel> */}
-                <h2 className="max-w-3xl font-[var(--font-display)] text-[clamp(1.9rem,4vw,3.35rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">
-                  Why Dubai Investors Are Looking at Dholera
-                </h2>
-                <p className="mt-6 max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-                  Dubai offers many investment opportunities, but many NRIs also
-                  want to build long-term assets in India. As India's First
-                  Greenfield Smart City, Dholera is attracting investors looking
-                  to enter a government-planned growth corridor at an early
-                  stage.
-                </p>
-              </div>
+                sm:px-8
+                sm:pb-12
+                sm:pt-10
 
-              <div className="grid gap-3 sm:grid-cols-2 lg:gap-4">
-                {stats.map((stat) => (
-                  <article
-                    key={stat.label}
-                    className="flex min-h-20 items-center justify-start gap-3 rounded-2xl border border-white/10 bg-white/[0.065] p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#F6C343]/45 hover:bg-white/[0.09] sm:p-5"
-                  >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F6C343] font-[var(--font-display)] text-lg font-bold text-[#051A3A] shadow-[0_8px_20px_rgba(246,195,67,.18)]">
-                      {stat.value}
-                    </span>
-                    <h3 className="font-[var(--font-display)] text-sm font-bold leading-5 text-white">
-                      {stat.label}
-                    </h3>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                lg:order-1
+                lg:px-0
+                lg:py-0
+              "
+            >
+              <h1
+                className="
+                  max-w-3xl
+                  font-[var(--font-display)]
+                  text-[clamp(2rem,9vw,2.8rem)]
+                  font-bold
+                  leading-[1.05]
+                  tracking-[-0.045em]
+                  text-white
 
-      {/* 02   DOCUMENTATION */}
-      <section
-        id="documentation"
-        className="scroll-mt-20 bg-[#051A3A] px-5 py-8 sm:px-8 md:py-12 lg:px-10"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[.95fr_1.05fr] lg:gap-16">
-            <div>
-              <SectionHeading
-                eyebrow="Dholera Investment from Dubai"
-                title="Build a Long Term Asset in India"
-                copy="For many NRIs living in Dubai, owning land in India is more than an investment, it's a long term asset."
-                inverse
-              />
+                  sm:text-[clamp(2.5rem,7vw,3.25rem)]
 
-              <p className="mt-7 text-base leading-7 text-white/70 sm:text-lg">
-                A residential plot in Dholera gives you the flexibility to:
-              </p>
-
-              <div className="mt-5 space-y-4">
-                {documentChecks.map((item, index) => (
-                  <div
-                    key={item.title}
-                    className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.045] p-5"
-                  >
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#F6C343] text-sm font-bold text-[#051A3A]">
-                      {index + 1}
-                    </span>
-                    <div>
-                      <h3 className="font-[var(--font-display)] font-bold text-white">
-                        {item.title}
-                      </h3>
-                      <p className="mt-1 text-sm leading-6 text-white/60">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="self-start rounded-[28px] border border-[#F6C343]/25 bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,.25)] sm:p-8">
-              <div className="flex items-start justify-between gap-5 border-b border-[#051A3A]/10 pb-6">
-                <div>
-                  <h3 className="mt-2 font-[var(--font-display)] text-3xl font-bold tracking-[-0.03em] text-[#051A3A]">
-                    What documents should NRI buyers verify?
-                  </h3>
-                </div>
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F6C343]/20">
-                  <ShieldCheck className="h-7 w-7 text-[#8A6508]" />
-                </span>
-              </div>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {legalDocuments.map((document) => (
-                  <div
-                    key={document}
-                    className="flex items-center gap-3 rounded-xl border border-[#051A3A]/10 bg-[#F8F7F3] px-4 py-3.5 text-sm font-semibold text-[#344054]"
-                  >
-                    <CircleCheckBig className="h-4 w-4 shrink-0 text-[#2E8B57]" />
-                    {document}
-                  </div>
-                ))}
-              </div>
-
-              <PrimaryButton
-                onClick={() => setDocumentsOpen(true)}
-                className="mt-7 w-full"
+                  lg:text-[clamp(2rem,4.5vw,4rem)]
+                  lg:leading-[1.02]
+                  lg:tracking-[-0.05em]
+                "
               >
-                Schedule a Call
-              </PrimaryButton>
+                Dholera Investment from Dubai
+              </h1>
 
-              <p className="mt-4 text-center text-xs leading-5 text-[#667085]">
-                Before investing, review the title documents, NA/NOC, approved
-                layout plan, sale deed, ownership details, and registry process
-                to ensure complete transparency.
+              <p
+                className="
+                  mt-5
+                  max-w-2xl
+                  text-base
+                  leading-7
+                  text-white/75
+
+                  sm:text-[17px]
+                  sm:leading-8
+
+                  lg:mt-6
+                  lg:text-[clamp(1rem,1.8vw,1.25rem)]
+                "
+              >
+                Looking for a smart way to diversify your investments in India?
+                Dholera Insider helps Dubai NRIs explore verified residential
+                plots in Dholera Smart City with transparent information, legal
+                clarity, and a smooth remote buying process.
               </p>
+
+              {/* CTA */}
+              <a
+                href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  mt-7
+                  inline-flex
+                  min-h-[52px]
+                  w-full
+                  items-center
+                  justify-center
+                  rounded-xl
+                  bg-[#F6C343]
+                  px-6
+                  py-3
+                  text-[15px]
+                  font-bold
+                  text-[#051A3A]
+                  transition-colors
+                  duration-200
+
+                  hover:bg-white
+
+                  focus:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-white
+                  focus-visible:ring-offset-2
+                  focus-visible:ring-offset-[#051A3A]
+
+                  sm:w-auto
+                "
+              >
+                Explore Residential Projects
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 04   BUYING PROCESS */}
-      <section
-        id="buying-process"
-        className="scroll-mt-20 border-y border-[#051A3A]/10 bg-white px-5 py-8 sm:px-8 md:py-12 lg:px-10"
-      >
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Dholera Investment from Dubai"
-            title="Your Dholera Investment Journey from Dubai"
-            centered
-          />
+      {/* 01 WHY DHOLERA */}
+      <WhyDholera />
 
-          {/* Mobile workflow keeps natural card heights and consistent gaps. */}
+
+            {/* 04 BUYING PROCESS */}
+      <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          {/* Heading */}
+          <h2
+            className="
+              w-full
+              text-left
+              font-[var(--font-bahrain-display)]
+              text-[clamp(1.75rem,3vw,2.65rem)]
+              font-bold
+              leading-[1.12]
+              tracking-[-0.035em]
+              text-[#051A3A]
+              lg:text-center
+            "
+          >
+            Your Dholera Investment Journey from Bahrain
+          </h2>
+
+          {/* Mobile / Tablet */}
           <div className="relative mx-auto mt-10 grid w-full max-w-md gap-5 lg:hidden">
+            {/* Vertical Journey Line */}
             <span
-              className="pointer-events-none absolute bottom-7 left-6 top-7 border-l-2 border-dashed border-[#F6C343]/50"
+              className="
+                pointer-events-none
+                absolute
+                bottom-7
+                left-6
+                top-7
+                border-l-2
+                border-dashed
+                border-[#F6C343]/50
+              "
               aria-hidden="true"
             />
 
-            {buyingSteps.map(
-              ({ number, icon: Icon, title, description }, index) => (
-                <article
-                  key={number}
-                  className="relative z-10 grid grid-cols-[3rem_1fr] items-start gap-4"
+            {journeySteps.map(({ number, icon: Icon, title }, index) => (
+              <article
+                key={number}
+                className="
+                  relative
+                  z-10
+                  grid
+                  grid-cols-[3rem_1fr]
+                  items-start
+                  gap-4
+                "
+              >
+                {/* Icon */}
+                <span
+                  className={`
+                    grid
+                    h-12
+                    w-12
+                    place-items-center
+                    rounded-full
+                    border-4
+                    border-white
+                    text-[#051A3A]
+                    shadow-[0_10px_24px_rgba(5,26,58,.18)]
+                    ${mobileJourneyColors[index]}
+                  `}
                 >
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+
+                {/* Content Card */}
+                <div
+                  className="
+                    rounded-2xl
+                    border
+                    border-[#051A3A]/10
+                    bg-[#F8F7F3]
+                    px-4
+                    py-4
+                    text-left
+                    shadow-[0_10px_24px_rgba(5,26,58,.07)]
+                  "
+                >
+                  {/* Step */}
                   <span
-                    className={`grid h-12 w-12 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${mobileWorkflowColors[index]}`}
+                    className="
+                      inline-flex
+                      rounded-full
+                      bg-[#051A3A]
+                      px-2.5
+                      py-1
+                      text-[9px]
+                      font-bold
+                      uppercase
+                      tracking-[0.14em]
+                      text-[#F6C343]
+                    "
                   >
-                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                    Step {number}
                   </span>
 
-                  <div className="rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)]">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <span className="inline-flex rounded-full bg-[#051A3A] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#F6C343]">
-                        Step {number}
-                      </span>
-                      <h3 className="font-[var(--font-display)] text-sm font-bold leading-tight text-[#051A3A]">
-                        {title}
-                      </h3>
-                    </div>
-                    <p className="mt-2 text-xs leading-5 text-[#667085]">
-                      {description}
-                    </p>
-                  </div>
-                </article>
-              ),
-            )}
+                  {/* Title starts on next line */}
+                  <h3
+                    className="
+                      mt-2
+                      font-[var(--font-bahrain-display)]
+                      text-[15px]
+                      font-bold
+                      leading-[1.3]
+                      text-[#051A3A]
+                      sm:text-base
+                    "
+                  >
+                    {title}
+                  </h3>
+                </div>
+              </article>
+            ))}
           </div>
 
-          {/* Existing horizontal workflow remains unchanged on desktop. */}
+          {/* Desktop */}
           <div className="relative mt-14 hidden lg:block">
-            <div className="absolute left-6 top-7 h-px w-[calc(100%-3rem)] bg-[#051A3A]/10" />
+            {/* Horizontal Connector */}
+            <div
+              className="
+                absolute
+                left-6
+                top-7
+                h-px
+                w-[calc(100%-3rem)]
+                bg-[#051A3A]/10
+              "
+              aria-hidden="true"
+            />
+
             <div className="grid grid-cols-5 gap-5">
-              {buyingSteps.map(({ number, icon: Icon, title, description }) => (
-                <article
-                  key={number}
-                  className="relative rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-5 lg:border-0 lg:bg-transparent lg:p-0 lg:text-center"
-                >
-                  <div className="flex items-center gap-4 lg:flex-col lg:gap-5">
-                    <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full border-4 border-white bg-[#051A3A] text-[#F6C343] shadow-[0_8px_20px_rgba(5,26,58,.18)]">
-                      <Icon className="h-5 w-5" />
+              {journeySteps.map(({ number, icon: Icon, title }) => (
+                <article key={number} className="relative text-center">
+                  <div className="flex flex-col items-center gap-4">
+                    {/* Icon */}
+                    <span
+                      className="
+                        relative
+                        z-10
+                        grid
+                        h-14
+                        w-14
+                        shrink-0
+                        place-items-center
+                        rounded-full
+                        border-4
+                        border-white
+                        bg-[#051A3A]
+                        text-[#F6C343]
+                        shadow-[0_8px_20px_rgba(5,26,58,.18)]
+                      "
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
+
+                    {/* Step + Title */}
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
+                      <span
+                        className="
+                          text-[11px]
+                          font-bold
+                          uppercase
+                          tracking-[0.14em]
+                          text-[#9A740D]
+                        "
+                      >
                         Step {number}
                       </span>
-                      <h3 className="mt-1 font-[var(--font-display)] text-base font-bold text-[#051A3A]">
+
+                      <h3
+                        className="
+                          mt-1
+                          font-[var(--font-bahrain-display)]
+                          text-base
+                          font-bold
+                          leading-snug
+                          text-[#051A3A]
+                        "
+                      >
                         {title}
                       </h3>
                     </div>
                   </div>
-                  <p className="mt-4 text-sm leading-6 text-[#667085] lg:px-2">
-                    {description}
-                  </p>
                 </article>
               ))}
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-[24px] bg-[#051A3A] px-6 py-7 text-center sm:flex-row sm:px-8 sm:text-left">
-            <div className="flex items-center gap-4">
-              <span className="hidden h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/10 text-[#F6C343] sm:grid">
-                <UserCheck className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="font-[var(--font-display)] text-lg font-bold text-white">
-                  Schedule a Call
-                </p>
-              </div>
-            </div>
-            <Link
-              href={`tel:${PHONE_NUMBER}`}
-              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-[#F6C343] px-5 text-sm font-bold text-[#051A3A] transition hover:bg-[#FFD365]"
+          {/* CTA */}
+          <div className="mt-10 flex w-full justify-center px-4 sm:px-6">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="
+                inline-flex
+                min-h-12
+                items-center
+                justify-center
+                gap-2
+                rounded-xl
+                bg-[#F6C343]
+                px-6
+                py-3
+                text-center
+                text-sm
+                font-bold
+                text-[#051A3A]
+                shadow-[0_8px_20px_rgba(5,26,58,.08)]
+                transition
+                duration-300
+                hover:-translate-y-0.5
+                hover:bg-[#051A3A]
+                hover:text-[#F6C343]
+                focus:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#051A3A]
+              "
             >
-              <Phone className="h-4 w-4" /> Connect With Our RM
-            </Link>
+              <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+                Talk to a Dholera Expert
+            </a>
           </div>
         </div>
       </section>
 
-      {/* SOCIAL PROOF + FAQ */}
-      <section className="px-5 py-8 sm:px-8 md:py-12 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-16">
-          <div>
-            <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
-              Why Choose Dholera Insider?
-            </h2>
-            <div className="mt-7 rounded-[24px] border border-[#051A3A]/10 bg-white p-6 shadow-[0_16px_45px_rgba(5,26,58,.06)]">
-              <div className="space-y-3">
-                {dholeraInsiderReasons.map((reason) => (
-                  <div
-                    key={reason}
-                    className="flex items-center gap-3 rounded-xl border border-[#051A3A]/10 bg-[#F8F7F3] px-4 py-3.5 text-sm font-semibold text-[#344054]"
-                  >
-                    <CircleCheckBig className="h-4 w-4 shrink-0 text-[#2E8B57]" />
-                    {reason}
-                  </div>
-                ))}
+      {/* 02 DOCUMENTATION */}
+
+
+      <section id="documentation"
+        className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
+      >
+        {/* Background glow */}
+        <div
+          className="pointer-events-none absolute inset-0 -z-20"
+          aria-hidden="true"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 8% 20%, rgba(246,195,67,.08), transparent 25%), radial-gradient(circle at 88% 45%, rgba(43,54,77,.55), transparent 35%)",
+          }}
+        />
+
+        {/* Subtle grid */}
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
+          aria-hidden="true"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-start gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-20">
+            {/* =====================================================
+                LEFT CONTENT
+            ====================================================== */}
+            <div className="lg:sticky lg:top-28">
+              {/* Eyebrow */}
+          
+              {/* Heading */}
+              <h2
+                className="
+                  mt-5
+                  max-w-xl
+                  font-[var(--font-display)]
+                  text-[clamp(2rem,4vw,3.25rem)]
+                  font-bold
+                  leading-[1.08]
+                  tracking-[-0.045em]
+                  text-white
+                "
+              >
+                Build a Long Term Asset in India
+              </h2>
+
+              {/* Main copy */}
+              <p className="mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-[17px] sm:leading-8">
+                For many NRIs living in Dubai, owning land in India is more than an
+                investment, it's a long term asset.
+              </p>
+
+              {/* Divider */}
+              <div className="my-7 h-px max-w-xl bg-white/10" />
+
+              {/* Supporting copy */}
+              <p className="max-w-lg text-sm font-medium leading-6 text-white/55 sm:text-base sm:leading-7">
+                A residential plot in Dholera gives you the flexibility to:
+              </p>
+
+              {/* Small visual indicator */}
+              <div className="mt-8 hidden items-center gap-3 lg:flex">
+                <div className="flex -space-x-1">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#F6C343]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-white/35" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+                </div>
+
+                <span className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
+                  Build · Hold · Plan
+                </span>
+              </div>
+            </div>
+
+            {/* =====================================================
+                RIGHT BENEFIT LIST
+            ====================================================== */}
+            <div className="relative">
+              {/* Vertical rail - desktop */}
+              <div
+                className="absolute bottom-8 left-[27px] top-8 hidden w-px bg-gradient-to-b from-[#F6C343]/45 via-white/15 to-transparent sm:block"
+                aria-hidden="true"
+              />
+
+              <div className="space-y-3 sm:space-y-4">
+                {documentChecks.map(
+                  ({ icon: Icon, title, description }, index) => (
+                    <article
+                      key={title}
+                      className="
+                        group
+                        relative
+                        overflow-hidden
+                        rounded-2xl
+                        border
+                        border-white/10
+                        bg-white/[0.055]
+                        p-4
+                        backdrop-blur-sm
+                        transition-all
+                        duration-300
+
+                        hover:border-[#F6C343]/30
+                        hover:bg-white/[0.075]
+                        hover:shadow-[0_18px_50px_rgba(0,0,0,.12)]
+
+                        sm:p-5
+                        md:p-6
+                      "
+                    >
+                      {/* Hover highlight */}
+                      <div
+                        className="
+                          pointer-events-none
+                          absolute
+                          inset-y-0
+                          left-0
+                          w-[3px]
+                          origin-bottom
+                          scale-y-0
+                          bg-[#F6C343]
+                          transition-transform
+                          duration-300
+                          group-hover:scale-y-100
+                        "
+                        aria-hidden="true"
+                      />
+
+                      <div className="relative flex items-center gap-4 sm:gap-5">
+                        {/* Icon */}
+                        <div
+                          className="
+                            relative
+                            z-10
+                            grid
+                            h-14
+                            w-14
+                            shrink-0
+                            place-items-center
+                            rounded-2xl
+                            border
+                            border-white/10
+                            bg-[#0A2449]
+                            text-[#F6C343]
+                            shadow-[0_10px_24px_rgba(0,0,0,.16)]
+                            transition-all
+                            duration-300
+
+                            group-hover:border-[#F6C343]/25
+                            group-hover:bg-[#0D2C58]
+
+                            sm:h-[58px]
+                            sm:w-[58px]
+                          "
+                        >
+                          <Icon
+                            className="h-5 w-5 sm:h-[22px] sm:w-[22px]"
+                            strokeWidth={1.8}
+                            aria-hidden="true"
+                          />
+                        </div>
+
+                        {/* Content */}
+                        <div className="min-w-0 flex-1">
+
+                          <h3
+                            className="
+                              mt-1.5
+                              font-[var(--font-display)]
+                              text-base
+                              font-bold
+                              leading-snug
+                              text-white
+                              sm:text-lg
+                            "
+                          >
+                            {title}
+                          </h3>
+
+                          {description && (
+                            <p className="mt-2 text-sm leading-6 text-white/55">
+                              {description}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Check mark */}
+                        <div
+                          className="
+                            hidden
+                            h-9
+                            w-9
+                            shrink-0
+                            place-items-center
+                            rounded-full
+                            border
+                            border-white/10
+                            bg-white/[0.04]
+                            text-white/40
+                            transition-all
+                            duration-300
+
+                            group-hover:border-[#F6C343]/25
+                            group-hover:bg-[#F6C343]
+                            group-hover:text-[#051A3A]
+
+                            sm:grid
+                          "
+                          aria-hidden="true"
+                        >
+                          <Check
+                            className="h-4 w-4"
+                            strokeWidth={2.2}
+                          />
+                        </div>
+                      </div>
+                    </article>
+                  ),
+                )}
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div>
+
+
+      {/* SOCIAL PROOF + FAQ */}
+      <section
+        aria-labelledby="why-choose-dholera-insider"
+        className="bg-[#EEF2F9] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
+      >
+        <div className="mx-auto max-w-7xl">
+          {/* ======================================================
+              TRUST SECTION
+          ====================================================== */}
+          <div className="grid items-start gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14 xl:gap-20">
+            {/* Heading */}
+            <div className="lg:pt-3">
+              <h2
+                id="why-choose-dholera-insider"
+                className="
+                  max-w-xl
+                  font-[var(--font-display)]
+                  text-[clamp(2rem,4vw,3.35rem)]
+                  font-bold
+                  leading-[1.06]
+                  tracking-[-0.045em]
+                  text-[#051A3A]
+                "
+              >
+                Why Choose Dholera Insider?
+              </h2>
+
+              {/* Decorative line */}
+              <div
+                className="mt-6 flex items-center gap-2"
+                aria-hidden="true"
+              >
+                <span className="h-[3px] w-10 rounded-full bg-[#F6C343]" />
+                <span className="h-[3px] w-3 rounded-full bg-[#051A3A]/15" />
+              </div>
+            </div>
+
+            {/* ======================================================
+                BENEFIT GRID
+            ====================================================== */}
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+              {dholeraInsiderReasons.map(
+                ({ title, icon: Icon, iconBg, iconColor }) => (
+                  <article
+                    key={title}
+                    className="
+                      group
+                      relative
+                      flex
+                      min-h-[105px]
+                      items-center
+                      gap-4
+                      overflow-hidden
+                      rounded-2xl
+                      border
+                      border-[#051A3A]/[0.07]
+                      bg-white
+                      px-4
+                      py-5
+                      shadow-[0_8px_26px_rgba(5,26,58,0.045)]
+                      transition-all
+                      duration-300
+
+                      hover:-translate-y-0.5
+                      hover:border-[#051A3A]/15
+                      hover:shadow-[0_14px_34px_rgba(5,26,58,0.08)]
+
+                      sm:px-5
+                      md:min-h-[112px]
+                      md:px-6
+                    "
+                  >
+                    {/* Left hover accent */}
+                    <span
+                      className="
+                        absolute
+                        inset-y-0
+                        left-0
+                        w-[3px]
+                        origin-bottom
+                        scale-y-0
+                        bg-[#F6C343]
+                        transition-transform
+                        duration-300
+                        group-hover:scale-y-100
+                      "
+                      aria-hidden="true"
+                    />
+
+                    {/* Icon */}
+                    <span
+                      className={`
+                        grid
+                        h-12
+                        w-12
+                        shrink-0
+                        place-items-center
+                        rounded-full
+                        ${iconBg}
+                        ${iconColor}
+                        transition-all
+                        duration-300
+                        group-hover:scale-[1.05]
+
+                        sm:h-13
+                        sm:w-13
+                      `}
+                      aria-hidden="true"
+                    >
+                      <Icon
+                        className="h-5 w-5 sm:h-[22px] sm:w-[22px]"
+                        strokeWidth={1.9}
+                      />
+                    </span>
+
+                    {/* Title */}
+                    <h3
+                      className="
+                        min-w-0
+                        font-[var(--font-display)]
+                        text-[15px]
+                        font-bold
+                        leading-[1.35]
+                        text-[#051A3A]
+
+                        sm:text-base
+                        md:text-[17px]
+                      "
+                    >
+                      {title}
+                    </h3>
+                  </article>
+                ),
+              )}
+            </div>
+          </div>
+
+          {/* ======================================================
+              CTA
+          ====================================================== */}
+          <div
+            className="
+              relative
+              mt-10
+              overflow-hidden
+              rounded-[24px]
+              border
+              border-white/10
+              bg-[#051A3A]
+              px-5
+              py-7
+              shadow-[0_22px_55px_rgba(5,26,58,0.16)]
+
+              sm:px-7
+              sm:py-8
+
+              md:mt-12
+              md:px-9
+
+              lg:flex
+              lg:items-center
+              lg:justify-between
+              lg:gap-10
+              lg:px-10
+              lg:py-9
+            "
+          >
+            {/* Background detail */}
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                opacity-[0.08]
+              "
+              aria-hidden="true"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 88% 20%, rgba(246,195,67,.55), transparent 22%), linear-gradient(120deg, transparent 55%, rgba(255,255,255,.12) 100%)",
+              }}
+            />
+
+            {/* CTA Heading */}
+            <div className="relative">
+              <h2
+                className="
+                  max-w-2xl
+                  font-[var(--font-display)]
+                  text-[clamp(1.75rem,3.5vw,2.6rem)]
+                  font-bold
+                  leading-[1.08]
+                  tracking-[-0.04em]
+                  text-white
+                "
+              >
+                Invest with Confidence from Dubai
+              </h2>
+            </div>
+
+            {/* CTA Button */}
+            <div className="relative mt-6 shrink-0 lg:mt-0">
+              <a
+                
+                href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  group
+                  inline-flex
+                  min-h-[52px]
+                  w-full
+                  items-center
+                  justify-center
+                  gap-2.5
+                  rounded-xl
+                  bg-[#F6C343]
+                  px-6
+                  py-3
+                  text-[15px]
+                  font-bold
+                  text-[#051A3A]
+                  shadow-[0_10px_26px_rgba(246,195,67,0.18)]
+                  transition-all
+                  duration-200
+
+                  hover:-translate-y-0.5
+                  hover:bg-[#FFD365]
+                  hover:shadow-[0_14px_32px_rgba(246,195,67,0.24)]
+
+                  active:translate-y-0
+                  active:scale-[0.99]
+
+                  focus:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-white
+                  focus-visible:ring-offset-2
+                  focus-visible:ring-offset-[#051A3A]
+
+                  sm:w-auto
+                  sm:min-w-[220px]
+                "
+              >
+                Get Investment Details
+
+                <ArrowRight
+                  className="
+                    h-4
+                    w-4
+                    transition-transform
+                    duration-200
+                    group-hover:translate-x-1
+                  "
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#FDFCFA] px-5 py-12 sm:px-8 md:py-14 lg:px-10">
+        <div className="mx-auto w-full max-w-7xl">
+          {/* Heading */}
+          <div className="max-w-3xl">
             <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
               FAQ
             </h2>
-            <div className="mt-7 divide-y divide-[#051A3A]/10 border-y border-[#051A3A]/10">
-              {faqs.map((faq, index) => {
-                const isOpen = openFaq === index;
-                return (
-                  <div key={faq.question}>
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaq(isOpen ? -1 : index)}
-                      className="flex w-full items-center justify-between gap-5 py-5 text-left"
-                      aria-expanded={isOpen}
-                      aria-controls={`faq-answer-${index}`}
-                    >
-                      <span className="flex items-start gap-3 font-[var(--font-display)] font-bold text-[#051A3A]">
-                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
-                          Q
-                        </span>
-                        <span>{faq.question}</span>
+
+            <div
+              className="mt-4 h-[3px] w-10 rounded-full bg-[#F6C343]"
+              aria-hidden="true"
+            />
+          </div>
+
+          {/* FAQ List */}
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[#051A3A]/10 bg-white">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+
+              return (
+                <div
+                  key={faq.question}
+                  className="border-b border-[#051A3A]/10 last:border-b-0"
+                >
+                  {/* Question */}
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                    className="
+                      flex
+                      w-full
+                      items-center
+                      justify-between
+                      gap-4
+                      px-4
+                      py-5
+                      text-left
+                      transition-colors
+                      duration-200
+                      hover:bg-[#051A3A]/[0.025]
+                      focus:outline-none
+                      focus-visible:bg-[#051A3A]/[0.04]
+
+                      sm:px-6
+                      md:py-6
+                    "
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index}`}
+                  >
+                    <span className="flex min-w-0 items-center gap-3 sm:gap-4">
+                      {/* Q Icon */}
+                      <span
+                        className="
+                          grid
+                          h-8
+                          w-8
+                          shrink-0
+                          place-items-center
+                          rounded-full
+                          bg-[#F6C343]
+                          text-xs
+                          font-bold
+                          text-[#051A3A]
+                        "
+                        aria-hidden="true"
+                      >
+                        Q
                       </span>
-                      <ChevronDown
-                        className={`h-5 w-5 shrink-0 text-[#9A740D] transition-transform ${isOpen ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                    <div
-                      id={`faq-answer-${index}`}
-                      className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="flex max-w-2xl items-start gap-3 pb-5">
-                          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
-                            A
-                          </span>
-                          <p className="text-sm leading-7 text-[#667085]">
-                            {faq.answer}
-                          </p>
-                        </div>
+
+                      {/* Question Text */}
+                      <span className="font-[var(--font-display)] text-[15px] font-bold leading-6 text-[#051A3A] sm:text-base md:text-[17px]">
+                        {faq.question}
+                      </span>
+                    </span>
+
+                    {/* Arrow */}
+                    <ChevronDown
+                      className={`h-5 w-5 shrink-0 text-[#9A740D] transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </button>
+
+                  {/* Answer */}
+                  <div
+                    id={`faq-answer-${index}`}
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ${
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div
+                        className="
+                          flex
+                          items-start
+                          gap-3
+                          px-4
+                          pb-5
+                          pl-4
+
+                          sm:gap-4
+                          sm:px-6
+                          sm:pb-6
+                          sm:pl-[72px]
+                        "
+                      >
+                        {/* Answer Icon */}
+                        <span
+                          className="
+                            grid
+                            h-8
+                            w-8
+                            shrink-0
+                            place-items-center
+                            rounded-full
+                            bg-[#051A3A]
+                            text-xs
+                            font-bold
+                            text-[#F6C343]
+
+                            sm:hidden
+                          "
+                          aria-hidden="true"
+                        >
+                          A
+                        </span>
+
+                        {/* Answer Text */}
+                        <p className="max-w-3xl text-sm leading-7 text-[#667085] sm:text-[15px]">
+                          {faq.answer}
+                        </p>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* FINAL CTA */}
-      <section className="px-5 py-8 sm:px-8 md:py-12 lg:px-10">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[30px] border border-[#F6C343]/30 bg-[#051A3A] px-6 py-12 text-center sm:px-10 lg:py-16">
-          <div
-            className="absolute inset-0 opacity-[0.06]"
-            style={{
-              backgroundImage: "radial-gradient(#fff 1px, transparent 1px)",
-              backgroundSize: "22px 22px",
-            }}
-          />
-          <div className="relative mx-auto max-w-3xl">
-            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F6C343]">
-              <Check className="h-4 w-4" /> Dholera Investment from Dubai
-            </span>
-            <h2 className="mt-4 font-[var(--font-display)] text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-white">
-              Invest with Confidence from Dubai
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/60">
-              You don't have to travel frequently to explore residential plot
-              opportunities in Dholera. With virtual project presentations,
-              transparent documentation, and expert guidance, Dholera Insider
-              makes investing from Dubai simple and convenient.
-            </p>
-            <PrimaryButton
-              onClick={() => setDocumentsOpen(true)}
-              className="mt-8"
-            >
-              Speak with a Dholera Investment Expert
-            </PrimaryButton>
-          </div>
-        </div>
-      </section>
-
+   
       {/* MOBILE ACTION BAR */}
-      {/* <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-[#051A3A]/10 bg-white/95 p-2 shadow-[0_-10px_30px_rgba(5,26,58,.12)] backdrop-blur sm:hidden">
+
+      {/* 
+      <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-[#051A3A]/10 bg-white/95 p-2 shadow-[0_-10px_30px_rgba(5,26,58,.12)] backdrop-blur sm:hidden">
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#2E9B58] text-sm font-bold text-white"
         >
-          <FaWhatsapp className="h-6 w-6" /> WhatsApp
+          <FaWhatsapp className="h-6 w-6" />
+          WhatsApp
         </a>
+
         <Link
           href={`tel:${PHONE_NUMBER}`}
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#051A3A] text-sm font-bold text-white"
         >
-          <Phone className="h-6 w-6 text-[#F6C343]" /> Call
+          <Phone className="h-6 w-6 text-[#F6C343]" />
+          Call
         </Link>
-      </div> */}
+      </div>
+      */}
 
       {documentsOpen && (
         <BrochureDownload
