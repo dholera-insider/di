@@ -18,7 +18,7 @@ import {
 import heroImage from "@/app/assets/about-dholera/dholera-insider-about-dholera-banner.webp";
 import phoneheroImage from "@/app/assets/about-dholera/dholera-insider-about-dholera-moblie-banner.webp";
 import tataLogo from "@/app/assets/tata-logo.png";
-import WhyDholera from "@/app/about-dholera-sir/whyDholera"
+import WhyDholera from "@/app/about-dholera-sir/WhyDholera"
 import MegaProjectsSlider from "./MegaProjects";
 import AboutFaq from "./Faq"
 export const metadata = {
