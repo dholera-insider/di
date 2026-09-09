@@ -158,3 +158,31 @@ html {
   background: #f6c343;
   color: #051a3a;
 }
+
+
+
+/* Arrow pop-pop home page section Buy with Complete Confidence */
+
+@keyframes legalArrowPop {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.72;
+  }
+
+  45% {
+    transform: translate(2px, -2px) scale(1.12);
+    opacity: 1;
+  }
+
+  65% {
+    transform: translate(1px, -1px) scale(1.04);
+    opacity: 0.9;
+  }
+}
+
+.legal-arrow-pop {
+  animation: legalArrowPop 1.6s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform, opacity;
+}

@@ -5,20 +5,18 @@ import Image from "next/image";
 import { Geist, Space_Grotesk } from "next/font/google";
 import {
   ArrowRight,
-  ArrowUpRight,
-  BadgeCheck,
   Building2,
   Check,
   ChevronDown,
   FileCheck2,
-  Globe2,
   Landmark,
-  MapPin,
-  MessageCircle,
+  PhoneCall,
+  CheckCircle2,
+  CreditCard,
+  ScrollText,
   Plane,
   SearchCheck,
   ShieldCheck,
-  TrendingUp,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -51,28 +49,33 @@ const dholeraReasons = [
 const journeySteps = [
   {
     number: "1",
-    icon: MessageCircle,
-    title: "Connect with Our Dholera Expert",
+    icon: PhoneCall,
+    title: "Speak with our Dholera Expert",
   },
   {
     number: "2",
-    icon: SearchCheck,
-    title: "Explore Verified Projects",
+    icon: Building2,
+    title: "Explore Projects",
   },
   {
     number: "3",
     icon: FileCheck2,
-    title: "Verify Legal Documents",
+    title: "Review Documents",
   },
   {
     number: "4",
-    icon: MapPin,
+    icon: CheckCircle2,
     title: "Book Your Plot",
   },
   {
     number: "5",
-    icon: BadgeCheck,
-    title: "Complete Registration",
+    icon: CreditCard,
+    title: "Complete Payment",
+  },
+  {
+    number: "6",
+    icon: ScrollText,
+    title: "Get Registry",
   },
 ];
 
@@ -119,7 +122,6 @@ const faqItems = [
       "Dholera Insider is the exclusive channel partner of BookMyAssets for NRI investors. We provide verified residential plot projects, transparent documentation, and dedicated support to make your Dholera investment simple and secure.",
   },
 ];
-
 
 function ProjectImage() {
   return (
@@ -251,12 +253,11 @@ export default function DholeraBahrainPage() {
       <div className="h-20" aria-hidden="true" />
 
       {/* Main  Banner Section */}
-    
+
       <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
         <Skyline />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
-          
           <div
             className="
               order-1
@@ -308,13 +309,13 @@ export default function DholeraBahrainPage() {
           </div>
         </div>
       </section>
-    
+
       <WhyDholera />
-        <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            {/* Heading */}
-            <h2
-              className="
+      <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          {/* Heading */}
+          <h2
+            className="
                 w-full
                 text-left
                 font-[var(--font-bahrain-display)]
@@ -325,15 +326,15 @@ export default function DholeraBahrainPage() {
                 text-[#051A3A]
                 lg:text-center
               "
-            >
-              Your Dholera Investment Journey from Bahrain
-            </h2>
+          >
+            Your Dholera Investment Journey from Bahrain
+          </h2>
 
-            {/* Mobile / Tablet */}
-            <div className="relative mx-auto mt-10 grid w-full max-w-md gap-5 lg:hidden">
-              {/* Vertical Journey Line */}
-              <span
-                className="
+          {/* Mobile / Tablet */}
+          <div className="relative mx-auto mt-10 grid w-full max-w-md gap-5 lg:hidden">
+            {/* Vertical Journey Line */}
+            <span
+              className="
                   pointer-events-none
                   absolute
                   bottom-7
@@ -343,13 +344,13 @@ export default function DholeraBahrainPage() {
                   border-dashed
                   border-[#F6C343]/50
                 "
-                aria-hidden="true"
-              />
+              aria-hidden="true"
+            />
 
-              {journeySteps.map(({ number, icon: Icon, title }, index) => (
-                <article
-                  key={number}
-                  className="
+            {journeySteps.map(({ number, icon: Icon, title }, index) => (
+              <article
+                key={number}
+                className="
                     relative
                     z-10
                     grid
@@ -357,10 +358,10 @@ export default function DholeraBahrainPage() {
                     items-start
                     gap-4
                   "
-                >
-                  {/* Icon */}
-                  <span
-                    className={`
+              >
+                {/* Icon */}
+                <span
+                  className={`
                       grid
                       h-12
                       w-12
@@ -372,13 +373,13 @@ export default function DholeraBahrainPage() {
                       shadow-[0_10px_24px_rgba(5,26,58,.18)]
                       ${mobileJourneyColors[index]}
                     `}
-                  >
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
+                >
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
 
-                  {/* Content Card */}
-                  <div
-                    className="
+                {/* Content Card */}
+                <div
+                  className="
                       rounded-2xl
                       border
                       border-[#051A3A]/10
@@ -388,10 +389,10 @@ export default function DholeraBahrainPage() {
                       text-left
                       shadow-[0_10px_24px_rgba(5,26,58,.07)]
                     "
-                  >
-                    {/* Step */}
-                    <span
-                      className="
+                >
+                  {/* Step */}
+                  <span
+                    className="
                         inline-flex
                         rounded-full
                         bg-[#051A3A]
@@ -403,13 +404,13 @@ export default function DholeraBahrainPage() {
                         tracking-[0.14em]
                         text-[#F6C343]
                       "
-                    >
-                      Step {number}
-                    </span>
+                  >
+                    Step {number}
+                  </span>
 
-                    {/* Title starts on next line */}
-                    <h3
-                      className="
+                  {/* Title starts on next line */}
+                  <h3
+                    className="
                         mt-2
                         font-[var(--font-bahrain-display)]
                         text-[15px]
@@ -418,19 +419,19 @@ export default function DholeraBahrainPage() {
                         text-[#051A3A]
                         sm:text-base
                       "
-                    >
-                      {title}
-                    </h3>
-                  </div>
-                </article>
-              ))}
-            </div>
+                  >
+                    {title}
+                  </h3>
+                </div>
+              </article>
+            ))}
+          </div>
 
-            {/* Desktop */}
-            <div className="relative mt-14 hidden lg:block">
-              {/* Horizontal Connector */}
-              <div
-                className="
+          {/* Desktop */}
+          <div className="relative mt-14 hidden lg:block">
+            {/* Horizontal Connector */}
+            <div
+              className="
                   absolute
                   left-6
                   top-7
@@ -438,16 +439,16 @@ export default function DholeraBahrainPage() {
                   w-[calc(100%-3rem)]
                   bg-[#051A3A]/10
                 "
-                aria-hidden="true"
-              />
+              aria-hidden="true"
+            />
 
-              <div className="grid grid-cols-5 gap-5">
-                {journeySteps.map(({ number, icon: Icon, title }) => (
-                  <article key={number} className="relative text-center">
-                    <div className="flex flex-col items-center gap-4">
-                      {/* Icon */}
-                      <span
-                        className="
+            <div className="grid grid-cols-6 gap-2 xl:gap-5">
+              {journeySteps.map(({ number, icon: Icon, title }) => (
+                <article key={number} className="relative text-center">
+                  <div className="flex flex-col items-center gap-4">
+                    {/* Icon */}
+                    <span
+                      className="
                           relative
                           z-10
                           grid
@@ -462,26 +463,26 @@ export default function DholeraBahrainPage() {
                           text-[#F6C343]
                           shadow-[0_8px_20px_rgba(5,26,58,.18)]
                         "
-                      >
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </span>
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
 
-                      {/* Step + Title */}
-                      <div>
-                        <span
-                          className="
+                    {/* Step + Title */}
+                    <div>
+                      <span
+                        className="
                             text-[11px]
                             font-bold
                             uppercase
                             tracking-[0.14em]
                             text-[#9A740D]
                           "
-                        >
-                          Step {number}
-                        </span>
+                      >
+                        Step {number}
+                      </span>
 
-                        <h3
-                          className="
+                      <h3
+                        className="
                             mt-1
                             font-[var(--font-bahrain-display)]
                             text-base
@@ -489,23 +490,23 @@ export default function DholeraBahrainPage() {
                             leading-snug
                             text-[#051A3A]
                           "
-                        >
-                          {title}
-                        </h3>
-                      </div>
+                      >
+                        {title}
+                      </h3>
                     </div>
-                  </article>
-                ))}
-              </div>
+                  </div>
+                </article>
+              ))}
             </div>
+          </div>
 
-            {/* CTA */}
-            <div className="mt-10 flex w-full justify-center px-4 sm:px-6">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="
+          {/* CTA */}
+          <div className="mt-10 flex w-full justify-center px-4 sm:px-6">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="
                   inline-flex
                   min-h-12
                   items-center
@@ -529,36 +530,35 @@ export default function DholeraBahrainPage() {
                   focus-visible:ring-2
                   focus-visible:ring-[#051A3A]
                 "
-              >
-                <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-                Get Investment Guidance
-              </a>
-            </div>
+            >
+              <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+              Get Investment Guidance
+            </a>
           </div>
-        </section>
-        
-        
-        <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
-            <Skyline />
-            <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-              <h2 className="font-[var(--font-bahrain-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
-                Why Choose Dholera Insider?
-              </h2>
-              <div className="divide-y divide-white/15 border-y border-white/15">
-                {reasonsToChoose.map((reason) => (
-                  <div
-                    key={reason}
-                    className="flex items-center gap-4 py-5 font-[var(--font-bahrain-display)] text-base font-semibold sm:text-lg"
-                  >
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
-                      <Check className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    {reason}
-                  </div>
-                ))}
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
+        <Skyline />
+        <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
+          <h2 className="font-[var(--font-bahrain-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
+            Why Choose Dholera Insider?
+          </h2>
+          <div className="divide-y divide-white/15 border-y border-white/15">
+            {reasonsToChoose.map((reason) => (
+              <div
+                key={reason}
+                className="flex items-center gap-4 py-5 font-[var(--font-bahrain-display)] text-base font-semibold sm:text-lg"
+              >
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
+                  <Check className="h-4 w-4" aria-hidden="true" />
+                </span>
+                {reason}
               </div>
-            </div>
-        </section>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* <section className="bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[30px] border border-[#F6C343]/30 bg-[#051A3A] px-6 py-12 text-center sm:px-10">
@@ -705,7 +705,6 @@ export default function DholeraBahrainPage() {
           "
               >
                 Explore residential plot in Dholera
-               
               </a>
             </div>
           </div>

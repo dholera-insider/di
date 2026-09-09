@@ -3,15 +3,24 @@ import Link from "next/link";
 import {
   Building2,
   CheckCircle2,
-  Globe2,
+  Globe,
   Home,
   Landmark,
   Users,
+  ShieldCheck,
+  CircleDollarSign,
+  FileCheck2,
+  MonitorPlay,
+  Headphones,
+  Handshake,
 } from "lucide-react";
 
-import heroImage from "@/app/assets/about-dholera-sir-banner-dholera-insider.webp";
+import heroImage from "@/app/assets/about-dholera/dholera-insider-about-dholera-banner.webp";
+import phoneheroImage from "@/app/assets/about-dholera/dholera-insider-about-dholera-moblie-banner.webp";
 import tataLogo from "@/app/assets/tata-logo.png";
-
+import WhyDholera from "@/app/about-dholera-sir/whyDholera"
+import MegaProjectsSlider from "./MegaProjects";
+import AboutFaq from "./Faq"
 export const metadata = {
   title: "About Dholera Smart City | Why NRIs Are Investing in Dholera",
   description:
@@ -45,13 +54,32 @@ export const metadata = {
   },
 };
 
-const standoutPoints = [
-  "India's First Greenfield Smart City",
-  "Part of the Delhi Mumbai Industrial Corridor (DMIC)",
-  "Government-Backed Smart City Development",
-  "Dedicated Industrial & Residential Zones",
-  "World-Class Infrastructure & Connectivity",
-  "Long-Term Investment Potential",
+
+const insiderBenefits = [
+  {
+    title: "Verified Residential Plot Projects",
+    Icon: ShieldCheck,
+  },
+  {
+    title: "Transparent Pricing",
+    Icon: CircleDollarSign,
+  },
+  {
+    title: "Legal Documentation Support",
+    Icon: FileCheck2,
+  },
+  {
+    title: "Virtual Project Presentations",
+    Icon: MonitorPlay,
+  },
+  {
+    title: "100% Remote Buying Assistance",
+    Icon: Headphones,
+  },
+  {
+    title: "Exclusive Channel Partner of BookMyAssets",
+    Icon: Handshake,
+  },
 ];
 
 const megaProjects = [
@@ -121,18 +149,13 @@ const nriBenefits = [
   "A long-term family asset in India",
 ];
 
-const insiderBenefits = [
-  "Verified Residential Plot Projects",
-  "Transparent Pricing",
-  "Legal Documentation Support",
-  "Virtual Project Presentations",
-  "100% Remote Buying Assistance",
-  "Exclusive Channel Partner of BookMyAssets",
-];
+
+
+
 
 const suitableFor = [
   {
-    Icon: Globe2,
+    Icon: Globe,
     text: "NRIs looking for long-term property investment",
   },
   {
@@ -181,6 +204,8 @@ const faqs = [
   },
 ];
 
+
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -196,7 +221,7 @@ const faqSchema = {
 
 function SectionHeading({ children, inverse = false }) {
   return (
-    <div className="mb-10 md:mb-12">
+    <div className="mb-8 md:mb-8">
       <h2
         className={`text-[clamp(1.75rem,3.4vw,2.75rem)] font-bold leading-tight tracking-[-0.025em] ${
           inverse ? "text-white" : "text-[#051A3A]"
@@ -239,44 +264,265 @@ export default function AboutDholeraSirPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+<section className="overflow-hidden bg-[#051A3A] text-white">
+  {/* ================================
+      MOBILE / TABLET
+      Image first, content below
+  ================================= */}
+  <div className="lg:hidden">
+    {/* Complete mobile image */}
+    <div className="w-full bg-[#051A3A]">
+      <Image
+        src={phoneheroImage}
+        alt="About Dholera Smart City"
+        priority
+        sizes="100vw"
+        className="
+          block
+          h-auto
+          w-full
+          object-contain
+        "
+      />
+    </div>
 
-      <section className="relative flex min-h-[62vh] items-end overflow-hidden bg-[#051A3A] pt-20">
-        <Image
-          src={heroImage}
-          alt="About Dholera Smart City"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A] via-[#051A3A]/65 to-[#051A3A]/20" />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-14 pt-28 sm:px-6 md:pb-20 lg:px-8">
-          <h1 className="max-w-4xl text-[clamp(2.25rem,5vw,4.75rem)] font-bold leading-[1.05] tracking-[-0.04em] text-white">
-            About Dholera Smart City
-          </h1>
-        </div>
-      </section>
+    {/* Mobile content */}
+    <div
+      className="
+        px-4
+        pb-10
+        pt-8
 
-      <section className="px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl space-y-6 text-base leading-8 text-[#2B364D] md:text-lg">
-          <p>
-            Dholera Smart City is India’s first Greenfield Smart City, being
-            developed with planned infrastructure, industrial zones, and
-            residential areas. Major projects like the Ahmedabad Dholera
-            Expressway, Dholera International Airport, and Tata Semiconductor
-            Plant are driving its future growth.
-          </p>
-        </div>
-      </section>
+        sm:px-6
+        sm:pb-12
+        sm:pt-10
+      "
+    >
+      <h1
+        className="
+          max-w-[390px]
+          text-[32px]
+          font-bold
+          leading-[1.05]
+          tracking-[-0.04em]
 
-      <section className="bg-[#EEF2F9] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading>Why Does Dholera Stand Out?</SectionHeading>
-          <CheckList items={standoutPoints} />
-        </div>
-      </section>
+          sm:max-w-xl
+          sm:text-[42px]
+        "
+      >
+        About Dholera{" "}
+        <span className="text-[#F6C343]">
+          Smart City
+        </span>
+      </h1>
 
-      <section className="px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      <div className="mt-4 h-[3px] w-12 rounded-full bg-[#F6C343]" />
+
+      <p
+        className="
+          mt-6
+          max-w-xl
+          text-[15px]
+          leading-7
+          text-white/80
+
+          sm:text-base
+          sm:leading-8
+        "
+      >
+        Dholera Smart City is India’s first Greenfield Smart City, being
+        developed with planned infrastructure, industrial zones, and
+        residential areas. Major projects like the Ahmedabad Dholera
+        Expressway, Dholera International Airport, and Tata Semiconductor Plant
+        are driving its future growth.
+      </p>
+
+      <a
+        href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          mt-7
+          inline-flex
+          min-h-12
+          items-center
+          justify-center
+
+          rounded-xl
+          bg-[#F6C343]
+
+          px-6
+          py-3
+
+          text-sm
+          font-bold
+          text-[#051A3A]
+
+          transition-all
+          duration-300
+
+          hover:bg-white
+
+          focus:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-white
+        "
+      >
+        Explore Residential Projects
+      </a>
+    </div>
+  </div>
+
+  {/* ================================
+      DESKTOP
+      Full-width banner background
+  ================================= */}
+  <div
+    className="
+      relative
+      hidden
+      min-h-[540px]
+      overflow-hidden
+      lg:block
+      xl:min-h-[600px]
+    "
+  >
+    {/* Desktop hero image */}
+    <Image
+      src={heroImage}
+      alt="About Dholera Smart City"
+      fill
+      priority
+      sizes="100vw"
+      className="
+        object-cover
+        object-center
+      "
+    />
+
+    {/* Desktop left-to-right overlay */}
+    <div
+      aria-hidden="true"
+      className="
+        absolute
+        inset-0
+        bg-gradient-to-r
+        from-[#051A3A]/90
+        via-[#051A3A]/58
+        to-[#051A3A]/10
+      "
+    />
+
+    {/* Bottom depth */}
+    <div
+      aria-hidden="true"
+      className="
+        absolute
+        inset-x-0
+        bottom-0
+        h-[55%]
+        bg-gradient-to-t
+        from-[#051A3A]/80
+        to-transparent
+      "
+    />
+
+    {/* Desktop content */}
+    <div
+      className="
+        relative
+        z-10
+
+        mx-auto
+        flex
+        min-h-[540px]
+        w-full
+        max-w-7xl
+        items-center
+
+        px-8
+
+        xl:min-h-[600px]
+      "
+    >
+      <div className="max-w-[620px]">
+        <h1
+          className="
+            text-[54px]
+            font-bold
+            leading-[1.02]
+            tracking-[-0.045em]
+
+            xl:text-[64px]
+          "
+        >
+          About Dholera{" "}
+          <span className="text-[#F6C343]">
+            Smart City
+          </span>
+        </h1>
+
+        <div className="mt-5 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+
+        <p
+          className="
+            mt-7
+            max-w-[590px]
+            text-[17px]
+            leading-8
+            text-white/85
+          "
+        >
+          Dholera Smart City is India’s first Greenfield Smart City, being
+          developed with planned infrastructure, industrial zones, and
+          residential areas. Major projects like the Ahmedabad Dholera
+          Expressway, Dholera International Airport, and Tata Semiconductor
+          Plant are driving its future growth.
+        </p>
+
+        <a
+          href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            mt-8
+            inline-flex
+            min-h-12
+            items-center
+            justify-center
+
+            rounded-xl
+            bg-[#F6C343]
+
+            px-6
+            py-3
+
+            text-sm
+            font-bold
+            text-[#051A3A]
+
+            transition-all
+            duration-300
+
+            hover:-translate-y-0.5
+            hover:bg-white
+
+            focus:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-white
+          "
+        >
+          Explore Residential Projects
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    {/* why dholera */}
+      <WhyDholera/>
+
+      {/* <section className="px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading>Mega Projects in Dholera Smart City</SectionHeading>
           <div className="grid gap-6 md:grid-cols-3">
@@ -313,7 +559,9 @@ export default function AboutDholeraSirPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <MegaProjectsSlider/>
 
       <section className="bg-[#051A3A] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
@@ -335,7 +583,7 @@ export default function AboutDholeraSirPage() {
         </div>
       </section>
 
-      <section className="px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      {/* <section className="px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading>Why Invest Through Dholera Insider?</SectionHeading>
           <p className="mb-8 max-w-3xl text-base leading-8 text-[#2B364D]">
@@ -343,16 +591,122 @@ export default function AboutDholeraSirPage() {
           </p>
           <CheckList items={insiderBenefits} />
         </div>
+      </section> */}
+
+      <section className="overflow-hidden bg-[#EEF2F9] px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+        <div className="mx-auto max-w-6xl">
+          {/* Heading */}
+          <div className="mb-7 sm:text-center lg:mb-9">
+            <h2 className="text-left text-[28px] font-semibold leading-[1.15] tracking-[-0.035em] text-[#051A3A] sm:text-center sm:text-3xl lg:text-[38px]">
+              Why Invest Through Dholera Insider?
+            </h2>
+
+            <div className="mt-3 h-[2px] w-12 rounded-full bg-[#F6C343] sm:mx-auto" />
+
+            <p className="mt-3 max-w-2xl text-left text-sm leading-6 text-[#657083] sm:mx-auto sm:text-center">
+              Dholera Insider helps NRIs invest with confidence by providing:
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative mx-auto max-w-5xl">
+            {/* Desktop center line */}
+            <div
+              aria-hidden="true"
+              className="absolute bottom-5 left-1/2 top-5 hidden w-px -translate-x-1/2 bg-[#D8C998] lg:block"
+            />
+
+            {/* Mobile line */}
+            <div
+              aria-hidden="true"
+              className="absolute bottom-4 left-[17px] top-4 w-px bg-[#D8C998] lg:hidden"
+            />
+
+            <div className="space-y-2.5 lg:space-y-1.5">
+              {insiderBenefits.map((item, index) => {
+                const Icon = item.Icon;
+                const isLeft = index % 2 === 0;
+                const number = String(index + 1).padStart(2, "0");
+
+                return (
+                  <div
+                    key={item.title}
+                    className="relative grid grid-cols-[34px_1fr] items-center gap-3 lg:grid-cols-[1fr_54px_1fr] lg:gap-5"
+                  >
+                    {/* Number */}
+                    <div className="relative z-10 col-start-1 row-start-1 flex justify-center lg:col-start-2">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#E0C97A] bg-[#EEF2F9] text-[10px] font-semibold text-[#B98209] shadow-[0_3px_10px_rgba(5,26,58,0.06)] lg:h-9 lg:w-9">
+                        {number}
+                      </div>
+                    </div>
+
+                    {/* Card */}
+                    <div
+                      className={`
+                        group col-start-2 row-start-1 flex min-h-[70px] items-center gap-3
+                        rounded-[14px] border border-[#DCE2EB] bg-white px-4 py-3
+                        shadow-[0_5px_18px_rgba(5,26,58,0.045)]
+                        transition-all duration-300
+                        hover:-translate-y-0.5 hover:border-[#F6C343]
+                        hover:shadow-[0_10px_24px_rgba(5,26,58,0.08)]
+                        active:scale-[0.99]
+                        lg:min-h-[74px] lg:px-5
+                        ${
+                          isLeft
+                            ? "lg:col-start-1"
+                            : "lg:col-start-3 lg:flex-row-reverse"
+                        }
+                      `}
+                    >
+                      {/* Icon */}
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#FFF7DF] text-[#C28A0A] transition-all duration-300 group-hover:bg-[#F6C343] group-hover:text-[#051A3A]">
+                        <Icon className="h-[19px] w-[19px]" strokeWidth={1.8} />
+                      </div>
+
+                      {/* Text */}
+                      <div className="min-w-0 flex-1 text-left">
+                        <h3 className="text-[13.5px] font-semibold leading-[1.35] tracking-[-0.015em] text-[#051A3A] sm:text-[14px] lg:text-[15px]">
+                          {item.title}
+                        </h3>
+
+                        <div className="mt-1.5 h-[2px] w-6 rounded-full bg-[#F6C343] transition-all duration-300 group-hover:w-10" />
+                      </div>
+                    </div>
+
+                    {/* Desktop connector */}
+                    <span
+                      aria-hidden="true"
+                      className={`
+                        absolute top-1/2 hidden h-px w-6 -translate-y-1/2 bg-[#D8C375] lg:block
+                        ${
+                          isLeft
+                            ? "left-[calc(50%_-_51px)]"
+                            : "right-[calc(50%_-_51px)]"
+                        }
+                      `}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="bg-[#EEF2F9] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+
+      <section className="bg-[#FDFCF8] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading>
             Who Should Consider Investing in Dholera?
           </SectionHeading>
-          <p className="mb-8 text-base leading-8 text-[#2B364D]">
+          <p className="mb-8 text-base leading-6 text-[#2B364D]">
             Dholera may be suitable for:
           </p>
+
+          {/* <p className="mb-6 text-[16px] font-semibold leading-7 text-[#2B364D] sm:mb-8 sm:text-[17px] sm:leading-8 lg:text-lg">
+            Dholera may be suitable for:
+          </p> */}
+
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {suitableFor.map(({ Icon, text }) => (
               <div
@@ -389,34 +743,12 @@ export default function AboutDholeraSirPage() {
             rel="noopener noreferrer"
             className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#F6C343] px-7 py-3 text-base font-bold text-[#051A3A] transition-colors hover:bg-white sm:w-auto"
           >
-            Connect With RM
+            Explore Residential Plot Projects
           </a>
         </div>
       </section>
-
-      <section className="px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-          <SectionHeading>FAQs</SectionHeading>
-          <div className="divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
-            {faqs.map((faq) => (
-              <details key={faq.question} className="group py-1">
-                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-base font-bold text-[#051A3A] marker:hidden">
-                  {faq.question}
-                  <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F6C343]/20 text-xl font-medium text-[#051A3A] transition-transform group-open:rotate-45"
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </summary>
-                <p className="max-w-4xl pb-6 pr-10 text-sm leading-7 text-[#2B364D]">
-                  {faq.answer}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+    
+      <AboutFaq/>
     </main>
   );
 }

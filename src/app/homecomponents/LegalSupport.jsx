@@ -308,39 +308,42 @@ export function LegalSupport() {
                     </span>
 
                     {/* Arrow */}
-                    <span
-                      className="
-                        relative
-                        flex
-                        h-8
-                        w-8
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-white/10
-                        text-white/35
-                        transition-all
-                        duration-300
-                        group-hover:border-[#F6C343]/25
-                        group-hover:bg-[#F6C343]/10
-                        group-hover:text-[#F6C343]
-                      "
-                    >
+                    <span className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#F6C343]/70 transition-all duration-300 group-hover:text-[#F6C343] group-active:scale-95">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 40 40"
+                        className="pointer-events-none absolute inset-0 h-full w-full"
+                      >
+                        {/* Static base circle */}
+                        <circle
+                          cx="20"
+                          cy="20"
+                          r="18"
+                          fill="none"
+                          stroke="rgba(246,195,67,0.22)"
+                          strokeWidth="1"
+                        />
+
+                        {/* Static gold border */}
+                        <circle
+                          cx="20"
+                          cy="20"
+                          r="18"
+                          fill="none"
+                          stroke="rgba(246,195,67,0.70)"
+                          strokeWidth="1.4"
+                        />
+                      </svg>
+
                       <ArrowUpRight
-                        className="
-                          h-3.5
-                          w-3.5
-                          transition-transform
-                          duration-300
-                          group-hover:-translate-y-0.5
-                          group-hover:translate-x-0.5
-                        "
+                        className="legal-arrow-pop relative z-10 h-3.5 w-3.5 text-[#F6C343]"
+                        strokeWidth={1.8}
                         aria-hidden="true"
                       />
-                    </span>
+                    </span>    
+                           
                   </button>
+
                 );
               })}
             </div>

@@ -11,29 +11,25 @@ import {
   Building2,
   CalendarCheck2,
   Check,
-  ChevronDown,
-  CircleCheckBig,
   FileCheck2,
-  FileText,
   Globe,
   Headphones,
   Landmark,
   MapPin,
-  MessageCircle,
   Phone,
   Plane,
   SearchCheck,
   ShieldCheck,
-  Sparkles,
-  Star,
   TrendingUp,
-  UserCheck,
-  Users,
   Video,
   WalletCards,
+  PhoneCall,
+  CreditCard,
+  ScrollText,
 } from "lucide-react";
 
 import WhyDholera from "./why";
+import { DubaiFaq } from "./Faq";
 
 import heroImage from "@/app/assets/investor/dholera-insider-dubai-banner.webp";
 import roiImage from "@/app/assets/dholera-plots-roi.webp";
@@ -95,30 +91,34 @@ const trustSignals = [
 const journeySteps = [
   {
     number: "1",
-    icon: Phone,
-    title: "Connect With Our RM",
+    icon: PhoneCall,
+    title: "Speak with our Dholera Expert",
   },
   {
     number: "2",
-    icon: SearchCheck,
-    title: "Compare Verified Projects",
+    icon: Building2,
+    title: "Explore Projects",
   },
   {
     number: "3",
     icon: FileCheck2,
-    title: "Review Legal Documents",
+    title: "Review Documents",
   },
   {
     number: "4",
-    icon: MapPin,
-    title: "Reserve Your Plot",
+    icon: CheckCircle2,
+    title: "Book Your Plot",
   },
   {
     number: "5",
-    icon: CheckCircle2,
-    title: "Complete Registration",
+    icon: CreditCard,
+    title: "Complete Payment",
   },
-  
+  {
+    number: "6",
+    icon: ScrollText,
+    title: "Get Registry",
+  },
 ];
 const dholeraReasons = [
   {
@@ -584,7 +584,7 @@ export default function DubaiNriPage() {
       <WhyDholera />
 
 
-            {/* 04 BUYING PROCESS */}
+      {/* 04 BUYING PROCESS */}
       <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Heading */}
@@ -716,7 +716,7 @@ export default function DubaiNriPage() {
               aria-hidden="true"
             />
 
-            <div className="grid grid-cols-5 gap-5">
+            <div className="grid grid-cols-6 gap-2 xl:gap-5">
               {journeySteps.map(({ number, icon: Icon, title }) => (
                 <article key={number} className="relative text-center">
                   <div className="flex flex-col items-center gap-4">
@@ -812,9 +812,8 @@ export default function DubaiNriPage() {
         </div>
       </section>
 
+
       {/* 02 DOCUMENTATION */}
-
-
       <section id="documentation"
         className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
       >
@@ -1305,151 +1304,9 @@ export default function DubaiNriPage() {
         </div>
       </section>
 
-      <section className="bg-[#FDFCFA] px-5 py-12 sm:px-8 md:py-14 lg:px-10">
-        <div className="mx-auto w-full max-w-7xl">
-          {/* Heading */}
-          <div className="max-w-3xl">
-            <h2 className="font-[var(--font-display)] text-2xl font-bold tracking-[-0.04em] text-[#051A3A] sm:text-3xl">
-              FAQ
-            </h2>
 
-            <div
-              className="mt-4 h-[3px] w-10 rounded-full bg-[#F6C343]"
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* FAQ List */}
-          <div className="mt-8 overflow-hidden rounded-2xl border border-[#051A3A]/10 bg-white">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
-
-              return (
-                <div
-                  key={faq.question}
-                  className="border-b border-[#051A3A]/10 last:border-b-0"
-                >
-                  {/* Question */}
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(isOpen ? -1 : index)}
-                    className="
-                      flex
-                      w-full
-                      items-center
-                      justify-between
-                      gap-4
-                      px-4
-                      py-5
-                      text-left
-                      transition-colors
-                      duration-200
-                      hover:bg-[#051A3A]/[0.025]
-                      focus:outline-none
-                      focus-visible:bg-[#051A3A]/[0.04]
-
-                      sm:px-6
-                      md:py-6
-                    "
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-answer-${index}`}
-                  >
-                    <span className="flex min-w-0 items-center gap-3 sm:gap-4">
-                      {/* Q Icon */}
-                      <span
-                        className="
-                          grid
-                          h-8
-                          w-8
-                          shrink-0
-                          place-items-center
-                          rounded-full
-                          bg-[#F6C343]
-                          text-xs
-                          font-bold
-                          text-[#051A3A]
-                        "
-                        aria-hidden="true"
-                      >
-                        Q
-                      </span>
-
-                      {/* Question Text */}
-                      <span className="font-[var(--font-display)] text-[15px] font-bold leading-6 text-[#051A3A] sm:text-base md:text-[17px]">
-                        {faq.question}
-                      </span>
-                    </span>
-
-                    {/* Arrow */}
-                    <ChevronDown
-                      className={`h-5 w-5 shrink-0 text-[#9A740D] transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </button>
-
-                  {/* Answer */}
-                  <div
-                    id={`faq-answer-${index}`}
-                    className={`grid transition-[grid-template-rows,opacity] duration-300 ${
-                      isOpen
-                        ? "grid-rows-[1fr] opacity-100"
-                        : "grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className="
-                          flex
-                          items-start
-                          gap-3
-                          px-4
-                          pb-5
-                          pl-4
-
-                          sm:gap-4
-                          sm:px-6
-                          sm:pb-6
-                          sm:pl-[72px]
-                        "
-                      >
-                        {/* Answer Icon */}
-                        <span
-                          className="
-                            grid
-                            h-8
-                            w-8
-                            shrink-0
-                            place-items-center
-                            rounded-full
-                            bg-[#051A3A]
-                            text-xs
-                            font-bold
-                            text-[#F6C343]
-
-                            sm:hidden
-                          "
-                          aria-hidden="true"
-                        >
-                          A
-                        </span>
-
-                        {/* Answer Text */}
-                        <p className="max-w-3xl text-sm leading-7 text-[#667085] sm:text-[15px]">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
+      {/* FAQ */}
+      <DubaiFaq/>
    
       {/* MOBILE ACTION BAR */}
 

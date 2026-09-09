@@ -11,7 +11,7 @@ import {
 
 const steps = [
   {
-    label: "Speak With RM",
+    label: "Speak with our Dholera Expert",
     Icon: PhoneCall,
   },
   {
@@ -306,7 +306,7 @@ export default function RemoteBuying() {
             sm:min-w-[190px]
           "
             >
-              Connect with RM
+              Connect with our Dholera Expert
             </a>
           </div>
       </div>

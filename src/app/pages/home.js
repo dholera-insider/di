@@ -8,8 +8,9 @@ import TestimonialPagination from "../homecomponents/Testimonials";
 import RemoteBuying from "../homecomponents/RemoteBuying";
 import Icon from "../homecomponents/Icon";
 import { LegalSupport } from "../homecomponents/LegalSupport";
-import CommonForm from "../components/CommonForm";
+import HomePageForm from "../components/HomePageForm";
 import DholeraInvestmentForm from "../homecomponents/DholeraInvesmentForm";
+import CommonForm from "../components/CommonForm";
 
 
 
