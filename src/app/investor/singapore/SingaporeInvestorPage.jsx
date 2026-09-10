@@ -5,80 +5,30 @@ import {
   Check,
   ClipboardCheck,
   FileCheck2,
-  Landmark,
   MapPin,
-  MessageCircle,
-  Plane,
-  SearchCheck,
+  Globe,
 } from "lucide-react";
+
+
 
 import residencyImage from "@/app/assets/investor/dholera-insider-singapore-banner.webp";
 import estatesImage from "@/app/assets/residential/westwyn-estates-dholera-project-section.webp";
 import countyImage from "@/app/assets/residential2/county.webp";
 import { SingaporeFaq } from "./SingaporeInteractive";
 import { FaWhatsapp } from "react-icons/fa";
+import WhySingapore from "./WhySingapore";
+import CommonJourney from "../CommonJourney";
 
 const WHATSAPP_URL =
   "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
 
-const investmentReasons = [
-  { icon: Landmark, label: "India's First Greenfield Smart City" },
-  { icon: Building2, label: "Government-Planned Development" },
-  { icon: BadgeCheck, label: "Tata Semiconductor Project" },
-  { icon: Plane, label: "International Airport & Expressway" },
-  { icon: SearchCheck, label: "Long-Term Residential Growth Potential" },
-];
+
 
 const reviewPoints = [
   "Project Location",
   "Plot Size & Pricing",
   "Infrastructure Development",
   "All Legal Documentation",
-];
-
-const journeySteps = [
-  {
-    number: "1",
-    icon: MessageCircle,
-    title: "Discuss Your Investment Goals",
-    description:
-      "Connect with our expert to understand the right residential plot based on your investment objectives.",
-  },
-  {
-    number: "2",
-    icon: SearchCheck,
-    title: "Compare Verified Projects",
-    description:
-      "Explore project locations, plot sizes, pricing, and nearby infrastructure through virtual presentations.",
-  },
-  {
-    number: "3",
-    icon: FileCheck2,
-    title: "Review Project Documents",
-    description:
-      "Verify clear title documents, NA/NOC, Plan Pass approvals, and registry before making your decision.",
-  },
-  {
-    number: "4",
-    icon: MapPin,
-    title: "Reserve Your Plot",
-    description:
-      "Choose your preferred residential plot and complete the booking process remotely.",
-  },
-  {
-    number: "5",
-    icon: BadgeCheck,
-    title: "Complete Registration",
-    description: "Get plot Registry and immediate possession.",
-  },
-];
-
-const mobileJourneyColors = [
-  "bg-[#D9D8F2]",
-  "bg-[#C9EFE8]",
-  "bg-[#F2D9D0]",
-  "bg-[#F4DEB3]",
-  "bg-[#F6CDB6]",
 ];
 
 const reasonsToChoose = [
@@ -90,7 +40,41 @@ const reasonsToChoose = [
   "Exclusive Channel Partner of BookMyAssets",
 ];
 
-function ProjectImages() {
+const reviewIcons = [
+  MapPin,
+  ClipboardCheck,
+  Globe,
+  FileCheck2,
+];
+
+const reviewIconStyles = [
+  {
+    bg: "bg-[#FFF3D6]",
+    text: "text-[#D89E0D]",
+  },
+  {
+    bg: "bg-[#E4F3FF]",
+    text: "text-[#2580C4]",
+  },
+  {
+    bg: "bg-[#E4F3FF]",
+    text: "text-[#2580C4]",
+  },
+  {
+    bg: "bg-[#E8F7EE]",
+    text: "text-[#299A5D]",
+  },
+  {
+    bg: "bg-[#F0E9FF]",
+    text: "text-[#7958C9]",
+  },
+  {
+    bg: "bg-[#FFF3D6]",
+    text: "text-[#C58B05]",
+  },
+];
+
+function ProjectImage() {
   return (
     <div className="relative mx-auto w-full max-w-[800px]">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-white/15">
@@ -109,6 +93,8 @@ function ProjectImages() {
     </div>
   );
 }
+
+
 
 function Skyline() {
   const buildings = [
@@ -146,74 +132,91 @@ export default function SingaporeInvestorPage() {
     <main className="min-w-0 overflow-x-clip bg-[#F8F7F3] text-[#051A3A]">
       <div className="h-20" aria-hidden="true" />
 
+
+      
       <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
         <Skyline />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
-          <div>
-            <h1 className="font-[var(--font-singapore-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
+          <div
+            className="
+              order-1
+              -mx-4
+              -mt-8
+              w-[calc(100%+2rem)]
+              overflow-hidden
+              rounded-none
+              max-lg:[&_*]:!rounded-none
+              sm:-mx-6
+              sm:-mt-8
+              sm:w-[calc(100%+3rem)]
+              md:-mt-12
+              lg:order-2
+              lg:mx-0
+              lg:mt-0
+              lg:w-auto
+            "
+          >
+            <ProjectImage />
+          </div>
+
+          {/* Content - Below Image on Mobile, Left on Desktop */}
+          <div className="order-2 lg:order-1">
+            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
               Dholera Investment from{" "}
               <span className="text-[#F6C343]">Singapore</span>
             </h1>
+
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               Looking for a long-term investment opportunity in India? Dholera
               Insider helps Singapore NRIs explore verified residential plots
               in Dholera Smart City with complete transparency, verified
               documentation, and expert guidance.
             </p>
-          </div>
-          <ProjectImages />
-        </div>
-      </section>
 
-      <section className="bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-          <h2 className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.045em]">
-            Why Singapore NRIs Are Exploring Dholera?
-          </h2>
-          <div className="space-y-6 text-base leading-8 text-[#051A3A]/70 sm:text-lg">
-            <p>
-              Singapore-based NRIs often look for investments backed by
-              planning, transparency, and long-term growth. Dholera Smart City
-              offers an opportunity to invest in India&apos;s first Greenfield
-              Smart City, where major infrastructure and industrial
-              developments are progressing in phases.
-            </p>
-            <p>
-              If you&apos;re planning to build a long-term asset in India,
-              Dholera property investment from Singapore offers the advantage
-              of investing early in a government-planned city.
-            </p>
+            <a
+              href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#F6C343] px-6 py-3 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Explore Residential Projects
+            </a>
           </div>
         </div>
       </section>
 
-      <section
-        id="why-invest"
-        className="scroll-mt-28 bg-[#F8F7F3] px-4 py-8 sm:px-6 md:py-12 lg:px-8"
-      >
-        <div className="mx-auto max-w-7xl">
+      {/* Why Singopare section */}
+      <WhySingapore /> 
+
+    {/* Journey Section */}
+      <CommonJourney 
+        title="Your Dholera Investment Journey from Singapore"
+      />
+
+      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
+        <Skyline />
+        <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
           <h2 className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
-            Why Invest in Dholera?
+            Why Choose Dholera Insider?
           </h2>
-          <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
-            {investmentReasons.map(({ icon: Icon, label }) => (
+          <div className="divide-y divide-white/15 border-y border-white/15">
+            {reasonsToChoose.map((reason) => (
               <div
-                key={label}
-                className="grid grid-cols-[2.75rem_1fr] items-center gap-3 py-5 sm:grid-cols-[3.25rem_1fr] sm:gap-5 sm:py-6"
+                key={reason}
+                className="flex items-center gap-4 py-5 font-[var(--font-singapore-display)] text-base font-semibold sm:text-lg"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#F6C343] sm:h-12 sm:w-12">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
+                  <Check className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <h3 className="font-[var(--font-singapore-display)] text-base font-bold sm:text-xl">
-                  {label}
-                </h3>
+                {reason}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
+      {/* <section className="bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
             <h2 className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
@@ -245,121 +248,146 @@ export default function SingaporeInvestorPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="mx-auto max-w-3xl text-center font-[var(--font-singapore-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em]">
-            Your Dholera Investment Journey from Singapore
-          </h2>
 
-          <div className="relative mx-auto mt-10 grid w-full max-w-md gap-5 lg:hidden">
-            <span
-              className="pointer-events-none absolute bottom-7 left-6 top-7 border-l-2 border-dashed border-[#F6C343]/50"
-              aria-hidden="true"
-            />
+      <section className="bg-[#EEF2F9] px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-16 xl:gap-20">
+          {/* =====================================================
+              LEFT CONTENT
+          ====================================================== */}
 
-            {journeySteps.map(
-              ({ number, icon: Icon, title, description }, index) => (
-                <article
-                  key={number}
-                  className="relative z-10 grid grid-cols-[3rem_1fr] items-start gap-4"
-                >
-                  <span
-                    className={`grid h-12 w-12 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${mobileJourneyColors[index]}`}
+          <div className="max-w-xl">
+            <h2
+              className="
+                font-[var(--font-singapore-display)]
+                text-[clamp(2rem,4vw,3.35rem)]
+                font-bold
+                leading-[1.06]
+                tracking-[-0.045em]
+                text-[#051A3A]
+              "
+            >
+              Make an Informed
+              <span className="block">
+                Investment Decision
+              </span>
+            </h2>
+
+            {/* Accent line */}
+
+            <div className="mt-6 h-[3px] w-10 rounded-full bg-[#F6C343] sm:w-12" />
+
+            <p className="mt-6 max-w-lg text-[14px] leading-7 text-[#667085] sm:text-[15px] sm:leading-7 lg:text-base lg:leading-8">
+              Before investing, understanding the project is just as
+              important as choosing it. At Dholera Insider, we help
+              Singapore NRIs evaluate every important aspect before
+              moving forward.
+            </p>
+          </div>
+
+          {/* =====================================================
+              RIGHT SIDE
+          ====================================================== */}
+
+          <div>
+            {/* Small heading */}
+
+            <div className="mb-5 flex items-center gap-3">
+            <p className="font-[var(--font-singapore-display)] text-[20px] font-bold text-[#051A3A] sm:text-[22px] lg:text-[24px]">
+              You can review:
+            </p>
+            </div>
+
+            {/* ===================================================
+                REVIEW CARDS
+            ==================================================== */}
+
+            <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4">
+              {reviewPoints.map((point, index) => {
+                const Icon =
+                  reviewIcons[index % reviewIcons.length];
+
+                const iconStyle =
+                  reviewIconStyles[
+                    index % reviewIconStyles.length
+                  ];
+
+                return (
+                  <div
+                    key={point}
+                    className="
+                      group
+                      flex
+                      min-h-[96px]
+                      items-center
+                      gap-4
+                      rounded-[18px]
+                      border
+                      border-white/90
+                      bg-white
+                      px-5
+                      py-5
+                      shadow-[0_8px_28px_rgba(5,26,58,0.045)]
+                      transition-all
+                      duration-300
+                      hover:-translate-y-[2px]
+                      hover:border-[#F6C343]/35
+                      hover:shadow-[0_14px_35px_rgba(5,26,58,0.08)]
+                      sm:min-h-[108px]
+                      sm:px-5
+                      lg:px-6
+                    "
                   >
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
+                    {/* Icon */}
 
-                  <div className="rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)]">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <span className="inline-flex rounded-full bg-[#051A3A] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#F6C343]">
-                        Step {number}
-                      </span>
-                      <h3 className="font-[var(--font-singapore-display)] text-sm font-bold leading-tight text-[#051A3A]">
-                        {title}
-                      </h3>
+                    <div
+                      className={`
+                        flex
+                        h-12
+                        w-12
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-full
+                        ${iconStyle.bg}
+                        transition-transform
+                        duration-300
+                        group-hover:scale-105
+                      `}
+                    >
+                      <Icon
+                        className={`h-[21px] w-[21px] ${iconStyle.text}`}
+                        strokeWidth={1.8}
+                        aria-hidden="true"
+                      />
                     </div>
-                    <p className="mt-2 text-xs leading-5 text-[#051A3A]/65">
-                      {description}
+
+                    {/* Text */}
+
+                    <p
+                      className="
+                        min-w-0
+                        font-[var(--font-singapore-display)]
+                        text-[13px]
+                        font-bold
+                        leading-[1.45]
+                        text-[#051A3A]
+                        sm:text-[14px]
+                        lg:text-[15px]
+                      "
+                    >
+                      {point}
                     </p>
                   </div>
-                </article>
-              ),
-            )}
-          </div>
-
-          <div className="relative mt-14 hidden lg:block">
-            <div className="absolute left-6 top-7 h-px w-[calc(100%-3rem)] bg-[#051A3A]/10" />
-            <div className="grid grid-cols-5 gap-5">
-              {journeySteps.map(
-                ({ number, icon: Icon, title, description }) => (
-                  <article key={number} className="relative text-center">
-                    <div className="flex flex-col items-center gap-5">
-                      <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full border-4 border-white bg-[#051A3A] text-[#F6C343] shadow-[0_8px_20px_rgba(5,26,58,.18)]">
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
-                          Step {number}
-                        </span>
-                        <h3 className="mt-1 font-[var(--font-singapore-display)] text-base font-bold text-[#051A3A]">
-                          {title}
-                        </h3>
-                      </div>
-                    </div>
-                    <p className="mt-4 px-2 text-sm leading-6 text-[#051A3A]/65">
-                      {description}
-                    </p>
-                  </article>
-                ),
-              )}
+                );
+              })}
             </div>
-          </div>
-
-          <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-[24px] bg-[#051A3A] px-6 py-7 text-center sm:flex-row sm:px-8 sm:text-left">
-            <div className="flex items-center gap-4">
-              <span className="hidden h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/10 text-[#F6C343] sm:grid">
-                <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <p className="font-[var(--font-singapore-display)] text-lg font-bold text-white">
-                Connect with our RM
-              </p>
-            </div>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-[#F6C343] px-5 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-              Connect with our RM
-            </a>
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
-        <Skyline />
-        <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-          <h2 className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
-            Why Choose Dholera Insider?
-          </h2>
-          <div className="divide-y divide-white/15 border-y border-white/15">
-            {reasonsToChoose.map((reason) => (
-              <div
-                key={reason}
-                className="flex items-center gap-4 py-5 font-[var(--font-singapore-display)] text-base font-semibold sm:text-lg"
-              >
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
-                  <Check className="h-4 w-4" aria-hidden="true" />
-                </span>
-                {reason}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <SingaporeFaq />
     </main>

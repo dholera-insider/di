@@ -22,6 +22,16 @@ export function OmanFaq() {
         >
           FAQ
         </h2>
+        <div
+          aria-hidden="true"
+          className="
+            mt-3
+            h-[3px]
+            w-12
+            rounded-full
+            bg-[#F6C343]
+          "
+        />
         <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
           {omanFaqs.map((item, index) => {
             const isOpen = openIndex === index;

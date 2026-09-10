@@ -377,6 +377,11 @@ export default function AboutDholeraSirPage() {
           DESKTOP
           Full-width banner background
       ================================= */}
+{/* ================================
+    DESKTOP
+    Full-width banner background
+================================= */}
+
       <div
         className="
           relative
@@ -387,135 +392,178 @@ export default function AboutDholeraSirPage() {
           xl:min-h-[600px]
         "
       >
-        {/* Desktop hero image */}
-        <Image
-          src={heroImage}
-          alt="About Dholera Smart City"
-          fill
-          priority
-          sizes="100vw"
-          className="
-            object-cover
-            object-center
-          "
-        />
+          {/* =================================
+              DESKTOP HERO IMAGE
+          ================================== */}
 
-        {/* Desktop left-to-right overlay */}
-        <div
-          aria-hidden="true"
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-r
-            from-[#051A3A]/90
-            via-[#051A3A]/58
-            to-[#051A3A]/10
-          "
-        />
+          <Image
+            src={heroImage}
+            alt="About Dholera Smart City"
+            fill
+            priority
+            sizes="100vw"
+            className="
+              object-cover
+              object-center
+            "
+          />
 
-        {/* Bottom depth */}
-        <div
-          aria-hidden="true"
-          className="
-            absolute
-            inset-x-0
-            bottom-0
-            h-[55%]
-            bg-gradient-to-t
-            from-[#051A3A]/80
-            to-transparent
-          "
-        />
+          {/* =================================
+              MAIN LEFT-TO-RIGHT OVERLAY
 
-        {/* Desktop content */}
-        <div
-          className="
-            relative
-            z-10
+              Left:
+              Strong enough for text readability.
 
-            mx-auto
-            flex
-            min-h-[540px]
-            w-full
-            max-w-7xl
-            items-center
+              Middle:
+              Smooth transition.
 
-            px-8
+              Right:
+              Very light so Dholera building
+              remains clear and visible.
+          ================================== */}
 
-            xl:min-h-[600px]
-          "
-        >
-          <div className="max-w-[620px]">
-            <h1
-              className="
-                text-[54px]
-                font-bold
-                leading-[1.02]
-                tracking-[-0.045em]
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              inset-0
+              bg-[linear-gradient(90deg,rgba(5,26,58,0.91)_0%,rgba(5,26,58,0.82)_25%,rgba(5,26,58,0.60)_42%,rgba(5,26,58,0.30)_58%,rgba(5,26,58,0.10)_74%,rgba(5,26,58,0.03)_100%)]
+            "
+          />
 
-                xl:text-[64px]
-              "
-            >
-              Abou{" "}
-              <span className="text-[#F6C343]">
-                Dholera Smart City
-              </span>
-            </h1>
+          {/* =================================
+              SOFT BOTTOM DEPTH
 
-            <div className="mt-5 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+              Much lighter than previous /80.
+              Keeps cinematic depth without
+              making the building muddy.
+          ================================== */}
 
-            <p
-              className="
-                mt-7
-                max-w-[590px]
-                text-[17px]
-                leading-8
-                text-white/85
-              "
-            >
-              Dholera Smart City is India’s first Greenfield Smart City, being
-              developed with planned infrastructure, industrial zones, and
-              residential areas. Major projects like the Ahmedabad Dholera
-              Expressway, Dholera International Airport, and Tata Semiconductor
-              Plant are driving its future growth.
-            </p>
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              inset-x-0
+              bottom-0
+              h-[42%]
+              bg-gradient-to-t
+              from-[#051A3A]/55
+              via-[#051A3A]/20
+              to-transparent
+            "
+          />
 
-            <a
-              href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                mt-8
-                inline-flex
-                min-h-12
-                items-center
-                justify-center
+          {/* =================================
+              VERY SUBTLE RIGHT BALANCE
 
-                rounded-xl
-                bg-[#F6C343]
+              This prevents the right side from
+              becoming excessively bright compared
+              with the text side.
+          ================================== */}
 
-                px-6
-                py-3
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              inset-y-0
+              right-0
+              w-[38%]
+              bg-gradient-to-l
+              from-[#051A3A]/[0.06]
+              to-transparent
+            "
+          />
 
-                text-sm
-                font-bold
-                text-[#051A3A]
+          {/* =================================
+              DESKTOP CONTENT
+          ================================== */}
 
-                transition-all
-                duration-300
+          <div
+            className="
+              relative
+              z-10
+              mx-auto
+              flex
+              min-h-[540px]
+              w-full
+              max-w-7xl
+              items-center
+              px-8
+              xl:min-h-[600px]
+            "
+          >
+            <div className="max-w-[620px]">
+              {/* Heading */}
 
-                hover:-translate-y-0.5
-                hover:bg-white
+              <h1
+                className="
+                  text-[54px]
+                  font-bold
+                  leading-[1.02]
+                  tracking-[-0.045em]
+                  xl:text-[64px]
+                "
+              >
+                About{" "}
+                <span className="text-[#F6C343]">
+                  Dholera Smart City
+                </span>
+              </h1>
 
-                focus:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-white
-              "
-            >
-              Explore Residential Projects
-            </a>
+              {/* Gold accent */}
+
+              <div className="mt-5 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+
+              {/* Description */}
+
+              <p
+                className="
+                  mt-7
+                  max-w-[590px]
+                  text-[17px]
+                  leading-8
+                  text-white/85
+                "
+              >
+                Dholera Smart City is India’s first Greenfield Smart City,
+                being developed with planned infrastructure, industrial
+                zones, and residential areas. Major projects like the
+                Ahmedabad Dholera Expressway, Dholera International Airport,
+                and Tata Semiconductor Plant are driving its future growth.
+              </p>
+
+              {/* CTA */}
+
+              <a
+                href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  mt-8
+                  inline-flex
+                  min-h-12
+                  items-center
+                  justify-center
+                  rounded-xl
+                  bg-[#F6C343]
+                  px-6
+                  py-3
+                  text-sm
+                  font-bold
+                  text-[#051A3A]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:bg-white
+                  focus:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-white
+                "
+              >
+                Explore Residential Projects
+              </a>
+            </div>
           </div>
-        </div>
       </div>
     </section>
 
@@ -601,7 +649,7 @@ export default function AboutDholeraSirPage() {
               Why Invest Through Dholera Insider?
             </h2>
 
-            <div className="mt-3 h-[2px] w-12 rounded-full bg-[#F6C343] sm:mx-auto" />
+            <div className="mt-4 h-1 w-14 rounded-full bg-[#F6C343] sm:mx-auto" />
 
             <p className="mt-3 max-w-2xl text-left text-sm leading-6 text-[#657083] sm:mx-auto sm:text-center">
               Dholera Insider helps NRIs invest with confidence by providing:

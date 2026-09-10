@@ -178,14 +178,7 @@ const documentChecks = [
     description: "",
   },
 ];
-const legalDocuments = [
-  "Clear Title",
-  "NA/NOC",
-  "Approved Plan Pass",
-  "Sale Deed",
-  "Immediate Possesion",
-  "Plots Registry",
-];
+
 
 const projects = [
   {
@@ -406,9 +399,6 @@ export default function DubaiNriPage() {
       />
 
       {/* Main Hero Section */}
-
-      {/* <section className="relative isolate overflow-hidden bg-[#051A3A] text-white lg:py-12"> */}
-
       <section className="relative isolate overflow-hidden bg-[#051A3A] pt-20 text-white lg:py-12">
         {/* Background Glow */}
         <div
@@ -1038,7 +1028,7 @@ export default function DubaiNriPage() {
                   text-[#051A3A]
                 "
               >
-                Why Choose Dholera Insider?
+                Why Choose Dholera Insider ?
               </h2>
 
               {/* Decorative line */}
@@ -1047,7 +1037,6 @@ export default function DubaiNriPage() {
                 aria-hidden="true"
               >
                 <span className="h-[3px] w-10 rounded-full bg-[#F6C343]" />
-                <span className="h-[3px] w-3 rounded-full bg-[#051A3A]/15" />
               </div>
             </div>
 

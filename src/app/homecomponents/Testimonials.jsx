@@ -678,9 +678,6 @@
               </button>
             </div>
 
-            <p className="mt-2 text-center text-[11px] font-medium tracking-wide text-[#7B8796] sm:hidden">
-              Swipe to explore
-            </p>
           </div>
         </div>
       </section>

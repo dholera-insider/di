@@ -185,12 +185,28 @@ export function LegalSupport() {
             {/* LEFT */}
             <div className="lg:col-span-2 lg:pt-2">
 
-              <h2 className="mx-0 max-w-lg text-left text-[clamp(2rem,3.2vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.03em] text-white">
+              <h2
+                className="
+                  mx-auto
+                  max-w-lg
+                  text-center
+                  text-[clamp(2rem,3.2vw,2.75rem)]
+                  font-bold
+                  leading-[1.12]
+                  tracking-[-0.03em]
+                  text-white
+
+                  lg:mx-0
+                  lg:text-left
+                "
+              >
                 Buy with Complete
-                <span className="block">Confidence</span>
+                <span className="block">
+                  Confidence
+                </span>
               </h2>
 
-              <div className="mx-0 mt-6 h-[2px] w-14 rounded-full bg-[#F6C343]" />
+              <div className="mx-auto mt-6 h-[2px] w-14 rounded-full bg-[#F6C343] lg:mx-0" />
 
               {/* <p className="mx-auto mt-6 max-w-md text-center text-sm leading-7 text-white/55 sm:mx-0 sm:text-left sm:text-[15px]">
                 Every essential property document and approval,

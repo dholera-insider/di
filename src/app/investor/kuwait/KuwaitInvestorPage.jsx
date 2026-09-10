@@ -15,6 +15,7 @@ import {
   Headphones,
   ArrowRight,
   Check,
+
   ChevronDown,
   Globe2,
   ShieldCheck,
@@ -69,11 +70,11 @@ const documentChecks = [
     title: "Clear Project Information",
     description: "",
   },
-  {
-    icon: FileCheck2,
-    title: "Documentation Guidance",
-    description: "",
-  },
+  // {
+  //   icon: FileCheck2,
+  //   title: "Documentation Guidance",
+  //   description: "",
+  // },
   {
     icon: MonitorPlay,
     title: "Virtual Project Presentations",
@@ -314,49 +315,128 @@ export default function KuwaitInvestorPage() {
         title="Buy a Dholera Plot from Kuwait"
     />              
 
-  
-
-    <section id="documentation"
-      className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
+    {/* Why kuwait NRIs */}
+    <section
+      id="documentation"
+      className="
+        relative
+        isolate
+        scroll-mt-20
+        bg-[#051A3A]
+        px-5
+        py-14
+        text-white
+        sm:px-8
+        md:py-16
+        lg:px-10
+        lg:py-20
+      "
     >
-      {/* Background glow */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-20"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 8% 20%, rgba(246,195,67,.08), transparent 25%), radial-gradient(circle at 88% 45%, rgba(43,54,77,.55), transparent 35%)",
-        }}
-      />
+      {/* =====================================================
+          BACKGROUND LAYER
+      ====================================================== */}
 
-      {/* Subtle grid */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
         aria-hidden="true"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-20
+          overflow-hidden
+        "
+      >
+        {/* Background glow */}
 
-      <div className="mx-auto max-w-7xl">
-        <div className="grid items-start gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-20">
-          {/* =====================================================
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 8% 20%, rgba(246,195,67,.09), transparent 28%), radial-gradient(circle at 88% 45%, rgba(43,54,77,.55), transparent 38%)",
+          }}
+        />
+
+        {/* Subtle grid */}
+
+        <div
+          className="
+            absolute
+            inset-0
+            opacity-[0.035]
+          "
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+
+        {/* Left gold glow */}
+
+        <div
+          className="
+            absolute
+            -left-32
+            -top-36
+            h-[380px]
+            w-[380px]
+            rounded-full
+            bg-[#F6C343]/[0.05]
+            blur-[120px]
+          "
+        />
+
+        {/* Right soft glow */}
+
+        <div
+          className="
+            absolute
+            -bottom-40
+            -right-28
+            h-[420px]
+            w-[420px]
+            rounded-full
+            bg-white/[0.035]
+            blur-[130px]
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
+
+      <div className="mx-auto w-full max-w-7xl">
+        <div
+          className="
+            grid
+            grid-cols-1
+            items-start
+            gap-10
+            lg:grid-cols-[0.78fr_1.22fr]
+            lg:gap-14
+            xl:gap-20
+          "
+        >
+          {/* ===================================================
               LEFT CONTENT
-          ====================================================== */}
-          <div className="lg:sticky lg:top-28">
-            {/* Eyebrow */}
-        
-            {/* Heading */}
+          ==================================================== */}
+
+          <div
+            className="
+              min-w-0
+              lg:sticky
+              lg:top-28
+              lg:self-start
+            "
+          >
             <h2
               className="
-                mt-5
-                max-w-xl
+                max-w-[520px]
                 font-[var(--font-display)]
                 text-[clamp(2rem,4vw,3.25rem)]
                 font-bold
-                leading-[1.08]
+                leading-[1.07]
                 tracking-[-0.045em]
                 text-white
               "
@@ -364,55 +444,144 @@ export default function KuwaitInvestorPage() {
               Why Kuwait NRIs Choose Dholera Insider
             </h2>
 
-            {/* Divider */}
-            <div className="my-7 h-px max-w-xl bg-white/10" />
+            {/* Gold accent */}
 
-
-            {/* Main copy */}
-            <p className="mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-[17px] sm:leading-8">
-              Dholera Insider focuses specifically on helping overseas Indian investors understand Dholera before they invest.
-            </p>
-      
-          </div>
-
-          {/* =====================================================
-              RIGHT BENEFIT LIST
-          ====================================================== */}
-          <div className="relative">
-            {/* Vertical rail - desktop */}
             <div
-              className="absolute bottom-8 left-[27px] top-8 hidden w-px bg-gradient-to-b from-[#F6C343]/45 via-white/15 to-transparent sm:block"
               aria-hidden="true"
+              className="
+                mt-6
+                h-[3px]
+                w-12
+                rounded-full
+                bg-[#F6C343]
+              "
             />
 
-            <div className="space-y-3 sm:space-y-4">
+            {/* Description */}
+
+            <p
+              className="
+                mt-7
+                max-w-[520px]
+                text-[15px]
+                leading-7
+                text-white/65
+                sm:text-[16px]
+                sm:leading-8
+                lg:text-[17px]
+              "
+            >
+              Dholera Insider focuses specifically on helping
+              overseas Indian investors understand Dholera before
+              they invest.
+            </p>
+
+            {/* Divider */}
+
+            <div
+              aria-hidden="true"
+              className="
+                mt-8
+                hidden
+                h-px
+                max-w-[420px]
+                bg-gradient-to-r
+                from-white/15
+                to-transparent
+                lg:block
+              "
+            />
+          </div>
+
+          {/* ===================================================
+              RIGHT CONTENT
+          ==================================================== */}
+
+          <div className="min-w-0">
+            {/* =================================================
+                BENEFIT GRID
+
+                Mobile: 1 column
+                Tablet/Desktop: 2 columns
+            ================================================== */}
+
+            <div
+              className="
+                grid
+                grid-cols-1
+                gap-3.5
+                sm:grid-cols-2
+                sm:gap-4
+              "
+            >
               {documentChecks.map(
-                ({ icon: Icon, title, description }, index) => (
+                (
+                  {
+                    icon: Icon,
+                    title,
+                    description,
+                  },
+                  index,
+                ) => (
                   <article
                     key={title}
                     className="
                       group
                       relative
+                      flex
+                      min-h-[110px]
                       overflow-hidden
-                      rounded-2xl
+                      rounded-[18px]
                       border
-                      border-white/10
+                      border-white/[0.10]
                       bg-white/[0.055]
-                      p-4
-                      backdrop-blur-sm
+                      px-4
+                      py-4
+                      backdrop-blur-[6px]
+
                       transition-all
                       duration-300
+                      ease-out
 
-                      hover:border-[#F6C343]/30
+                      hover:-translate-y-[2px]
+                      hover:border-[#F6C343]/35
                       hover:bg-white/[0.075]
-                      hover:shadow-[0_18px_50px_rgba(0,0,0,.12)]
 
-                      sm:p-5
-                      md:p-6
+                      sm:min-h-[114px]
+                      sm:px-5
+                      sm:py-5
+
+                      lg:min-h-[118px]
                     "
                   >
-                    {/* Hover highlight */}
+                    {/* =========================================
+                        CARD HOVER GLOW
+                    ========================================== */}
+
                     <div
+                      aria-hidden="true"
+                      className="
+                        pointer-events-none
+                        absolute
+                        -right-10
+                        -top-10
+                        h-28
+                        w-28
+                        rounded-full
+                        bg-[#F6C343]/0
+                        blur-3xl
+                        transition-all
+                        duration-300
+                        group-hover:bg-[#F6C343]/[0.08]
+                      "
+                    />
+
+                    {/* =========================================
+                        LEFT GOLD HOVER LINE
+                    ========================================== */}
+
+                    <div
+                      aria-hidden="true"
                       className="
                         pointer-events-none
                         absolute
@@ -426,97 +595,157 @@ export default function KuwaitInvestorPage() {
                         duration-300
                         group-hover:scale-y-100
                       "
-                      aria-hidden="true"
                     />
 
-                    <div className="relative flex items-center gap-4 sm:gap-5">
-                      {/* Icon */}
+                    {/* =========================================
+                        MAIN CARD CONTENT
+
+                        IMPORTANT:
+                        items-center vertically centers:
+                        Icon + Title + Check
+                    ========================================== */}
+
+                    <div
+                      className="
+                        relative
+                        z-10
+                        flex
+                        w-full
+                        items-center
+                        gap-3.5
+                        sm:gap-4
+                      "
+                    >
+                      {/* =======================================
+                          LEFT ICON
+                      ======================================== */}
+
                       <div
                         className="
-                          relative
-                          z-10
                           grid
-                          h-14
-                          w-14
+                          h-12
+                          w-12
                           shrink-0
                           place-items-center
-                          rounded-2xl
+                          rounded-full
                           border
-                          border-white/10
-                          bg-[#0A2449]
+                          border-[#F6C343]/25
+                          bg-[#F6C343]/10
                           text-[#F6C343]
-                          shadow-[0_10px_24px_rgba(0,0,0,.16)]
+
                           transition-all
                           duration-300
 
-                          group-hover:border-[#F6C343]/25
-                          group-hover:bg-[#0D2C58]
+                          group-hover:scale-[1.05]
+                          group-hover:border-[#F6C343]/50
+                          group-hover:bg-[#F6C343]/15
 
-                          sm:h-[58px]
-                          sm:w-[58px]
+                          sm:h-12
+                          sm:w-12
                         "
                       >
                         <Icon
-                          className="h-5 w-5 sm:h-[22px] sm:w-[22px]"
+                          className="
+                            h-[19px]
+                            w-[19px]
+                            sm:h-5
+                            sm:w-5
+                          "
                           strokeWidth={1.8}
                           aria-hidden="true"
                         />
                       </div>
 
-                      {/* Content */}
-                      <div className="min-w-0 flex-1">
+                      {/* =======================================
+                          TITLE + DESCRIPTION
 
+                          Vertically centered within card.
+                      ======================================== */}
+
+                      <div
+                        className="
+                          flex
+                          min-w-0
+                          flex-1
+                          flex-col
+                          justify-center
+                        "
+                      >
                         <h3
                           className="
-                            mt-1.5
                             font-[var(--font-display)]
-                            text-base
+                            text-[14px]
                             font-bold
-                            leading-snug
+                            leading-[1.4]
+                            tracking-[-0.015em]
                             text-white
-                            sm:text-lg
+
+                            sm:text-[15px]
+                            lg:text-[16px]
                           "
                         >
                           {title}
                         </h3>
 
                         {description && (
-                          <p className="mt-2 text-sm leading-6 text-white/55">
+                          <p
+                            className="
+                              mt-1.5
+                              text-[12.5px]
+                              leading-[1.55]
+                              text-white/55
+                              sm:text-[13px]
+                            "
+                          >
                             {description}
                           </p>
                         )}
                       </div>
 
-                      {/* Check mark */}
+                      {/* =======================================
+                          RIGHT CHECK
+
+                          No absolute positioning anymore.
+
+                          It is now part of the flex row,
+                          therefore perfectly centered vertically.
+                      ======================================== */}
+
                       <div
+                        aria-hidden="true"
                         className="
-                          hidden
-                          h-9
-                          w-9
+                          grid
+                          h-6
+                          w-6
                           shrink-0
                           place-items-center
+                          self-center
                           rounded-full
                           border
                           border-white/10
                           bg-white/[0.04]
-                          text-white/40
+                          text-white/35
+
                           transition-all
                           duration-300
 
-                          group-hover:border-[#F6C343]/25
+                          group-hover:border-[#F6C343]/35
                           group-hover:bg-[#F6C343]
                           group-hover:text-[#051A3A]
-
-                          sm:grid
                         "
-                        aria-hidden="true"
                       >
                         <Check
-                          className="h-4 w-4"
-                          strokeWidth={2.2}
+                          className="h-3 w-3"
+                          strokeWidth={2.4}
                         />
                       </div>
                     </div>
+
+                    {/* =========================================
+                        SUBTLE NUMBER
+                    ========================================== */}
+
+                  
                   </article>
                 ),
               )}
@@ -525,10 +754,11 @@ export default function KuwaitInvestorPage() {
         </div>
       </div>
     </section>
+        
     
     <section
           id="faqs"
-          className="scroll-mt-28 bg-[#F8F7F3] px-4 py-8 sm:px-6 md:py-12 lg:px-8"
+          className="scroll-mt-28 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
           aria-labelledby={headingId}
         >
           <div className="mx-auto max-w-5xl">
@@ -538,6 +768,16 @@ export default function KuwaitInvestorPage() {
             >
               FAQ
             </h2>
+            <div
+              aria-hidden="true"
+              className="
+                mt-3
+                h-[3px]
+                w-12
+                rounded-full
+                bg-[#F6C343]
+              "
+            />
             <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
               {kuwaitFaqs.map((item, index) => {
                 const isOpen = openIndex === index;

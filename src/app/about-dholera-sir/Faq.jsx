@@ -37,7 +37,7 @@ export default function AboutFaq() {
   return (
     <section
       id="faqs"
-      className="scroll-mt-28 bg-[#F8F7F3] px-4 py-10 sm:px-6 md:py-12 lg:px-8"
+      className="scroll-mt-28 bg-White px-4 py-10 sm:px-6 md:py-12 lg:px-8"
       aria-labelledby="about-faq-heading"
     >
       <div className="mx-auto max-w-5xl">
@@ -49,8 +49,8 @@ export default function AboutFaq() {
           >
             FAQ
           </h2>
+          <div className="mt-2 h-1 w-14 rounded-full bg-[#F6C343]" />
 
-          <div className="mt-3 h-[2px] w-12 rounded-full bg-[#F6C343]" />
         </div>
 
         {/* FAQ Items */}

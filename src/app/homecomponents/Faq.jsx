@@ -1,9 +1,10 @@
+
 "use client";
 
-import { useState } from "react";
-import { Minus, Plus } from "lucide-react";
+import { useId, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-const faqs = [
+const HomeFaqs = [
   {
     question: "Can NRIs buy residential plots in Dholera?",
     answer:
@@ -28,51 +29,252 @@ const faqs = [
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
+  const headingId = useId();
+
+  const handleToggle = (index) => {
+    setOpenIndex((currentIndex) =>
+      currentIndex === index ? null : index
+    );
+  };
 
   return (
-    <section className="bg-[#FDFCFA] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">
-        <div>
-          <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
+    <section
+      id="faqs"
+      aria-labelledby={headingId}
+      className="
+        scroll-mt-28
+        bg-white
+        px-4
+        py-10
+
+        sm:px-6
+        sm:py-12
+
+        lg:px-8
+        lg:py-16
+      "
+    >
+      <div className="mx-auto w-full max-w-5xl">
+        {/* =====================================================
+            HEADING
+        ====================================================== */}
+
+        <div className="mb-8 sm:mb-10">
+          <h2
+            id={headingId}
+            className="
+              font-[var(--font-display)]
+              text-[clamp(1.9rem,4vw,3.25rem)]
+              font-bold
+              leading-tight
+              tracking-[-0.045em]
+              text-[#051A3A]
+            "
+          >
             FAQ
           </h2>
-          <div className="mt-4 h-1 w-14 rounded-full bg-[#F6C343]" />
+
+          <div
+            aria-hidden="true"
+            className="
+              mt-3
+              h-[3px]
+              w-12
+              rounded-full
+              bg-[#F6C343]
+            "
+          />
         </div>
 
-        <div className="divide-y divide-[#2B364D]/15 border-y border-[#2B364D]/15">
-          {faqs.map((faq, index) => {
+        {/* =====================================================
+            FAQ LIST
+        ====================================================== */}
+
+        <div
+          className="
+            divide-y
+            divide-[#051A3A]/15
+            border-y
+            border-[#051A3A]/15
+          "
+        >
+          {HomeFaqs.map((item, index) => {
             const isOpen = openIndex === index;
 
+            const answerId = `home-faq-answer-${index}`;
+            const buttonId = `home-faq-button-${index}`;
+
             return (
-              <div key={faq.question}>
-                <button
-                  type="button"
-                  className="flex min-h-14 w-full items-center justify-between py-4 text-left"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  aria-expanded={isOpen}
-                >
-                  <span className="pr-4 text-base font-semibold leading-relaxed text-[#162033]">
-                    {faq.question}
-                  </span>
-                  {isOpen ? (
-                    <Minus className="h-5 w-5 shrink-0 text-[#F6C343]" />
-                  ) : (
-                    <Plus className="h-5 w-5 shrink-0 text-[#F6C343]" />
-                  )}
-                </button>
+              <article key={item.question}>
+                <h3>
+                  <button
+                    id={buttonId}
+                    type="button"
+                    onClick={() => handleToggle(index)}
+                    aria-expanded={isOpen}
+                    aria-controls={answerId}
+                    className="
+                      group
+                      flex
+                      min-h-[72px]
+                      w-full
+                      items-center
+                      justify-between
+                      gap-5
+                      py-5
+                      text-left
+
+                      font-[var(--font-display)]
+                      text-base
+                      font-semibold
+                      leading-6
+                      text-[#051A3A]
+
+                      transition-colors
+                      duration-300
+
+                      hover:text-[#B8860B]
+
+                      focus:outline-none
+                      focus-visible:rounded-lg
+                      focus-visible:ring-2
+                      focus-visible:ring-[#F6C343]
+                      focus-visible:ring-offset-2
+
+                      sm:text-lg
+                    "
+                  >
+                    {/* Question */}
+
+                    <span
+                      className="
+                        flex
+                        min-w-0
+                        items-center
+                        gap-3
+                        sm:gap-4
+                      "
+                    >
+                      <span
+                        className="
+                          grid
+                          h-8
+                          w-8
+                          shrink-0
+                          place-items-center
+                          rounded-full
+                          bg-[#F6C343]
+
+                          text-xs
+                          font-bold
+                          text-[#051A3A]
+                        "
+                        aria-hidden="true"
+                      >
+                        Q
+                      </span>
+
+                      <span>{item.question}</span>
+                    </span>
+
+                    {/* Arrow */}
+
+                    <span
+                      className={`
+                        grid
+                        h-9
+                        w-9
+                        shrink-0
+                        place-items-center
+                        rounded-full
+                        border
+                        transition-all
+                        duration-300
+
+                        ${
+                          isOpen
+                            ? "border-[#F6C343] bg-[#F6C343] text-[#051A3A]"
+                            : "border-[#051A3A]/10 bg-[#EEF2F9] text-[#051A3A]"
+                        }
+                      `}
+                    >
+                      <ChevronDown
+                        className={`
+                          h-5
+                          w-5
+                          transition-transform
+                          duration-300
+
+                          ${
+                            isOpen
+                              ? "rotate-180"
+                              : "rotate-0"
+                          }
+                        `}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </button>
+                </h3>
+
+                {/* =================================================
+                    ANSWER
+                ================================================== */}
 
                 <div
-                  className={`grid transition-all duration-300 ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
+                  id={answerId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  hidden={!isOpen}
                 >
-                  <div className="overflow-hidden">
-                    <p className="pb-5 text-sm leading-7 text-[#2B364D]">
-                      {faq.answer}
+                  <div
+                    className="
+                      flex
+                      max-w-3xl
+                      items-start
+                      gap-3
+                      pb-6
+                      pl-0
+
+                      sm:gap-4
+                    "
+                  >
+                    <span
+                      className="
+                        grid
+                        h-8
+                        w-8
+                        shrink-0
+                        place-items-center
+                        rounded-full
+                        bg-[#051A3A]
+
+                        text-xs
+                        font-bold
+                        text-[#F6C343]
+                      "
+                      aria-hidden="true"
+                    >
+                      A
+                    </span>
+
+                    <p
+                      className="
+                        pt-0.5
+                        text-sm
+                        leading-7
+                        text-[#051A3A]/70
+
+                        sm:text-base
+                        sm:leading-8
+                      "
+                    >
+                      {item.answer}
                     </p>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

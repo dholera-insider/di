@@ -40,7 +40,25 @@ export default function WhyDI() {
             <h2 className="mb-4 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
               Why Choose Dholera Insider?
             </h2>
-            <div className="mb-4 h-px w-14 bg-[#F6C343]" />
+            <div className="mt-4 mb-4 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+
+
+            {/* <h2
+              className="
+                mb-4
+                text-center
+                text-[clamp(1.75rem,3vw,2.5rem)]
+                font-bold
+                leading-tight
+                text-[#051A3A]
+                lg:text-left
+              "
+            >
+              Why Choose Dholera Insider?
+            </h2>
+            <div className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-[#F6C343]" /> */}
+
+
             <p className="text-[clamp(0.9rem,1vw,1.05rem)] leading-relaxed text-[#2B364D]">
               As the exclusive channel partner of BookMyAssets for NRI
               investors, Dholera Insider helps NRI investors with confidence
@@ -71,14 +89,36 @@ export default function WhyDI() {
                 </div>
               ))}
             </div>
-            <div className="mt-10 flex justify-start">
-              <Link
-                href="/about-us"
-                className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#051A3A] px-7 py-3 text-base font-bold text-[#FDFCFA] shadow-lg transition-colors hover:bg-[#F6C343] hover:text-[#051A3A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2"
-              >
-                About Us
-              </Link>
-            </div>
+           <div className="mt-10 flex w-full justify-start">
+  <Link
+    href="/about-us"
+    className="
+      inline-flex
+      min-h-12
+      w-full
+      items-center
+      justify-center
+      rounded-lg
+      bg-[#051A3A]
+      px-7
+      py-3
+      text-base
+      font-bold
+      text-[#FDFCFA]
+      shadow-lg
+      transition-colors
+      hover:bg-[#F6C343]
+      hover:text-[#051A3A]
+      focus-visible:outline-none
+      focus-visible:ring-2
+      focus-visible:ring-[#F6C343]
+      focus-visible:ring-offset-2
+      sm:w-auto
+    "
+  >
+    About Us
+  </Link>
+</div>
           </div>
         </div>
       </div>

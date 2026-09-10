@@ -39,7 +39,7 @@ export function DubaiFaq() {
   return (
     <section
       id="faqs"
-      className="scroll-mt-28 bg-[#F8F7F3] px-4 py-8 sm:px-6 md:py-12 lg:px-8"
+      className="scroll-mt-28 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
       aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-5xl">
@@ -49,6 +49,16 @@ export function DubaiFaq() {
         >
           FAQ
         </h2>
+        <div
+            aria-hidden="true"
+            className="
+              mt-3
+              h-[3px]
+              w-12
+              rounded-full
+              bg-[#F6C343]
+            "
+          />
         <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
           {dubaiFaqs.map((item, index) => {
             const isOpen = openIndex === index;

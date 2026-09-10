@@ -634,7 +634,7 @@ export default function CommonForm({
            */
           overflow-x: clip;
 
-          background: #f5f7fa;
+          background: #EEF2F9 ;
 
           isolation: isolate;
         }
