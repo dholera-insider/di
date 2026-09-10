@@ -12,7 +12,7 @@ export function OmanFaq() {
   return (
     <section
       id="faqs"
-      className="scroll-mt-28 bg-[#F8F7F3] px-4 py-8 sm:px-6 md:py-12 lg:px-8"
+      className="scroll-mt-28 bg-[#EEF2F9] px-4 py-8 sm:px-6 md:py-12 lg:px-8"
       aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-5xl">

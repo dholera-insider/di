@@ -1,35 +1,27 @@
 import Image from "next/image";
 import {
-  BadgeCheck,
-  Building2,
   Check,
   ClipboardCheck,
-  Factory,
+  PhoneCall,
+  Building2,
   FileCheck2,
-  Landmark,
-  MapPin,
-  MessageCircle,
-  Network,
-  Plane,
-  SearchCheck,
+  CheckCircle2,
+  CreditCard,
+  ScrollText,
+
+
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import heroImage from "@/app/assets/investor/dholera-insider-oman-banner.webp";
 import { OmanFaq } from "./OmanInteractive";
+import WhyOman from "./WhyOman";
+import CommonJourney from "../CommonJourney";
+
 
 const WHATSAPP_URL =
   "https://wa.me/919211820887?text=Hello%2C%20I%20am%20in%20Oman%20and%20interested%20in%20Dholera%20residential%20plots.%20Please%20share%20the%20details.";
 
-const investmentReasons = [
-  { icon: Landmark, label: "India's First Greenfield Smart City" },
-  { icon: Building2, label: "Planned Infrastructure" },
-  { icon: Factory, label: "Major Industrial Development" },
-  { icon: BadgeCheck, label: "Semiconductor Ecosystem" },
-  { icon: Network, label: "Ahmedabad-Dholera Expressway" },
-  { icon: Plane, label: "Dholera International Airport" },
-  { icon: SearchCheck, label: "Future Residential Demand" },
-];
 
 const reviewPoints = [
   "Title and ownership",
@@ -38,41 +30,37 @@ const reviewPoints = [
   "Total cost and registration process",
 ];
 
+
 const journeySteps = [
   {
     number: "1",
-    icon: MessageCircle,
-    title: "Share Your Requirements",
-    description:
-      "Discuss your budget, preferred plot size and investment goals with our team.",
+    icon: PhoneCall,
+    title: "Speak with our Dholera Expert",
   },
   {
     number: "2",
-    icon: SearchCheck,
-    title: "Explore Verified Projects",
-    description:
-      "Review project locations, plot sizes, pricing and development through virtual presentations.",
+    icon: Building2,
+    title: "Explore Projects",
   },
   {
     number: "3",
     icon: FileCheck2,
-    title: "Review Project Documents",
-    description:
-      "Understand the relevant ownership, approvals, NA/NOC and registration details before proceeding.",
+    title: "Review Documents",
   },
   {
     number: "4",
-    icon: MapPin,
-    title: "Select Your Plot",
-    description:
-      "Choose a residential plot based on your requirements and investment plan.",
+    icon: CheckCircle2,
+    title: "Book Your Plot",
   },
   {
     number: "5",
-    icon: BadgeCheck,
-    title: "Complete the Buying Process",
-    description:
-      "Get assistance with booking, payment and registration formalities.",
+    icon: CreditCard,
+    title: "Complete Payment",
+  },
+  {
+    number: "6",
+    icon: ScrollText,
+    title: "Get Registry",
   },
 ];
 
@@ -148,215 +136,63 @@ export default function OmanInvestorPage() {
   return (
     <main className="min-w-0 overflow-x-clip bg-[#F8F7F3] text-[#051A3A]">
       <div className="h-20" aria-hidden="true" />
-
       <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
         <Skyline />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
-          <div>
-            <h1 className="font-[var(--font-oman-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
+          <div
+            className="
+              order-1
+              -mx-4
+              -mt-8
+              w-[calc(100%+2rem)]
+              overflow-hidden
+              rounded-none
+              max-lg:[&_*]:!rounded-none
+              sm:-mx-6
+              sm:-mt-8
+              sm:w-[calc(100%+3rem)]
+              md:-mt-12
+              lg:order-2
+              lg:mx-0
+              lg:mt-0
+              lg:w-auto
+            "
+          >
+            <ProjectImage />
+          </div>
+
+          {/* Content - Below Image on Mobile, Left on Desktop */}
+          <div className="order-2 lg:order-1">
+            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
               Dholera Investment from{" "}
               <span className="text-[#F6C343]">Oman</span>
             </h1>
-            <h2 className="mt-5 font-[var(--font-oman-display)] text-xl font-semibold text-[#F6C343] sm:text-2xl">
-              Invest in India&apos;s Future From Oman
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               Living in Oman should not stop you from building a property asset
               in India. Dholera Insider helps Oman-based NRIs explore verified
               residential plots in Dholera Smart City with clear information,
               documentation guidance and remote buying support.
             </p>
+
             <a
-              href="#buy-dholera-plot"
+              href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#F6C343] px-6 py-3 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              Explore Dholera Residential Plots
-            </a>
-          </div>
-          <ProjectImage />
-        </div>
-      </section>
-
-      <section className="bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-          <h2 className="font-[var(--font-oman-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.045em]">
-            Why Oman NRIs Are Exploring Dholera
-          </h2>
-          <div className="space-y-6 text-base leading-8 text-[#051A3A]/70 sm:text-lg">
-            <p>
-              Dholera Smart City gives Oman-based NRIs an opportunity to
-              explore residential plots in a planned urban and industrial
-              region being developed in phases.
-            </p>
-            <p>
-              Investors can study the location, infrastructure, documentation
-              and long-term development plan before making an informed property
-              decision from Oman.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="why-invest"
-        className="scroll-mt-28 bg-[#F8F7F3] px-4 py-8 sm:px-6 md:py-12 lg:px-8"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="font-[var(--font-oman-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
-            Why Invest in Dholera?
-          </h2>
-          <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
-            {investmentReasons.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="grid grid-cols-[2.75rem_1fr] items-center gap-3 py-5 sm:grid-cols-[3.25rem_1fr] sm:gap-5 sm:py-6"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#F6C343] sm:h-12 sm:w-12">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <h3 className="font-[var(--font-oman-display)] text-base font-bold sm:text-xl">
-                  {label}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-16">
-          <div>
-            <h2 className="font-[var(--font-oman-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
-              Make an Informed Investment Decision
-            </h2>
-            <p className="mt-5 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
-              Before investing, review the project information and applicable
-              documents carefully. Dholera Insider helps Oman NRIs understand
-              the important details before proceeding.
-            </p>
-          </div>
-          <div className="rounded-[26px] border border-white/15 bg-white/[0.06] p-5 sm:p-8">
-            <p className="font-[var(--font-oman-display)] text-lg font-bold text-[#F6C343]">
-              What to check:
-            </p>
-            <div className="mt-5 divide-y divide-white/15">
-              {reviewPoints.map((point) => (
-                <div
-                  key={point}
-                  className="flex items-center gap-4 py-4 text-base font-semibold"
-                >
-                  <ClipboardCheck
-                    className="h-5 w-5 shrink-0 text-[#F6C343]"
-                    aria-hidden="true"
-                  />
-                  {point}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="buy-dholera-plot"
-        className="scroll-mt-28 border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
-      >
-        <div className="mx-auto max-w-7xl">
-          <h2 className="
-           w-full
-                  text-left
-                  font-[var(--font-bahrain-display)]
-                  text-[clamp(1.75rem,3vw,2.65rem)]
-                  font-bold
-                  leading-[1.12]
-                  tracking-[-0.035em]
-                  ">
-            How to Buy a Dholera Plot from Oman
-          </h2>
-
-          <div className="relative mx-auto mt-10 grid w-full max-w-md gap-5 lg:hidden">
-            <span
-              className="pointer-events-none absolute bottom-7 left-6 top-7 border-l-2 border-dashed border-[#F6C343]/50"
-              aria-hidden="true"
-            />
-            {journeySteps.map(
-              ({ number, icon: Icon, title, description }, index) => (
-                <article
-                  key={number}
-                  className="relative z-10 grid grid-cols-[3rem_1fr] items-start gap-4"
-                >
-                  <span
-                    className={`grid h-12 w-12 place-items-center rounded-full border-4 border-white text-[#051A3A] shadow-[0_10px_24px_rgba(5,26,58,.18)] ${mobileJourneyColors[index]}`}
-                  >
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <div className="rounded-2xl border border-[#051A3A]/10 bg-[#F8F7F3] p-4 text-left shadow-[0_10px_24px_rgba(5,26,58,.07)]">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <span className="inline-flex rounded-full bg-[#051A3A] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#F6C343]">
-                        Step {number}
-                      </span>
-                      <h3 className="font-[var(--font-oman-display)] text-sm font-bold leading-tight text-[#051A3A]">
-                        {title}
-                      </h3>
-                    </div>
-                    <p className="mt-2 text-xs leading-5 text-[#051A3A]/65">
-                      {description}
-                    </p>
-                  </div>
-                </article>
-              ),
-            )}
-          </div>
-
-          <div className="relative mt-14 hidden lg:block">
-            <div className="absolute left-6 top-7 h-px w-[calc(100%-3rem)] bg-[#051A3A]/10" />
-            <div className="grid grid-cols-5 gap-5">
-              {journeySteps.map(
-                ({ number, icon: Icon, title, description }) => (
-                  <article key={number} className="relative text-center">
-                    <div className="flex flex-col items-center gap-5">
-                      <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full border-4 border-white bg-[#051A3A] text-[#F6C343] shadow-[0_8px_20px_rgba(5,26,58,.18)]">
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
-                          Step {number}
-                        </span>
-                        <h3 className="mt-1 font-[var(--font-oman-display)] text-base font-bold text-[#051A3A]">
-                          {title}
-                        </h3>
-                      </div>
-                    </div>
-                    <p className="mt-4 px-2 text-sm leading-6 text-[#051A3A]/65">
-                      {description}
-                    </p>
-                  </article>
-                ),
-              )}
-            </div>
-          </div>
-
-          <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-[24px] bg-[#051A3A] px-6 py-7 text-center sm:flex-row sm:px-8 sm:text-left">
-            <div className="flex items-center gap-4">
-              <span className="hidden h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/10 text-[#F6C343] sm:grid">
-                <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <p className="font-[var(--font-oman-display)] text-lg font-bold text-white">
-                Get Oman NRI Investment Guidance
-              </p>
-            </div>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-xl bg-[#F6C343] px-5 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-              Get Oman NRI Investment Guidance
+              Explore Residential Projects
             </a>
           </div>
         </div>
       </section>
+
+      <WhyOman />
+
+      <CommonJourney
+        title="How to Buy a Dholera Plot from Oman"
+      />
+
 
       <section
         id="why-us"
@@ -387,11 +223,11 @@ export default function OmanInvestorPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-7 text-base leading-8 text-white/70">
+            {/* <p className="mt-7 text-base leading-8 text-white/70">
               As the exclusive channel partner of BookMyAssets for NRI
               investors, we help make Dholera property investment from Oman
               simple and transparent.
-            </p>
+            </p> */}
           </div>
         </div>
       </section>

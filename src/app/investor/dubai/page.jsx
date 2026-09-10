@@ -499,46 +499,17 @@ export default function DubaiNriPage() {
                 lg:py-0
               "
             >
-              <h1
-                className="
-                  max-w-3xl
-                  font-[var(--font-display)]
-                  text-[clamp(2rem,9vw,2.8rem)]
-                  font-bold
-                  leading-[1.05]
-                  tracking-[-0.045em]
-                  text-white
+            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+              Dholera Investment from{" "}
+              <span className="text-[#F6C343]">Dubai</span>
+            </h1>
 
-                  sm:text-[clamp(2.5rem,7vw,3.25rem)]
-
-                  lg:text-[clamp(2rem,4.5vw,4rem)]
-                  lg:leading-[1.02]
-                  lg:tracking-[-0.05em]
-                "
-              >
-                Dholera Investment from Dubai
-              </h1>
-
-              <p
-                className="
-                  mt-5
-                  max-w-2xl
-                  text-base
-                  leading-7
-                  text-white/75
-
-                  sm:text-[17px]
-                  sm:leading-8
-
-                  lg:mt-6
-                  lg:text-[clamp(1rem,1.8vw,1.25rem)]
-                "
-              >
-                Looking for a smart way to diversify your investments in India?
-                Dholera Insider helps Dubai NRIs explore verified residential
-                plots in Dholera Smart City with transparent information, legal
-                clarity, and a smooth remote buying process.
-              </p>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+              Looking for a smart way to diversify your investments in India?
+              Dholera Insider helps Dubai NRIs explore verified residential
+              plots in Dholera Smart City with transparent information, legal
+              clarity, and a smooth remote buying process.
+            </p>
 
               {/* CTA */}
               <a

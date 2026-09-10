@@ -264,260 +264,260 @@ export default function AboutDholeraSirPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-<section className="overflow-hidden bg-[#051A3A] text-white">
-  {/* ================================
-      MOBILE / TABLET
-      Image first, content below
-  ================================= */}
-  <div className="lg:hidden">
-    {/* Complete mobile image */}
-    <div className="w-full bg-[#051A3A]">
-      <Image
-        src={phoneheroImage}
-        alt="About Dholera Smart City"
-        priority
-        sizes="100vw"
-        className="
-          block
-          h-auto
-          w-full
-          object-contain
-        "
-      />
-    </div>
+    <section className="overflow-hidden bg-[#051A3A] text-white">
+      {/* ================================
+          MOBILE / TABLET
+          Image first, content below
+      ================================= */}
+      <div className="lg:hidden">
+        {/* Complete mobile image */}
+        <div className="w-full bg-[#051A3A]">
+          <Image
+            src={phoneheroImage}
+            alt="About Dholera Smart City"
+            priority
+            sizes="100vw"
+            className="
+              block
+              h-auto
+              w-full
+              object-contain
+            "
+          />
+        </div>
 
-    {/* Mobile content */}
-    <div
-      className="
-        px-4
-        pb-10
-        pt-8
-
-        sm:px-6
-        sm:pb-12
-        sm:pt-10
-      "
-    >
-      <h1
-        className="
-          max-w-[390px]
-          text-[32px]
-          font-bold
-          leading-[1.05]
-          tracking-[-0.04em]
-
-          sm:max-w-xl
-          sm:text-[42px]
-        "
-      >
-        About Dholera{" "}
-        <span className="text-[#F6C343]">
-          Smart City
-        </span>
-      </h1>
-
-      <div className="mt-4 h-[3px] w-12 rounded-full bg-[#F6C343]" />
-
-      <p
-        className="
-          mt-6
-          max-w-xl
-          text-[15px]
-          leading-7
-          text-white/80
-
-          sm:text-base
-          sm:leading-8
-        "
-      >
-        Dholera Smart City is India’s first Greenfield Smart City, being
-        developed with planned infrastructure, industrial zones, and
-        residential areas. Major projects like the Ahmedabad Dholera
-        Expressway, Dholera International Airport, and Tata Semiconductor Plant
-        are driving its future growth.
-      </p>
-
-      <a
-        href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="
-          mt-7
-          inline-flex
-          min-h-12
-          items-center
-          justify-center
-
-          rounded-xl
-          bg-[#F6C343]
-
-          px-6
-          py-3
-
-          text-sm
-          font-bold
-          text-[#051A3A]
-
-          transition-all
-          duration-300
-
-          hover:bg-white
-
-          focus:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-white
-        "
-      >
-        Explore Residential Projects
-      </a>
-    </div>
-  </div>
-
-  {/* ================================
-      DESKTOP
-      Full-width banner background
-  ================================= */}
-  <div
-    className="
-      relative
-      hidden
-      min-h-[540px]
-      overflow-hidden
-      lg:block
-      xl:min-h-[600px]
-    "
-  >
-    {/* Desktop hero image */}
-    <Image
-      src={heroImage}
-      alt="About Dholera Smart City"
-      fill
-      priority
-      sizes="100vw"
-      className="
-        object-cover
-        object-center
-      "
-    />
-
-    {/* Desktop left-to-right overlay */}
-    <div
-      aria-hidden="true"
-      className="
-        absolute
-        inset-0
-        bg-gradient-to-r
-        from-[#051A3A]/90
-        via-[#051A3A]/58
-        to-[#051A3A]/10
-      "
-    />
-
-    {/* Bottom depth */}
-    <div
-      aria-hidden="true"
-      className="
-        absolute
-        inset-x-0
-        bottom-0
-        h-[55%]
-        bg-gradient-to-t
-        from-[#051A3A]/80
-        to-transparent
-      "
-    />
-
-    {/* Desktop content */}
-    <div
-      className="
-        relative
-        z-10
-
-        mx-auto
-        flex
-        min-h-[540px]
-        w-full
-        max-w-7xl
-        items-center
-
-        px-8
-
-        xl:min-h-[600px]
-      "
-    >
-      <div className="max-w-[620px]">
-        <h1
+        {/* Mobile content */}
+        <div
           className="
-            text-[54px]
-            font-bold
-            leading-[1.02]
-            tracking-[-0.045em]
+            px-4
+            pb-10
+            pt-8
 
-            xl:text-[64px]
+            sm:px-6
+            sm:pb-12
+            sm:pt-10
           "
         >
-          About Dholera{" "}
-          <span className="text-[#F6C343]">
-            Smart City
-          </span>
-        </h1>
+          <h1
+            className="
+              max-w-[390px]
+              text-[32px]
+              font-bold
+              leading-[1.05]
+              tracking-[-0.04em]
 
-        <div className="mt-5 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+              sm:max-w-xl
+              sm:text-[42px]
+            "
+          >
+            About{" "}
+            <span className="text-[#F6C343]">
+              Dholera Smart City
+            </span>
+          </h1>
 
-        <p
-          className="
-            mt-7
-            max-w-[590px]
-            text-[17px]
-            leading-8
-            text-white/85
-          "
-        >
-          Dholera Smart City is India’s first Greenfield Smart City, being
-          developed with planned infrastructure, industrial zones, and
-          residential areas. Major projects like the Ahmedabad Dholera
-          Expressway, Dholera International Airport, and Tata Semiconductor
-          Plant are driving its future growth.
-        </p>
+          <div className="mt-4 h-[3px] w-12 rounded-full bg-[#F6C343]" />
 
-        <a
-          href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            mt-8
-            inline-flex
-            min-h-12
-            items-center
-            justify-center
+          <p
+            className="
+              mt-6
+              max-w-xl
+              text-[15px]
+              leading-7
+              text-white/80
 
-            rounded-xl
-            bg-[#F6C343]
+              sm:text-base
+              sm:leading-8
+            "
+          >
+            Dholera Smart City is India’s first Greenfield Smart City, being
+            developed with planned infrastructure, industrial zones, and
+            residential areas. Major projects like the Ahmedabad Dholera
+            Expressway, Dholera International Airport, and Tata Semiconductor Plant
+            are driving its future growth.
+          </p>
 
-            px-6
-            py-3
+          <a
+            href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              mt-7
+              inline-flex
+              min-h-12
+              items-center
+              justify-center
 
-            text-sm
-            font-bold
-            text-[#051A3A]
+              rounded-xl
+              bg-[#F6C343]
 
-            transition-all
-            duration-300
+              px-6
+              py-3
 
-            hover:-translate-y-0.5
-            hover:bg-white
+              text-sm
+              font-bold
+              text-[#051A3A]
 
-            focus:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-white
-          "
-        >
-          Explore Residential Projects
-        </a>
+              transition-all
+              duration-300
+
+              hover:bg-white
+
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-white
+            "
+          >
+            Explore Residential Projects
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+
+      {/* ================================
+          DESKTOP
+          Full-width banner background
+      ================================= */}
+      <div
+        className="
+          relative
+          hidden
+          min-h-[540px]
+          overflow-hidden
+          lg:block
+          xl:min-h-[600px]
+        "
+      >
+        {/* Desktop hero image */}
+        <Image
+          src={heroImage}
+          alt="About Dholera Smart City"
+          fill
+          priority
+          sizes="100vw"
+          className="
+            object-cover
+            object-center
+          "
+        />
+
+        {/* Desktop left-to-right overlay */}
+        <div
+          aria-hidden="true"
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-r
+            from-[#051A3A]/90
+            via-[#051A3A]/58
+            to-[#051A3A]/10
+          "
+        />
+
+        {/* Bottom depth */}
+        <div
+          aria-hidden="true"
+          className="
+            absolute
+            inset-x-0
+            bottom-0
+            h-[55%]
+            bg-gradient-to-t
+            from-[#051A3A]/80
+            to-transparent
+          "
+        />
+
+        {/* Desktop content */}
+        <div
+          className="
+            relative
+            z-10
+
+            mx-auto
+            flex
+            min-h-[540px]
+            w-full
+            max-w-7xl
+            items-center
+
+            px-8
+
+            xl:min-h-[600px]
+          "
+        >
+          <div className="max-w-[620px]">
+            <h1
+              className="
+                text-[54px]
+                font-bold
+                leading-[1.02]
+                tracking-[-0.045em]
+
+                xl:text-[64px]
+              "
+            >
+              Abou{" "}
+              <span className="text-[#F6C343]">
+                Dholera Smart City
+              </span>
+            </h1>
+
+            <div className="mt-5 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+
+            <p
+              className="
+                mt-7
+                max-w-[590px]
+                text-[17px]
+                leading-8
+                text-white/85
+              "
+            >
+              Dholera Smart City is India’s first Greenfield Smart City, being
+              developed with planned infrastructure, industrial zones, and
+              residential areas. Major projects like the Ahmedabad Dholera
+              Expressway, Dholera International Airport, and Tata Semiconductor
+              Plant are driving its future growth.
+            </p>
+
+            <a
+              href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                mt-8
+                inline-flex
+                min-h-12
+                items-center
+                justify-center
+
+                rounded-xl
+                bg-[#F6C343]
+
+                px-6
+                py-3
+
+                text-sm
+                font-bold
+                text-[#051A3A]
+
+                transition-all
+                duration-300
+
+                hover:-translate-y-0.5
+                hover:bg-white
+
+                focus:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-white
+              "
+            >
+              Explore Residential Projects
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     {/* why dholera */}
       <WhyDholera/>

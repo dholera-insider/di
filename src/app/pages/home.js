@@ -20,7 +20,7 @@ const HomePage = () => {
       <Hero />
       <Icon />
       <Invest />
-      <DholeraInvestmentForm/>
+      <HomePageForm/>
       <LegalSupport />
       <RemoteBuying />
       <WhyDI />

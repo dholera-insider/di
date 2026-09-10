@@ -21,11 +21,25 @@ export default function MegaProjectsSliderClient({
 }) {
   const projectCount = projects.length;
 
-  const initialIndex = Math.min(
-    2,
-    Math.max(projectCount - 1, 0)
-  );
+  /*
+   * Start autoplay from the FIRST project.
+   * Sequence:
+   * 1 → 2 → 3 → ... → last → ... → 2 → 1
+   */
+  const initialIndex = 0;
 
+  /*
+   * Keep three copies.
+   *
+   * We only autoplay inside the middle copy:
+   *
+   * Copy 1 | Copy 2 | Copy 3
+   *          ↑
+   *     autoplay range
+   *
+   * This gives us enough scrollable space on large
+   * screens without performing an infinite-loop reset.
+   */
   const loopedProjects = useMemo(() => {
     if (!projectCount) return [];
 
@@ -43,7 +57,21 @@ export default function MegaProjectsSliderClient({
   const scrollRafRef = useRef(null);
   const resizeRafRef = useRef(null);
 
-  const activeIndexRef = useRef(initialIndex);
+  /*
+   * Current real project index:
+   * 0, 1, 2, 3...
+   */
+  const activeIndexRef = useRef(
+    initialIndex,
+  );
+
+  /*
+   * Autoplay direction:
+   *
+   *  1 = moving forward
+   * -1 = moving backward
+   */
+  const directionRef = useRef(1);
 
   const dragRef = useRef({
     active: false,
@@ -70,9 +98,20 @@ export default function MegaProjectsSliderClient({
   const [reducedMotion, setReducedMotion] =
     useState(false);
 
-  /* -----------------------------------------
+  /* =========================================
+     MIDDLE COPY RANGE
+  ========================================= */
+
+  const middleStart = projectCount;
+
+  const middleEnd =
+    projectCount > 0
+      ? projectCount * 2 - 1
+      : 0;
+
+  /* =========================================
      ACTIVE INDEX
-  ----------------------------------------- */
+  ========================================= */
 
   const updateActiveIndex = useCallback(
     (index) => {
@@ -83,77 +122,89 @@ export default function MegaProjectsSliderClient({
           projectCount) %
         projectCount;
 
-      activeIndexRef.current = normalized;
+      activeIndexRef.current =
+        normalized;
 
       setActiveIndex(normalized);
     },
-    [projectCount]
+    [projectCount],
   );
 
-  /* -----------------------------------------
-     GET SLIDES
-  ----------------------------------------- */
+  /* =========================================
+     GET ALL SLIDES
+  ========================================= */
 
   const getSlides = useCallback(() => {
-    const viewport = viewportRef.current;
+    const viewport =
+      viewportRef.current;
 
     if (!viewport) return [];
 
     return Array.from(
       viewport.querySelectorAll(
-        "[data-mega-project-slide]"
-      )
+        "[data-mega-project-slide]",
+      ),
     );
   }, []);
 
-  /* -----------------------------------------
-     SCROLL SLIDE TO CENTER
-  ----------------------------------------- */
+  /* =========================================
+     SCROLL SLIDE INTO CENTER
+  ========================================= */
 
-  const scrollToAbsoluteIndex = useCallback(
-    (index, smooth = true) => {
-      const viewport = viewportRef.current;
+  const scrollToAbsoluteIndex =
+    useCallback(
+      (index, smooth = true) => {
+        const viewport =
+          viewportRef.current;
 
-      if (!viewport) return;
+        if (!viewport) return;
 
-      const slides = getSlides();
+        const slides = getSlides();
 
-      const slide = slides[index];
+        const slide = slides[index];
 
-      if (!slide) return;
+        if (!slide) return;
 
-      const slideCenter =
-        slide.offsetLeft +
-        slide.offsetWidth / 2;
+        const slideCenter =
+          slide.offsetLeft +
+          slide.offsetWidth / 2;
 
-      const viewportCenter =
-        viewport.clientWidth / 2;
+        const viewportCenter =
+          viewport.clientWidth / 2;
 
-      const targetLeft =
-        slideCenter - viewportCenter;
+        const targetLeft =
+          slideCenter -
+          viewportCenter;
 
-      viewport.scrollTo({
-        left: targetLeft,
-        behavior:
-          smooth && !reducedMotion
-            ? "smooth"
-            : "auto",
-      });
-    },
-    [getSlides, reducedMotion]
-  );
+        viewport.scrollTo({
+          left: targetLeft,
+          behavior:
+            smooth && !reducedMotion
+              ? "smooth"
+              : "auto",
+        });
+      },
+      [
+        getSlides,
+        reducedMotion,
+      ],
+    );
 
-  /* -----------------------------------------
-     FIND CENTER SLIDE
-  ----------------------------------------- */
+  /* =========================================
+     FIND SLIDE NEAREST TO VIEWPORT CENTER
+  ========================================= */
 
   const getNearestAbsoluteIndex =
     useCallback(() => {
-      const viewport = viewportRef.current;
+      const viewport =
+        viewportRef.current;
 
-      if (!viewport || !projectCount) {
+      if (
+        !viewport ||
+        !projectCount
+      ) {
         return (
-          projectCount +
+          middleStart +
           initialIndex
         );
       }
@@ -162,7 +213,7 @@ export default function MegaProjectsSliderClient({
 
       if (!slides.length) {
         return (
-          projectCount +
+          middleStart +
           initialIndex
         );
       }
@@ -175,326 +226,367 @@ export default function MegaProjectsSliderClient({
         viewportRect.width / 2;
 
       let closestIndex = 0;
-      let closestDistance = Infinity;
+      let closestDistance =
+        Infinity;
 
-      slides.forEach((slide, index) => {
-        const rect =
-          slide.getBoundingClientRect();
+      slides.forEach(
+        (slide, index) => {
+          const rect =
+            slide.getBoundingClientRect();
 
-        const center =
-          rect.left +
-          rect.width / 2;
+          const center =
+            rect.left +
+            rect.width / 2;
 
-        const distance = Math.abs(
-          center - viewportCenter
-        );
+          const distance = Math.abs(
+            center - viewportCenter,
+          );
 
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
+          if (
+            distance <
+            closestDistance
+          ) {
+            closestDistance =
+              distance;
+
+            closestIndex = index;
+          }
+        },
+      );
 
       return closestIndex;
     }, [
       getSlides,
       initialIndex,
+      middleStart,
       projectCount,
     ]);
 
-  /* -----------------------------------------
-     INFINITE LOOP
-  ----------------------------------------- */
+  /* =========================================
+     FINISH SCROLL
+  ========================================= */
 
-  const normalizeLoopPosition = useCallback(
-    (absoluteIndex) => {
-      if (!projectCount) {
-        return absoluteIndex;
-      }
+  const finalizeScroll =
+    useCallback(() => {
+      if (!projectCount) return;
+
+      const absoluteIndex =
+        getNearestAbsoluteIndex();
 
       const realIndex =
-        ((absoluteIndex % projectCount) +
+        ((absoluteIndex %
+          projectCount) +
           projectCount) %
         projectCount;
 
-      const middleIndex =
-        projectCount + realIndex;
+      updateActiveIndex(realIndex);
 
-      const outsideMiddle =
-        absoluteIndex < projectCount ||
-        absoluteIndex >= projectCount * 2;
-
-      if (outsideMiddle) {
-        scrollToAbsoluteIndex(
-          middleIndex,
-          false
-        );
-
-        return middleIndex;
+      /*
+       * If we arrive at either edge,
+       * prepare the next autoplay movement
+       * in the opposite direction.
+       */
+      if (realIndex === 0) {
+        directionRef.current = 1;
       }
 
-      return absoluteIndex;
-    },
-    [
+      if (
+        realIndex ===
+        projectCount - 1
+      ) {
+        directionRef.current = -1;
+      }
+    }, [
+      getNearestAbsoluteIndex,
       projectCount,
-      scrollToAbsoluteIndex,
-    ]
-  );
+      updateActiveIndex,
+    ]);
 
-  /* -----------------------------------------
-     FINISH SCROLL
-  ----------------------------------------- */
-
-  const finalizeScroll = useCallback(() => {
-    if (!projectCount) return;
-
-    let absoluteIndex =
-      getNearestAbsoluteIndex();
-
-    const realIndex =
-      ((absoluteIndex % projectCount) +
-        projectCount) %
-      projectCount;
-
-    updateActiveIndex(realIndex);
-
-    absoluteIndex =
-      normalizeLoopPosition(
-        absoluteIndex
-      );
-
-    updateActiveIndex(
-      absoluteIndex % projectCount
-    );
-  }, [
-    getNearestAbsoluteIndex,
-    normalizeLoopPosition,
-    projectCount,
-    updateActiveIndex,
-  ]);
-
-  /* -----------------------------------------
+  /* =========================================
      PAUSE AUTOPLAY
-  ----------------------------------------- */
+  ========================================= */
 
-  const pauseAutoplay = useCallback(
-    (delay = RESUME_DELAY) => {
-      window.clearTimeout(
-        resumeTimerRef.current
-      );
-
-      setIsPaused(true);
-
-      if (delay === null) return;
-
-      resumeTimerRef.current =
-        window.setTimeout(() => {
-          setIsPaused(false);
-        }, delay);
-    },
-    []
-  );
-
-  /* -----------------------------------------
-     NEXT / PREVIOUS
-  ----------------------------------------- */
-
-  const moveCarousel = useCallback(
-    (direction) => {
-      if (!projectCount) return;
-
-      let currentIndex =
-        getNearestAbsoluteIndex();
-
-      currentIndex =
-        normalizeLoopPosition(
-          currentIndex
+  const pauseAutoplay =
+    useCallback(
+      (
+        delay = RESUME_DELAY,
+      ) => {
+        window.clearTimeout(
+          resumeTimerRef.current,
         );
 
-      scrollToAbsoluteIndex(
-        currentIndex + direction,
-        true
-      );
-    },
-    [
-      getNearestAbsoluteIndex,
-      normalizeLoopPosition,
-      projectCount,
-      scrollToAbsoluteIndex,
-    ]
-  );
+        setIsPaused(true);
 
-  const handlePrevious = useCallback(() => {
-    pauseAutoplay();
-    moveCarousel(-1);
-  }, [
-    moveCarousel,
-    pauseAutoplay,
-  ]);
+        if (delay === null) {
+          return;
+        }
 
-  const handleNext = useCallback(() => {
-    pauseAutoplay();
-    moveCarousel(1);
-  }, [
-    moveCarousel,
-    pauseAutoplay,
-  ]);
+        resumeTimerRef.current =
+          window.setTimeout(() => {
+            setIsPaused(false);
+          }, delay);
+      },
+      [],
+    );
 
-  /* -----------------------------------------
-     DOT NAVIGATION
-  ----------------------------------------- */
+  /* =========================================
+     MANUAL PREVIOUS
+  ========================================= */
 
-  const goToProject = useCallback(
-    (index) => {
+  const handlePrevious =
+    useCallback(() => {
       if (!projectCount) return;
 
       pauseAutoplay();
 
       const current =
-        getNearestAbsoluteIndex();
+        activeIndexRef.current;
 
-      const possibleTargets = [
-        index,
-        projectCount + index,
-        projectCount * 2 + index,
-      ];
+      const target = Math.max(
+        0,
+        current - 1,
+      );
 
-      const target =
-        possibleTargets.reduce(
-          (closest, candidate) => {
-            const currentDistance =
-              Math.abs(
-                candidate - current
-              );
+      /*
+       * Manual previous means future autoplay
+       * should continue backward unless we
+       * reached the first project.
+       */
+      directionRef.current =
+        target === 0 ? 1 : -1;
 
-            const closestDistance =
-              Math.abs(
-                closest - current
-              );
-
-            return currentDistance <
-              closestDistance
-              ? candidate
-              : closest;
-          },
-          possibleTargets[0]
-        );
-
-      updateActiveIndex(index);
+      updateActiveIndex(target);
 
       scrollToAbsoluteIndex(
-        target,
-        true
+        middleStart + target,
+        true,
       );
-    },
-    [
-      getNearestAbsoluteIndex,
+    }, [
+      middleStart,
       pauseAutoplay,
       projectCount,
       scrollToAbsoluteIndex,
       updateActiveIndex,
-    ]
-  );
+    ]);
 
-  /* -----------------------------------------
-     SCROLL
-  ----------------------------------------- */
+  /* =========================================
+     MANUAL NEXT
+  ========================================= */
 
-  const handleScroll = useCallback(() => {
-    if (!projectCount) return;
+  const handleNext =
+    useCallback(() => {
+      if (!projectCount) return;
 
-    window.clearTimeout(
-      scrollEndTimerRef.current
-    );
+      pauseAutoplay();
 
-    if (!scrollRafRef.current) {
-      scrollRafRef.current =
-        window.requestAnimationFrame(() => {
-          const absoluteIndex =
-            getNearestAbsoluteIndex();
+      const current =
+        activeIndexRef.current;
 
-          const realIndex =
-            ((absoluteIndex %
-              projectCount) +
-              projectCount) %
-            projectCount;
+      const lastIndex =
+        projectCount - 1;
 
-          updateActiveIndex(realIndex);
+      const target = Math.min(
+        lastIndex,
+        current + 1,
+      );
 
-          scrollRafRef.current = null;
-        });
-    }
-
-    scrollEndTimerRef.current =
-      window.setTimeout(() => {
-        finalizeScroll();
-      }, SCROLL_END_DELAY);
-  }, [
-    finalizeScroll,
-    getNearestAbsoluteIndex,
-    projectCount,
-    updateActiveIndex,
-  ]);
-
-  /* -----------------------------------------
-     MOUSE DRAG
-  ----------------------------------------- */
-
-  const handlePointerDown = useCallback(
-    (event) => {
       /*
-       * Don't trigger dragging when clicking
-       * links/buttons.
+       * Manual next means future autoplay
+       * should continue forward unless we
+       * reached the last project.
        */
-      if (
-        event.target.closest?.(
-          "a, button"
-        )
-      ) {
+      directionRef.current =
+        target === lastIndex
+          ? -1
+          : 1;
+
+      updateActiveIndex(target);
+
+      scrollToAbsoluteIndex(
+        middleStart + target,
+        true,
+      );
+    }, [
+      middleStart,
+      pauseAutoplay,
+      projectCount,
+      scrollToAbsoluteIndex,
+      updateActiveIndex,
+    ]);
+
+  /* =========================================
+     DOT NAVIGATION
+  ========================================= */
+
+  const goToProject =
+    useCallback(
+      (index) => {
+        if (!projectCount) return;
+
         pauseAutoplay();
 
-        return;
-      }
+        const current =
+          activeIndexRef.current;
 
-      pauseAutoplay(null);
+        /*
+         * Set autoplay direction based
+         * on how the user navigated.
+         */
+        if (index > current) {
+          directionRef.current = 1;
+        } else if (
+          index < current
+        ) {
+          directionRef.current = -1;
+        }
 
-      /*
-       * Mobile/touch uses native scroll.
-       */
-      if (
-        event.pointerType !== "mouse"
-      ) {
-        return;
-      }
+        /*
+         * Edge projects always reverse
+         * correctly on next autoplay.
+         */
+        if (index === 0) {
+          directionRef.current = 1;
+        }
 
-      const viewport =
-        viewportRef.current;
+        if (
+          index ===
+          projectCount - 1
+        ) {
+          directionRef.current = -1;
+        }
 
-      if (!viewport) return;
+        updateActiveIndex(index);
 
-      dragRef.current = {
-        active: true,
-        startX: event.clientX,
-        scrollLeft:
-          viewport.scrollLeft,
-        moved: false,
-      };
-
-      setIsDragging(true);
-
-      try {
-        event.currentTarget.setPointerCapture(
-          event.pointerId
+        /*
+         * Always navigate inside
+         * the middle copy.
+         */
+        scrollToAbsoluteIndex(
+          middleStart + index,
+          true,
         );
-      } catch {}
-    },
-    [pauseAutoplay]
-  );
+      },
+      [
+        middleStart,
+        pauseAutoplay,
+        projectCount,
+        scrollToAbsoluteIndex,
+        updateActiveIndex,
+      ],
+    );
 
-  const handlePointerMove = useCallback(
-    (event) => {
+  /* =========================================
+     SCROLL
+  ========================================= */
+
+  const handleScroll =
+    useCallback(() => {
+      if (!projectCount) return;
+
+      window.clearTimeout(
+        scrollEndTimerRef.current,
+      );
+
       if (
-        event.pointerType !== "mouse" ||
+        !scrollRafRef.current
+      ) {
+        scrollRafRef.current =
+          window.requestAnimationFrame(
+            () => {
+              const absoluteIndex =
+                getNearestAbsoluteIndex();
+
+              const realIndex =
+                ((absoluteIndex %
+                  projectCount) +
+                  projectCount) %
+                projectCount;
+
+              updateActiveIndex(
+                realIndex,
+              );
+
+              scrollRafRef.current =
+                null;
+            },
+          );
+      }
+
+      scrollEndTimerRef.current =
+        window.setTimeout(() => {
+          finalizeScroll();
+        }, SCROLL_END_DELAY);
+    }, [
+      finalizeScroll,
+      getNearestAbsoluteIndex,
+      projectCount,
+      updateActiveIndex,
+    ]);
+
+  /* =========================================
+     MOUSE DRAG
+  ========================================= */
+
+  const handlePointerDown =
+    useCallback(
+      (event) => {
+        /*
+         * Do not start dragging when
+         * clicking links/buttons.
+         */
+        if (
+          event.target.closest?.(
+            "a, button",
+          )
+        ) {
+          pauseAutoplay();
+
+          return;
+        }
+
+        pauseAutoplay(null);
+
+        /*
+         * Touch devices continue using
+         * native horizontal scrolling.
+         */
+        if (
+          event.pointerType !==
+          "mouse"
+        ) {
+          return;
+        }
+
+        const viewport =
+          viewportRef.current;
+
+        if (!viewport) return;
+
+        dragRef.current = {
+          active: true,
+          startX:
+            event.clientX,
+          scrollLeft:
+            viewport.scrollLeft,
+          moved: false,
+        };
+
+        setIsDragging(true);
+
+        try {
+          event.currentTarget.setPointerCapture(
+            event.pointerId,
+          );
+        } catch {}
+      },
+      [pauseAutoplay],
+    );
+
+  const handlePointerMove =
+    useCallback((event) => {
+      if (
+        event.pointerType !==
+          "mouse" ||
         !dragRef.current.active
       ) {
         return;
@@ -509,183 +601,223 @@ export default function MegaProjectsSliderClient({
         event.clientX -
         dragRef.current.startX;
 
-      if (Math.abs(movement) > 4) {
-        dragRef.current.moved = true;
+      if (
+        Math.abs(movement) >
+        4
+      ) {
+        dragRef.current.moved =
+          true;
       }
 
       viewport.scrollLeft =
         dragRef.current.scrollLeft -
         movement;
-    },
-    []
-  );
+    }, []);
 
-  const handlePointerEnd = useCallback(
-    (event) => {
-      if (
-        event.pointerType === "mouse" &&
-        dragRef.current.active
-      ) {
-        dragRef.current.active = false;
+  const handlePointerEnd =
+    useCallback(
+      (event) => {
+        if (
+          event.pointerType ===
+            "mouse" &&
+          dragRef.current.active
+        ) {
+          dragRef.current.active =
+            false;
 
-        setIsDragging(false);
+          setIsDragging(false);
 
-        try {
-          if (
-            event.currentTarget.hasPointerCapture(
-              event.pointerId
-            )
-          ) {
-            event.currentTarget.releasePointerCapture(
-              event.pointerId
-            );
-          }
-        } catch {}
-
-        if (dragRef.current.moved) {
-          window.requestAnimationFrame(
-            () => {
-              const nearest =
-                getNearestAbsoluteIndex();
-
-              scrollToAbsoluteIndex(
-                nearest,
-                true
+          try {
+            if (
+              event.currentTarget.hasPointerCapture(
+                event.pointerId,
+              )
+            ) {
+              event.currentTarget.releasePointerCapture(
+                event.pointerId,
               );
             }
-          );
+          } catch {}
+
+          if (
+            dragRef.current.moved
+          ) {
+            window.requestAnimationFrame(
+              () => {
+                const nearest =
+                  getNearestAbsoluteIndex();
+
+                /*
+                 * Snap naturally to the
+                 * nearest card.
+                 */
+                scrollToAbsoluteIndex(
+                  nearest,
+                  true,
+                );
+              },
+            );
+          }
         }
-      }
 
-      pauseAutoplay();
-    },
-    [
-      getNearestAbsoluteIndex,
-      pauseAutoplay,
-      scrollToAbsoluteIndex,
-    ]
-  );
-
-  /* -----------------------------------------
-     TRACKPAD
-  ----------------------------------------- */
-
-  const handleWheel = useCallback(
-    (event) => {
-      if (
-        Math.abs(event.deltaX) >
-        Math.abs(event.deltaY)
-      ) {
         pauseAutoplay();
-      }
-    },
-    [pauseAutoplay]
-  );
+      },
+      [
+        getNearestAbsoluteIndex,
+        pauseAutoplay,
+        scrollToAbsoluteIndex,
+      ],
+    );
 
-  /* -----------------------------------------
+  /* =========================================
+     TRACKPAD
+  ========================================= */
+
+  const handleWheel =
+    useCallback(
+      (event) => {
+        if (
+          Math.abs(
+            event.deltaX,
+          ) >
+          Math.abs(
+            event.deltaY,
+          )
+        ) {
+          pauseAutoplay();
+        }
+      },
+      [pauseAutoplay],
+    );
+
+  /* =========================================
      KEYBOARD
-  ----------------------------------------- */
+  ========================================= */
 
-  const handleKeyDown = useCallback(
-    (event) => {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
+  const handleKeyDown =
+    useCallback(
+      (event) => {
+        if (
+          event.key ===
+          "ArrowLeft"
+        ) {
+          event.preventDefault();
 
-        handlePrevious();
-      }
+          handlePrevious();
+        }
 
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
+        if (
+          event.key ===
+          "ArrowRight"
+        ) {
+          event.preventDefault();
 
-        handleNext();
-      }
-    },
-    [
-      handleNext,
-      handlePrevious,
-    ]
-  );
+          handleNext();
+        }
+      },
+      [
+        handleNext,
+        handlePrevious,
+      ],
+    );
 
-  /* -----------------------------------------
+  /* =========================================
      REDUCED MOTION
-  ----------------------------------------- */
+  ========================================= */
 
   useEffect(() => {
     const media =
       window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       );
 
-    const updateMotionPreference = () => {
-      setReducedMotion(
-        media.matches
-      );
-    };
+    const updateMotionPreference =
+      () => {
+        setReducedMotion(
+          media.matches,
+        );
+      };
 
     updateMotionPreference();
 
     media.addEventListener?.(
       "change",
-      updateMotionPreference
+      updateMotionPreference,
     );
 
     return () => {
       media.removeEventListener?.(
         "change",
-        updateMotionPreference
+        updateMotionPreference,
       );
     };
   }, []);
 
-  /* -----------------------------------------
+  /* =========================================
      INITIAL POSITION
-  ----------------------------------------- */
+  ========================================= */
 
   useEffect(() => {
     if (!projectCount) return;
 
+    /*
+     * Begin at project 1 inside
+     * the middle copy.
+     */
     const frame =
-      window.requestAnimationFrame(() => {
-        scrollToAbsoluteIndex(
-          projectCount + initialIndex,
-          false
-        );
+      window.requestAnimationFrame(
+        () => {
+          directionRef.current =
+            1;
 
-        updateActiveIndex(
-          initialIndex
-        );
+          scrollToAbsoluteIndex(
+            middleStart +
+              initialIndex,
+            false,
+          );
 
-        setIsReady(true);
-      });
+          updateActiveIndex(
+            initialIndex,
+          );
+
+          setIsReady(true);
+        },
+      );
 
     return () => {
       window.cancelAnimationFrame(
-        frame
+        frame,
       );
     };
   }, [
     initialIndex,
+    middleStart,
     projectCount,
     scrollToAbsoluteIndex,
     updateActiveIndex,
   ]);
 
-  /* -----------------------------------------
+  /* =========================================
      RESIZE
-  ----------------------------------------- */
+  ========================================= */
 
   useEffect(() => {
     const viewport =
       viewportRef.current;
 
-    if (!viewport || !projectCount) {
+    if (
+      !viewport ||
+      !projectCount
+    ) {
       return;
     }
 
     const handleResize = () => {
-      if (resizeRafRef.current) {
+      if (
+        resizeRafRef.current
+      ) {
         window.cancelAnimationFrame(
-          resizeRafRef.current
+          resizeRafRef.current,
         );
       }
 
@@ -693,14 +825,14 @@ export default function MegaProjectsSliderClient({
         window.requestAnimationFrame(
           () => {
             scrollToAbsoluteIndex(
-              projectCount +
+              middleStart +
                 activeIndexRef.current,
-              false
+              false,
             );
 
             resizeRafRef.current =
               null;
-          }
+          },
         );
     };
 
@@ -712,14 +844,16 @@ export default function MegaProjectsSliderClient({
     ) {
       observer =
         new ResizeObserver(
-          handleResize
+          handleResize,
         );
 
-      observer.observe(viewport);
+      observer.observe(
+        viewport,
+      );
     } else {
       window.addEventListener(
         "resize",
-        handleResize
+        handleResize,
       );
     }
 
@@ -729,24 +863,27 @@ export default function MegaProjectsSliderClient({
       } else {
         window.removeEventListener(
           "resize",
-          handleResize
+          handleResize,
         );
       }
 
-      if (resizeRafRef.current) {
+      if (
+        resizeRafRef.current
+      ) {
         window.cancelAnimationFrame(
-          resizeRafRef.current
+          resizeRafRef.current,
         );
       }
     };
   }, [
+    middleStart,
     projectCount,
     scrollToAbsoluteIndex,
   ]);
 
-  /* -----------------------------------------
-     AUTOPLAY
-  ----------------------------------------- */
+  /* =========================================
+     PING-PONG AUTOPLAY
+  ========================================= */
 
   useEffect(() => {
     if (
@@ -760,14 +897,77 @@ export default function MegaProjectsSliderClient({
       return;
     }
 
+    if (projectCount <= 1) {
+      return;
+    }
+
     const autoplayTimer =
       window.setTimeout(() => {
-        moveCarousel(1);
+        const lastIndex =
+          projectCount - 1;
+
+        const current =
+          activeIndexRef.current;
+
+        let direction =
+          directionRef.current;
+
+        /*
+         * At the LAST project:
+         * reverse toward the previous one.
+         */
+        if (
+          current >= lastIndex
+        ) {
+          direction = -1;
+        }
+
+        /*
+         * At the FIRST project:
+         * reverse toward the next one.
+         */
+        if (current <= 0) {
+          direction = 1;
+        }
+
+        directionRef.current =
+          direction;
+
+        const nextIndex =
+          Math.max(
+            0,
+            Math.min(
+              lastIndex,
+              current +
+                direction,
+            ),
+          );
+
+        updateActiveIndex(
+          nextIndex,
+        );
+
+        /*
+         * IMPORTANT:
+         *
+         * Always scroll inside the
+         * middle project copy.
+         *
+         * There is NO:
+         * - infinite-loop normalization
+         * - last → first reset
+         * - hidden teleport
+         */
+        scrollToAbsoluteIndex(
+          middleStart +
+            nextIndex,
+          true,
+        );
       }, AUTOPLAY_DELAY);
 
     return () => {
       window.clearTimeout(
-        autoplayTimer
+        autoplayTimer,
       );
     };
   }, [
@@ -776,34 +976,40 @@ export default function MegaProjectsSliderClient({
     isHovered,
     isPaused,
     isReady,
-    moveCarousel,
+    middleStart,
     projectCount,
     reducedMotion,
+    scrollToAbsoluteIndex,
+    updateActiveIndex,
   ]);
 
-  /* -----------------------------------------
+  /* =========================================
      CLEANUP
-  ----------------------------------------- */
+  ========================================= */
 
   useEffect(() => {
     return () => {
       window.clearTimeout(
-        scrollEndTimerRef.current
+        scrollEndTimerRef.current,
       );
 
       window.clearTimeout(
-        resumeTimerRef.current
+        resumeTimerRef.current,
       );
 
-      if (scrollRafRef.current) {
+      if (
+        scrollRafRef.current
+      ) {
         window.cancelAnimationFrame(
-          scrollRafRef.current
+          scrollRafRef.current,
         );
       }
 
-      if (resizeRafRef.current) {
+      if (
+        resizeRafRef.current
+      ) {
         window.cancelAnimationFrame(
-          resizeRafRef.current
+          resizeRafRef.current,
         );
       }
     };
@@ -859,38 +1065,38 @@ export default function MegaProjectsSliderClient({
             lg:mb-12
           "
         >
+          <h2
+            id="mega-projects-heading"
+            className="
+              text-left
+              text-[30px]
+              font-semibold
+              leading-[1.12]
+              tracking-[-0.035em]
+              text-[#071A3A]
 
-            <h2
-                id="mega-projects-heading"
-                className="
-                    text-left
-                    text-[30px]
-                    font-semibold
-                    leading-[1.12]
-                    tracking-[-0.035em]
-                    text-[#071A3A]
+              sm:text-center
+              sm:text-4xl
 
-                    sm:text-center
-                    sm:text-4xl
+              lg:text-[44px]
+            "
+          >
+            Mega Projects in Dholera Smart City
+          </h2>
 
-                    lg:text-[44px]
-                "
-                >
-                Mega Projects in Dholera Smart City
-            </h2>
-            <div
-                className="
-                    mt-4
-                    ml-0
-                    mr-auto
-                    h-[2px]
-                    w-14
-                    rounded-full
-                    bg-[#F6C343]
+          <div
+            className="
+              ml-0
+              mr-auto
+              mt-4
+              h-[2px]
+              w-14
+              rounded-full
+              bg-[#F6C343]
 
-                    sm:mx-auto
-                "
-                />
+              sm:mx-auto
+            "
+          />
         </div>
 
         {/* Slider */}
@@ -909,7 +1115,9 @@ export default function MegaProjectsSliderClient({
             aria-roledescription="carousel"
             aria-label="Dholera mega projects"
             tabIndex={0}
-            onScroll={handleScroll}
+            onScroll={
+              handleScroll
+            }
             onPointerDown={
               handlePointerDown
             }
@@ -922,8 +1130,12 @@ export default function MegaProjectsSliderClient({
             onPointerCancel={
               handlePointerEnd
             }
-            onWheel={handleWheel}
-            onKeyDown={handleKeyDown}
+            onWheel={
+              handleWheel
+            }
+            onKeyDown={
+              handleKeyDown
+            }
             onFocus={() =>
               pauseAutoplay(null)
             }
@@ -975,7 +1187,7 @@ export default function MegaProjectsSliderClient({
             {loopedProjects.map(
               (
                 project,
-                absoluteIndex
+                absoluteIndex,
               ) => {
                 const realIndex =
                   absoluteIndex %
@@ -987,9 +1199,9 @@ export default function MegaProjectsSliderClient({
 
                 const isMiddleCopy =
                   absoluteIndex >=
-                    projectCount &&
-                  absoluteIndex <
-                    projectCount * 2;
+                    middleStart &&
+                  absoluteIndex <=
+                    middleEnd;
 
                 const shouldPrioritize =
                   isMiddleCopy &&
@@ -1059,14 +1271,20 @@ export default function MegaProjectsSliderClient({
                       >
                         {project.image ? (
                           <Image
-                            src={project.image}
-                            alt={project.title}
+                            src={
+                              project.image
+                            }
+                            alt={
+                              project.title
+                            }
                             fill
                             priority={
                               shouldPrioritize
                             }
                             quality={82}
-                            draggable={false}
+                            draggable={
+                              false
+                            }
                             sizes="
                               (max-width: 640px) 88vw,
                               (max-width: 1024px) 50vw,
@@ -1100,7 +1318,9 @@ export default function MegaProjectsSliderClient({
                                 text-[#7A8491]
                               "
                             >
-                              {project.title}
+                              {
+                                project.title
+                              }
                             </span>
                           </div>
                         )}
@@ -1140,7 +1360,9 @@ export default function MegaProjectsSliderClient({
                             sm:text-base
                           "
                         >
-                          {project.title}
+                          {
+                            project.title
+                          }
                         </h3>
 
                         <p
@@ -1153,16 +1375,22 @@ export default function MegaProjectsSliderClient({
                             sm:text-[13px]
                           "
                         >
-                          {project.description}
+                          {
+                            project.description
+                          }
                         </p>
 
                         <div className="mt-auto pt-5">
                           <Link
-                            href={project.href}
-                            prefetch={true}
+                            href={
+                              project.href
+                            }
+                            prefetch={
+                              true
+                            }
                             aria-label={`Read more about ${project.title}`}
                             onPointerDown={(
-                              event
+                              event,
                             ) => {
                               event.stopPropagation();
                             }}
@@ -1207,7 +1435,7 @@ export default function MegaProjectsSliderClient({
                     </article>
                   </div>
                 );
-              }
+              },
             )}
           </div>
 
@@ -1225,7 +1453,9 @@ export default function MegaProjectsSliderClient({
           >
             <button
               type="button"
-              onClick={handlePrevious}
+              onClick={
+                handlePrevious
+              }
               aria-label="Previous project"
               className="
                 flex
@@ -1268,7 +1498,7 @@ export default function MegaProjectsSliderClient({
                       type="button"
                       onClick={() =>
                         goToProject(
-                          index
+                          index,
                         )
                       }
                       aria-label={`Go to project ${
@@ -1306,7 +1536,7 @@ export default function MegaProjectsSliderClient({
                       />
                     </button>
                   );
-                }
+                },
               )}
             </div>
 

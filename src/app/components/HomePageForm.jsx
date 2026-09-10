@@ -1,898 +1,1651 @@
 "use client";
 
-import React, { useEffect, useId, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+import React from "react";
+
+import "../about-us/about.css";
 
 import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
-} from "./InternationalPhoneInput";
-
-const DAY_MS = 24 * 60 * 60 * 1000;
-const MAX_SUBMISSIONS = 3;
-
-let recaptchaPromise = null;
-
-// Shared across instances. Do not append the same script twice.
-function loadRecaptcha() {
-  if (typeof window === "undefined") {
-    return Promise.reject(
-      new Error("Verification is only available in the browser."),
-    );
-  }
-
-  if (typeof window.grecaptcha?.render === "function") {
-    return Promise.resolve(window.grecaptcha);
-  }
-
-  if (recaptchaPromise) return recaptchaPromise;
-
-  recaptchaPromise = new Promise((resolve, reject) => {
-    let script = document.querySelector(
-      'script[src*="/recaptcha/api.js"]',
-    );
-
-    const ownsScript = !script;
-
-    let settled = false;
-    let interval;
-    let timeout;
-
-    const finish = (error) => {
-      if (settled) return;
-
-      settled = true;
-
-      clearInterval(interval);
-      clearTimeout(timeout);
-
-      script?.removeEventListener("error", handleError);
-
-      if (error) {
-        if (ownsScript) script?.remove();
-        reject(error);
-      } else {
-        resolve(window.grecaptcha);
-      }
-    };
-
-    const checkReady = () => {
-      if (typeof window.grecaptcha?.render === "function") {
-        finish();
-      }
-    };
-
-    const handleError = () => {
-      finish(
-        new Error(
-          "Verification could not load. Check your connection and try again.",
-        ),
-      );
-    };
-
-    if (ownsScript) {
-      window.__dholeraFormRecaptchaReady = checkReady;
-
-      script = document.createElement("script");
-
-      script.src =
-        "https://www.google.com/recaptcha/api.js?onload=__dholeraFormRecaptchaReady&render=explicit";
-
-      script.async = true;
-      script.defer = true;
-    }
-
-    script.addEventListener("error", handleError, { once: true });
-
-    interval = setInterval(checkReady, 100);
-
-    timeout = setTimeout(() => {
-      finish(
-        new Error(
-          "Verification timed out. Check your connection or content blocker and try again.",
-        ),
-      );
-    }, 15000);
-
-    if (ownsScript) document.head.appendChild(script);
-
-    checkReady();
-  }).catch((error) => {
-    recaptchaPromise = null;
-    throw error;
-  });
-
-  return recaptchaPromise;
-}
-
-function readQuota(fallback) {
-  let quota = fallback;
-
-  try {
-    const count = Number(
-      localStorage.getItem("formSubmissionCount") ?? fallback.count,
-    );
-
-    const last = Number(
-      localStorage.getItem("lastSubmissionTime") ?? fallback.last,
-    );
-
-    quota = {
-      count:
-        Number.isFinite(count) && count > 0
-          ? Math.floor(count)
-          : 0,
-
-      last:
-        Number.isFinite(last) && last > 0
-          ? last
-          : 0,
-    };
-  } catch {
-    // Continue with the in-memory quota if storage is unavailable.
-  }
-
-  const elapsed = Date.now() - quota.last;
-
-  return !quota.last || elapsed < 0 || elapsed >= DAY_MS
-    ? { count: 0, last: 0 }
-    : quota;
-}
+} from "./HomePageFormInput";
 
 export default function CommonForm({
   title = "Start Your Dholera Investment",
 }) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    phone: "",
-  });
+  // =========================================================
+  // STATES
+  // =========================================================
 
-  const [status, setStatus] = useState("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [captchaVisible, setCaptchaVisible] = useState(false);
+  const [isLoading, setIsLoading] =
+    useState(false);
 
-  const instanceId = useId();
+  const [formData, setFormData] =
+    useState({
+      fullName: "",
+      phone: "",
+    });
 
-  const nameId = `${instanceId}-name`;
-  const phoneId = `${instanceId}-phone`;
-  const errorId = `${instanceId}-error`;
-  const headingId = `${instanceId}-heading`;
+  const [showPopup, setShowPopup] =
+    useState(false);
 
-  const formDataRef = useRef(formData);
-  const statusRef = useRef("idle");
-  const mountedRef = useRef(false);
-  const submitIntentRef = useRef(false);
-  const requestActiveRef = useRef(false);
-  const successRef = useRef(false);
+  const [
+    submissionCount,
+    setSubmissionCount,
+  ] = useState(0);
 
-  const quotaRef = useRef({
-    count: 0,
-    last: 0,
-  });
+  const [
+    lastSubmissionTime,
+    setLastSubmissionTime,
+  ] = useState(0);
 
-  const recaptchaRef = useRef(null);
-  const widgetIdRef = useRef(null);
-  const requestControllerRef = useRef(null);
+  const [
+    errorMessage,
+    setErrorMessage,
+  ] = useState("");
 
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const [
+    recaptchaLoaded,
+    setRecaptchaLoaded,
+  ] = useState(false);
 
-  useEffect(() => {
-    mountedRef.current = true;
-    quotaRef.current = readQuota(quotaRef.current);
+  const [
+    userInteracted,
+    setUserInteracted,
+  ] = useState(false);
 
-    return () => {
-      mountedRef.current = false;
-      submitIntentRef.current = false;
+  const recaptchaRef =
+    useRef(null);
 
-      requestControllerRef.current?.abort();
+  const recaptchaWidgetId =
+    useRef(null);
 
-      if (
-        widgetIdRef.current !== null &&
-        window.grecaptcha?.reset
-      ) {
-        try {
-          window.grecaptcha.reset(widgetIdRef.current);
-        } catch {
-          // The widget may already be removed during navigation.
-        }
-      }
-    };
-  }, []);
+  const siteKey =
+    process.env
+      .NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  function updateStatus(nextStatus) {
-    statusRef.current = nextStatus;
+  // =========================================================
+  // LOAD RECAPTCHA
+  // =========================================================
 
-    if (mountedRef.current) {
-      setStatus(nextStatus);
-    }
-  }
-
-  function resetCaptcha() {
+  const loadRecaptcha = () => {
     if (
-      widgetIdRef.current !== null &&
-      window.grecaptcha?.reset
-    ) {
-      try {
-        window.grecaptcha.reset(widgetIdRef.current);
-      } catch {
-        // Cleanup errors must not replace a submission result.
-      }
-    }
-  }
-
-  function preloadCaptcha() {
-    if (siteKey && !successRef.current) {
-      // A submit attempt will display any loading error.
-      loadRecaptcha().catch(() => {});
-    }
-  }
-
-  function updateField(name, value) {
-    if (
-      requestActiveRef.current ||
-      successRef.current
+      typeof window === "undefined" ||
+      recaptchaLoaded
     ) {
       return;
     }
 
-    const next = {
-      ...formDataRef.current,
-      [name]: value ?? "",
-    };
+    if (window.grecaptcha) {
+      setRecaptchaLoaded(true);
 
-    formDataRef.current = next;
-
-    setFormData(next);
-    setErrorMessage("");
-
-    preloadCaptcha();
-  }
-
-  function validateAndGetPayload() {
-    const current = formDataRef.current;
-
-    if (!current.fullName.trim() || !current.phone) {
-      setErrorMessage("Please fill in all fields");
-      return null;
+      return;
     }
 
-    if (!isValidInternationalPhone(current.phone)) {
+    try {
+      const existingScript =
+        document.querySelector(
+          'script[src="https://www.google.com/recaptcha/api.js"]',
+        );
+
+      if (existingScript) {
+        existingScript.addEventListener(
+          "load",
+          () => {
+            setRecaptchaLoaded(true);
+          },
+          {
+            once: true,
+          },
+        );
+
+        return;
+      }
+
+      const script =
+        document.createElement(
+          "script",
+        );
+
+      script.src =
+        "https://www.google.com/recaptcha/api.js";
+
+      script.async = true;
+      script.defer = true;
+
+      script.onload = () => {
+        setRecaptchaLoaded(true);
+      };
+
+      script.onerror = () => {
+        console.error(
+          "Failed to load reCAPTCHA script",
+        );
+
+        setRecaptchaLoaded(true);
+      };
+
+      document.head.appendChild(
+        script,
+      );
+    } catch (err) {
+      console.error(
+        "reCAPTCHA script loading error:",
+        err,
+      );
+
+      setRecaptchaLoaded(true);
+    }
+  };
+
+  // =========================================================
+  // LOCAL STORAGE
+  // =========================================================
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined"
+    ) {
+      setSubmissionCount(
+        parseInt(
+          localStorage.getItem(
+            "formSubmissionCount",
+          ) || "0",
+          10,
+        ),
+      );
+
+      setLastSubmissionTime(
+        parseInt(
+          localStorage.getItem(
+            "lastSubmissionTime",
+          ) || "0",
+          10,
+        ),
+      );
+    }
+  }, []);
+
+  // =========================================================
+  // SUCCESS POPUP AUTO-CLOSE
+  // =========================================================
+
+  useEffect(() => {
+    if (!showPopup) {
+      return;
+    }
+
+    const timer =
+      window.setTimeout(() => {
+        setShowPopup(false);
+      }, 5000);
+
+    const handleEscape = (
+      event,
+    ) => {
+      if (
+        event.key === "Escape"
+      ) {
+        setShowPopup(false);
+      }
+    };
+
+    window.addEventListener(
+      "keydown",
+      handleEscape,
+    );
+
+    return () => {
+      window.clearTimeout(
+        timer,
+      );
+
+      window.removeEventListener(
+        "keydown",
+        handleEscape,
+      );
+    };
+  }, [showPopup]);
+
+  // =========================================================
+  // NAME CHANGE
+  // =========================================================
+
+  const handleChange = (
+    e,
+  ) => {
+    const {
+      name,
+      value,
+    } = e.target;
+
+    setFormData(
+      (prevData) => ({
+        ...prevData,
+        [name]: value,
+      }),
+    );
+
+    setErrorMessage("");
+
+    if (!userInteracted) {
+      setUserInteracted(
+        true,
+      );
+
+      loadRecaptcha();
+    }
+  };
+
+  // =========================================================
+  // PHONE CHANGE
+  // =========================================================
+
+  const handlePhoneChange = (
+    phone,
+  ) => {
+    setFormData(
+      (prevData) => ({
+        ...prevData,
+        phone,
+      }),
+    );
+
+    setErrorMessage("");
+
+    if (!userInteracted) {
+      setUserInteracted(
+        true,
+      );
+
+      loadRecaptcha();
+    }
+  };
+
+  // =========================================================
+  // VALIDATION
+  // =========================================================
+
+  const validateForm = () => {
+    if (
+      !formData.fullName ||
+      !formData.phone
+    ) {
+      setErrorMessage(
+        "Please fill in all fields",
+      );
+
+      return false;
+    }
+
+    if (
+      !isValidInternationalPhone(
+        formData.phone,
+      )
+    ) {
       setErrorMessage(
         "Please enter a valid international phone number",
       );
 
-      return null;
+      return false;
     }
 
-    quotaRef.current = readQuota(quotaRef.current);
+    const now =
+      Date.now();
 
-    if (quotaRef.current.count >= MAX_SUBMISSIONS) {
+    const hoursPassed =
+      (now -
+        lastSubmissionTime) /
+      (1000 * 60 * 60);
+
+    if (
+      hoursPassed >= 24
+    ) {
+      setSubmissionCount(0);
+
+      if (
+        typeof window !== "undefined"
+      ) {
+        localStorage.setItem(
+          "formSubmissionCount",
+          "0",
+        );
+
+        localStorage.setItem(
+          "lastSubmissionTime",
+          now.toString(),
+        );
+      }
+    } else if (
+      submissionCount >= 3
+    ) {
       setErrorMessage(
         "You have reached the maximum submission limit. Try again after 24 hours.",
       );
 
-      return null;
+      return false;
     }
 
-    return {
-      fullName: current.fullName.trim(),
-      phone: getInternationalPhoneValue(current.phone),
-    };
-  }
+    return true;
+  };
 
-  function recordSuccess() {
-    const current = readQuota(quotaRef.current);
+  // =========================================================
+  // API SUBMISSION
+  // =========================================================
 
-    const next = {
-      count: current.count + 1,
-      last: Date.now(),
-    };
-
-    quotaRef.current = next;
-
-    try {
-      localStorage.setItem(
-        "formSubmissionCount",
-        String(next.count),
-      );
-
-      localStorage.setItem(
-        "lastSubmissionTime",
-        String(next.last),
-      );
-    } catch {
-      // An accepted lead must remain successful if storage fails.
-    }
-
-    try {
-      window.dataLayer = window.dataLayer || [];
-
-      window.dataLayer.push({
-        event: "lead_form",
-      });
-    } catch {
-      // Analytics failure must not cause duplicate lead submission.
-    }
-  }
-
-  async function submitVerifiedLead(token) {
-    if (
-      !mountedRef.current ||
-      !submitIntentRef.current ||
-      requestActiveRef.current ||
-      successRef.current
-    ) {
-      return;
-    }
-
-    // Read current values, not values captured by an old callback.
-    const payload = validateAndGetPayload();
-
-    if (!payload) {
-      submitIntentRef.current = false;
-      updateStatus("idle");
-      return;
-    }
-
-    if (!token) {
-      submitIntentRef.current = false;
-      updateStatus("idle");
-
-      setErrorMessage(
-        "Please complete the verification and try again.",
-      );
-
-      return;
-    }
-
-    submitIntentRef.current = false;
-    requestActiveRef.current = true;
-
-    updateStatus("submitting");
-    setErrorMessage("");
-
-    const controller = new AbortController();
-
-    requestControllerRef.current = controller;
-
-    const timeout = setTimeout(() => {
-      controller.abort();
-    }, 45000);
-
-    try {
-      const response = await fetch("/api/lead", {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          ...payload,
-          recaptchaToken: token,
-        }),
-
-        signal: controller.signal,
-      });
-
-      const text = await response.text();
-
-      let result = null;
-
+  const onRecaptchaSuccess =
+    async () => {
       try {
-        result = JSON.parse(text);
-      } catch {
-        // A proxy or missing route may return HTML instead.
-      }
+        const response =
+          await fetch(
+            "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
+            {
+              method: "POST",
 
-      if (!response.ok || result?.success !== true) {
-        throw new Error(
-          (typeof result?.message === "string" &&
-            result.message) ||
-            `Unable to confirm submission (HTTP ${response.status}). Please contact us before retrying.`,
+              headers: {
+                "Content-Type":
+                  "application/json",
+
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
+              },
+
+              body:
+                JSON.stringify(
+                  {
+                    fields: {
+                      name:
+                        formData.fullName,
+
+                      phone:
+                        getInternationalPhoneValue(
+                          formData.phone,
+                        ),
+
+                      source:
+                        "Dholera Insider",
+                    },
+
+                    source:
+                      "Dholera Insider Website",
+
+                    tags: [
+                      "Dholera Investment",
+                      "Website Lead",
+                    ],
+                  },
+                ),
+            },
+          );
+
+        const responseText =
+          await response.text();
+
+        if (response.ok) {
+          setFormData({
+            fullName: "",
+            phone: "",
+          });
+
+          setErrorMessage("");
+
+          setShowPopup(true);
+
+          setSubmissionCount(
+            (prev) => {
+              const newCount =
+                prev + 1;
+
+              if (
+                typeof window !==
+                "undefined"
+              ) {
+                localStorage.setItem(
+                  "formSubmissionCount",
+                  newCount.toString(),
+                );
+
+                localStorage.setItem(
+                  "lastSubmissionTime",
+                  Date.now().toString(),
+                );
+              }
+
+              return newCount;
+            },
+          );
+
+          window.dataLayer =
+            window.dataLayer ||
+            [];
+
+          window.dataLayer.push({
+            event:
+              "lead_form",
+          });
+        } else {
+          let errorData;
+
+          try {
+            errorData =
+              JSON.parse(
+                responseText,
+              );
+          } catch {
+            errorData = {
+              message:
+                responseText,
+            };
+          }
+
+          throw new Error(
+            errorData.message ||
+              "Error submitting form",
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Form submission error:",
+          error,
         );
-      }
 
-      successRef.current = true;
-
-      recordSuccess();
-
-      if (mountedRef.current) {
-        const empty = {
-          fullName: "",
-          phone: "",
-        };
-
-        formDataRef.current = empty;
-
-        setFormData(empty);
-        updateStatus("success");
-      }
-    } catch (error) {
-      if (mountedRef.current) {
         setErrorMessage(
-          error.name === "AbortError" ||
-            error instanceof TypeError
-            ? "We could not confirm your submission. Check your connection and contact us before submitting again."
-            : error.message ||
-                "Error submitting form. Please try again.",
+          error.message ||
+            "Error submitting form. Please try again.",
         );
+      } finally {
+        setIsLoading(false);
 
-        updateStatus("idle");
+        if (
+          typeof window !==
+            "undefined" &&
+          window.grecaptcha &&
+          recaptchaWidgetId.current !==
+            null
+        ) {
+          try {
+            window.grecaptcha.reset(
+              recaptchaWidgetId.current,
+            );
+          } catch (err) {
+            console.error(
+              "Error resetting reCAPTCHA:",
+              err,
+            );
+          }
+        }
       }
-    } finally {
-      clearTimeout(timeout);
+    };
 
-      requestControllerRef.current = null;
-      requestActiveRef.current = false;
+  // =========================================================
+  // SUBMIT
+  // =========================================================
 
-      if (
-        mountedRef.current &&
-        !successRef.current
-      ) {
-        resetCaptcha();
-      }
-    }
-  }
+  const handleSubmit =
+    async (e) => {
+      e.preventDefault();
 
-  function handleCaptchaFailure(message) {
-    if (
-      !mountedRef.current ||
-      requestActiveRef.current ||
-      successRef.current
-    ) {
-      return;
-    }
-
-    submitIntentRef.current = false;
-
-    updateStatus("idle");
-    setErrorMessage(message);
-
-    resetCaptcha();
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (
-      statusRef.current === "loading" ||
-      requestActiveRef.current ||
-      successRef.current
-    ) {
-      return;
-    }
-
-    setErrorMessage("");
-
-    if (!validateAndGetPayload()) return;
-
-    if (!siteKey) {
-      setErrorMessage(
-        "Verification is not configured. Please contact us directly.",
-      );
-
-      return;
-    }
-
-    submitIntentRef.current = true;
-
-    updateStatus("loading");
-
-    try {
-      const api = await loadRecaptcha();
-
-      if (
-        !mountedRef.current ||
-        successRef.current
-      ) {
+      if (isLoading) {
         return;
       }
 
-      if (!recaptchaRef.current) {
-        throw new Error(
-          "Verification could not start. Please refresh and try again.",
+      setIsLoading(true);
+
+      setErrorMessage("");
+
+      if (!validateForm()) {
+        setIsLoading(false);
+
+        return;
+      }
+
+      if (
+        !recaptchaLoaded
+      ) {
+        loadRecaptcha();
+
+        setErrorMessage(
+          "Loading verification... Please try again in a moment.",
         );
+
+        setIsLoading(false);
+
+        return;
       }
 
-      setCaptchaVisible(true);
+      if (
+        typeof window !==
+          "undefined" &&
+        window.grecaptcha &&
+        recaptchaLoaded &&
+        siteKey
+      ) {
+        try {
+          if (
+            recaptchaWidgetId.current ===
+              null &&
+            recaptchaRef.current
+          ) {
+            recaptchaWidgetId.current =
+              window.grecaptcha.render(
+                recaptchaRef.current,
+                {
+                  sitekey:
+                    siteKey,
 
-      if (widgetIdRef.current === null) {
-        widgetIdRef.current = api.render(
-          recaptchaRef.current,
-          {
-            sitekey: siteKey,
-            theme: "light",
-            size: "compact",
+                  callback:
+                    onRecaptchaSuccess,
 
-            callback: (token) => {
-              void submitVerifiedLead(token);
-            },
-
-            "expired-callback": () => {
-              handleCaptchaFailure(
-                "Verification expired. Please verify again and submit.",
+                  theme:
+                    "light",
+                },
               );
-            },
+          } else if (
+            recaptchaWidgetId.current !==
+            null
+          ) {
+            window.grecaptcha.reset(
+              recaptchaWidgetId.current,
+            );
 
-            "error-callback": () => {
-              handleCaptchaFailure(
-                "Verification failed to connect. Check your connection and try again.",
-              );
-            },
-          },
-        );
-      }
+            window.grecaptcha.execute(
+              recaptchaWidgetId.current,
+            );
+          }
+        } catch (error) {
+          console.error(
+            "Error rendering reCAPTCHA:",
+            error,
+          );
 
-      updateStatus("verifying");
-
-      const token = api.getResponse(widgetIdRef.current);
-
-      if (token) {
-        await submitVerifiedLead(token);
-      }
-    } catch (error) {
-      if (mountedRef.current) {
-        handleCaptchaFailure(
-          error.message ||
+          setErrorMessage(
             "Error with verification. Please try again.",
+          );
+
+          setIsLoading(false);
+        }
+      } else {
+        setErrorMessage(
+          "reCAPTCHA not loaded. Please refresh and try again.",
         );
+
+        setIsLoading(false);
       }
-    }
-  }
+    };
 
-  const isBusy =
-    status === "loading" ||
-    status === "submitting";
+  // =========================================================
+  // FIELD ERROR STATES
+  // =========================================================
 
-  const buttonText =
-    status === "loading"
-      ? "Loading verification..."
-      : status === "submitting"
-        ? "Submitting..."
-        : status === "verifying"
-          ? "Complete verification"
-          : "Get A Call Back";
+  const fullNameHasError =
+    errorMessage ===
+      "Please fill in all fields" &&
+    !formData.fullName;
+
+  const phoneHasError =
+    (errorMessage ===
+      "Please fill in all fields" &&
+      !formData.phone) ||
+    errorMessage ===
+      "Please enter a valid international phone number";
+
+  const closeSuccessPopup =
+    () => {
+      setShowPopup(false);
+    };
 
   return (
-    <section
-      id="contact-form-container"
-      aria-labelledby={headingId}
-      onClick={(event) => event.stopPropagation()}
-      className="relative isolate w-full bg-[#F7F9FC] px-3 py-7 sm:px-5 sm:py-9 md:px-6 md:py-12 lg:px-8 lg:py-14"
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(circle at 10% 10%, rgba(246,195,67,0.08), transparent 30%), radial-gradient(circle at 90% 90%, rgba(5,26,58,0.05), transparent 32%)",
-        }}
-      />
+    <>
+      <style>{`
+        /* ===================================================
+           CRITICAL MOBILE WIDTH PROTECTION
 
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="form-card relative rounded-[18px] border border-[#E7C76E] bg-white shadow-[0_18px_55px_rgba(5,26,58,0.08)] sm:rounded-[20px]">
-          <div
-            aria-hidden="true"
-            className="absolute left-1/2 top-0 h-1 w-16 -translate-x-1/2 rounded-b-full bg-[#051A3A] sm:w-[72px]"
-          />
+           This is the important fix.
+        =================================================== */
 
-          <div className="px-4 py-6 sm:px-6 sm:py-7 md:px-8 md:py-8 lg:px-10 lg:py-9">
-            {/* Centered on desktop, tablet and mobile. */}
-            <div className="mx-auto w-full max-w-3xl text-center">
-              <h2
-                id={headingId}
-                className="text-center text-[23px] font-bold leading-[1.2] tracking-[-0.025em] text-[#10203B] sm:text-[27px] md:text-[30px] lg:text-[32px]"
-              >
-                {title}
-              </h2>
-            </div>
-
-            {status === "success" ? (
-              <div
-                role="status"
-                aria-live="polite"
-                className="flex min-h-[220px] flex-col items-center justify-center px-2 py-6 text-center"
-              >
-                <div className="success-icon mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFF8E5] ring-1 ring-[#E7C76E]">
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="h-8 w-8 text-[#051A3A]"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-
-                <h3 className="text-2xl font-bold text-[#10203B]">
-                  Thank You!
-                </h3>
-
-                <p className="mt-2 max-w-lg text-sm leading-6 text-[#667085]">
-                  Your request has been submitted successfully.
-                  We&apos;ll contact you shortly.
-                </p>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                className="mt-6 sm:mt-7"
-              >
-                {errorMessage && (
-                  <div
-                    id={errorId}
-                    role="alert"
-                    className="mb-5 break-words rounded-xl border border-[#F3B7B3] bg-[#FFF4F3] px-4 py-3 text-sm leading-5 text-[#B42318]"
-                  >
-                    {errorMessage}
-                  </div>
-                )}
-
-                <div className="grid min-w-0 grid-cols-1 items-end gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)_auto] lg:gap-4">
-                  {/* Full name */}
-                  <div className="min-w-0">
-                    <label
-                      htmlFor={nameId}
-                      className="mb-2 block text-[13px] font-semibold text-[#25324B]"
-                    >
-                      Full Name
-                    </label>
-
-                    <div className="flex h-12 min-w-0 items-center rounded-lg border border-[#D8DEE8] bg-[#FBFCFE] transition-colors focus-within:border-[#D8AA38] focus-within:ring-2 focus-within:ring-[#F6C343]/20">
-                      <span
-                        aria-hidden="true"
-                        className="flex w-10 shrink-0 items-center justify-center text-[#98A2B3]"
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          className="h-[17px] w-[17px]"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            d="M20 21a8 8 0 0 0-16 0"
-                          />
-
-                          <circle cx="12" cy="7" r="4" />
-                        </svg>
-                      </span>
-
-                      <input
-                        id={nameId}
-                        type="text"
-                        name="fullName"
-                        autoComplete="name"
-                        value={formData.fullName}
-                        onFocus={preloadCaptcha}
-                        onChange={(event) => {
-                          updateField(
-                            "fullName",
-                            event.target.value,
-                          );
-                        }}
-                        disabled={status === "submitting"}
-                        required
-                        aria-describedby={
-                          errorMessage ? errorId : undefined
-                        }
-                        placeholder="Enter your name"
-                        className="h-full min-w-0 flex-1 rounded-r-lg border-0 bg-transparent pr-3 text-base text-[#17233B] outline-none placeholder:text-[#9AA3B2] disabled:opacity-70 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Existing international phone component */}
-                  <div className="min-w-0">
-                    <label
-                      htmlFor={phoneId}
-                      className="mb-2 block text-[13px] font-semibold text-[#25324B]"
-                    >
-                      Phone Number
-                    </label>
-
-                    <div className="phone-field-shell relative min-w-0 rounded-lg border border-[#D8DEE8] bg-[#FBFCFE] px-1 transition-colors focus-within:border-[#D8AA38] focus-within:ring-2 focus-within:ring-[#F6C343]/20">
-                      <InternationalPhoneInput
-                        value={formData.phone}
-                        onChange={(phone) => {
-                          updateField("phone", phone);
-                        }}
-                        inputProps={{
-                          id: phoneId,
-                          name: "phone",
-                          autoComplete: "tel",
-                          disabled: status === "submitting",
-                          "aria-describedby": errorMessage
-                            ? errorId
-                            : undefined,
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Single submit entry point */}
-                  <div className="md:col-span-2 lg:col-span-1">
-                    <button
-                      type="submit"
-                      disabled={isBusy}
-                      className="group flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#051A3A] px-5 py-3 text-sm font-bold text-white shadow-[0_7px_18px_rgba(5,26,58,0.16)] transition-colors hover:bg-[#0A284F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D8AA38] focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-65 lg:min-w-[176px]"
-                    >
-                      <span>{buttonText}</span>
-
-                      {!isBusy && status !== "verifying" && (
-                        <svg
-                          aria-hidden="true"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          className="h-4 w-4 shrink-0 text-[#F6C343]"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14m-6-6 6 6-6 6"
-                          />
-                        </svg>
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Keep the host mounted for explicit widget rendering. */}
-                <div
-                  className={
-                    captchaVisible
-                      ? "mt-5 flex min-w-0 flex-col items-center gap-3"
-                      : "flex min-w-0 flex-col items-center"
-                  }
-                >
-                  {captchaVisible && status === "verifying" && (
-                    <p
-                      role="status"
-                      className="text-center text-sm text-[#667085]"
-                    >
-                      Complete the verification below. Your request
-                      will then submit automatically.
-                    </p>
-                  )}
-
-                  <div ref={recaptchaRef} />
-                </div>
-
-                {/* Trust indicators */}
-                <div className="mt-5 grid grid-cols-1 gap-3 border-t border-[#EDF0F4] pt-5 sm:mt-6 sm:grid-cols-3 sm:gap-2">
-                  <div className="flex items-center justify-center gap-2 text-xs text-[#737D8F]">
-                    <svg
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#DCA82D"
-                      strokeWidth="1.8"
-                      className="h-[17px] w-[17px] shrink-0"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 3 5 6v5c0 4.6 2.8 8.2 7 10 4.2-1.8 7-5.4 7-10V6l-7-3Z"
-                      />
-
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m9.5 12 1.6 1.6 3.4-3.6"
-                      />
-                    </svg>
-
-                    <span>100% Confidential</span>
-                  </div>
-
-                  <div className="flex items-center justify-center gap-2 text-xs text-[#737D8F] sm:border-x sm:border-[#E7EAF0]">
-                    <svg
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#DCA82D"
-                      strokeWidth="1.8"
-                      className="h-[17px] w-[17px] shrink-0"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z"
-                      />
-                    </svg>
-
-                    <span>Expert Consultation</span>
-                  </div>
-
-                  <div className="flex items-center justify-center gap-2 text-xs text-[#737D8F]">
-                    <svg
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#DCA82D"
-                      strokeWidth="1.8"
-                      className="h-[17px] w-[17px] shrink-0"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        d="M4 20v-6m6 6V10m6 10V4m6 16V8"
-                      />
-                    </svg>
-
-                    <span>Latest Project Updates</span>
-                  </div>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <style jsx>{`
-        .phone-field-shell {
-          width: 100%;
-          min-height: 48px;
-        }
-
-        .phone-field-shell :global(input[name="phone"]) {
-          min-width: 0 !important;
-          max-width: 100%;
-          height: 46px !important;
-          border: 0 !important;
-          background: transparent !important;
-          box-shadow: none !important;
-          font-size: 16px !important;
-          color: #17233b !important;
-        }
-
-        .phone-field-shell
-          :global(input[name="phone"]::placeholder) {
-          color: #9aa3b2;
-        }
-
-        .phone-field-shell :global(*) {
+        .bma-form-section,
+        .bma-form-section *,
+        .bma-form-section *::before,
+        .bma-form-section *::after {
           box-sizing: border-box;
         }
 
-        .success-icon {
-          animation: success-in 0.3s ease-out;
+        .bma-form-section {
+          position: relative;
+
+          width: 100%;
+          max-width: 100%;
+
+          min-width: 0;
+
+          /*
+           * DO NOT use overflow: visible here.
+           *
+           * Horizontal content is clipped so decorative
+           * elements/dropdowns cannot enlarge document width.
+           *
+           * Vertical dropdown remains visible because the
+           * country list itself stays inside the phone field
+           * and this section has enough vertical room.
+           */
+          overflow-x: clip;
+
+          background: #f5f7fa;
+
+          isolation: isolate;
         }
 
-        @keyframes success-in {
+        .bma-form-inner {
+          position: relative;
+
+          width: 100%;
+          max-width: 72rem;
+
+          min-width: 0;
+
+          margin: 0 auto;
+        }
+
+        /* ===================================================
+           FORM CARD
+        =================================================== */
+
+        .bma-form-card {
+          position: relative;
+
+          z-index: 20;
+
+          width: 100%;
+          max-width: 100%;
+
+          min-width: 0;
+
+          /*
+           * Vertical overflow remains visible so dropdown
+           * can open below the phone field.
+           */
+          overflow: visible;
+
+          border:
+            1px solid
+            rgba(
+              246,
+              195,
+              67,
+              0.62
+            );
+
+          background:
+            #ffffff;
+
+          box-shadow:
+            0 24px 65px
+              rgba(
+                5,
+                26,
+                58,
+                0.08
+              ),
+            0 8px 20px
+              rgba(
+                5,
+                26,
+                58,
+                0.04
+              );
+        }
+
+        .bma-form-card::before {
+          content: "";
+
+          position: absolute;
+
+          top: -1px;
+          left: 50%;
+
+          width: 72px;
+          height: 4px;
+
+          transform:
+            translateX(-50%);
+
+          border-radius:
+            0 0 999px 999px;
+
+          background:
+            #051a3a;
+        }
+
+        /* ===================================================
+           FORM WRAPPER
+        =================================================== */
+
+        .bma-form-element {
+          position: relative;
+
+          z-index: 30;
+
+          width: 100%;
+          max-width: 64rem;
+
+          min-width: 0;
+
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .bma-field-grid {
+          width: 100%;
+
+          min-width: 0;
+        }
+
+        .bma-field-column {
+          width: 100%;
+
+          min-width: 0;
+        }
+
+        /* ===================================================
+           NAME FIELD
+        =================================================== */
+
+        .bma-name-shell {
+          display: flex;
+
+          width: 100%;
+          max-width: 100%;
+
+          min-width: 0;
+
+          height: 54px;
+
+          align-items: center;
+
+          overflow: hidden;
+
+          border:
+            1px solid
+            #dfe5ed;
+
+          border-radius:
+            14px;
+
+          background:
+            #f8fafc;
+
+          transition:
+            border-color
+              180ms ease,
+            background-color
+              180ms ease,
+            box-shadow
+              180ms ease;
+        }
+
+        .bma-name-shell:hover {
+          border-color:
+            #c9d2dd;
+
+          background:
+            #ffffff;
+        }
+
+        .bma-name-shell:focus-within {
+          border-color:
+            #d9a51f;
+
+          background:
+            #ffffff;
+
+          box-shadow:
+            0 0 0 4px
+              rgba(
+                246,
+                195,
+                67,
+                0.14
+              );
+        }
+
+        .bma-name-shell-error {
+          border-color:
+            #d92d20;
+
+          background:
+            #fffafa;
+        }
+
+        .bma-name-input {
+          width: 100%;
+          max-width: 100%;
+
+          min-width: 0;
+
+          height: 52px;
+
+          padding:
+            0 16px;
+
+          border: 0;
+
+          outline: 0;
+
+          background:
+            transparent;
+
+          color:
+            #051a3a;
+
+          font-family:
+            inherit;
+
+          font-size:
+            15px;
+
+          font-weight:
+            500;
+        }
+
+        .bma-name-input::placeholder {
+          color:
+            #98a2b3;
+
+          font-weight:
+            400;
+        }
+
+        /* ===================================================
+           PHONE FIELD
+        =================================================== */
+
+        .bma-phone-container {
+          position: relative;
+
+          z-index: 80;
+
+          width: 100%;
+          max-width: 100%;
+
+          min-width: 0;
+
+          overflow: visible;
+        }
+
+        .bma-phone-shell {
+          position: relative;
+
+          z-index: 80;
+
+          width: 100%;
+          max-width: 100%;
+
+          min-width: 0;
+
+          height: 54px;
+
+          overflow: visible;
+
+          border:
+            1px solid
+            #dfe5ed;
+
+          border-radius:
+            14px;
+
+          background:
+            #f8fafc;
+
+          transition:
+            border-color
+              180ms ease,
+            background-color
+              180ms ease,
+            box-shadow
+              180ms ease;
+        }
+
+        .bma-phone-shell:hover {
+          border-color:
+            #c9d2dd;
+
+          background:
+            #ffffff;
+        }
+
+        .bma-phone-shell:focus-within {
+          border-color:
+            #d9a51f;
+
+          background:
+            #ffffff;
+
+          box-shadow:
+            0 0 0 4px
+              rgba(
+                246,
+                195,
+                67,
+                0.14
+              );
+        }
+
+        .bma-phone-shell-error {
+          border-color:
+            #d92d20;
+
+          background:
+            #fffafa;
+        }
+
+        /* ===================================================
+           RECAPTCHA
+        =================================================== */
+
+        .bma-recaptcha-wrapper {
+          position: relative;
+
+          z-index: 5;
+
+          width: 100%;
+
+          max-width: 100%;
+
+          overflow: hidden;
+        }
+
+        /* ===================================================
+           SUCCESS MODAL
+        =================================================== */
+
+        @keyframes bmaBackdropIn {
           from {
             opacity: 0;
-            transform: scale(0.8);
           }
 
           to {
             opacity: 1;
-            transform: scale(1);
           }
         }
 
-        @media (min-width: 640px) {
-          .phone-field-shell :global(input[name="phone"]) {
-            font-size: 14px !important;
+        @keyframes bmaModalIn {
+          from {
+            opacity: 0;
+
+            transform:
+              translateY(14px)
+              scale(0.97);
+          }
+
+          to {
+            opacity: 1;
+
+            transform:
+              translateY(0)
+              scale(1);
           }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-          .success-icon {
-            animation: none;
+        @keyframes bmaSuccessIn {
+          from {
+            opacity: 0;
+
+            transform:
+              scale(0.6);
+          }
+
+          70% {
+            opacity: 1;
+
+            transform:
+              scale(1.08);
+          }
+
+          to {
+            opacity: 1;
+
+            transform:
+              scale(1);
+          }
+        }
+
+        @keyframes bmaProgress {
+          from {
+            transform:
+              scaleX(1);
+          }
+
+          to {
+            transform:
+              scaleX(0);
+          }
+        }
+
+        .bma-success-backdrop {
+          animation:
+            bmaBackdropIn
+            180ms ease-out;
+        }
+
+        .bma-success-modal {
+          animation:
+            bmaModalIn
+            260ms
+            cubic-bezier(
+              0.22,
+              1,
+              0.36,
+              1
+            );
+        }
+
+        .bma-success-icon {
+          animation:
+            bmaSuccessIn
+            420ms
+            cubic-bezier(
+              0.22,
+              1,
+              0.36,
+              1
+            );
+        }
+
+        .bma-success-progress {
+          transform-origin:
+            left;
+
+          animation:
+            bmaProgress
+            5s linear
+            forwards;
+        }
+
+        /* ===================================================
+           MOBILE
+        =================================================== */
+
+        @media (
+          max-width: 639px
+        ) {
+          .bma-form-section {
+            width: 100%;
+
+            max-width: 100%;
+
+            overflow-x: clip;
+          }
+
+          .bma-form-inner,
+          .bma-form-card,
+          .bma-form-element,
+          .bma-field-grid,
+          .bma-field-column,
+          .bma-name-shell,
+          .bma-phone-container,
+          .bma-phone-shell {
+            width: 100%;
+
+            max-width: 100%;
+
+            min-width: 0;
+          }
+
+          .bma-form-card::before {
+            width: 58px;
+
+            height: 3px;
+          }
+
+          .bma-name-shell,
+          .bma-phone-shell {
+            height: 52px;
+
+            border-radius:
+              12px;
+          }
+
+          .bma-name-input {
+            height: 50px;
+
+            padding-left:
+              13px;
+
+            padding-right:
+              13px;
+
+            font-size:
+              14px;
+          }
+        }
+
+        @media (
+          max-width: 380px
+        ) {
+          .bma-recaptcha-scale {
+            transform:
+              scale(0.86);
+
+            transform-origin:
+              top center;
+
+            margin-bottom:
+              -10px;
+          }
+        }
+
+        @media (
+          prefers-reduced-motion:
+            reduce
+        ) {
+          .bma-success-backdrop,
+          .bma-success-modal,
+          .bma-success-icon,
+          .bma-success-progress {
+            animation:
+              none !important;
           }
         }
       `}</style>
-    </section>
+
+      {/* =====================================================
+          FORM SECTION
+      ====================================================== */}
+
+      <section className="bma-form-section px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+        {/* ===================================================
+            BACKGROUND DECORATION
+
+            Changed from a fixed Tailwind 780px element
+            that could create page overflow.
+
+            It is now safely clipped by the form section.
+        =================================================== */}
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-[-180px] -z-10 h-[360px] w-[min(780px,160vw)] -translate-x-1/2 rounded-full bg-[#F6C343]/[0.07] blur-[90px]"
+        />
+
+        {/* ===================================================
+            INNER
+        =================================================== */}
+
+        <div className="bma-form-inner">
+          <div
+            id="contact-form-container"
+            className="bma-form-card rounded-[22px] px-5 py-7 sm:rounded-[26px] sm:px-8 sm:py-9 lg:px-10 lg:py-10 xl:px-12"
+          >
+            {/* ===============================================
+                HEADER
+            ================================================ */}
+
+            <div className="mx-auto w-full max-w-3xl text-center">
+              <h2 className="break-words text-[clamp(1.55rem,7vw,2.35rem)] font-bold leading-[1.15] tracking-[-0.035em] text-[#051A3A] sm:text-[clamp(1.55rem,3vw,2.35rem)]">
+                {title}
+              </h2>
+
+              <p className="mx-auto mt-3 max-w-2xl text-[13px] leading-6 text-[#667085] sm:text-[14px] lg:text-[15px]">
+                Share your details to speak
+                with our team about Dholera
+                residential projects and
+                available plots.
+              </p>
+            </div>
+
+            {/* ===============================================
+                FORM
+            ================================================ */}
+
+            <form
+              onSubmit={
+                handleSubmit
+              }
+              noValidate
+              className="bma-form-element mt-7 sm:mt-9"
+            >
+              {/* =============================================
+                  ERROR
+              ============================================== */}
+
+              {errorMessage && (
+                <div
+                  role="alert"
+                  aria-live="polite"
+                  className="mb-5 flex w-full max-w-full items-start gap-3 rounded-xl border border-[#FDA29B] bg-[#FFFBFA] px-4 py-3.5 text-[#B42318]"
+                >
+                  <div className="mt-[1px] flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FEE4E2]">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 8v4m0 4h.01M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-semibold">
+                      Please check your
+                      details
+                    </p>
+
+                    <p className="mt-0.5 break-words text-[12px] leading-5 sm:text-[13px]">
+                      {errorMessage}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* =============================================
+                  FIELD GRID
+              ============================================== */}
+
+              <div className="bma-field-grid grid grid-cols-1 items-end gap-5 lg:grid-cols-12 lg:gap-4">
+                {/* ===========================================
+                    NAME
+                ============================================ */}
+
+                <div className="bma-field-column lg:col-span-4">
+                  <label
+                    htmlFor="fullName"
+                    className="mb-2 block text-[12px] font-semibold text-[#344054] sm:text-[13px]"
+                  >
+                    Full Name
+
+                    <span className="ml-1 text-[#D92D20]">
+                      *
+                    </span>
+                  </label>
+
+                  <div
+                    className={`bma-name-shell ${
+                      fullNameHasError
+                        ? "bma-name-shell-error"
+                        : ""
+                    }`}
+                  >
+                    <div className="flex h-full w-12 shrink-0 items-center justify-center text-[#98A2B3]">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="h-[18px] w-[18px]"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M20 21a8 8 0 0 0-16 0m12-13a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                          stroke="currentColor"
+                          strokeWidth="1.7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="h-6 w-px shrink-0 bg-[#E4E7EC]" />
+
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={
+                        formData.fullName
+                      }
+                      onChange={
+                        handleChange
+                      }
+                      required
+                      autoComplete="name"
+                      aria-invalid={
+                        fullNameHasError
+                      }
+                      className="bma-name-input"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                </div>
+
+                {/* ===========================================
+                    PHONE
+                ============================================ */}
+
+                <div className="bma-field-column relative z-[80] lg:col-span-5">
+                  <label
+                    htmlFor="phone"
+                    className="mb-2 block text-[12px] font-semibold text-[#344054] sm:text-[13px]"
+                  >
+                    Phone Number
+
+                    <span className="ml-1 text-[#D92D20]">
+                      *
+                    </span>
+                  </label>
+
+                  <div className="bma-phone-container">
+                    <div
+                      className={`bma-phone-shell ${
+                        phoneHasError
+                          ? "bma-phone-shell-error"
+                          : ""
+                      }`}
+                    >
+                      <InternationalPhoneInput
+                        value={
+                          formData.phone
+                        }
+                        onChange={
+                          handlePhoneChange
+                        }
+                        inputProps={{
+                          id: "phone",
+                          name: "phone",
+                          autoComplete:
+                            "tel",
+                          "aria-invalid":
+                            phoneHasError,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* ===========================================
+                    SUBMIT
+                ============================================ */}
+
+                <div className="bma-field-column relative z-10 flex lg:col-span-3 lg:items-end">
+                  <button
+                    type="submit"
+                    disabled={
+                      isLoading
+                    }
+                    className="group flex h-[54px] w-full max-w-full items-center justify-center gap-2.5 rounded-[14px] bg-[#051A3A] px-5 text-[13px] font-bold text-white shadow-[0_9px_24px_rgba(5,26,58,0.16)] transition-all duration-200 hover:-translate-y-[1px] hover:bg-[#0B2B55] hover:shadow-[0_12px_30px_rgba(5,26,58,0.22)] focus:outline-none focus:ring-4 focus:ring-[#F6C343]/30 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 sm:text-sm"
+                  >
+                    {isLoading ? (
+                      <>
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          className="h-[18px] w-[18px] animate-spin"
+                          aria-hidden="true"
+                        >
+                          <circle
+                            cx="12"
+                            cy="12"
+                            r="9"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            opacity="0.25"
+                          />
+
+                          <path
+                            d="M21 12a9 9 0 0 0-9-9"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+
+                        <span>
+                          Submitting...
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span>
+                          Get A Call Back
+                        </span>
+
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          className="h-[17px] w-[17px] text-[#F6C343] transition-transform duration-200 group-hover:translate-x-1"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M5 12h14m-5-5 5 5-5 5"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* =============================================
+                  RECAPTCHA
+              ============================================== */}
+
+              <div className="bma-recaptcha-wrapper mt-5 flex justify-center">
+                <div
+                  ref={
+                    recaptchaRef
+                  }
+                  className="bma-recaptcha-scale max-w-full"
+                />
+              </div>
+
+              {/* =============================================
+                  TRUST ITEMS
+              ============================================== */}
+             
+
+              <div className="relative z-0 mt-6 grid w-full grid-cols-2 divide-x divide-[#EAECF0] border-t border-[#EAECF0] pt-4 sm:mt-7 sm:grid-cols-3 sm:pt-5">
+                {/* ===========================================
+                    100% CONFIDENTIAL
+                ============================================ */}
+
+                <div className="flex min-w-0 items-center justify-center gap-1.5 px-2 text-[10px] font-medium text-[#667085] sm:gap-2.5 sm:px-3 sm:text-[12px]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="h-[15px] w-[15px] shrink-0 text-[#D89E0D] sm:h-[17px] sm:w-[17px]"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+
+                    <path
+                      d="m9.5 12 1.7 1.7 3.5-3.8"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+
+                  <span className="whitespace-nowrap">
+                    100% Confidential
+                  </span>
+                </div>
+
+                {/* ===========================================
+                    EXPERT CONSULTATION
+                ============================================ */}
+
+                <div className="flex min-w-0 items-center justify-center gap-1.5 px-2 text-[10px] font-medium text-[#667085] sm:gap-2.5 sm:px-3 sm:text-[12px]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="h-[15px] w-[15px] shrink-0 text-[#D89E0D] sm:h-[17px] sm:w-[17px]"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8.7 3.8 10.4 8 8 9.5a15.2 15.2 0 0 0 6.5 6.5l1.5-2.4 4.2 1.7c.5.2.8.7.8 1.2V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.5 0 1 .3 1.2.8Z"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+
+                  <span className="whitespace-nowrap">
+                    Expert Consultation
+                  </span>
+                </div>
+
+                {/* ===========================================
+                    LATEST PROJECT UPDATES
+
+                    Hidden on mobile.
+                    Visible from sm breakpoint and above.
+                ============================================ */}
+
+                <div className="hidden min-w-0 items-center justify-center gap-2.5 px-3 text-[12px] font-medium text-[#667085] sm:flex">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="h-[17px] w-[17px] shrink-0 text-[#D89E0D]"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 19v-6m4 6V9m5 10V5m5 14v-9"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+
+                  <span className="whitespace-nowrap">
+                    Latest Project Updates
+                  </span>
+                </div>
+              </div>
+            
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          SUCCESS MODAL
+      ====================================================== */}
+
+      {showPopup && (
+        <div
+          className="bma-success-backdrop fixed inset-0 z-[9999] flex items-center justify-center bg-[#051A3A]/65 px-4 py-8 backdrop-blur-[3px]"
+          onClick={
+            closeSuccessPopup
+          }
+          role="presentation"
+        >
+          <div
+            className="bma-success-modal relative w-full max-w-[440px] overflow-hidden rounded-[24px] border border-white/20 bg-white shadow-[0_30px_100px_rgba(0,0,0,0.30)]"
+            onClick={(e) =>
+              e.stopPropagation()
+            }
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="success-modal-title"
+            aria-describedby="success-modal-description"
+          >
+            <div className="absolute left-0 top-0 h-[3px] w-full bg-[#EAECF0]">
+              <div className="bma-success-progress h-full w-full bg-[#F6C343]" />
+            </div>
+
+            <button
+              type="button"
+              onClick={
+                closeSuccessPopup
+              }
+              aria-label="Close success popup"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-[#EAECF0] bg-white text-[#667085] transition-all duration-200 hover:border-[#D0D5DD] hover:bg-[#F9FAFB] hover:text-[#051A3A] focus:outline-none focus:ring-4 focus:ring-[#F6C343]/25"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="h-[18px] w-[18px]"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 6l12 12M18 6 6 18"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+
+            <div className="px-6 pb-7 pt-10 text-center sm:px-9 sm:pb-9">
+              <div className="bma-success-icon mx-auto flex h-[76px] w-[76px] items-center justify-center rounded-full bg-[#F6C343]/15">
+                <div className="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#F6C343] shadow-[0_10px_25px_rgba(246,195,67,0.32)]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="h-7 w-7 text-[#051A3A]"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12.5 9.2 16.7 19 7"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.17em] text-[#9B710D] sm:text-[11px]">
+                Request Received
+              </p>
+
+              <h3
+                id="success-modal-title"
+                className="mt-2 text-[27px] font-bold tracking-[-0.035em] text-[#051A3A] sm:text-[30px]"
+              >
+                Thank You!
+              </h3>
+
+              <p
+                id="success-modal-description"
+                className="mx-auto mt-3 max-w-[350px] text-[13px] leading-6 text-[#667085] sm:text-[15px]"
+              >
+                Your request has been
+                submitted successfully.
+                We&apos;ll contact you
+                shortly.
+              </p>
+
+              <button
+                type="button"
+                onClick={
+                  closeSuccessPopup
+                }
+                className="mt-6 inline-flex min-h-[46px] w-full items-center justify-center rounded-xl bg-[#051A3A] px-7 text-[13px] font-bold text-white transition-all duration-200 hover:bg-[#0B2B55] focus:outline-none focus:ring-4 focus:ring-[#F6C343]/25 sm:w-auto sm:min-w-[150px] sm:text-sm"
+              >
+                Close
+              </button>
+
+              <p className="mt-4 text-[10px] text-[#98A2B3] sm:text-[11px]">
+                This message will close
+                automatically in a few
+                seconds.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
