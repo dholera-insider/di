@@ -69,6 +69,9 @@ export default function FAQSection() {
               leading-tight
               tracking-[-0.045em]
               text-[#051A3A]
+
+              text-center
+              sm:text-left
             "
           >
             FAQ
@@ -82,6 +85,9 @@ export default function FAQSection() {
               w-12
               rounded-full
               bg-[#F6C343]
+
+              mx-auto
+              sm:mx-0
             "
           />
         </div>

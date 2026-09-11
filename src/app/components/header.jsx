@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
-import logo from "@/app/assets/icons/logo.png";
+import logo from "@/app/assets/icons/NewLogo.webp";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
 import ContactForm from "@/app/components/Contactform";
@@ -464,7 +464,7 @@ const Header = () => {
                 <div className="relative h-14 w-14">
                   <Image
                     src={logo}
-                    alt="Logo"
+                    alt="Dholera Insidrr Logo"
                     className="object-contain"
                     fill
                   />

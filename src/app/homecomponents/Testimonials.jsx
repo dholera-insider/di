@@ -476,7 +476,7 @@
     
     return (
       <section
-        className="relative overflow-hidden bg-[#EEF2F9] py-14 sm:py-16 lg:py-20"
+        className="relative overflow-hidden bg-[#EEF2F9] px-4 py-8 sm:py-16 lg:py-12"
         aria-labelledby="testimonial-heading"
       >
         <div
@@ -488,7 +488,7 @@
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-10">
-          <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-12">
+          <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-12">
         
 
             <h2

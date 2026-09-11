@@ -538,7 +538,7 @@ export default function DholeraBahrainPage() {
                 "
             >
               <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-              Get Investment Guidance
+                Talk to a Dholera Expert
             </a>
           </div>
         </div>

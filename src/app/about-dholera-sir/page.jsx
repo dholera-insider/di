@@ -221,7 +221,7 @@ const faqSchema = {
 
 function SectionHeading({ children, inverse = false }) {
   return (
-    <div className="mb-8 md:mb-8">
+    <div className="mb-6 md:mb-6">
       <h2
         className={`text-[clamp(1.75rem,3.4vw,2.75rem)] font-bold leading-tight tracking-[-0.025em] ${
           inverse ? "text-white" : "text-[#051A3A]"

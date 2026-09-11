@@ -276,9 +276,9 @@ export default function SingaporeInvestorPage() {
 
             {/* Accent line */}
 
-            <div className="mt-6 h-[3px] w-10 rounded-full bg-[#F6C343] sm:w-12" />
+            <div className="mt-4 h-[3px] w-10 rounded-full bg-[#F6C343] sm:w-12" />
 
-            <p className="mt-6 max-w-lg text-[14px] leading-7 text-[#667085] sm:text-[15px] sm:leading-7 lg:text-base lg:leading-8">
+            <p className="mt-5 max-w-lg text-[14px] leading-7 text-[#667085] sm:text-[15px] sm:leading-7 lg:text-base lg:leading-8">
               Before investing, understanding the project is just as
               important as choosing it. At Dholera Insider, we help
               Singapore NRIs evaluate every important aspect before

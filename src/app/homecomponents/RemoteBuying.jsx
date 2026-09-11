@@ -9,6 +9,9 @@ import {
   ScrollText,
 } from "lucide-react";
 
+import { FaWhatsapp } from "react-icons/fa";
+
+
 const steps = [
   {
     label: "Speak with our Dholera Expert",
@@ -44,8 +47,8 @@ export default function RemoteBuying() {
         relative
         overflow-hidden
         bg-[#EEF2F9]
-        px-4
-        py-14
+        px-2
+        py-12
         sm:px-6
         sm:py-16
         lg:px-8
@@ -263,52 +266,58 @@ export default function RemoteBuying() {
         </div>
 
         {/* CTA */}
-          <div
+        <div
+          className="
+            mt-9
+            flex
+            justify-center
+            sm:mt-10
+          "
+        >
+          <a
+            href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
+            target="_blank"
+            rel="noopener noreferrer"
             className="
-              mt-9
-              flex
-              flex-col
+              group
+              inline-flex
+              min-h-[52px]
               items-center
               justify-center
-              gap-3
-              sm:mt-10
+              gap-2.5
+              rounded-xl
+              bg-[#F6C343]
+              px-5
+              py-3
+              text-[15px]
+              font-bold
+              text-[#051A3A]
+              transition-colors
+              duration-300
+
+              hover:bg-[#051A3A]
+              hover:text-white
+
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-[#F6C343]
+              focus-visible:ring-offset-2
+
+              motion-reduce:transition-none
+
+              sm:px-7
+              sm:py-3.5
+              sm:text-[16px]
             "
           >
-            <a
-              href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
-              target="_blank"
-              rel="noopener noreferrer"
-            className="
-            group
-            inline-flex
-            min-h-[54px]
-            w-full
-            items-center
-            justify-center
-            gap-2.5
-            rounded-xl
-            bg-[#F6C343]
-            px-7
-            py-3.5
-            text-[16px]
-            font-bold
-            text-[#051A3A]
-            transition-colors
-            duration-300
-            hover:bg-[#051A3A]
-            hover:text-white
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-[#F6C343]
-            focus-visible:ring-offset-2
-            motion-reduce:transition-none
-            sm:w-auto
-            sm:min-w-[190px]
-          "
-            >
-              Connect with our Dholera Expert
-            </a>
-          </div>
+            <FaWhatsapp
+              className="h-5 w-5 shrink-0"
+              aria-hidden="true"
+            />
+
+            <span>Connect with our Dholera Expert</span>
+          </a>
+        </div>
       </div>
     </section>
   );

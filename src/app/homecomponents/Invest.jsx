@@ -40,21 +40,27 @@ export default function WhyDholera() {
   return (
     <section
       aria-labelledby="why-dholera-heading"
-      className="
-        relative
-        overflow-hidden
-        bg-[#FDFCFA]
-        px-4
-        py-14
-        sm:px-6
-        sm:py-16
-        lg:px-8
-        lg:py-20
-      "
+        className="
+          relative
+          overflow-hidden
+          bg-[#FDFCFA]
+
+          px-4
+          pt-8
+          pb-12
+
+          sm:px-6
+          sm:pt-10
+          sm:pb-14
+
+          lg:px-8
+          lg:pt-12
+          lg:pb-16
+        "
     >
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
+        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12">
           <h2
             id="why-dholera-heading"
             className="
@@ -67,7 +73,7 @@ export default function WhyDholera() {
           >
             Why Invest in Dholera?
           </h2>
-          <div className="mx-auto mt-5 h-[3px] w-14 rounded-full bg-[#F6C343]" />
+          <div className="mx-auto mt-3 h-[3px] w-14 rounded-full bg-[#F6C343]" />
 
         </div>
 

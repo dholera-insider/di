@@ -33,15 +33,26 @@ const features = [
 
 export default function WhyDI() {
   return (
-    <section className="bg-[#FDFCFA] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+    <section
+      className="
+      bg-[#FDFCFA]
+
+      px-4
+      py-8
+
+      sm:px-6
+      sm:py-[clamp(3.5rem,6vw,5rem)]
+
+      lg:px-8
+    "
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-2 lg:sticky lg:top-24 lg:self-start">
-            <h2 className="mb-4 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
+            <h2 className="mb-3 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
               Why Choose Dholera Insider?
             </h2>
-            <div className="mt-4 mb-4 h-[3px] w-14 rounded-full bg-[#F6C343]" />
-
+            <div className="mt-3 mb-4 h-[3px] w-14 rounded-full bg-[#F6C343]" />
 
             {/* <h2
               className="
@@ -57,7 +68,6 @@ export default function WhyDI() {
               Why Choose Dholera Insider?
             </h2>
             <div className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-[#F6C343]" /> */}
-
 
             <p className="text-[clamp(0.9rem,1vw,1.05rem)] leading-relaxed text-[#2B364D]">
               As the exclusive channel partner of BookMyAssets for NRI
@@ -89,10 +99,10 @@ export default function WhyDI() {
                 </div>
               ))}
             </div>
-           <div className="mt-10 flex w-full justify-start">
-  <Link
-    href="/about-us"
-    className="
+            <div className="mt-10 flex w-full justify-start">
+              <Link
+                href="/about-us"
+                className="
       inline-flex
       min-h-12
       w-full
@@ -115,10 +125,10 @@ export default function WhyDI() {
       focus-visible:ring-offset-2
       sm:w-auto
     "
-  >
-    About Us
-  </Link>
-</div>
+              >
+                About Us
+              </Link>
+            </div>
           </div>
         </div>
       </div>

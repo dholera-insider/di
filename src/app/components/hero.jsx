@@ -76,7 +76,20 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40"></div>
 
       <div className="relative max-w-7xl mx-auto z-10 flex min-h-screen items-center">
-        <div className="container mx-auto px-4 py-28 sm:px-6 lg:px-8">
+        <div
+          className="
+            container
+            mx-auto
+            px-9
+            pt-2
+            pb-6
+            sm:px-6
+            sm:py-16
+
+            lg:px-8
+            lg:py-28
+          "
+        >
           <div
             className="
               grid
@@ -103,8 +116,6 @@ const Hero = () => {
               >
                 Decoding Dholera for NRIs
               </h1>
-
-          
 
               {/* Description */}
               <p

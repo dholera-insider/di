@@ -418,7 +418,7 @@ export default function QatarInvestorPage() {
 
               {/* Accent */}
 
-              <div className="mt-6 h-[3px] w-12 rounded-full bg-[#F6C343]" />
+              <div className="mt-4 h-[3px] w-12 rounded-full bg-[#F6C343]" />
 
               {/* Intro copy */}
 

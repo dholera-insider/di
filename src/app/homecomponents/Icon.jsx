@@ -140,11 +140,20 @@ export default function NRISupport() {
   const activeDot = pageStops.indexOf(current);
 
   return (
-    <section className="bg-[#EEF2F9] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+    <section className="
+          bg-[#EEF2F9]
+          px-4
+          pt-8
+          pb-[clamp(3.5rem,6vw,5rem)]
+          sm:px-6
+          sm:pt-10
+          lg:px-8
+          lg:pt-12
+        ">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-10 text-center md:mb-12">
-          <h2 className="mb-4 text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[#051A3A]">
+          <h2 className="mb-2 text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[#051A3A]">
             Invest in Dholera From Anywhere
           </h2>
 

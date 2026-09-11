@@ -169,7 +169,21 @@ export function LegalSupport() {
       {/* =========================
           LEGAL SUPPORT SECTION
       ========================== */}
-      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-[clamp(4rem,7vw,6rem)] sm:px-6 lg:px-8">
+      <section 
+        className="
+        relative
+        overflow-hidden
+        bg-[#051A3A]
+
+        px-4
+        py-8
+
+        sm:px-6
+        sm:py-[clamp(4rem,7vw,6rem)]
+
+        lg:px-8
+      "
+      >
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
@@ -180,7 +194,7 @@ export function LegalSupport() {
         </div>
 
         <div className="relative mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:items-start lg:gap-16">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:items-start lg:gap-16">
 
             {/* LEFT */}
             <div className="lg:col-span-2 lg:pt-2">
@@ -206,7 +220,7 @@ export function LegalSupport() {
                 </span>
               </h2>
 
-              <div className="mx-auto mt-6 h-[2px] w-14 rounded-full bg-[#F6C343] lg:mx-0" />
+              <div className="mx-auto mt-4 h-[2px] w-14 rounded-full bg-[#F6C343] lg:mx-0" />
 
               {/* <p className="mx-auto mt-6 max-w-md text-center text-sm leading-7 text-white/55 sm:mx-0 sm:text-left sm:text-[15px]">
                 Every essential property document and approval,
