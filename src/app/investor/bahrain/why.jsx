@@ -81,11 +81,11 @@ export default function WhyDholera() {
         overflow-hidden
         bg-[#EEF2F9]
         px-4
-        py-14
+        py-8
         sm:px-6
-        sm:py-16
+        sm:py-12
         lg:px-8
-        lg:py-20
+        lg:py-16
       "
     >
       {/* Background decoration */}

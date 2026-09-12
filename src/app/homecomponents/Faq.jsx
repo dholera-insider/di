@@ -45,13 +45,13 @@ export default function FAQSection() {
         scroll-mt-28
         bg-white
         px-4
-        py-10
+        py-8
 
         sm:px-6
         sm:py-12
 
         lg:px-8
-        lg:py-16
+        lg:py-14
       "
     >
       <div className="mx-auto w-full max-w-5xl">

@@ -534,6 +534,7 @@ export default function DubaiNriPage() {
                   sm:w-auto
                 "
               >
+               <FaWhatsapp className="h-5 w-5 mr-2" aria-hidden="true" />
                 Explore Residential Projects
               </a>
             </div>

@@ -144,7 +144,7 @@ export default function NRISupport() {
           bg-[#EEF2F9]
           px-4
           pt-8
-          pb-[clamp(3.5rem,6vw,5rem)]
+          pb-[clamp(3rem,5vw,4.25rem)]
           sm:px-6
           sm:pt-10
           lg:px-8

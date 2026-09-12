@@ -1034,7 +1034,7 @@ function SectionHeading({ children, inverse = false }) {
         {children}
       </h2>
 
-      <div className="mt-4 h-1 w-16 rounded-full bg-[#F6C343]" />
+      <div className="mt-3 h-1 w-16 rounded-full bg-[#F6C343]" />
     </div>
   );
 }
@@ -1378,7 +1378,7 @@ export default function AboutDholeraSirPage() {
       {/* =========================================
           NRI BENEFITS
       ========================================== */}
-      <section className="bg-[#051A3A] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      <section className="bg-[#051A3A] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
           <div>
             <SectionHeading inverse>
@@ -1404,14 +1404,14 @@ export default function AboutDholeraSirPage() {
       {/* =========================================
           WHY DHOLERA INSIDER
       ========================================== */}
-      <section className="overflow-hidden bg-[#EEF2F9] px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+      <section className="overflow-hidden bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-7 sm:text-center lg:mb-9">
             <h2 className="text-left text-[28px] font-semibold leading-[1.15] tracking-[-0.035em] text-[#051A3A] sm:text-center sm:text-3xl lg:text-[38px]">
               Why Invest Through Dholera Insider?
             </h2>
 
-            <div className="mt-4 h-1 w-14 rounded-full bg-[#F6C343] sm:mx-auto" />
+            <div className="mt-3 h-1 w-14 rounded-full bg-[#F6C343] sm:mx-auto" />
 
             <p className="mt-3 max-w-2xl text-left text-sm leading-6 text-[#657083] sm:mx-auto sm:text-center">
               Dholera Insider helps NRIs invest with confidence by providing:
@@ -1530,31 +1530,137 @@ export default function AboutDholeraSirPage() {
       {/* =========================================
           WHO SHOULD CONSIDER DHOLERA
       ========================================== */}
-      <section className="bg-[#FDFCF8] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      <section
+        className="
+          bg-[#FDFCF8]
+          px-4
+          py-8
+
+          sm:px-6
+          sm:py-16
+
+          lg:px-6
+          lg:pt-12
+          lg:pb-16
+        "
+      >
         <div className="mx-auto max-w-7xl">
+          {/* Heading */}
           <SectionHeading>
             Who Should Consider Investing in Dholera?
           </SectionHeading>
 
-          <p className="mb-8 text-base leading-6 text-[#2B364D]">
+          {/* Description */}
+          <p
+            className="
+              mb-6
+              text-[15px]
+              leading-6
+              text-[#2B364D]
+
+              sm:mb-8
+              sm:text-base
+            "
+          >
             Dholera may be suitable for:
           </p>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {/* Cards */}
+          <div
+            className="
+              grid
+              gap-3
+
+              sm:grid-cols-2
+              sm:gap-5
+
+              lg:grid-cols-5
+              lg:gap-6
+            "
+          >
             {suitableFor.map(({ Icon, text }) => (
               <div
                 key={text}
-                className="rounded-2xl border border-[#051A3A]/10 bg-white p-6 shadow-sm"
+                className="
+                  group
+                  flex
+                  min-h-[82px]
+                  items-center
+                  gap-4
+                  rounded-xl
+                  border
+                  border-[#051A3A]/10
+                  bg-white
+                  px-4
+                  py-4
+                  shadow-[0_4px_14px_rgba(5,26,58,0.05)]
+                  transition-all
+                  duration-300
+
+                  active:scale-[0.99]
+
+                  sm:block
+                  sm:min-h-0
+                  sm:rounded-2xl
+                  sm:p-6
+                  sm:shadow-sm
+
+                  lg:hover:-translate-y-1
+                  lg:hover:border-[#F6C343]/60
+                  lg:hover:shadow-[0_10px_28px_rgba(5,26,58,0.08)]
+                "
               >
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#F6C343]/20">
+                {/* Icon */}
+                <div
+                  className="
+                    flex
+                    h-11
+                    w-11
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-xl
+                    bg-[#F6C343]/20
+
+                    transition-colors
+                    duration-300
+
+                    sm:mb-5
+                    sm:h-11
+                    sm:w-11
+
+                    lg:group-hover:bg-[#F6C343]/30
+                  "
+                >
                   <Icon
-                    className="h-6 w-6 text-[#051A3A]"
-                    strokeWidth={1.6}
+                    className="
+                      h-5
+                      w-5
+                      text-[#051A3A]
+
+                      sm:h-6
+                      sm:w-6
+                    "
+                    strokeWidth={1.7}
                     aria-hidden="true"
                   />
                 </div>
 
-                <p className="text-sm font-semibold leading-6 text-[#162033]">
+                {/* Title */}
+                <p
+                  className="
+                    min-w-0
+                    flex-1
+                    text-[14px]
+                    font-semibold
+                    leading-[1.45]
+                    tracking-[-0.01em]
+                    text-[#162033]
+
+                    sm:text-sm
+                    sm:leading-6
+                  "
+                >
                   {text}
                 </p>
               </div>
@@ -1562,7 +1668,6 @@ export default function AboutDholeraSirPage() {
           </div>
         </div>
       </section>
-
       {/* =========================================
           FINAL CTA
       ========================================== */}

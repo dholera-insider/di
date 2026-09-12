@@ -192,14 +192,14 @@ function BahrainFaq() {
         <div
             aria-hidden="true"
             className="
-              mt-3
+              mt-2
               h-[3px]
               w-12
               rounded-full
               bg-[#F6C343]
             "
           />
-        <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
+        <div className="mt-8 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
           {faqItems.map((item, index) => {
             const isOpen = openIndex === index;
             const answerId = `bahrain-faq-answer-${index}`;
@@ -310,6 +310,10 @@ export default function DholeraBahrainPage() {
               rel="noopener noreferrer"
               className="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#F6C343] px-6 py-3 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
+             
+
+              <FaWhatsapp className="h-5 w-5 mr-2" aria-hidden="true" />
+
               Explore Residential Projects
             </a>
           </div>
@@ -710,6 +714,7 @@ export default function DholeraBahrainPage() {
             focus-visible:ring-offset-[#051A3A]
           "
               >
+              <FaWhatsapp className="h-5 w-5 " aria-hidden="true" />
                 Explore residential plot in Dholera
               </a>
             </div>

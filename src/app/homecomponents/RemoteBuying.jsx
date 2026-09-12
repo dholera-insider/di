@@ -48,11 +48,11 @@ export default function RemoteBuying() {
         overflow-hidden
         bg-[#EEF2F9]
         px-4
-        py-10
+        py-8
         sm:px-6
-        sm:py-16
+        sm:py-14
         lg:px-6
-        lg:py-16
+        lg:py-14
       "
     >
       <div className="mx-auto max-w-7xl">

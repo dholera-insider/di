@@ -146,7 +146,7 @@ function SectionHeading({
         {children}
       </h2>
       <div
-        className={`mt-4 h-1 w-16 rounded-full bg-[#F6C343] ${
+        className={`mt-3 h-1 w-16 rounded-full bg-[#F6C343] ${
           centered ? "mx-auto" : ""
         }`}
       />
@@ -506,17 +506,13 @@ export default function AboutUsPage() {
           relative
           overflow-hidden
           bg-white
-
-          px-5
-          py-14
-
-          sm:px-7
+          px-6
+          py-8
+          sm:px-6
           sm:py-16
-
-          lg:px-10
-          lg:py-20
-
-          xl:py-24
+          lg:px-6
+          lg:pt-12
+          lg:pb-16
         "
       >
         {/* =====================================================
@@ -830,12 +826,13 @@ export default function AboutUsPage() {
       <section
         className="
           bg-[#051A3A]
-
-          px-4
-          py-[clamp(3.5rem,6vw,5rem)]
-
+          px-6
+          py-8
           sm:px-6
-          lg:px-8
+          sm:py-16
+          lg:px-6
+          lg:pt-12
+          lg:pb-16
         "
       >
         <div
@@ -897,193 +894,292 @@ export default function AboutUsPage() {
 
 
       <section
-  className="
-    bg-[#EEF2F9]
-    px-4
-    py-[clamp(3.5rem,6vw,5rem)]
-
-    sm:px-6
-    lg:px-8
-  "
->
-  <div className="mx-auto max-w-7xl">
-    {/* =====================================================
-        SECTION HEADING
-
-        Mobile  : Left aligned
-        Desktop : Center aligned
-    ====================================================== */}
-
-    <div
-      className="
-        mb-6
-        text-left
-
-        sm:mb-8
-
-        md:mb-12
-        md:text-center
-      "
-    >
-      <h2
         className="
-          text-[clamp(1.75rem,3.4vw,2.75rem)]
-          font-bold
-          leading-tight
-          tracking-[-0.025em]
-          text-[#051A3A]
+          bg-[#EEF2F9]
+          px-5
+          py-8
+
+          sm:px-6
+          sm:py-16
+
+          lg:px-6
+          lg:pt-12
+          lg:pb-16
         "
       >
-        Why Choose Dholera Insider ?
-      </h2>
+        <div className="mx-auto max-w-7xl">
+          {/* =====================================================
+              SECTION HEADING
 
-      <div
-        aria-hidden="true"
-        className="
-          mt-4
-          h-1
-          w-16
-          rounded-full
-          bg-[#F6C343]
-
-          md:mx-auto
-        "
-      />
-    </div>
-
-    {/* =====================================================
-        REASONS GRID
-    ====================================================== */}
-
-    <div
-      className="
-        grid
-        grid-cols-1
-        gap-5
-
-        sm:gap-6
-
-        md:grid-cols-2
-
-        lg:grid-cols-3
-      "
-    >
-      {reasons.map(({ Icon, title, description }) => (
-        <article
-          key={title}
-          className="
-            rounded-2xl
-            border
-            border-[#051A3A]/10
-            bg-white
-
-            p-5
-
-            shadow-sm
-
-            sm:p-6
-          "
-        >
-          {/* Icon */}
-
+              Mobile  : Left aligned
+              Desktop : Center aligned
+          ====================================================== */}
           <div
             className="
-              mb-4
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              rounded-xl
-              bg-[#F6C343]/20
+              mb-7
+              text-left
 
-              sm:mb-5
-              sm:h-12
-              sm:w-12
+              sm:mb-9
+
+              md:mb-12
+              md:text-center
             "
           >
-            <Icon
+            <h2
               className="
-                h-5
-                w-5
+                text-[clamp(1.75rem,3.4vw,2.75rem)]
+                font-bold
+                leading-tight
+                tracking-[-0.025em]
                 text-[#051A3A]
-
-                sm:h-6
-                sm:w-6
               "
-              strokeWidth={1.6}
+            >
+              Why Choose Dholera Insider?
+            </h2>
+
+            <div
               aria-hidden="true"
+              className="
+                mt-3
+                h-1
+                w-16
+                rounded-full
+                bg-[#F6C343]
+
+                md:mx-auto
+              "
             />
           </div>
 
-          {/* Title */}
-
-          <h3
+          {/* =====================================================
+              REASONS GRID
+          ====================================================== */}
+          <div
             className="
-              mb-2
-              text-[17px]
-              font-bold
-              leading-snug
-              text-[#051A3A]
+              grid
+              grid-cols-1
+              gap-4
 
-              sm:mb-3
-              sm:text-lg
+              sm:gap-5
+
+              md:grid-cols-2
+
+              lg:grid-cols-3
+              lg:gap-6
             "
           >
-            {title}
-          </h3>
+            {reasons.map(({ Icon, title, description }) => (
+              <article
+                key={title}
+                className="
+                  group
+                  flex
+                  h-full
+                  flex-col
 
-          {/* Description */}
+                  rounded-2xl
 
-          <p
-            className="
-              text-sm
-              leading-7
-              text-[#2B364D]
-            "
-          >
-            {description}
-          </p>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
+                  border
+                  border-[#051A3A]/10
 
-     <section
+                  bg-white
+
+                  px-5
+                  py-5
+
+                  shadow-[0_4px_16px_rgba(5,26,58,0.045)]
+
+                  transition-all
+                  duration-300
+
+                  sm:px-6
+                  sm:py-6
+
+                  lg:hover:-translate-y-1
+                  lg:hover:border-[#F6C343]/50
+                  lg:hover:shadow-[0_14px_32px_rgba(5,26,58,0.08)]
+                "
+              >
+                {/* =================================================
+                    ICON + TITLE
+                ================================================== */}
+                <div
+                  className="
+                    flex
+                    min-h-[48px]
+                    items-center
+                    gap-3.5
+                  "
+                >
+                  {/* Icon */}
+                  <div
+                    className="
+                      flex
+                      h-11
+                      w-11
+                      shrink-0
+                      items-center
+                      justify-center
+
+                      rounded-xl
+
+                      bg-[#F6C343]/20
+
+                      transition-all
+                      duration-300
+
+                      sm:h-12
+                      sm:w-12
+
+                      lg:group-hover:bg-[#F6C343]/30
+                    "
+                  >
+                    <Icon
+                      className="
+                        h-5
+                        w-5
+                        text-[#051A3A]
+
+                        sm:h-[22px]
+                        sm:w-[22px]
+                      "
+                      strokeWidth={1.7}
+                      aria-hidden="true"
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    className="
+                      min-w-0
+                      flex-1
+
+                      text-[16px]
+                      font-bold
+                      leading-[1.35]
+                      tracking-[-0.015em]
+                      text-[#051A3A]
+
+                      sm:text-[17px]
+
+                      lg:text-[18px]
+                    "
+                  >
+                    {title}
+                  </h3>
+                </div>
+
+                {/* =================================================
+                    DIVIDER
+                ================================================== */}
+                <div
+                  aria-hidden="true"
+                  className="
+                    my-4
+                    h-px
+                    w-full
+                    bg-[#051A3A]/10
+
+                    sm:my-5
+                  "
+                />
+
+                {/* =================================================
+                    DESCRIPTION
+                ================================================== */}
+                <p
+                  className="
+                    text-[14px]
+                    leading-[1.75]
+                    text-[#566174]
+
+                    sm:text-[15px]
+                    sm:leading-7
+                  "
+                >
+                  {description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+<section
   className="
-    px-4
-    py-[clamp(3.5rem,6vw,5rem)]
+    relative
+    overflow-hidden
+    bg-[#F6F8FB]
+
+    px-5
+    py-8
 
     sm:px-6
-    lg:px-8
+    sm:py-12
+
+    lg:px-6
+    lg:pt-10
+    lg:pb-12
   "
 >
-  <div className="mx-auto max-w-7xl">
+  {/* =====================================================
+      BACKGROUND DECORATION
+  ====================================================== */}
+
+  <div
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      -left-32
+      top-0
+      h-64
+      w-64
+      rounded-full
+      bg-[#F6C343]/[0.06]
+      blur-3xl
+    "
+  />
+
+  <div
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      -right-28
+      bottom-0
+      h-64
+      w-64
+      rounded-full
+      bg-[#051A3A]/[0.03]
+      blur-3xl
+    "
+  />
+
+  <div className="relative z-10 mx-auto max-w-7xl">
     {/* =====================================================
         SECTION HEADING
-
-        Mobile  : Left aligned
-        Desktop : Center aligned
     ====================================================== */}
 
     <div
       className="
-        mb-6
+        mb-9
         text-left
 
-        sm:mb-8
+        sm:mb-10
 
-        md:mb-12
         md:text-center
+
+        lg:mb-11
       "
     >
       <h2
         className="
           text-[clamp(1.75rem,3.4vw,2.75rem)]
           font-bold
-          leading-tight
-          tracking-[-0.025em]
+          leading-[1.1]
+          tracking-[-0.03em]
           text-[#051A3A]
         "
       >
@@ -1093,9 +1189,9 @@ export default function AboutUsPage() {
       <div
         aria-hidden="true"
         className="
-          mt-4
-          h-1
-          w-16
+          mt-3
+          h-[3px]
+          w-14
           rounded-full
           bg-[#F6C343]
 
@@ -1105,82 +1201,224 @@ export default function AboutUsPage() {
     </div>
 
     {/* =====================================================
-        BELIEFS GRID
+        BELIEF CARDS
     ====================================================== */}
 
     <div
       className="
         grid
         grid-cols-1
-        gap-5
+        items-start
+        justify-items-center
+
+        gap-x-5
+        gap-y-10
+
+        pt-4
 
         sm:grid-cols-2
-        sm:gap-6
+        sm:justify-items-stretch
+        sm:gap-x-5
+        sm:gap-y-11
 
         lg:grid-cols-4
+        lg:gap-x-5
+        lg:gap-y-0
       "
     >
-      {beliefs.map(({ Icon, title, description }) => (
-        <article
-          key={title}
-          className="
-            rounded-2xl
-            border
-            border-[#051A3A]/10
-            bg-white
+      {beliefs.map(({ Icon, title, description }, index) => {
+        const darkBadge = index % 2 === 0;
 
-            p-5
-
-            shadow-sm
-
-            sm:p-6
-          "
-        >
-          <Icon
+        return (
+          <article
+            key={title}
             className="
-              mb-4
-              h-7
-              w-7
-              text-[#F6C343]
+              group
+              relative
 
-              sm:mb-5
-              sm:h-8
-              sm:w-8
-            "
-            strokeWidth={1.6}
-            aria-hidden="true"
-          />
+              w-full
+              max-w-[330px]
 
-          <h3
-            className="
-              mb-2
-              text-[17px]
-              font-bold
-              leading-snug
-              text-[#051A3A]
+              rounded-[18px]
 
-              sm:mb-3
-              sm:text-lg
-            "
-          >
-            {title}
-          </h3>
+              border
+              border-[#DCE2EA]
 
-          <p
-            className="
-              text-sm
-              leading-7
-              text-[#2B364D]
+              bg-white
+
+              px-5
+              pb-5
+              pt-10
+
+              text-center
+
+              shadow-[0_5px_18px_rgba(5,26,58,0.05)]
+
+              transition-all
+              duration-300
+              ease-out
+
+              hover:-translate-y-1
+              hover:border-[#E5C25C]
+              hover:shadow-[0_12px_26px_rgba(5,26,58,0.08)]
+
+              sm:max-w-none
+              sm:px-5
+              sm:pb-5
+              sm:pt-11
+
+              lg:px-5
+              lg:pb-5
+              lg:pt-11
             "
           >
-            {description}
-          </p>
-        </article>
-      ))}
+            {/* =================================================
+                TOP GOLD ACCENT
+            ================================================== */}
+
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                left-1/2
+                top-0
+
+                h-[3px]
+                w-12
+
+                -translate-x-1/2
+
+                rounded-b-full
+                bg-[#F6C343]
+              "
+            />
+
+            {/* =================================================
+                FLOATING ICON
+            ================================================== */}
+
+            <div
+              className={`
+                absolute
+                -top-[29px]
+                left-1/2
+
+                flex
+                h-[58px]
+                w-[58px]
+
+                -translate-x-1/2
+
+                items-center
+                justify-center
+
+                rounded-[17px]
+
+                border-[4px]
+                border-[#F6F8FB]
+
+                shadow-[0_7px_17px_rgba(5,26,58,0.14)]
+
+                transition-all
+                duration-300
+                ease-out
+
+                group-hover:-translate-x-1/2
+                group-hover:-translate-y-1
+
+                sm:h-[60px]
+                sm:w-[60px]
+
+                ${
+                  darkBadge
+                    ? "bg-[#051A3A] text-[#F6C343]"
+                    : "bg-[#F6C343] text-[#051A3A]"
+                }
+              `}
+            >
+              <Icon
+                className="
+                  h-[25px]
+                  w-[25px]
+
+                  sm:h-[27px]
+                  sm:w-[27px]
+                "
+                strokeWidth={1.7}
+                aria-hidden="true"
+              />
+            </div>
+
+
+            {/* =================================================
+                TITLE
+            ================================================== */}
+
+            <h3
+              className="
+                mt-1
+
+                text-[17px]
+                font-bold
+                leading-[1.3]
+                tracking-[-0.015em]
+                text-[#051A3A]
+
+                sm:text-[18px]
+              "
+            >
+              {title}
+            </h3>
+
+            {/* =================================================
+                GOLD DIVIDER
+            ================================================== */}
+
+            <div
+              aria-hidden="true"
+              className="
+                mx-auto
+                my-2.5
+
+                h-[2px]
+                w-7
+
+                rounded-full
+                bg-[#F6C343]
+
+                transition-all
+                duration-300
+
+                group-hover:w-10
+              "
+            />
+
+            {/* =================================================
+                DESCRIPTION
+            ================================================== */}
+
+            <p
+              className="
+                mx-auto
+                max-w-[245px]
+
+                text-[13.5px]
+                leading-[1.6]
+                text-[#657083]
+
+                sm:max-w-[255px]
+                sm:text-[14px]
+                sm:leading-[1.65]
+              "
+            >
+              {description}
+            </p>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>
-
     </main>
   );
 }

@@ -64,32 +64,79 @@ export default async function Blogs() {
 
       <div className="min-h-screen bg-white relative overflow-hidden">
         {/* Enhanced Hero Section - Responsive Height */}
-        <div className="bg-white relative">
+        <div className="relative bg-white">
           <div className="pt-16 md:pt-20">
-            <div className="relative md:h-[50vh] overflow-hidden shadow-lg">
+            <div
+              className="
+                relative
+                h-[300px]
+                w-full
+                overflow-hidden
+                shadow-lg
+
+                sm:h-[340px]
+
+                md:h-[50vh]
+                md:min-h-[400px]
+              "
+            >
               {/* Hero Image */}
               <Image
                 src={heroD}
                 alt="Dholera SIR Development"
-                className="w-full h-auto md:h-[60vh] object-contain md:object-cover"
+                fill
                 quality={100}
                 priority
                 sizes="100vw"
+                className="
+                  object-cover
+                  object-center
+
+                  md:object-cover
+                "
               />
 
               {/* Black Overlay */}
-              <div className="absolute inset-0 bg-black/60"></div>
+              <div
+                className="
+                  absolute
+                  inset-0
+                  z-[1]
+                  bg-black/60
+                "
+              />
 
               {/* Text Content */}
-              <div className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center">
-                <h1 className="text-2xl md:text-5xl font-bold text-white leading-tight">
+              <div
+                className="
+                  absolute
+                  inset-0
+                  z-10
+                  flex
+                  items-center
+                  justify-center
+                  px-4
+                  text-center
+                "
+              >
+                <h1
+                  className="
+                    text-2xl
+                    font-bold
+                    leading-tight
+                    text-white
+
+                    sm:text-3xl
+
+                    md:text-5xl
+                  "
+                >
                   Dholera Latest Updates
                 </h1>
               </div>
             </div>
           </div>
         </div>
-
         {/* Blog Posts Section */}
         <div className="relative z-10">
           <div className="px-4 py-12">
@@ -169,7 +216,7 @@ export default async function Blogs() {
       </div>
 
       {/* Common Form at the bottom */}
-      <CommonForm title="Start Your Dholera Investment" />
+      {/* <CommonForm title="Start Your Dholera Investment" /> */}
     </>
   );
 }

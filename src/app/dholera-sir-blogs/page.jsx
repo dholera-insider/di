@@ -62,27 +62,74 @@ export default async function page() {
         rel="canonical"
         href="https://www.dholerainsider.com/dholera-sir-blogs"
       />
-      <div className="min-h-screen bg-white relative overflow-hidden">
+      <div className="min-h-screen bg-[#051A3A] relative overflow-hidden">
         {/* Enhanced Hero Section - Responsive Height */}
-        <div className="bg-white relative">
+        <div className="relative bg-white">
           <div className="pt-16 md:pt-8">
-            <div className="relative w-full md:h-[60vh] overflow-hidden shadow-lg aspect-[3/1]">
+            <div
+              className="
+                relative
+                h-[300px]
+                w-full
+                overflow-hidden
+                shadow-lg
+
+                sm:h-[340px]
+
+                md:h-[60vh]
+                md:min-h-[420px]
+                md:max-h-[680px]
+              "
+            >
               {/* Hero Image */}
               <Image
                 src={hero}
                 alt="Dholera SIR Development"
-                className="w-full h-auto md:h-[60vh] object-contain md:object-cover  aspect-[3/1]"
+                fill
                 quality={100}
                 priority
                 sizes="100vw"
+                className="
+                  object-cover
+                  object-center
+                "
               />
 
               {/* Black Overlay */}
-              <div className="absolute inset-0 bg-black/60"></div>
+              <div
+                className="
+                  absolute
+                  inset-0
+                  z-[1]
+                  bg-black/40
+                "
+              />
 
               {/* Text Content */}
-              <div className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center">
-                <h1 className="text-2xl md:text-5xl font-bold text-white leading-tight">
+              <div
+                className="
+                  absolute
+                  inset-0
+                  z-10
+                  flex
+                  items-center
+                  justify-center
+                  px-4
+                  text-center
+                "
+              >
+                <h1
+                  className="
+                    text-2xl
+                    font-bold
+                    leading-tight
+                    text-white
+
+                    sm:text-3xl
+
+                    md:text-5xl
+                  "
+                >
                   Dholera Smart City Blogs
                 </h1>
               </div>
@@ -167,6 +214,7 @@ export default async function page() {
             )}
           </div>
         </div>
+        <div className="h-px w-full bg-white/30" />
       </div>
     </>
   );

@@ -128,9 +128,9 @@ export default function GetInTouch() {
         relative
         isolate
         overflow-hidden
-        bg-[#FDFCFA]
-        px-5
-        py-14
+        bg-white
+        px-4
+        py-8
 
         sm:px-7
         sm:py-16
@@ -142,9 +142,8 @@ export default function GetInTouch() {
       "
     >
       {/* =====================================================
-          BACKGROUND DECORATION
+          BACKGROUND
       ====================================================== */}
-
       <div
         aria-hidden="true"
         className="
@@ -152,28 +151,13 @@ export default function GetInTouch() {
           absolute
           inset-0
           -z-20
+          bg-white
         "
-       
-      />
-
-      {/* Very subtle grid */}
-
-      <div
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          -z-10
-          opacity-[0.022]
-        "
-       
       />
 
       {/* =====================================================
           MAIN CONTAINER
       ====================================================== */}
-
       <div
         className="
           relative
@@ -186,10 +170,10 @@ export default function GetInTouch() {
           className="
             grid
             grid-cols-1
-            items-start
             gap-10
 
             lg:grid-cols-[0.72fr_1.28fr]
+            lg:items-stretch
             lg:gap-14
 
             xl:gap-20
@@ -198,133 +182,136 @@ export default function GetInTouch() {
           {/* =================================================
               LEFT CONTENT
           ================================================== */}
-
-            <div
+          <div
             data-reveal
             className="
-                translate-y-4
-                opacity-0
-                transition-all
-                duration-700
-                ease-out
-
-                lg:sticky
-                lg:top-28
+              flex
+              translate-y-4
+              flex-col
+              justify-center
+              opacity-0
+              transition-all
+              duration-700
+              ease-out
             "
-            >
-            {/* Small eyebrow */}
-
+          >
             <div
-                className="
-                mb-4
+              className="
                 flex
-                items-center
-                gap-3
-                "
+                w-full
+                max-w-[520px]
+                flex-col
+                items-start
+                justify-center
+                text-left
+              "
             >
-                <span
-                aria-hidden="true"
+              {/* =============================================
+                  DESKTOP EYEBROW
+              ============================================== */}
+              <div
                 className="
+                  mb-5
+                  hidden
+                  items-center
+                  justify-start
+                  gap-3
+
+                  lg:flex
+                "
+              >
+                {/* Yellow line */}
+                <span
+                  aria-hidden="true"
+                  className="
                     h-[2px]
                     w-8
+                    shrink-0
                     rounded-full
                     bg-[#F6C343]
-                "
+                  "
                 />
 
                 <span
-                className="
+                  className="
                     text-[11px]
                     font-bold
                     uppercase
                     tracking-[0.18em]
                     text-[#B67E00]
 
-                    sm:text-xs
-                "
+                    xl:text-xs
+                  "
                 >
-                Dholera Insider
+                  Dholera Insider
                 </span>
-            </div>
+              </div>
 
-            {/* Heading */}
-
-            <h2
+              {/* =============================================
+                  HEADING
+              ============================================== */}
+              <h2
                 id="get-in-touch-heading"
                 className="
-                max-w-[520px]
-                text-[clamp(2rem,5vw,3.5rem)]
-                font-bold
-                leading-[1.04]
-                tracking-[-0.045em]
-                text-[#051A3A]
+                  max-w-[520px]
+                  text-left
+                  text-[clamp(2rem,5vw,3.5rem)]
+                  font-bold
+                  leading-[1.04]
+                  tracking-[-0.045em]
+                  text-[#051A3A]
+
+                  lg:text-[48px]
+
+                  xl:text-[54px]
                 "
-            >
-                Get in Touch
-            </h2>
-
-            {/* Gold underline */}
-
-            <div
-                aria-hidden="true"
-                className="
-                mt-3
-                h-[3px]
-                w-12
-                rounded-full
-                bg-[#F6C343]
-                "
-            />
-
-            {/* Intro */}
-
-            <p
-                className="
-                mt-6
-                max-w-[440px]
-                text-[14px]
-                leading-7
-                text-[#667085]
-
-                sm:text-[15px]
-
-                lg:text-base
-                lg:leading-8
-                "
-            >
+              >
                 Connect with our team to discuss:
-            </p>
+              </h2>
 
-            {/* Decorative desktop line */}
-
-            <div
+              {/* =============================================
+                  GOLD UNDERLINE
+              ============================================== */}
+              <div
                 aria-hidden="true"
                 className="
-                mt-8
-                hidden
-                h-px
-                max-w-[340px]
-                bg-gradient-to-r
-                from-[#051A3A]/15
-                to-transparent
-
-                lg:block
+                  mt-4
+                  h-[3px]
+                  w-12
+                  rounded-full
+                  bg-[#F6C343]
                 "
-            />
+              />
+
+              {/* =============================================
+                  DECORATIVE LINE
+                  DESKTOP ONLY
+              ============================================== */}
+              <div
+                aria-hidden="true"
+                className="
+                  mt-8
+                  hidden
+                  h-px
+                  w-full
+                  max-w-[300px]
+                  bg-gradient-to-r
+                  from-[#051A3A]/15
+                  to-transparent
+
+                  lg:block
+                "
+              />
             </div>
+          </div>
 
           {/* =================================================
               RIGHT TOPIC LIST
           ================================================== */}
-
           <div className="relative min-w-0">
             {/* =================================================
                 MOBILE CONNECTOR
-
-                Creates the vertical visual flow from
-                your reference without cluttering desktop.
             ================================================== */}
-
             <div
               aria-hidden="true"
               className="
@@ -347,14 +334,7 @@ export default function GetInTouch() {
 
             {/* =================================================
                 TOPICS
-
-                Phone:
-                1 column
-
-                Desktop:
-                2 columns
             ================================================== */}
-
             <div
               className="
                 grid
@@ -364,175 +344,155 @@ export default function GetInTouch() {
                 sm:gap-4
 
                 lg:grid-cols-2
+                lg:gap-4
               "
             >
-              {contactTopics.map(
-                (
-                  topic,
-                  index,
-                ) => {
-                  const Icon =
-                    topic.icon;
+              {contactTopics.map((topic, index) => {
+                const Icon = topic.icon;
 
-                  return (
-                    <article
-                      key={topic.title}
-                      data-reveal
-                      style={{
-                        transitionDelay: `${
-                          index * 65
-                        }ms`,
-                      }}
+                return (
+                  <article
+                    key={topic.title}
+                    data-reveal
+                    style={{
+                      transitionDelay: `${index * 65}ms`,
+                    }}
+                    className="
+                      group
+                      relative
+                      z-10
+                      translate-y-4
+                      opacity-0
+                      transition-all
+                      duration-700
+                      ease-out
+                    "
+                  >
+                    <div
                       className="
-                        group
                         relative
-                        z-10
-                        translate-y-4
-                        opacity-0
+                        flex
+                        min-h-[76px]
+                        items-center
+                        gap-3.5
+                        overflow-hidden
+                        rounded-[16px]
+                        border
+                        border-[#E5E8EE]
+                        bg-[#FDFCFA]
+                        px-3.5
+                        py-3.5
+
                         transition-all
-                        duration-700
-                        ease-out
+                        duration-300
+
+                        hover:-translate-y-[2px]
+                        hover:border-[#F6C343]/70
+                        hover:bg-white
+                        hover:shadow-[0_12px_32px_rgba(5,26,58,0.07)]
+
+                        sm:min-h-[84px]
+                        sm:gap-4
+                        sm:px-4
+
+                        lg:min-h-[96px]
+                        lg:px-5
+                        lg:py-4
                       "
                     >
+                      {/* Gold hover accent */}
+                      <div
+                        aria-hidden="true"
+                        className="
+                          absolute
+                          inset-y-3
+                          left-0
+                          w-[3px]
+                          origin-bottom
+                          scale-y-0
+                          rounded-r-full
+                          bg-[#F6C343]
+
+                          transition-transform
+                          duration-300
+
+                          group-hover:scale-y-100
+                        "
+                      />
+
+                      {/* ICON */}
                       <div
                         className="
                           relative
-                          flex
-                          min-h-[76px]
-                          items-center
-                          gap-3.5
-                          overflow-hidden
-                          rounded-[16px]
+                          z-10
+                          grid
+                          h-11
+                          w-11
+                          shrink-0
+                          place-items-center
+                          rounded-full
                           border
-                          border-[#DDE3EC]
-                          bg-white
-                          px-3.5
-                          py-3.5
+                          border-[#E7D69A]
+                          bg-[#FFF7DD]
+                          text-[#C48700]
 
                           transition-all
                           duration-300
 
-                          hover:-translate-y-[2px]
-                          hover:border-[#F6C343]/70
-                          hover:shadow-[0_12px_32px_rgba(5,26,58,.07)]
+                          group-hover:scale-105
+                          group-hover:border-[#F6C343]
+                          group-hover:bg-[#F6C343]
+                          group-hover:text-[#051A3A]
 
-                          sm:min-h-[84px]
-                          sm:gap-4
-                          sm:px-4
-
-                          lg:min-h-[96px]
-                          lg:px-5
-                          lg:py-4
+                          sm:h-12
+                          sm:w-12
                         "
                       >
-                        {/* ===================================
-                            GOLD LEFT ACCENT
-                        ==================================== */}
+                        <Icon
+                          className="
+                            h-[19px]
+                            w-[19px]
 
-                        <div
+                            sm:h-5
+                            sm:w-5
+                          "
+                          strokeWidth={1.8}
                           aria-hidden="true"
-                          className="
-                            absolute
-                            inset-y-3
-                            left-0
-                            w-[3px]
-                            origin-bottom
-                            scale-y-0
-                            rounded-r-full
-                            bg-[#F6C343]
-
-                            transition-transform
-                            duration-300
-
-                            group-hover:scale-y-100
-                          "
                         />
-
-                        {/* ===================================
-                            ICON
-                        ==================================== */}
-
-                        <div
-                          className="
-                            relative
-                            z-10
-                            grid
-                            h-11
-                            w-11
-                            shrink-0
-                            place-items-center
-                            rounded-full
-                            border
-                            border-[#E7D69A]
-                            bg-[#FFF8DE]
-                            text-[#C48700]
-
-                            transition-all
-                            duration-300
-
-                            group-hover:scale-105
-                            group-hover:border-[#F6C343]
-                            group-hover:bg-[#F6C343]
-                            group-hover:text-[#051A3A]
-
-                            sm:h-12
-                            sm:w-12
-                          "
-                        >
-                          <Icon
-                            className="
-                              h-[19px]
-                              w-[19px]
-
-                              sm:h-5
-                              sm:w-5
-                            "
-                            strokeWidth={
-                              1.8
-                            }
-                            aria-hidden="true"
-                          />
-                        </div>
-
-                        {/* ===================================
-                            TITLE
-                        ==================================== */}
-
-                        <div
-                          className="
-                            min-w-0
-                            flex-1
-                          "
-                        >
-                          <h3
-                            className="
-                              text-[13.5px]
-                              font-semibold
-                              leading-[1.45]
-                              tracking-[-0.012em]
-                              text-[#051A3A]
-
-                              sm:text-[14px]
-
-                              lg:text-[15px]
-                            "
-                          >
-                            {topic.title}
-                          </h3>
-                        </div>
                       </div>
-                    </article>
-                  );
-                },
-              )}
+
+                      {/* TITLE */}
+                      <div
+                        className="
+                          min-w-0
+                          flex-1
+                        "
+                      >
+                        <h3
+                          className="
+                            text-[13.5px]
+                            font-semibold
+                            leading-[1.45]
+                            tracking-[-0.012em]
+                            text-[#051A3A]
+
+                            sm:text-[14px]
+
+                            lg:text-[15px]
+                          "
+                        >
+                          {topic.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
 
             {/* =================================================
-                BOTTOM VISUAL NOTE
-
-                Decorative only. No new copy is introduced.
+                BOTTOM DIVIDER
             ================================================== */}
-
             <div
               aria-hidden="true"
               className="
