@@ -80,9 +80,9 @@ const Hero = () => {
           className="
             container
             mx-auto
-            px-9
-            pt-2
-            pb-6
+            px-4
+            pb-8
+
             sm:px-6
             sm:py-16
 
