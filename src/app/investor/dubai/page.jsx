@@ -86,8 +86,6 @@ const trustSignals = [
   },
 ];
 
-
-
 const journeySteps = [
   {
     number: "1",
@@ -178,7 +176,6 @@ const documentChecks = [
     description: "",
   },
 ];
-
 
 const projects = [
   {
@@ -489,17 +486,17 @@ export default function DubaiNriPage() {
                 lg:py-0
               "
             >
-            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
-              Dholera Investment from{" "}
-              <span className="text-[#F6C343]">Dubai</span>
-            </h1>
+              <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+                Dholera Investment from{" "}
+                <span className="text-[#F6C343]">Dubai</span>
+              </h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
-              Looking for a smart way to diversify your investments in India?
-              Dholera Insider helps Dubai NRIs explore verified residential
-              plots in Dholera Smart City with transparent information, legal
-              clarity, and a smooth remote buying process.
-            </p>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+                Looking for a smart way to diversify your investments in India?
+                Dholera Insider helps Dubai NRIs explore verified residential
+                plots in Dholera Smart City with transparent information, legal
+                clarity, and a smooth remote buying process.
+              </p>
 
               {/* CTA */}
               <a
@@ -534,7 +531,7 @@ export default function DubaiNriPage() {
                   sm:w-auto
                 "
               >
-               <FaWhatsapp className="h-5 w-5 mr-2" aria-hidden="true" />
+                <FaWhatsapp className="h-5 w-5 mr-2" aria-hidden="true" />
                 Explore Residential Projects
               </a>
             </div>
@@ -544,7 +541,6 @@ export default function DubaiNriPage() {
 
       {/* 01 WHY DHOLERA */}
       <WhyDholera />
-
 
       {/* 04 BUYING PROCESS */}
       <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
@@ -768,16 +764,16 @@ export default function DubaiNriPage() {
               "
             >
               <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
-                Talk to a Dholera Expert
+              Talk to a Dholera Expert
             </a>
           </div>
         </div>
       </section>
 
-
       {/* 02 DOCUMENTATION */}
-      <section id="documentation"
-        className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
+      <section
+        id="documentation"
+        className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-4 py-6 sm:px-6 sm:py-16 lg:px-6 lg:pt-10 lg:pb-12"
       >
         {/* Background glow */}
         <div
@@ -807,7 +803,7 @@ export default function DubaiNriPage() {
             ====================================================== */}
             <div className="lg:sticky lg:top-28">
               {/* Eyebrow */}
-          
+
               {/* Heading */}
               <h2
                 className="
@@ -826,8 +822,8 @@ export default function DubaiNriPage() {
 
               {/* Main copy */}
               <p className="mt-5 max-w-xl text-base leading-7 text-white/70 sm:text-[17px] sm:leading-8">
-                For many NRIs living in Dubai, owning land in India is more than an
-                investment, it's a long term asset.
+                For many NRIs living in Dubai, owning land in India is more than
+                an investment, it's a long term asset.
               </p>
 
               {/* Divider */}
@@ -942,7 +938,6 @@ export default function DubaiNriPage() {
 
                         {/* Content */}
                         <div className="min-w-0 flex-1">
-
                           <h3
                             className="
                               mt-1.5
@@ -988,10 +983,7 @@ export default function DubaiNriPage() {
                           "
                           aria-hidden="true"
                         >
-                          <Check
-                            className="h-4 w-4"
-                            strokeWidth={2.2}
-                          />
+                          <Check className="h-4 w-4" strokeWidth={2.2} />
                         </div>
                       </div>
                     </article>
@@ -1003,12 +995,10 @@ export default function DubaiNriPage() {
         </div>
       </section>
 
-
-
       {/* SOCIAL PROOF + FAQ */}
       <section
         aria-labelledby="why-choose-dholera-insider"
-        className="bg-[#EEF2F9] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
+        className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
       >
         <div className="mx-auto max-w-7xl">
           {/* ======================================================
@@ -1033,10 +1023,7 @@ export default function DubaiNriPage() {
               </h2>
 
               {/* Decorative line */}
-              <div
-                className="mt-6 flex items-center gap-2"
-                aria-hidden="true"
-              >
+              <div className="mt-6 flex items-center gap-2" aria-hidden="true">
                 <span className="h-[3px] w-10 rounded-full bg-[#F6C343]" />
               </div>
             </div>
@@ -1206,7 +1193,6 @@ export default function DubaiNriPage() {
             {/* CTA Button */}
             <div className="relative mt-6 shrink-0 lg:mt-0">
               <a
-                
                 href="https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1247,7 +1233,6 @@ export default function DubaiNriPage() {
                 "
               >
                 Get Investment Details
-
                 <ArrowRight
                   className="
                     h-4
@@ -1265,10 +1250,9 @@ export default function DubaiNriPage() {
         </div>
       </section>
 
-
       {/* FAQ */}
-      <DubaiFaq/>
-   
+      <DubaiFaq />
+
       {/* MOBILE ACTION BAR */}
 
       {/* 

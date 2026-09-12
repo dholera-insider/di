@@ -67,7 +67,7 @@ const Footer = () => {
           
               <div className="mt-6 flex items-center justify-start gap-4">
                 <Link
-                  href="https://www.facebook.com/profile.php?id=61578651603291"
+                  href="https://www.facebook.com/dholerainsider/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
@@ -114,6 +114,16 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-3">
+
+               <li>
+                <Link
+                  href="/contact"
+                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
+                >
+                  <span className="mr-2">›</span> Contact Us
+                </Link>
+              </li>
+              
               <li>
                 <Link
                   href="/about-us"
@@ -147,14 +157,7 @@ const Footer = () => {
                   <span className="mr-2">›</span> Dholera Blogs
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
-                >
-                  <span className="mr-2">›</span> Contact Us
-                </Link>
-              </li>
+             
             </ul>
           </div>
 

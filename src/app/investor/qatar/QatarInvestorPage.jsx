@@ -385,7 +385,7 @@ export default function QatarInvestorPage() {
       <section
         id="why-us"
         aria-labelledby="why-dholera-heading"
-        className="scroll-mt-20 bg-[#EEF2F9] px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-20"
+        className="scroll-mt-20 bg-[#EEF2F9] px-4 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16 xl:gap-20">
@@ -401,13 +401,13 @@ export default function QatarInvestorPage() {
               <h2
                 id="why-dholera-heading"
                 className="
-                  mt-5
                   max-w-[520px]
                   text-[clamp(2rem,5vw,3.4rem)]
                   font-bold
                   leading-[1.05]
                   tracking-[-0.045em]
                   text-[#051A3A]
+                  lg:mt-8
                 "
               >
                 Why Dholera Insider?
@@ -586,7 +586,7 @@ export default function QatarInvestorPage() {
               <div
               aria-hidden="true"
               className="
-                mt-3
+                mt-2
                 h-[3px]
                 w-12
                 rounded-full

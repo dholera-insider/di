@@ -194,7 +194,7 @@ export default function SingaporeInvestorPage() {
         title="Your Dholera Investment Journey from Singapore"
       />
 
-      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
+      <section className="relative overflow-hidden bg-[#051A3A] text-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
         <Skyline />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
           <h2 className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
@@ -251,7 +251,7 @@ export default function SingaporeInvestorPage() {
       </section> */}
 
 
-      <section className="bg-[#EEF2F9] px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+      <section className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-16 xl:gap-20">
           {/* =====================================================
               LEFT CONTENT

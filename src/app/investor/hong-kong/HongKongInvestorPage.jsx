@@ -203,18 +203,7 @@ export default function HongKongInvestorPage() {
       <section
         id="why-us"
         aria-labelledby="why-dholera-heading"
-        className="
-          relative
-          scroll-mt-20
-          bg-[#051A3A]
-          px-4
-          py-12
-          text-white
-          sm:px-6
-          sm:py-14
-          lg:px-8
-          lg:py-20
-        "
+        className="relative scroll-mt-20 bg-[#051A3A] text-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
       >
         {/* =====================================================
             SKYLINE BACKGROUND
@@ -307,9 +296,10 @@ export default function HongKongInvestorPage() {
                   leading-[1.06]
                   tracking-[-0.045em]
                   text-white
+                  lg:mt-20
                 "
               >
-               Why Choose Dholera Insider?
+               Why Choose Dholera Insider ?
               </h2>
 
               {/* Gold accent */}
@@ -317,7 +307,7 @@ export default function HongKongInvestorPage() {
               <div
                 aria-hidden="true"
                 className="
-                  mt-6
+                  mt-3
                   h-[3px]
                   w-12
                   rounded-full

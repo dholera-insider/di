@@ -196,7 +196,7 @@ export default function OmanInvestorPage() {
 
       <section
         id="why-us"
-        className="relative scroll-mt-28 overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8"
+        className="relative scroll-mt-28 overflow-hidden bg-[#051A3A] text-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
       >
         <Skyline />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">

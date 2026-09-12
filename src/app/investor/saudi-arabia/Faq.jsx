@@ -38,7 +38,7 @@ export function SaudiArabiaFaq() {
   return (
     <section
       id="faqs"
-      className="scroll-mt-28 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
+      className="scroll-mt-28 bg-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
       aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-5xl">
@@ -51,7 +51,7 @@ export function SaudiArabiaFaq() {
         <div
             aria-hidden="true"
             className="
-            mt-3
+            mt-2
             h-[3px]
             w-12
             rounded-full

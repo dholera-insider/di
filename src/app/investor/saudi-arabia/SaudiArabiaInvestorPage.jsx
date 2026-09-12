@@ -356,7 +356,7 @@ export default function SaudiArabiaInvestorPage() {
 
 
       <section id="documentation"
-            className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
+            className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
           >
             {/* Background glow */}
             <div
@@ -390,7 +390,6 @@ export default function SaudiArabiaInvestorPage() {
                   {/* Heading */}
                     <h2
                       className="
-                        mt-5
                         max-w-xl
                         font-[var(--font-display)]
                         text-[clamp(2rem,4vw,3.25rem)]
@@ -398,6 +397,7 @@ export default function SaudiArabiaInvestorPage() {
                         leading-[1.08]
                         tracking-[-0.045em]
                         text-white
+                        lg:mt-5
                       "
                     >
                       Why{" "}
@@ -577,7 +577,7 @@ export default function SaudiArabiaInvestorPage() {
 
           <section
         aria-labelledby="why-choose-dholera-insider"
-        className="bg-[#EEF2F9] px-5 py-14 sm:px-8 md:py-16 lg:px-10 lg:py-20"
+        className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
       >
         <div className="mx-auto max-w-7xl">
           {/* ======================================================
@@ -603,7 +603,7 @@ export default function SaudiArabiaInvestorPage() {
 
               {/* Decorative line */}
               <div
-                className="mt-6 flex items-center gap-2"
+                className="mt-3 flex items-center gap-2"
                 aria-hidden="true"
               >
                 <span className="h-[3px] w-10 rounded-full bg-[#F6C343]" />

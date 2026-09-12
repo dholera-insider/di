@@ -99,18 +99,7 @@ export default function WhyNRIsAbout() {
     <section
       ref={sectionRef}
       aria-labelledby="why-dholera-heading"
-      className="
-        relative
-        overflow-hidden
-        bg-[#EEF2F9]
-        px-6
-        py-8
-        sm:px-6
-        sm:py-12
-        lg:px-6
-        lg:pt-12
-        lg:pb-16
-      "
+      className="relative overflow-hidden bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
     >
       {/* Background decoration */}
       <div

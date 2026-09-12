@@ -61,7 +61,7 @@ export default function CommonJourney({
     
 }) {
   return (
-    <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+    <section className="border-y border-[#051A3A]/10 bg-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
       <div className="mx-auto max-w-7xl">
         
         {/* Heading */}

@@ -894,18 +894,7 @@ export default function AboutUsPage() {
 
 
       <section
-        className="
-          bg-[#EEF2F9]
-          px-5
-          py-8
-
-          sm:px-6
-          sm:py-16
-
-          lg:px-6
-          lg:pt-12
-          lg:pb-16
-        "
+        className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
       >
         <div className="mx-auto max-w-7xl">
           {/* =====================================================
@@ -1107,21 +1096,7 @@ export default function AboutUsPage() {
 
 
 <section
-  className="
-    relative
-    overflow-hidden
-    bg-[#F6F8FB]
-
-    px-5
-    py-8
-
-    sm:px-6
-    sm:py-12
-
-    lg:px-6
-    lg:pt-10
-    lg:pb-12
-  "
+  className="relative overflow-hidden bg-[#F6F8FB] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
 >
   {/* =====================================================
       BACKGROUND DECORATION

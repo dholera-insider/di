@@ -318,19 +318,7 @@ export default function KuwaitInvestorPage() {
     {/* Why kuwait NRIs */}
     <section
       id="documentation"
-      className="
-        relative
-        isolate
-        scroll-mt-20
-        bg-[#051A3A]
-        px-5
-        py-14
-        text-white
-        sm:px-8
-        md:py-16
-        lg:px-10
-        lg:py-20
-      "
+      className="relative isolate scroll-mt-20 bg-[#051A3A] text-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
     >
       {/* =====================================================
           BACKGROUND LAYER
