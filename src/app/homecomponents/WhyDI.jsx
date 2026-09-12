@@ -52,22 +52,20 @@ export default function WhyDI() {
             <h2 className="mb-3 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
               Why Choose Dholera Insider?
             </h2>
-            <div className="mt-3 mb-4 h-[3px] w-14 rounded-full bg-[#F6C343]" />
-
-            {/* <h2
-              className="
-                mb-4
-                text-center
-                text-[clamp(1.75rem,3vw,2.5rem)]
-                font-bold
-                leading-tight
-                text-[#051A3A]
-                lg:text-left
-              "
-            >
-              Why Choose Dholera Insider?
-            </h2>
-            <div className="mx-auto mt-4 h-[3px] w-14 rounded-full bg-[#F6C343]" /> */}
+            {/* <div className="mt-3 mb-4 h-[3px] w-14 rounded-full bg-[#F6C343]" /> */}
+               <div
+                  className="
+                    mt-3
+                    mb-5
+                    h-1
+                    w-14
+                    rounded-full
+                    bg-[#F6C343]
+                    mx-auto
+                    lg:mx-0
+                    lg:self-start
+                  "
+                />
 
             <p className="text-[clamp(0.9rem,1vw,1.05rem)] leading-relaxed text-[#2B364D]">
               As the exclusive channel partner of BookMyAssets for NRI

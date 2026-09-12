@@ -80,7 +80,7 @@ export default function FAQSection() {
           <div
             aria-hidden="true"
             className="
-              mt-3
+              mt-2
               h-[3px]
               w-12
               rounded-full

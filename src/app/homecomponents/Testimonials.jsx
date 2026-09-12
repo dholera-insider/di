@@ -498,7 +498,7 @@
               What Our NRI Investors Say
             </h2>
 
-            <div className="mx-auto mt-4 h-[2px] w-14 rounded-full bg-[#F6C343]" />
+               <div className="mt-3 mx-auto mb-4 h-1 w-14 rounded-full bg-[#F6C343]" />
 
               {/* <span className="mb-3 inline-block text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B88B14] sm:text-xs">
               Read how overseas Indian investors made informed property decisions with Dholera Insider.

@@ -194,60 +194,60 @@ export default function WhyDholera() {
       
 
         {/* CTA */}
-        <div className="mt-8 flex justify-center sm:mt-10">
-          <Link
-            href="/about-dholera-sir"
+      <div className="mt-8 flex justify-center sm:mt-10">
+        <Link
+          href="/about-dholera-sir"
+          className="
+            group
+            inline-flex
+            min-h-[52px]
+            w-auto
+            items-center
+            justify-center
+            gap-2
+            rounded-xl
+            bg-[#051A3A]
+            px-6
+            py-3
+            text-base
+            font-bold
+            text-white
+            shadow-[0_8px_20px_rgba(5,26,58,0.16)]
+            transition-[background-color,color,box-shadow,transform]
+            duration-300
+
+            hover:bg-[#F6C343]
+            hover:text-[#051A3A]
+            hover:shadow-[0_10px_25px_rgba(5,26,58,0.18)]
+
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-[#F6C343]
+            focus-visible:ring-offset-2
+
+            motion-safe:hover:-translate-y-0.5
+            motion-reduce:transform-none
+            motion-reduce:transition-none
+
+            sm:px-7
+          "
+        >
+          About Dholera
+
+          <ArrowRight
+            aria-hidden="true"
             className="
-              group
-              inline-flex
-              min-h-[52px]
-              w-full
-              items-center
-              justify-center
-              gap-2
-              rounded-xl
-              bg-[#051A3A]
-              px-7
-              py-3
-              text-base
-              font-bold
-              text-white
-              shadow-[0_8px_20px_rgba(5,26,58,0.16)]
-              transition-[background-color,color,box-shadow,transform]
+              h-5
+              w-5
+              transition-transform
               duration-300
-
-              hover:bg-[#F6C343]
-              hover:text-[#051A3A]
-              hover:shadow-[0_10px_25px_rgba(5,26,58,0.18)]
-
-              focus-visible:outline-none
-              focus-visible:ring-2
-              focus-visible:ring-[#F6C343]
-              focus-visible:ring-offset-2
-
-              motion-safe:hover:-translate-y-0.5
-              motion-reduce:transform-none
+              motion-safe:group-hover:translate-x-1
               motion-reduce:transition-none
-
-              sm:w-auto
             "
-          >
-            About Dholera
-
-            <ArrowRight
-              aria-hidden="true"
-              className="
-                h-5
-                w-5
-                transition-transform
-                duration-300
-                motion-safe:group-hover:translate-x-1
-                motion-reduce:transition-none
-              "
-              strokeWidth={2}
-            />
-          </Link>
-        </div>
+            strokeWidth={2}
+          />
+        </Link>
+      </div>
       </div>
     </section>
   );

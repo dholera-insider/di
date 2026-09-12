@@ -81,15 +81,18 @@ export default function WhyDholera() {
       ref={sectionRef}
       aria-labelledby="why-dholera-heading"
       className="
-        relative
-        overflow-hidden
-        bg-[#EEF2F9]
-        px-4
-        py-14
-        sm:px-6
-        sm:py-16
-        lg:px-8
-        lg:py-20
+          relative
+          overflow-hidden
+          bg-[#EEF2F9]
+          px-6
+          py-8
+
+          sm:px-6
+          sm:py-16
+
+          lg:px-6
+          lg:pt-12
+          lg:pb-16
       "
     >
       {/* Background decoration */}

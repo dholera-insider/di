@@ -152,7 +152,7 @@ export default function NRISupport() {
         ">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-10 text-center md:mb-12">
+        <div className="mb-6 text-center md:mb-12">
           <h2 className="mb-2 text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[#051A3A]">
             Invest in Dholera From Anywhere
           </h2>
@@ -206,132 +206,147 @@ export default function NRISupport() {
               }}
             >
               {countries.map((country) => (
-                <div
-                  key={country.name}
-                  className="
-                    group
-                    flex
-                    min-h-[210px]
-                    flex-col
-                    items-center
-                    justify-start
-                    overflow-hidden
-                    rounded-2xl
-                    border
-                    border-[#173353]
-                    bg-[#071E3D]
-                    px-4
-                    py-3
-                    shadow-[0_5px_18px_rgba(5,26,58,0.08)]
-                    transition-all
-                    duration-300
-                    hover:border-[#D8B95B]/60
-                    hover:shadow-[0_10px_26px_rgba(5,26,58,0.14)]
-                    sm:min-h-[220px]
-                    sm:px-5
-                    lg:min-h-[225px]
-                  "
-                  style={{
-                    flex: `0 0 ${cardWidth}`,
-                  }}
-                >
-                  {/* Icon Area */}
-                  <div
-                    className="
-                      flex
-                      h-[140px]
-                      w-full
-                      shrink-0
-                      items-center
-                      justify-center
-                      sm:h-[145px]
-                      lg:h-[150px]
-                    "
-                  >
-                    <div
-                      className="
-                        relative
-                        h-[140px]
-                        w-[140px]
-                        sm:h-[150px]
-                        sm:w-[150px]
-                        lg:h-[160px]
-                        lg:w-[160px]
-                      "
-                    >
-                      <Image
-                        src={country.icon}
-                        alt={`${country.name} investment guide`}
-                        fill
-                        sizes="160px"
-                        className="
-                          object-contain
-                          brightness-0
-                          invert
-                          opacity-90
-                          transition-opacity
-                          duration-300
-                          group-hover:opacity-100
-                        "
-                      />
-                    </div>
-                  </div>
+          <div
+  key={country.name}
+  className="
+    group
+    flex
+    min-h-[245px]
+    flex-col
+    items-center
+    justify-start
+    overflow-hidden
+    rounded-2xl
+    border
+    border-[#173353]
+    bg-[#071E3D]
+    px-4
+    py-3
+    shadow-[0_5px_18px_rgba(5,26,58,0.08)]
+    transition-all
+    duration-300
+    hover:border-[#D8B95B]/60
+    hover:shadow-[0_10px_26px_rgba(5,26,58,0.14)]
+    sm:min-h-[250px]
+    sm:px-5
+    lg:min-h-[255px]
+  "
+  style={{
+    flex: `0 0 ${cardWidth}`,
+  }}
+>
+  {/* ========================================
+      ICON AREA
+  ======================================== */}
+  <div
+    className="
+      flex
+      h-[175px]
+      w-full
+      shrink-0
+      items-center
+      justify-center
+      sm:h-[180px]
+      lg:h-[185px]
+    "
+  >
+    <div
+      className="
+        relative
+        h-[170px]
+        w-[170px]
+        sm:h-[180px]
+        sm:w-[180px]
+        lg:h-[185px]
+        lg:w-[185px]
+      "
+    >
+      <Image
+        src={country.icon}
+        alt={`${country.name} investment guide`}
+        fill
+        sizes="
+          (max-width: 640px) 170px,
+          (max-width: 1024px) 180px,
+          185px
+        "
+        className="
+          object-contain
+          brightness-0
+          invert
+          opacity-95
+          scale-[1.18]
+          transition-all
+          duration-300
+          group-hover:scale-[1.23]
+          group-hover:opacity-100
+          sm:scale-[1.15]
+          sm:group-hover:scale-[1.2]
+          lg:scale-[1.12]
+          lg:group-hover:scale-[1.16]
+        "
+      />
+    </div>
+  </div>
 
-                  {/* Divider */}
-                  <div className="my-1 h-px w-full bg-white/10" />
+  {/* Divider */}
+  <div className="my-1 h-px w-full bg-white/10" />
 
-                  {/* Country Information */}
-                  <div
-                    className="
-                      mt-2
-                      flex
-                      min-h-[38px]
-                      w-full
-                      items-center
-                      justify-center
-                      gap-3
-                    "
-                  >
-                    {/* Flag */}
-                    <div
-                      className="
-                        h-[28px]
-                        w-[44px]
-                        shrink-0
-                        overflow-hidden
-                        rounded-md
-                        border
-                        border-white/10
-                        bg-white
-                        shadow-sm
-                        sm:h-[30px]
-                        sm:w-[46px]
-                      "
-                    >
-                      <img
-                        src={country.flag}
-                        alt={`${country.name} flag`}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
+  {/* ========================================
+      COUNTRY INFORMATION
+  ======================================== */}
+  <div
+    className="
+      mt-2
+      flex
+      min-h-[40px]
+      w-full
+      items-center
+      justify-center
+      gap-2.5
+      sm:gap-3
+    "
+  >
+    {/* Flag */}
+    <div
+      className="
+        h-[28px]
+        w-[44px]
+        shrink-0
+        overflow-hidden
+        rounded-md
+        border
+        border-white/10
+        bg-white
+        shadow-sm
+        sm:h-[30px]
+        sm:w-[46px]
+      "
+    >
+      <img
+        src={country.flag}
+        alt={`${country.name} flag`}
+        className="h-full w-full object-cover"
+      />
+    </div>
 
-                    {/* Country Name */}
-                    <p
-                      className="
-                        whitespace-nowrap
-                        text-[13px]
-                        font-semibold
-                        leading-none
-                        tracking-[0.01em]
-                        text-[#F8FAFC]
-                        sm:text-[14px]
-                        lg:text-[15px]
-                      "
-                    >
-                      {country.name}
-                    </p>
-                  </div>
-                </div>
+    {/* Country Name */}
+    <p
+      className="
+        whitespace-nowrap
+        text-[13px]
+        font-semibold
+        leading-none
+        tracking-[0.01em]
+        text-[#F8FAFC]
+        sm:text-[14px]
+        lg:text-[15px]
+      "
+    >
+      {country.name}
+    </p>
+  </div>
+</div>
               ))}
             </div>
           </div>
