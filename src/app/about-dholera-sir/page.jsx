@@ -1157,7 +1157,7 @@ export default function AboutDholeraSirPage() {
               rel="noopener noreferrer"
               className="
                 mt-7
-                inline-flex
+                inline-flex w-fit
                 min-h-12
                 items-center
                 justify-center
@@ -1184,7 +1184,7 @@ export default function AboutDholeraSirPage() {
                   h-5
                   w-5
                   shrink-0
-                  text-[#051A3A]
+                  text-[#25D366]
                 "
                 style={{
                   minWidth: "20px",
@@ -1320,7 +1320,7 @@ export default function AboutDholeraSirPage() {
                 rel="noopener noreferrer"
                 className="
                   mt-8
-                  inline-flex
+                  inline-flex w-fit
                   min-h-12
                   items-center
                   justify-center
@@ -1348,7 +1348,7 @@ export default function AboutDholeraSirPage() {
                     h-5
                     w-5
                     shrink-0
-                    text-[#051A3A]
+                    text-[#25D366]
                   "
                   style={{
                     minWidth: "20px",
@@ -1688,7 +1688,7 @@ export default function AboutDholeraSirPage() {
             className="
               inline-flex
               min-h-12
-              w-full
+              w-fit
               items-center
               justify-center
               gap-2
@@ -1703,7 +1703,7 @@ export default function AboutDholeraSirPage() {
               duration-300
               hover:-translate-y-0.5
               hover:bg-white
-              sm:w-auto
+              sm:w-fit
             "
           >
             <FaWhatsapp
@@ -1713,7 +1713,7 @@ export default function AboutDholeraSirPage() {
                 h-5
                 w-5
                 shrink-0
-                text-[#051A3A]
+                text-[#25D366]
               "
               style={{
                 minWidth: "20px",

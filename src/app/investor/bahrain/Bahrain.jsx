@@ -312,7 +312,7 @@ export default function DholeraBahrainPage() {
             >
              
 
-              <FaWhatsapp className="h-5 w-5 mr-2" aria-hidden="true" />
+              <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
 
               Explore Residential Projects
             </a>
@@ -541,7 +541,7 @@ export default function DholeraBahrainPage() {
                   focus-visible:ring-[#051A3A]
                 "
             >
-              <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+              <FaWhatsapp className="h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
                 Talk to a Dholera Expert
             </a>
           </div>
@@ -714,7 +714,7 @@ export default function DholeraBahrainPage() {
             focus-visible:ring-offset-[#051A3A]
           "
               >
-              <FaWhatsapp className="h-5 w-5 " aria-hidden="true" />
+              <FaWhatsapp className="h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
                 Explore residential plot in Dholera
               </a>
             </div>

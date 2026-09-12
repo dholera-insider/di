@@ -284,7 +284,7 @@ export default function CommonJourney({
                 focus-visible:ring-[#051A3A]
               "
             >
-                <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+                <FaWhatsapp className="h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
                Talk to a Dholera Expert
             </a>
           </div>

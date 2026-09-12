@@ -278,7 +278,7 @@ export default function KuwaitInvestorPage() {
                   mt-7
                   inline-flex
                   min-h-[52px]
-                  w-full
+                  w-fit
                   items-center
                   justify-center
                   rounded-xl
@@ -302,6 +302,7 @@ export default function KuwaitInvestorPage() {
                   sm:w-auto
                 "
               >
+                <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
                 Explore Residential Projects
               </a>
             </div>

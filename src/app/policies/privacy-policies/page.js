@@ -1,20 +1,30 @@
 import React from "react";
+import { Phone, Mail } from "lucide-react";
 
 export default function Copyright() {
   return (
-    <div className="w-full bg-gray-900">
-      <div className="max-w-7xl mx-auto min-h-screen pt-12">
+    <div className="relative w-full bg-gray-900">
+      <div className="mx-auto min-h-screen max-w-7xl pt-12">
         <div className="text-white">
+          {/* =========================
+              PAGE HEADING
+          ========================== */}
           <div className="relative">
-            <div className="flex flex-col justify-center items-center mt-20">
-              <p className="text-4xl text-white font-bold text-center z-20 relative mt-16 drop-shadow-lg">
+            <div className="mt-20 flex flex-col items-center justify-center">
+              <p className="relative z-20 text-center text-4xl font-bold text-white drop-shadow-lg">
                 Privacy Policy
               </p>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mt-4 rounded-full"></div>
+
+              <div className="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-[#F6C343] to-[#e3ae25]" />
             </div>
           </div>
 
-          <div className="mt-10 text-lg space-y-5 pb-8 max-sm:mr-4 max-sm:ml-4">
+
+
+          {/* =========================
+              PRIVACY CONTENT
+          ========================== */}
+          <div className="mt-10 space-y-5 pb-8 text-lg max-sm:mx-4">
             <p>
               The terms of the Dholera Insider Policy (User Agreement) apply to
               this Privacy Statement. When a user registers with Dholera Insider
@@ -37,32 +47,38 @@ export default function Copyright() {
               any third party, except as required to provide you with services
               or as mandated by law.
             </p>
-            <div className="flex flex-col justify-center items-center mt-20">
-              <p className="md:text-9xl text-4xl text-[#F6C343] opacity-10 font-black text-center z-0 absolute left-0 w-full">
-                Privacy Policy
-              </p>
-            </div>
+
+            {/* =========================
+                INFORMATION WE COLLECT
+            ========================== */}
             <div>
-              <h2 className="text-2xl font-bold max-sm:text-center mt-8">
+              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
                 Information We Collect
               </h2>
+
               <p className="mt-4">
                 We may collect personally identifiable information such as your
                 name, contact number, email address, and city when you:
               </p>
-              <ul className="list-disc pl-6 mt-4 space-y-2">
+
+              <ul className="mt-4 list-disc space-y-2 pl-6">
                 <li>Submit an inquiry</li>
                 <li>Sign up for newsletters</li>
                 <li>Book a consultation or request property details</li>
               </ul>
             </div>
 
+            {/* =========================
+                HOW WE USE INFORMATION
+            ========================== */}
             <div>
-              <h2 className="text-2xl font-bold max-sm:text-center mt-8">
+              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
                 How We Use Your Information
               </h2>
+
               <p className="mt-4">This information is used to:</p>
-              <ul className="list-disc pl-6 mt-4 space-y-2">
+
+              <ul className="mt-4 list-disc space-y-2 pl-6">
                 <li>
                   Provide services and updates relevant to Dholera SIR and real
                   estate
@@ -73,10 +89,14 @@ export default function Copyright() {
               </ul>
             </div>
 
+            {/* =========================
+                TECHNICAL INFORMATION
+            ========================== */}
             <div>
-              <h2 className="text-2xl font-bold max-sm:text-center mt-8">
+              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
                 Technical Information
               </h2>
+
               <p className="mt-4">
                 Dholera Insider may also collect technical information such as
                 your IP address, browser type, device ID, and usage patterns to
@@ -87,10 +107,14 @@ export default function Copyright() {
               </p>
             </div>
 
+            {/* =========================
+                DATA SECURITY
+            ========================== */}
             <div>
-              <h2 className="text-2xl font-bold max-sm:text-center mt-8">
+              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
                 Data Security
               </h2>
+
               <p className="mt-4">
                 All information provided by you is stored on secure servers and
                 accessed only by authorized personnel. We are committed to
@@ -100,10 +124,14 @@ export default function Copyright() {
               </p>
             </div>
 
+            {/* =========================
+                EXTERNAL LINKS
+            ========================== */}
             <div>
-              <h2 className="text-2xl font-bold max-sm:text-center mt-8">
+              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
                 External Links
               </h2>
+
               <p className="mt-4">
                 This website may contain links to external websites or
                 third-party services. We are not responsible for their privacy
@@ -112,10 +140,14 @@ export default function Copyright() {
               </p>
             </div>
 
+            {/* =========================
+                POLICY UPDATES
+            ========================== */}
             <div>
-              <h2 className="text-2xl font-bold max-sm:text-center mt-8">
+              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
                 Policy Updates
               </h2>
+
               <p className="mt-4">
                 We reserve the right to update this policy at any time without
                 notice. Changes will be reflected on this page. Continued use of
@@ -123,19 +155,46 @@ export default function Copyright() {
               </p>
             </div>
 
+            {/* =========================
+                CONTACT US
+            ========================== */}
             <div>
-              <h2 className="text-2xl font-bold max-sm:text-center mt-8">
+              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
                 Contact Us
               </h2>
+
               <p className="mt-4">
                 If you have any questions or concerns regarding this privacy
                 policy or our data handling practices, feel free to contact us
                 at:
               </p>
-              <div className="mt-4 space-y-2">
-                <a href="mailto:info@dholerainsider.com">📧 info@dholerainsider.com</a>
-                <br/>
-                <a href="tel:+919211820887">📞 +91 9211820887</a>
+
+              <div className="mt-4 space-y-3">
+                <a
+                  href="mailto:info@dholerainsider.com"
+                  className="flex items-center gap-2 transition-colors hover:text-[#F6C343]"
+                >
+                  <Mail
+                    className="h-5 w-5 shrink-0 text-[#F6C343]"
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                  />
+
+                  <span>info@dholerainsider.com</span>
+                </a>
+
+                <a
+                  href="tel:+919211820887"
+                  className="flex items-center gap-2 transition-colors hover:text-[#F6C343]"
+                >
+                  <Phone
+                    className="h-5 w-5 shrink-0 text-[#F6C343]"
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                  />
+
+                  <span>+91 9211820887</span>
+                </a>
               </div>
             </div>
           </div>

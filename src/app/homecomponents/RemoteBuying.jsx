@@ -311,9 +311,14 @@ export default function RemoteBuying() {
             "
           >
             <FaWhatsapp
-              className="h-5 w-5 shrink-0"
+              className="h-5 w-5 shrink-0 text-[#25D366]"
               aria-hidden="true"
             />
+
+            {/* <FaWhatsapp
+                  className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]"
+                  aria-hidden="true"
+            /> */}
 
             <span>Connect with our Dholera Expert</span>
           </a>

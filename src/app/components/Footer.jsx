@@ -210,7 +210,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4 text-sm">
               <Link
-                href="/policies/privacy"
+                href="/policies/privacy-policies"
                 className="text-[#faf8f3]/70 hover:text-[#faf8f3] transition"
               >
                 Privacy Policy

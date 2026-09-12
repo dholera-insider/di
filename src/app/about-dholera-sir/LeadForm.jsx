@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { FaUser, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
@@ -288,12 +288,16 @@ export default function LeadForm({
             <button
               type="submit"
               disabled={isLoading || isDisabled || !recaptchaLoaded}
-              className={`w-full p-4 text-white text-lg font-semibold rounded-xl shadow-md transition-all duration-300 ${
+              className={`inline-flex items-center justify-center w-fit max-w-full p-4 text-white text-lg font-semibold rounded-xl shadow-md transition-all duration-300 ${
                 isLoading || isDisabled || !recaptchaLoaded
                   ? "bg-[#6C7484] cursor-not-allowed text-[#FDFCFA]"
                   : "bg-[#F6C343] text-[#051A3A] hover:bg-[#FDFCFA] hover:shadow-lg active:scale-95"
               }`}
             >
+              <FaWhatsapp
+                className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]"
+                aria-hidden="true"
+              />
               {isLoading ? "Submitting..." : "Get A Call Back"}
             </button>
           </form>

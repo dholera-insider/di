@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import { aboutPageSchema } from "../schemaMarkup";
 import {
   ArrowRight,
@@ -765,7 +766,7 @@ export default function AboutUsPage() {
 
                   inline-flex
                   min-h-[52px]
-                  w-full
+                  w-fit
                   items-center
                   justify-between
                   gap-5
@@ -793,29 +794,20 @@ export default function AboutUsPage() {
                   focus-visible:ring-offset-2
                   focus-visible:ring-offset-[#051A3A]
 
-                  sm:w-auto
-                  sm:min-w-[210px]
+                  sm:w-fit
+
                   sm:justify-center
                   sm:px-6
                 "
               >
-                <span>Talk to a Dholera Expert</span>
+                <span className="inline-flex items-center">
+                  <FaWhatsapp
+                    className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]"
+                    aria-hidden="true"
+                  />
+                  <span>Talk to a Dholera Expert</span>
+                </span>
 
-                <ArrowUpRight
-                  className="
-                    h-[18px]
-                    w-[18px]
-                    shrink-0
-
-                    transition-transform
-                    duration-300
-
-                    group-hover:-translate-y-0.5
-                    group-hover:translate-x-0.5
-                  "
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
               </a>
             </div>
           </div>
