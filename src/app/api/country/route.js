@@ -7,7 +7,7 @@ export async function GET(request) {
     request.headers.get("x-country-code")?.toLowerCase() || "in";
 
   return NextResponse.json(
-    { country: /^[a-z]{2}$/.test(country) ? country : "in" },
+    { country },
     {
       headers: {
         "Cache-Control": "private, no-store",

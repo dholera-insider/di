@@ -457,9 +457,6 @@ const Header = () => {
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="fixed inset-0 bg-[#0b1d3a] backdrop-blur-2xl z-50 overflow-y-auto"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Navigation menu"
           >
             {/* Mobile Menu Header */}
             <div className="fixed top-0 left-0 right-0 h-20 bg-[#0b1d3a] border-b border-[#faf8f3]/10 flex items-center justify-between px-6 z-[102]">

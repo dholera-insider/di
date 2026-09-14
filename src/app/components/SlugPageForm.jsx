@@ -6,31 +6,23 @@ import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
 } from "./InternationalPhoneInput";
-import { submitLead, leadStorage, loadLeadCaptcha, renderLeadCaptcha, resetLeadCaptcha } from "@/lib/lead-client";
-
 
 export default function SlugPageForm() {
   // Popup states
   const [showFormPopup, setShowFormPopup] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    mobileNumber: "",
-    email: "",
+  const [formData, setFormData] = useState({ 
+    fullName: "", 
+    mobileNumber: "", 
+    email: "", 
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
   const [debugScroll, setDebugScroll] = useState(0); // Add this for debugging
-
+  
   const recaptchaRef = useRef(null);
-  const submitLock = useRef(false);
-  const requestLock = useRef(false);
-  const latestSuccess = useRef(null);
-  const mounted = useRef(true);
-  const closeTimer = useRef(null);
-  useEffect(() => { mounted.current = true; return () => { mounted.current = false; clearTimeout(closeTimer.current); }; }, []);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   useEffect(() => {
@@ -40,14 +32,14 @@ export default function SlugPageForm() {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
-
+    
     // Better calculation to avoid division by zero
     const scrollableDistance = Math.max(documentHeight - windowHeight, 1);
     const scrollPercent = (scrollPosition / scrollableDistance) * 100;
-
+    
     setDebugScroll(scrollPercent);
-
-    if (scrollPercent >= 30 && !hasTriggered && !document.querySelector('[role="dialog"], [aria-modal="true"]')) {
+    
+    if (scrollPercent >= 30 && !hasTriggered) {
       setShowFormPopup(true);
       setHasTriggered(true);
     }
@@ -63,11 +55,18 @@ export default function SlugPageForm() {
   // Load reCAPTCHA
   useEffect(() => {
     const loadRecaptcha = () => {
-    loadLeadCaptcha().then(() => setRecaptchaLoaded(true)).catch((error) => {
-      setRecaptchaLoaded(false);
-      setErrorMessage(error.message);
-    });
-  };
+      if (typeof window !== "undefined" && !window.grecaptcha && siteKey) {
+        const script = document.createElement("script");
+        script.src = "https://www.google.com/recaptcha/api.js";
+        script.async = true;
+        script.defer = true;
+        script.onload = () => setRecaptchaLoaded(true);
+        script.onerror = () => setRecaptchaLoaded(true);
+        document.head.appendChild(script);
+      } else if (window.grecaptcha || !siteKey) {
+        setRecaptchaLoaded(true);
+      }
+    };
 
     loadRecaptcha();
 
@@ -110,16 +109,14 @@ export default function SlugPageForm() {
   };
 
   const onRecaptchaSuccess = async (token) => {
-    if (!mounted.current) return;
-    if (requestLock.current) return;
-    requestLock.current = true;
     try {
-      const response = await submitLead(
-         {
+      const response = await fetch(
+         "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
+        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
           },
           body: JSON.stringify({
             fields: {
@@ -133,87 +130,68 @@ export default function SlugPageForm() {
           }),
         }
       );
-      if (!mounted.current) return;
 
       if (response.ok) {
         setFormData({ fullName: "", mobileNumber: ""});
         setShowThankYou(true);
-
-        closeTimer.current = setTimeout(() => {
+        
+        setTimeout(() => {
           setShowThankYou(false);
           setShowFormPopup(false);
         }, 3000);
 
-
-
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "lead_form",
+        });
       } else {
         throw new Error("Error submitting form");
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      setErrorMessage(error.message || "Error submitting form. Please try again.");
+      setErrorMessage("Error submitting form. Please try again.");
     } finally {
-      requestLock.current = false;
       setIsLoading(false);
-      submitLock.current = false;
       if (window.grecaptcha && recaptchaRef.current) {
         try {
-          resetLeadCaptcha(recaptchaRef.current);
+          window.grecaptcha.reset();
         } catch (err) {
           console.error("Error resetting reCAPTCHA:", err);
         }
       }
     }
   };
-  useEffect(() => { latestSuccess.current = onRecaptchaSuccess; });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (submitLock.current) return;
-    submitLock.current = true;
     setIsLoading(true);
     setErrorMessage("");
-    try {
-      await loadLeadCaptcha();
-      if (!mounted.current) return;
-      setRecaptchaLoaded(true);
-    } catch (error) {
-      setErrorMessage(error.message);
-      setIsLoading(false);
-      submitLock.current = false;
-      return;
-    }
 
     if (!validateForm()) {
       setIsLoading(false);
-      submitLock.current = false;
       return;
     }
 
-    if (!Boolean(window.grecaptcha?.render) || !window.grecaptcha) {
+    if (!recaptchaLoaded || !window.grecaptcha) {
       setErrorMessage("Security verification not loaded. Please refresh the page.");
       setIsLoading(false);
-      submitLock.current = false;
       return;
     }
 
     if (!recaptchaRef.current.innerHTML) {
       try {
-        renderLeadCaptcha(recaptchaRef.current, {
-            "expired-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification expired. Please try again."); },
-            "error-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification failed to connect. Please try again."); },
+        window.grecaptcha.render(recaptchaRef.current, {
           sitekey: siteKey,
-          callback: (...args) => latestSuccess.current(...args),
+          callback: onRecaptchaSuccess,
           theme: "light",
         });
       } catch (error) {
         console.error("Error rendering reCAPTCHA:", error);
         setErrorMessage("Error with verification. Please try again.");
         setIsLoading(false);
-      submitLock.current = false;
       }
     } else {
-      resetLeadCaptcha(recaptchaRef.current);
+      window.grecaptcha.execute();
     }
   };
 
@@ -246,8 +224,8 @@ export default function SlugPageForm() {
 
   return (
     <>
-
-
+ 
+      
       <AnimatePresence>
         {showFormPopup && (
           <motion.div
@@ -256,15 +234,12 @@ export default function SlugPageForm() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4"
             onClick={handleBackdropClick}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Talk to a Dholera Expert"
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-[#051A3A] rounded-xl p-5 sm:p-8 max-w-md w-full shadow-2xl border border-[#F6C343] relative max-h-[calc(100dvh-2rem)] overflow-y-auto"
+              className="bg-[#051A3A] rounded-xl p-8 max-w-md w-full shadow-2xl border border-[#F6C343] relative"
               onClick={(e) => e.stopPropagation()}
             >
               {showThankYou ? (
@@ -299,7 +274,7 @@ export default function SlugPageForm() {
                     >
                       ×
                     </button>
-
+                    
                     {/* Section 2: Sub-heading CTA */}
                     <p className="text-xl md:text-2xl text-white font-semibold">
                       Get Dholera Project Details
@@ -309,7 +284,7 @@ export default function SlugPageForm() {
                   {/* Section 3: Form Fields */}
                   <form onSubmit={handleSubmit}>
                     {errorMessage && (
-                        <div role="alert" className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA] mb-4">
+                        <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA] mb-4">
                         {errorMessage}
                       </div>
                     )}
@@ -319,7 +294,7 @@ export default function SlugPageForm() {
                         <label htmlFor="fullName" className="block text-white text-sm font-medium mb-2">
                           Full Name *
                         </label>
-                        <input aria-label="Full name" maxLength={200} autoComplete="name"
+                        <input
                           type="text"
                           id="fullName"
                           name="fullName"
@@ -360,7 +335,7 @@ export default function SlugPageForm() {
                     {/* Section 4: Submit Button with Tagline */}
                     <button
                       type="submit"
-                      disabled={isLoading}
+                      disabled={isLoading || !recaptchaLoaded}
                       className={`w-full font-bold py-3 px-6 rounded-lg transition-all duration-300 ${
                         isLoading || !recaptchaLoaded
                           ? "bg-[#6C7484] cursor-not-allowed text-[#FDFCFA]"

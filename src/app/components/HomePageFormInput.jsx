@@ -41,8 +41,6 @@ export default function InternationalPhoneInput({
   // =========================================================
 
   useEffect(() => {
-    if (value || hasUserInteracted.current) return;
-    let cancelled = false;
     const detectCountry = async () => {
       try {
         const response = await fetch("/api/country", {
@@ -56,7 +54,7 @@ export default function InternationalPhoneInput({
         const data = await response.json();
 
         if (
-          !cancelled && typeof data.country === "string" && /^[a-z]{2}$/.test(data.country) &&
+          data.country &&
           !hasUserInteracted.current &&
           !value
         ) {
@@ -73,7 +71,6 @@ export default function InternationalPhoneInput({
     };
 
     detectCountry();
-    return () => { cancelled = true; };
   }, [value]);
 
   return (

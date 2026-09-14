@@ -14,8 +14,6 @@ import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
 } from "./HomePageFormInput";
-import { submitLead, leadStorage, loadLeadCaptcha, renderLeadCaptcha, resetLeadCaptcha } from "@/lib/lead-client";
-
 
 export default function CommonForm({
   title = "Start Your Dholera Investment",
@@ -63,11 +61,6 @@ export default function CommonForm({
 
   const recaptchaRef =
     useRef(null);
-  const submitLock = useRef(false);
-  const requestLock = useRef(false);
-  const latestSuccess = useRef(null);
-  const mounted = useRef(true);
-  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
 
   const recaptchaWidgetId =
     useRef(null);
@@ -81,10 +74,73 @@ export default function CommonForm({
   // =========================================================
 
   const loadRecaptcha = () => {
-    loadLeadCaptcha().then(() => setRecaptchaLoaded(true)).catch((error) => {
-      setRecaptchaLoaded(false);
-      setErrorMessage(error.message);
-    });
+    if (
+      typeof window === "undefined" ||
+      recaptchaLoaded
+    ) {
+      return;
+    }
+
+    if (window.grecaptcha) {
+      setRecaptchaLoaded(true);
+
+      return;
+    }
+
+    try {
+      const existingScript =
+        document.querySelector(
+          'script[src="https://www.google.com/recaptcha/api.js"]',
+        );
+
+      if (existingScript) {
+        existingScript.addEventListener(
+          "load",
+          () => {
+            setRecaptchaLoaded(true);
+          },
+          {
+            once: true,
+          },
+        );
+
+        return;
+      }
+
+      const script =
+        document.createElement(
+          "script",
+        );
+
+      script.src =
+        "https://www.google.com/recaptcha/api.js";
+
+      script.async = true;
+      script.defer = true;
+
+      script.onload = () => {
+        setRecaptchaLoaded(true);
+      };
+
+      script.onerror = () => {
+        console.error(
+          "Failed to load reCAPTCHA script",
+        );
+
+        setRecaptchaLoaded(true);
+      };
+
+      document.head.appendChild(
+        script,
+      );
+    } catch (err) {
+      console.error(
+        "reCAPTCHA script loading error:",
+        err,
+      );
+
+      setRecaptchaLoaded(true);
+    }
   };
 
   // =========================================================
@@ -97,7 +153,7 @@ export default function CommonForm({
     ) {
       setSubmissionCount(
         parseInt(
-          leadStorage.getItem(
+          localStorage.getItem(
             "formSubmissionCount",
           ) || "0",
           10,
@@ -106,7 +162,7 @@ export default function CommonForm({
 
       setLastSubmissionTime(
         parseInt(
-          leadStorage.getItem(
+          localStorage.getItem(
             "lastSubmissionTime",
           ) || "0",
           10,
@@ -255,12 +311,12 @@ export default function CommonForm({
       if (
         typeof window !== "undefined"
       ) {
-        leadStorage.setItem(
+        localStorage.setItem(
           "formSubmissionCount",
           "0",
         );
 
-        leadStorage.setItem(
+        localStorage.setItem(
           "lastSubmissionTime",
           now.toString(),
         );
@@ -283,13 +339,11 @@ export default function CommonForm({
   // =========================================================
 
   const onRecaptchaSuccess =
-    async (token) => {
-    if (!mounted.current) return;
-    if (requestLock.current) return;
-    requestLock.current = true;
+    async () => {
       try {
         const response =
-          await submitLead(
+          await fetch(
+            "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
             {
               method: "POST",
 
@@ -297,13 +351,12 @@ export default function CommonForm({
                 "Content-Type":
                   "application/json",
 
-
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
               },
 
               body:
                 JSON.stringify(
                   {
-            recaptchaToken: token,
                     fields: {
                       name:
                         formData.fullName,
@@ -328,7 +381,6 @@ export default function CommonForm({
                 ),
             },
           );
-      if (!mounted.current) return;
 
         const responseText =
           await response.text();
@@ -352,12 +404,12 @@ export default function CommonForm({
                 typeof window !==
                 "undefined"
               ) {
-                leadStorage.setItem(
+                localStorage.setItem(
                   "formSubmissionCount",
                   newCount.toString(),
                 );
 
-                leadStorage.setItem(
+                localStorage.setItem(
                   "lastSubmissionTime",
                   Date.now().toString(),
                 );
@@ -367,9 +419,14 @@ export default function CommonForm({
             },
           );
 
+          window.dataLayer =
+            window.dataLayer ||
+            [];
 
-
-
+          window.dataLayer.push({
+            event:
+              "lead_form",
+          });
         } else {
           let errorData;
 
@@ -401,9 +458,7 @@ export default function CommonForm({
             "Error submitting form. Please try again.",
         );
       } finally {
-      requestLock.current = false;
         setIsLoading(false);
-      submitLock.current = false;
 
         if (
           typeof window !==
@@ -413,7 +468,9 @@ export default function CommonForm({
             null
         ) {
           try {
-            resetLeadCaptcha(recaptchaRef.current);
+            window.grecaptcha.reset(
+              recaptchaWidgetId.current,
+            );
           } catch (err) {
             console.error(
               "Error resetting reCAPTCHA:",
@@ -423,7 +480,6 @@ export default function CommonForm({
         }
       }
     };
-  useEffect(() => { latestSuccess.current = onRecaptchaSuccess; });
 
   // =========================================================
   // SUBMIT
@@ -432,8 +488,6 @@ export default function CommonForm({
   const handleSubmit =
     async (e) => {
       e.preventDefault();
-    if (submitLock.current) return;
-    submitLock.current = true;
 
       if (isLoading) {
         return;
@@ -442,26 +496,15 @@ export default function CommonForm({
       setIsLoading(true);
 
       setErrorMessage("");
-    try {
-      await loadLeadCaptcha();
-      if (!mounted.current) return;
-      setRecaptchaLoaded(true);
-    } catch (error) {
-      setErrorMessage(error.message);
-      setIsLoading(false);
-      submitLock.current = false;
-      return;
-    }
 
       if (!validateForm()) {
         setIsLoading(false);
-      submitLock.current = false;
 
         return;
       }
 
       if (
-        !Boolean(window.grecaptcha?.render)
+        !recaptchaLoaded
       ) {
         loadRecaptcha();
 
@@ -470,7 +513,6 @@ export default function CommonForm({
         );
 
         setIsLoading(false);
-      submitLock.current = false;
 
         return;
       }
@@ -479,7 +521,7 @@ export default function CommonForm({
         typeof window !==
           "undefined" &&
         window.grecaptcha &&
-        Boolean(window.grecaptcha?.render) &&
+        recaptchaLoaded &&
         siteKey
       ) {
         try {
@@ -489,16 +531,14 @@ export default function CommonForm({
             recaptchaRef.current
           ) {
             recaptchaWidgetId.current =
-              renderLeadCaptcha(
+              window.grecaptcha.render(
                 recaptchaRef.current,
                 {
-            "expired-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification expired. Please try again."); },
-            "error-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification failed to connect. Please try again."); },
                   sitekey:
                     siteKey,
 
                   callback:
-                    (...args) => latestSuccess.current(...args),
+                    onRecaptchaSuccess,
 
                   theme:
                     "light",
@@ -508,7 +548,13 @@ export default function CommonForm({
             recaptchaWidgetId.current !==
             null
           ) {
-            resetLeadCaptcha(recaptchaRef.current);
+            window.grecaptcha.reset(
+              recaptchaWidgetId.current,
+            );
+
+            window.grecaptcha.execute(
+              recaptchaWidgetId.current,
+            );
           }
         } catch (error) {
           console.error(
@@ -521,7 +567,6 @@ export default function CommonForm({
           );
 
           setIsLoading(false);
-      submitLock.current = false;
         }
       } else {
         setErrorMessage(
@@ -529,7 +574,6 @@ export default function CommonForm({
         );
 
         setIsLoading(false);
-      submitLock.current = false;
       }
     };
 
@@ -1251,7 +1295,7 @@ export default function CommonForm({
 
                     <div className="h-6 w-px shrink-0 bg-[#E4E7EC]" />
 
-                  <input aria-label="Full name" maxLength={200}
+                    <input
                       type="text"
                       id="fullName"
                       name="fullName"
@@ -1399,7 +1443,7 @@ export default function CommonForm({
               {/* =============================================
                   TRUST ITEMS
               ============================================== */}
-
+             
 
               <div className="relative z-0 mt-6 grid w-full grid-cols-2 divide-x divide-[#EAECF0] border-t border-[#EAECF0] pt-4 sm:mt-7 sm:grid-cols-3 sm:pt-5">
                 {/* ===========================================
@@ -1487,7 +1531,7 @@ export default function CommonForm({
                   </span>
                 </div>
               </div>
-
+            
             </form>
           </div>
         </div>
