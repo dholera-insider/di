@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import ContactForm from "./Contactform";
+import dynamic from "next/dynamic";
+
+const ContactForm = dynamic(() => import("./Contactform"), { ssr: false });
 
 const eligiblePages = new Set([
   "/",
@@ -30,7 +32,7 @@ function PageTimer() {
       if (!document.querySelector('[role="dialog"], [aria-modal="true"]')) {
         setIsOpen(true);
       }
-    }, 5000);
+    }, 10_000);
 
     return () => window.clearTimeout(timer);
   }, []);

@@ -18,6 +18,8 @@ import InternationalPhoneInput, {
   isValidInternationalPhone,
 } from "../components/InternationalPhoneInput";
 import GetInTouch from "./GetInTouch";
+import { submitLead, leadStorage, loadLeadCaptcha, renderLeadCaptcha, resetLeadCaptcha } from "@/lib/lead-client";
+
 
 const discussionPoints = [
   "Verified residential plot projects",
@@ -46,50 +48,32 @@ export default function ContactPageClient({ faqs = [] }) {
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const recaptchaRef = useRef(null);
+  const submitLock = useRef(false);
+  const requestLock = useRef(false);
+  const latestSuccess = useRef(null);
+  const mounted = useRef(true);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   const [openIndex, setOpenIndex] = useState(-1);
   const headingId = useId();
 
   useEffect(() => {
     const loadRecaptcha = () => {
-      if (typeof window !== "undefined" && !window.grecaptcha && siteKey) {
-        const existingScript = document.querySelector(
-          'script[src="https://www.google.com/recaptcha/api.js"]',
-        );
-
-        if (existingScript) {
-          existingScript.addEventListener(
-            "load",
-            () => setRecaptchaLoaded(true),
-            { once: true },
-          );
-          return;
-        }
-
-        const script = document.createElement("script");
-        script.src = "https://www.google.com/recaptcha/api.js";
-        script.async = true;
-        script.defer = true;
-        script.onload = () => setRecaptchaLoaded(true);
-        script.onerror = () => {
-          console.error("Failed to load reCAPTCHA script");
-          setRecaptchaLoaded(true);
-        };
-        document.head.appendChild(script);
-      } else {
-        setRecaptchaLoaded(true);
-      }
-    };
+    loadLeadCaptcha().then(() => setRecaptchaLoaded(true)).catch((error) => {
+      setRecaptchaLoaded(false);
+      setErrorMessage(error.message);
+    });
+  };
 
     loadRecaptcha();
 
     if (typeof window !== "undefined") {
       const storedCount = Number.parseInt(
-        localStorage.getItem("formSubmissionCount") || "0",
+        leadStorage.getItem("formSubmissionCount") || "0",
         10,
       );
       const storedSubmissionTime = Number.parseInt(
-        localStorage.getItem("lastSubmissionTime") || "0",
+        leadStorage.getItem("lastSubmissionTime") || "0",
         10,
       );
 
@@ -99,8 +83,8 @@ export default function ContactPageClient({ faqs = [] }) {
 
         if (hoursPassed >= 24) {
           setSubmissionCount(0);
-          localStorage.setItem("formSubmissionCount", "0");
-          localStorage.setItem("lastSubmissionTime", Date.now().toString());
+          leadStorage.setItem("formSubmissionCount", "0");
+          leadStorage.setItem("lastSubmissionTime", Date.now().toString());
         } else {
           setSubmissionCount(storedCount);
           setIsDisabled(storedCount >= 3);
@@ -118,7 +102,7 @@ export default function ContactPageClient({ faqs = [] }) {
         recaptchaRef.current
       ) {
         try {
-          window.grecaptcha.reset();
+          resetLeadCaptcha(recaptchaRef.current);
         } catch (error) {
           console.error("reCAPTCHA cleanup error:", error);
         }
@@ -166,7 +150,7 @@ export default function ContactPageClient({ faqs = [] }) {
     return true;
   };
 
-  // ContactSkyLine function  
+  // ContactSkyLine function
   function ContactSkyline() {
     return (
       <svg
@@ -764,14 +748,16 @@ export default function ContactPageClient({ faqs = [] }) {
   }
 
   const onRecaptchaSuccess = async (token) => {
+    if (!mounted.current) return;
+    if (requestLock.current) return;
+    requestLock.current = true;
     try {
-      const response = await fetch(
-        "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
+      const response = await submitLead(
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
+
           },
           body: JSON.stringify({
             fields: {
@@ -789,6 +775,7 @@ export default function ContactPageClient({ faqs = [] }) {
           }),
         },
       );
+      if (!mounted.current) return;
 
       const responseText = await response.text();
 
@@ -805,8 +792,8 @@ export default function ContactPageClient({ faqs = [] }) {
 
         const newCount = submissionCount + 1;
         setSubmissionCount(newCount);
-        localStorage.setItem("formSubmissionCount", newCount.toString());
-        localStorage.setItem("lastSubmissionTime", Date.now().toString());
+        leadStorage.setItem("formSubmissionCount", newCount.toString());
+        leadStorage.setItem("lastSubmissionTime", Date.now().toString());
       } else {
         setErrorMessage("Submission received but with unexpected response");
       }
@@ -814,53 +801,73 @@ export default function ContactPageClient({ faqs = [] }) {
       console.error("Error submitting form:", error);
       setErrorMessage(`Error submitting form: ${error.message}`);
     } finally {
+      requestLock.current = false;
       setIsLoading(false);
+      submitLock.current = false;
 
       if (window.grecaptcha && recaptchaRef.current) {
         try {
-          window.grecaptcha.reset();
+          resetLeadCaptcha(recaptchaRef.current);
         } catch (error) {
           console.error("Error resetting reCAPTCHA:", error);
         }
       }
     }
   };
+  useEffect(() => { latestSuccess.current = onRecaptchaSuccess; });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    if (submitLock.current) return;
+    submitLock.current = true;
     setIsLoading(true);
     setErrorMessage("");
-
-    if (!validateForm()) {
+    try {
+      await loadLeadCaptcha();
+      if (!mounted.current) return;
+      setRecaptchaLoaded(true);
+    } catch (error) {
+      setErrorMessage(error.message);
       setIsLoading(false);
+      submitLock.current = false;
       return;
     }
 
-    if (!recaptchaLoaded || !window.grecaptcha || !siteKey) {
+    if (!validateForm()) {
+      setIsLoading(false);
+      submitLock.current = false;
+      return;
+    }
+
+    if (!Boolean(window.grecaptcha?.render) || !window.grecaptcha || !siteKey) {
       setErrorMessage(
         "Security verification not loaded. Please refresh the page.",
       );
       setIsLoading(false);
+      submitLock.current = false;
       return;
     }
 
     if (!recaptchaRef.current.innerHTML) {
       try {
-        window.grecaptcha.render(recaptchaRef.current, {
+        renderLeadCaptcha(recaptchaRef.current, {
+            "expired-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification expired. Please try again."); },
+            "error-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification failed to connect. Please try again."); },
           sitekey: siteKey,
-          callback: onRecaptchaSuccess,
+          callback: (...args) => latestSuccess.current(...args),
           theme: "light",
         });
       } catch (error) {
         console.error("Error rendering reCAPTCHA:", error);
         setErrorMessage("Error with verification. Please try again.");
         setIsLoading(false);
+      submitLock.current = false;
       }
     } else {
-      window.grecaptcha.execute();
+      resetLeadCaptcha(recaptchaRef.current);
     }
   };
-  
+
 
   const contactDetails = [
   {
@@ -1520,7 +1527,7 @@ export default function ContactPageClient({ faqs = [] }) {
                         text-[#667286]
                       "
                     >
-                      Whether you're looking for project details, pricing,
+                      Whether you&apos;re looking for project details, pricing,
                       documentation, or the remote buying process, send us your
                       enquiry and our team will help you understand the next steps.
                     </p>
@@ -1641,7 +1648,7 @@ export default function ContactPageClient({ faqs = [] }) {
                             Full Name
                           </label>
 
-                          <input
+                          <input aria-label="Full name" maxLength={200} autoComplete="name"
                             id="fullName"
                             name="fullName"
                             type="text"

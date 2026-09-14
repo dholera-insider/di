@@ -263,7 +263,7 @@ const BlogSchemaMarkup = ({ post, relatedBlogs = [] }) => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(allSchemas, null, 2)
+          __html: JSON.stringify(allSchemas, null, 2).replace(/</g, "\\u003c")
         }}
       />
       

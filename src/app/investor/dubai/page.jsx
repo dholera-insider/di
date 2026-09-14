@@ -1257,7 +1257,7 @@ export default function DubaiNriPage() {
       {/* MOBILE ACTION BAR */}
 
       {/* 
-      <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-[#051A3A]/10 bg-white/95 p-2 shadow-[0_-10px_30px_rgba(5,26,58,.12)] backdrop-blur sm:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2 border-t border-[#051A3A]/10 bg-white/95 p-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-[0_-10px_30px_rgba(5,26,58,.12)] backdrop-blur sm:hidden">
         <a
           href={WHATSAPP_URL}
           target="_blank"

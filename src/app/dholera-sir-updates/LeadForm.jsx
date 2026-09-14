@@ -5,6 +5,8 @@ import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
 } from "../components/InternationalPhoneInput";
+import { submitLead, leadStorage, loadLeadCaptcha, renderLeadCaptcha, resetLeadCaptcha } from "@/lib/lead-client";
+
 
 export default function LeadForm({
   title = "Talk to a Dholera Expert",
@@ -19,6 +21,11 @@ export default function LeadForm({
   const [errorMessage, setErrorMessage] = useState("");
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const recaptchaRef = useRef(null);
+  const submitLock = useRef(false);
+  const requestLock = useRef(false);
+  const latestSuccess = useRef(null);
+  const mounted = useRef(true);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   const [formData, setFormData] = useState({
     fullName: "",
@@ -29,21 +36,11 @@ export default function LeadForm({
   useEffect(() => {
     // Load reCAPTCHA script
     const loadRecaptcha = () => {
-      if (typeof window !== "undefined" && !window.grecaptcha) {
-        const script = document.createElement("script");
-        script.src = "https://www.google.com/recaptcha/api.js";
-        script.async = true;
-        script.defer = true;
-        script.onload = () => setRecaptchaLoaded(true);
-        script.onerror = () => {
-          console.error("Failed to load reCAPTCHA script");
-          setRecaptchaLoaded(true); // Still allow form submission
-        };
-        document.head.appendChild(script);
-      } else if (window.grecaptcha) {
-        setRecaptchaLoaded(true);
-      }
-    };
+    loadLeadCaptcha().then(() => setRecaptchaLoaded(true)).catch((error) => {
+      setRecaptchaLoaded(false);
+      setErrorMessage(error.message);
+    });
+  };
 
     loadRecaptcha();
 
@@ -51,7 +48,7 @@ export default function LeadForm({
     return () => {
       if (window.grecaptcha && recaptchaRef.current) {
         try {
-          window.grecaptcha.reset();
+          resetLeadCaptcha(recaptchaRef.current);
         } catch (e) {
           console.log("reCAPTCHA cleanup error:", e);
         }
@@ -88,10 +85,13 @@ export default function LeadForm({
   };
 
   const onRecaptchaSuccess = async (token) => {
+    if (!mounted.current) return;
+    if (requestLock.current) return;
+    requestLock.current = true;
     try {
       // Get submission count and last submission timestamp
-      let submissionCount = localStorage.getItem("formSubmissionCount") || 0;
-      let lastSubmissionTime = localStorage.getItem("lastSubmissionTime");
+      let submissionCount = leadStorage.getItem("formSubmissionCount") || 0;
+      let lastSubmissionTime = leadStorage.getItem("lastSubmissionTime");
 
       // Check if 24 hours have passed since the last submission
       if (lastSubmissionTime) {
@@ -101,8 +101,8 @@ export default function LeadForm({
         if (hoursPassed >= 24) {
           // Reset submission count after 24 hours
           submissionCount = 0;
-          localStorage.setItem("formSubmissionCount", 0);
-          localStorage.setItem("lastSubmissionTime", Date.now().toString());
+          leadStorage.setItem("formSubmissionCount", 0);
+          leadStorage.setItem("lastSubmissionTime", Date.now().toString());
         }
       }
 
@@ -116,13 +116,12 @@ export default function LeadForm({
       }
 
       // API Request
-      const response = await fetch(
-        "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
+      const response = await submitLead(
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
+
           },
           body: JSON.stringify({
             fields: {
@@ -137,6 +136,7 @@ export default function LeadForm({
           }),
         },
       );
+      if (!mounted.current) return;
 
       // Store response text before parsing
       const responseText = await response.text();
@@ -153,12 +153,10 @@ export default function LeadForm({
           // Increment submission count & store time
           submissionCount++;
           setSubmissionCount(submissionCount);
-          localStorage.setItem("formSubmissionCount", submissionCount);
-          localStorage.setItem("lastSubmissionTime", Date.now().toString());
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: "lead_form",
-          });
+          leadStorage.setItem("formSubmissionCount", submissionCount);
+          leadStorage.setItem("lastSubmissionTime", Date.now().toString());
+
+
         } else {
           console.log("Response Text:", responseText);
           setErrorMessage("Submission received but with unexpected response");
@@ -171,49 +169,69 @@ export default function LeadForm({
       console.error("Error submitting form:", error);
       setErrorMessage(`Error submitting form: ${error.message}`);
     } finally {
+      requestLock.current = false;
       setIsLoading(false);
+      submitLock.current = false;
 
       // Reset reCAPTCHA
       if (window.grecaptcha && recaptchaRef.current) {
-        window.grecaptcha.reset();
+        resetLeadCaptcha(recaptchaRef.current);
       }
     }
   };
+  useEffect(() => { latestSuccess.current = onRecaptchaSuccess; });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submitLock.current) return;
+    submitLock.current = true;
     setIsLoading(true);
     setErrorMessage("");
-
-    if (!validateForm()) {
+    try {
+      await loadLeadCaptcha();
+      if (!mounted.current) return;
+      setRecaptchaLoaded(true);
+    } catch (error) {
+      setErrorMessage(error.message);
       setIsLoading(false);
+      submitLock.current = false;
       return;
     }
 
-    if (!recaptchaLoaded || !window.grecaptcha) {
+    if (!validateForm()) {
+      setIsLoading(false);
+      submitLock.current = false;
+      return;
+    }
+
+    if (!Boolean(window.grecaptcha?.render) || !window.grecaptcha) {
       setErrorMessage(
         "Security verification not loaded. Please refresh the page.",
       );
       setIsLoading(false);
+      submitLock.current = false;
       return;
     }
 
     // Render reCAPTCHA if not already rendered
     if (!recaptchaRef.current.innerHTML) {
       try {
-        window.grecaptcha.render(recaptchaRef.current, {
+        renderLeadCaptcha(recaptchaRef.current, {
+            "expired-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification expired. Please try again."); },
+            "error-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification failed to connect. Please try again."); },
           sitekey: siteKey,
-          callback: onRecaptchaSuccess,
+          callback: (...args) => latestSuccess.current(...args),
           theme: "light",
         });
       } catch (error) {
         console.error("Error rendering reCAPTCHA:", error);
         setErrorMessage("Error with verification. Please try again.");
         setIsLoading(false);
+      submitLock.current = false;
       }
     } else {
       // Execute existing reCAPTCHA
-      window.grecaptcha.execute();
+      resetLeadCaptcha(recaptchaRef.current);
     }
   };
 
@@ -228,7 +246,7 @@ export default function LeadForm({
         </h2>
 
         {errorMessage && (
-          <div className="mb-4 rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-[#FDFCFA]">
+          <div role="alert" className="mb-4 rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-[#FDFCFA]">
             {errorMessage}
           </div>
         )}
@@ -243,7 +261,7 @@ export default function LeadForm({
             {/* Full Name Input */}
             <div className="relative">
               <FaUser className="absolute left-4 top-4 text-[#6C7484]" />
-              <input
+              <input aria-label="Full name" maxLength={200} autoComplete="name"
                 name="fullName"
                 placeholder="Full Name *"
                 value={formData.fullName}
@@ -290,7 +308,7 @@ export default function LeadForm({
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isLoading || isDisabled || !recaptchaLoaded}
+              disabled={isLoading || isDisabled}
               className={`w-full p-4 text-white text-lg font-semibold rounded-xl shadow-md transition-all duration-300 ${
                 isLoading || isDisabled || !recaptchaLoaded
                   ? "bg-[#6C7484] cursor-not-allowed text-[#FDFCFA]"
@@ -311,7 +329,7 @@ export default function LeadForm({
               Thank You!
             </h3>
             <p className="text-center text-[#FDFCFA]/80 mb-6">
-              Your form has been submitted successfully. We'll get back to you
+              Your form has been submitted successfully. We&apos;ll get back to you
               soon.
             </p>
             <button

@@ -1,0 +1,170 @@
+[
+  {
+    "file": "src/app/about-dholera-sir/LeadForm.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/about-dholera-sir/SchemaMarkup.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/about-dholera-sir/[slug]/page.js",
+    "beforeErrors": 59,
+    "afterErrors": 59,
+    "increases": []
+  },
+  {
+    "file": "src/app/api/contact/route.js",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/api/country/route.js",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/api/lead/route.js",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/BrochureDownload.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/CommonForm.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/Contactform.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/HomePageForm.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/HomePageFormInput.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/InternationalPhoneInput.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/Pop.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/PopUpScroll.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/SlugPageForm.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/TimedContactForm.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/header.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 1,
+    "increases": []
+  },
+  {
+    "file": "src/app/components/whatsapp.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/contact/ContactPageClient.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/dholera-sir-blogs/BlogSchemaMarkup.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/dholera-sir-updates/BlogSchemaMarkup.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/dholera-sir-updates/LeadForm.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/dholera-sir-updates/[slug]/page.js",
+    "beforeErrors": 64,
+    "afterErrors": 64,
+    "increases": []
+  },
+  {
+    "file": "src/app/homecomponents/HeroLeadForm.jsx",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/investor/dubai/page.jsx",
+    "beforeErrors": 1,
+    "afterErrors": 1,
+    "increases": []
+  },
+  {
+    "file": "src/app/layout.js",
+    "beforeErrors": 2,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/robots.js",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  },
+  {
+    "file": "src/app/sitemap.js",
+    "beforeErrors": 0,
+    "afterErrors": 0,
+    "increases": []
+  }
+]

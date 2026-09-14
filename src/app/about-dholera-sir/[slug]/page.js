@@ -138,7 +138,7 @@ export default async function BlogDetail({ params }) {
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-2">Blog post not found</h1>
             <Link
-              href="/dholera-updates/latest-news"
+              href="/dholera-sir-updates"
               className="mt-4 inline-block text-[#d3b66b] hover:text-[#b69b5e]"
             >
               ← Back to News

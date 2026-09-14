@@ -4,11 +4,14 @@ import { FaUser } from "react-icons/fa";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/app/assets/icons/logo.webp";
+import useLeadDialog from "./useLeadDialog";
 import { useRouter } from "next/navigation"
 import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
 } from "./InternationalPhoneInput";
+import { submitLead, leadStorage, loadLeadCaptcha, renderLeadCaptcha, resetLeadCaptcha } from "@/lib/lead-client";
+
 
 export default function BrochureDownload({
   onClose,
@@ -25,6 +28,7 @@ export default function BrochureDownload({
   redirectPath = "/residential-projects-in-dholera/westwyn-estate",
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const dialogRef = useLeadDialog();
   const [formData, setFormData] = useState({ fullName: "", phone: "" });
   const [showPopup, setShowPopup] = useState(false);
   const [submissionCount, setSubmissionCount] = useState(0);
@@ -33,6 +37,12 @@ export default function BrochureDownload({
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const recaptchaRef = useRef(null);
+  const submitLock = useRef(false);
+  const requestLock = useRef(false);
+  const latestSuccess = useRef(null);
+  const mounted = useRef(true);
+  const closeTimer = useRef(null);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; clearTimeout(closeTimer.current); }; }, []);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   const router = useRouter();
 
@@ -47,7 +57,7 @@ export default function BrochureDownload({
       link.href = pdfUrl;
       link.download = downloadFilename;
       link.target = '_blank';
-      
+
       // Append to body, click, and remove
       document.body.appendChild(link);
       link.click();
@@ -69,35 +79,20 @@ export default function BrochureDownload({
   useEffect(() => {
     // Load reCAPTCHA script
     const loadRecaptcha = () => {
-      if (typeof window !== "undefined" && !window.grecaptcha) {
-        try {
-          const script = document.createElement("script");
-          script.src = "https://www.google.com/recaptcha/api.js";
-          script.async = true;
-          script.defer = true;
-          script.onload = () => setRecaptchaLoaded(true);
-          script.onerror = () => {
-            console.error("Failed to load reCAPTCHA script");
-            setRecaptchaLoaded(true); // Fallback
-          };
-          document.head.appendChild(script);
-        } catch (err) {
-          console.error("reCAPTCHA script loading error:", err);
-          setRecaptchaLoaded(true); // Fallback
-        }
-      } else if (window.grecaptcha) {
-        setRecaptchaLoaded(true);
-      }
-    };
+    loadLeadCaptcha().then(() => setRecaptchaLoaded(true)).catch((error) => {
+      setRecaptchaLoaded(false);
+      setErrorMessage(error.message);
+    });
+  };
 
     loadRecaptcha();
 
     if (typeof window !== "undefined") {
       setSubmissionCount(
-        parseInt(localStorage.getItem("formSubmissionCount") || "0", 10)
+        parseInt(leadStorage.getItem("formSubmissionCount") || "0", 10)
       );
       setLastSubmissionTime(
-        parseInt(localStorage.getItem("lastSubmissionTime") || "0", 10)
+        parseInt(leadStorage.getItem("lastSubmissionTime") || "0", 10)
       );
     }
 
@@ -137,8 +132,8 @@ export default function BrochureDownload({
 
     if (hoursPassed >= 24) {
       setSubmissionCount(0);
-      localStorage.setItem("formSubmissionCount", "0");
-      localStorage.setItem("lastSubmissionTime", now.toString());
+      leadStorage.setItem("formSubmissionCount", "0");
+      leadStorage.setItem("lastSubmissionTime", now.toString());
     } else if (submissionCount >= 3) {
       setErrorMessage(
         "You have reached the maximum submission limit. Try again after 24 hours."
@@ -150,16 +145,18 @@ export default function BrochureDownload({
   };
 
 const onRecaptchaSuccess = async (token) => {
+    if (!mounted.current) return;
+    if (requestLock.current) return;
+    requestLock.current = true;
   try {
     const now = Date.now();
 
-    const response = await fetch(
-      "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
+    const response = await submitLead(
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
+
         },
         body: JSON.stringify({
           fields: {
@@ -173,27 +170,26 @@ const onRecaptchaSuccess = async (token) => {
         }),
       }
     );
+      if (!mounted.current) return;
 
     if (response.ok) {
       setFormData({ fullName: "", phone: "" });
       setShowPopup(true);
       setSubmissionCount((prev) => {
         const newCount = prev + 1;
-        localStorage.setItem("formSubmissionCount", newCount.toString());
-        localStorage.setItem("lastSubmissionTime", now.toString());
+        leadStorage.setItem("formSubmissionCount", newCount.toString());
+        leadStorage.setItem("lastSubmissionTime", now.toString());
         return newCount;
       });
-      window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "lead_form",
-        });
+
+
 
       // Download PDF immediately after successful submission
       downloadPDF();
 
       // Show thank you popup for 2 seconds
       setShowThankYou(true);
-      setTimeout(() => {
+      closeTimer.current = setTimeout(() => {
         setShowThankYou(false);
         handleClose();
 
@@ -210,44 +206,63 @@ const onRecaptchaSuccess = async (token) => {
       error.message || "Error submitting form. Please try again."
     );
   } finally {
+      requestLock.current = false;
     setIsLoading(false);
+      submitLock.current = false;
     if (window.grecaptcha && recaptchaRef.current) {
-      window.grecaptcha.reset(recaptchaRef.current);
+      resetLeadCaptcha(recaptchaRef.current);
     }
   }
 };
+  useEffect(() => { latestSuccess.current = onRecaptchaSuccess; });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submitLock.current) return;
+    submitLock.current = true;
     setIsLoading(true);
     setErrorMessage("");
+    try {
+      await loadLeadCaptcha();
+      if (!mounted.current) return;
+      setRecaptchaLoaded(true);
+    } catch (error) {
+      setErrorMessage(error.message);
+      setIsLoading(false);
+      submitLock.current = false;
+      return;
+    }
 
     if (!validateForm()) {
       setIsLoading(false);
+      submitLock.current = false;
       return;
     }
 
     // If reCAPTCHA is loaded, render it in the ref
-    if (window.grecaptcha && recaptchaLoaded) {
+    if (window.grecaptcha && Boolean(window.grecaptcha?.render)) {
       try {
         if (recaptchaRef.current && !recaptchaRef.current.innerHTML) {
-          window.grecaptcha.render(recaptchaRef.current, {
+          renderLeadCaptcha(recaptchaRef.current, {
+            "expired-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification expired. Please try again."); },
+            "error-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification failed to connect. Please try again."); },
             sitekey: siteKey,
-            callback: onRecaptchaSuccess,
+            callback: (...args) => latestSuccess.current(...args),
             theme: "dark",
           });
         } else {
-          window.grecaptcha.reset();
-          window.grecaptcha.execute();
+          resetLeadCaptcha(recaptchaRef.current);
         }
       } catch (error) {
         console.error("Error rendering reCAPTCHA:", error);
         setErrorMessage("Error with verification. Please try again.");
         setIsLoading(false);
+      submitLock.current = false;
       }
     } else {
       setErrorMessage("reCAPTCHA not loaded. Please refresh and try again.");
       setIsLoading(false);
+      submitLock.current = false;
     }
   };
 
@@ -345,13 +360,17 @@ const onRecaptchaSuccess = async (token) => {
         <div
           className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 p-4 z-[1000]"
           onClick={handleBackdropClick}
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
         >
           <motion.div
             id="contact-form-container"
             initial={{ scale: 0.9, y: 50 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 50 }}
-            className="bg-[#051A3A] p-8 rounded-xl shadow-2xl border border-[#F6C343] max-w-md w-full relative"
+            className="bg-[#051A3A] p-5 sm:p-8 rounded-xl shadow-2xl border border-[#F6C343] max-w-md w-full relative max-h-[calc(100dvh-2rem)] overflow-y-auto"
             onClick={handleModalContentClick}
           >
             {/* Close Button */}
@@ -414,7 +433,7 @@ const onRecaptchaSuccess = async (token) => {
                   Thank You!
                 </h3>
                 <p className="text-[#FDFCFA]/80">
-                  Your request has been submitted successfully. We'll contact
+                  Your request has been submitted successfully. We&apos;ll contact
                   you shortly.
                 </p>
                 <p className="text-[#F6C343] text-sm mt-2">
@@ -424,7 +443,7 @@ const onRecaptchaSuccess = async (token) => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 {errorMessage && (
-                  <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
+                  <div role="alert" className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
                     {errorMessage}
                   </div>
                 )}
@@ -436,7 +455,7 @@ const onRecaptchaSuccess = async (token) => {
                   className="relative"
                 >
                   <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#6C7484]" />
-                  <input
+                  <input aria-label="Full name" maxLength={200} autoComplete="name"
                     name="fullName"
                     placeholder="Full Name"
                     value={formData.fullName}
@@ -478,7 +497,7 @@ const onRecaptchaSuccess = async (token) => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  disabled={isLoading || !recaptchaLoaded}
+                  disabled={isLoading}
                   id="brochure"
                   className="w-full py-3 px-6 bg-[#F6C343] text-[#051A3A] rounded-lg hover:bg-[#FDFCFA] transition-all shadow-lg hover:shadow-[#F6C343]/20 font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
                 >

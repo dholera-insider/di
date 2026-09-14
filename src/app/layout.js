@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Script from "next/script";
 import Whatsapp from "./components/whatsapp";
 import TimedContactForm from "./components/TimedContactForm";
+import LeadClickTracking from "./components/LeadClickTracking";
 
 // const poppins = Poppins({
 //   weight: "400",
@@ -28,7 +29,7 @@ export default function RootLayout({ children }) {
 
         <meta name="msvalidate.01" content="4EEB445EE58BDF9E15EFDE4DB906372D" />
         {/* Clarity */}
-        <Script type="text/javascript" strategy="lazyOnload">
+        <Script id="clarity-analytics" type="text/javascript" strategy="lazyOnload">
           {`
               (function(c,l,a,r,i,t,y){
                   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -39,13 +40,13 @@ export default function RootLayout({ children }) {
                   </Script>
         {/* tag manager */}
 
-        <Script type="text/javascript">
+        <Script id="google-tag-manager" type="text/javascript">
           {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-P4MC4RPF');
+            })(window,document,'script','dataLayer','GTM-NMC7QGFQ');
            `}
         </Script>
       </head>
@@ -54,7 +55,7 @@ export default function RootLayout({ children }) {
         {/* tag manager */}
         <noscript
           dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4MC4RPF"
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMC7QGFQ"
           height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                 }}
         />
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
         <TimedContactForm />
         <Footer />
         <Whatsapp />
+        <LeadClickTracking />
       </body>
     </html>
   );

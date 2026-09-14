@@ -1722,7 +1722,7 @@ export default function AboutDholeraSirPage() {
             />
 
             <span>
-              Explore Residential Plot Projects
+              Explore Residential Projects
             </span>
           </a>
         </div>

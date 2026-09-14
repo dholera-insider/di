@@ -1,19 +1,24 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useId } from "react";
 import { FaUser } from "react-icons/fa";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import logo from "@/app/assets/icons/logo.png";
+import useLeadDialog from "./useLeadDialog";
 import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
 } from "./InternationalPhoneInput";
+import { submitLead, leadStorage, loadLeadCaptcha, renderLeadCaptcha, resetLeadCaptcha } from "@/lib/lead-client";
+
 
 export default function ContactForm({
   onClose,
   title = "Talk to a Dholera Expert",
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const dialogRef = useLeadDialog();
+  const headingId = useId();
   const [formData, setFormData] = useState({ fullName: "", phone: "" });
   const [showPopup, setShowPopup] = useState(false);
   const [submissionCount, setSubmissionCount] = useState(0);
@@ -21,6 +26,12 @@ export default function ContactForm({
   const [errorMessage, setErrorMessage] = useState("");
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const recaptchaRef = useRef(null);
+  const submitLock = useRef(false);
+  const requestLock = useRef(false);
+  const latestSuccess = useRef(null);
+  const mounted = useRef(true);
+  const closeTimer = useRef(null);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; clearTimeout(closeTimer.current); }; }, []);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleClose = () => {
@@ -29,39 +40,24 @@ export default function ContactForm({
     }
   };
 
-  
+
 
   useEffect(() => {
     const loadRecaptcha = () => {
-      if (typeof window !== "undefined" && !window.grecaptcha) {
-        try {
-          const script = document.createElement("script");
-          script.src = "https://www.google.com/recaptcha/api.js";
-          script.async = true;
-          script.defer = true;
-          script.onload = () => setRecaptchaLoaded(true);
-          script.onerror = () => {
-            console.error("Failed to load reCAPTCHA script");
-            setRecaptchaLoaded(true);
-          };
-          document.head.appendChild(script);
-        } catch (err) {
-          console.error("reCAPTCHA script loading error:", err);
-          setRecaptchaLoaded(true);
-        }
-      } else if (window.grecaptcha) {
-        setRecaptchaLoaded(true);
-      }
-    };
+    loadLeadCaptcha().then(() => setRecaptchaLoaded(true)).catch((error) => {
+      setRecaptchaLoaded(false);
+      setErrorMessage(error.message);
+    });
+  };
 
     loadRecaptcha();
 
     if (typeof window !== "undefined") {
       setSubmissionCount(
-        parseInt(localStorage.getItem("formSubmissionCount") || "0", 10)
+        parseInt(leadStorage.getItem("formSubmissionCount") || "0", 10)
       );
       setLastSubmissionTime(
-        parseInt(localStorage.getItem("lastSubmissionTime") || "0", 10)
+        parseInt(leadStorage.getItem("lastSubmissionTime") || "0", 10)
       );
     }
 
@@ -104,8 +100,8 @@ export default function ContactForm({
 
     if (hoursPassed >= 24) {
       setSubmissionCount(0);
-      localStorage.setItem("formSubmissionCount", "0");
-      localStorage.setItem("lastSubmissionTime", now.toString());
+      leadStorage.setItem("formSubmissionCount", "0");
+      leadStorage.setItem("lastSubmissionTime", now.toString());
     } else if (submissionCount >= 3) {
       setErrorMessage(
         "You have reached the maximum submission limit. Try again after 24 hours."
@@ -117,16 +113,18 @@ export default function ContactForm({
   };
 
   const onRecaptchaSuccess = async (token) => {
+    if (!mounted.current) return;
+    if (requestLock.current) return;
+    requestLock.current = true;
     try {
       const now = Date.now();
 
-      const response = await fetch(
-        "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
+      const response = await submitLead(
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
+
           },
           body: JSON.stringify({
             fullName: formData.fullName,
@@ -136,6 +134,7 @@ export default function ContactForm({
           }),
         }
       );
+      if (!mounted.current) return;
 
       const data =
         response.status !== 204 ? await response.json().catch(() => ({})) : {};
@@ -145,18 +144,16 @@ export default function ContactForm({
         setShowPopup(true);
         setSubmissionCount((prev) => {
           const newCount = prev + 1;
-          localStorage.setItem("formSubmissionCount", newCount.toString());
-          localStorage.setItem("lastSubmissionTime", now.toString());
+          leadStorage.setItem("formSubmissionCount", newCount.toString());
+          leadStorage.setItem("lastSubmissionTime", now.toString());
           return newCount;
         });
 
-        setTimeout(() => {
+        closeTimer.current = setTimeout(() => {
           if (onClose) onClose();
         }, 2000);
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "lead_form",
-        });
+
+
       } else {
         throw new Error(data.message || "Error submitting form");
       }
@@ -166,44 +163,63 @@ export default function ContactForm({
         error.message || "Error submitting form. Please try again."
       );
     } finally {
+      requestLock.current = false;
       setIsLoading(false);
+      submitLock.current = false;
 
       if (window.grecaptcha && recaptchaRef.current) {
-        window.grecaptcha.reset(recaptchaRef.current);
+        resetLeadCaptcha(recaptchaRef.current);
       }
     }
   };
+  useEffect(() => { latestSuccess.current = onRecaptchaSuccess; });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submitLock.current) return;
+    submitLock.current = true;
     setIsLoading(true);
     setErrorMessage("");
-
-    if (!validateForm()) {
+    try {
+      await loadLeadCaptcha();
+      if (!mounted.current) return;
+      setRecaptchaLoaded(true);
+    } catch (error) {
+      setErrorMessage(error.message);
       setIsLoading(false);
+      submitLock.current = false;
       return;
     }
 
-    if (window.grecaptcha && recaptchaLoaded) {
+    if (!validateForm()) {
+      setIsLoading(false);
+      submitLock.current = false;
+      return;
+    }
+
+    if (window.grecaptcha && Boolean(window.grecaptcha?.render)) {
       try {
         if (recaptchaRef.current && !recaptchaRef.current.innerHTML) {
-          window.grecaptcha.render(recaptchaRef.current, {
+          renderLeadCaptcha(recaptchaRef.current, {
+            "expired-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification expired. Please try again."); },
+            "error-callback": () => { submitLock.current = false; setIsLoading(false); setErrorMessage("Verification failed to connect. Please try again."); },
             sitekey: siteKey,
-            callback: onRecaptchaSuccess,
+            callback: (...args) => latestSuccess.current(...args),
             theme: "dark",
           });
         } else {
-          window.grecaptcha.reset();
-          window.grecaptcha.execute();
+          resetLeadCaptcha(recaptchaRef.current);
         }
       } catch (error) {
         console.error("Error rendering reCAPTCHA:", error);
         setErrorMessage("Error with verification. Please try again.");
         setIsLoading(false);
+      submitLock.current = false;
       }
     } else {
       setErrorMessage("reCAPTCHA not loaded. Please refresh and try again.");
       setIsLoading(false);
+      submitLock.current = false;
     }
   };
 
@@ -212,22 +228,23 @@ export default function ContactForm({
       className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 p-4 z-[1000]"
       onClick={onClose}
       role="dialog"
+      ref={dialogRef}
       aria-modal="true"
-      aria-labelledby="contact-form-title"
+      aria-labelledby={headingId}
     >
       <motion.div
         id="contact-form-container"
         initial={{ scale: 0.9, y: 50 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 50 }}
-        className="bg-[#051A3A] text-[#FDFCFA] p-8 rounded-xl shadow-2xl border border-[#F6C343] max-w-md w-full relative"
+        className="bg-[#051A3A] text-[#FDFCFA] p-5 sm:p-8 rounded-xl shadow-2xl border border-[#F6C343] max-w-md w-full relative max-h-[calc(100dvh-2rem)] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={(e) => {
             e.stopPropagation();
-            onClose();
+            handleClose();
           }}
           className="absolute top-4 right-4 text-[#FDFCFA]/80 hover:text-[#F6C343] focus:outline-none"
           aria-label="Close form"
@@ -255,7 +272,7 @@ export default function ContactForm({
           className="text-center mb-6"
         >
           <h2
-            id="contact-form-title"
+            id={headingId}
             className="text-xl md:text-3xl font-bold text-white mb-2"
           >
             {title}
@@ -291,21 +308,21 @@ export default function ContactForm({
             </motion.div>
             <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
             <p className="text-[#FDFCFA]/80">
-              Your request has been submitted successfully. We'll contact you
+              Your request has been submitted successfully. We&apos;ll contact you
               shortly.
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             {errorMessage && (
-              <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
+              <div role="alert" className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
                 {errorMessage}
               </div>
             )}
 
             <div className="relative">
               <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#6C7484]" />
-              <input
+              <input aria-label="Full name" maxLength={200} autoComplete="name"
                 name="fullName"
                 placeholder="Full Name"
                 value={formData.fullName}
@@ -323,7 +340,7 @@ export default function ContactForm({
                   setErrorMessage("");
                 }}
                 inputProps={{
-                  id: "phone",
+                  id: `${headingId}-phone`,
                   name: "phone",
                   placeholder: "Phone Number",
                 }}
@@ -336,7 +353,7 @@ export default function ContactForm({
 
             <button
               type="submit"
-              disabled={isLoading || !recaptchaLoaded}
+              disabled={isLoading}
               className="w-full py-3 px-6 bg-[#F6C343] text-[#051A3A] rounded-lg hover:bg-[#FDFCFA] transition-all shadow-lg hover:shadow-[#F6C343]/20 font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isLoading
