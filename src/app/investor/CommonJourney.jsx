@@ -106,7 +106,7 @@ export default function CommonJourney({
                 z-10
                 grid
                 grid-cols-[3rem_1fr]
-                items-start
+                items-center
                 gap-4
               "
             >
@@ -128,9 +128,13 @@ export default function CommonJourney({
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </span>
 
-              {/* Content Card */}
+              {/* Left-aligned Title */}
               <div
                 className="
+                  flex
+                  min-h-16
+                  items-center
+                  justify-start
                   rounded-2xl
                   border
                   border-[#051A3A]/10
@@ -141,29 +145,9 @@ export default function CommonJourney({
                   shadow-[0_10px_24px_rgba(5,26,58,.07)]
                 "
               >
-                {/* Step */}
-                <span
-                  className="
-                    inline-flex
-                    rounded-full
-                    bg-[#051A3A]
-                    px-2.5
-                    py-1
-                    text-[9px]
-                    font-bold
-                    uppercase
-                    tracking-[0.14em]
-                    text-[#F6C343]
-                  "
-                >
-                  Step {number}
-                </span>
-
-                {/* Step Title */}
                 <h3
                   className="
-                    mt-2
-                    font-sans
+                    m-0
                     text-[15px]
                     font-bold
                     leading-[1.3]
