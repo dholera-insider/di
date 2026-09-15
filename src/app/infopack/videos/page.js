@@ -32,7 +32,7 @@ const FixedNavigation = ({ currentPage = "home" }) => (
         </Link>
 
         <Link
-          href="/infopack/inventory"
+          href="/dholera-sir-updates"
           className={`group flex items-center gap-2 px-2 py-2 md:px-4 md:py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-0.5 flex-1 md:flex-none justify-center border font-bold ${
             currentPage === "inventory"
               ? "bg-[#051A3A] text-white hover:shadow-[#051A3A] border-[#F6C343]"

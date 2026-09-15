@@ -22,7 +22,7 @@ export default function BrochureDownload({
   ids,
   downloadFilename = "brochure.pdf",
   downloadLabel = "brochure",
-  redirectPath = "/residential-projects-in-dholera/westwyn-estate",
+  redirectPath = "https://www.bookmyassets.com/dholera-residential-plots/westwyn-estate",
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "" });

@@ -9,11 +9,11 @@ const projects = [
   {
     title: "WestWyn Estates",
     image: westwynEstatesImage,
-    href: "/residential-projects-in-dholera/westwyn-estate",
+    href: "https://www.bookmyassets.com/dholera-residential-plots/westwyn-estate",
     details: [
       "📍 Polarpur",
       "State Highway-117",
-      "Starting from 10 Lakh",
+      "Starting from 12 Lakh",
       "Immediate Possession",
       "Under Development",
     ],
@@ -21,12 +21,12 @@ const projects = [
   {
     title: "WestWyn Residency",
     image: westwynResidencyImage,
-    href: "/residential-projects-in-dholera/westwyn-residency",
+    href: "https://www.bookmyassets.com/dholera-residential-plots/westwyn-residency",
     details: [
       "📍 Pipariya",
       "1.5 km from DFC",
       "MDR Road",
-      "Starting from 8 Lakh",
+      "Starting from 10 Lakh",
       "Immediate Possession",
     ],
   },

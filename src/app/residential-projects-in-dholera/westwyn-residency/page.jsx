@@ -143,7 +143,7 @@ export default function WestWynResidencyContentTemp() {
 
       <link
         rel="canonical"
-        href="https://www.dholerainsider.com/residential-projects-in-dholera/westwyn-residency"
+        href="https://www.bookmyassets.com/dholera-residential-plots/westwyn-residency"
       />
       <section
         className="grid overflow-hidden bg-[#051A3A] lg:grid-cols-[minmax(23rem,38%)_minmax(0,62%)]"
