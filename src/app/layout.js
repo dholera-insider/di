@@ -1,4 +1,3 @@
-// import { Poppins } from "next/font/google";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
@@ -7,15 +6,8 @@ import Script from "next/script";
 import Whatsapp from "./components/whatsapp";
 import TimedContactForm from "./components/TimedContactForm";
 
-// const poppins = Poppins({
-//   weight: "400",
-//   subsets: ["latin"],
-//   display: "swap",
-//   preload: true,
-// });
-
 const manrope = Manrope({
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
   preload: true,
@@ -23,7 +15,7 @@ const manrope = Manrope({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={manrope.variable}>
       <head>
 
         <meta name="msvalidate.01" content="4EEB445EE58BDF9E15EFDE4DB906372D" />

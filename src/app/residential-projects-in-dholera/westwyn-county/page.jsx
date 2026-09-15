@@ -205,7 +205,7 @@ export default function Hero() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(2.5rem,6vw,3rem)]">
+        <div className="relative z-10 container mx-auto py-[clamp(2.5rem,6vw,3rem)] site-gutter">
           <div className="max-w-7xl mx-auto">
             {/* Heading */}
             <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] md:text-center font-bold text-white mb-6">
@@ -248,7 +248,7 @@ export default function Hero() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-[#2B364D]/95 to-[#051A3A]/95"></div>
         </div>
-        <div className="relative z-10 container mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)]">
+        <div className="relative z-10 container mx-auto py-[clamp(1.5rem,4vw,2rem)] site-gutter">
           <div className="max-w-7xl mx-auto">
             {/* Amenities Section */}
             <div>

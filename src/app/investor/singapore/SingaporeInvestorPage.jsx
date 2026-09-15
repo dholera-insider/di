@@ -162,7 +162,7 @@ export default function SingaporeInvestorPage() {
 
           {/* Content - Below Image on Mobile, Left on Desktop */}
           <div className="order-2 lg:order-1">
-            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+            <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
               Dholera Investment from{" "}
               <span className="text-[#F6C343]">Singapore</span>
             </h1>
@@ -195,17 +195,17 @@ export default function SingaporeInvestorPage() {
         title="Your Dholera Investment Journey from Singapore"
       />
 
-      <section className="relative overflow-hidden bg-[#051A3A] text-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
+      <section className="relative overflow-hidden bg-[#051A3A] text-white site-gutter section-space">
         <Skyline />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-          <h2 className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
+          <h2 className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
             Why Choose Dholera Insider?
           </h2>
           <div className="divide-y divide-white/15 border-y border-white/15">
             {reasonsToChoose.map((reason) => (
               <div
                 key={reason}
-                className="flex items-center gap-4 py-5 font-[var(--font-singapore-display)] text-base font-semibold sm:text-lg"
+                className="flex items-center gap-4 py-5 font-sans text-base font-semibold sm:text-lg"
               >
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
                   <Check className="h-4 w-4" aria-hidden="true" />
@@ -220,7 +220,7 @@ export default function SingaporeInvestorPage() {
       {/* <section className="bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
-            <h2 className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
+            <h2 className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
               Make an Informed Investment Decision
             </h2>
             <p className="mt-5 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
@@ -230,7 +230,7 @@ export default function SingaporeInvestorPage() {
             </p>
           </div>
           <div className="rounded-[26px] border border-white/15 bg-white/[0.06] p-5 sm:p-8">
-            <p className="font-[var(--font-singapore-display)] text-lg font-bold text-[#F6C343]">
+            <p className="font-sans text-lg font-bold text-[#F6C343]">
               You can review:
             </p>
             <div className="mt-5 divide-y divide-white/15">
@@ -252,7 +252,7 @@ export default function SingaporeInvestorPage() {
       </section> */}
 
 
-      <section className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
+      <section className="bg-[#EEF2F9] site-gutter section-space">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-16 xl:gap-20">
           {/* =====================================================
               LEFT CONTENT
@@ -261,7 +261,7 @@ export default function SingaporeInvestorPage() {
           <div className="max-w-xl">
             <h2
               className="
-                font-[var(--font-singapore-display)]
+                font-sans
                 text-[clamp(2rem,4vw,3.35rem)]
                 font-bold
                 leading-[1.06]
@@ -295,7 +295,7 @@ export default function SingaporeInvestorPage() {
             {/* Small heading */}
 
             <div className="mb-5 flex items-center gap-3">
-            <p className="font-[var(--font-singapore-display)] text-[20px] font-bold text-[#051A3A] sm:text-[22px] lg:text-[24px]">
+            <p className="font-sans text-[20px] font-bold text-[#051A3A] sm:text-[22px] lg:text-[24px]">
               You can review:
             </p>
             </div>
@@ -369,7 +369,7 @@ export default function SingaporeInvestorPage() {
                     <p
                       className="
                         min-w-0
-                        font-[var(--font-singapore-display)]
+                        font-sans
                         text-[13px]
                         font-bold
                         leading-[1.45]

@@ -46,9 +46,9 @@ const DholeraBulkLandPage = () => {
         </Head>
 
         {/* Hero Section */}
-        <header className="bg-gradient-to-r from-gray-900 via-[#2B364D] to-[#051A3A] text-[#FDFCFA]/85 dark:from-gray-800 dark:via-[#2B364D] dark:to-[#051A3A] py-20 px-4 text-center">
+        <header className="bg-gradient-to-r from-gray-900 via-[#2B364D] to-[#051A3A] text-[#FDFCFA]/85 dark:from-gray-800 dark:via-[#2B364D] dark:to-[#051A3A] page-content site-gutter text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl pt-20 font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Unlocking Opportunities: Bulk Land Investment in Dholera SIR
             </h1>
             <p className="text-xl md:text-2xl mb-8">
@@ -62,7 +62,7 @@ const DholeraBulkLandPage = () => {
         </header>
 
         {/* Main Content */}
-        <main className="max-w-6xl mx-auto px-4 py-12">
+        <main className="max-w-6xl mx-auto py-12 site-gutter">
           {/* Featured Project */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-[#F6C343] mb-12">
             <p className="text-lg font-medium dark:text-gray-200">
@@ -248,7 +248,7 @@ const DholeraBulkLandPage = () => {
           </section>
 
           {/* CTA Section */}
-          <section className="bg-gradient-to-r from-gray-900 via-[#2B364D] to-[#051A3A] text-[#FDFCFA]/85 dark:from-gray-800 dark:via-[#2B364D] dark:to-[#051A3A] rounded-xl p-12 text-center mb-16">
+          <section className="bg-gradient-to-r from-gray-900 via-[#2B364D] to-[#051A3A] text-[#FDFCFA]/85 dark:from-gray-800 dark:via-[#2B364D] dark:to-[#051A3A] rounded-xl p-6 sm:p-8 lg:p-12 text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-3xl font-bold mb-4">
               Ready to Explore Dholera Opportunities?
             </h2>

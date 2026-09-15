@@ -40,23 +40,7 @@ export default function WhyDholera() {
   return (
     <section
       aria-labelledby="why-dholera-heading"
-        className="
-          relative
-          overflow-hidden
-          bg-[#FDFCFA]
-
-          px-4
-          pt-8
-          pb-12
-
-          sm:px-6
-          sm:pt-10
-          sm:pb-14
-
-          lg:px-8
-          lg:pt-12
-          lg:pb-16
-        "
+        className="relative overflow-hidden bg-[#FDFCFA] site-gutter section-space"
     >
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header */}

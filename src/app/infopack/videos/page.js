@@ -129,7 +129,7 @@ export default async function VideosPage() {
 
   return (
     <div
-      className="min-h-[87vh] bg-gradient-to-b from-blue-50 to-gray-100 py-16 pt-32 px-4 sm:px-6 lg:px-8"
+      className="min-h-[87vh] bg-gradient-to-b from-blue-50 to-gray-100 page-content site-gutter"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -142,7 +142,7 @@ export default async function VideosPage() {
         href="https://www.dholeratimes.com/infopack/videos"
       />
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 lg:gap-8 pt-16">
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 lg:gap-8">
           {videos.map((video, index) => (
             <div
               key={index}

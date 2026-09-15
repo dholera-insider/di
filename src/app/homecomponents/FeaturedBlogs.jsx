@@ -92,7 +92,7 @@ export default async function FeaturedBlogs() {
 
   if (hasError) {
     return (
-      <section className="bg-[#FDFCFA] px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
+      <section className="bg-[#FDFCFA] site-gutter section-space">
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="mb-6 text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-[#051A3A]">
             Dholera Blogs & Investment Guides
@@ -106,7 +106,7 @@ export default async function FeaturedBlogs() {
   }
 
   return (
-    <section className="bg-[#FDFCFA] px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
+    <section className="bg-[#FDFCFA] site-gutter section-space">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto mb-[clamp(1.5rem,3vw,3rem)] max-w-[56rem] text-center">
           

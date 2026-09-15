@@ -26,7 +26,7 @@ export default function Dholera() {
 
   return (
     <section className="bg-gradient-to-br from-gray-900 via-slate-800 to-[#051A3A]">
-      <div className="mx-auto max-w-7xl px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,5rem)]">
+      <div className="mx-auto max-w-7xl py-[clamp(2.5rem,6vw,5rem)] site-gutter">
         <div className="mb-[clamp(1.5rem,3vw,3rem)] text-center">
           <h2 className="max-w-7xl mx-auto text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-white">
             What Makes Dholera Smart City Different from Other Cities in India

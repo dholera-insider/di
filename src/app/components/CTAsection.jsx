@@ -10,7 +10,7 @@ export default function CTAsection() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-[#051A3A] site-gutter section-space">
         <Image
           src={bg}
           alt="Dholera Smart City investment consultation"

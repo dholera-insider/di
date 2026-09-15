@@ -62,9 +62,9 @@ export default async function Blogs() {
         </section>
       </div>
 
-      <div className="pt-6 sm:pt-10 px-4 relative bg-gradient-to-br from-[#051A3A] via-[#2B364D]">
+      <div className="section-space site-gutter relative bg-gradient-to-br from-[#051A3A] via-[#2B364D]">
         <div className="absolute inset-0"></div>
-        <section className="relative flex flex-col justify-center items-center space-x-8">
+        <section className="relative mx-auto max-w-7xl flex flex-col justify-center items-center">
           <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {sortedProjects.map((project) => {
               const isSoldOut = project.categories?.some(

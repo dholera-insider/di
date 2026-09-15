@@ -178,7 +178,7 @@ export default function DholeraProgressPage() {
       </div>
 
       {/* Gallery Section with Enhanced Design */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto py-8 site-gutter">
         {/* Gallery Grid with Enhanced Hover Effects */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {galleryImages.map((image) => (

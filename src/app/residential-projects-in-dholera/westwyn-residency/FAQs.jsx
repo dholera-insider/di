@@ -58,7 +58,7 @@ export default function FAQSection() {
       />
 
       <div className="">
-        <div className="flex flex-col md:flex-row px-[clamp(1rem,4vw,2rem)] py-[clamp(1.5rem,4vw,2rem)] gap-[clamp(1.5rem,4vw,3rem)] max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row py-[clamp(1.5rem,4vw,2rem)] gap-[clamp(1.5rem,4vw,3rem)] max-w-7xl mx-auto site-gutter">
           <div className="w-full md:w-2/5 md:pl-2 md:pr-2">
             <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-semibold text-[#2B364D] mb-4">
               FAQs

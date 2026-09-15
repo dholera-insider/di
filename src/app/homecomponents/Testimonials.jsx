@@ -476,7 +476,7 @@
     
     return (
       <section
-        className="relative overflow-hidden bg-[#EEF2F9] px-4 py-8 sm:py-16 lg:py-12"
+        className="relative overflow-hidden bg-[#EEF2F9] site-gutter section-space"
         aria-labelledby="testimonial-heading"
       >
         <div
@@ -593,7 +593,7 @@
                       <blockquote className="relative flex flex-1 flex-col pt-6">
                         <span
                           aria-hidden="true"
-                          className="absolute left-0 top-1 font-serif text-[54px] leading-none text-[#F6C343]/20"
+                          className="absolute left-0 top-1 font-sans text-[54px] leading-none text-[#F6C343]/20"
                         >
                           “
                         </span>

@@ -95,14 +95,14 @@ export default async function InventoryPage() {
   }
 
   return (
-    <div className="min-h-[87vh] bg-gradient-to-b from-blue-50 to-gray-100 py-16 pt-32 px-4 sm:px-6 lg:px-8" style={{
+    <div className="min-h-[87vh] bg-gradient-to-b from-blue-50 to-gray-100 page-content site-gutter" style={{
      
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
     }}>
       <meta name="robots" content="noindex, dofollow"/>
-      <div className="max-w-7xl mx-auto pt-20">
+      <div className="max-w-7xl mx-auto">
         
 
         {/* List View Container */}

@@ -37,7 +37,7 @@ export default function AboutFaq() {
   return (
     <section
       id="faqs"
-      className="scroll-mt-28 bg-White px-4 py-10 sm:px-6 md:py-12 lg:px-8"
+      className="scroll-mt-28 bg-White site-gutter section-space"
       aria-labelledby="about-faq-heading"
     >
       <div className="mx-auto max-w-5xl">

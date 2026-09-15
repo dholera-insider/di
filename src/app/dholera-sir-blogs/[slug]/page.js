@@ -263,7 +263,7 @@ export default async function Post({ params }) {
         code: ({ value }) => (
           <div className="my-[clamp(1.5rem,3vw,2rem)] bg-gradient-to-br from-gray-900 to-black rounded-xl p-1 shadow-2xl">
             <pre className="bg-gray-900 text-gray-100 p-[clamp(1rem,2vw,1.5rem)] rounded-xl overflow-x-auto">
-              <code className="font-mono text-sm leading-relaxed">
+              <code className="font-sans text-sm leading-relaxed">
                 {value.code}
               </code>
             </pre>
@@ -292,7 +292,7 @@ export default async function Post({ params }) {
           </em>
         ),
         code: ({ children }) => (
-          <code className="font-mono bg-gradient-to-r from-gray-100 to-gray-200 px-2 py-1 rounded-md text-sm text-gray-800 border border-gray-300">
+          <code className="font-sans bg-gradient-to-r from-gray-100 to-gray-200 px-2 py-1 rounded-md text-sm text-gray-800 border border-gray-300">
             {children}
           </code>
         ),
@@ -377,7 +377,7 @@ export default async function Post({ params }) {
         ),
         blockquote: ({ children }) => (
           <blockquote className="relative my-[clamp(1.5rem,3vw,3rem)] p-[clamp(1.25rem,3vw,2rem)] bg-gradient-to-br from-[#F6C343]/5 to-[#e3ae25]/10 rounded-xl shadow-lg border border-[#F6C343]/20">
-            <div className="absolute top-4 left-6 text-6xl text-[#F6C343]/30 font-serif">
+            <div className="absolute top-4 left-6 text-6xl text-[#F6C343]/30 font-sans">
               "
             </div>
             <div className="pl-[clamp(1.25rem,3vw,2rem)] italic text-gray-700 text-[clamp(1rem,1.6vw,1.25rem)] leading-[1.7] font-medium">
@@ -682,7 +682,7 @@ export default async function Post({ params }) {
 
           {/* Related Articles Section */}
           <section className="bg-gray-50 py-12 mt-4">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto site-gutter">
               <div className="flex justify-between items-center mb-8">
                 <h2 className="text-2xl font-bold text-gray-900">
                   You might also like

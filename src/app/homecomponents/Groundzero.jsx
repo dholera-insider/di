@@ -170,7 +170,7 @@ export default function Groundzero() {
   return (
     <>
       <div className='min-h-[480px] bg-[#FDFCFA] py-12'>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto site-gutter">
           <p className='mb-4 text-center text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[clamp(2rem,4vw,3.5rem)] text-[#051A3A]'>
             Exclusive Updates of Dholera
           </p>

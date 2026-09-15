@@ -129,7 +129,7 @@ export default function HongKongInvestorPage() {
 
           {/* Content - Below Image on Mobile, Left on Desktop */}
           <div className="order-2 lg:order-1">
-            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+            <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
               Dholera Investment from{" "}
               <span className="text-[#F6C343]">Hong Kong</span>
             </h1>
@@ -170,7 +170,7 @@ export default function HongKongInvestorPage() {
       {/* <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
         <Skyline />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-          <h2 className="font-[var(--font-hong-kong-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
+          <h2 className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
             Why Choose Dholera Insider ?
           </h2>
           <div>
@@ -178,7 +178,7 @@ export default function HongKongInvestorPage() {
               {reasonsToChoose.map((reason) => (
                 <div
                   key={reason}
-                  className="flex items-center gap-4 py-5 font-[var(--font-hong-kong-display)] text-base font-semibold sm:text-lg"
+                  className="flex items-center gap-4 py-5 font-sans text-base font-semibold sm:text-lg"
                 >
                   <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
                     <Check className="h-4 w-4" aria-hidden="true" />
@@ -204,7 +204,7 @@ export default function HongKongInvestorPage() {
       <section
         id="why-us"
         aria-labelledby="why-dholera-heading"
-        className="relative scroll-mt-20 bg-[#051A3A] text-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+        className="relative scroll-mt-20 bg-[#051A3A] text-white site-gutter section-space"
       >
         {/* =====================================================
             SKYLINE BACKGROUND

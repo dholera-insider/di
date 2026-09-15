@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Inter, Space_Grotesk } from "next/font/google";
 import {
   ArrowRight,
   CheckCircle2,
@@ -39,17 +38,7 @@ import county from "@/app/assets/dholera-residential/county-desktop.webp";
 import residency from "@/app/assets/dholera-residential/residency-desktop.webp";
 import estates from "@/app/assets/dholera-residential/estates-desktop.webp";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-});
 
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
-});
 
 const PHONE_NUMBER = "+919211820887";
 
@@ -346,7 +335,7 @@ function SectionHeading({
       {/* <SectionLabel inverse={inverse}>{eyebrow}</SectionLabel> */}
 
       <h2
-        className={`font-[var(--font-display)] text-left text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] ${
+        className={`font-sans text-left text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] ${
           inverse ? "text-white" : "text-[#051A3A]"
         }`}
       >
@@ -385,8 +374,7 @@ export default function DubaiNriPage() {
 
   return (
     <main
-      className={`${display.variable} ${body.variable} min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
-      style={{ fontFamily: "var(--font-body)" }}
+      className={`min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
     >
       <title>Dholera Investment from Dubai | Verified Plots for UAE NRIs</title>
 
@@ -486,7 +474,7 @@ export default function DubaiNriPage() {
                 lg:py-0
               "
             >
-              <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+              <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
                 Dholera Investment from{" "}
                 <span className="text-[#F6C343]">Dubai</span>
               </h1>
@@ -543,14 +531,14 @@ export default function DubaiNriPage() {
       <WhyDholera />
 
       {/* 04 BUYING PROCESS */}
-      <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+      <section className="border-y border-[#051A3A]/10 bg-white site-gutter section-space">
         <div className="mx-auto max-w-7xl">
           {/* Heading */}
           <h2
             className="
               w-full
               text-left
-              font-[var(--font-bahrain-display)]
+              font-sans
               text-[clamp(1.75rem,3vw,2.65rem)]
               font-bold
               leading-[1.12]
@@ -644,7 +632,7 @@ export default function DubaiNriPage() {
                   <h3
                     className="
                       mt-2
-                      font-[var(--font-bahrain-display)]
+                      font-sans
                       text-[15px]
                       font-bold
                       leading-[1.3]
@@ -716,7 +704,7 @@ export default function DubaiNriPage() {
                       <h3
                         className="
                           mt-1
-                          font-[var(--font-bahrain-display)]
+                          font-sans
                           text-base
                           font-bold
                           leading-snug
@@ -773,7 +761,7 @@ export default function DubaiNriPage() {
       {/* 02 DOCUMENTATION */}
       <section
         id="documentation"
-        className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-4 py-6 sm:px-6 sm:py-16 lg:px-6 lg:pt-10 lg:pb-12"
+        className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] site-gutter section-space"
       >
         {/* Background glow */}
         <div
@@ -809,7 +797,7 @@ export default function DubaiNriPage() {
                 className="
                   mt-5
                   max-w-xl
-                  font-[var(--font-display)]
+                  font-sans
                   text-[clamp(2rem,4vw,3.25rem)]
                   font-bold
                   leading-[1.08]
@@ -941,7 +929,7 @@ export default function DubaiNriPage() {
                           <h3
                             className="
                               mt-1.5
-                              font-[var(--font-display)]
+                              font-sans
                               text-base
                               font-bold
                               leading-snug
@@ -998,7 +986,7 @@ export default function DubaiNriPage() {
       {/* SOCIAL PROOF + FAQ */}
       <section
         aria-labelledby="why-choose-dholera-insider"
-        className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+        className="bg-[#EEF2F9] site-gutter section-space"
       >
         <div className="mx-auto max-w-7xl">
           {/* ======================================================
@@ -1011,7 +999,7 @@ export default function DubaiNriPage() {
                 id="why-choose-dholera-insider"
                 className="
                   max-w-xl
-                  font-[var(--font-display)]
+                  font-sans
                   text-[clamp(2rem,4vw,3.35rem)]
                   font-bold
                   leading-[1.06]
@@ -1110,7 +1098,7 @@ export default function DubaiNriPage() {
                     <h3
                       className="
                         min-w-0
-                        font-[var(--font-display)]
+                        font-sans
                         text-[15px]
                         font-bold
                         leading-[1.35]
@@ -1178,7 +1166,7 @@ export default function DubaiNriPage() {
               <h2
                 className="
                   max-w-2xl
-                  font-[var(--font-display)]
+                  font-sans
                   text-[clamp(1.75rem,3.5vw,2.6rem)]
                   font-bold
                   leading-[1.08]

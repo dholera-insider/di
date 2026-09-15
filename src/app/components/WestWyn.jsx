@@ -277,7 +277,7 @@ export default function Westwyn() {
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_70%_80%,rgba(246, 195, 67, 0.1),transparent_50%)]"></div>
 
         {/* Header Section */}
-        <section className="max-w-7xl pt-8 mx-auto px-4 mb-16 relative z-10">
+        <section className="max-w-7xl mx-auto mb-16 relative z-10 site-gutter section-space">
           <div className="text-center space-y-4">
             <h1 className="text-xl md:text-4xl font-bold bg-gradient-to-r from-gray-100 to-[#e3ae25] bg-clip-text text-transparent drop-shadow-lg">
               WestWyn County
@@ -290,7 +290,7 @@ export default function Westwyn() {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4">
+        <section className="max-w-7xl mx-auto site-gutter">
           <div className="fade-in-up bg-gradient-to-r from-gray-800/60 to-[#051A3A]/40 border-2 border-[#F6C343]/30 md:rounded-2xl shadow-2xl p-8 backdrop-blur-sm">
             <div className="grid grid-cols-2 md:grid-cols-4 text-center">
               <div className="mb-2">
@@ -322,7 +322,7 @@ export default function Westwyn() {
         </section>
 
         {/* Main Content Section */}
-        <section className="max-w-7xl mx-auto px-4 mb-20 relative z-10">
+        <section className="max-w-7xl mx-auto mb-20 relative z-10 site-gutter">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Features */}
             <div className="space-y-8">

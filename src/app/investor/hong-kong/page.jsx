@@ -1,4 +1,3 @@
-import { Geist, Space_Grotesk } from "next/font/google";
 
 import socialImage from "@/app/assets/investor/dholera-insider-hong-kong-banner.webp";
 
@@ -6,17 +5,7 @@ import socialImage from "@/app/assets/investor/dholera-insider-hong-kong-banner.
 import HongKongInvestorPage from "./HongKongInvestorPage";
 import { hongKongFaqs } from "./data";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-hong-kong-display",
-});
 
-const body = Geist({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-hong-kong-body",
-});
 
 export const metadata = {
   metadataBase: new URL("https://www.dholerainsider.com"),
@@ -76,8 +65,7 @@ const faqSchema = {
 export default function HongKongPage() {
   return (
     <div
-      className={`${display.variable} ${body.variable} bg-[#F8F7F3] text-[#051A3A]`}
-      style={{ fontFamily: "var(--font-hong-kong-body)" }}
+      className={`bg-[#F8F7F3] text-[#051A3A]`}
     >
       <script
         type="application/ld+json"

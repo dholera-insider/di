@@ -76,17 +76,7 @@ export default function WhyDholera() {
     <section
       ref={sectionRef}
       aria-labelledby="why-dholera-heading"
-      className="
-        relative
-        overflow-hidden
-        bg-[#EEF2F9]
-        px-4
-        py-8
-        sm:px-6
-        sm:py-12
-        lg:px-8
-        lg:py-16
-      "
+      className="relative overflow-hidden bg-[#EEF2F9] site-gutter section-space"
     >
       {/* Background decoration */}
       <div

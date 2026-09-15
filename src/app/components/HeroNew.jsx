@@ -84,7 +84,7 @@ const HeroNew = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCFA]/95 via-[#FDFCFA]/86 to-[#051A3A]/55"></div>
 
       <div className="relative z-10 flex min-h-screen items-center">
-        <div className="container mx-auto px-4 py-28 sm:px-6 lg:px-8">
+        <div className="container mx-auto py-28 site-gutter">
           <div className="max-w-3xl">
             <p className="mb-4 inline-flex rounded-full bg-[#F6C343]/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-[#051A3A]">
               Decoding Dholera For NRI

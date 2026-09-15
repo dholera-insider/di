@@ -17,7 +17,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#0b1d3a] py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto site-gutter">
         {/* Google Maps Section */}
         {/* <div className="bg-[#faf8f3] shadow-2xl p-2 mb-12 rounded-lg">
           <div className="w-full h-full">

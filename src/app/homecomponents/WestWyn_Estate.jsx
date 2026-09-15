@@ -46,7 +46,7 @@ const projects = [
 
 export default function WestWyn_Estate() {
   return (
-    <section className="bg-[#051A3A] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+    <section className="bg-[#051A3A] site-gutter section-space">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center md:mb-12">
           <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#F6C343]">

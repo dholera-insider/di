@@ -61,7 +61,7 @@ export default function CommonJourney({
     
 }) {
   return (
-    <section className="border-y border-[#051A3A]/10 bg-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
+    <section className="border-y border-[#051A3A]/10 bg-white site-gutter section-space">
       <div className="mx-auto max-w-7xl">
         
         {/* Heading */}
@@ -69,7 +69,7 @@ export default function CommonJourney({
           className="
             w-full
             text-left
-            font-[var(--font-bahrain-display)]
+            font-sans
             text-[clamp(1.75rem,3vw,2.65rem)]
             font-bold
             leading-[1.12]
@@ -163,7 +163,7 @@ export default function CommonJourney({
                 <h3
                   className="
                     mt-2
-                    font-[var(--font-bahrain-display)]
+                    font-sans
                     text-[15px]
                     font-bold
                     leading-[1.3]
@@ -235,7 +235,7 @@ export default function CommonJourney({
                     <h3
                       className="
                         mt-1
-                        font-[var(--font-bahrain-display)]
+                        font-sans
                         text-base
                         font-bold
                         leading-snug

@@ -41,18 +41,7 @@ export default function FAQSection() {
     <section
       id="faqs"
       aria-labelledby={headingId}
-      className="
-        scroll-mt-28
-        bg-white
-        px-4
-        py-8
-
-        sm:px-6
-        sm:py-12
-
-        lg:px-8
-        lg:py-14
-      "
+      className="scroll-mt-28 bg-white site-gutter section-space"
     >
       <div className="mx-auto w-full max-w-5xl">
         {/* =====================================================
@@ -63,7 +52,7 @@ export default function FAQSection() {
           <h2
             id={headingId}
             className="
-              font-[var(--font-display)]
+              font-sans
               text-[clamp(1.9rem,4vw,3.25rem)]
               font-bold
               leading-tight
@@ -130,7 +119,7 @@ export default function FAQSection() {
                       py-5
                       text-left
 
-                      font-[var(--font-display)]
+                      font-sans
                       text-base
                       font-semibold
                       leading-6

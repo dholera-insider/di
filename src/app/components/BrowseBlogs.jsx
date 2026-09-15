@@ -115,7 +115,7 @@ export default function LatestUpdates() {
 
   if (error) {
     return (
-      <div className="max-w-7xl mx-auto py-16 px-4">
+      <div className="max-w-7xl mx-auto py-16 site-gutter">
         <p className="text-[28px] font-semibold mb-6 text-center text-[#051A3A]">Featured Blogs</p>
         <div className="text-center text-red-500">
           <p>Error loading blogs. Please try again later.</p>
@@ -125,7 +125,7 @@ export default function LatestUpdates() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-4 bg-gray-50">
+    <div className="max-w-7xl mx-auto py-16 bg-gray-50 site-gutter">
       <div className="w-full px-2 mb-10 text-center">
         <h3 className="font-bold text-2xl md:text-3xl mb-3 relative inline-block pb-2 text-[#051A3A]">
           Featured Blogs

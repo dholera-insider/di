@@ -34,7 +34,7 @@ export default function About() {
   return (
     <div className='bg-gradient-to-br from-gray-900 via-slate-800 to-[#051A3A] min-h-screen pb-8'>
       {/* Why Dholera Smart City Section */}
-      <div className="pt-16 max-w-6xl mx-auto px-4">
+      <div className="pt-16 max-w-6xl mx-auto site-gutter">
         <div className="text-center mb-12">
           <h2 className="text-4xl max-sm:text-3xl font-bold text-white mb-4">
             Why <span className="text-[#F6C343]">Dholera Smart City</span>?

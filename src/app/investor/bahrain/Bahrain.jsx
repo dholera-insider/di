@@ -2,7 +2,6 @@
 
 import { useId, useState } from "react";
 import Image from "next/image";
-import { Geist, Space_Grotesk } from "next/font/google";
 import {
   ArrowRight,
   Building2,
@@ -23,17 +22,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import projectImage from "@/app/assets/investor/dholera-insider-bahrain-banner.webp";
 import WhyDholera from "./why";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-bahrain-display",
-});
 
-const body = Geist({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-bahrain-body",
-});
 
 const WHATSAPP_URL =
   "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
@@ -179,13 +168,13 @@ function BahrainFaq() {
 
   return (
     <section
-      className="bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
+      className="bg-white site-gutter section-space"
       aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-5xl">
         <h2
           id={headingId}
-          className="font-[var(--font-bahrain-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
+          className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
         >
           FAQ
         </h2>
@@ -212,7 +201,7 @@ function BahrainFaq() {
                     id={buttonId}
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-[var(--font-bahrain-display)] text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
+                    className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                   >
@@ -257,8 +246,7 @@ function BahrainFaq() {
 export default function DholeraBahrainPage() {
   return (
     <main
-      className={`${display.variable} ${body.variable} min-w-0 overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
-      style={{ fontFamily: "var(--font-bahrain-body)" }}
+      className={`min-w-0 overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
     >
       <div className="h-20" aria-hidden="true" />
 
@@ -292,7 +280,7 @@ export default function DholeraBahrainPage() {
 
           {/* Content - Below Image on Mobile, Left on Desktop */}
           <div className="order-2 lg:order-1">
-            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+            <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
               Dholera Investment from{" "}
               <span className="text-[#F6C343]">Bahrain</span>
             </h1>
@@ -321,14 +309,14 @@ export default function DholeraBahrainPage() {
       </section>
 
       <WhyDholera />
-      <section className="border-y border-[#051A3A]/10 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+      <section className="border-y border-[#051A3A]/10 bg-white site-gutter section-space">
         <div className="mx-auto max-w-7xl">
           {/* Heading */}
           <h2
             className="
                 w-full
                 text-left
-                font-[var(--font-bahrain-display)]
+                font-sans
                 text-[clamp(1.75rem,3vw,2.65rem)]
                 font-bold
                 leading-[1.12]
@@ -422,7 +410,7 @@ export default function DholeraBahrainPage() {
                   <h3
                     className="
                         mt-2
-                        font-[var(--font-bahrain-display)]
+                        font-sans
                         text-[15px]
                         font-bold
                         leading-[1.3]
@@ -494,7 +482,7 @@ export default function DholeraBahrainPage() {
                       <h3
                         className="
                             mt-1
-                            font-[var(--font-bahrain-display)]
+                            font-sans
                             text-base
                             font-bold
                             leading-snug
@@ -548,17 +536,17 @@ export default function DholeraBahrainPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-8 text-white sm:px-6 md:py-12 lg:px-8">
+      <section className="relative overflow-hidden bg-[#051A3A] text-white site-gutter section-space">
         <Skyline />
         <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-          <h2 className="font-[var(--font-bahrain-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
+          <h2 className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]">
             Why Choose Dholera Insider?
           </h2>
           <div className="divide-y divide-white/15 border-y border-white/15">
             {reasonsToChoose.map((reason) => (
               <div
                 key={reason}
-                className="flex items-center gap-4 py-5 font-[var(--font-bahrain-display)] text-base font-semibold sm:text-lg"
+                className="flex items-center gap-4 py-5 font-sans text-base font-semibold sm:text-lg"
               >
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
                   <Check className="h-4 w-4" aria-hidden="true" />
@@ -573,7 +561,7 @@ export default function DholeraBahrainPage() {
       {/* <section className="bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[30px] border border-[#F6C343]/30 bg-[#051A3A] px-6 py-12 text-center sm:px-10">
           <div className="relative mx-auto max-w-3xl">
-            <h2 className="font-[var(--font-bahrain-display)] text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-white">
+            <h2 className="font-sans text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-white">
               Planning to invest in India&apos;s future from Bahrain?
             </h2>
             
@@ -590,7 +578,7 @@ export default function DholeraBahrainPage() {
         </div>
       </section> */}
 
-      <section className="bg-[#EEF2F9] px-4 py-8 sm:px-6 md:py-12 lg:px-8">
+      <section className="bg-[#EEF2F9] site-gutter section-space">
         <div className="mx-auto max-w-7xl">
           <div
             className="
@@ -670,7 +658,7 @@ export default function DholeraBahrainPage() {
               <h2
                 className="
             max-w-2xl
-            font-[var(--font-bahrain-display)]
+            font-sans
             text-[clamp(2rem,4vw,3.3rem)]
             font-bold
             leading-[1.08]

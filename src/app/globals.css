@@ -3,6 +3,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: var(--font-manrope), sans-serif;
+    scroll-padding-top: 6rem;
+  }
+
+  body, button, input, select, textarea, code, pre, kbd, samp {
+    font-family: var(--font-manrope), sans-serif;
+  }
+}
+
+@layer components {
+  /* Shared gutters: 16px mobile, 24px tablet, 32px desktop. */
+  .site-gutter {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Standard content sections; hero and full-bleed layouts retain their offsets. */
+  .section-space {
+    @apply py-8 sm:py-12 lg:py-16;
+  }
+
+  .page-content {
+    @apply pt-28 pb-8 sm:pt-32 sm:pb-12 lg:pt-36 lg:pb-16;
+  }
+}
+
 @layer utilities {
   .h-855 {
     height: 855px;
@@ -77,10 +104,6 @@
 *::-webkit-scrollbar-thumb:active {
   background-color: #3072ff;
 }
-
-/* Base styles */
-html,
-
 
 /* Remove default link styles */
 a {
@@ -185,4 +208,10 @@ html {
   animation: legalArrowPop 1.6s ease-in-out infinite;
   transform-origin: center;
   will-change: transform, opacity;
+}
+
+/* The phone-input package otherwise sets Roboto on its wrapper. */
+body .react-tel-input,
+body .react-tel-input input {
+  font-family: var(--font-manrope), sans-serif;
 }

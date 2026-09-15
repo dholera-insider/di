@@ -43,17 +43,7 @@ export default function RemoteBuying() {
   return (
     <section
       aria-labelledby="remote-buying-heading"
-      className="
-        relative
-        overflow-hidden
-        bg-[#EEF2F9]
-        px-4
-        py-8
-        sm:px-6
-        sm:py-14
-        lg:px-6
-        lg:py-14
-      "
+      className="relative overflow-hidden bg-[#EEF2F9] site-gutter section-space"
     >
       <div className="mx-auto max-w-7xl">
         {/* Header */}

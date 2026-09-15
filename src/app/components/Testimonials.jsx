@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
   return (
     <div className='bg-gradient-to-br from-gray-900 via-slate-800 to-[#051A3A] min-h-screen'>
       {/* Testimonials Section */}
-      <div className="pt-16 max-w-6xl mx-auto px-4">
+      <div className="pt-16 max-w-6xl mx-auto site-gutter">
         <div className="text-center mb-12">
           <h2 className="text-4xl max-sm:text-3xl font-bold text-white mb-4">
             What Our <span className="text-[#F6C343]">Clients Say</span>

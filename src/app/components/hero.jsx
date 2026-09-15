@@ -354,16 +354,7 @@ const Hero = () => {
         "
       >
         <div
-          className="
-            container
-            mx-auto
-            px-4
-            py-16
-            sm:px-6
-            md:py-24
-            lg:px-8
-            lg:py-28
-          "
+          className="container mx-auto py-16 md:py-24 lg:py-28 site-gutter"
         >
           <div
             className="

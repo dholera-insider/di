@@ -4,13 +4,13 @@ import { Phone, Mail } from "lucide-react";
 export default function Copyright() {
   return (
     <div className="relative w-full bg-gray-900">
-      <div className="mx-auto min-h-screen max-w-7xl pt-12">
+      <div className="max-w-7xl mx-auto min-h-screen site-gutter page-content">
         <div className="text-white">
           {/* =========================
               PAGE HEADING
           ========================== */}
           <div className="relative">
-            <div className="mt-20 flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
               <p className="relative z-20 text-center text-4xl font-bold text-white drop-shadow-lg">
                 Privacy Policy
               </p>
@@ -24,7 +24,7 @@ export default function Copyright() {
           {/* =========================
               PRIVACY CONTENT
           ========================== */}
-          <div className="mt-10 space-y-5 pb-8 text-lg max-sm:mx-4">
+          <div className="mt-10 space-y-5 pb-8 text-lg">
             <p>
               The terms of the Dholera Insider Policy (User Agreement) apply to
               this Privacy Statement. When a user registers with Dholera Insider

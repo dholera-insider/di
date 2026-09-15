@@ -139,7 +139,7 @@ export default async function page() {
 
         {/* Blog Posts Section */}
         <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-4 py-12 sm:py-16">
+          <div className="max-w-7xl mx-auto py-12 sm:py-16 site-gutter">
             {safePosts.length > 0 ? (
               <>
                 {/* All Posts Grid */}

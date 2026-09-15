@@ -37,13 +37,13 @@ export function SingaporeFaq() {
 
   return (
     <section
-      className="bg-white px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+      className="bg-white site-gutter section-space"
       aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-5xl">
         <h2
           id={headingId}
-          className="font-[var(--font-singapore-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
+          className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
         >
           FAQ
         </h2>
@@ -70,7 +70,7 @@ export function SingaporeFaq() {
                     id={buttonId}
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-[var(--font-singapore-display)] text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
+                    className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                   >

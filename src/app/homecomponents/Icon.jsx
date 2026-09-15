@@ -140,16 +140,7 @@ export default function NRISupport() {
   const activeDot = pageStops.indexOf(current);
 
   return (
-    <section className="
-          bg-[#EEF2F9]
-          px-4
-          pt-8
-          pb-[clamp(3rem,5vw,4.25rem)]
-          sm:px-6
-          sm:pt-10
-          lg:px-8
-          lg:pt-12
-        ">
+    <section className="bg-[#EEF2F9] site-gutter section-space">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-6 text-center md:mb-12">

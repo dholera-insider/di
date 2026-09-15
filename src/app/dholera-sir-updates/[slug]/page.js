@@ -289,7 +289,7 @@ export default async function BlogDetail({ params }) {
         code: ({ value }) => (
           <div className="my-8 bg-gradient-to-br from-gray-900 to-black rounded-2xl p-1 shadow-2xl">
             <pre className="bg-gray-900 text-gray-100 p-6 rounded-xl overflow-x-auto">
-              <code className="font-mono text-sm leading-relaxed">
+              <code className="font-sans text-sm leading-relaxed">
                 {value.code}
               </code>
             </pre>
@@ -318,7 +318,7 @@ export default async function BlogDetail({ params }) {
           </em>
         ),
         code: ({ children }) => (
-          <code className="font-mono bg-gradient-to-r from-gray-100 to-gray-200 px-2 py-1 rounded-md text-sm text-gray-800 border border-gray-300">
+          <code className="font-sans bg-gradient-to-r from-gray-100 to-gray-200 px-2 py-1 rounded-md text-sm text-gray-800 border border-gray-300">
             {children}
           </code>
         ),
@@ -403,7 +403,7 @@ export default async function BlogDetail({ params }) {
         ),
         blockquote: ({ children }) => (
           <blockquote className="relative my-12 p-8 bg-gradient-to-br from-[#F6C343]/5 to-[#e3ae25]/10 rounded-2xl shadow-lg border border-[#F6C343]/20">
-            <div className="absolute top-4 left-6 text-6xl text-[#F6C343]/30 font-serif">
+            <div className="absolute top-4 left-6 text-6xl text-[#F6C343]/30 font-sans">
               "
             </div>
             <div className="pl-8 italic text-gray-700 text-xl leading-relaxed font-medium">
@@ -529,7 +529,7 @@ export default async function BlogDetail({ params }) {
         <div className="bg-white shadow-sm sticky top-0 z-30" />
 
         {/* Main content */}
-        <main className="max-w-7xl mx-auto px-4 py-8">
+        <main className="max-w-7xl mx-auto py-8 site-gutter">
           <div className="flex flex-col lg:flex-row gap-10">
             {/* Article */}
             <article className="lg:w-2/3 pt-16">

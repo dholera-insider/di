@@ -124,22 +124,7 @@ export default function GetInTouch() {
       ref={sectionRef}
       id="get-in-touch"
       aria-labelledby="get-in-touch-heading"
-      className="
-        relative
-        isolate
-        overflow-hidden
-        bg-white
-        px-4
-        py-8
-
-        sm:px-7
-        sm:py-16
-
-        lg:px-10
-        lg:py-20
-
-        xl:py-24
-      "
+      className="relative isolate overflow-hidden bg-white site-gutter section-space"
     >
       {/* =====================================================
           BACKGROUND

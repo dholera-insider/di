@@ -4,7 +4,7 @@ import { Mail, Phone } from "lucide-react";
 export default function TermsConditions() {
   return (
     <div className="min-h-screen w-full bg-gray-900 text-white">
-      <main className="mx-auto max-w-7xl px-4 pb-12 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32">
+      <main className="mx-auto max-w-7xl site-gutter page-content">
         <header className="mb-8 flex flex-col items-center text-center sm:mb-10 lg:mb-12">
           <h1 className="m-0 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
             Terms &amp; Conditions

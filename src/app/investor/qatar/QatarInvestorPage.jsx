@@ -3,7 +3,6 @@
 import { useState ,useId } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Inter, Space_Grotesk } from "next/font/google";
 import {
   ArrowRight,
   BadgeCheck,
@@ -31,17 +30,7 @@ import { qatarFaqs } from "./data";
 import WhyQatar from "./WhyQatar";
 import CommonJourney from "../CommonJourney";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-qatar-display",
-});
 
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-qatar-body",
-});
 
 const PHONE_NUMBER = "+919211820887";
 const WHATSAPP_URL =
@@ -88,7 +77,7 @@ function SectionHeading({ eyebrow, title, copy }) {
   return (
     <div className="max-w-3xl">
       <SectionLabel>{eyebrow}</SectionLabel>
-      <h2 className="font-[var(--font-qatar-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] text-[#051A3A]">
+      <h2 className="font-sans text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] text-[#051A3A]">
         {title}
       </h2>
       {copy && (
@@ -124,8 +113,7 @@ export default function QatarInvestorPage() {
 
   return (
     <main
-      className={`${display.variable} ${body.variable} min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
-      style={{ fontFamily: "var(--font-qatar-body)" }}
+      className={`min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
     >
       {/* Banner Section  */}
       <section className="relative isolate overflow-hidden bg-[#051A3A] pt-20 text-white lg:py-12">
@@ -218,7 +206,7 @@ export default function QatarInvestorPage() {
                     lg:py-0
                   "
                 >
-                <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+                <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
                   Dholera Investment from{" "}
                   <span className="text-[#F6C343]">Qatar</span>
                 </h1>
@@ -299,7 +287,7 @@ export default function QatarInvestorPage() {
             <div className="relative grid items-center gap-10 lg:grid-cols-[.82fr_1.18fr] lg:gap-14">
               <div>
                 <SectionLabel inverse>Qatar NRI Investment Guide</SectionLabel>
-                <h2 className="font-[var(--font-qatar-display)] text-[clamp(1.9rem,4vw,3.35rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">
+                <h2 className="font-sans text-[clamp(1.9rem,4vw,3.35rem)] font-bold leading-[1.08] tracking-[-0.045em] text-white">
                   What Makes Dholera Stand Out?
                 </h2>
                 <p className="mt-6 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
@@ -317,7 +305,7 @@ export default function QatarInvestorPage() {
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#F6C343] text-[#051A3A]">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <h3 className="font-[var(--font-qatar-display)] text-sm font-bold leading-5 text-white">
+                    <h3 className="font-sans text-sm font-bold leading-5 text-white">
                       {label}
                     </h3>
                   </article>
@@ -363,7 +351,7 @@ export default function QatarInvestorPage() {
           </div>
 
           <div className="rounded-[28px] border border-[#051A3A]/10 bg-white p-5 shadow-[0_16px_45px_rgba(5,26,58,.06)] sm:p-7">
-            <p className="mb-5 font-[var(--font-qatar-display)] text-lg font-bold text-[#051A3A]">
+            <p className="mb-5 font-sans text-lg font-bold text-[#051A3A]">
               Dholera Insider helps Qatar NRIs with:
             </p>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -386,7 +374,7 @@ export default function QatarInvestorPage() {
       <section
         id="why-us"
         aria-labelledby="why-dholera-heading"
-        className="scroll-mt-20 bg-[#EEF2F9] px-4 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+        className="scroll-mt-20 bg-[#EEF2F9] site-gutter section-space"
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16 xl:gap-20">
@@ -574,13 +562,13 @@ export default function QatarInvestorPage() {
 
       <section
             id="faqs"
-            className="scroll-mt-28 bg-white px-4 py-8 sm:px-6 md:py-12 lg:px-8"
+            className="scroll-mt-28 bg-white site-gutter section-space"
             aria-labelledby={headingId}
           >
             <div className="mx-auto max-w-5xl">
               <h2
                 id={headingId}
-                className="font-[var(--font-oman-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
+                className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
               >
                 FAQ
               </h2>
@@ -607,7 +595,7 @@ export default function QatarInvestorPage() {
                           id={buttonId}
                           type="button"
                           onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                          className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-[var(--font-oman-display)] text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
+                          className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
                           aria-expanded={isOpen}
                           aria-controls={answerId}
                         >
@@ -660,7 +648,7 @@ export default function QatarInvestorPage() {
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[#F6C343]">
               <Check className="h-4 w-4" /> Dholera Investment from Qatar
             </span>
-            <h2 className="mt-4 font-[var(--font-qatar-display)] text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-white">
+            <h2 className="mt-4 font-sans text-[clamp(1.75rem,3vw,2.75rem)] font-bold leading-[1.12] tracking-[-0.045em] text-white">
               Explore Dholera Residential Plots from Qatar
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/65">

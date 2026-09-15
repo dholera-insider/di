@@ -999,8 +999,9 @@ export default function ContactPageClient({ faqs = [] }) {
               items-center
               justify-center
               gap-3
-
+              mt-10
               sm:gap-4
+              lg:mt-5
             "
           >
             <span
@@ -1075,13 +1076,13 @@ export default function ContactPageClient({ faqs = [] }) {
           <div
             aria-hidden="true"
             className="
-              mt-6
+              mt-3
               h-[3px]
               w-14
               rounded-full
               bg-[#F6C343]
 
-              sm:mt-7
+              sm:mt-4
               sm:w-16
             "
           />
@@ -1290,15 +1291,7 @@ export default function ContactPageClient({ faqs = [] }) {
 
       {/* Enquiry form section  */}
       <section
-            className="
-              relative
-              overflow-hidden
-              bg-[#F2F6FC]
-              px-1
-              py-10
-              sm:py-10
-              lg:py-14
-            "
+            className="relative overflow-hidden bg-[#F2F6FC] site-gutter section-space"
           >
             {/* =====================================================
                 SECTION BACKGROUND
@@ -1347,9 +1340,6 @@ export default function ContactPageClient({ faqs = [] }) {
                 mx-auto
                 w-full
                 max-w-[1160px]
-                px-4
-                sm:px-6
-                lg:px-8
               "
             >
               <div
@@ -1482,7 +1472,7 @@ export default function ContactPageClient({ faqs = [] }) {
                       id="contact-information-heading"
                       className="
                         max-w-[420px]
-                        font-serif
+                        font-sans
                         text-[48px]
                         font-medium
                         leading-[1.03]
@@ -1946,13 +1936,13 @@ export default function ContactPageClient({ faqs = [] }) {
       {/* Faq Section  */}
       <section
         id="faqs"
-        className="scroll-mt-28 bg-[#EEF2F9] px-4 py-8 sm:px-6 md:py-12 lg:px-8"
+        className="scroll-mt-28 bg-[#EEF2F9] site-gutter section-space"
         aria-labelledby={headingId}
       >
         <div className="mx-auto max-w-5xl">
           <h2
             id={headingId}
-            className="font-[var(--font-oman-display)] text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
+            className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
           >
             FAQ
           </h2>
@@ -1979,7 +1969,7 @@ export default function ContactPageClient({ faqs = [] }) {
                       id={buttonId}
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                      className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-[var(--font-oman-display)] text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
+                      className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
                       aria-expanded={isOpen}
                       aria-controls={answerId}
                     >

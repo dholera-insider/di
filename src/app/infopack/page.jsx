@@ -99,7 +99,7 @@ export default function Info() {
 
   return (
     <div
-      className="min-h-screen py-16 px-6 lg:px-12 relative"
+      className="min-h-screen page-content site-gutter relative"
       style={{
         backgroundImage: `url(${bg.src})`,
         backgroundSize: "cover",
@@ -113,7 +113,7 @@ export default function Info() {
 
         {/* ── Header ── */}
         <div className="mb-6 max-w-3xl">
-          <p className="text-[#F6C343] pt-8 text-xs font-semibold tracking-widest uppercase mb-2">
+          <p className="text-[#F6C343] text-xs font-semibold tracking-widest uppercase mb-2">
             Dholera Special Investment Region
           </p>
           <h1 className="text-4xl font-bold text-white leading-tight mb-3">

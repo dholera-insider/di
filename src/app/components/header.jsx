@@ -172,7 +172,7 @@ const Header = () => {
         {/* Glassmorphism overlay */}
         <div className="absolute inset-0 bg-[#0b1d3a]"></div>
 
-        <div className="container mx-auto px-6 h-full flex justify-between items-center relative">
+        <div className="w-full max-w-7xl mx-auto h-full flex justify-between items-center relative site-gutter">
           {/* Enhanced Logo */}
           <Link href="/" className="group">
             <motion.div
@@ -480,7 +480,7 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu Content */}
-            <div className="pt-20 px-6 py-8 space-y-2 ">
+            <div className="pt-24 site-gutter pb-8 space-y-2 ">
               <div className="absolute inset-0">
                 <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#faf8f3]/10 rounded-full blur-3xl animate-pulse"></div>
                 <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-[#faf8f3]/10 rounded-full blur-2xl animate-pulse"></div>

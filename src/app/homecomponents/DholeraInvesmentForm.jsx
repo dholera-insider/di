@@ -6,22 +6,7 @@ export default function DholeraInvestmentForm() {
   return (
     <main className="w-full overflow-x-hidden bg-[#F4F7FB]">
       <section
-        className="
-          relative
-          w-full
-          px-3
-          pt-7
-          pb-12
-          sm:px-5
-          sm:pt-8
-          sm:pb-14
-          md:px-6
-          md:pt-9
-          md:pb-16
-          lg:px-8
-          lg:pt-10
-          lg:pb-20
-        "
+        className="relative w-full site-gutter section-space"
       >
         {/* Soft Background Accent */}
         <div

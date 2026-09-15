@@ -266,7 +266,7 @@ export default function LocationsComponent() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-3 px-4 py-8 pt-32 sm:px-6 lg:px-8">
+    <div className="w-full max-w-7xl mx-auto space-y-3 site-gutter page-content">
       <meta name="robots" content="noindex, dofollow" />
       <link
         rel="canonical"

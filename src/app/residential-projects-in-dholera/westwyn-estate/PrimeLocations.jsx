@@ -69,7 +69,7 @@ const PrimeLocationSection = () => {
   ];
 
   return (
-    <section className="py-[clamp(2rem,4vw,3.5rem)] px-[1rem]">
+    <section className="site-gutter section-space">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

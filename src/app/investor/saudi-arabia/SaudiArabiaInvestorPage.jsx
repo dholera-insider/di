@@ -3,7 +3,6 @@
 import { useId, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Inter, Space_Grotesk } from "next/font/google";
 import {
   BadgeCheck,
   Check,
@@ -30,17 +29,7 @@ import WhySaudiArabia from "./WhySaudiArabia";
 import CommonJourney from "../CommonJourney";
 import { SaudiArabiaFaq } from "./Faq";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-saudi-display",
-});
 
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-saudi-body",
-});
 
 const PHONE_NUMBER = "+919211820887";
 const WHATSAPP_URL =
@@ -197,7 +186,7 @@ function SectionHeading({ label, title, centered = false, inverse = false }) {
     <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel inverse={inverse}>{label}</SectionLabel>
       <h2
-        className={`font-[var(--font-saudi-display)] text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] ${
+        className={`font-sans text-[clamp(1.75rem,3vw,2.65rem)] font-bold leading-[1.12] tracking-[-0.035em] ${
           inverse ? "text-white" : "text-[#051A3A]"
         }`}
       >
@@ -213,8 +202,7 @@ export default function SaudiArabiaInvestorPage() {
 
   return (
     <main
-      className={`${display.variable} ${body.variable} min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
-      style={{ fontFamily: "var(--font-saudi-body)" }}
+      className={`min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
     >
 
       {/* Main Banner Section */}
@@ -297,7 +285,7 @@ export default function SaudiArabiaInvestorPage() {
                 lg:py-0
               "
             >
-            <h1 className="font-[var(--font-bahrain-display)] text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
+            <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
               Dholera Investment from{" "}
               <span className="text-[#F6C343]">Saudi Arabia</span>
             </h1>
@@ -357,7 +345,7 @@ export default function SaudiArabiaInvestorPage() {
 
 
       <section id="documentation"
-            className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+            className="relative isolate scroll-mt-20 overflow-hidden bg-[#051A3A] site-gutter section-space"
           >
             {/* Background glow */}
             <div
@@ -392,7 +380,7 @@ export default function SaudiArabiaInvestorPage() {
                     <h2
                       className="
                         max-w-xl
-                        font-[var(--font-display)]
+                        font-sans
                         text-[clamp(2rem,4vw,3.25rem)]
                         font-bold
                         leading-[1.08]
@@ -518,7 +506,7 @@ export default function SaudiArabiaInvestorPage() {
                               <h3
                                 className="
                                   mt-1.5
-                                  font-[var(--font-display)]
+                                  font-sans
                                   text-base
                                   font-bold
                                   leading-snug
@@ -578,7 +566,7 @@ export default function SaudiArabiaInvestorPage() {
 
           <section
         aria-labelledby="why-choose-dholera-insider"
-        className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+        className="bg-[#EEF2F9] site-gutter section-space"
       >
         <div className="mx-auto max-w-7xl">
           {/* ======================================================
@@ -591,7 +579,7 @@ export default function SaudiArabiaInvestorPage() {
                 id="why-choose-dholera-insider"
                 className="
                   max-w-xl
-                  font-[var(--font-display)]
+                  font-sans
                   text-[clamp(2rem,4vw,3.35rem)]
                   font-bold
                   leading-[1.06]
@@ -693,7 +681,7 @@ export default function SaudiArabiaInvestorPage() {
                     <h3
                       className="
                         min-w-0
-                        font-[var(--font-display)]
+                        font-sans
                         text-[15px]
                         font-bold
                         leading-[1.35]

@@ -170,19 +170,7 @@ export function LegalSupport() {
           LEGAL SUPPORT SECTION
       ========================== */}
       <section 
-        className="
-        relative
-        overflow-hidden
-        bg-[#051A3A]
-
-        px-4
-        py-8
-
-        sm:px-6
-        sm:py-[clamp(4rem,7vw,6rem)]
-
-        lg:px-8
-      "
+        className="relative overflow-hidden bg-[#051A3A] site-gutter section-space"
       >
         <div
           aria-hidden="true"

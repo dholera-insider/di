@@ -166,26 +166,7 @@ export default function AboutUsPage() {
       {/* Main banner section  */}
       <section
         aria-labelledby="about-dholera-insider-heading"
-        className="
-          relative
-          isolate
-          overflow-hidden
-          bg-[#051A3A]
-          px-5
-          pb-14
-          pt-28
-          text-white
-
-          sm:px-7
-          sm:pb-16
-          sm:pt-32
-
-          lg:px-10
-          lg:pb-20
-          lg:pt-36
-
-          xl:pt-40
-        "
+        className="relative isolate overflow-hidden bg-[#051A3A] pb-14 pt-28 text-white sm:pb-16 sm:pt-32 lg:pb-20 lg:pt-36 xl:pt-40 site-gutter"
       >
         {/* =====================================================
             BACKGROUND
@@ -503,18 +484,7 @@ export default function AboutUsPage() {
       <section
         id="our-mission"
         aria-labelledby="our-mission-heading"
-        className="
-          relative
-          overflow-hidden
-          bg-white
-          px-6
-          py-8
-          sm:px-6
-          sm:py-16
-          lg:px-6
-          lg:pt-12
-          lg:pb-16
-        "
+        className="relative overflow-hidden bg-white site-gutter section-space"
       >
         {/* =====================================================
             SUBTLE BACKGROUND GRID
@@ -816,16 +786,7 @@ export default function AboutUsPage() {
 
       {/* BookMyAssets Section */}
       <section
-        className="
-          bg-[#051A3A]
-          px-6
-          py-8
-          sm:px-6
-          sm:py-16
-          lg:px-6
-          lg:pt-12
-          lg:pb-16
-        "
+        className="bg-[#051A3A] site-gutter section-space"
       >
         <div
           className="
@@ -886,7 +847,7 @@ export default function AboutUsPage() {
 
 
       <section
-        className="bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+        className="bg-[#EEF2F9] site-gutter section-space"
       >
         <div className="mx-auto max-w-7xl">
           {/* =====================================================
@@ -1088,7 +1049,7 @@ export default function AboutUsPage() {
 
 
 <section
-  className="relative overflow-hidden bg-[#F6F8FB] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16"
+  className="relative overflow-hidden bg-[#F6F8FB] site-gutter section-space"
 >
   {/* =====================================================
       BACKGROUND DECORATION

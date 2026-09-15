@@ -139,12 +139,12 @@ export default async function Blogs() {
         </div>
         {/* Blog Posts Section */}
         <div className="relative z-10">
-          <div className="px-4 py-12">
+          <div className="mx-auto max-w-7xl site-gutter section-space">
             {safeBlogs.length > 0 ? (
               <>
                 {/* All Posts Grid */}
                 <div>
-                  <div className="px-4">
+                  <div>
                     <div className="flex flex-col max-sm:flex-col-reverse lg:flex-row gap-8">
                       {/* Trending Section - Left Sidebar */}
 

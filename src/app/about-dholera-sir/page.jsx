@@ -1266,18 +1266,7 @@ export default function AboutDholeraSirPage() {
 
           {/* Desktop Content */}
           <div
-            className="
-              relative
-              z-10
-              mx-auto
-              flex
-              min-h-[540px]
-              w-full
-              max-w-7xl
-              items-center
-              px-8
-              xl:min-h-[600px]
-            "
+            className="relative z-10 mx-auto flex min-h-[540px] w-full max-w-7xl items-center xl:min-h-[600px] site-gutter"
           >
             <div className="max-w-[620px]">
               <h1
@@ -1378,7 +1367,7 @@ export default function AboutDholeraSirPage() {
       {/* =========================================
           NRI BENEFITS
       ========================================== */}
-      <section className="bg-[#051A3A] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
+      <section className="bg-[#051A3A] site-gutter section-space">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
           <div>
             <SectionHeading inverse>
@@ -1404,7 +1393,7 @@ export default function AboutDholeraSirPage() {
       {/* =========================================
           WHY DHOLERA INSIDER
       ========================================== */}
-      <section className="overflow-hidden bg-[#EEF2F9] px-6 py-8 sm:px-6 sm:py-16 lg:px-6 lg:pt-12 lg:pb-16">
+      <section className="overflow-hidden bg-[#EEF2F9] site-gutter section-space">
         <div className="mx-auto max-w-6xl">
           <div className="mb-7 sm:text-center lg:mb-9">
             <h2 className="text-left text-[28px] font-semibold leading-[1.15] tracking-[-0.035em] text-[#051A3A] sm:text-center sm:text-3xl lg:text-[38px]">
@@ -1531,18 +1520,7 @@ export default function AboutDholeraSirPage() {
           WHO SHOULD CONSIDER DHOLERA
       ========================================== */}
       <section
-        className="
-          bg-[#FDFCF8]
-          px-4
-          py-8
-
-          sm:px-6
-          sm:py-16
-
-          lg:px-6
-          lg:pt-12
-          lg:pb-16
-        "
+        className="bg-[#FDFCF8] site-gutter section-space"
       >
         <div className="mx-auto max-w-7xl">
           {/* Heading */}
@@ -1671,7 +1649,7 @@ export default function AboutDholeraSirPage() {
       {/* =========================================
           FINAL CTA
       ========================================== */}
-      <section className="relative overflow-hidden bg-[#051A3A] px-4 py-[clamp(3.5rem,6vw,5rem)] sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-[#051A3A] site-gutter section-space">
         <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#F6C343]/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-4xl text-center">

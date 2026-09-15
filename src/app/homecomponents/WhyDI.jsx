@@ -34,17 +34,7 @@ const features = [
 export default function WhyDI() {
   return (
     <section
-      className="
-      bg-[#FDFCFA]
-
-      px-4
-      py-8
-
-      sm:px-6
-      sm:py-[clamp(3.5rem,6vw,5rem)]
-
-      lg:px-8
-    "
+      className="bg-[#FDFCFA] site-gutter section-space"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-16">

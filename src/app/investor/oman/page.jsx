@@ -1,20 +1,9 @@
-import { Geist, Space_Grotesk } from "next/font/google";
 
 import socialImage from "@/app/assets/investor/dholera-insider-oman-banner.webp";
 import OmanInvestorPage from "./OmanInvestorPage";
 import { omanFaqs } from "./data";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-oman-display",
-});
 
-const body = Geist({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-oman-body",
-});
 
 export const metadata = {
   metadataBase: new URL("https://www.dholerainsider.com"),
@@ -75,8 +64,7 @@ const faqSchema = {
 export default function OmanPage() {
   return (
     <div
-      className={`${display.variable} ${body.variable} bg-[#F8F7F3] text-[#051A3A]`}
-      style={{ fontFamily: "var(--font-oman-body)" }}
+      className={`bg-[#F8F7F3] text-[#051A3A]`}
     >
       <script
         type="application/ld+json"

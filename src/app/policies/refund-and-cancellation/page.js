@@ -3,18 +3,18 @@ import React from "react";
 export default function Copyright() {
   return (
     <div className="w-full bg-gray-900">
-      <div className="max-w-7xl mx-auto min-h-screen pt-12">
+      <div className="max-w-7xl mx-auto min-h-screen site-gutter page-content">
         <div className="text-white">
           <div className="relative">
-            <div className="flex flex-col justify-center items-center mt-20">
-              <h1 className="text-4xl text-white font-bold text-center z-20 relative mt-16 drop-shadow-lg">
+            <div className="flex flex-col justify-center items-center ">
+              <h1 className="text-4xl text-white font-bold text-center z-20 relative drop-shadow-lg">
                 Refund & Cancellation Policy
               </h1>
               <div className="w-24 h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mt-4 rounded-full"></div>
             </div>
           </div>
 
-          <div className="mt-10 text-lg space-y-5 pb-8 max-sm:mr-4 max-sm:ml-4">
+          <div className="mt-10 text-lg space-y-5 pb-8">
             <p>
               At Dholera Insider, we are committed to ensuring transparency and
               clarity in all transactions. Customers who wish to cancel their

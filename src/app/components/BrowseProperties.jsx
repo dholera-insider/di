@@ -34,7 +34,7 @@ const BrowsePropertiesSection = () => {
 
   if (loading) {
     return (
-      <section className="py-12 md:py-24 px-6 md:px-36" style={{ minHeight: "60vh" }}>
+      <section className="site-gutter section-space" style={{ minHeight: "60vh" }}>
         <div className="container">
           <div className="flex justify-center items-center" style={{ minHeight: "40vh" }}>
             <div className="text-center">
@@ -52,7 +52,7 @@ const BrowsePropertiesSection = () => {
   const featuredProjects = projects.slice(0, 3);
 
   return (
-    <section className="py-12 md:py-24 px-6 md:px-36 bg-gray-50">
+    <section className="bg-gray-50 site-gutter section-space">
       <div className="container mx-auto">
         <div className="w-full px-2 mb-10 text-center">
           <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl mb-3 relative inline-block pb-2"
