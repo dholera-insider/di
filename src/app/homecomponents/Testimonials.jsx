@@ -11,50 +11,50 @@
   import Kunal from "@/app/assets/testimonials/kunal-testimonial-img.webp";
   import Rajesh from "@/app/assets/testimonials/rajesh-testimonial-img.webp";
 
-  const testimonials = [
-    {
-      quote:
-        "Buying property from abroad felt challenging at first, but Dholera Insider made the process simple and clear. Their team was transparent, responsive, and guided me at every step.",
-      name: "Rajesh Patel",
-      location: "USA",
-      avatar: Rajesh,
-    },
-    {
-      quote:
-        "I appreciated the clear communication and verified project details. Everything was explained honestly, which gave me more confidence in my Dholera investment.",
-      name: "Mehul Shah",
-      location: "Canada",
-      avatar: Mehul,
-    },
-    {
-      quote:
-        "The remote buying experience was smooth and professional. From documentation to booking, Dholera Insider handled everything with proper follow-up.",
-      name: "Priya Desai",
-      location: "Australia",
-      avatar: Priya,
-    },
-    {
-      quote:
-        "As an NRI, trust was my biggest concern. Dholera Insider answered my questions patiently and helped me understand the right residential plot option.",
-      name: "Amit Mehta",
-      location: "UAE",
-      avatar: amit,
-    },
-    {
-      quote:
-        "Their guidance and transparent approach made investing in Dholera easier than I expected. I would recommend them to NRIs who want clear information before investing.",
-      name: "Neha Joshi",
-      location: "United Kingdom",
-      avatar: Neha,
-    },
-    {
-      quote:
-        "The team was knowledgeable, supportive, and always available whenever I needed help. The complete experience, from enquiry to booking, felt seamless.",
-      name: "Kunal Bhatt",
-      location: "Singapore",
-      avatar: Kunal,
-    },
-  ];
+const testimonials = [
+  {
+    quote:
+      "I was worried about buying property from outside India. Dholera Insider explained everything clearly and made the remote process much easier for me.",
+    name: "Rajesh Patel",
+    location: "USA",
+    avatar: Rajesh,
+  },
+  {
+    quote:
+      "What I liked most was the clear communication. They explained the project, documents and process without making things complicated.",
+    name: "Mehul Shah",
+    location: "Canada",
+    avatar: Mehul,
+  },
+  {
+    quote:
+      "Being an NRI, I wanted someone who could keep me updated from India. The team was responsive and kept the process simple.",
+    name: "Priya Desai",
+    location: "Australia",
+    avatar: Priya,
+  },
+  {
+    quote:
+      "Before investing, I had many questions about the documents. The team explained each step and shared the details I needed to check.",
+    name: "Amit Mehta",
+    location: "UAE",
+    avatar: amit,
+  },
+  {
+    quote:
+      "I could explore the project and discuss everything online without travelling to India. The process was smooth and convenient.",
+    name: "Neha Joshi",
+    location: "United Kingdom",
+    avatar: Neha,
+  },
+  {
+    quote:
+      "This was my first property investment in Dholera, so I had many doubts. The team answered my questions patiently and gave me clear information.",
+    name: "Kunal Bhatt",
+    location: "Singapore",
+    avatar: Kunal,
+  },
+];
 
   const TESTIMONIAL_COUNT = testimonials.length;
   const loopedTestimonials = [...testimonials, ...testimonials, ...testimonials];
