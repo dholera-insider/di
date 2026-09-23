@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={manrope.variable}>
       <head>
-
+        <link rel="icon" href="/favicon.ico" />
         <meta name="msvalidate.01" content="4EEB445EE58BDF9E15EFDE4DB906372D" />
         {/* Clarity */}
         <Script type="text/javascript" strategy="lazyOnload">
