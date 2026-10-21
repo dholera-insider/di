@@ -55,7 +55,7 @@ export default function BlogCard({ post }) {
                 </div>
               </div>
               <span className="text-[#F6C343] font-medium">
-                Read More &rarr;
+                Read More <span aria-hidden="true">&rarr;</span>
               </span>
             </div>
           </div>

@@ -20,6 +20,10 @@ export const metadata = {
     "Invest in Dholera from Oman",
     "Dholera Plot Investment for NRIs",
   ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://www.dholerainsider.com/investor/oman",
   },

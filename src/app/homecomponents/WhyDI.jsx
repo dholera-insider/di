@@ -39,9 +39,9 @@ export default function WhyDI() {
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-2 lg:sticky lg:top-24 lg:self-start">
-            <h2 className="mb-3 text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
-              Why Choose Dholera Insider?
-            </h2>
+              <h2 className="mb-3 text-center sm:text-left text-[clamp(1.75rem,3vw,2.5rem)] font-bold leading-tight text-[#051A3A]">
+                Why Choose Dholera Insider?
+              </h2>
             {/* <div className="mt-3 mb-4 h-[3px] w-14 rounded-full bg-[#F6C343]" /> */}
                <div
                   className="

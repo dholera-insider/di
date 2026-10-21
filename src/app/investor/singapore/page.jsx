@@ -8,7 +8,22 @@ export const metadata = {
     "Dholera Investment from Singapore | Verified Residential Plots for NRIs",
   description:
     "Explore verified residential plots in Dholera from Singapore. Compare projects, verify documents, and invest with complete transparency through Dholera Insider.",
-  alternates: {
+  
+  keywords: [
+    "Dholera Investment from Singapore",
+    "Dholera Plots for NRI in Singapore",
+    "Buy Dholera Plot from Singapore",
+    "Dholera Smart City Investment Singapore",
+    "Dholera Residential Plots for Singapore NRIs",
+    "Dholera Property Investment from Singapore",
+    "Invest in Dholera from Singapore",
+    "Dholera Plot Investment for NRIs",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+    alternates: {
     canonical: "https://www.dholerainsider.com/investor/singapore",
   },
   openGraph: {

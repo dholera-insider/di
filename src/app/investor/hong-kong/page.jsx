@@ -21,6 +21,10 @@ export const metadata = {
      "Invest in Dholera from Hong Kong",
      "Dholera Plot Investment for NRIs"
   ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "https://www.dholerainsider.com/investor/hong-kong",
   },
