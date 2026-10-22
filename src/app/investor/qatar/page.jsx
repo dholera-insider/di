@@ -1,53 +1,26 @@
 import QatarInvestorPage from "./QatarInvestorPage";
 import { qatarFaqs } from "./data";
 import socialImage from "@/app/assets/investor/dholera-insider-qatar-banner.webp";
+import { createInvestorMetadata } from "../seo";
 
-export const metadata = {
-  metadataBase: new URL("https://www.dholerainsider.com"),
-  title: "Dholera Investment from Qatar | Plots for Qatar NRIs",
-  description:
-    "Planning property investment from Qatar? Explore residential plots in Dholera Smart City with dedicated NRI guidance from Dholera Insider.",
+const PAGE_TITLE = "Dholera Investment for Qatar NRIs | Dholera Insider";
+const PAGE_DESCRIPTION =
+  "Explore Dholera residential plots for Qatar-based NRIs. Learn about property verification, documents, payments, and remote buying support from Qatar.";
+
+export const metadata = createInvestorMetadata({
+  path: "/investor/qatar",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  image: socialImage.src,
+  imageAlt: "Dholera investment guidance for Qatar-based NRIs",
   keywords: [
-    "Dholera Investment from Qatar",
-    "Dholera Plots for NRI in Qatar",
-    "Buy Dholera Plot from Qatar",
-    "Dholera Smart City Investment Qatar",
-    "Dholera Residential Plots for Qatar NRIs",
-    "Dholera Property Investment from Qatar",
-    "Invest in Dholera from Qatar",
-    "Dholera Plot Investment for NRIs",
+    "Dholera investment Qatar",
+    "Dholera plots for Qatar NRIs",
+    "buy property in India from Qatar",
+    "buy property in India from Doha",
+    "NRI property investment Qatar India",
   ],
-   robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://www.dholerainsider.com/investor/qatar",
-  },
-  openGraph: {
-    title: "Dholera Investment from Qatar | Plots for Qatar NRIs",
-    description:
-      "Explore residential plots in Dholera Smart City from Qatar with clear information and dedicated NRI guidance.",
-    url: "https://www.dholerainsider.com/investor/qatar",
-    siteName: "Dholera Insider",
-    type: "website",
-    images: [
-      {
-        url: socialImage.src,
-        width: 800,
-        height: 600,
-        alt: "Dholera investment guidance for Qatar NRIs",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dholera Investment from Qatar | Plots for Qatar NRIs",
-    description:
-      "Explore residential plots in Dholera Smart City from Qatar with clear information and dedicated NRI guidance.",
-    images: [socialImage.src],
-  },
-};
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -55,10 +28,7 @@ const faqSchema = {
   mainEntity: qatarFaqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
 };
 
@@ -67,9 +37,7 @@ export default function QatarPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
       />
       <QatarInvestorPage />
     </>

@@ -1,53 +1,26 @@
 import KuwaitInvestorPage from "./KuwaitInvestorPage";
 import { kuwaitFaqs } from "./data";
 import socialImage from "@/app/assets/investor/dholera-insider-kuwait-banner.webp";
+import { createInvestorMetadata } from "../seo";
 
-export const metadata = {
-  metadataBase: new URL("https://www.dholerainsider.com"),
-  title: "Dholera Investment from Kuwait | Residential Plots for NRIs",
-  description:
-    "Dholera investment from Kuwait with verified residential plots, transparent project details and dedicated NRI support from Dholera Insider.",
+const PAGE_TITLE = "Dholera Investment for Kuwait NRIs | Dholera Insider";
+const PAGE_DESCRIPTION =
+  "Explore Dholera residential plots for Kuwait-based NRIs. Review property documents, payment guidance, project details, and remote buying support from Kuwait.";
+
+export const metadata = createInvestorMetadata({
+  path: "/investor/kuwait",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  image: socialImage.src,
+  imageAlt: "Dholera investment guidance for Kuwait-based NRIs",
   keywords: [
-    "Dholera Investment from Kuwait",
-    "Dholera Plots for NRI in Kuwait",
-    "Buy Dholera Plot from Kuwait",
-    "Dholera Smart City Investment Kuwait",
-    "Dholera Residential Plots for Kuwait NRIs",
-    "Dholera Property Investment from Kuwait",
-    "Invest in Dholera from Kuwait",
-    "Dholera plot investment for NRIs",
+    "Dholera investment Kuwait",
+    "Dholera plots for Kuwait NRIs",
+    "buy property in India from Kuwait",
+    "buy Dholera plot from Kuwait",
+    "NRI property investment Kuwait India",
   ],
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://www.dholerainsider.com/investor/kuwait",
-  },
-  openGraph: {
-    title: "Dholera Investment from Kuwait | Residential Plots for NRIs",
-    description:
-      "Explore verified residential plots in Dholera from Kuwait with transparent project details and dedicated NRI support.",
-    url: "https://www.dholerainsider.com/investor/kuwait",
-    siteName: "Dholera Insider",
-    type: "website",
-    images: [
-      {
-        url: socialImage.src,
-        width: 800,
-        height: 600,
-        alt: "Dholera investment guidance for NRIs living in Kuwait",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dholera Investment from Kuwait | Residential Plots for NRIs",
-    description:
-      "Explore verified residential plots in Dholera from Kuwait with transparent project details and dedicated NRI support.",
-    images: [socialImage.src],
-  },
-};
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -55,10 +28,7 @@ const faqSchema = {
   mainEntity: kuwaitFaqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
 };
 
@@ -67,9 +37,7 @@ export default function KuwaitPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
       />
       <KuwaitInvestorPage />
     </>

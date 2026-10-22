@@ -1,59 +1,26 @@
 import DubaiNriClient from "./DubaiNriClient";
-import heroImage from "@/app/assets/investor/dholera-insider-dubai-banner.webp";
+import socialImage from "@/app/assets/investor/dholera-insider-dubai-banner.webp";
+import { createInvestorMetadata } from "../seo";
 
-const SITE_URL = "https://www.dholerainsider.com";
-
-const PAGE_TITLE =
-  "Dholera Investment from Dubai | Verified Plots for UAE NRIs";
-
+const PAGE_TITLE = "Dholera Investment for Dubai & UAE NRIs | Dholera Insider";
 const PAGE_DESCRIPTION =
-  "Explore verified residential plots in Dholera Smart City from Dubai. Get transparent pricing, legal guidance, and dedicated support for UAE NRI investors.";
+  "Explore Dholera residential plots for Dubai and UAE-based NRIs. Review documents, payment guidance, property verification, and remote buying support.";
 
-const SOCIAL_IMAGE_URL = new URL(heroImage.src, SITE_URL).href;
-
-export const metadata = {
-  metadataBase: new URL(SITE_URL),
+export const metadata = createInvestorMetadata({
+  path: "/investor/dubai",
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
+  image: socialImage.src,
+  imageAlt: "Dholera investment guidance for Dubai and UAE-based NRIs",
   keywords: [
-    "Dholera Investment from Dubai",
-    "Dholera Plots for NRIs in Dubai",
-    "Buy Dholera Plot from Dubai",
-    "Dholera Smart City Investment Dubai",
-    "Dholera Residential Plots for UAE NRIs",
-    "Dholera Property Investment from Dubai",
-    "Invest in Dholera from UAE",
-    "Dholera Plot Investment for NRIs",
+    "Dholera investment Dubai",
+    "Dholera investment UAE",
+    "Dholera plots for UAE NRIs",
+    "buy property in India from Dubai",
+    "buy Dholera plot from UAE",
+    "NRI property investment UAE India",
   ],
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: `${SITE_URL}/investor/dubai`,
-  },
-  openGraph: {
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
-    url: `${SITE_URL}/investor/dubai`,
-    siteName: "Dholera Insider",
-    type: "website",
-    images: [
-      {
-        url: SOCIAL_IMAGE_URL,
-        width: heroImage.width,
-        height: heroImage.height,
-        alt: "Dholera investment guidance for NRIs in Dubai and the UAE",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
-    images: [SOCIAL_IMAGE_URL],
-  },
-};
+});
 
 export default function DubaiNriPage() {
   return <DubaiNriClient />;

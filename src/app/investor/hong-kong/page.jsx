@@ -1,57 +1,26 @@
-
 import socialImage from "@/app/assets/investor/dholera-insider-hong-kong-banner.webp";
-
-
 import HongKongInvestorPage from "./HongKongInvestorPage";
 import { hongKongFaqs } from "./data";
+import { createInvestorMetadata } from "../seo";
 
+const PAGE_TITLE = "Dholera Investment for Hong Kong NRIs | Dholera Insider";
+const PAGE_DESCRIPTION =
+  "Explore Dholera residential plots for Hong Kong-based NRIs. Review property documents, project details, payment guidance, and remote buying support.";
 
-
-export const metadata = {
-  metadataBase: new URL("https://www.dholerainsider.com"),
-  title: "Dholera Investment from Hong Kong | Plots for Hong Kong NRIs",
-  description:
-    "Explore Dholera investment from Hong Kong with residential plots, clear project information and dedicated NRI support from Dholera Insider.",
+export const metadata = createInvestorMetadata({
+  path: "/investor/hong-kong",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  image: socialImage.src,
+  imageAlt: "Dholera investment guidance for Hong Kong-based NRIs",
   keywords: [
-     "Dholera Plots for NRI in Hong Kong",
-     "Buy Dholera Plot from Hong Kong",
-     "Dholera Smart City Investment Hong Kong",
-     "Dholera Residential Plots for Hong Kong NRIs",
-     "Dholera Property Investment from Hong Kong",
-     "Invest in Dholera from Hong Kong",
-     "Dholera Plot Investment for NRIs"
+    "Dholera investment Hong Kong",
+    "Dholera plots for Hong Kong NRIs",
+    "buy property in India from Hong Kong",
+    "NRI property investment Hong Kong India",
+    "buy Dholera plot from Hong Kong",
   ],
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://www.dholerainsider.com/investor/hong-kong",
-  },
-  openGraph: {
-    title: "Dholera Investment from Hong Kong | Plots for Hong Kong NRIs",
-    description:
-      "Explore Dholera investment from Hong Kong with residential plots, clear project information and dedicated NRI support from Dholera Insider.",
-    url: "https://www.dholerainsider.com/investor/hong-kong",
-    siteName: "Dholera Insider",
-    type: "website",
-    images: [
-      {
-        url: socialImage.src,
-        width: 1500,
-        height: 500,
-        alt: "Dholera Smart City investment from Hong Kong",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dholera Investment from Hong Kong | Plots for Hong Kong NRIs",
-    description:
-      "Explore Dholera investment from Hong Kong with residential plots, clear project information and dedicated NRI support from Dholera Insider.",
-    images: [socialImage.src],
-  },
-};
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -59,23 +28,16 @@ const faqSchema = {
   mainEntity: hongKongFaqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
 };
 
 export default function HongKongPage() {
   return (
-    <div
-      className={`bg-[#F8F7F3] text-[#051A3A]`}
-    >
+    <div className="bg-[#F8F7F3] text-[#051A3A]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
       />
       <HongKongInvestorPage />
     </div>

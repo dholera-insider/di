@@ -213,7 +213,7 @@ export default function KuwaitInvestorPage() {
               >
                 <Image
                   src={heroImage}
-                  alt="Dholera investment opportunity for Dubai NRIs"
+                  alt="Dholera investment opportunity for Kuwait NRIs"
                   fill
                   priority
                   className="object-cover"
@@ -243,8 +243,8 @@ export default function KuwaitInvestorPage() {
               "
             >
             <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
-              Dholera Investment from{" "}
-              <span className="text-[#F6C343]">Kuwait</span>
+              Dholera Investment for{" "}
+              <span className="text-[#F6C343]">Kuwait NRIs</span>
             </h1>
 
             <p className="mt-5 text-xl font-semibold text-[#F6C343] sm:text-2xl">

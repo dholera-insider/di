@@ -1,56 +1,26 @@
-
 import socialImage from "@/app/assets/investor/dholera-insider-oman-banner.webp";
 import OmanInvestorPage from "./OmanInvestorPage";
 import { omanFaqs } from "./data";
+import { createInvestorMetadata } from "../seo";
 
+const PAGE_TITLE = "Dholera Investment for Oman NRIs | Dholera Insider";
+const PAGE_DESCRIPTION =
+  "Explore Dholera residential plots for Oman-based NRIs. Learn about documents, property verification, payment guidance, and remote buying support from Oman.";
 
-
-export const metadata = {
-  metadataBase: new URL("https://www.dholerainsider.com"),
-  title: "Dholera Investment from Oman | Dholera Plots for NRIs",
-  description:
-    "Explore Dholera investment from Oman with verified residential plots, clear project details, documentation guidance and dedicated NRI support.",
+export const metadata = createInvestorMetadata({
+  path: "/investor/oman",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  image: socialImage.src,
+  imageAlt: "Dholera investment guidance for Oman-based NRIs",
   keywords: [
-    "Dholera Investment from Oman",
-    "Dholera Plots for NRI in Oman",
-    "Buy Dholera Plot from Oman",
-    "Dholera Smart City Investment Oman",
-    "Dholera Residential Plots for Oman NRIs",
-    "Dholera Property Investment from Oman",
-    "Invest in Dholera from Oman",
-    "Dholera Plot Investment for NRIs",
+    "Dholera investment Oman",
+    "Dholera plots for Oman NRIs",
+    "buy property in India from Oman",
+    "buy Dholera plot from Oman",
+    "Dholera property Muscat",
   ],
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://www.dholerainsider.com/investor/oman",
-  },
-  openGraph: {
-    title: "Dholera Investment from Oman | Dholera Plots for NRIs",
-    description:
-      "Explore verified Dholera residential plots from Oman with clear project details and dedicated NRI support.",
-    url: "https://www.dholerainsider.com/investor/oman",
-    siteName: "Dholera Insider",
-    type: "website",
-    images: [
-      {
-        url: socialImage.src,
-        width: 800,
-        height: 600,
-        alt: "Dholera investment guidance for NRIs living in Oman",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dholera Investment from Oman | Dholera Plots for NRIs",
-    description:
-      "Explore verified Dholera residential plots from Oman with clear project details and dedicated NRI support.",
-    images: [socialImage.src],
-  },
-};
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -58,23 +28,16 @@ const faqSchema = {
   mainEntity: omanFaqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
 };
 
 export default function OmanPage() {
   return (
-    <div
-      className={`bg-[#F8F7F3] text-[#051A3A]`}
-    >
+    <div className="bg-[#F8F7F3] text-[#051A3A]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
       />
       <OmanInvestorPage />
     </div>

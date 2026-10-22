@@ -1,52 +1,25 @@
 import SaudiArabiaInvestorPage from "./SaudiArabiaInvestorPage";
 import socialImage from "@/app/assets/investor/dholera-insider-saudi-arabia-banner.webp";
+import { createInvestorMetadata } from "../seo";
 
-export const metadata = {
-  metadataBase: new URL("https://www.dholerainsider.com"),
-  title: "Dholera Investment from Saudi Arabia",
-  description:
-    "Explore verified residential plots in Dholera from Saudi Arabia. Invest with transparent pricing, verified documents, and dedicated NRI support through Dholera Insider.",
+const PAGE_TITLE = "Dholera Investment for Saudi Arabia NRIs | Dholera Insider";
+const PAGE_DESCRIPTION =
+  "Explore Dholera residential plots for Saudi Arabia-based NRIs. Review documents, property verification, payment guidance, and remote buying support.";
+
+export const metadata = createInvestorMetadata({
+  path: "/investor/saudi-arabia",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  image: socialImage.src,
+  imageAlt: "Dholera investment guidance for Saudi Arabia-based NRIs",
   keywords: [
-    "Dholera Investment from Saudi Arabia",
-    "Dholera Plots for NRIs in Saudi Arabia",
-    "Buy Dholera Plot from Saudi Arabia",
-    "Dholera Smart City Investment Saudi Arabia",
-    "Dholera Residential Plots for Saudi Arabia NRIs",
-    "Dholera Property Investment from Saudi Arabia",
-    "Invest in Dholera from Saudi Arabia",
-    "Dholera Plot Investment for NRIs",
+    "Dholera investment Saudi Arabia",
+    "Dholera plots for Saudi NRIs",
+    "buy property in India from Saudi Arabia",
+    "Dholera investment Riyadh",
+    "Dholera investment Jeddah",
   ],
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://www.dholerainsider.com/investor/saudi-arabia",
-  },
-  openGraph: {
-    title: "Dholera Investment from Saudi Arabia",
-    description:
-      "Explore residential plots in Dholera Smart City from Saudi Arabia with transparent pricing and dedicated NRI guidance from Dholera Insider.",
-    url: "https://www.dholerainsider.com/investor/saudi-arabia",
-    siteName: "Dholera Insider",
-    type: "website",
-    images: [
-      {
-        url: socialImage.src,
-        width: 800,
-        height: 600,
-        alt: "Dholera investment guidance for NRIs in Saudi Arabia",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dholera Investment from Saudi Arabia",
-    description:
-      "Explore residential plots in Dholera Smart City from Saudi Arabia with transparent pricing and dedicated NRI guidance from Dholera Insider.",
-    images: [socialImage.src],
-  },
-};
+});
 
 export default function SaudiArabiaPage() {
   return <SaudiArabiaInvestorPage />;
