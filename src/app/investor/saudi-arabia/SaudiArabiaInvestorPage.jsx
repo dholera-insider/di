@@ -1,6 +1,3 @@
-"use client";
-
-import { useId, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -30,12 +27,9 @@ import CommonJourney from "../CommonJourney";
 import { SaudiArabiaFaq } from "./Faq";
 
 
-
 const PHONE_NUMBER = "+919211820887";
 const WHATSAPP_URL =
   "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.";
-
-
 
 
 const projects = [
@@ -97,7 +91,6 @@ const reasonsToChoose = [
   "100% Remote Buying Process",
   "Exclusive Channel Partner of BookMyAssets",
 ];
-
 
 
 const dholeraInsiderReasons = [
@@ -197,9 +190,6 @@ function SectionHeading({ label, title, centered = false, inverse = false }) {
 }
 
 export default function SaudiArabiaInvestorPage() {
-  const [openIndex, setOpenIndex] = useState(-1);
-  const faqHeadingId = useId();
-
   return (
     <main
       className={`min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]`}
@@ -256,8 +246,10 @@ export default function SaudiArabiaInvestorPage() {
                   alt="Dholera investment opportunity for Dubai NRIs"
                   fill
                   priority
+                  fetchPriority="high"
+                  quality={65}
                   className="object-cover"
-                  sizes="(max-width: 1023px) 100vw, 48vw"
+                  sizes="(max-width: 1023px) 100vw, (max-width: 1279px) calc(49vw - 70.56px), 557px"
                 />
 
                 {/* Image overlay */}

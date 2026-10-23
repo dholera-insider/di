@@ -1,6 +1,3 @@
-"use client";
-
-import { useState ,useId } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -25,17 +22,14 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 
 import heroImage from "@/app/assets/investor/dholera-insider-qatar-banner.webp";
-import BrochureDownload from "@/app/components/BrochureDownload";
 import { qatarFaqs } from "./data";
 import WhyQatar from "./WhyQatar";
 import CommonJourney from "../CommonJourney";
 
 
-
 const PHONE_NUMBER = "+919211820887";
 const WHATSAPP_URL =
   "https://wa.me/919211820887?text=Hello%2C%20I%20am%20in%20Qatar%20and%20interested%20in%20Dholera%20residential%20plots.%20Please%20share%20the%20details.";
-
 
 
 const dholeraReasons = [
@@ -89,27 +83,9 @@ function SectionHeading({ eyebrow, title, copy }) {
   );
 }
 
-function PrimaryButton({ children, onClick, className = "" }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F6C343] px-6 py-3.5 text-sm font-bold text-[#051A3A] shadow-[0_12px_30px_rgba(246,195,67,0.22)] transition hover:-translate-y-0.5 hover:bg-[#FFD365] focus:outline-none focus:ring-2 focus:ring-[#F6C343] focus:ring-offset-2 focus:ring-offset-[#051A3A] ${className}`}
-    >
-      {children}
-      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-    </button>
-  );
-}
 
 export default function QatarInvestorPage() {
-  const [formOpen, setFormOpen] = useState(false);
-  const [openFaq, setOpenFaq] = useState(-1);
-
-
-  const [openIndex, setOpenIndex] = useState(-1);
-
-  const headingId = useId();
+  const headingId = "qatar-faq-heading";
 
   return (
     <main
@@ -175,8 +151,10 @@ export default function QatarInvestorPage() {
                       alt="Dholera investment opportunity for Dubai NRIs"
                       fill
                       priority
+                      fetchPriority="high"
+                      quality={65}
                       className="object-cover"
-                      sizes="(max-width: 1023px) 100vw, 48vw"
+                      sizes="(max-width: 1023px) 100vw, (max-width: 1279px) calc(49vw - 70.56px), 557px"
                     />
     
                     {/* Image overlay */}
@@ -266,8 +244,6 @@ export default function QatarInvestorPage() {
 
       {/* Journey Section */}
       <CommonJourney />
-
-
 
 
       {/* <section
@@ -368,7 +344,6 @@ export default function QatarInvestorPage() {
           </div>
         </div>
       </section> */}
-
 
 
       <section
@@ -583,54 +558,41 @@ export default function QatarInvestorPage() {
               "
             />
               <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
-                {qatarFaqs.map((item, index) => {
-                  const isOpen = openIndex === index;
-                  const answerId = `oman-faq-answer-${index}`;
-                  const buttonId = `oman-faq-button-${index}`;
-      
-                  return (
-                    <article key={item.question}>
-                      <h3>
-                        <button
-                          id={buttonId}
-                          type="button"
-                          onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                          className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
-                          aria-expanded={isOpen}
-                          aria-controls={answerId}
-                        >
-                          <span className="flex items-start gap-3">
-                            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
-                              Q
-                            </span>
-                            <span>{item.question}</span>
+                {qatarFaqs.map((item, index) => (
+                  <details key={item.question} name="qatar-faq" className="group">
+                    <summary
+                      id={`qatar-faq-question-${index}`}
+                      className="flex min-h-16 w-full cursor-pointer list-none items-center py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg [&::-webkit-details-marker]:hidden"
+                    >
+                      <h3 className="flex w-full items-center justify-between gap-5">
+                        <span className="flex items-start gap-3">
+                          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
+                            Q
                           </span>
-                          <ChevronDown
-                            className={`h-5 w-5 shrink-0 transition-transform ${
-                              isOpen ? "rotate-180" : ""
-                            }`}
-                            aria-hidden="true"
-                          />
-                        </button>
+                          <span>{item.question}</span>
+                        </span>
+                        <ChevronDown
+                          className="h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
+                          aria-hidden="true"
+                        />
                       </h3>
-                      <div
-                        id={answerId}
-                        role="region"
-                        aria-labelledby={buttonId}
-                        hidden={!isOpen}
-                      >
-                        <div className="flex max-w-3xl items-start gap-3 pb-5">
-                          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
-                            A
-                          </span>
-                          <p className="text-sm leading-7 text-[#051A3A]/70 sm:text-base">
-                            {item.answer}
-                          </p>
-                        </div>
+                    </summary>
+                    <div
+                      id={`qatar-faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`qatar-faq-question-${index}`}
+                    >
+                      <div className="flex max-w-3xl items-start gap-3 pb-5">
+                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
+                          A
+                        </span>
+                        <p className="text-sm leading-7 text-[#051A3A]/70 sm:text-base">
+                          {item.answer}
+                        </p>
                       </div>
-                    </article>
-                  );
-                })}
+                    </div>
+                  </details>
+                ))}
               </div>
             </div>
       </section>
@@ -679,20 +641,6 @@ export default function QatarInvestorPage() {
         </Link>
       </div> */}
 
-      {formOpen && (
-        <BrochureDownload
-          title="Explore Dholera Plots from Qatar"
-          subtitle="Get clear residential project information, documentation guidance and dedicated NRI investment support."
-          buttonName="Request Project Details"
-          thankYouMessage="Your request was submitted successfully."
-          source="Qatar NRI Dholera Investment Page"
-          link="/pdf/Legal%20Verification%20Estates.pdf"
-          downloadFilename="Dholera Legal Documents Checklist.pdf"
-          downloadLabel="Dholera documents checklist"
-          redirectPath={null}
-          onClose={() => setFormOpen(false)}
-        />
-      )}
     </main>
   );
 }

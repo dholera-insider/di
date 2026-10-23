@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -23,7 +20,6 @@ import { FaWhatsapp } from "react-icons/fa";
 
 import WhyDholera from "./why";
 import { DubaiFaq } from "./Faq";
-import BrochureDownload from "@/app/components/BrochureDownload";
 import heroImage from "@/app/assets/investor/dholera-insider-dubai-banner.webp";
 
 const WHATSAPP_URL =
@@ -139,8 +135,6 @@ const dholeraInsiderReasons = [
 ];
 
 export default function DubaiNriClient() {
-  const [documentsOpen, setDocumentsOpen] = useState(false);
-
   return (
     <main className="min-h-screen overflow-x-clip bg-[#F8F7F3] text-[#051A3A]">
       {/* HERO */}
@@ -180,8 +174,10 @@ export default function DubaiNriClient() {
                   alt="Dholera investment opportunity for Dubai NRIs"
                   fill
                   priority
+                  fetchPriority="high"
+                  quality={65}
                   className="object-cover"
-                  sizes="(max-width: 1023px) 100vw, 48vw"
+                  sizes="(max-width: 1023px) 100vw, (max-width: 1279px) calc(49vw - 70.56px), 557px"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/35 via-transparent to-transparent lg:from-[#051A3A]/60" />
@@ -645,22 +641,6 @@ export default function DubaiNriClient() {
 
       {/* FAQ */}
       <DubaiFaq />
-
-      {/* BROCHURE MODAL */}
-      {documentsOpen && (
-        <BrochureDownload
-          title="Talk to a Dholera Expert"
-          subtitle="Dholera Insider helps Dubai NRIs explore verified residential plots in Dholera Smart City with transparent information, legal clarity, and a smooth remote buying process."
-          buttonName="Schedule a Video Call"
-          thankYouMessage="Your request was submitted successfully."
-          source="Dubai NRI   Dholera Document Pack"
-          link="/pdf/Legal%20Verification%20Estates.pdf"
-          downloadFilename="Dholera Legal Documents Checklist.pdf"
-          downloadLabel="Dholera documents checklist"
-          redirectPath={null}
-          onClose={() => setDocumentsOpen(false)}
-        />
-      )}
     </main>
   );
 }

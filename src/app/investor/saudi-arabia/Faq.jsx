@@ -1,6 +1,3 @@
-"use client";
-
-import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const saudiFaqs = [
@@ -32,8 +29,7 @@ const saudiFaqs = [
 ];
 
 export function SaudiArabiaFaq() {
-  const [openIndex, setOpenIndex] = useState(-1);
-  const headingId = useId();
+  const headingId = "saudi-arabia-faq-heading";
 
   return (
     <section
@@ -59,54 +55,41 @@ export function SaudiArabiaFaq() {
             "
         />
         <div className="mt-10 divide-y divide-[#051A3A]/15 border-y border-[#051A3A]/15">
-          {saudiFaqs .map((item, index) => {
-            const isOpen = openIndex === index;
-            const answerId = `oman-faq-answer-${index}`;
-            const buttonId = `oman-faq-button-${index}`;
-
-            return (
-              <article key={item.question}>
-                <h3>
-                  <button
-                    id={buttonId}
-                    type="button"
-                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className="flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg"
-                    aria-expanded={isOpen}
-                    aria-controls={answerId}
-                  >
-                    <span className="flex items-start gap-3">
-                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
-                        Q
-                      </span>
-                      <span>{item.question}</span>
+          {saudiFaqs.map((item, index) => (
+            <details key={item.question} name="saudi-arabia-faq" className="group">
+              <summary
+                id={`saudi-arabia-faq-question-${index}`}
+                className="flex min-h-16 w-full cursor-pointer list-none items-center py-5 text-left font-sans text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] sm:text-lg [&::-webkit-details-marker]:hidden"
+              >
+                <h3 className="flex w-full items-center justify-between gap-5">
+                  <span className="flex items-start gap-3">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#F6C343] text-xs font-bold text-[#051A3A]">
+                      Q
                     </span>
-                    <ChevronDown
-                      className={`h-5 w-5 shrink-0 transition-transform ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </button>
+                    <span>{item.question}</span>
+                  </span>
+                  <ChevronDown
+                    className="h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
+                    aria-hidden="true"
+                  />
                 </h3>
-                <div
-                  id={answerId}
-                  role="region"
-                  aria-labelledby={buttonId}
-                  hidden={!isOpen}
-                >
-                  <div className="flex max-w-3xl items-start gap-3 pb-5">
-                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
-                      A
-                    </span>
-                    <p className="text-sm leading-7 text-[#051A3A]/70 sm:text-base">
-                      {item.answer}
-                    </p>
-                  </div>
+              </summary>
+              <div
+                id={`saudi-arabia-faq-answer-${index}`}
+                role="region"
+                aria-labelledby={`saudi-arabia-faq-question-${index}`}
+              >
+                <div className="flex max-w-3xl items-start gap-3 pb-5">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#051A3A] text-xs font-bold text-[#F6C343]">
+                    A
+                  </span>
+                  <p className="text-sm leading-7 text-[#051A3A]/70 sm:text-base">
+                    {item.answer}
+                  </p>
                 </div>
-              </article>
-            );
-          })}
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </section>

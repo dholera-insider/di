@@ -54,7 +54,9 @@ function ProjectImage() {
           alt="Dholera Smart City investment from Hong Kong"
           fill
           priority
-          sizes="(max-width: 1024px) 92vw, 48vw"
+          fetchPriority="high"
+          quality={65}
+          sizes="(max-width: 799px) 100vw, (max-width: 1023px) 800px, (max-width: 1343px) calc(55vw - 70.4px), 669px"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/70 via-transparent to-transparent" />

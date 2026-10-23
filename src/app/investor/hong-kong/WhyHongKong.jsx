@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 
 import {
   Building2,
@@ -43,54 +40,8 @@ const benefits = [
   },
 ];
 export default function WhyHongKong() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) return;
-
-    const items = section.querySelectorAll("[data-reveal]");
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (prefersReducedMotion) {
-      items.forEach((item) => {
-        item.classList.remove("opacity-0", "translate-y-4");
-        item.classList.add("opacity-100", "translate-y-0");
-      });
-
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          entry.target.classList.remove("opacity-0", "translate-y-4");
-
-          entry.target.classList.add("opacity-100", "translate-y-0");
-
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: "0px 0px -30px 0px",
-      },
-    );
-
-    items.forEach((item) => observer.observe(item));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       aria-labelledby="why-dholera-heading"
       className="relative overflow-hidden bg-[#EEF2F9] site-gutter section-space"
     >
@@ -128,14 +79,8 @@ export default function WhyHongKong() {
       <div className="relative mx-auto w-full max-w-5xl">
         {/* Heading */}
         <div
-          data-reveal
           className="
             mb-8
-            translate-y-4
-            opacity-0
-            transition-all
-            duration-700
-            ease-out
             sm:mb-10
           "
         >
@@ -187,25 +132,16 @@ export default function WhyHongKong() {
             "
           />
 
-          {benefits.map((benefit, index) => {
+          {benefits.map((benefit) => {
             const Icon = benefit.icon;
 
             return (
               <li
                 key={benefit.title}
-                data-reveal
-                style={{
-                  transitionDelay: `${index * 70}ms`,
-                }}
                 className="
                   group
                   relative
                   z-10
-                  translate-y-4
-                  opacity-0
-                  transition-all
-                  duration-700
-                  ease-out
                 "
               >
                 <div
