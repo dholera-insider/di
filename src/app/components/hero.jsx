@@ -214,13 +214,41 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import heroPoster from "@/app/assets/hero/idHero.webp";
-import HeroLeadForm from "../homecomponents/HeroLeadForm";
+// Keep the desktop form out of the initial mobile bundle.
+const HeroLeadForm = dynamic(() => import("../homecomponents/HeroLeadForm"), {
+  ssr: false,
+  loading: HeroFormPlaceholder,
+});
+
+function HeroFormPlaceholder() {
+  return (
+    <div aria-busy="true" className="w-full rounded-2xl border border-[#F6C343] bg-[#051A3A] p-5 shadow-2xl shadow-[#051A3A]/25 sm:p-6">
+      <div className="mb-5 text-center">
+        <h2 className="text-xl font-bold leading-tight text-[#FDFCFA] md:text-2xl">
+          Start Your Dholera Investment
+        </h2>
+      </div>
+      <div className="space-y-4">
+        <div className="h-[50px] rounded-lg bg-[#FDFCFA]" />
+        <div className="h-[50px] rounded-lg bg-[#FDFCFA]" />
+        <div />
+        <div className="flex h-[60px] items-center justify-center rounded-lg bg-[#F6C343] text-lg font-bold text-[#051A3A]">
+          Loading...
+        </div>
+        <p className="text-center text-xs leading-5 text-[#FDFCFA]">
+          We respect your privacy. Your details are safe with us.
+        </p>
+      </div>
+    </div>
+  );
+}
 
 const trustPoints = [
   "Verified Residential Projects",
@@ -229,42 +257,38 @@ const trustPoints = [
 ];
 
 const Hero = () => {
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const videoRef = useRef(null);
+  const [posterReady, setPosterReady] = useState(false);
+  const [showDesktopForm, setShowDesktopForm] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
-    let timeoutId;
-    let idleId;
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const updateForm = () => setShowDesktopForm(desktop.matches && posterReady);
 
-    const loadVideo = () => setShouldLoadVideo(true);
+    updateForm();
+    desktop.addEventListener("change", updateForm);
+    return () => desktop.removeEventListener("change", updateForm);
+  }, [posterReady]);
 
-    const scheduleVideoLoad = () => {
-      if ("requestIdleCallback" in window) {
-        idleId = window.requestIdleCallback(loadVideo, {
-          timeout: 2500,
-        });
-      } else {
-        timeoutId = window.setTimeout(loadVideo, 2500);
-      }
-    };
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let cancelled = false;
 
-    if (document.readyState === "complete") {
-      scheduleVideoLoad();
-    } else {
-      window.addEventListener("load", scheduleVideoLoad, {
-        once: true,
-      });
-    }
+    // Set the media properties before requesting inline autoplay on mobile.
+    video.muted = true;
+    video.defaultMuted = true;
+    const playback = video.play();
+    playback?.then(() => {
+      if (!cancelled) setVideoReady(true);
+    }).catch(() => {
+      // The poster remains visible if the browser cannot start playback.
+    });
 
     return () => {
-      window.removeEventListener("load", scheduleVideoLoad);
-
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
-
-      if (idleId && "cancelIdleCallback" in window) {
-        window.cancelIdleCallback(idleId);
-      }
+      cancelled = true;
+      video.pause();
     };
   }, []);
 
@@ -300,6 +324,9 @@ const Hero = () => {
           fill
           priority
           fetchPriority="high"
+          quality={65}
+          onLoad={() => setPosterReady(true)}
+          onError={() => setPosterReady(true)}
           placeholder="blur"
           sizes="100vw"
           className="
@@ -313,25 +340,22 @@ const Hero = () => {
         />
 
         {/* Background Video */}
-        {shouldLoadVideo && (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="
-              absolute
-              inset-0
-              z-0
-              h-full
-              w-full
-              object-cover
-            "
-          >
-            <source src="/video/video2.mp4" type="video/mp4" />
-          </video>
-        )}
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onPlaying={() => setVideoReady(true)}
+          onError={() => setVideoReady(false)}
+          aria-hidden="true"
+          tabIndex={-1}
+          style={{ opacity: videoReady ? 1 : 0 }}
+          className="absolute inset-0 z-0 h-full w-full object-cover"
+        >
+          <source src="/video/video2.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Dark Overlay */}
@@ -503,7 +527,7 @@ const Hero = () => {
                 lg:block
               "
             >
-              <HeroLeadForm />
+              {showDesktopForm ? <HeroLeadForm /> : <HeroFormPlaceholder />}
             </div>
           </div>
         </div>

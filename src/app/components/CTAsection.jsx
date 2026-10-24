@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import bg from "@/app/assets/home/pexels2.jpg";
-import ContactForm from "@/app/components/Contactform";
+
+const ContactForm = dynamic(() => import("./Contactform"), {
+  ssr: false,
+});
 
 export default function CTAsection() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);

@@ -165,8 +165,8 @@ export default function SingaporeInvestorPage() {
           {/* Content - Below Image on Mobile, Left on Desktop */}
           <div className="order-2 lg:order-1">
             <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
-              Dholera Investment for{" "}
-              <span className="text-[#F6C343]">Singapore NRIs</span>
+              Dholera Investment from{" "}
+              <span className="text-[#F6C343]">Singapore</span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">

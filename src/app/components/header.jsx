@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import logo from "@/app/assets/icons/NewLogo.webp";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
-import { AnimatePresence, motion } from "framer-motion";
-import ContactForm from "@/app/components/Contactform";
+import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { MenuIcon } from "lucide-react";
 
+const ContactForm = dynamic(() => import("./Contactform"), {
+  ssr: false,
+});
 
 const Header = () => {
   const pathname = usePathname();
@@ -124,7 +127,7 @@ const Header = () => {
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY >= 50);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -156,10 +159,10 @@ const Header = () => {
   }, [mobileMenuOpen, isContactFormOpen]);
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       {/* Main Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -50 }}
+      <m.div
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-out
@@ -175,7 +178,7 @@ const Header = () => {
         <div className="w-full max-w-7xl mx-auto h-full flex justify-between items-center relative site-gutter">
           {/* Enhanced Logo */}
           <Link href="/" className="group">
-            <motion.div
+            <m.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
               className={`relative transition-all duration-300 ${
@@ -198,22 +201,22 @@ const Header = () => {
               />
 
 
-            </motion.div>
+            </m.div>
           </Link>
 
           {/* Enhanced Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
             {mainNavItems.map((item, index) => (
-              <motion.div
+              <m.div
                 key={item.name}
-                initial={{ opacity: 0, y: -20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index, duration: 0.5 }}
                 className="relative dropdown-container"
               >
                 {item.items ? (
                   <>
-                    <motion.button
+                    <m.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className={`dropdown-trigger group flex items-center px-5 py-3 font-semibold tracking-wide transition-all duration-300 relative ${
@@ -249,11 +252,11 @@ const Header = () => {
                             : "left-1/2 w-0 group-hover:left-0 group-hover:w-full"
                         }`}
                       ></div>
-                    </motion.button>
+                    </m.button>
 
                     <AnimatePresence>
                       {activeDropdown === item.key && (
-                        <motion.div
+                        <m.div
                           initial={{ opacity: 0, y: -10, scale: 0.95 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -265,7 +268,7 @@ const Header = () => {
                           <div className="absolute -top-2 left-8 w-4 h-4 bg-[#0b1d3a] border-l border-t border-[#faf8f3]/20 rotate-45"></div>
 
                           {item.items.map((subItem, subIndex) => (
-                            <motion.div
+                            <m.div
                               key={subItem.name}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -289,9 +292,9 @@ const Header = () => {
                                 <StatusBadge status={subItem.status} />
 
                               </Link>
-                            </motion.div>
+                            </m.div>
                           ))}
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
                   </>
@@ -321,7 +324,7 @@ const Header = () => {
                     ></div>
                   </Link>
                 )}
-              </motion.div>
+              </m.div>
             ))}
 
             {/* Enhanced Menu Dropdown */}
@@ -330,7 +333,7 @@ const Header = () => {
               onMouseEnter={() => setActiveDropdown("hamburgerMenu")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <motion.button
+              <m.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="dropdown-trigger group flex items-center px-5 py-3 text-[#faf8f3] font-semibold tracking-wide transition-all duration-300 relative"
@@ -341,11 +344,11 @@ const Header = () => {
                 </span>
 
                 <div className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              </motion.button>
+              </m.button>
 
               <AnimatePresence>
                 {activeDropdown === "hamburgerMenu" && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -358,7 +361,7 @@ const Header = () => {
                     {hamburgerMenuItems.map((item, index) => {
                       if (item.items) {
                         return (
-                          <motion.div
+                          <m.div
                             key={item.key}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -396,11 +399,11 @@ const Header = () => {
                                 );
                               })}
                             </div>
-                          </motion.div>
+                          </m.div>
                         );
                       }
                       return (
-                        <motion.div
+                        <m.div
                           key={item.name}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -417,24 +420,24 @@ const Header = () => {
                           >
                             {item.name}
                           </Link>
-                        </motion.div>
+                        </m.div>
                       );
                     })}
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
           </nav>
 
           {/* Enhanced Mobile Menu Button */}
-          <motion.button
+          <m.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="lg:hidden relative z-[101] p-3 rounded-xl backdrop-blur-sm bg-[#faf8f3]/10 border border-[#faf8f3]/20 text-[#faf8f3] hover:bg-[#faf8f3]/20 transition-all duration-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <motion.div
+            <m.div
               animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
@@ -443,15 +446,15 @@ const Header = () => {
               ) : (
                 <AiOutlineMenu className="text-2xl" />
               )}
-            </motion.div>
-          </motion.button>
+            </m.div>
+          </m.button>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Enhanced Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
@@ -488,7 +491,7 @@ const Header = () => {
 
               <div className="relative space-y-2">
                 {mainNavItems.map((item, index) => (
-                  <motion.div
+                  <m.div
                     key={item.name}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -517,7 +520,7 @@ const Header = () => {
                           }
                         >
                           <span>{item.name}</span>
-                          <motion.div
+                          <m.div
                             animate={{
                               rotate:
                                 mobileActiveDropdown === item.key ? 180 : 0,
@@ -525,12 +528,12 @@ const Header = () => {
                             transition={{ duration: 0.3 }}
                           >
                             <AiOutlineDown />
-                          </motion.div>
+                          </m.div>
                         </button>
 
                         <AnimatePresence>
                           {mobileActiveDropdown === item.key && (
-                            <motion.div
+                            <m.div
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
@@ -555,7 +558,7 @@ const Header = () => {
                                   </li>
                                 ))}
                               </ul>
-                            </motion.div>
+                            </m.div>
                           )}
                         </AnimatePresence>
                       </div>
@@ -572,20 +575,20 @@ const Header = () => {
                         {item.name}
                       </Link>
                     )}
-                  </motion.div>
+                  </m.div>
                 ))}
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, scaleX: 0 }}
                   animate={{ opacity: 1, scaleX: 1 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
                   className="h-px bg-[#faf8f3]/20 my-6"
-                ></motion.div>
+                ></m.div>
 
                 {hamburgerMenuItems.map((item, index) => {
                   if (item.items) {
                     return (
-                      <motion.div
+                      <m.div
                         key={item.key}
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -611,7 +614,7 @@ const Header = () => {
                           }
                         >
                           <span>{item.name}</span>
-                          <motion.div
+                          <m.div
                             animate={{
                               rotate:
                                 mobileActiveDropdown === item.key ? 180 : 0,
@@ -619,12 +622,12 @@ const Header = () => {
                             transition={{ duration: 0.3 }}
                           >
                             <AiOutlineDown />
-                          </motion.div>
+                          </m.div>
                         </button>
 
                         <AnimatePresence>
                           {mobileActiveDropdown === item.key && (
-                            <motion.div
+                            <m.div
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
@@ -665,14 +668,14 @@ const Header = () => {
                                   );
                                 })}
                               </ul>
-                            </motion.div>
+                            </m.div>
                           )}
                         </AnimatePresence>
-                      </motion.div>
+                      </m.div>
                     );
                   }
                   return (
-                    <motion.div
+                    <m.div
                       key={item.name}
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -689,29 +692,29 @@ const Header = () => {
                       >
                         {item.name}
                       </Link>
-                    </motion.div>
+                    </m.div>
                   );
                 })}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {/* Contact Form Modal */}
       <AnimatePresence>
         {isContactFormOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 flex items-center justify-center bg-[#0b1d3a]/70 backdrop-blur-sm z-[1000]"
           >
             <ContactForm onClose={closeContactForm} />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 };
 

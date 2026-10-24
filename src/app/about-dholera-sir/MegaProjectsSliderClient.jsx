@@ -508,7 +508,7 @@ export default function MegaProjectsSliderClient({ projects = [] }) {
          * what Sanity returned.
          */
 
-        console.log("Mega Projects Sanity Images:", validData);
+        // console.log("Mega Projects Sanity Images:", validData);
       } catch (error) {
         console.error("Mega Projects: Sanity image fetch failed", error);
 

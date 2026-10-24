@@ -220,13 +220,13 @@ export default function KuwaitInvestorPage() {
               "
             >
             <h1 className="font-sans text-[clamp(2rem,4.15vw,4rem)] font-bold leading-[1.02] tracking-[-0.055em]">
-              Dholera Investment for{" "}
-              <span className="text-[#F6C343]">Kuwait NRIs</span>
+              Dholera Investment from{" "}
+              <span className="text-[#F6C343]">Kuwait</span>
             </h1>
 
-            <p className="mt-5 text-xl font-semibold text-[#F6C343] sm:text-2xl">
-            Build your investment in India while living in Kuwait.
-          </p>
+            <p className="mt-5 text-xl font-semibold text-white/75 sm:text-lg">
+              Build your investment in India while living in Kuwait
+            </p>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               Dholera stands out because it is being developed as India&apos;s

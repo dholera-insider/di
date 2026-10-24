@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import ContactForm from "./Contactform";
+import dynamic from "next/dynamic";
+
+const ContactForm = dynamic(() => import("./Contactform"), {
+  ssr: false,
+});
 
 const eligiblePages = new Set([
   "/",
@@ -27,7 +31,11 @@ function PagePopup() {
 
   // Show once when scrolling reaches 40%.
   useEffect(() => {
-    const handleScroll = () => {
+    let frameId = null;
+
+    const checkScroll = () => {
+      frameId = null;
+
       if (hasScrollTriggered.current) {
         return;
       }
@@ -63,12 +71,21 @@ function PagePopup() {
       window.removeEventListener("scroll", handleScroll);
     };
 
+    const handleScroll = () => {
+      if (frameId === null) {
+        frameId = window.requestAnimationFrame(checkScroll);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
     };
   }, []);
 

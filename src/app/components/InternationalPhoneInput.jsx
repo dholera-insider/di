@@ -35,10 +35,14 @@ export default function InternationalPhoneInput({
   const hasUserInteracted = useRef(false);
 
   useEffect(() => {
+    if (value || hasUserInteracted.current) return undefined;
+    const controller = new AbortController();
+
     const detectCountry = async () => {
       try {
         const response = await fetch("/api/country", {
           cache: "no-store",
+          signal: controller.signal,
         });
 
         if (!response.ok) return;
@@ -53,11 +57,14 @@ export default function InternationalPhoneInput({
           setCountry(data.country);
         }
       } catch (error) {
-        console.error("Country detection failed:", error);
+        if (error.name !== "AbortError") {
+          console.error("Country detection failed:", error);
+        }
       }
     };
 
     detectCountry();
+    return () => controller.abort();
   }, [value]);
 
   return (

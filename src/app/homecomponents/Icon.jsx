@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import icon from "@/app/assets/svg/Bahrain.svg";
 import icon2 from "@/app/assets/svg/Dubai.svg";
@@ -12,41 +13,50 @@ import icon5 from "@/app/assets/svg/Qatar.svg";
 import icon6 from "@/app/assets/svg/Saudi Arabia.svg";
 import icon7 from "@/app/assets/svg/Singapore.svg";
 
+const SITE_URL = "https://www.dholerainsider.com";
+
 const countries = [
   {
     name: "UAE",
     flag: "https://flagcdn.com/ae.svg",
     icon: icon2,
+    href: "/investor/dubai",
   },
   {
     name: "Saudi Arabia",
     flag: "https://flagcdn.com/sa.svg",
     icon: icon6,
+    href: "/investor/saudi-arabia",
   },
   {
     name: "Bahrain",
     flag: "https://flagcdn.com/bh.svg",
     icon: icon,
+    href: "/investor/bahrain",
   },
   {
     name: "Kuwait",
     flag: "https://flagcdn.com/kw.svg",
     icon: icon3,
+    href: "/investor/kuwait",
   },
   {
     name: "Qatar",
     flag: "https://flagcdn.com/qa.svg",
     icon: icon5,
+    href: "/investor/qatar",
   },
   {
     name: "Oman",
     flag: "https://flagcdn.com/om.svg",
     icon: icon4,
+    href: "/investor/oman",
   },
   {
     name: "Singapore",
     flag: "https://flagcdn.com/sg.svg",
     icon: icon7,
+    href: "/investor/singapore",
   },
 ];
 
@@ -130,10 +140,7 @@ export default function NRISupport() {
     pageStops.push(i);
   }
 
-  if (
-    pageStops.length &&
-    pageStops[pageStops.length - 1] < maxIndex
-  ) {
+  if (pageStops.length && pageStops[pageStops.length - 1] < maxIndex) {
     pageStops.push(maxIndex);
   }
 
@@ -148,7 +155,6 @@ export default function NRISupport() {
             Invest in Dholera From Anywhere
           </h2>
 
-        
           <div className="mx-auto mb-4 h-1 w-14 rounded-full bg-[#F6C343]" />
 
           <p className="mx-auto max-w-2xl text-[clamp(0.9rem,1.2vw,1rem)] leading-relaxed text-[#2B364D]">
@@ -197,147 +203,154 @@ export default function NRISupport() {
               }}
             >
               {countries.map((country) => (
-          <div
-  key={country.name}
-  className="
-    group
-    flex
-    min-h-[245px]
-    flex-col
-    items-center
-    justify-start
-    overflow-hidden
-    rounded-2xl
-    border
-    border-[#173353]
-    bg-[#071E3D]
-    px-4
-    py-3
-    shadow-[0_5px_18px_rgba(5,26,58,0.08)]
-    transition-all
-    duration-300
-    hover:border-[#D8B95B]/60
-    hover:shadow-[0_10px_26px_rgba(5,26,58,0.14)]
-    sm:min-h-[250px]
-    sm:px-5
-    lg:min-h-[255px]
-  "
-  style={{
-    flex: `0 0 ${cardWidth}`,
-  }}
->
-  {/* ========================================
-      ICON AREA
-  ======================================== */}
-  <div
-    className="
-      flex
-      h-[175px]
-      w-full
-      shrink-0
-      items-center
-      justify-center
-      sm:h-[180px]
-      lg:h-[185px]
-    "
-  >
-    <div
-      className="
-        relative
-        h-[170px]
-        w-[170px]
-        sm:h-[180px]
-        sm:w-[180px]
-        lg:h-[185px]
-        lg:w-[185px]
-      "
-    >
-      <Image
-        src={country.icon}
-        alt={`${country.name} investment guide`}
-        fill
-        sizes="
-          (max-width: 640px) 170px,
-          (max-width: 1024px) 180px,
-          185px
-        "
-        className="
-          object-contain
-          brightness-0
-          invert
-          opacity-95
-          scale-[1.18]
-          transition-all
-          duration-300
-          group-hover:scale-[1.23]
-          group-hover:opacity-100
-          sm:scale-[1.15]
-          sm:group-hover:scale-[1.2]
-          lg:scale-[1.12]
-          lg:group-hover:scale-[1.16]
-        "
-      />
-    </div>
-  </div>
+                <Link
+                  key={country.name}
+                  href={country.href}
+                  title={`Dholera investment guide for ${country.name} NRI investors`}
+                  aria-label={`View Dholera investment opportunities for ${country.name} NRI investors`}
+                  className="
+                    group
+                    flex
+                    min-h-[245px]
+                    flex-col
+                    items-center
+                    justify-start
+                    overflow-hidden
+                    rounded-2xl
+                    border
+                    border-[#173353]
+                    bg-[#071E3D]
+                    px-4
+                    py-3
+                    shadow-[0_5px_18px_rgba(5,26,58,0.08)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-[#D8B95B]/60
+                    hover:shadow-[0_10px_26px_rgba(5,26,58,0.14)]
+                    focus-visible:outline-none
+                    focus-visible:ring-2
+                    focus-visible:ring-[#F6C343]
+                    focus-visible:ring-offset-2
+                    sm:min-h-[250px]
+                    sm:px-5
+                    lg:min-h-[255px]
+                  "
+                  style={{
+                    flex: `0 0 ${cardWidth}`,
+                  }}
+                >
+                  {/* Icon Area */}
+                  <div
+                    className="
+                      flex
+                      h-[175px]
+                      w-full
+                      shrink-0
+                      items-center
+                      justify-center
+                      sm:h-[180px]
+                      lg:h-[185px]
+                    "
+                  >
+                    <div
+                      className="
+                        relative
+                        h-[170px]
+                        w-[170px]
+                        sm:h-[180px]
+                        sm:w-[180px]
+                        lg:h-[185px]
+                        lg:w-[185px]
+                      "
+                    >
+                      <Image
+                        src={country.icon}
+                        alt={`${country.name} Dholera investment guide`}
+                        fill
+                        sizes="
+                          (max-width: 640px) 170px,
+                          (max-width: 1024px) 180px,
+                          185px
+                        "
+                        className="
+                          object-contain
+                          brightness-0
+                          invert
+                          opacity-95
+                          scale-[1.18]
+                          transition-all
+                          duration-300
+                          group-hover:scale-[1.23]
+                          group-hover:opacity-100
+                          sm:scale-[1.15]
+                          sm:group-hover:scale-[1.2]
+                          lg:scale-[1.12]
+                          lg:group-hover:scale-[1.16]
+                        "
+                      />
+                    </div>
+                  </div>
 
-  {/* Divider */}
-  <div className="my-1 h-px w-full bg-white/10" />
+                  {/* Divider */}
+                  <div className="my-1 h-px w-full bg-white/10" />
 
-  {/* ========================================
-      COUNTRY INFORMATION
-  ======================================== */}
-  <div
-    className="
-      mt-2
-      flex
-      min-h-[40px]
-      w-full
-      items-center
-      justify-center
-      gap-2.5
-      sm:gap-3
-    "
-  >
-    {/* Flag */}
-    <div
-      className="
-        h-[28px]
-        w-[44px]
-        shrink-0
-        overflow-hidden
-        rounded-md
-        border
-        border-white/10
-        bg-white
-        shadow-sm
-        sm:h-[30px]
-        sm:w-[46px]
-      "
-    >
-      <img
-        src={country.flag}
-        alt={`${country.name} flag`}
-        className="h-full w-full object-cover"
-      />
-    </div>
+                  {/* Country Information */}
+                  <div
+                    className="
+                      mt-2
+                      flex
+                      min-h-[40px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2.5
+                      sm:gap-3
+                    "
+                  >
+                    {/* Flag */}
+                    <div
+                      className="
+                        h-[28px]
+                        w-[44px]
+                        shrink-0
+                        overflow-hidden
+                        rounded-md
+                        border
+                        border-white/10
+                        bg-white
+                        shadow-sm
+                        sm:h-[30px]
+                        sm:w-[46px]
+                      "
+                    >
+                      <img
+                        src={country.flag}
+                        alt={`${country.name} flag`}
+                        loading="lazy"
+                        width="46"
+                        height="30"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
 
-    {/* Country Name */}
-    <p
-      className="
-        whitespace-nowrap
-        text-[13px]
-        font-semibold
-        leading-none
-        tracking-[0.01em]
-        text-[#F8FAFC]
-        sm:text-[14px]
-        lg:text-[15px]
-      "
-    >
-      {country.name}
-    </p>
-  </div>
-</div>
+                    {/* Country Name */}
+                    <p
+                      className="
+                        whitespace-nowrap
+                        text-[13px]
+                        font-semibold
+                        leading-none
+                        tracking-[0.01em]
+                        text-[#F8FAFC]
+                        sm:text-[14px]
+                        lg:text-[15px]
+                      "
+                    >
+                      {country.name}
+                    </p>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
