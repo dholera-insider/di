@@ -54,18 +54,6 @@ const getPostDateTime = (post) => {
   return Number.isNaN(date.getTime()) ? 0 : date.getTime();
 };
 
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-
-  const site = "dholera-insider";
-  const post = await getPostBySlug(slug, site);
-
-  return {
-    /*  title: post.title, */
-    /* description: post.metaDescription, */
-  };
-}
-
 const TrendingBlogItem = ({ post }) => {
   return (
     <Link href={`/dholera-sir-updates/${post.slug.current}`}>
@@ -78,7 +66,7 @@ const TrendingBlogItem = ({ post }) => {
               width={80}
               height={80}
               className="w-full h-full object-cover"
-              rel="preconnect"
+              sizes="80px"
             />
           </div>
         )}
@@ -149,7 +137,6 @@ const RelatedBlogCard = ({ blog }) => {
 
 export default async function BlogDetail({ params }) {
   const { slug } = await params;
-  const site = "dholera-insider";
 
   if (!slug) {
     return (
@@ -161,8 +148,8 @@ export default async function BlogDetail({ params }) {
 
   try {
     const [post, trendingBlogs] = await Promise.all([
-      getPostBySlug(slug, site),
-      getUpdates(),
+      getPostBySlug(slug),
+      getUpdates(5), // Keep four sidebar items after excluding this article.
     ]);
 
     if (!post) {
@@ -171,7 +158,7 @@ export default async function BlogDetail({ params }) {
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-2">Blog post not found</h1>
             <Link
-              href="/dholera-updates/latest-news"
+              href="/dholera-sir-updates"
               className="mt-4 inline-block text-[#d3b66b] hover:text-[#b69b5e]"
             >
               ← Back to News
@@ -186,18 +173,26 @@ export default async function BlogDetail({ params }) {
         image: ({ value }) => {
           if (!value?.asset) return null;
 
-          const imageUrl =
-            value.asset.url || urlFor(value).width(1200).height(800).url();
+          const imageUrl = urlFor(value)
+            .width(1200)
+            .fit("max")
+            .auto("format")
+            .quality(75)
+            .url();
+          const dimensions = value.asset.metadata?.dimensions;
 
           const imageNode = (
-            <img
+            <Image
               src={imageUrl}
               alt={value.alt || ""}
-              className="w-full h-auto aspect-[3/2] rounded-lg my-6"
-              width={1200}
-              height={800}
+              className="w-full h-auto rounded-lg my-6"
+              width={dimensions?.width || 1200}
+              height={dimensions?.height || 800}
               loading="lazy"
-              rel="preconnect"
+              sizes="(max-width: 1023px) 100vw, 800px"
+              quality={75}
+              placeholder={value.asset.metadata?.lqip ? "blur" : "empty"}
+              blurDataURL={value.asset.metadata?.lqip}
             />
           );
 
@@ -529,10 +524,10 @@ export default async function BlogDetail({ params }) {
         <div className="bg-white shadow-sm sticky top-0 z-30" />
 
         {/* Main content */}
-        <main className="max-w-7xl mx-auto py-8 site-gutter">
+        <main className="max-w-7xl mx-auto py-8 pt-24 site-gutter">
           <div className="flex flex-col lg:flex-row gap-10">
             {/* Article */}
-            <article className="lg:w-2/3 pt-16">
+            <article className="lg:w-2/3">
               {/* Header with breadcrumbs */}
               <div className="mb-4">
                 <nav className="flex" aria-label="Breadcrumb">
@@ -655,13 +650,21 @@ export default async function BlogDetail({ params }) {
               {post.mainImage && (
                 <div className="mb-10 overflow-hidden rounded-xl shadow-lg aspect-[3/2]">
                   <Image
-                    src={urlFor(post.mainImage).width(1200).height(800).url()}
+                    src={urlFor(post.mainImage)
+                      .width(1200)
+                      .height(800)
+                      .auto("format")
+                      .quality(75)
+                      .url()}
                     alt={post.title}
                     width={1200}
                     height={800}
                     className="w-full h-auto aspect-[3/2]"
                     priority
-                    rel="preconnect"
+                    sizes="(max-width: 1023px) 100vw, 800px"
+                    quality={75}
+                    placeholder={post.mainImage.asset?.metadata?.lqip ? "blur" : "empty"}
+                    blurDataURL={post.mainImage.asset?.metadata?.lqip}
                   />
                 </div>
               )}

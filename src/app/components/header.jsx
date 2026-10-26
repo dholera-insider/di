@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import logo from "@/app/assets/icons/NewLogo.webp";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
@@ -116,6 +116,18 @@ const Header = () => {
       mobileActiveDropdown === dropdownName ? null : dropdownName,
     );
   };
+
+  // Reset article routes before paint so navigation opens at the page header.
+  useLayoutEffect(() => {
+    const isArticlePage = ["/dholera-sir-blogs", "/dholera-sir-updates"].some(
+      (path) => pathname === path || pathname.startsWith(`${path}/`),
+    );
+
+    if (isArticlePage && !window.location.hash) {
+      // Skip the global smooth scrolling so the destination starts at the top.
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, [pathname]);
 
   // Close open navigation UI whenever the App Router changes pages.
   useEffect(() => {

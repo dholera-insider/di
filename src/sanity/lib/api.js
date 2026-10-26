@@ -1,7 +1,15 @@
 // lib/api.js
 import { client } from './client';
 
-
+// Let Next.js cache public content without adding a second Sanity CDN cache.
+const cachedContentClient = client.withConfig({
+  useCdn: false,
+  perspective: 'published',
+});
+const contentCache = {
+  cache: 'force-cache',
+  next: { revalidate: 60, tags: ['posts'] },
+};
 
 /* Blog Posts */
 export async function getPosts() {
@@ -24,6 +32,7 @@ export async function getblogs() {
       _type == "post" &&
       "Blog" in categories[]->title &&
       author->name == "Dholera Insider" &&
+      defined(slug.current) &&
       !("Sold Out" in categories[]->title)
     ]
     | order(publishedAt desc)
@@ -33,38 +42,43 @@ export async function getblogs() {
       slug,
       mainImage,
       publishedAt,
-      body,
-      author->{name, image},
+      _createdAt,
+      author->{name},
       categories[]->{title}
     }
   `;
 
-  return await client.fetch(query, {}, { cache: "no-store" });
+  return await cachedContentClient.fetch(query, {}, contentCache);
 }
 
 
-export async function getUpdates() {
+export async function getUpdates(limit) {
+  const range = Number.isInteger(limit) && limit > 0 ? '[0...$limit]' : '';
   const query = `
     *[
       _type == "post" &&
       "Updates" in categories[]->title &&
       author->name == "Dholera Insider" &&
+      defined(slug.current) &&
       !("Sold Out" in categories[]->title)
     ]
-    | order(publishedAt desc)
+    | order(publishedAt desc) ${range}
     {
       _id,
       title,
       slug,
       mainImage,
       publishedAt,
-      body,
-      author->{name, image},
+      _createdAt,
+      author->{name},
       categories[]->{title}
     }
   `;
 
-  return await client.fetch(query, {}, { cache: "no-store" });
+  return await cachedContentClient.fetch(query, range ? { limit } : {}, {
+    ...contentCache,
+    next: { revalidate: 60, tags: ['posts', 'updates'] },
+  });
 }
 
 export async function getEvents() {
@@ -75,28 +89,30 @@ export async function getEvents() {
 }
 
 /* Project Info */
-export async function projectInfo() {
+export async function projectInfo(limit) {
+  const range = Number.isInteger(limit) && limit > 0 ? '[0...$limit]' : '';
   const query = `
     *[
       _type == "post" &&
       "project-Info" in categories[]->title &&
       author->name == "Dholera Insider" &&
+      defined(slug.current) &&
       !("Sold Out" in categories[]->title)
     ]
-    | order(publishedAt desc)
+    | order(publishedAt desc) ${range}
     {
       _id,
       title,
       slug,
       mainImage,
       publishedAt,
-      body,
-      author->{name, image},
+      _createdAt,
+      author->{name},
       categories[]->{title}
     }
   `;
 
-  return await client.fetch(query, {}, { cache: "no-store" });
+  return await cachedContentClient.fetch(query, range ? { limit } : {}, contentCache);
 }
 
 
@@ -156,7 +172,7 @@ export async function getPostBySlug(slug) {
     body[]{ ..., _type=="image"=>{..., asset->{ _id, _ref, url, metadata{ dimensions, lqip } }, "url": url }, markDefs[]{..., _type=="link"=>{"href":@.href}} },
     author->{ name, image }, categories[]->{ title, _id }, readingTime
   }`;
-  return await client.fetch(query, { slug }, { cache: 'no-store' });
+  return await cachedContentClient.fetch(query, { slug }, contentCache);
 }
 
 export async function getProjectBySlug(slug) {

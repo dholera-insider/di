@@ -115,7 +115,6 @@ const RightSidebar = ({ trendingBlogs }) => {
 
 export default async function Post({ params }) {
   const { slug } = await params;
-  const site = "dholera-insider";
 
   if (!slug) {
     return (
@@ -127,9 +126,9 @@ export default async function Post({ params }) {
 
   try {
     const [post, trendingBlogs, relatedBlogs] = await Promise.all([
-      getPostBySlug(slug, site),
-      getUpdates(0), // Get 6 blogs for sidebar
-      projectInfo(slug, 3),
+      getPostBySlug(slug),
+      getUpdates(4),
+      projectInfo(3),
     ]);
 
     if (!post) {

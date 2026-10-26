@@ -1,64 +1,55 @@
-"use client";
+import Link from "next/link";
 
-import { useMemo, useState } from "react";
-import BlogCard from "./BlogCard";
+const buttonClassName =
+  "flex h-11 min-w-11 items-center justify-center rounded-lg border px-3 text-sm font-semibold";
+const activeClassName =
+  `${buttonClassName} border-gray-300 bg-white text-gray-800 transition-colors hover:border-[#051A3A] hover:bg-gray-100`;
+const disabledClassName =
+  `${buttonClassName} border-gray-200 bg-gray-100 text-gray-400`;
 
-const BLOGS_PER_PAGE = 10;
-
-export default function MobileBlogPagination({ posts }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const safePosts = Array.isArray(posts) ? posts : [];
-  const totalPages = Math.max(1, Math.ceil(safePosts.length / BLOGS_PER_PAGE));
-
-  const visiblePosts = useMemo(() => {
-    const startIndex = (currentPage - 1) * BLOGS_PER_PAGE;
-    return safePosts.slice(startIndex, startIndex + BLOGS_PER_PAGE);
-  }, [currentPage, safePosts]);
-
-  const goToPage = (pageNumber) => {
-    setCurrentPage(Math.min(Math.max(pageNumber, 1), totalPages));
-  };
-
-  if (safePosts.length === 0) {
-    return null;
-  }
+export default function MobileBlogPagination({ currentPage, totalPages }) {
+  if (totalPages <= 1) return null;
 
   return (
-    <div className="md:hidden">
-      <div className="grid grid-cols-1 gap-8">
-        {visiblePosts.map((post) => (
-          <BlogCard key={post._id} post={post} />
-        ))}
-      </div>
-
-      {totalPages > 1 && (
-        <nav
-          aria-label="Mobile blog pagination"
-          className="mt-[clamp(2rem,4vw,3rem)] flex flex-wrap items-center justify-center gap-2"
+    <nav
+      aria-label="Blog pagination"
+      className="mt-[clamp(2rem,4vw,3rem)] flex flex-wrap items-center justify-center gap-2"
+    >
+      {currentPage > 1 ? (
+        <Link
+          href={
+            currentPage === 2
+              ? "/dholera-sir-blogs"
+              : `/dholera-sir-blogs?page=${currentPage - 1}`
+          }
+          rel="prev"
+          className={activeClassName}
         >
-          <button
-            type="button"
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="flex h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-[0.875rem] font-semibold text-gray-800 transition-colors hover:border-[#051A3A] hover:bg-[#2B364D] hover:text-black disabled:pointer-events-none disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400"
-          >
-            Prev
-          </button>
-
-          <span className="flex h-[2.5rem] items-center justify-center px-3 text-[0.875rem] font-semibold text-gray-700">
-            {currentPage} / {totalPages}
-          </span>
-
-          <button
-            type="button"
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="flex h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-lg border border-gray-300 bg-white px-3 text-[0.875rem] font-semibold text-gray-800 transition-colors hover:border-[#051A3A] hover:bg-[#2B364D] hover:text-black disabled:pointer-events-none disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-400"
-          >
-            Next
-          </button>
-        </nav>
+          Prev
+        </Link>
+      ) : (
+        <span aria-disabled="true" className={disabledClassName}>
+          Prev
+        </span>
       )}
-    </div>
+
+      <span className="flex h-11 items-center justify-center px-3 text-sm font-semibold text-white">
+        Page {currentPage} of {totalPages}
+      </span>
+
+      {currentPage < totalPages ? (
+        <Link
+          href={`/dholera-sir-blogs?page=${currentPage + 1}`}
+          rel="next"
+          className={activeClassName}
+        >
+          Next
+        </Link>
+      ) : (
+        <span aria-disabled="true" className={disabledClassName}>
+          Next
+        </span>
+      )}
+    </nav>
   );
 }

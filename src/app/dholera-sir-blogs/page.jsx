@@ -1,71 +1,85 @@
-import { getblogs, getUpdates, projectInfo } from "@/sanity/lib/api";
-import React from "react";
+import { getblogs } from "@/sanity/lib/api";
+import { urlFor } from "@/sanity/lib/image";
+import { notFound } from "next/navigation";
 import BlogCard from "./BlogCard";
 import MobileBlogPagination from "./MobileBlogPagination";
 import Image from "next/image";
 import hero from "@/app/assets/dholera-sir-blogs-banner-dholera-insider.webp";
 
-export default async function page() {
-  let fetchError = null;
+export const revalidate = 60;
+const BLOGS_PER_PAGE = 12;
 
-  let trendingBlogs = [];
-  try {
-    const newsData = await getUpdates();
-    trendingBlogs = Array.isArray(newsData) ? newsData.slice(0, 3) : [];
-    console.log("News data fetched:", trendingBlogs.length);
-  } catch (error) {
-    console.error("Error fetching news:", error);
-    // Fallback to getUpdates if getnews fails
-    try {
-      const updatesData = await getUpdates();
-      trendingBlogs = Array.isArray(updatesData) ? updatesData.slice(0, 5) : [];
-      console.log("Fallback to updates data:", trendingBlogs.length);
-    } catch (fallbackError) {
-      console.error("Error fetching updates as fallback:", fallbackError);
-    }
-  }
+const pageMetadata = {
+  title: "Dholera Smart City Insights | Latest Updates and Investment Blogs",
+  description:
+    "Stay updated with the latest Dholera Smart City developments, market insights, and key growth trends. Ideal for investors and urban planning enthusiasts looking for future opportunities.",
+  keywords:
+    "Dholera blog, Dholera news, Dholera real estate, smart city updates, Dholera investment",
+  alternates: {
+    canonical: "https://www.dholerainsider.com/dholera-sir-blogs",
+  },
+};
 
+function getPageNumber(searchParams) {
+  const page = Number(searchParams?.page);
+  return Number.isSafeInteger(page) && page > 0 ? page : 1;
+}
+
+export async function generateMetadata({ searchParams }) {
+  const page = getPageNumber(await searchParams);
+  if (page === 1) return pageMetadata;
+
+  return {
+    ...pageMetadata,
+    title: `${pageMetadata.title} | Page ${page}`,
+    alternates: {
+      canonical: `${pageMetadata.alternates.canonical}?page=${page}`,
+    },
+  };
+}
+
+export default async function BlogPage({ searchParams }) {
+  const currentPage = getPageNumber(await searchParams);
+  let fetchError = false;
   let posts = [];
   try {
     const postsData = await getblogs();
-    // Check if postsData is an array
     posts = Array.isArray(postsData) ? postsData : [];
-    console.log("Posts data fetched:", posts.length);
   } catch (error) {
-    console.error("Error fetching project info:", error);
+    fetchError = true;
+    console.error("Error fetching blogs:", error);
   }
 
-  // Add error handling for post data
-  const safePosts = posts.map((post) => ({
-    ...post,
-    author: post.author || "Dholera Insider",
-    mainImage: post.mainImage || null,
-    slug: post.slug?.current
-      ? { current: post.slug.current }
-      : { current: "#" },
-  }));
+  const safePosts = posts.filter((post) => post?.slug?.current);
+  const totalPages = Math.max(1, Math.ceil(safePosts.length / BLOGS_PER_PAGE));
+  if (!fetchError && currentPage > totalPages) notFound();
+
+  // Render just this page's cards and keep image URL building on the server.
+  const startIndex = (currentPage - 1) * BLOGS_PER_PAGE;
+  const visiblePosts = safePosts
+    .slice(startIndex, startIndex + BLOGS_PER_PAGE)
+    .map((post) => ({
+      _id: post._id,
+      title: post.title || "Dholera Smart City Blog",
+      slug: post.slug,
+      publishedAt: post.publishedAt || post._createdAt,
+      imageUrl: post.mainImage?.asset
+        ? urlFor(post.mainImage)
+            .width(800)
+            .height(480)
+            .fit("crop")
+            .auto("format")
+            .quality(75)
+            .url()
+        : null,
+    }));
 
   return (
     <>
-      <title>
-        Dholera Smart City Insights | Latest Updates and Investment Blogs
-      </title>
-      <meta
-        name="description"
-        content="Stay updated with the latest Dholera Smart City developments, market insights, and key growth trends. Ideal for investors and urban planning enthusiasts looking for future opportunities."
-      />
-      <meta
-        name="keywords"
-        content="Dholera blog, Dholera news, Dholera real estate, smart city updates, Dholera investment"
-      />
-      <link
-        rel="canonical"
-        href="https://www.dholerainsider.com/dholera-sir-blogs"
-      />
       <div className="min-h-screen bg-[#051A3A] relative overflow-hidden">
         {/* Enhanced Hero Section - Responsive Height */}
         <div className="relative bg-white">
-          <div className="pt-16 md:pt-8">
+          <div className="pt-20">
             <div
               className="
                 relative
@@ -86,8 +100,9 @@ export default async function page() {
                 src={hero}
                 alt="Dholera SIR Development"
                 fill
-                quality={100}
+                quality={75}
                 priority
+                placeholder="blur"
                 sizes="100vw"
                 className="
                   object-cover
@@ -140,38 +155,17 @@ export default async function page() {
         {/* Blog Posts Section */}
         <div className="relative z-10">
           <div className="max-w-7xl mx-auto py-12 sm:py-16 site-gutter">
-            {safePosts.length > 0 ? (
+            {visiblePosts.length > 0 ? (
               <>
-                {/* All Posts Grid */}
-                <div>
-                  <div className="px-4 ">
-                    <div className="flex flex-col max-sm:flex-col-reverse lg:flex-row gap-8">
-                      {/* Blog Grid */}
-                      <div className=" max-w-7xl mx-auto">
-                        {safePosts.length > 0 ? (
-                          <>
-                            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                              {safePosts.map((post) => (
-                                <BlogCard key={post._id} post={post} />
-                              ))}
-                            </div>
-                            <MobileBlogPagination posts={safePosts} />
-                          </>
-                        ) : (
-                          <div className="bg-white p-8 rounded-xl shadow-md text-center">
-                            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                              No Blog Posts Available
-                            </h3>
-                            <p className="text-gray-600">
-                              Check back soon for information about Dholera SIR
-                              investment opportunities.
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {visiblePosts.map((post) => (
+                    <BlogCard key={post._id} post={post} />
+                  ))}
                 </div>
+                <MobileBlogPagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                />
               </>
             ) : (
               <div className="text-center py-12 sm:py-20">
@@ -183,7 +177,7 @@ export default async function page() {
                         Unable to Load Blogs
                       </h3>
                       <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-4">
-                        We're experiencing some technical difficulties loading
+                        We&apos;re experiencing some technical difficulties loading
                         the blog posts. Please try refreshing the page or
                         contact support if the issue persists.
                       </p>
@@ -195,7 +189,7 @@ export default async function page() {
                         Expert Content Coming Soon!
                       </h3>
                       <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-4">
-                        We're preparing comprehensive investment guides, market
+                        We&apos;re preparing comprehensive investment guides, market
                         analysis, and expert insights about Dholera SIR
                         opportunities. Stay tuned!
                       </p>

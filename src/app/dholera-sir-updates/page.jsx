@@ -1,71 +1,85 @@
-import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import heroD from "../assets/hero/latest-updates-dholera-insider.webp";
-import heroM from "../assets/hero/blogMhero.webp";
-import { getUpdates, projectInfo } from "@/sanity/lib/api";
+import { getUpdates } from "@/sanity/lib/api";
 import { urlFor } from "@/sanity/lib/image";
-import CommonForm from "../components/CommonForm";
-import LeadForm from "../about-dholera-sir/LeadForm";
-import TrendingBlogItem from "./TrendingBlog";
 import BlogCard from "./BlogCard";
 import MobileUpdatesPagination from "./MobileUpdatesPagination";
 
-export default async function Blogs() {
-  let fetchError = null;
-  let trendingBlogs = [];
+export const revalidate = 60;
+const UPDATES_PER_PAGE = 12;
 
-  try {
-    const newsData = await projectInfo();
-    trendingBlogs = Array.isArray(newsData) ? newsData.slice(0, 3) : [];
-    console.log("News data fetched:", trendingBlogs.length);
-  } catch (error) {
-    console.error("Error fetching news:", error);
-    fetchError = error;
-  }
+const pageMetadata = {
+  title: "Latest Dholera Smart City News 2026 | Updates on Projects & Growth",
+  description:
+    "Get the Latest investment updates on Dholera Smart City - infrastructure news, expressway progress, airport updates, and industrial developments that helps to investors and residents.",
+  keywords:
+    "Dholera updates, Dholera news, Dholera real estate, smart city updates, Dholera investment",
+  alternates: {
+    canonical: "https://www.dholerainsider.com/dholera-sir-updates",
+  },
+};
 
+function getPageNumber(searchParams) {
+  const page = Number(searchParams?.page);
+  return Number.isSafeInteger(page) && page > 0 ? page : 1;
+}
+
+export async function generateMetadata({ searchParams }) {
+  const page = getPageNumber(await searchParams);
+  if (page === 1) return pageMetadata;
+
+  return {
+    ...pageMetadata,
+    title: `${pageMetadata.title} | Page ${page}`,
+    alternates: {
+      canonical: `${pageMetadata.alternates.canonical}?page=${page}`,
+    },
+  };
+}
+
+export default async function UpdatesPage({ searchParams }) {
+  const currentPage = getPageNumber(await searchParams);
+  let fetchError = false;
   let blogs = [];
   try {
     const blogsData = await getUpdates();
     blogs = Array.isArray(blogsData) ? blogsData : [];
-    console.log("Blogs data fetched:", blogs.length);
   } catch (error) {
     console.error("Error fetching blogs:", error);
-    fetchError = error;
+    fetchError = true;
   }
 
-  // Add error handling for blog data
-  const safeBlogs = blogs.map((blog) => ({
-    ...blog,
-    author: blog.author || "Dholera Insider",
-    mainImage: blog.mainImage || null,
-    slug: blog.slug?.current
-      ? { current: blog.slug.current }
-      : { current: "#" },
-  }));
+  const safeBlogs = blogs.filter((blog) => blog?.slug?.current);
+  const totalPages = Math.max(1, Math.ceil(safeBlogs.length / UPDATES_PER_PAGE));
+  if (!fetchError && currentPage > totalPages) notFound();
+
+  // Only render this page's cards; keep CMS image URL building on the server.
+  const startIndex = (currentPage - 1) * UPDATES_PER_PAGE;
+  const visibleBlogs = safeBlogs
+    .slice(startIndex, startIndex + UPDATES_PER_PAGE)
+    .map((blog) => ({
+      _id: blog._id,
+      title: blog.title || "Dholera Latest Update",
+      slug: blog.slug,
+      publishedAt: blog.publishedAt || blog._createdAt,
+      imageUrl: blog.mainImage?.asset
+        ? urlFor(blog.mainImage)
+            .width(800)
+            .height(480)
+            .fit("crop")
+            .auto("format")
+            .quality(75)
+            .url()
+        : null,
+    }));
 
   return (
     <>
-      <title>
-        Latest Dholera Smart City News 2026 | Updates on Projects & Growth
-      </title>
-      <meta
-        name="description"
-        content="Get the Latest investment updates on Dholera Smart City - infrastructure news, expressway progress, airport updates, and industrial developments that helps to investors and residents."
-      />
-      <meta
-        name="keywords"
-        content="Dholera updates, Dholera news, Dholera real estate, smart city updates, Dholera investment"
-      />
-      <link
-        rel="canonical"
-        href="https://www.dholerainsider.com/dholera-sir-updates"
-      />
-
       <div className="min-h-screen bg-white relative overflow-hidden">
         {/* Enhanced Hero Section - Responsive Height */}
         <div className="relative bg-white">
-          <div className="pt-16 md:pt-20">
+          <div className="pt-20">
             <div
               className="
                 relative
@@ -85,8 +99,9 @@ export default async function Blogs() {
                 src={heroD}
                 alt="Dholera SIR Development"
                 fill
-                quality={100}
+                quality={75}
                 priority
+                placeholder="blur"
                 sizes="100vw"
                 className="
                   object-cover
@@ -140,34 +155,17 @@ export default async function Blogs() {
         {/* Blog Posts Section */}
         <div className="relative z-10">
           <div className="mx-auto max-w-7xl site-gutter section-space">
-            {safeBlogs.length > 0 ? (
+            {visibleBlogs.length > 0 ? (
               <>
-                {/* All Posts Grid */}
-                <div>
-                  <div>
-                    <div className="flex flex-col max-sm:flex-col-reverse lg:flex-row gap-8">
-                      {/* Trending Section - Left Sidebar */}
-
-                      {/* Blog Grid */}
-                      <div className="max-w-7xl mx-auto">
-                        {safeBlogs.length > 0 ? (
-                          <>
-                            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                              {safeBlogs.map((blog) => (
-                                <BlogCard key={blog._id} blog={blog} />
-                              ))}
-                            </div>
-                            <MobileUpdatesPagination blogs={safeBlogs} />
-                          </>
-                        ) : (
-                          <div className="bg-white p-8 rounded-xl shadow-md text-center">
-                            ...
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {visibleBlogs.map((blog) => (
+                    <BlogCard key={blog._id} blog={blog} />
+                  ))}
                 </div>
+                <MobileUpdatesPagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                />
               </>
             ) : (
               <div className="text-center py-12 sm:py-20">
@@ -181,7 +179,7 @@ export default async function Blogs() {
                         Unable to Load Updates
                       </h3>
                       <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-4">
-                        We're experiencing some technical difficulties loading
+                        We&apos;re experiencing some technical difficulties loading
                         the updates. Please try refreshing the page or contact
                         support if the issue persists.
                       </p>
@@ -195,7 +193,7 @@ export default async function Blogs() {
                         Latest Updates Coming Soon!
                       </h3>
                       <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 px-4">
-                        We're preparing the latest news and updates about
+                        We&apos;re preparing the latest news and updates about
                         Dholera SIR developments. Stay tuned!
                       </p>
                     </>
@@ -214,9 +212,6 @@ export default async function Blogs() {
           </div>
         </div>
       </div>
-
-      {/* Common Form at the bottom */}
-      {/* <CommonForm title="Start Your Dholera Investment" /> */}
     </>
   );
 }
