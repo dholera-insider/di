@@ -1,3 +1,6 @@
+"use client";
+
+import { useLayoutEffect } from "react";
 import Link from "next/link";
 
 const buttonClassName =
@@ -8,6 +11,14 @@ const disabledClassName =
   `${buttonClassName} border-gray-200 bg-gray-100 text-gray-400`;
 
 export default function MobileUpdatesPagination({ currentPage, totalPages }) {
+  useLayoutEffect(() => {
+    if (window.location.hash) return;
+
+    // Pagination changes the query, not the pathname watched by the header.
+    // Reset after the new page commits, including prefetched production visits.
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [currentPage]);
+
   if (totalPages <= 1) return null;
 
   return (
@@ -23,6 +34,7 @@ export default function MobileUpdatesPagination({ currentPage, totalPages }) {
               : `/dholera-sir-updates?page=${currentPage - 1}`
           }
           rel="prev"
+          scroll={false}
           className={activeClassName}
         >
           Prev
@@ -41,6 +53,7 @@ export default function MobileUpdatesPagination({ currentPage, totalPages }) {
         <Link
           href={`/dholera-sir-updates?page=${currentPage + 1}`}
           rel="next"
+          scroll={false}
           className={activeClassName}
         >
           Next
