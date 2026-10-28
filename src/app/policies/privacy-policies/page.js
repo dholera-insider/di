@@ -52,7 +52,7 @@ export default function Copyright() {
                 INFORMATION WE COLLECT
             ========================== */}
             <div>
-              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
+              <h2 className="mt-8 text-xl sm:text-2xl font-bold text-left text-white">
                 Information We Collect
               </h2>
 
@@ -72,7 +72,7 @@ export default function Copyright() {
                 HOW WE USE INFORMATION
             ========================== */}
             <div>
-              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
+              <h2 className="mt-8 text-xl sm:text-2xl font-bold text-left text-white">
                 How We Use Your Information
               </h2>
 
@@ -93,7 +93,7 @@ export default function Copyright() {
                 TECHNICAL INFORMATION
             ========================== */}
             <div>
-              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
+              <h2 className="mt-8 text-xl sm:text-2xl font-bold text-left text-white">
                 Technical Information
               </h2>
 
@@ -111,7 +111,7 @@ export default function Copyright() {
                 DATA SECURITY
             ========================== */}
             <div>
-              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
+              <h2 className="mt-8 text-xl sm:text-2xl font-bold text-left text-white">
                 Data Security
               </h2>
 
@@ -128,7 +128,7 @@ export default function Copyright() {
                 EXTERNAL LINKS
             ========================== */}
             <div>
-              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
+              <h2 className="mt-8 text-xl sm:text-2xl font-bold text-left text-white">
                 External Links
               </h2>
 
@@ -144,7 +144,7 @@ export default function Copyright() {
                 POLICY UPDATES
             ========================== */}
             <div>
-              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
+              <h2 className="mt-8 text-xl sm:text-2xl font-bold text-left text-white">
                 Policy Updates
               </h2>
 
@@ -159,7 +159,7 @@ export default function Copyright() {
                 CONTACT US
             ========================== */}
             <div>
-              <h2 className="mt-8 text-2xl font-bold max-sm:text-center">
+              <h2 className="mt-8 text-xl sm:text-2xl font-bold text-left text-white">
                 Contact Us
               </h2>
 

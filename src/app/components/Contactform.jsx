@@ -260,9 +260,9 @@ export default function ContactForm({
           >
             {title}
           </h2>
-          <p className="text-[#FDFCFA]/80 text-sm">
+          {/* <p className="text-[#FDFCFA]/80 text-sm">
             Get Expert Guidance on Dholera Investment
-          </p>
+          </p> */}
         </motion.div>
 
         {showPopup ? (

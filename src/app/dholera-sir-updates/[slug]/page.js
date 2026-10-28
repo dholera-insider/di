@@ -363,32 +363,34 @@ export default async function BlogDetail({ params }) {
                 </Tag>
               );
             };
+                
           return {
             h1: makeHeading(
               "h1",
-              "text-2xl md:text-5xl font-black mt-8 mb-6 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-4",
+              "relative text-xl sm:text-2xl lg:text-[28px] font-bold text-[#1F2937] leading-snug tracking-tight mt-7 mb-4 pl-3 sm:pl-4 py-1.5 sm:py-2 border-l-[3px] border-[#F6C343] bg-gradient-to-r from-[#F6C343]/5 to-transparent break-words",
             ),
             h2: makeHeading(
               "h2",
-              "text-2xl md:text-3xl font-bold mt-8 mb-8 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-3",
+              "relative text-xl sm:text-2xl lg:text-[28px] font-bold text-[#1F2937] leading-snug mt-6 mb-3 pl-3 sm:pl-4 py-1.5 sm:py-2 border-l-[3px] border-[#F6C343] bg-gradient-to-r from-[#F6C343]/5 to-transparent break-words",
             ),
             h3: makeHeading(
               "h3",
-              "text-2xl md:text-3xl font-bold mt-12 mb-6 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2",
+              "relative text-xl sm:text-2xl lg:text-[28px] font-semibold text-[#1F2937] leading-snug mt-5 mb-3 pl-3 py-1.5 border-l-[3px] border-[#F6C343] bg-gradient-to-r from-[#F6C343]/5 to-transparent break-words",
             ),
             h4: makeHeading(
               "h4",
-              "text-2xl font-semibold mt-10 mb-4 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2",
+              "relative text-xl sm:text-2xl lg:text-[28px] font-semibold text-[#1F2937] leading-snug mt-4 mb-2 pl-3 py-1 border-l-2 border-[#F6C343] break-words",
             ),
             h5: makeHeading(
               "h5",
-              "text-xl font-semibold mt-8 mb-3 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-2",
+              "relative text-xl sm:text-2xl lg:text-[28px] font-semibold text-[#1F2937] leading-relaxed mt-4 mb-2 pl-3 py-1 border-l-2 border-[#F6C343] break-words",
             ),
             h6: makeHeading(
               "h6",
-              "text-lg font-semibold mt-6 mb-2 text-gray-800 relative border-l-4 border-[#F6C343] pl-6 bg-gradient-to-r from-[#F6C343]/5 to-transparent py-1",
+              "relative text-xl lg:text-[28px] font-semibold text-[#374151] leading-relaxed mt-3 mb-2 pl-3 py-1 border-l-2 border-[#F6C343] break-words",
             ),
           };
+
         })(),
 
         normal: ({ children }) => (
@@ -443,50 +445,58 @@ export default async function BlogDetail({ params }) {
     };
 
     const TableOfContent = ({ headings }) => {
-      // Filter for valid headings with text content
-      const validHeadings =
-        headings?.filter((heading) => {
-          const text = heading.children?.[0]?.text;
-          return text && text.trim().length > 0;
-        }) || [];
+      const validHeadings = (headings || []).filter(
+        (heading) => heading.children?.[0]?.text?.trim()
+      );
 
-      // Filter for only h1 and h2 headings
-      const h1h2Headings = validHeadings.filter((heading) => {
-        return heading.style === "h1" || heading.style === "h2";
-      });
-
-      // Hide TOC if no h1 or h2 headings exist
-      if (h1h2Headings.length === 0) return null;
+      if (!validHeadings.some((heading) => ["h1", "h2"].includes(heading.style))) {
+        return null;
+      }
 
       return (
-        <div className="my-8 p-6 bg-gradient-to-br from-[#C69C21]/5 to-[#FDB913]/10 rounded-2xl shadow-lg border border-[#C69C21]/20">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Table of Contents
-          </h2>
-          <ul className="space-y-3">
-            {validHeadings.map((heading, index) => {
-              const text = heading.children[0].text.trim();
-              const level = parseInt(heading.style.replace("h", ""));
-              const indent = (level - 2) * 16;
-
-              return (
-                <li
-                  key={index}
-                  style={{ marginLeft: `${Math.max(0, indent)}px` }}
-                  className="relative"
-                >
-                  <a
-                    href={`#${URLFormatter(text)}`}
-                    className="text-[#C69C21] hover:text-[#FDB913] hover:underline transition-colors duration-200 flex items-start gap-2 group"
+        <details className="group my-6 overflow-hidden rounded-xl border border-[#F6C343]/40 bg-white shadow-sm">
+          <summary className="flex min-h-[62px] cursor-pointer list-none items-center justify-between gap-4 border-l-4 border-[#F6C343] px-4 py-3 transition-colors duration-200 hover:bg-[#FFF9E9] sm:min-h-[72px] sm:px-6 [&::-webkit-details-marker]:hidden">
+            <h2 className="m-0 text-lg font-bold leading-tight text-[#1F2937] sm:text-xl">
+              Table of Contents
+            </h2>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#F6C343] bg-[#FFF9E9] text-[#1F2937] transition-colors duration-200 group-hover:bg-[#F6C343] sm:h-10 sm:w-10">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4 transition-transform duration-200 group-open:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </span>
+          </summary>
+          <nav aria-label="Table of contents" className="border-t border-[#F6C343]/20 bg-[#FFFCF5] px-4 py-4 sm:px-6">
+            <ul className="space-y-3">
+              {validHeadings.map((heading, index) => {
+                const text = heading.children[0].text.trim();
+                const level = Number(heading.style?.replace("h", "")) || 2;
+                return (
+                  <li
+                    key={`${heading._key || text}-${index}`}
+                    style={{ paddingLeft: `${Math.max(0, level - 2) * 12}px` }}
                   >
-                    <span className="w-1.5 h-1.5 bg-[#C69C21] rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-                    <span className="text-sm leading-relaxed">{text}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                    <a
+                      href={`#${URLFormatter(text)}`}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-[#1F2937] transition-colors hover:text-[#B58508] hover:underline sm:text-base"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#F6C343]" />
+                      <span>{text}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </details>
       );
     };
 
@@ -672,7 +682,7 @@ export default async function BlogDetail({ params }) {
               <TableOfContent headings={extractHeadings(post.body)} />
 
               {/* Content */}
-              <div className="bg-white rounded-xl shadow-2xl text-black leading-5 shadow-t-2xl p-8 border border-gray-200">
+              <div className="bg-white rounded-xl shadow-2xl text-black leading-5 border border-gray-200 px-4 py-5 sm:px-5 sm:py-6 lg:px-6 lg:py-8">
                 <div className="text-xl max-w-none">
                   <PortableText value={post.body} components={components} />
                 </div>

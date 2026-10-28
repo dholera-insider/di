@@ -2,7 +2,6 @@ import Hero from "../components/hero";
 import CTAsection from "../components/CTAsection";
 import Invest from "../homecomponents/Invest";
 import WhyDI from "../homecomponents/WhyDI";
-import WestWyn_Estate from "../homecomponents/WestWyn_Estate";
 import FAQSection from "../homecomponents/Faq";
 import TestimonialPagination from "../homecomponents/Testimonials";
 import RemoteBuying from "../homecomponents/RemoteBuying";

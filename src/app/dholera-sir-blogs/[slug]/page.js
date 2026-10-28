@@ -423,51 +423,66 @@ export default async function Post({ params }) {
       },
     };
 
+    // Compact, accessible TOC. Native details keeps this page a Server Component.
     const TableOfContent = ({ headings }) => {
-      // Filter for valid headings with text content
-      const validHeadings =
-        headings?.filter((heading) => {
-          const text = heading.children?.[0]?.text;
-          return text && text.trim().length > 0;
-        }) || [];
+      const validHeadings = (headings || []).filter(
+        (heading) =>
+          ["h1", "h2", "h3", "h4", "h5", "h6"].includes(heading.style) &&
+          heading.children?.some((child) => child.text?.trim())
+      );
 
-      // Filter for only h1 and h2 headings
-      const h1h2Headings = validHeadings.filter((heading) => {
-        return heading.style === "h1" || heading.style === "h2";
-      });
-
-      // Hide TOC if no h1 or h2 headings exist
-      if (h1h2Headings.length === 0) return null;
+      if (!validHeadings.some((heading) => ["h1", "h2"].includes(heading.style))) {
+        return null;
+      }
 
       return (
-        <div className="my-8 p-6 bg-gradient-to-br from-[#C69C21]/5 to-[#FDB913]/10 rounded-2xl shadow-lg border border-[#C69C21]/20">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Table of Contents
-          </h2>
-          <ul className="space-y-3">
-            {validHeadings.map((heading, index) => {
-              const text = heading.children[0].text.trim();
-              const level = parseInt(heading.style.replace("h", ""));
-              const indent = (level - 2) * 16;
+        <details className="group my-6 overflow-hidden rounded-xl border border-[#E7DFCF] bg-white shadow-[0_3px_14px_rgba(15,23,42,0.06)]">
+          <summary className="flex min-h-[62px] cursor-pointer list-none items-center justify-between gap-3 border-l-[3px] border-[#F6C343] px-4 py-3 marker:content-none transition-colors duration-200 hover:bg-[#FFFBF3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#C69C21] sm:min-h-[72px] sm:px-5 [&::-webkit-details-marker]:hidden">
+            <span className="text-base font-bold tracking-tight text-[#1F2937] sm:text-xl">
+              Table of Contents
+            </span>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#E7D7A8] bg-[#FFF9E9] text-[#B58508] transition-colors group-hover:border-[#F6C343] sm:h-10 sm:w-10">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4 transition-transform duration-200 group-open:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </span>
+          </summary>
 
-              return (
-                <li
-                  key={index}
-                  style={{ marginLeft: `${Math.max(0, indent)}px` }}
-                  className="relative"
-                >
-                  <a
-                    href={`#${URLFormatter(text)}`}
-                    className="text-[#C69C21] hover:text-[#FDB913] hover:underline transition-colors duration-200 flex items-start gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 bg-[#C69C21] rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
-                    <span className="text-sm leading-relaxed">{text}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+          <nav aria-label="Article table of contents" className="border-t border-[#F0E9DC] bg-[#FFFEFB] px-4 py-4 sm:px-5">
+            <ul className="space-y-2.5">
+              {validHeadings.map((heading, index) => {
+                const text = heading.children
+                  .map((child) => child.text || "")
+                  .join("")
+                  .trim();
+                const level = Number(heading.style.slice(1));
+                const indent = Math.max(0, level - 2) * 12;
+
+                return (
+                  <li key={heading._key || index} style={{ paddingLeft: `${indent}px` }}>
+                    <a
+                      href={`#${URLFormatter(text)}`}
+                      className="group/link flex items-start gap-2 rounded-md py-0.5 text-[13px] leading-6 text-[#334155] transition-colors hover:text-[#AE7D00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C69C21] sm:text-sm"
+                    >
+                      <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#E2AD22] transition-transform group-hover/link:scale-125" />
+                      <span className="break-words group-hover/link:underline group-hover/link:underline-offset-2">{text}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </details>
       );
     };
 
@@ -499,7 +514,7 @@ export default async function Post({ params }) {
         <div className="bg-white min-h-screen">
           <div className="bg-white shadow-sm sticky top-0 z-30" />
 
-          <main className="max-w-7xl mx-auto px-4 py-8 pt-24">
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 py-8 pt-24">
             <div className="flex flex-col lg:flex-row gap-10 lg:items-start">
               {/* Main Content */}
               <article className="lg:w-2/3">
@@ -680,80 +695,276 @@ export default async function Post({ params }) {
           </main>
 
           {/* Related Articles Section */}
-          <section className="bg-gray-50 py-12 mt-4">
-            <div className="max-w-7xl mx-auto site-gutter">
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900">
-                  You might also like
-                </h2>
-                <Link
-                  href="/dholera-sir-updates"
-                  className="rounded-xl text-white font-semibold bg-[#051A3A] hover:bg-[#2B364D] px-4 py-2"
-                >
-                  View all
-                </Link>
-              </div>
+         <section className="relative overflow-hidden bg-[#F7F8FA] py-14 sm:py-16 lg:py-20 mt-6">
+  {/* Subtle background decoration */}
+  <div
+    aria-hidden="true"
+    className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[#F6C343]/10 blur-3xl"
+  />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {relatedBlogs && relatedBlogs.length > 0
-                  ? relatedBlogs.map((blog) => (
-                      <Link
-                        key={blog._id}
-                        href={`/dholera-sir-updates/${blog.slug.current}`}
+  <div className="relative max-w-7xl mx-auto site-gutter">
+    {/* Section Header */}
+    <div className="mb-9 flex items-end justify-between gap-5 sm:mb-11">
+      <div>
+        <h2 className="text-[28px] font-bold leading-tight tracking-[-0.02em] text-[#051A3A] sm:text-3xl lg:text-[34px]">
+          You might also like
+        </h2>
+      </div>
+
+      <Link
+        href="/dholera-sir-updates"
+        className="
+          group hidden sm:inline-flex
+          items-center gap-2
+          text-sm font-semibold
+          text-[#051A3A]
+          transition-colors duration-300
+          hover:text-[#C98D00]
+        "
+      >
+        View all
+
+        <span
+          className="
+            flex h-9 w-9 items-center justify-center
+            rounded-full
+            bg-[#051A3A]
+            text-white
+            transition-all duration-300
+            group-hover:translate-x-1
+            group-hover:bg-[#F6C343]
+            group-hover:text-[#051A3A]
+          "
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 12H19M19 12L13 6M19 12L13 18"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </Link>
+    </div>
+
+    {/* Articles */}
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+      {relatedBlogs && relatedBlogs.length > 0
+        ? relatedBlogs.map((blog, index) => (
+            <Link
+              key={blog._id}
+              href={`/dholera-sir-updates/${blog.slug.current}`}
+              className="group block"
+            >
+              <article className="h-full">
+                {/* Image */}
+                <div className="relative mb-5 overflow-hidden rounded-[20px] bg-[#EDEFF2]">
+                  <div className="aspect-[16/10]">
+                    {blog.mainImage ? (
+                      <Image
+                        src={urlFor(blog.mainImage)
+                          .width(700)
+                          .height(438)
+                          .url()}
+                        alt={blog.title}
+                        width={700}
+                        height={438}
+                        quality={75}
+                        className="
+                          h-full w-full object-cover
+                          transition-transform
+                          duration-500
+                          ease-out
+                          group-hover:scale-[1.045]
+                        "
+                        sizes="
+                          (max-width: 768px) 100vw,
+                          (max-width: 1024px) 50vw,
+                          33vw
+                        "
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                        <span className="text-sm text-gray-400">
+                          No image
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Image bottom gradient */}
+                  <div
+                    aria-hidden="true"
+                    className="
+                      pointer-events-none
+                      absolute inset-0
+                      bg-gradient-to-t
+                      from-[#051A3A]/20
+                      via-transparent
+                      to-transparent
+                      opacity-0
+                      transition-opacity
+                      duration-300
+                      group-hover:opacity-100
+                    "
+                  />
+
+                  {/* Article number */}
+                  
+                </div>
+
+                {/* Content */}
+                <div className="px-1">
+                  <h3
+                    className="
+                      mb-3
+                      line-clamp-2
+                      text-[20px]
+                      font-bold
+                      leading-[1.4]
+                      tracking-[-0.015em]
+                      text-[#101828]
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#B47D00]
+                      sm:text-[21px]
+                    "
+                  >
+                    {blog.title}
+                  </h3>
+
+                  {blog.description && (
+                    <p
+                      className="
+                        mb-5
+                        line-clamp-2
+                        text-[15px]
+                        leading-6
+                        text-[#667085]
+                      "
+                    >
+                      {blog.description}
+                    </p>
+                  )}
+
+                  {/* Read More */}
+                  <div className="inline-flex items-center gap-2 text-sm font-bold text-[#051A3A]">
+                    <span className="relative">
+                      Read More
+
+                      <span
+                        className="
+                          absolute -bottom-1 left-0
+                          h-[2px] w-full
+                          origin-left
+                          scale-x-0
+                          bg-[#F6C343]
+                          transition-transform
+                          duration-300
+                          group-hover:scale-x-100
+                        "
+                      />
+                    </span>
+
+                    <span
+                      className="
+                        flex h-7 w-7
+                        items-center justify-center
+                        rounded-full
+                        bg-[#F6C343]
+                        text-[#051A3A]
+                        transition-all
+                        duration-300
+                        group-hover:translate-x-1
+                        group-hover:bg-[#051A3A]
+                        group-hover:text-white
+                      "
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
                       >
-                        <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 h-full">
-                          <div className="relative h-48 overflow-hidden">
-                            {blog.mainImage ? (
-                              <Image
-                                src={urlFor(blog.mainImage)
-                                  .width(400)
-                                  .height(250)
-                                  .url()}
-                                alt={blog.title}
-                                width={400}
-                                height={250}
-                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                              />
-                            ) : (
-                              <div className="w-full h-full bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
-                                <span className="text-gray-400">No image</span>
-                              </div>
-                            )}
-                          </div>
-                          <div className="p-5">
-                            <h3 className="font-bold text-lg mb-2 text-gray-900 line-clamp-2">
-                              {blog.title}
-                            </h3>
-                            <p className="text-gray-700 mb-4 line-clamp-3">
-                              {blog.description}
-                            </p>
-                            <span className="text-[#F6C343] hover:text-[#faf8f3] p-1 rounded-xl font-semibold bg-gray-800 inline-flex items-center">
-                              Read more
-                            </span>
-                          </div>
-                        </div>
-                      </Link>
-                    ))
-                  : Array(3)
-                      .fill(0)
-                      .map((_, i) => (
-                        <div
-                          key={i}
-                          className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
-                        >
-                          <div className="h-48 bg-gradient-to-r from-gray-100 to-gray-200"></div>
-                          <div className="p-6">
-                            <div className="h-4 bg-gray-200 rounded w-1/4 mb-3"></div>
-                            <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
-                            <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-                            <div className="h-4 bg-gray-200 rounded w-2/3"></div>
-                          </div>
-                        </div>
-                      ))}
+                        <path
+                          d="M5 12H19M19 12L13 6M19 12L13 18"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </Link>
+          ))
+        : Array(3)
+            .fill(0)
+            .map((_, i) => (
+              <div key={i} className="animate-pulse">
+                <div className="mb-5 aspect-[16/10] rounded-[20px] bg-gray-200" />
+
+                <div className="px-1">
+                  <div className="mb-3 h-5 w-11/12 rounded bg-gray-200" />
+                  <div className="mb-5 h-5 w-8/12 rounded bg-gray-200" />
+
+                  <div className="mb-2 h-4 w-full rounded bg-gray-200" />
+                  <div className="mb-5 h-4 w-7/12 rounded bg-gray-200" />
+
+                  <div className="h-5 w-24 rounded bg-gray-200" />
+                </div>
               </div>
-            </div>
-          </section>
+            ))}
+    </div>
+
+    {/* Mobile View All */}
+    <div className="mt-10 sm:hidden">
+      <Link
+        href="/dholera-sir-updates"
+        className="
+          flex w-full items-center justify-center gap-3
+          rounded-xl
+          bg-[#051A3A]
+          px-5 py-3.5
+          text-sm font-semibold
+          text-white
+          transition-colors
+          duration-300
+          hover:bg-[#102A50]
+        "
+      >
+        View all articles
+
+        <svg
+          width="17"
+          height="17"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 12H19M19 12L13 6M19 12L13 18"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </Link>
+    </div>
+  </div>
+</section>
         </div>
       </>
     );

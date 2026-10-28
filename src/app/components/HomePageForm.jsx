@@ -617,6 +617,8 @@ export default function CommonForm({
         .bma-form-section {
           position: relative;
 
+          z-index: 40;
+
           width: 100%;
           max-width: 100%;
 
@@ -862,6 +864,10 @@ export default function CommonForm({
         /* ===================================================
            PHONE FIELD
         =================================================== */
+
+        .bma-form-section .country-list .search-emoji {
+          display: none !important;
+        }
 
         .bma-phone-container {
           position: relative;
