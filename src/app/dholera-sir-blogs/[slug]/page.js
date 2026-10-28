@@ -695,276 +695,272 @@ export default async function Post({ params }) {
           </main>
 
           {/* Related Articles Section */}
-         <section className="relative overflow-hidden bg-[#F7F8FA] py-14 sm:py-16 lg:py-20 mt-6">
-  {/* Subtle background decoration */}
-  <div
-    aria-hidden="true"
-    className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-[#F6C343]/10 blur-3xl"
-  />
+          <section className="relative overflow-hidden bg-[#F7F8FA] mt-6 px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-10">
+          
 
-  <div className="relative max-w-7xl mx-auto site-gutter">
-    {/* Section Header */}
-    <div className="mb-9 flex items-end justify-between gap-5 sm:mb-11">
-      <div>
-        <h2 className="text-[28px] font-bold leading-tight tracking-[-0.02em] text-[#051A3A] sm:text-3xl lg:text-[34px]">
-          You might also like
-        </h2>
-      </div>
-
-      <Link
-        href="/dholera-sir-updates"
-        className="
-          group hidden sm:inline-flex
-          items-center gap-2
-          text-sm font-semibold
-          text-[#051A3A]
-          transition-colors duration-300
-          hover:text-[#C98D00]
-        "
-      >
-        View all
-
-        <span
-          className="
-            flex h-9 w-9 items-center justify-center
-            rounded-full
-            bg-[#051A3A]
-            text-white
-            transition-all duration-300
-            group-hover:translate-x-1
-            group-hover:bg-[#F6C343]
-            group-hover:text-[#051A3A]
-          "
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M5 12H19M19 12L13 6M19 12L13 18"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      </Link>
-    </div>
-
-    {/* Articles */}
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
-      {relatedBlogs && relatedBlogs.length > 0
-        ? relatedBlogs.map((blog, index) => (
-            <Link
-              key={blog._id}
-              href={`/dholera-sir-updates/${blog.slug.current}`}
-              className="group block"
-            >
-              <article className="h-full">
-                {/* Image */}
-                <div className="relative mb-5 overflow-hidden rounded-[20px] bg-[#EDEFF2]">
-                  <div className="aspect-[16/10]">
-                    {blog.mainImage ? (
-                      <Image
-                        src={urlFor(blog.mainImage)
-                          .width(700)
-                          .height(438)
-                          .url()}
-                        alt={blog.title}
-                        width={700}
-                        height={438}
-                        quality={75}
-                        className="
-                          h-full w-full object-cover
-                          transition-transform
-                          duration-500
-                          ease-out
-                          group-hover:scale-[1.045]
-                        "
-                        sizes="
-                          (max-width: 768px) 100vw,
-                          (max-width: 1024px) 50vw,
-                          33vw
-                        "
-                      />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                        <span className="text-sm text-gray-400">
-                          No image
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Image bottom gradient */}
-                  <div
-                    aria-hidden="true"
-                    className="
-                      pointer-events-none
-                      absolute inset-0
-                      bg-gradient-to-t
-                      from-[#051A3A]/20
-                      via-transparent
-                      to-transparent
-                      opacity-0
-                      transition-opacity
-                      duration-300
-                      group-hover:opacity-100
-                    "
-                  />
-
-                  {/* Article number */}
-                  
+            <div className="relative max-w-7xl mx-auto site-gutter">
+              {/* Section Header */}
+              <div className="mb-9 flex items-end justify-between gap-5 sm:mb-11">
+                <div>
+                  <h2 className="text-[28px] font-bold leading-tight tracking-[-0.02em] text-[#051A3A] sm:text-3xl lg:text-[34px]">
+                    You might also like
+                  </h2>
                 </div>
 
-                {/* Content */}
-                <div className="px-1">
-                  <h3
+                <Link
+                  href="/dholera-sir-updates"
+                  className="
+                    group hidden sm:inline-flex
+                    items-center gap-2
+                    text-sm font-semibold
+                    text-[#051A3A]
+                    transition-colors duration-300
+                    hover:text-[#C98D00]
+                  "
+                >
+                  View all
+
+                  <span
                     className="
-                      mb-3
-                      line-clamp-2
-                      text-[20px]
-                      font-bold
-                      leading-[1.4]
-                      tracking-[-0.015em]
-                      text-[#101828]
-                      transition-colors
-                      duration-300
-                      group-hover:text-[#B47D00]
-                      sm:text-[21px]
+                      flex h-9 w-9 items-center justify-center
+                      rounded-full
+                      bg-[#051A3A]
+                      text-white
+                      transition-all duration-300
+                      group-hover:translate-x-1
+                      group-hover:bg-[#F6C343]
+                      group-hover:text-[#051A3A]
                     "
                   >
-                    {blog.title}
-                  </h3>
-
-                  {blog.description && (
-                    <p
-                      className="
-                        mb-5
-                        line-clamp-2
-                        text-[15px]
-                        leading-6
-                        text-[#667085]
-                      "
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
                     >
-                      {blog.description}
-                    </p>
-                  )}
-
-                  {/* Read More */}
-                  <div className="inline-flex items-center gap-2 text-sm font-bold text-[#051A3A]">
-                    <span className="relative">
-                      Read More
-
-                      <span
-                        className="
-                          absolute -bottom-1 left-0
-                          h-[2px] w-full
-                          origin-left
-                          scale-x-0
-                          bg-[#F6C343]
-                          transition-transform
-                          duration-300
-                          group-hover:scale-x-100
-                        "
+                      <path
+                        d="M5 12H19M19 12L13 6M19 12L13 18"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
-                    </span>
-
-                    <span
-                      className="
-                        flex h-7 w-7
-                        items-center justify-center
-                        rounded-full
-                        bg-[#F6C343]
-                        text-[#051A3A]
-                        transition-all
-                        duration-300
-                        group-hover:translate-x-1
-                        group-hover:bg-[#051A3A]
-                        group-hover:text-white
-                      "
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M5 12H19M19 12L13 6M19 12L13 18"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </article>
-            </Link>
-          ))
-        : Array(3)
-            .fill(0)
-            .map((_, i) => (
-              <div key={i} className="animate-pulse">
-                <div className="mb-5 aspect-[16/10] rounded-[20px] bg-gray-200" />
-
-                <div className="px-1">
-                  <div className="mb-3 h-5 w-11/12 rounded bg-gray-200" />
-                  <div className="mb-5 h-5 w-8/12 rounded bg-gray-200" />
-
-                  <div className="mb-2 h-4 w-full rounded bg-gray-200" />
-                  <div className="mb-5 h-4 w-7/12 rounded bg-gray-200" />
-
-                  <div className="h-5 w-24 rounded bg-gray-200" />
-                </div>
+                    </svg>
+                  </span>
+                </Link>
               </div>
-            ))}
-    </div>
 
-    {/* Mobile View All */}
-    <div className="mt-10 sm:hidden">
-      <Link
-        href="/dholera-sir-updates"
-        className="
-          flex w-full items-center justify-center gap-3
-          rounded-xl
-          bg-[#051A3A]
-          px-5 py-3.5
-          text-sm font-semibold
-          text-white
-          transition-colors
-          duration-300
-          hover:bg-[#102A50]
-        "
-      >
-        View all articles
+              {/* Articles */}
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+                {relatedBlogs && relatedBlogs.length > 0
+                  ? relatedBlogs.map((blog, index) => (
+                      <Link
+                        key={blog._id}
+                        href={`/dholera-sir-updates/${blog.slug.current}`}
+                        className="group block"
+                      >
+                        <article className="h-full">
+                          {/* Image */}
+                          <div className="relative mb-5 overflow-hidden rounded-[20px] bg-[#EDEFF2]">
+                            <div className="aspect-[16/10]">
+                              {blog.mainImage ? (
+                                <Image
+                                  src={urlFor(blog.mainImage)
+                                    .width(700)
+                                    .height(438)
+                                    .url()}
+                                  alt={blog.title}
+                                  width={700}
+                                  height={438}
+                                  quality={75}
+                                  className="
+                                    h-full w-full object-cover
+                                    transition-transform
+                                    duration-500
+                                    ease-out
+                                    group-hover:scale-[1.045]
+                                  "
+                                  sizes="
+                                    (max-width: 768px) 100vw,
+                                    (max-width: 1024px) 50vw,
+                                    33vw
+                                  "
+                                />
+                              ) : (
+                                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                                  <span className="text-sm text-gray-400">
+                                    No image
+                                  </span>
+                                </div>
+                              )}
+                            </div>
 
-        <svg
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M5 12H19M19 12L13 6M19 12L13 18"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </Link>
-    </div>
-  </div>
-</section>
+                            {/* Image bottom gradient */}
+                            <div
+                              aria-hidden="true"
+                              className="
+                                pointer-events-none
+                                absolute inset-0
+                                bg-gradient-to-t
+                                from-[#051A3A]/20
+                                via-transparent
+                                to-transparent
+                                opacity-0
+                                transition-opacity
+                                duration-300
+                                group-hover:opacity-100
+                              "
+                            />
+
+                            {/* Article number */}
+                            
+                          </div>
+
+                          {/* Content */}
+                          <div className="px-1">
+                            <h3
+                              className="
+                                mb-3
+                                line-clamp-2
+                                text-[20px]
+                                font-bold
+                                leading-[1.4]
+                                tracking-[-0.015em]
+                                text-[#101828]
+                                transition-colors
+                                duration-300
+                                group-hover:text-[#B47D00]
+                                sm:text-[21px]
+                              "
+                            >
+                              {blog.title}
+                            </h3>
+
+                            {blog.description && (
+                              <p
+                                className="
+                                  mb-5
+                                  line-clamp-2
+                                  text-[15px]
+                                  leading-6
+                                  text-[#667085]
+                                "
+                              >
+                                {blog.description}
+                              </p>
+                            )}
+
+                            {/* Read More */}
+                            <div className="inline-flex items-center gap-2 text-sm font-bold text-[#051A3A]">
+                              <span className="relative">
+                                Read More
+
+                                <span
+                                  className="
+                                    absolute -bottom-1 left-0
+                                    h-[2px] w-full
+                                    origin-left
+                                    scale-x-0
+                                    bg-[#F6C343]
+                                    transition-transform
+                                    duration-300
+                                    group-hover:scale-x-100
+                                  "
+                                />
+                              </span>
+
+                              <span
+                                className="
+                                  flex h-7 w-7
+                                  items-center justify-center
+                                  rounded-full
+                                  bg-[#F6C343]
+                                  text-[#051A3A]
+                                  transition-all
+                                  duration-300
+                                  group-hover:translate-x-1
+                                  group-hover:bg-[#051A3A]
+                                  group-hover:text-white
+                                "
+                              >
+                                <svg
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M5 12H19M19 12L13 6M19 12L13 18"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                        </article>
+                      </Link>
+                    ))
+                  : Array(3)
+                      .fill(0)
+                      .map((_, i) => (
+                        <div key={i} className="animate-pulse">
+                          <div className="mb-5 aspect-[16/10] rounded-[20px] bg-gray-200" />
+
+                          <div className="px-1">
+                            <div className="mb-3 h-5 w-11/12 rounded bg-gray-200" />
+                            <div className="mb-5 h-5 w-8/12 rounded bg-gray-200" />
+
+                            <div className="mb-2 h-4 w-full rounded bg-gray-200" />
+                            <div className="mb-5 h-4 w-7/12 rounded bg-gray-200" />
+
+                            <div className="h-5 w-24 rounded bg-gray-200" />
+                          </div>
+                        </div>
+                      ))}
+              </div>
+
+              {/* Mobile View All */}
+              <div className="mt-10 sm:hidden">
+                <Link
+                  href="/dholera-sir-updates"
+                  className="
+                    flex w-full items-center justify-center gap-3
+                    rounded-xl
+                    bg-[#051A3A]
+                    px-5 py-3.5
+                    text-sm font-semibold
+                    text-white
+                    transition-colors
+                    duration-300
+                    hover:bg-[#102A50]
+                  "
+                >
+                  View all articles
+
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12H19M19 12L13 6M19 12L13 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </section>
         </div>
       </>
     );
