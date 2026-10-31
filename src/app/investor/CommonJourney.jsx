@@ -207,7 +207,7 @@ export default function CommonJourney({
                         font-bold
                         uppercase
                         tracking-[0.14em]
-                        text-[#9A740D]
+                        text-[#886408]
                       "
                     >
                       Step {number}

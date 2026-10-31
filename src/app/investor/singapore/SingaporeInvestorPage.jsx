@@ -1,4 +1,4 @@
-import Image from "next/image";
+import InvestorHero from "../InvestorHero";
 import {
   BadgeCheck,
   Building2,
@@ -78,7 +78,7 @@ function ProjectImage() {
   return (
     <div className="relative mx-auto w-full max-w-[800px]">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-white/15">
-        <Image
+        <InvestorHero country="singapore"
           src={residencyImage}
           alt="Verified residential plots in Dholera for Singapore NRIs"
           width={800}
@@ -281,7 +281,7 @@ export default function SingaporeInvestorPage() {
 
             <div className="mt-4 h-[3px] w-10 rounded-full bg-[#F6C343] sm:w-12" />
 
-            <p className="mt-5 max-w-lg text-[14px] leading-7 text-[#667085] sm:text-[15px] sm:leading-7 lg:text-base lg:leading-8">
+            <p className="mt-5 max-w-lg text-[14px] leading-7 text-[#5B6576] sm:text-[15px] sm:leading-7 lg:text-base lg:leading-8">
               Before investing, understanding the project is just as
               important as choosing it. At Dholera Insider, we help
               Singapore NRIs evaluate every important aspect before

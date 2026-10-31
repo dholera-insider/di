@@ -1,4 +1,4 @@
-import Image from "next/image";
+import InvestorHero from "../InvestorHero";
 import {
   BadgeCheck,
   Building2,
@@ -49,7 +49,7 @@ function ProjectImage() {
   return (
     <div className="relative mx-auto w-full max-w-[800px]">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-white/15">
-        <Image
+        <InvestorHero country="hong-kong"
           src={heroImage}
           alt="Dholera Smart City investment from Hong Kong"
           fill

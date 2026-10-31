@@ -1,4 +1,4 @@
-import Image from "next/image";
+import InvestorHero from "../InvestorHero";
 import Link from "next/link";
 import {
   BadgeCheck,
@@ -241,7 +241,7 @@ export default function SaudiArabiaInvestorPage() {
                   lg:shadow-[0_30px_90px_rgba(0,0,0,.35)]
                 "
               >
-                <Image
+                <InvestorHero country="saudi-arabia"
                   src={heroImage}
                   alt="Dholera investment opportunity for Dubai NRIs"
                   fill

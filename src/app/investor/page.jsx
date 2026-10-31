@@ -82,6 +82,7 @@ export default function InvestorHubPage() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {markets.map((market) => (
             <Link
+              prefetch={false}
               key={market.href}
               href={market.href}
               className="group rounded-2xl border border-[#D8DEE8] bg-white p-6 transition hover:-translate-y-1 hover:border-[#F0B429] hover:shadow-lg"

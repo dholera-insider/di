@@ -1,4 +1,4 @@
-import Image from "next/image";
+import InvestorHero from "../InvestorHero";
 import {
   ArrowRight,
   Building2,
@@ -169,7 +169,7 @@ export default function DubaiNriClient() {
                   lg:shadow-[0_30px_90px_rgba(0,0,0,.35)]
                 "
               >
-                <Image
+                <InvestorHero country="dubai"
                   src={heroImage}
                   alt="Dholera investment opportunity for Dubai NRIs"
                   fill
@@ -308,7 +308,7 @@ export default function DubaiNriClient() {
                     </span>
 
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#9A740D]">
+                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#886408]">
                         Step {number}
                       </span>
 

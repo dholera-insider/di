@@ -1,4 +1,4 @@
-import Image from "next/image";
+import InvestorHero from "../InvestorHero";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -146,7 +146,7 @@ export default function QatarInvestorPage() {
                       lg:shadow-[0_30px_90px_rgba(0,0,0,.35)]
                     "
                   >
-                    <Image
+                    <InvestorHero country="qatar"
                       src={heroImage}
                       alt="Dholera investment opportunity for Dubai NRIs"
                       fill
@@ -389,7 +389,7 @@ export default function QatarInvestorPage() {
               <div className="mt-6 max-w-xl space-y-4">
               
 
-                <p className="text-[14px] leading-7 text-[#667085] sm:text-[15px] lg:text-base lg:leading-8">
+                <p className="text-[14px] leading-7 text-[#5B6576] sm:text-[15px] lg:text-base lg:leading-8">
                   Your investment decision should be based on
                   information, not promises.
                 </p>
@@ -406,7 +406,7 @@ export default function QatarInvestorPage() {
                   />
                 </div>
 
-                <p className="pt-0.5 text-[12px] leading-5 text-[#667085] sm:text-[13px]">
+                <p className="pt-0.5 text-[12px] leading-5 text-[#5B6576] sm:text-[13px]">
                   Clear project information, documentation guidance
                   and dedicated NRI support throughout the process.
                 </p>

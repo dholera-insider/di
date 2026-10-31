@@ -1,4 +1,4 @@
-import Image from "next/image";
+import InvestorHero from "../InvestorHero";
 import {
   ArrowRight,
   Building2,
@@ -113,7 +113,7 @@ function ProjectImage() {
   return (
     <div className="relative mx-auto w-full max-w-[800px]">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-white/15">
-        <Image
+        <InvestorHero country="bahrain"
           src={projectImage}
           alt="Verified residential plots in Dholera for Bahrain NRIs"
           width={800}
@@ -443,7 +443,7 @@ export default function DholeraBahrainPage() {
                             font-bold
                             uppercase
                             tracking-[0.14em]
-                            text-[#9A740D]
+                            text-[#886408]
                           "
                       >
                         Step {number}
