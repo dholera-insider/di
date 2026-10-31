@@ -1,0 +1,25 @@
+# Proposed Nginx settings, to be merged into the existing dholerainsider.com
+# HTTPS server block. This file is not active until the server administrator
+# includes it. Merge existing gzip directives instead of defining them twice.
+# Check that nested static-file locations do not override gzip with "off".
+gzip on;
+gzip_vary on;
+gzip_proxied any;
+gzip_comp_level 5;
+gzip_min_length 1024;
+gzip_types
+    text/plain
+    text/css
+    text/javascript
+    application/javascript
+    application/json
+    application/manifest+json
+    application/xml
+    text/xml
+    image/svg+xml;
+
+# Keep current cache, routing, TLS, and proxy settings.
+# Do not gzip AVIF, WebP, JPEG, PNG, or WOFF2, which are already compressed.
+# HTTP/2 is a separate edit to the existing TLS listener, not a new listener:
+# Nginx 1.24 (currently deployed): listen 443 ssl http2;
+# Nginx 1.25.1+: keep the existing listener and add: http2 on;

@@ -381,26 +381,13 @@ export default function AboutUsPage() {
               No 01 / 02 labels.
           ==================================================== */}
 
-          <div
-            className="
-              grid
-              grid-cols-1
-              gap-7
 
-              md:grid-cols-2
-              md:gap-10
-
-              lg:max-w-[1080px]
-              lg:gap-16
-            "
-          >
-            {/* =================================================
-                CONTENT BLOCK 1
-            ================================================== */}
-
-            <div className="min-w-0">
+          <div className="w-full max-w-none">
+            {/* CONTENT BLOCK 1 */}
+            <div className="w-full">
               <p
                 className="
+                  w-full
                   text-[14px]
                   leading-7
                   text-white/70
@@ -418,13 +405,11 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            {/* =================================================
-                CONTENT BLOCK 2
-            ================================================== */}
-
-            <div className="min-w-0">
+            {/* CONTENT BLOCK 2 */}
+            <div className="mt-5 w-full">
               <p
                 className="
+                  w-full
                   text-[14px]
                   leading-7
                   text-white/70
@@ -442,6 +427,7 @@ export default function AboutUsPage() {
               </p>
             </div>
           </div>
+
 
           {/* ===================================================
               BOTTOM STRUCTURAL DETAIL

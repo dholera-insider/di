@@ -16,6 +16,7 @@ const ContactForm = dynamic(() => import("./Contactform"), {
 
 const Header = () => {
   const pathname = usePathname();
+  const isInvestorPage = pathname === "/investor" || pathname?.startsWith("/investor/");
   const [header, setHeader] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -189,7 +190,7 @@ const Header = () => {
 
         <div className="w-full max-w-7xl mx-auto h-full flex justify-between items-center relative site-gutter">
           {/* Enhanced Logo */}
-          <Link href="/" className="group">
+          <Link prefetch={isInvestorPage ? false : null} href="/" className="group">
             <m.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
@@ -206,10 +207,11 @@ const Header = () => {
                 width={100}
                 height={100}
                 className="object-contain relative z-10 drop-shadow-2xl max-sm:pt-4 max-sm:h-20 max-sm:w-20"
-                priority={true}
+                priority={!isInvestorPage}
+                loading="eager"
                 quality={85}
                 placeholder="blur"
-                fetchPriority="high"
+                fetchPriority={isInvestorPage ? "auto" : "high"}
               />
 
 
@@ -290,7 +292,7 @@ const Header = () => {
                               }}
                               className="border-b border-[#faf8f3]/10 last:border-0"
                             >
-                              <Link
+                              <Link prefetch={isInvestorPage ? false : null}
                                 href={subItem.href}
                                 className={`flex items-center justify-between px-6 py-3 text-sm transition-all duration-200 group ${
                                   isLinkActive(subItem.href)
@@ -311,7 +313,7 @@ const Header = () => {
                     </AnimatePresence>
                   </>
                 ) : (
-                  <Link
+                  <Link prefetch={isInvestorPage ? false : null}
                     href={item.href}
                     className={`group relative px-5 py-3 font-semibold tracking-wide transition-all duration-300 ${
                       isNavItemActive(item) ? "text-[#F6C343]" : "text-[#faf8f3]"
@@ -350,6 +352,7 @@ const Header = () => {
                 whileTap={{ scale: 0.95 }}
                 className="dropdown-trigger group flex items-center px-5 py-3 text-[#faf8f3] font-semibold tracking-wide transition-all duration-300 relative"
                 onHoverStart={(e) => toggleDropdown("hamburgerMenu", e)}
+                aria-label="More navigation"
               >
                 <span className="relative z-10 drop-shadow-lg">
                   <MenuIcon />
@@ -400,7 +403,7 @@ const Header = () => {
                                   );
                                 }
                                 return (
-                                  <Link
+                                  <Link prefetch={isInvestorPage ? false : null}
                                     key={subItem.name}
                                     href={subItem.href}
                                     className="block px-4 py-2 hover:bg-[#faf8f3]/10 text-sm text-[#faf8f3] transition-all duration-200 rounded-lg mx-2"
@@ -421,7 +424,7 @@ const Header = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.1 * index, duration: 0.3 }}
                         >
-                          <Link
+                          <Link prefetch={isInvestorPage ? false : null}
                             href={item.href}
                             className={`block px-6 py-3 text-sm transition-all duration-200 ${
                               isNavItemActive(item)
@@ -475,7 +478,7 @@ const Header = () => {
           >
             {/* Mobile Menu Header */}
             <div className="fixed top-0 left-0 right-0 h-20 bg-[#0b1d3a] border-b border-[#faf8f3]/10 flex items-center justify-between px-6 z-[102]">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+              <Link prefetch={isInvestorPage ? false : null} href="/" onClick={() => setMobileMenuOpen(false)}>
                 <div className="relative h-14 w-14">
                   <Image
                     src={logo}
@@ -488,6 +491,7 @@ const Header = () => {
 
               <button
                 onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
                 className="p-3 rounded-xl backdrop-blur-sm bg-[#faf8f3]/10 border border-[#faf8f3]/20 text-[#faf8f3] hover:bg-[#faf8f3]/20 transition-all duration-300"
               >
                 <AiOutlineClose className="text-2xl" />
@@ -555,7 +559,7 @@ const Header = () => {
                               <ul className="py-2">
                                 {item.items.map((subItem) => (
                                   <li key={subItem.name}>
-                                    <Link
+                                    <Link prefetch={isInvestorPage ? false : null}
                                       href={subItem.href}
                                       onClick={() => setMobileMenuOpen(false)}
                                       className={`flex items-center justify-between py-3 px-8 transition-all duration-200 ${
@@ -575,7 +579,7 @@ const Header = () => {
                         </AnimatePresence>
                       </div>
                     ) : (
-                      <Link
+                      <Link prefetch={isInvestorPage ? false : null}
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
                         className={`block py-4 px-6 font-bold transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 ${
@@ -665,7 +669,7 @@ const Header = () => {
                                   }
                                   return (
                                     <li key={subItem.name}>
-                                      <Link
+                                      <Link prefetch={isInvestorPage ? false : null}
                                         href={subItem.href}
                                         onClick={() => setMobileMenuOpen(false)}
                                         className={`block py-3 px-8 transition-all duration-200 ${
@@ -693,7 +697,7 @@ const Header = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 + 0.1 * index, duration: 0.4 }}
                     >
-                      <Link
+                      <Link prefetch={isInvestorPage ? false : null}
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
                         className={`block py-4 px-6 font-semibold transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 ${
