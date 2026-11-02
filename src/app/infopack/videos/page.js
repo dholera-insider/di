@@ -78,7 +78,7 @@ export default async function VideosPage() {
     },
     {
       id: "tE9WOGod2Z8",
-      title: "Ahmedabad–Dholera Expressway",
+      title: "Ahmedabad Dholera Expressway",
       duration: "unknown",
     },
     {

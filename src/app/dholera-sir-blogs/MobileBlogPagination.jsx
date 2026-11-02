@@ -34,6 +34,7 @@ export default function MobileBlogPagination({ currentPage, totalPages }) {
               : `/dholera-sir-blogs?page=${currentPage - 1}`
           }
           rel="prev"
+          prefetch={false}
           scroll={false}
           className={activeClassName}
         >
@@ -53,6 +54,7 @@ export default function MobileBlogPagination({ currentPage, totalPages }) {
         <Link
           href={`/dholera-sir-blogs?page=${currentPage + 1}`}
           rel="next"
+          prefetch={false}
           scroll={false}
           className={activeClassName}
         >

@@ -170,7 +170,7 @@ export default function SingaporeInvestorPage() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
-              Looking for a long-term investment opportunity in India? Dholera
+              Looking for a long term investment opportunity in India? Dholera
               Insider helps Singapore NRIs explore verified residential plots
               in Dholera Smart City with complete transparency, verified
               documentation, and expert guidance.

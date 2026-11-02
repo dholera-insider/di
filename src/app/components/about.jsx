@@ -18,7 +18,7 @@ export default function About() {
       content: "As businesses, industries, and families start moving into Dholera Smart City, the demand for homes and commercial spaces will grow. This means you can earn steady rental income from your investment, whether it's a plot, shop, or home."
     },
     {
-      title: "Government-Backed Development",
+      title: "Government Backed Development",
       content: "Dholera Smart City is fully supported by both the Central and Gujarat State Governments. It is part of the Delhi-Mumbai Industrial Corridor (DMIC) and is managed by a dedicated authority (DSIRDA). This ensures fast, planned, and safe development."
     },
     {

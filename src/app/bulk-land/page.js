@@ -174,7 +174,7 @@ const DholeraBulkLandPage = () => {
               <p className="text-xl italic mb-6 relative z-10 dark:text-gray-300">
                 "Our investment in Dholera bulk plots has outperformed all our
                 other real estate holdings. The speed of development gives us
-                confidence in the long-term potential."
+                confidence in the long term potential."
               </p>
               <p className="font-bold text-[#F6C343] dark:text-[#F6C343]">
                 - Rajesh Mehta, NRI Investor

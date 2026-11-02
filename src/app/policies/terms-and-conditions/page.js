@@ -1,6 +1,15 @@
 import React from "react";
 import { Mail, Phone } from "lucide-react";
 
+export const metadata = {
+  title: "Terms & Conditions | Dholera Insider",
+  description:
+    "Read the terms and conditions for using the Dholera Insider website.",
+  alternates: {
+    canonical: "https://www.dholerainsider.com/policies/terms-and-conditions",
+  },
+};
+
 export default function TermsConditions() {
   return (
     <div className="min-h-screen w-full bg-gray-900 text-white">

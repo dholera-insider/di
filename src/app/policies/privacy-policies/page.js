@@ -1,6 +1,15 @@
 import React from "react";
 import { Phone, Mail } from "lucide-react";
 
+export const metadata = {
+  title: "Privacy Policy | Dholera Insider",
+  description:
+    "Read how Dholera Insider collects, uses, and protects information shared through its website.",
+  alternates: {
+    canonical: "https://www.dholerainsider.com/policies/privacy-policies",
+  },
+};
+
 export default function Copyright() {
   return (
     <div className="relative w-full bg-gray-900">
@@ -11,9 +20,9 @@ export default function Copyright() {
           ========================== */}
           <div className="relative">
             <div className="flex flex-col items-center justify-center">
-              <p className="relative z-20 text-center text-4xl font-bold text-white drop-shadow-lg">
+              <h1 className="relative z-20 text-center text-4xl font-bold text-white drop-shadow-lg">
                 Privacy Policy
-              </p>
+              </h1>
 
               <div className="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-[#F6C343] to-[#e3ae25]" />
             </div>

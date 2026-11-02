@@ -1,5 +1,14 @@
 import React from "react";
 
+export const metadata = {
+  title: "Copyright Policy | Dholera Insider",
+  description:
+    "Read the Dholera Insider copyright policy, including intellectual property rights and reporting copyright infringement.",
+  alternates: {
+    canonical: "https://www.dholerainsider.com/policies/copyright-policy",
+  },
+};
+
 export default function Copyright() {
   return (
     <div className="w-full bg-gray-900">
@@ -7,9 +16,9 @@ export default function Copyright() {
         <div className="text-white">
           <div className="relative">
             <div className="flex flex-col justify-center items-center ">
-              <p className="text-4xl text-white font-bold text-center z-20 relative drop-shadow-lg">
+              <h1 className="text-4xl text-white font-bold text-center z-20 relative drop-shadow-lg">
                 Copyright Policy
-              </p>
+              </h1>
               <div className="w-24 h-1 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] mt-4 rounded-full"></div>
             </div>
           </div>

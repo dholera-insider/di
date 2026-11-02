@@ -26,10 +26,10 @@ const WHATSAPP_URL =
 
 const dholeraReasons = [
   { icon: Landmark, label: "India’s First Planned Smart City" },
-  { icon: ShieldCheck, label: "Government-Backed Development" },
+  { icon: ShieldCheck, label: "Government Backed Development" },
   { icon: Building2, label: "Major Industrial Investments" },
   { icon: Plane, label: "World-Class Connectivity" },
-  { icon: SearchCheck, label: "Long-Term Investment Potential" },
+  { icon: SearchCheck, label: "Long Term Investment Potential" },
 ];
 
 const journeySteps = [
@@ -500,7 +500,7 @@ export default function DholeraBahrainPage() {
                 "
             >
               <FaWhatsapp className="h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-                Talk to a Dholera Expert
+                Talk to a Dholera expert
             </a>
           </div>
         </div>

@@ -57,7 +57,7 @@ export default function CTAsection() {
       {isContactFormOpen && (
         <ContactForm
           onClose={() => setIsContactFormOpen(false)}
-          title="Talk to a Dholera Expert"
+          title="Talk to a Dholera expert"
         />
       )}
     </>

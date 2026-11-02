@@ -7,7 +7,7 @@ export const omanFaqs = [
   {
     question: "Is Dholera a good investment for Oman NRIs?",
     answer:
-      "Dholera can be considered by NRIs looking for long-term property investment in a developing smart city with planned infrastructure and industrial growth.",
+      "Dholera can be considered by NRIs looking for long term property investment in a developing smart city with planned infrastructure and industrial growth.",
   },
   {
     question: "Can I buy a Dholera plot without visiting India?",

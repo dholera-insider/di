@@ -7,7 +7,7 @@ export const qatarFaqs = [
   {
     question: "Why are Qatar NRIs interested in Dholera?",
     answer:
-      "Dholera offers planned city development, major infrastructure and industrial growth, making it an option for NRIs looking at long-term property investment.",
+      "Dholera offers planned city development, major infrastructure and industrial growth, making it an option for NRIs looking at long term property investment.",
   },
   {
     question: "Can I invest in Dholera from Qatar without visiting India?",

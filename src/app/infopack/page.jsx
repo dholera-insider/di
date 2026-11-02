@@ -75,7 +75,7 @@ export default function Info() {
     {
       id: 5,
       title: "WestWyn Estate - Dholera Plots Under ₹10 Lakh",
-      description: "WestWyn Estate is strategically located 0 KM from the Dholera SIR boundary, on the Vadhela–Navda State Highway. The project offers register-ready plots just 5 minutes from the Ahmedabad–Dholera Expressway, providing quick connectivity to major infrastructure developments. Located near the Hebatpur Industrial Area, WestWyn Estate offers investors an opportunity to secure Dholera plots in a rapidly developing industrial region with long-term growth potential.",
+      description: "WestWyn Estate is strategically located 0 KM from the Dholera SIR boundary, on the Vadhela–Navda State Highway. The project offers register-ready plots just 5 minutes from the Ahmedabad Dholera Expressway, providing quick connectivity to major infrastructure developments. Located near the Hebatpur Industrial Area, WestWyn Estate offers investors an opportunity to secure Dholera plots in a rapidly developing industrial region with long term growth potential.",
       link: "https://www.bookmyassets.com/dholera-residential-plots/westwyn-estate",
       image: westwynEstate,
       tag: "Under ₹10 Lakh",
@@ -94,7 +94,7 @@ export default function Info() {
     { num: "3", title: "Sustainable Smart Living", body: "The city is designed with renewable energy integration and modern urban planning for housing, healthcare, and education infrastructure." },
     { num: "4", title: "Plug-and-Play Infrastructure", body: "Industrial zones already feature wide roads, underground utilities, ICT systems, and SCADA-enabled smart monitoring infrastructure." },
     { num: "5", title: "Industrial Magnet", body: "Over ₹3 lakh crore in planned investments from government initiatives and global companies including TATA, Tokyo Electron, and Tillman Global." },
-    { num: "6", title: "High ROI Zone", body: "Early-stage investors are entering during the initial growth phase, positioning themselves for long-term appreciation as infrastructure and industries expand." },
+    { num: "6", title: "High ROI Zone", body: "Early-stage investors are entering during the initial growth phase, positioning themselves for long term appreciation as infrastructure and industries expand." },
   ];
 
   return (
@@ -195,7 +195,7 @@ export default function Info() {
           <div className="mb-6">
             <h2 className="text-white text-2xl font-bold mb-2">Why Dholera is the Future of India</h2>
             <p className="text-[#FDFCFA]/85 text-sm leading-relaxed max-w-2xl">
-              Dholera offers the perfect balance of government support, strategic location, and affordability, making it one of India's most promising long-term development regions.
+              Dholera offers the perfect balance of government support, strategic location, and affordability, making it one of India's most promising long term development regions.
             </p>
           </div>
           <p className="text-[#F6C343] text-xs font-semibold tracking-widest uppercase mb-4">Key Reasons Behind Dholera's Growth</p>

@@ -24,12 +24,12 @@ import img17 from "@/app/assets/gallery/water-treatment-plant-dholera-insider.we
 import img18 from "@/app/assets/gallery/westwyn-estate-residential-plots-dholera-insider.webp";
 
 const images = [
-  { src: img1, alt: "522 Room Tata Hotel on Fedra–Pipli State Highway, Dholera" },
+  { src: img1, alt: "522 Room Tata Hotel on Fedra Pipli State Highway, Dholera" },
   { src: img2, alt: "ABCD Building Dholera Smart City" },
   { src: img3, alt: "Adhelai Diamond Circle Dholera" },
   { src: img4, alt: "Asia’s Largest Solar Park Dholera" },
   { src: img5, alt: "Cargo Terminal at Dholera International Airport" },
-  { src: img6, alt: "Ahmedabad–Dholera Expressway at Night" },
+  { src: img6, alt: "Ahmedabad Dholera Expressway at Night" },
   { src: img7, alt: "Dholera International Airport" },
   { src: img8, alt: "Dholera Solar Park" },
   { src: img9, alt: "Infrastructure Activation Area Dholera" },

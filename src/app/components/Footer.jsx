@@ -171,10 +171,11 @@ const Footer = () => {
                 <div className="flex-shrink-0 text-[#faf8f3] mr-3 mt-1">
                   <MapPin size={18} />
                 </div>
-                <span className="text-[#faf8f3]">
-                  3rd Floor, H-110, Sector 63 Road, H Block, Sector 63, Noida,
-                  Uttar Pradesh 201301
-                </span>
+                  <span className="text-[#faf8f3]">
+                    303, 3rd Floor, H-110,<br />
+                    Sector 63, Noida,<br />
+                    Uttar Pradesh 201301
+                  </span>
               </li>
               <li className="flex items-center">
                 <div className="flex-shrink-0 text-[#faf8f3] mr-3">

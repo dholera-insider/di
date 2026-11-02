@@ -12,7 +12,7 @@ const aboutFaqs = [
   {
     question: "Why is Dholera attracting investors?",
     answer:
-      "Dholera is attracting investors because of its government-backed development, major infrastructure projects, industrial investments, and long-term growth potential.",
+      "Dholera is attracting investors because of its government backed development, major infrastructure projects, industrial investments, and long term growth potential.",
   },
   {
     question: "Can NRIs invest in Dholera?",
@@ -22,7 +22,7 @@ const aboutFaqs = [
   {
     question: "Why are residential plots popular in Dholera?",
     answer:
-      "Residential plots offer long-term ownership, flexibility for future construction, and the opportunity to invest early in a developing smart city.",
+      "Residential plots offer long term ownership, flexibility for future construction, and the opportunity to invest early in a developing smart city.",
   },
   {
     question: "How does Dholera Insider help NRI investors?",

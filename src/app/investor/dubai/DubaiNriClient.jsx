@@ -75,7 +75,7 @@ const documentChecks = [
   },
   {
     icon: TrendingUp,
-    title: "Hold land for long-term appreciation",
+    title: "Hold land for long term appreciation",
     description: "",
   },
   {
@@ -343,7 +343,7 @@ export default function DubaiNriClient() {
                 className="h-5 w-5 flex-shrink-0 text-[#25D366]"
                 aria-hidden="true"
               />
-              Talk to a Dholera Expert
+              Talk to a Dholera expert
             </a>
           </div>
         </div>

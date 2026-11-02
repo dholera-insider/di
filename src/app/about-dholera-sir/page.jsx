@@ -27,7 +27,7 @@ import AboutFaq from "./Faq";
 export const metadata = {
   title: "About Dholera Smart City | Why NRIs Are Investing in Dholera",
   description:
-    "Learn about Dholera Smart City, its infrastructure, major developments, and why NRIs are investing in residential plots for long-term growth.",
+    "Learn about Dholera Smart City, its infrastructure, major developments, and why NRIs are investing in residential plots for long term growth.",
   keywords: [
     "About Dholera Smart City",
     "Dholera Smart City",
@@ -51,7 +51,7 @@ export const metadata = {
   openGraph: {
     title: "About Dholera Smart City | Why NRIs Are Investing in Dholera",
     description:
-      "Learn about Dholera Smart City, its infrastructure, major developments, and why NRIs are investing in residential plots for long-term growth.",
+      "Learn about Dholera Smart City, its infrastructure, major developments, and why NRIs are investing in residential plots for long term growth.",
     url: "https://www.dholerainsider.com/about-dholera-sir",
     type: "website",
   },
@@ -106,7 +106,7 @@ const megaProjects = [
   },
   {
     icon: "🛣️",
-    title: "Ahmedabad–Dholera Expressway",
+    title: "Ahmedabad Dholera Expressway",
     description: "High-speed corridor cutting travel time to one hour",
     href: "/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity",
   },
@@ -125,7 +125,7 @@ const megaProjects = [
   {
     icon: "💧",
     title: "Water Treatment Plant",
-    description: "Reliable long-term water supply for industries and residents",
+    description: "Reliable long term water supply for industries and residents",
     href: "/dholera-sir-blogs/dholera-smart-city-water-scarcity-solutions",
   },
   {
@@ -144,17 +144,17 @@ const megaProjects = [
 ];
 
 const nriBenefits = [
-  "Long-term land ownership",
+  "Long term land ownership",
   "Opportunity to build a future home",
   "Investment in a developing smart city",
   "Potential for future appreciation",
-  "A long-term family asset in India",
+  "A long term family asset in India",
 ];
 
 const suitableFor = [
   {
     Icon: Globe,
-    text: "NRIs looking for long-term property investment",
+    text: "NRIs looking for long term property investment",
   },
   {
     Icon: Home,
@@ -170,7 +170,7 @@ const suitableFor = [
   },
   {
     Icon: Users,
-    text: "Individuals building long-term wealth through real estate",
+    text: "Individuals building long term wealth through real estate",
   },
 ];
 
@@ -183,7 +183,7 @@ const faqs = [
   {
     question: "Why is Dholera attracting investors?",
     answer:
-      "Dholera is attracting investors because of its government-backed development, major infrastructure projects, industrial investments, and long-term growth potential.",
+      "Dholera is attracting investors because of its government backed development, major infrastructure projects, industrial investments, and long term growth potential.",
   },
   {
     question: "Can NRIs invest in Dholera?",
@@ -193,7 +193,7 @@ const faqs = [
   {
     question: "Why are residential plots popular in Dholera?",
     answer:
-      "Residential plots offer long-term ownership, flexibility for future construction, and the opportunity to invest early in a developing smart city.",
+      "Residential plots offer long term ownership, flexibility for future construction, and the opportunity to invest early in a developing smart city.",
   },
   {
     question: "How does Dholera Insider help NRI investors?",
@@ -568,7 +568,7 @@ export default function AboutDholeraSirPage() {
 
             <p className="text-base leading-8 text-white/80">
               Many NRIs are exploring Dholera because it combines
-              government-backed planning with long-term development potential.
+              government backed planning with long term development potential.
             </p>
           </div>
 

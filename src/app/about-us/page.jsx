@@ -82,9 +82,9 @@ const reasons = [
   },
   {
     Icon: Target,
-    title: "Long-Term Investment Focus",
+    title: "Long Term Investment Focus",
     description:
-      "Our projects are located near major infrastructure developments with strong long-term residential potential.",
+      "Our projects are located near major infrastructure developments with strong long term residential potential.",
   },
 ];
 
@@ -93,7 +93,7 @@ const beliefs = [
     Icon: ShieldCheck,
     title: "Trust",
     description:
-      "Building long-term relationships through honest advice and dependable service.",
+      "Building long term relationships through honest advice and dependable service.",
   },
   {
     Icon: FileCheck2,
@@ -123,7 +123,7 @@ const trustPoints = [
   "Dedicated NRI Assistance",
   "Remote Buying Support",
   "Professional Guidance",
-  "End-to-End Investment Assistance",
+  "End to End Investment Assistance",
 ];
 
 function SectionHeading({
@@ -421,7 +421,7 @@ export default function AboutUsPage() {
                 "
               >
                 Whether you are investing for your family's future,
-                building a long-term asset, or planning to return to
+                building a long term asset, or planning to return to
                 India, our team provides the guidance and support you
                 need to make an informed decision.
               </p>

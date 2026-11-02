@@ -52,7 +52,7 @@ const mobileJourneyColors = [
 ];
 
 export default function CommonJourney({
-  title = "Talk to a Dholera Expert",
+  title = "Talk to a Dholera expert",
   whatsappUrl =
   "https://wa.me/919211820887?text=Hello%2C%20I%20am%20interested%20in%20buying%20a%20plot%20in%20Dholera.%20Please%20share%20the%20details.",
     
@@ -266,7 +266,7 @@ export default function CommonJourney({
               "
             >
                 <FaWhatsapp className="h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-               Talk to a Dholera Expert
+               Talk to a Dholera expert
             </a>
           </div>
         )}

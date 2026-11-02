@@ -9,7 +9,7 @@ const dubaiFaqs = [
   {
     question: "Is Dholera a good investment for Dubai NRIs?",
     answer:
-      "Dholera is considered a promising long-term investment opportunity due to its planned infrastructure, industrial development, and future growth potential. Investors should always review project documents before making a decision.",
+      "Dholera is considered a promising long term investment opportunity due to its planned infrastructure, industrial development, and future growth potential. Investors should always review project documents before making a decision.",
   },
   {
     question: "What documents should NRI buyers verify?",

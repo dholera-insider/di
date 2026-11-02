@@ -7,9 +7,9 @@ const faqItems = [
       "Yes. NRIs living in Singapore can buy residential plots in Dholera. The buying process can be completed remotely with proper documentation and registration support.",
   },
   {
-    question: "Is Dholera a good long-term investment?",
+    question: "Is Dholera a good long term investment?",
     answer:
-      "Dholera is attracting long-term investors because of its planned infrastructure, industrial growth, and future development potential. Always evaluate project documents before investing.",
+      "Dholera is attracting long term investors because of its planned infrastructure, industrial growth, and future development potential. Always evaluate project documents before investing.",
   },
   {
     question: "What should I verify before buying a plot?",

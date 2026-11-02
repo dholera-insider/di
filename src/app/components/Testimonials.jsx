@@ -14,7 +14,7 @@ export default function TestimonialsSection() {
     {
       name: "Gaurav Parmar",
       location: "Surat, Gujarat",
-      text: "The team helped me understand everything about the Dholera region, future development, government approvals, town planning, everything. WestWyn County stood out because of its layout and the long-term appreciation potential. Their process was smooth and professional. I felt safe investing here."
+      text: "The team helped me understand everything about the Dholera region, future development, government approvals, town planning, everything. WestWyn County stood out because of its layout and the long term appreciation potential. Their process was smooth and professional. I felt safe investing here."
     },
     {
       name: "Jaspreet Singh",
@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
     {
       name: "Satendra Dahiya",
       location: "Gurugram, Haryana",
-      text: "What impressed me the most was how they explained every detail without any pressure to buy. I felt like I was working with experts, not salespeople. WestWyn County was well-planned, close to the activation zone, and still in my budget. I'm confident this will be a profitable long-term investment."
+      text: "What impressed me the most was how they explained every detail without any pressure to buy. I felt like I was working with experts, not salespeople. WestWyn County was well-planned, close to the activation zone, and still in my budget. I'm confident this will be a profitable long term investment."
     },
     {
       name: "Alpa Batra",

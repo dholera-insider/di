@@ -11,7 +11,7 @@ import InternationalPhoneInput, {
 
 export default function ContactForm({
   onClose,
-  title = "Talk to a Dholera Expert",
+  title = "Talk to a Dholera expert",
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "" });

@@ -27,7 +27,7 @@ const megaProjects = [
     href: "/about-dholera-sir/dholera-international-airport-project-update-2025",
   },
   {
-    title: "Ahmedabad–Dholera Expressway",
+    title: "Ahmedabad Dholera Expressway",
     description:
       "High-speed corridor cutting travel time to one hour",
     href: "/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity",
@@ -47,7 +47,7 @@ const megaProjects = [
   {
     title: "Water Treatment Plant",
     description:
-      "Reliable long-term water supply for industries and residents",
+      "Reliable long term water supply for industries and residents",
     href: "/dholera-sir-blogs/dholera-smart-city-water-scarcity-solutions",
   },
   {

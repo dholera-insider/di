@@ -35,7 +35,7 @@ const benefits = [
     icon: House,
   },
   {
-    title: "Long-Term Growth Potential",
+    title: "Long Term Growth Potential",
     icon: TrendingUp,
   },
 ];
@@ -43,7 +43,7 @@ const benefits = [
 export default function WhyQatar() {
   return (
     <section
-      aria-labelledby="why-dholera-heading"
+      aria-labelledby="why-qatar-heading"
       className="relative overflow-hidden bg-[#EEF2F9] site-gutter section-space"
     >
       {/* Background decoration */}
@@ -88,7 +88,7 @@ export default function WhyQatar() {
         >
           <div className="flex items-center gap-3">
             <h2
-              id="why-dholera-heading"
+              id="why-qatar-heading"
               className="
                 text-3xl
                 font-bold
@@ -112,26 +112,21 @@ export default function WhyQatar() {
             flex-col
             gap-3
             sm:gap-4
+            before:content-['']
+            before:pointer-events-none
+            before:absolute
+            before:bottom-8
+            before:left-[31px]
+            before:top-8
+            before:hidden
+            before:w-px
+            before:bg-gradient-to-b
+            before:from-[#051A3A]/15
+            before:via-[#E8ECF2]
+            before:to-[#F6C343]/50
+            sm:before:block
           "
         >
-          {/* Vertical connector */}
-          <div
-            aria-hidden="true"
-            className="
-              absolute
-              bottom-8
-              left-[31px]
-              top-8
-              hidden
-              w-px
-              bg-gradient-to-b
-              from-[#051A3A]/15
-              via-[#E8ECF2]
-              to-[#F6C343]/50
-              sm:block
-            "
-          />
-
           {benefits.map((benefit) => {
             const Icon = benefit.icon;
 

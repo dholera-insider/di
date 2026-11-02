@@ -63,13 +63,13 @@ export default function DholeraProgressPage() {
       id: 6,
       src: img6,
       alt: "Dholera Airport Cargo Terminal",
-      caption: "Cargo Terminal – Dholera International Airport",
+      caption: "Cargo Terminal Dholera International Airport",
     },
     {
       id: 7,
       src: img7,
       alt: "Dholera Expressway Night View",
-      caption: "Ahmedabad–Dholera Expressway connectivity",
+      caption: "Ahmedabad Dholera Expressway connectivity",
     },
     {
       id: 8,
@@ -203,19 +203,21 @@ export default function DholeraProgressPage() {
       </div>
 
       {/* Gallery */}
-      <div className="max-w-7xl mx-auto py-8 site-gutter">
+      <section
+        aria-labelledby="gallery-heading"
+        className="max-w-7xl mx-auto py-8 site-gutter"
+      >
+        <h2 id="gallery-heading" className="sr-only">
+          Dholera development photos
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
           {galleryImages.map((image) => (
-            <div
+            <button
               key={image.id}
-              role="button"
-              tabIndex={0}
+              type="button"
+              aria-haspopup="dialog"
+              aria-label={`View full image: ${image.alt}`}
               onClick={() => openPopup(image)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  openPopup(image);
-                }
-              }}
               className="
                 group
                 relative
@@ -233,7 +235,7 @@ export default function DholeraProgressPage() {
                 focus-visible:ring-offset-2
               "
             >
-              <div className="relative h-56 sm:h-60 lg:h-64 overflow-hidden">
+              <span className="relative block h-56 sm:h-60 lg:h-64 overflow-hidden">
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -248,18 +250,18 @@ export default function DholeraProgressPage() {
                   "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+                <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </span>
 
-              <div className="p-4 text-center">
-                <h3 className="text-base md:text-lg font-bold text-gray-800 leading-snug">
+              <span className="block p-4 text-center">
+                <span className="block text-base md:text-lg font-bold text-gray-800 leading-snug">
                   {image.alt}
-                </h3>
-              </div>
-            </div>
+                </span>
+              </span>
+            </button>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* Popup rendered directly under body */}
         {mounted &&

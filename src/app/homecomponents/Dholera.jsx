@@ -20,7 +20,7 @@ export default function Dholera() {
     {
       title: "4. Affordable Early Investment Opportunity",
       description:
-        "Compared to developed cities like Delhi and Gurgaon, Dholera still offers affordable land investment options. Buyers can invest in clear-title and registry-ready plots at an early stage and benefit from the long-term growth potential of Dholera Smart City.",
+        "Compared to developed cities like Delhi and Gurgaon, Dholera still offers affordable land investment options. Buyers can invest in clear-title and registry-ready plots at an early stage and benefit from the long term growth potential of Dholera Smart City.",
     },
   ];
 

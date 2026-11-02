@@ -87,7 +87,7 @@ const Contact = () => {
             contacts
           </p>
           <p className="text-4xl text-white font-bold text-center z-20 relative capitalize mt-7 sm:mt-14 ">
-            Talk to a Dholera Expert
+            Talk to a Dholera expert
           </p>
         </div>
       </div>

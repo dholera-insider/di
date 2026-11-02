@@ -189,10 +189,10 @@ const DEFAULT_PROJECT_ALIASES = {
     "International Airport Dholera",
   ],
 
-  [normalizeText("Ahmedabad–Dholera Expressway")]: [
+  [normalizeText("Ahmedabad Dholera Expressway")]: [
     "Ahmedabad Dholera Expressway",
-    "Ahmedabad-Dholera Expressway",
-    "Ahmedabad–Dholera Expressway",
+    "Ahmedabad Dholera Expressway",
+    "Ahmedabad Dholera Expressway",
     "Ahmedabad Dholera Expressway Transforming Gujarat Connectivity",
     "Dholera Expressway",
     "Ahmedabad Dholera Highway",

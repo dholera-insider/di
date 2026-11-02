@@ -22,6 +22,7 @@ export default function BlogCard({ post }) {
       href={
         post.slug?.current ? `/dholera-sir-blogs/${post.slug.current}` : "#"
       }
+      prefetch={false}
       className="group"
     >
       <div className="bg-white rounded-[8px] shadow-md overflow-hidden h-full hover:shadow-[#f6c343] hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-200">
@@ -32,8 +33,8 @@ export default function BlogCard({ post }) {
               src={post.imageUrl}
               alt={post.title}
               fill
-              sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) calc((100vw - 80px) / 2), (max-width: 1279px) calc((100vw - 128px) / 3), 384px"
-              quality={75}
+              sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 767px) calc(100vw - 48px), (max-width: 1023px) calc((100vw - 80px) / 2), (max-width: 1279px) calc((100vw - 128px) / 3), 384px"
+              quality={70}
               className="object-cover"
             />
           ) : (

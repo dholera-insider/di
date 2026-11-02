@@ -9,7 +9,7 @@ const saudiFaqs = [
   {
     question: "Why are Saudi NRIs investing in Dholera?",
     answer:
-      "Saudi NRIs are investing in Dholera because of its government-backed development, planned infrastructure, industrial growth, and long-term investment potential.",
+      "Saudi NRIs are investing in Dholera because of its government backed development, planned infrastructure, industrial growth, and long term investment potential.",
   },
   {
     question: "Can I buy a plot without visiting India?",

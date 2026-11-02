@@ -13,7 +13,7 @@ const benefits = [
     icon: Building2,
   },
   {
-    title: "Government-Backed Development",
+    title: "Government Backed Development",
     icon: Landmark,
   },
   {
@@ -21,7 +21,7 @@ const benefits = [
     icon: Cpu,
   },
   {
-    title: "Ahmedabad–Dholera Expressway",
+    title: "Ahmedabad Dholera Expressway",
     icon: Route,
   },
   {
@@ -102,26 +102,21 @@ export default function WhySaudiArabia() {
             flex-col
             gap-3
             sm:gap-4
+            before:content-['']
+            before:pointer-events-none
+            before:absolute
+            before:bottom-8
+            before:left-[31px]
+            before:top-8
+            before:hidden
+            before:w-px
+            before:bg-gradient-to-b
+            before:from-[#051A3A]/15
+            before:via-[#E8ECF2]
+            before:to-[#F6C343]/50
+            sm:before:block
           "
         >
-          {/* Vertical connector */}
-          <div
-            aria-hidden="true"
-            className="
-              absolute
-              bottom-8
-              left-[31px]
-              top-8
-              hidden
-              w-px
-              bg-gradient-to-b
-              from-[#051A3A]/15
-              via-[#E8ECF2]
-              to-[#F6C343]/50
-              sm:block
-            "
-          />
-
           {benefits.map((benefit) => {
             const Icon = benefit.icon;
 

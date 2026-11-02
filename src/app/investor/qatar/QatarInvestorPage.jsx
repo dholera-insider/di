@@ -39,7 +39,7 @@ const dholeraReasons = [
   { icon: Network, label: "Ahmedabad-Dholera Expressway" },
   { icon: Plane, label: "Dholera International Airport" },
   { icon: Building2, label: "Planned residential development" },
-  { icon: TrendingUp, label: "Long-term growth potential" },
+  { icon: TrendingUp, label: "Long term growth potential" },
 ];
 
 const supportBenefits = [

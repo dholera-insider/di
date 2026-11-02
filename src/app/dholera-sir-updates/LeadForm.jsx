@@ -7,7 +7,7 @@ import InternationalPhoneInput, {
 } from "../components/InternationalPhoneInput";
 
 export default function LeadForm({
-  title = "Talk to a Dholera Expert",
+  title = "Talk to a Dholera expert",
   headline,
   buttonName,
   onClose,

@@ -7,7 +7,7 @@ export const kuwaitFaqs = [
   {
     question: "Is Dholera a good investment for Kuwait NRIs?",
     answer:
-      "Dholera can be considered by NRIs looking for long-term property investment, particularly those interested in residential plots in a developing smart city.",
+      "Dholera can be considered by NRIs looking for long term property investment, particularly those interested in residential plots in a developing smart city.",
   },
   {
     question: "Can I invest in Dholera without visiting India?",
