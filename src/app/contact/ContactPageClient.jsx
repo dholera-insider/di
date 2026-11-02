@@ -537,7 +537,6 @@ export default function ContactPageClient({ faqs = [] }) {
           strokeWidth="1.35"
           strokeLinecap="round"
           strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
           opacity="0.92"
         >
           {/* LEFT SMALL BUILDINGS */}

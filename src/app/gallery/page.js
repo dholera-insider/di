@@ -75,7 +75,7 @@ export default function DholeraProgressPage() {
       id: 8,
       src: img8,
       alt: "Adhelai Diamond Circle in Dholera",
-      caption: "Adhelai Diamond Circle – Key road junction in Dholera",
+      caption: "Adhelai Diamond Circle Key road junction in Dholera",
     },
     {
       id: 9,
@@ -175,9 +175,6 @@ export default function DholeraProgressPage() {
 
   return (
     <div className="min-h-screen">
-      <link rel="canonical" href="https://www.dholerainsider.com/gallery" />
-      <meta name="robots" content="index, dofollow" />
-
       {/* Hero Section */}
       <div className="relative bg-white">
         <div className="pt-16 md:pt-8">
