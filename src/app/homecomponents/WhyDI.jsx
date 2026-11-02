@@ -77,9 +77,9 @@ export default function WhyDI() {
                     />
                   </div>
                   <div>
-                    <h4 className="mb-2 text-lg font-bold text-[#051A3A]">
+                    <h3 className="mb-2 text-lg font-bold text-[#051A3A]">
                       {title}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed text-[#2B364D]">
                       {description}
                     </p>

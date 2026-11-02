@@ -10,6 +10,8 @@ import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { MenuIcon } from "lucide-react";
 
+const MotionLink = m.create(Link);
+
 const ContactForm = dynamic(() => import("./Contactform"), {
   ssr: false,
 });
@@ -190,10 +192,14 @@ const Header = () => {
 
         <div className="w-full max-w-7xl mx-auto h-full flex justify-between items-center relative site-gutter">
           {/* Enhanced Logo */}
-          <Link prefetch={isInvestorPage ? false : null} href="/" className="group">
-            <m.div
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              whileTap={{ scale: 0.95 }}
+          <MotionLink
+            prefetch={isInvestorPage ? false : null}
+            href="/"
+            className="group"
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div
               className={`relative transition-all duration-300 ${
                 scrolled
                   ? "h-24 max-sm:h-24 w-24"
@@ -215,8 +221,8 @@ const Header = () => {
               />
 
 
-            </m.div>
-          </Link>
+            </div>
+          </MotionLink>
 
           {/* Enhanced Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
@@ -252,20 +258,22 @@ const Header = () => {
                         aria-hidden="true"
                       />
 
-                      <div
+                      <span
+                        aria-hidden="true"
                         className={`absolute inset-0 rounded-lg transition-all duration-300 ${
                           isNavItemActive(item)
                             ? "bg-[#faf8f3]/10 opacity-100"
                             : "bg-[#faf8f3]/10 opacity-0 group-hover:opacity-100"
                         }`}
-                      ></div>
-                      <div
+                      ></span>
+                      <span
+                        aria-hidden="true"
                         className={`absolute bottom-0 h-0.5 bg-[#F6C343] transition-all duration-300 ${
                           isNavItemActive(item)
                             ? "left-0 w-full"
                             : "left-1/2 w-0 group-hover:left-0 group-hover:w-full"
                         }`}
-                      ></div>
+                      ></span>
                     </m.button>
 
                     <AnimatePresence>
@@ -358,7 +366,7 @@ const Header = () => {
                   <MenuIcon />
                 </span>
 
-                <div className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <span aria-hidden="true" className="absolute inset-0 bg-[#faf8f3]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
               </m.button>
 
               <AnimatePresence>
@@ -452,7 +460,8 @@ const Header = () => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <m.div
+            <m.span
+              className="inline-flex"
               animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
@@ -461,7 +470,7 @@ const Header = () => {
               ) : (
                 <AiOutlineMenu className="text-2xl" />
               )}
-            </m.div>
+            </m.span>
           </m.button>
         </div>
       </m.div>
@@ -536,7 +545,8 @@ const Header = () => {
                           }
                         >
                           <span>{item.name}</span>
-                          <m.div
+                          <m.span
+                            className="inline-flex"
                             animate={{
                               rotate:
                                 mobileActiveDropdown === item.key ? 180 : 0,
@@ -544,7 +554,7 @@ const Header = () => {
                             transition={{ duration: 0.3 }}
                           >
                             <AiOutlineDown />
-                          </m.div>
+                          </m.span>
                         </button>
 
                         <AnimatePresence>
@@ -630,7 +640,8 @@ const Header = () => {
                           }
                         >
                           <span>{item.name}</span>
-                          <m.div
+                          <m.span
+                            className="inline-flex"
                             animate={{
                               rotate:
                                 mobileActiveDropdown === item.key ? 180 : 0,
@@ -638,7 +649,7 @@ const Header = () => {
                             transition={{ duration: 0.3 }}
                           >
                             <AiOutlineDown />
-                          </m.div>
+                          </m.span>
                         </button>
 
                         <AnimatePresence>

@@ -10,7 +10,7 @@ import icon2 from "@/app/assets/svg/Dubai.svg";
 import icon3 from "@/app/assets/svg/kuwait.svg";
 import icon4 from "@/app/assets/svg/Oman.svg";
 import icon5 from "@/app/assets/svg/Qatar.svg";
-import icon6 from "@/app/assets/svg/Saudi Arabia.svg";
+import icon6 from "@/app/assets/svg/Saudi-Arabia.svg";
 import icon7 from "@/app/assets/svg/Singapore.svg";
 
 const SITE_URL = "https://www.dholerainsider.com";
