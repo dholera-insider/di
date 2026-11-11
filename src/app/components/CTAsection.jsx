@@ -30,7 +30,7 @@ export default function CTAsection() {
           </h2>
           <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-white/85">
             Explore verified residential plot opportunities with dedicated support
-            designed for NRIs.
+            designed for NRIs
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

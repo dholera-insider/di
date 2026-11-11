@@ -174,7 +174,7 @@ const Footer = () => {
                   <span className="text-[#faf8f3]">
                     303, 3rd Floor, H-110,<br />
                     Sector 63, Noida,<br />
-                    Uttar Pradesh 201301
+                    Uttar Pradesh-201301
                   </span>
               </li>
               <li className="flex items-center">
@@ -196,7 +196,7 @@ const Footer = () => {
                   href="tel:+919211820887"
                   className="text-[#faf8f3] hover:text-[#faf8f3] transition"
                 >
-                  +91 9211820887
+                  +91 92 11 82 08 87
                 </Link>
               </li>
             </ul>

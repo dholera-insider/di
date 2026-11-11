@@ -83,7 +83,7 @@ export default function WhyDholera() {
                 lg:text-[40px]
               "
             >
-              Why Dholera ?
+              Why Dholera?
             </h2>
           </div>
         </div>

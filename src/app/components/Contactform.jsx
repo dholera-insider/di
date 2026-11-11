@@ -342,7 +342,7 @@ export default function ContactForm({
               {isLoading
                 ? "Verifying..."
                 : recaptchaLoaded
-                  ? "Get A Call Back"
+                  ? "Get a Call Back"
                   : "Loading..."}
             </button>
           </form>

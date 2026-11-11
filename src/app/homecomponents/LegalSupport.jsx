@@ -15,40 +15,46 @@ import {
 
 const legalServices = [
   {
-    label: "Clear Title",
+    label: "7/12 Extract & Form 8A",
     Icon: BadgeCheck,
     description:
-      "A Clear Title means the ownership of the land is clearly established and there are no known title disputes or ownership claims.",
+      "Government land records showing the landowner's name, land area and ownership details.",
   },
   {
     label: "Sale Deed",
     Icon: ScrollText,
     description:
-      "A Sale Deed is the legal document used to transfer ownership of the property from the seller to the buyer.",
+      "Legal document proving the transfer of property ownership from seller to buyer.",
   },
   {
-    label: "NA & NOC",
+    label: "NA/NOC",
     Icon: ShieldCheck,
     description:
-      "NA (Non-Agricultural) permission allows land to be used for approved non-agricultural purposes. NOC (No Objection Certificate) refers to required permissions or clearances from the relevant authorities.",
+      "NA is government permission to use agricultural land for non-agricultural purposes. NOC is official clearance from the relevant authority.",
   },
   {
-    label: "Plan Pass",
+    label: "Property Card",
+    Icon: BadgeCheck,
+    description:
+      "Government record showing property ownership, area and property details.",
+  },
+  {
+    label: "Approved Plan Pass",
     Icon: ClipboardCheck,
     description:
-      "A Plan Pass is the approval of the project layout or development plan by the Dholera Special Investment Region Development Authority (DSIRDA).",
+      "Official approval of the plot layout or building plan by the relevant authority.",
   },
   {
-    label: "Registry Ready",
+    label: "Mutation",
     Icon: Stamp,
     description:
-      "Registry Ready means the property is ready to proceed with the registration process after completing the required documentation and formalities.",
+      "Government record updating the owner's name after property transfer.",
   },
   {
-    label: "Immediate Possession",
-    Icon: KeyRound,
+    label: "EC Certificate",
+    Icon: ScrollText,
     description:
-      "Immediate Possession means the buyer can receive possession of the plot after completing the required purchase and registration formalities.",
+      "EC Certificate (Encumbrance Certificate): Shows registered property transactions and recorded loans or legal claims for a specific period.",
   },
 ];
 
@@ -202,9 +208,9 @@ export function LegalSupport() {
                   lg:text-left
                 "
               >
-                Buy with Complete
+                Documents to Verify Before Buying a
                 <span className="block">
-                  Confidence
+                  Plot in Dholera
                 </span>
               </h2>
 

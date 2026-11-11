@@ -152,13 +152,13 @@ export default function NRISupport() {
         {/* Header */}
         <div className="mb-6 text-center md:mb-12">
           <h2 className="mb-2 text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[#051A3A]">
-            Invest in Dholera From Anywhere
+            Invest in Dholera from Anywhere
           </h2>
 
           <div className="mx-auto mb-4 h-1 w-14 rounded-full bg-[#F6C343]" />
 
           <p className="mx-auto max-w-2xl text-[clamp(0.9rem,1.2vw,1rem)] leading-relaxed text-[#2B364D]">
-            Get dedicated support designed for NRI investors.
+            Get dedicated support designed for NRI investors
           </p>
         </div>
 
