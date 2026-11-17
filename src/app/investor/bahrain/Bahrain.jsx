@@ -111,7 +111,7 @@ const faqItems = [
 
 function ProjectImage() {
   return (
-    <div className="relative mx-auto w-full max-w-[800px]">
+    <div className="relative mx-auto w-full lg:max-w-[calc(49vw_-_70.56px)] xl:max-w-[556.64px]">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-white/15">
         <InvestorHero country="bahrain"
           src={projectImage}
@@ -121,7 +121,7 @@ function ProjectImage() {
           priority
           fetchPriority="high"
           quality={65}
-          sizes="(max-width: 799px) 100vw, (max-width: 1023px) 800px, (max-width: 1343px) calc(55vw - 70.4px), 669px"
+          sizes="(max-width: 1023px) 100vw, (max-width: 1279px) calc(49vw - 70.56px), 557px"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/70 via-transparent to-transparent" />
@@ -174,7 +174,7 @@ function BahrainFaq() {
           id={headingId}
           className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
         >
-          FAQ
+          FAQs
         </h2>
         <div
             aria-hidden="true"
@@ -287,7 +287,7 @@ export default function DholeraBahrainPage() {
 
               <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
 
-              Explore Residential Projects
+              Buy Plot in Dholera
             </a>
           </div>
         </div>
@@ -552,20 +552,16 @@ export default function DholeraBahrainPage() {
         <div className="mx-auto max-w-7xl">
           <div
             className="
-        group
-        relative
-        overflow-hidden
-        rounded-[26px]
-        bg-[#051A3A]
-        px-6
-        py-10
-        shadow-[0_18px_50px_rgba(5,26,58,0.14)]
-        sm:px-8
-        sm:py-12
-        lg:min-h-[290px]
-        lg:px-12
-        lg:py-14
-      "
+              group
+              relative
+              overflow-hidden
+              rounded-[26px]
+              bg-[#051A3A]
+              px-6 py-6
+              shadow-[0_18px_50px_rgba(5,26,58,0.14)]
+              sm:px-8 sm:py-7
+              lg:px-12 lg:py-8
+            "
           >
             {/* Soft background detail */}
             <div
@@ -616,64 +612,53 @@ export default function DholeraBahrainPage() {
             {/* Content */}
             <div
               className="
-          relative
-          z-10
-          flex
-          max-w-3xl
-          flex-col
-          items-start
-          justify-center
-        "
+                relative z-10
+                flex w-full flex-col
+                items-start justify-between gap-6
+                lg:flex-row lg:items-center lg:gap-10
+              "
             >
               <h2
                 className="
-            max-w-2xl
-            font-sans
-            text-[clamp(2rem,4vw,3.3rem)]
-            font-bold
-            leading-[1.08]
-            tracking-[-0.04em]
-            text-[#F8F7F3]
-          "
+                  min-w-0
+                  font-sans
+                  text-[clamp(2rem,3vw,3.3rem)]
+                  font-bold
+                  leading-[1.08]
+                  tracking-[-0.04em]
+                  text-[#F8F7F3]
+                "
               >
-                Planning to invest in India&apos;s future from Bahrain?
+                Invest in Dholera from Bahrain
               </h2>
 
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="
-            mt-8
-            inline-flex
-            min-h-12
-            items-center
-            justify-center
-            gap-3
-            rounded-xl
-            bg-[#F6C343]
-            px-5
-            py-3
-            text-sm
-            font-bold
-            text-[#051A3A]
-            shadow-[0_8px_20px_rgba(0,0,0,0.12)]
-            transition-all
-            duration-300
-
-            hover:-translate-y-0.5
-            hover:bg-[#F8F7F3]
-            hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]
-
-            focus:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-[#F6C343]
-            focus-visible:ring-offset-2
-            focus-visible:ring-offset-[#051A3A]
-          "
+                  inline-flex min-h-12 shrink-0
+                  items-center justify-center gap-3
+                  whitespace-nowrap rounded-xl
+                  bg-[#F6C343] px-5 py-3
+                  text-sm font-bold text-[#051A3A]
+                  shadow-[0_8px_20px_rgba(0,0,0,0.12)]
+                  transition-all duration-300
+                  hover:-translate-y-0.5
+                  hover:bg-[#F8F7F3]
+                  hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]
+                  focus:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-[#F6C343]
+                  focus-visible:ring-offset-2
+                  focus-visible:ring-offset-[#051A3A]
+                "
               >
-              <FaWhatsapp className="h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-                Explore residential plot in Dholera
+                <FaWhatsapp
+                  className="h-5 w-5 shrink-0 text-[#25D366]"
+                  aria-hidden="true"
+                />
+                Buy a Plot in Dholera
               </a>
             </div>
           </div>

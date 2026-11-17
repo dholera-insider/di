@@ -68,7 +68,7 @@ export default function FAQSection() {
               sm:text-left
             "
           >
-            FAQ
+            FAQs
           </h2>
 
           <div

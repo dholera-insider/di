@@ -16,7 +16,7 @@ export function OmanFaq() {
           id={headingId}
           className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
         >
-          FAQ
+          FAQs
         </h2>
         <div
           aria-hidden="true"

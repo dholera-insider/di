@@ -320,7 +320,7 @@ export default function SaudiArabiaInvestorPage() {
                 "
               >
                 <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-                Explore Residential Projects
+                Buy Plot in Dholera
               </a>
             </div>
           </div>

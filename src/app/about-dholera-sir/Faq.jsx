@@ -47,7 +47,7 @@ export default function AboutFaq() {
             id="about-faq-heading"
             className="text-[30px] font-semibold leading-tight tracking-[-0.035em] text-[#051A3A] sm:text-4xl lg:text-[42px]"
           >
-            FAQ
+            FAQs
           </h2>
           <div className="mt-2 h-1 w-14 rounded-full bg-[#F6C343]" />
 

@@ -84,7 +84,7 @@ const reasonsToChoose = [
 
 function ProjectImage() {
   return (
-    <div className="relative mx-auto w-full max-w-[800px]">
+    <div className="relative mx-auto w-full lg:max-w-[calc(49vw_-_70.56px)] xl:max-w-[556.64px]">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-white/15">
         <InvestorHero country="oman"
           src={heroImage}
@@ -94,7 +94,7 @@ function ProjectImage() {
           priority
           fetchPriority="high"
           quality={65}
-          sizes="(max-width: 799px) 100vw, (max-width: 1023px) 800px, (max-width: 1343px) calc(55vw - 70.4px), 669px"
+          sizes="(max-width: 1023px) 100vw, (max-width: 1279px) calc(49vw - 70.56px), 557px"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#051A3A]/70 via-transparent to-transparent" />
@@ -184,7 +184,7 @@ export default function OmanInvestorPage() {
               className="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#F6C343] px-6 py-3 text-sm font-bold text-[#051A3A] transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-              Explore Residential Projects
+              Buy Plot in Dholera
             </a>
           </div>
         </div>

@@ -310,7 +310,7 @@ export default function RemoteBuying() {
                   aria-hidden="true"
             /> */}
 
-            <span>Connect with Our Dholera Expert</span>
+            <span>Buy Plot in Dholera</span>
           </a>
         </div>
       </div>

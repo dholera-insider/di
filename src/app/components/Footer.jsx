@@ -115,7 +115,35 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
 
-               <li>
+   
+              <li>
+                <Link
+                  href="/about-dholera-sir"
+                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
+                >
+                  <span className="mr-2">›</span> About Dholera
+                </Link>
+              </li>
+
+
+              <li>
+                <Link
+                  href="/dholera-sir-updates"
+                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
+                >
+                  <span className="mr-2">›</span> Dholera Updates
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dholera-sir-blogs"
+                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
+                >
+                  <span className="mr-2">›</span> Dholera Blogs
+                </Link>
+              </li>
+
+              <li>
                 <Link
                   href="/contact"
                   className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
@@ -133,30 +161,6 @@ const Footer = () => {
                 </Link>
               </li>
 
-              <li>
-                <Link
-                  href="/about-dholera-sir"
-                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
-                >
-                  <span className="mr-2">›</span> About Dholera
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/dholera-sir-updates"
-                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
-                >
-                  <span className="mr-2">›</span> Dholera Updates
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/dholera-sir-blogs"
-                  className="text-[#faf8f3] hover:text-[#faf8f3] transition flex items-center"
-                >
-                  <span className="mr-2">›</span> Dholera Blogs
-                </Link>
-              </li>
              
             </ul>
           </div>

@@ -34,7 +34,7 @@ const sectionLinks = [
   { label: "Why Dholera", href: "#why-dholera" },
   { label: "Buying Process", href: "#buy-dholera-plot" },
   { label: "Why Dholera Insider", href: "#why-us" },
-  { label: "FAQ", href: "#faqs" },
+  { label: "FAQs", href: "#faqs" },
 ];
 
 const trustSignals = [
@@ -268,7 +268,7 @@ export default function KuwaitInvestorPage() {
                 "
               >
                 <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-                Explore Residential Projects
+                Buy Plot in Dholera
               </a>
             </div>
           </div>
@@ -720,7 +720,7 @@ export default function KuwaitInvestorPage() {
               id={headingId}
               className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
             >
-              FAQ
+              FAQs
             </h2>
             <div
               aria-hidden="true"

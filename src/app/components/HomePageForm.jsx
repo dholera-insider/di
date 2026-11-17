@@ -638,12 +638,12 @@ export default function CommonForm({
                 {title}
               </h2>
 
-              <p className="mx-auto mt-3 max-w-2xl text-[13px] leading-6 text-[#667085] sm:text-[14px] lg:text-[15px]">
+              {/* <p className="mx-auto mt-3 max-w-2xl text-[13px] leading-6 text-[#667085] sm:text-[14px] lg:text-[15px]">
                 Share your details to speak
                 with our team about Dholera
                 residential projects and
                 available plots.
-              </p>
+              </p> */}
             </div>
 
             {/* ===============================================

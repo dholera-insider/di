@@ -230,7 +230,7 @@ export default function QatarInvestorPage() {
                     "
                   >
                     <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-                    Explore Residential Projects
+                    Buy Plot in Dholera
                   </a>
                 </div>
               </div>
@@ -545,7 +545,7 @@ export default function QatarInvestorPage() {
                 id={headingId}
                 className="font-sans text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-tight tracking-[-0.045em]"
               >
-                FAQ
+                FAQs
               </h2>
               <div
               aria-hidden="true"
