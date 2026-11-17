@@ -113,7 +113,8 @@ export async function POST(request) {
     });
   }
 
-  const apiKey = process.env.TELECRM_API_KEY;
+  const apiKey =
+    process.env.TELECRM_API_KEY || process.env.NEXT_PUBLIC_TELECRM_API_KEY;
   const secret = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!apiKey || !secret) {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import logo from "@/app/assets/icons/NewLogo.webp";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
@@ -28,6 +28,7 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const mobileMenuRef = useRef(null);
 
   const openContactForm = () => {
     setIsContactFormOpen(true);
@@ -165,16 +166,58 @@ const Header = () => {
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen || isContactFormOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    if (!mobileMenuOpen && !isContactFormOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = previousOverflow;
     };
   }, [mobileMenuOpen, isContactFormOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      setMobileActiveDropdown(null);
+      return;
+    }
+
+    const previousFocus = document.activeElement;
+    const menu = mobileMenuRef.current;
+    menu?.querySelector("button")?.focus({ preventScroll: true });
+
+    const handleMenuKeyDown = (event) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+      if (event.key !== "Tab") return;
+
+      const focusable = [...(menu?.querySelectorAll('a[href], button:not(:disabled)') || [])]
+        .filter((element) => element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setMobileMenuOpen(false);
+    };
+    closeOnDesktop();
+    desktop.addEventListener("change", closeOnDesktop);
+    document.addEventListener("keydown", handleMenuKeyDown);
+
+    return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
+      document.removeEventListener("keydown", handleMenuKeyDown);
+      if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <LazyMotion features={domAnimation}>
@@ -198,16 +241,12 @@ const Header = () => {
           <MotionLink
             prefetch={prefetchLinks}
             href="/"
-            className="group"
+            className="group shrink-0"
             whileHover={{ scale: 1.05, rotate: 2 }}
             whileTap={{ scale: 0.95 }}
           >
             <div
-              className={`relative transition-all duration-300 ${
-                scrolled
-                  ? "h-24 max-sm:h-24 w-24"
-                  : "h-24 max-sm:h-24 w-24 max-sm:w-24"
-              }`}
+              className="relative h-16 w-20 transition-all duration-300 lg:h-24 lg:w-24"
             >
               <div className="absolute inset-0  blur-lg group-hover:blur-xl transition-all duration-300"></div>
               <Image
@@ -215,7 +254,7 @@ const Header = () => {
                 alt="Dholera Insider Logo"
                 width={100}
                 height={100}
-                className="object-contain relative z-10 drop-shadow-2xl max-sm:pt-4 max-sm:h-20 max-sm:w-20"
+                className="relative z-10 h-full w-full object-contain drop-shadow-2xl lg:h-[100px] lg:w-[100px]"
                 priority={!isInvestorPage}
                 loading="eager"
                 quality={85}
@@ -457,67 +496,67 @@ const Header = () => {
 
           {/* Enhanced Mobile Menu Button */}
           <m.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="lg:hidden relative z-[101] p-3 rounded-xl backdrop-blur-sm bg-[#faf8f3]/10 border border-[#faf8f3]/20 text-[#faf8f3] hover:bg-[#faf8f3]/20 transition-all duration-300"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            whileTap={{ scale: 0.95 }}
+            type="button"
+            className="relative z-[101] grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#faf8f3]/20 bg-[#faf8f3]/10 text-[#faf8f3] transition-colors hover:bg-[#faf8f3]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1d3a] lg:hidden"
+            onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <m.span
-              className="inline-flex"
+              className="flex items-center justify-center"
               animate={{ rotate: mobileMenuOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
               {mobileMenuOpen ? (
-                <AiOutlineClose className="text-2xl" />
+                <AiOutlineClose className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <AiOutlineMenu className="text-2xl" />
+                <AiOutlineMenu className="block h-6 w-6" aria-hidden="true" />
               )}
             </m.span>
           </m.button>
         </div>
       </m.div>
 
-      {/* Enhanced Mobile Menu Overlay */}
+      {/* Mobile menu drawer slides in from the right. */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <m.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed inset-0 bg-[#0b1d3a] backdrop-blur-2xl z-50 overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="fixed inset-0 z-[120] bg-black/50 lg:hidden"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) setMobileMenuOpen(false);
+            }}
           >
-            {/* Mobile Menu Header */}
-            <div className="fixed top-0 left-0 right-0 h-20 bg-[#0b1d3a] border-b border-[#faf8f3]/10 flex items-center justify-between px-6 z-[102]">
-              <Link prefetch={prefetchLinks} href="/" onClick={() => setMobileMenuOpen(false)}>
-                <div className="relative h-14 w-14">
-                  <Image
-                    src={logo}
-                    alt="Dholera Insidrr Logo"
-                    className="object-contain"
-                    fill
-                  />
-                </div>
-              </Link>
-
+            <m.div
+              ref={mobileMenuRef}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute inset-y-0 right-0 flex h-screen w-[min(88vw,360px)] min-w-0 flex-col overflow-hidden border-l border-[#faf8f3]/10 bg-[#0b1d3a] shadow-2xl supports-[height:100dvh]:h-dvh"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
+            >
+            <div className="flex h-20 shrink-0 items-center justify-end border-b border-[#faf8f3]/10 px-4 sm:px-6">
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Close menu"
-                className="p-3 rounded-xl backdrop-blur-sm bg-[#faf8f3]/10 border border-[#faf8f3]/20 text-[#faf8f3] hover:bg-[#faf8f3]/20 transition-all duration-300"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#faf8f3]/20 bg-[#faf8f3]/10 text-[#faf8f3] transition-colors hover:bg-[#faf8f3]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C343] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1d3a]"
               >
-                <AiOutlineClose className="text-2xl" />
+                <AiOutlineClose className="block h-6 w-6" aria-hidden="true" />
               </button>
             </div>
 
             {/* Mobile Menu Content */}
-            <div className="pt-24 site-gutter pb-8 space-y-2 ">
-              <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#faf8f3]/10 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-[#faf8f3]/10 rounded-full blur-2xl animate-pulse"></div>
-              </div>
-
-              <div className="relative space-y-2">
+            <nav id="mobile-navigation" aria-label="Mobile navigation" className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 sm:pt-6">
+              <div className="mx-auto w-full max-w-lg space-y-2">
                 {mainNavItems.map((item, index) => (
                   <m.div
                     key={item.name}
@@ -534,7 +573,10 @@ const Header = () => {
                         }`}
                       >
                         <button
-                          className={`w-full flex justify-between items-center py-4 px-6 font-bold hover:bg-[#faf8f3]/10 transition-all duration-300 ${
+                          type="button"
+                          aria-expanded={mobileActiveDropdown === item.key}
+                          aria-controls={`mobile-submenu-${item.key}`}
+                          className={`flex min-h-12 w-full items-center justify-between gap-3 px-4 py-3 text-left text-base font-semibold leading-6 transition-colors hover:bg-[#faf8f3]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F6C343] ${
                             isNavItemActive(item)
                               ? "text-[#F6C343]"
                               : "text-[#faf8f3] hover:text-[#faf8f3]"
@@ -563,19 +605,20 @@ const Header = () => {
                         <AnimatePresence>
                           {mobileActiveDropdown === item.key && (
                             <m.div
+                              id={`mobile-submenu-${item.key}`}
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.3 }}
                               className="bg-[#faf8f3]/5 border-t border-[#faf8f3]/10"
                             >
-                              <ul className="py-2">
+                              <ul className="space-y-1 p-2">
                                 {item.items.map((subItem) => (
                                   <li key={subItem.name}>
                                     <Link prefetch={prefetchLinks}
                                       href={subItem.href}
                                       onClick={() => setMobileMenuOpen(false)}
-                                      className={`flex items-center justify-between py-3 px-8 transition-all duration-200 ${
+                                      className={`flex min-h-11 items-center justify-between gap-3 rounded-lg px-4 py-2.5 text-sm leading-6 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F6C343] ${
                                         isLinkActive(subItem.href)
                                           ? "bg-[#faf8f3]/10 text-[#F6C343]"
                                           : "text-[#faf8f3] hover:bg-[#faf8f3]/10"
@@ -595,10 +638,10 @@ const Header = () => {
                       <Link prefetch={prefetchLinks}
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`block py-4 px-6 font-bold transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 ${
+                        className={`block min-h-12 rounded-xl border px-4 py-3 text-base font-semibold leading-6 transition-colors hover:bg-[#faf8f3]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F6C343] ${
                           isNavItemActive(item)
-                            ? "border-[#F6C343] bg-[#faf8f3]/10 text-[#F6C343]"
-                            : "border-[#0b1d3a] text-[#faf8f3] hover:text-[#faf8f3] hover:border-[#faf8f3]"
+                            ? "border-[#F6C343]/70 bg-[#faf8f3]/10 text-[#F6C343]"
+                            : "border-transparent text-[#faf8f3] hover:border-[#faf8f3]/20"
                         }`}
                       >
                         {item.name}
@@ -611,7 +654,7 @@ const Header = () => {
                   initial={{ opacity: 0, scaleX: 0 }}
                   animate={{ opacity: 1, scaleX: 1 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="h-px bg-[#faf8f3]/20 my-6"
+                  className="!my-4 h-px bg-[#faf8f3]/20"
                 ></m.div>
 
                 {hamburgerMenuItems.map((item, index) => {
@@ -629,7 +672,10 @@ const Header = () => {
                         }`}
                       >
                         <button
-                          className={`w-full flex justify-between items-center py-4 px-6 font-bold hover:bg-[#faf8f3]/10 transition-all duration-300 ${
+                          type="button"
+                          aria-expanded={mobileActiveDropdown === item.key}
+                          aria-controls={`mobile-submenu-${item.key}`}
+                          className={`flex min-h-12 w-full items-center justify-between gap-3 px-4 py-3 text-left text-base font-semibold leading-6 transition-colors hover:bg-[#faf8f3]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F6C343] ${
                             isNavItemActive(item)
                               ? "text-[#F6C343]"
                               : "text-[#faf8f3] hover:text-[#faf8f3]"
@@ -658,13 +704,14 @@ const Header = () => {
                         <AnimatePresence>
                           {mobileActiveDropdown === item.key && (
                             <m.div
+                              id={`mobile-submenu-${item.key}`}
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.3 }}
                               className="bg-[#faf8f3]/5 border-t border-[#faf8f3]/10"
                             >
-                              <ul className="py-2">
+                              <ul className="space-y-1 p-2">
                                 {item.items.map((subItem) => {
                                   if (subItem.onClick) {
                                     return (
@@ -674,7 +721,7 @@ const Header = () => {
                                             subItem.onClick();
                                             setMobileActiveDropdown(null);
                                           }}
-                                          className="block w-full text-left py-3 px-8 text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10 transition-all duration-200"
+                                          className="block min-h-11 w-full rounded-lg px-4 py-2.5 text-left text-sm leading-6 text-[#faf8f3] transition-colors hover:bg-[#faf8f3]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F6C343]"
                                         >
                                           {subItem.name}
                                         </button>
@@ -686,7 +733,7 @@ const Header = () => {
                                       <Link prefetch={prefetchLinks}
                                         href={subItem.href}
                                         onClick={() => setMobileMenuOpen(false)}
-                                        className={`block py-3 px-8 transition-all duration-200 ${
+                                        className={`block min-h-11 rounded-lg px-4 py-2.5 text-sm leading-6 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F6C343] ${
                                           isLinkActive(subItem.href)
                                             ? "bg-[#faf8f3]/10 text-[#F6C343]"
                                             : "text-[#faf8f3] hover:text-[#faf8f3] hover:bg-[#faf8f3]/10"
@@ -714,10 +761,10 @@ const Header = () => {
                       <Link prefetch={prefetchLinks}
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`block py-4 px-6 font-semibold transition-all duration-300 hover:bg-[#faf8f3]/10 rounded-xl border-l-4 ${
+                        className={`block min-h-12 rounded-xl border px-4 py-3 text-base font-semibold leading-6 transition-colors hover:bg-[#faf8f3]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F6C343] ${
                           isNavItemActive(item)
-                            ? "border-[#F6C343] bg-[#faf8f3]/10 text-[#F6C343]"
-                            : "border-[#0b1d3a] text-[#faf8f3] hover:text-[#faf8f3] hover:border-[#faf8f3]"
+                            ? "border-[#F6C343]/70 bg-[#faf8f3]/10 text-[#F6C343]"
+                            : "border-transparent text-[#faf8f3] hover:border-[#faf8f3]/20"
                         }`}
                       >
                         {item.name}
@@ -726,7 +773,8 @@ const Header = () => {
                   );
                 })}
               </div>
-            </div>
+            </nav>
+            </m.div>
           </m.div>
         )}
       </AnimatePresence>
