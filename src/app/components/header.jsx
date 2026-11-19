@@ -10,6 +10,7 @@ import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { MenuIcon } from "lucide-react";
 
+
 const MotionLink = m.create(Link);
 
 const ContactForm = dynamic(() => import("./Contactform"), {

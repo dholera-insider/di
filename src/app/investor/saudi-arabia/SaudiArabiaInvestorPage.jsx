@@ -243,7 +243,7 @@ export default function SaudiArabiaInvestorPage() {
               >
                 <InvestorHero country="saudi-arabia"
                   src={heroImage}
-                  alt="Dholera investment opportunity for Dubai NRIs"
+                  alt="Dholera investment opportunity for saudi-arabia NRIs"
                   fill
                   priority
                   fetchPriority="high"

@@ -148,7 +148,7 @@ export default function QatarInvestorPage() {
                   >
                     <InvestorHero country="qatar"
                       src={heroImage}
-                      alt="Dholera investment opportunity for Dubai NRIs"
+                      alt="Dholera investment opportunity for qatar NRIs"
                       fill
                       priority
                       fetchPriority="high"
