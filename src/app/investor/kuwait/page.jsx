@@ -3,9 +3,9 @@ import { kuwaitFaqs } from "./data";
 import socialImage from "@/app/assets/investor/dholera-insider-kuwait-banner.webp";
 import { createInvestorMetadata } from "../seo";
 
-const PAGE_TITLE = "Dholera Investment for Kuwait NRIs | Dholera Insider";
+const PAGE_TITLE = "Dholera Investment from Kuwait | Residential Plots for NRIs";
 const PAGE_DESCRIPTION =
-  "Explore Dholera residential plots for Kuwait-based NRIs. Review property documents, payment guidance, project details, and remote buying support from Kuwait.";
+  "Dholera investment from Kuwait with verified residential plots, transparent project details and dedicated NRI support from Dholera Insider.";
 
 export const metadata = createInvestorMetadata({
   path: "/investor/kuwait",
@@ -20,6 +20,9 @@ export const metadata = createInvestorMetadata({
     "buy Dholera plot from Kuwait",
     "NRI property investment Kuwait India",
   ],
+  alternates: {
+    canonical: "https://www.dholerainsider.com/investor/kuwait",
+  },
 });
 
 const faqSchema = {

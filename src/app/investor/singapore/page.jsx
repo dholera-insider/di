@@ -2,10 +2,9 @@ import SingaporeInvestorPage from "./SingaporeInvestorPage";
 import socialImage from "@/app/assets/investor/dholera-insider-singapore-banner.webp";
 import { createInvestorMetadata } from "../seo";
 
-const PAGE_TITLE = "Dholera Investment for Singapore NRIs | Dholera Insider";
+const PAGE_TITLE = "Dholera Investment from Singapore | Verified Residential Plots for NRIs";
 const PAGE_DESCRIPTION =
-  "Explore Dholera residential plots for Singapore-based NRIs. Compare projects, verify documents, understand payments, and plan a remote property purchase.";
-
+  "Explore verified residential plots in Dholera from Singapore. Compare projects, verify documents, and invest with complete transparency through Dholera Insider.";
 export const metadata = createInvestorMetadata({
   path: "/investor/singapore",
   title: PAGE_TITLE,
@@ -19,6 +18,9 @@ export const metadata = createInvestorMetadata({
     "NRI property investment India Singapore",
     "buy Dholera plot from Singapore",
   ],
+  alternates: {
+    canonical: "https://www.dholerainsider.com/investor/singapore",
+  },
 });
 
 export default function SingaporePage() {

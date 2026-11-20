@@ -2,14 +2,10 @@ import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { aboutPageSchema } from "../schemaMarkup";
 import {
-  ArrowRight,
-  ArrowUpRight,
-  BadgeCheck,
   CheckCircle2,
   FileCheck2,
   Globe,
   Handshake,
-  MessageCircle,
   Scale,
   ShieldCheck,
   Target,

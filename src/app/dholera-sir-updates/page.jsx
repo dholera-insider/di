@@ -9,16 +9,56 @@ import MobileUpdatesPagination from "./MobileUpdatesPagination";
 export const revalidate = 60;
 const UPDATES_PER_PAGE = 12;
 
+
+const PAGE_TITLE =
+  "Latest Dholera Smart City News 2026 | Updates on Projects & Growth";
+
+const PAGE_DESCRIPTION =
+  "Get the latest Dholera Smart City updates, including infrastructure news, expressway progress, airport developments, and industrial growth for investors and residents.";
+
+const PAGE_URL =
+  "https://www.dholerainsider.com/dholera-sir-updates";
+
 const pageMetadata = {
-  title: "Latest Dholera Smart City News 2026 | Updates on Projects & Growth",
-  description:
-    "Get the Latest investment updates on Dholera Smart City - infrastructure news, expressway progress, airport updates, and industrial developments that helps to investors and residents.",
-  keywords:
-    "Dholera updates, Dholera news, Dholera real estate, smart city updates, Dholera investment",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+
+  keywords: [
+    "Dholera updates",
+    "Dholera news",
+    "Dholera real estate",
+    "Smart City updates",
+    "Dholera investment",
+    "Dholera SIR updates",
+    "Dholera Smart City news",
+    "Dholera infrastructure updates",
+  ],
+
   alternates: {
-    canonical: "https://www.dholerainsider.com/dholera-sir-updates",
+    canonical: PAGE_URL,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    type: "website",
+    siteName: "Dholera Insider",
+    locale: "en_IN",
+  },
+
+  twitter: {
+    card: "summary",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
   },
 };
+export const metadata = pageMetadata;
 
 function getPageNumber(searchParams) {
   const page = Number(searchParams?.page);

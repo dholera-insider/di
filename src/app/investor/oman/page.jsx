@@ -3,9 +3,9 @@ import OmanInvestorPage from "./OmanInvestorPage";
 import { omanFaqs } from "./data";
 import { createInvestorMetadata } from "../seo";
 
-const PAGE_TITLE = "Dholera Investment for Oman NRIs | Dholera Insider";
+const PAGE_TITLE = "Dholera Investment from Oman | Dholera Plots for NRIs";
 const PAGE_DESCRIPTION =
-  "Explore Dholera residential plots for Oman-based NRIs. Learn about documents, property verification, payment guidance, and remote buying support from Oman.";
+  "Explore Dholera investment from Oman with verified residential plots, clear project details, documentation guidance and dedicated NRI support.";
 
 export const metadata = createInvestorMetadata({
   path: "/investor/oman",
@@ -20,6 +20,9 @@ export const metadata = createInvestorMetadata({
     "buy Dholera plot from Oman",
     "Dholera property Muscat",
   ],
+  alternates: {
+    canonical: "https://www.dholerainsider.com/investor/oman",
+  },
 });
 
 const faqSchema = {

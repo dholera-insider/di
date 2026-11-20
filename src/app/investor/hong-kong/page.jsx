@@ -3,9 +3,9 @@ import HongKongInvestorPage from "./HongKongInvestorPage";
 import { hongKongFaqs } from "./data";
 import { createInvestorMetadata } from "../seo";
 
-const PAGE_TITLE = "Dholera Investment for Hong Kong NRIs | Dholera Insider";
+const PAGE_TITLE = " Dholera Investment from Hong Kong | Plots for Hong Kong NRIs | Dholera Insider";
 const PAGE_DESCRIPTION =
-  "Explore Dholera residential plots for Hong Kong-based NRIs. Review property documents, project details, payment guidance, and remote buying support.";
+  "Explore Dholera investment from Hong Kong with residential plots, clear project information and dedicated NRI support from Dholera Insider";
 
 export const metadata = createInvestorMetadata({
   path: "/investor/hong-kong",
@@ -20,6 +20,9 @@ export const metadata = createInvestorMetadata({
     "NRI property investment Hong Kong India",
     "buy Dholera plot from Hong Kong",
   ],
+  alternates: {
+    canonical: "https://www.dholerainsider.com/investor/hong-kong",
+  },
 });
 
 const faqSchema = {

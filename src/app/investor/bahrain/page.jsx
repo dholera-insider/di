@@ -2,9 +2,9 @@ import DholeraBahrainPage from "./Bahrain";
 import socialImage from "@/app/assets/investor/dholera-insider-bahrain-banner.webp";
 import { createInvestorMetadata } from "../seo";
 
-const PAGE_TITLE = "Dholera Investment for Bahrain NRIs | Dholera Insider";
+const PAGE_TITLE = "Dholera Investment from Bahrain NRIs | Dholera Insider";
 const PAGE_DESCRIPTION =
-  "Explore Dholera residential plots for Bahrain-based NRIs. Learn about property verification, documents, payments, legal guidance, and remote buying support.";
+  "Invest in Dholera Smart City from Bahrain with verified plots, transparent pricing, legal guidance, and complete NRI assistance from start to finish";
 
 export const metadata = createInvestorMetadata({
   path: "/investor/bahrain",
@@ -19,6 +19,9 @@ export const metadata = createInvestorMetadata({
     "buy Dholera plot from Bahrain",
     "NRI property investment Bahrain India",
   ],
+  alternates: {
+    canonical: "https://www.dholerainsider.com/investor/bahrain",
+  },
 });
 
 export default function Page() {

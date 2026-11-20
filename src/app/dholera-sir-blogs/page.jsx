@@ -9,16 +9,57 @@ import BlogHero from "./BlogHero";
 export const revalidate = 60;
 const BLOGS_PER_PAGE = 12;
 
+const PAGE_TITLE =
+  "Dholera Smart City Insights | Latest Updates and Investment Blogs";
+
+const PAGE_DESCRIPTION =
+  "Stay updated with the latest Dholera Smart City developments, market insights, and key growth trends. Ideal for investors and urban planning enthusiasts looking for future opportunities.";
+
+const PAGE_URL =
+  "https://www.dholerainsider.com/dholera-sir-blogs";
+
 const pageMetadata = {
-  title: "Dholera Smart City Insights | Latest Updates and Investment Blogs",
-  description:
-    "Stay updated with the latest Dholera Smart City developments, market insights, and key growth trends. Ideal for investors and urban planning enthusiasts looking for future opportunities.",
-  keywords:
-    "Dholera blog, Dholera news, Dholera real estate, smart city updates, Dholera investment",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+
+  keywords: [
+    "Dholera blog",
+    "Dholera news",
+    "Dholera real estate",
+    "Smart City updates",
+    "Dholera investment",
+    "Dholera SIR blogs",
+    "Dholera Smart City news",
+    "Dholera latest updates",
+  ],
+
   alternates: {
-    canonical: "https://www.dholerainsider.com/dholera-sir-blogs",
+    canonical: PAGE_URL,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    type: "website",
+    siteName: "Dholera Insider",
+    locale: "en_IN",
+  },
+
+  twitter: {
+    card: "summary",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
   },
 };
+
+export const metadata = pageMetadata;
+
 
 function getPageNumber(searchParams) {
   const page = Number(searchParams?.page);

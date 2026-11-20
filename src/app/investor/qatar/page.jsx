@@ -3,9 +3,9 @@ import { qatarFaqs } from "./data";
 import socialImage from "@/app/assets/investor/dholera-insider-qatar-banner.webp";
 import { createInvestorMetadata } from "../seo";
 
-const PAGE_TITLE = "Dholera Investment for Qatar NRIs | Dholera Insider";
+const PAGE_TITLE = "Dholera Investment from Qatar | Plots for Qatar NRIs | Dholera Insider";
 const PAGE_DESCRIPTION =
-  "Explore Dholera residential plots for Qatar-based NRIs. Learn about property verification, documents, payments, and remote buying support from Qatar.";
+  "Planning property investment from Qatar? Explore residential plots in Dholera Smart City with dedicated NRI guidance from Dholera Insider.";
 
 export const metadata = createInvestorMetadata({
   path: "/investor/qatar",
@@ -20,6 +20,9 @@ export const metadata = createInvestorMetadata({
     "buy property in India from Doha",
     "NRI property investment Qatar India",
   ],
+  alternates: {
+    canonical: "https://www.dholerainsider.com/investor/qatar",
+  },
 });
 
 const faqSchema = {
