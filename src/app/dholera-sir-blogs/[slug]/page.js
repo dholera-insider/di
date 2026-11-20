@@ -3,8 +3,23 @@ import { urlFor } from "@/sanity/lib/image";
 import { getPostBySlug, getUpdates, projectInfo } from "@/sanity/lib/api";
 import Link from "next/link";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 import BlogSchemaMarkup from "../BlogSchemaMarkup";
 import LazySlugPageForm from "../../components/LazySlugPageForm";
+
+function WhatsAppRegistrationButton() {
+  return (
+    <a
+      href="https://wa.me/919910994247"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="my-1 inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-2.5 align-middle text-base font-semibold leading-snug text-white no-underline transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#051A3A]"
+    >
+      <FaWhatsapp aria-hidden="true" className="h-5 w-5 shrink-0" />
+      Register Now
+    </a>
+  );
+}
 
 const URLFormatter = (text) => {
   if (!text) return "";
@@ -147,6 +162,9 @@ export default async function Post({ params }) {
       );
     }
 
+    const isTataEquipmentPost =
+      post.slug?.current === "tata-electronics-dholera-equipment-investment";
+
     // Codex responsive UI fix: keep headings compact when Sanity renders them inside list items.
     const nestedListContentClass =
       "flex-1 min-w-0 [&_p]:mb-0 [&_h1]:mt-0 [&_h1]:mb-2 [&_h1]:pl-4 [&_h1]:py-2 [&_h1]:text-[clamp(1.25rem,2vw,1.75rem)] [&_h1]:leading-[1.4] [&_h2]:mt-0 [&_h2]:mb-2 [&_h2]:pl-4 [&_h2]:py-2 [&_h2]:text-[clamp(1.125rem,2vw,1.5rem)] [&_h2]:leading-[1.4] [&_h3]:mt-0 [&_h3]:mb-2 [&_h3]:pl-4 [&_h3]:py-2 [&_h3]:text-[clamp(1.125rem,1.8vw,1.375rem)] [&_h3]:leading-[1.4] [&_h4]:mt-0 [&_h4]:mb-2 [&_h4]:pl-4 [&_h4]:py-2 [&_h4]:text-[clamp(1rem,1.6vw,1.25rem)] [&_h4]:leading-[1.4] [&_h5]:mt-0 [&_h5]:mb-2 [&_h5]:pl-4 [&_h5]:py-1 [&_h5]:text-[clamp(1rem,1.5vw,1.125rem)] [&_h5]:leading-[1.4] [&_h6]:mt-0 [&_h6]:mb-2 [&_h6]:pl-4 [&_h6]:py-1 [&_h6]:text-[1rem] [&_h6]:leading-[1.4]";
@@ -271,15 +289,27 @@ export default async function Post({ params }) {
       },
 
       marks: {
-        link: ({ children, value }) => (
-          <Link
-            href={value.href}
-            rel="noopener noreferrer"
-            className="text-[#F6C343] hover:text-[#F6C343] underline decoration-[#F6C343]/30 hover:decoration-[#F6C343] decoration-2 underline-offset-4 transition-all duration-300 hover:bg-[#e3ae25]/5 px-1 py-0.5 rounded"
-          >
-            {children}
-          </Link>
-        ),
+        link: ({ children, value }) => {
+          // Match this post's Sanity registration annotation, leaving its other links intact.
+          const isNriEventRegistration =
+            post.slug?.current === "dholera-investor-event-for-nri-investors" &&
+            value._key === "3cc85b771c54" &&
+            /^https?:\/\/(www\.)?dholeranowornever\.com\/?$/i.test(value.href);
+
+          if (isNriEventRegistration) {
+            return <WhatsAppRegistrationButton />;
+          }
+
+          return (
+            <Link
+              href={value.href}
+              rel="noopener noreferrer"
+              className="text-[#F6C343] hover:text-[#F6C343] underline decoration-[#F6C343]/30 hover:decoration-[#F6C343] decoration-2 underline-offset-4 transition-all duration-300 hover:bg-[#e3ae25]/5 px-1 py-0.5 rounded"
+            >
+              {children}
+            </Link>
+          );
+        },
         strong: ({ children }) => (
           <strong className="font-bold text-gray-900 px-1 py-0.5 rounded">
             {children}
@@ -397,9 +427,19 @@ export default async function Post({ params }) {
             {children}
           </ul>
         ),
-        number: ({ children }) => (
+        number: ({ children, value }) => (
           <ol className="space-y-[clamp(0.75rem,1.5vw,1.25rem)] mb-[clamp(1.25rem,2.5vw,2rem)] pl-0 counter-reset-list">
             {children}
+            {/* Add the CTA only after this post's published virtual-event steps. */}
+            {isTataEquipmentPost &&
+              value.children.some((item) => item._key === "ac3eb595af7f") && (
+                <li className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-700 flex items-center gap-[clamp(0.75rem,1.5vw,1rem)] p-[clamp(1rem,2vw,1.25rem)] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                  <div aria-hidden="true" className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full flex-shrink-0" />
+                  <div className={nestedListContentClass}>
+                    <WhatsAppRegistrationButton />
+                  </div>
+                </li>
+              )}
           </ol>
         ),
       },
@@ -413,8 +453,8 @@ export default async function Post({ params }) {
           </li>
         ),
         number: ({ children }) => (
-          <li className="text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-700 flex items-start gap-[clamp(0.75rem,1.5vw,1rem)] p-[clamp(1rem,2vw,1.25rem)] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list overflow-hidden">
-            <div className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full mt-[clamp(0.75rem,1.5vw,0.95rem)] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+          <li className={`text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-gray-700 flex ${isTataEquipmentPost ? "items-center" : "items-start"} gap-[clamp(0.75rem,1.5vw,1rem)] p-[clamp(1rem,2vw,1.25rem)] rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list overflow-hidden`}>
+            <div className={`w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full ${isTataEquipmentPost ? "" : "mt-[clamp(0.75rem,1.5vw,0.95rem)] "}flex items-center justify-center text-white text-sm font-bold flex-shrink-0`}>
               <span className="counter-content"></span>
             </div>
             <div className={nestedListContentClass}>{children}</div>

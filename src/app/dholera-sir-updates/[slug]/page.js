@@ -6,6 +6,7 @@ import {
 } from "@/sanity/lib/api";
 import Link from "next/link";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 import LeadForm from "../LeadForm";
 import BlogSchemaMarkup from "../BlogSchemaMarkup";
 
@@ -167,6 +168,9 @@ export default async function BlogDetail({ params }) {
         </div>
       );
     }
+
+    const isTataEquipmentPost =
+      post.slug?.current === "tata-electronics-dholera-equipment-investment";
 
     const components = {
       types: {
@@ -419,9 +423,27 @@ export default async function BlogDetail({ params }) {
         bullet: ({ children }) => (
           <ul className="space-y-4 mb-10 pl-0">{children}</ul>
         ),
-        number: ({ children }) => (
+        number: ({ children, value }) => (
           <ol className="space-y-4 mb-10 pl-0 counter-reset-list">
             {children}
+            {/* Only this post's virtual-event steps receive the registration CTA. */}
+            {isTataEquipmentPost &&
+              value.children.some((item) => item._key === "ac3eb595af7f") && (
+                <li className="text-lg leading-relaxed text-gray-700 flex items-center gap-4 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300">
+                  <div aria-hidden="true" className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <a
+                      href="https://wa.me/919910994247"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="my-1 inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-2.5 align-middle text-base font-semibold leading-snug text-white no-underline transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#051A3A]"
+                    >
+                      <FaWhatsapp aria-hidden="true" className="h-5 w-5 shrink-0" />
+                      Register Now
+                    </a>
+                  </div>
+                </li>
+              )}
           </ol>
         ),
       },
@@ -434,7 +456,7 @@ export default async function BlogDetail({ params }) {
           </li>
         ),
         number: ({ children }) => (
-          <li className="text-lg leading-relaxed text-gray-700 flex items-start gap-4 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list">
+          <li className={`text-lg leading-relaxed text-gray-700 flex ${isTataEquipmentPost ? "items-center" : "items-start"} gap-4 p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-300 relative counter-increment-list`}>
             <div className="w-3 h-3 bg-gradient-to-r from-[#F6C343] to-[#e3ae25] rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
               <span className="counter-content"></span>
             </div>

@@ -58,7 +58,6 @@ const pageMetadata = {
     description: PAGE_DESCRIPTION,
   },
 };
-export const metadata = pageMetadata;
 
 function getPageNumber(searchParams) {
   const page = Number(searchParams?.page);

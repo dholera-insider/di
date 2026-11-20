@@ -58,9 +58,6 @@ const pageMetadata = {
   },
 };
 
-export const metadata = pageMetadata;
-
-
 function getPageNumber(searchParams) {
   const page = Number(searchParams?.page);
   return Number.isSafeInteger(page) && page > 0 ? page : 1;
