@@ -41,7 +41,7 @@ export default function MobileBlogPagination({ currentPage, totalPages }) {
           Prev
         </Link>
       ) : (
-        <span aria-disabled="true" className={disabledClassName}>
+        <span role="link" aria-disabled="true" className={disabledClassName}>
           Prev
         </span>
       )}
@@ -61,7 +61,7 @@ export default function MobileBlogPagination({ currentPage, totalPages }) {
           Next
         </Link>
       ) : (
-        <span aria-disabled="true" className={disabledClassName}>
+        <span role="link" aria-disabled="true" className={disabledClassName}>
           Next
         </span>
       )}

@@ -76,8 +76,8 @@ const Header = () => {
       ],
     },
     { name: "Dholera Blogs", href: "/dholera-sir-blogs" },
-    { name: "About Dholera", href: "/about-dholera-sir" },
     { name: "Dholera Updates", href: "/dholera-sir-updates" },
+    { name: "About Dholera", href: "/about-dholera-sir" },
 
   ];
 

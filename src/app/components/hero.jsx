@@ -375,10 +375,12 @@ const Hero = () => {
           items-center
           md:h-auto
           md:min-h-screen
+          lg:items-start
+          lg:pt-20
         "
       >
         <div
-          className="container mx-auto py-16 md:py-24 lg:py-28 site-gutter"
+          className="container mx-auto py-16 md:py-24 lg:pb-28 lg:pt-16 site-gutter"
         >
           <div
             className="

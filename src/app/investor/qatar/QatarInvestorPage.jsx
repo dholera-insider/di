@@ -230,7 +230,7 @@ export default function QatarInvestorPage() {
                     "
                   >
                     <FaWhatsapp className="mr-2 h-5 w-5 flex-shrink-0 text-[#25D366]" aria-hidden="true" />
-                    Buy Plot in Dholera
+                    Book your plot from Qatar
                   </a>
                 </div>
               </div>
