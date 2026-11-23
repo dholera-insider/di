@@ -209,7 +209,7 @@ export default function ContactForm({
 
   return (
     <div
-      className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 p-4 z-[1000]"
+      className="fixed inset-0 flex justify-center items-start overflow-y-auto overscroll-contain bg-black bg-opacity-50 p-4 z-[1000]"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -220,7 +220,7 @@ export default function ContactForm({
         initial={{ scale: 0.9, y: 50 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 50 }}
-        className="bg-[#051A3A] text-[#FDFCFA] p-8 rounded-xl shadow-2xl border border-[#F6C343] max-w-md w-full relative"
+        className="my-auto bg-[#051A3A] text-[#FDFCFA] p-8 rounded-xl shadow-2xl border border-[#F6C343] max-w-md w-full relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
