@@ -55,7 +55,7 @@ const TrendingBlogItem = ({ post }) => {
   return (
     <Link
       key={post.slug?.current}
-      href={`/dholera-sir-blogs/${post.slug?.current}`}
+      href={`/about-dholera-sir/${post.slug?.current}`}
     >
       <div className="flex gap-4 items-center bg-white hover:bg-gray-50 p-4 rounded-lg border border-gray-100 transition-all hover:shadow-md mb-3">
         {post.mainImage && (
@@ -138,7 +138,7 @@ export default async function BlogDetail({ params }) {
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-2">Blog post not found</h1>
             <Link
-              href="/dholera-updates/latest-news"
+              href="/about-dholera-sir"
               className="mt-4 inline-block text-[#d3b66b] hover:text-[#b69b5e]"
             >
               ← Back to News
@@ -679,7 +679,7 @@ export default async function BlogDetail({ params }) {
                     )}
                   </div>
                   <div className="mt-6 pt-4 border-t border-gray-600">
-                    <Link href="/dholera-sir-blogs">
+                    <Link href="/about-dholera-sir">
                       <span className="w-full text-center rounded-xl text-white font-semibold bg-[#051A3A] hover:bg-[#e3ae25] p-3 transition-colors">
                         Read More
                       </span>

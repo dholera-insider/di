@@ -68,11 +68,27 @@ export async function generateMetadata({ searchParams }) {
   const page = getPageNumber(await searchParams);
   if (page === 1) return pageMetadata;
 
+  const title = `${pageMetadata.title} | Page ${page}`;
+  const description = `Page ${page} of Dholera Smart City news. Browse earlier coverage of airport development, expressway progress, industrial projects and infrastructure updates.`;
+  const url = `${PAGE_URL}?page=${page}`;
+
   return {
     ...pageMetadata,
-    title: `${pageMetadata.title} | Page ${page}`,
+    title,
+    description,
     alternates: {
-      canonical: `${pageMetadata.alternates.canonical}?page=${page}`,
+      canonical: url,
+    },
+    openGraph: {
+      ...pageMetadata.openGraph,
+      title,
+      description,
+      url,
+    },
+    twitter: {
+      ...pageMetadata.twitter,
+      title,
+      description,
     },
   };
 }

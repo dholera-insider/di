@@ -36,7 +36,7 @@ const megaProjects = [
     title: "High-Speed Monorail & Railway",
     description:
       "Links with Ahmedabad and major industrial hubs",
-    href: "/dholera-sir-blogs/how-connectivity-is-shaping-dholera-growth",
+    href: "/about-dholera-sir/how-connectivity-is-shaping-dholera-growth",
   },
   {
     title: "Dholera Solar Park",
@@ -48,7 +48,7 @@ const megaProjects = [
     title: "Water Treatment Plant",
     description:
       "Reliable long term water supply for industries and residents",
-    href: "/dholera-sir-blogs/dholera-smart-city-water-scarcity-solutions",
+    href: "/about-dholera-sir/dholera-smart-city-water-scarcity-solutions",
   },
   {
     title: "ReNew Power & Activation Area",
@@ -60,7 +60,7 @@ const megaProjects = [
     title: "Dholera Sea Port",
     description:
       "A planned greenfield port in the Gulf of Khambhat to support Dholera Connectivity.",
-    href: "/dholera-sir-blogs/dholera-sea-port-connectivity-growth",
+    href: "/about-dholera-sir/dholera-sea-port-connectivity-growth",
   },
 ];
 

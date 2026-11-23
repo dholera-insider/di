@@ -6,6 +6,7 @@ import {
 } from "@/sanity/lib/api";
 import Link from "next/link";
 import Image from "next/image";
+import { permanentRedirect, unstable_rethrow } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import LeadForm from "../LeadForm";
 import BlogSchemaMarkup from "../BlogSchemaMarkup";
@@ -167,6 +168,11 @@ export default async function BlogDetail({ params }) {
           </div>
         </div>
       );
+    }
+
+    // Project information belongs to About Dholera, even through an old Updates URL.
+    if (post.categories?.some((category) => category?.title === "project-Info")) {
+      permanentRedirect(`/about-dholera-sir/${post.slug.current}`);
     }
 
     const isTataEquipmentPost =
@@ -772,6 +778,7 @@ export default async function BlogDetail({ params }) {
       </div>
     );
   } catch (error) {
+    unstable_rethrow(error);
     console.error("Error loading blog post:", slug, error);
     return (
       <div className="min-h-screen flex items-center justify-center">

@@ -7,7 +7,7 @@ export default function TrendingBlogItem({ post }) {
 
   return (
     <div className="border-b border-gray-200 pb-6 last:border-0 last:pb-0">
-      <Link href={`/dholera-sir-blogs/${post.slug?.current}`} className="group">
+      <Link href={`/about-dholera-sir/${post.slug?.current}`} className="group">
         <h3 className="text-lg font-semibold text-gray-800 group-hover:text-[#2B364D] transition">
           {post.title}
         </h3>
