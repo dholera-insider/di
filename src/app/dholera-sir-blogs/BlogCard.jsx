@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 export default function BlogCard({ post }) {
 
@@ -19,9 +20,7 @@ export default function BlogCard({ post }) {
 
   return (
     <Link
-      href={
-        post.slug?.current ? `/dholera-sir-blogs/${post.slug.current}` : "#"
-      }
+      href={post.href || getArticlePath(post) || "#"}
       prefetch={false}
       className="group"
     >

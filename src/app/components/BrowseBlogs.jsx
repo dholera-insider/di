@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { urlFor } from "@/sanity/lib/image";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 // Related Blog Card Component
 const RelatedBlogCard = ({ blog }) => {
@@ -50,7 +51,7 @@ const RelatedBlogCard = ({ blog }) => {
 
         {/* CTA */}
         <Link
-          href={`/dholera-sir-blogs/${blog.slug.current}`}
+          href={getArticlePath(blog) || "#"}
           className="mt-auto"
         >
           <button className="w-full px-4 py-2 text-white bg-[#051A3A] hover:bg-[#2B364D] transition-colors duration-300 rounded-md">

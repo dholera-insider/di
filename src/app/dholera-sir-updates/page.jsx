@@ -5,6 +5,7 @@ import { getUpdates } from "@/sanity/lib/api";
 import { urlFor } from "@/sanity/lib/image";
 import BlogCard from "./BlogCard";
 import MobileUpdatesPagination from "./MobileUpdatesPagination";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 export const revalidate = 60;
 const UPDATES_PER_PAGE = 12;
@@ -117,6 +118,7 @@ export default async function UpdatesPage({ searchParams }) {
       _id: blog._id,
       title: blog.title || "Dholera Latest Update",
       slug: blog.slug,
+      href: getArticlePath(blog),
       publishedAt: blog.publishedAt || blog._createdAt,
       imageUrl: blog.mainImage?.asset
         ? urlFor(blog.mainImage)

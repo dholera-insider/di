@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import BlogCard from "./BlogCard";
 import MobileBlogPagination from "./MobileBlogPagination";
 import BlogHero from "./BlogHero";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 export const revalidate = 60;
 const BLOGS_PER_PAGE = 12;
@@ -116,6 +117,7 @@ async function BlogPosts({ searchParams }) {
       _id: post._id,
       title: post.title || "Dholera Smart City Blog",
       slug: post.slug,
+      href: getArticlePath(post),
       publishedAt: post.publishedAt || post._createdAt,
       imageUrl: post.mainImage?.asset
         ? urlFor(post.mainImage)

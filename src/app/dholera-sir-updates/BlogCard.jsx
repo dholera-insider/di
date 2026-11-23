@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 export default function BlogCard({ blog }) {
   const formatDate = (dateString) => {
@@ -17,9 +18,7 @@ export default function BlogCard({ blog }) {
   };
   return (
     <Link
-      href={
-        blog.slug?.current ? `/dholera-sir-updates/${blog.slug.current}` : "#"
-      }
+      href={blog.href || getArticlePath(blog) || "#"}
       className="group"
     >
       <div className="bg-white rounded-[8px] shadow-md hover:shadow-[#f6c343] overflow-hidden h-full hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-200">

@@ -1,6 +1,9 @@
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
-import { getPostBySlug, getUpdates, projectInfo } from "@/sanity/lib/api";
+import { getUpdates, projectInfo } from "@/sanity/lib/api";
+import { getArticleBySlug } from "@/lib/get-article";
+import { getArticlePath, getArticleUrl } from "@/lib/article-routes.mjs";
+import { unstable_rethrow } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
@@ -73,7 +76,7 @@ const RightSidebar = ({ trendingBlogs }) => {
             {trendingBlogs?.slice(0, 4).map((item) => (
               <Link
                 key={item._id}
-                href={`/dholera-sir-updates/${item.slug.current}`}
+                href={getArticlePath(item) || "#"}
               >
                 <div className="flex gap-3 items-center bg-white hover:bg-gray-50 p-3 border border-gray-200 transition-all hover:shadow-md">
                   {item.mainImage && (
@@ -141,7 +144,7 @@ export default async function Post({ params }) {
 
   try {
     const [post, trendingBlogs, relatedBlogs] = await Promise.all([
-      getPostBySlug(slug),
+      getArticleBySlug(slug, "dholera-sir-blogs"),
       getUpdates(4),
       projectInfo(3),
     ]);
@@ -538,13 +541,13 @@ export default async function Post({ params }) {
     return (
       <>
         <div>
-          <title>{post.metaTitle}</title>
+          <title>{post.metaTitle || post.title}</title>
           <BlogSchemaMarkup post={post} relatedBlogs={relatedBlogs} />
 
           {/* Additional SEO meta tags */}
           <link
             rel="canonical"
-            href={`https://www.dholerainsider.com/dholera-sir-blogs/${post.slug.current}`}
+            href={getArticleUrl(post)}
           />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="description" content={post.metaDescription} />
@@ -797,7 +800,7 @@ export default async function Post({ params }) {
                   ? relatedBlogs.map((blog, index) => (
                       <Link
                         key={blog._id}
-                        href={`/dholera-sir-updates/${blog.slug.current}`}
+                        href={getArticlePath(blog) || "#"}
                         className="group block"
                       >
                         <article className="h-full">
@@ -1005,6 +1008,7 @@ export default async function Post({ params }) {
       </>
     );
   } catch (error) {
+    unstable_rethrow(error);
     console.error("Error loading blog post:", slug, error);
     return (
       <div className="min-h-screen flex items-center justify-center">

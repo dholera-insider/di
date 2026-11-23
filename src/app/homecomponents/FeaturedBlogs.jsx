@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getblogs } from "@/sanity/lib/api";
 import { urlFor } from "@/sanity/lib/image";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 const RelatedBlogCard = ({ blog }) => {
   return (
@@ -44,7 +45,7 @@ const RelatedBlogCard = ({ blog }) => {
         </div>
 
         <Link
-          href={`/dholera-sir-blogs/${blog.slug.current}`}
+          href={getArticlePath(blog) || "#"}
           className="mt-auto inline-flex w-full justify-center rounded-md bg-[#F6C343] px-[clamp(1rem,2vw,1.5rem)] py-2 text-[0.875rem] font-medium text-[#051A3A] transition-colors duration-300 hover:bg-[#FDFCFA] focus:outline-none focus:ring-2 focus:ring-[#F6C343] focus:ring-offset-2"
         >
           Explore More

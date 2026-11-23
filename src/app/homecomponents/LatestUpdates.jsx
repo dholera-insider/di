@@ -1,6 +1,7 @@
 import { getUpdates } from "@/sanity/lib/api";
 import { urlFor } from "@/sanity/lib/image";
 import LatestUpdatesCarousel from "./LatestUpdatesCarousel";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -23,7 +24,7 @@ export default async function LatestUpdates() {
         return {
           id: post._id,
           title: post.title || "Dholera Latest Update",
-          href: `/dholera-sir-updates/${post.slug.current}`,
+          href: getArticlePath(post),
           imageUrl: post.mainImage?.asset
             ? urlFor(post.mainImage)
                 .width(720)

@@ -1,4 +1,5 @@
 import { urlFor } from "@/sanity/lib/image";
+import { ARTICLE_ORIGIN, getArticleUrl } from "@/lib/article-routes.mjs";
 
 // About Dholera SIR Schema Markup Component
 const SchemaMarkup = ({ post, relatedBlog = [] }) => {
@@ -52,8 +53,8 @@ const SchemaMarkup = ({ post, relatedBlog = [] }) => {
     return images;
   };
 
-  const baseUrl = "https://dholerainsider.com"; // Replace with your actual domain
-  const postUrl = `${baseUrl}/about-dholera-sir/${post.slug.current}`;
+  const baseUrl = ARTICLE_ORIGIN;
+  const postUrl = getArticleUrl(post);
   
   // Main About Dholera SIR post schema
   const blogSchema = {
@@ -252,7 +253,7 @@ const SchemaMarkup = ({ post, relatedBlog = [] }) => {
         "item": {
           "@type": "Blog Posting",
           "headline": post.title,
-          "url": `${baseUrl}/about-dholera-sir/${post.slug.current}`,
+          "url": getArticleUrl(post),
           "description": post.description,
           "image": post.mainImage ? urlFor(post.mainImage).width(400).height(250).url() : undefined,
           "datePublished": post.publishedAt || post._createdAt
@@ -276,7 +277,7 @@ const SchemaMarkup = ({ post, relatedBlog = [] }) => {
       <meta name="description" content={post.description || extractPlainText(post.body)} />
       <meta name="keywords" content={post.tags?.join(", ") || ""} />
       <meta name="author" content="Dholera Insider" />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={post.noIndex ? "noindex, follow" : "index, follow"} />
       
       {/* Open Graph meta tags */}
       <meta property="og:type" content="article" />

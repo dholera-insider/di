@@ -18,7 +18,6 @@ import { FaWhatsapp } from "react-icons/fa";
 
 import heroImage from "@/app/assets/about-dholera/dholera-insider-about-dholera-banner.webp";
 import phoneheroImage from "@/app/assets/about-dholera/dholera-insider-about-dholera-moblie-banner.webp";
-import tataLogo from "@/app/assets/tata-logo.png";
 
 import WhyDholera from "@/app/about-dholera-sir/WhyDholera";
 import MegaProjectsSlider from "./MegaProjects";
@@ -84,64 +83,6 @@ const insiderBenefits = [
   },
 ];
 
-const megaProjects = [
-  {
-    icon: "🏢",
-    title: "ABCD Building",
-    description:
-      "Administrative & Business Centre, Dholera - Single-window system for investors",
-    href: "/about-dholera-sir/abcd-building-dholera-sir",
-  },
-  {
-    image: tataLogo,
-    title: "TATA Electronics Semiconductor Fab",
-    description: "India's first semiconductor manufacturing project",
-    href: "/about-dholera-sir/tata-semiconductor-plant-in-dholera",
-  },
-  {
-    icon: "✈️",
-    title: "Dholera International Airport",
-    description: "Global trade, cargo movement, and international travel",
-    href: "/about-dholera-sir/dholera-international-airport-project-update-2025",
-  },
-  {
-    icon: "🛣️",
-    title: "Ahmedabad Dholera Expressway",
-    description: "High-speed corridor cutting travel time to one hour",
-    href: "/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity",
-  },
-  {
-    icon: "🚇",
-    title: "High-Speed Monorail & Railway",
-    description: "Links with Ahmedabad and major industrial hubs",
-    href: "/about-dholera-sir/how-connectivity-is-shaping-dholera-growth",
-  },
-  {
-    icon: "☀️",
-    title: "Dholera Solar Park",
-    description: "One of India's largest renewable energy projects",
-    href: "/about-dholera-sir/renewable-energy-solar-park-in-dholera",
-  },
-  {
-    icon: "💧",
-    title: "Water Treatment Plant",
-    description: "Reliable long term water supply for industries and residents",
-    href: "/about-dholera-sir/dholera-smart-city-water-scarcity-solutions",
-  },
-  {
-    icon: "⚡",
-    title: "ReNew Power & Activation Area",
-    description: "₹2,000 crore solar plant + ready infrastructure hub",
-    href: "/about-dholera-sir/renewable-energy-solar-park-in-dholera",
-  },
-  {
-    icon: "🚢",
-    title: "Dholera Sea Port",
-    description:
-      "A planned greenfield port in the Gulf of Khambhat to support Dholera Connectivity.",
-    href: "/about-dholera-sir/dholera-sea-port-connectivity-growth",
-  },
-];
 
 const nriBenefits = [
   "Long term land ownership",

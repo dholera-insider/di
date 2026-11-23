@@ -31,6 +31,7 @@ export async function getblogs() {
     *[
       _type == "post" &&
       "Blog" in categories[]->title &&
+      site == "dholera-insider" &&
       author->name == "Dholera Insider" &&
       defined(slug.current) &&
       !("Sold Out" in categories[]->title)
@@ -58,6 +59,7 @@ export async function getUpdates(limit) {
     *[
       _type == "post" &&
       "Updates" in categories[]->title &&
+      site == "dholera-insider" &&
       author->name == "Dholera Insider" &&
       defined(slug.current) &&
       !("Sold Out" in categories[]->title)
@@ -95,6 +97,7 @@ export async function projectInfo(limit) {
     *[
       _type == "post" &&
       "project-Info" in categories[]->title &&
+      site == "dholera-insider" &&
       author->name == "Dholera Insider" &&
       defined(slug.current) &&
       !("Sold Out" in categories[]->title)
@@ -165,10 +168,10 @@ export async function Brochure() {
 
 /* Single Post Fetching */
 export async function getPostBySlug(slug) {
-  const query = `*[_type == "post" && slug.current == $slug && author->name == "Dholera Insider"][0]{
-    _id, title, metaTitle, metaDescription, "keywords": keywords, slug,
+  const query = `*[_type == "post" && site == "dholera-insider" && slug.current == $slug && author->name == "Dholera Insider"][0]{
+    _id, site, title, metaTitle, metaDescription, "keywords": keywords, slug, noIndex,
     mainImage { asset->{ _id, _ref, url, metadata{ dimensions, lqip } }, alt, caption, url },
-    publishedAt, _createdAt,
+    publishedAt, _createdAt, _updatedAt,
     body[]{ ..., _type=="image"=>{..., asset->{ _id, _ref, url, metadata{ dimensions, lqip } }, "url": url }, markDefs[]{..., _type=="link"=>{"href":@.href}} },
     author->{ name, image }, categories[]->{ title, _id }, readingTime
   }`;

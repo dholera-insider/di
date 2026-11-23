@@ -1,4 +1,5 @@
 import { urlFor } from "@/sanity/lib/image";
+import { ARTICLE_ORIGIN, getArticleUrl } from "@/lib/article-routes.mjs";
 
 // Blog Schema Markup Component
 const BlogSchemaMarkup = ({ post, relatedBlogs = [] }) => {
@@ -52,8 +53,8 @@ const BlogSchemaMarkup = ({ post, relatedBlogs = [] }) => {
     return images;
   };
 
-  const baseUrl = "https://dholerainsider.com"; // Replace with your actual domain
-  const postUrl = `${baseUrl}/dholera-sir-blogs/${post.slug.current}`;
+  const baseUrl = ARTICLE_ORIGIN;
+  const postUrl = getArticleUrl(post);
   
   // Main blog post schema
   const blogSchema = {
@@ -247,7 +248,7 @@ const BlogSchemaMarkup = ({ post, relatedBlogs = [] }) => {
         "item": {
           "@type": "BlogPosting",
           "headline": blog.title,
-          "url": `${baseUrl}/dholera-sir-blogs/${blog.slug.current}`,
+          "url": getArticleUrl(blog),
           "description": blog.description,
           "image": blog.mainImage ? urlFor(blog.mainImage).width(400).height(250).url() : undefined,
           "datePublished": blog.publishedAt || blog._createdAt
@@ -269,7 +270,7 @@ const BlogSchemaMarkup = ({ post, relatedBlogs = [] }) => {
       
    
       <meta name="author" content="dholerainsider" />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={post.noIndex ? "noindex, follow" : "index, follow"} />
       
       {/* Open Graph meta tags */}
       <meta property="og:type" content="article" />

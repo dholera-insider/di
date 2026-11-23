@@ -7,6 +7,23 @@ const nextConfig = {
 
   async redirects() {
     return [
+      /* Consolidate duplicate project articles before page rendering starts. */
+      {
+        source: "/dholera-sir-updates/tata-semiconductor-plant-in-dholera",
+        destination: "/about-dholera-sir/tata-semiconductor-plant-in-dholera",
+        permanent: true,
+      },
+      {
+        source: "/dholera-sir-updates/dholera-international-airport-project-update-2025",
+        destination: "/about-dholera-sir/dholera-international-airport-project-update-2025",
+        permanent: true,
+      },
+      {
+        source: "/dholera-sir-updates/ahmedabad-dholera-expressway-transforming-gujarat-connectivity",
+        destination: "/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity",
+        permanent: true,
+      },
+
       /* REDIRECTIONS AFTER RESTRUCTURE */
 
       {

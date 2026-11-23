@@ -1,12 +1,13 @@
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
 import {
-  getPostBySlug,
   getUpdates,
 } from "@/sanity/lib/api";
+import { getArticleBySlug } from "@/lib/get-article";
+import { getArticlePath, getArticleUrl } from "@/lib/article-routes.mjs";
 import Link from "next/link";
 import Image from "next/image";
-import { permanentRedirect, unstable_rethrow } from "next/navigation";
+import { unstable_rethrow } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import LeadForm from "../LeadForm";
 import BlogSchemaMarkup from "../BlogSchemaMarkup";
@@ -58,7 +59,7 @@ const getPostDateTime = (post) => {
 
 const TrendingBlogItem = ({ post }) => {
   return (
-    <Link href={`/dholera-sir-updates/${post.slug.current}`}>
+    <Link href={getArticlePath(post) || "#"}>
       <div className="flex gap-4 items-center bg-white hover:bg-gray-50 p-4 rounded-lg border border-gray-100 transition-all hover:shadow-md">
         {post.mainImage && (
           <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
@@ -87,7 +88,7 @@ const TrendingBlogItem = ({ post }) => {
 
 const RelatedBlogCard = ({ blog }) => {
   return (
-    <Link href={`/dholera-sir-blogs/${blog.slug.current}`}>
+    <Link href={getArticlePath(blog) || "#"}>
       <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 h-full">
         <div className="relative h-48 overflow-hidden">
           {blog.mainImage ? (
@@ -150,7 +151,7 @@ export default async function BlogDetail({ params }) {
 
   try {
     const [post, trendingBlogs] = await Promise.all([
-      getPostBySlug(slug),
+      getArticleBySlug(slug, "dholera-sir-updates"),
       getUpdates(5), // Keep four sidebar items after excluding this article.
     ]);
 
@@ -168,11 +169,6 @@ export default async function BlogDetail({ params }) {
           </div>
         </div>
       );
-    }
-
-    // Project information belongs to About Dholera, even through an old Updates URL.
-    if (post.categories?.some((category) => category?.title === "project-Info")) {
-      permanentRedirect(`/about-dholera-sir/${post.slug.current}`);
     }
 
     const isTataEquipmentPost =
@@ -547,12 +543,12 @@ export default async function BlogDetail({ params }) {
 
     return (
       <div className="bg-white min-h-screen">
-        <title>{post.metaTitle}</title>
+        <title>{post.metaTitle || post.title}</title>
         <link
           rel="canonical"
-          href={`https://www.dholerainsider.com/dholera-sir-updates/${post.slug.current}`}
+          href={getArticleUrl(post)}
         />
-        <meta name="robots" content="index, dofollow" />
+        <meta name="robots" content={post.noIndex ? "noindex, follow" : "index, dofollow"} />
         <meta name="description" content={post.metaDescription} />
         <meta name="keywords" content={post.keywords} />
         <meta name="publisher" content="Dholera Insider" />

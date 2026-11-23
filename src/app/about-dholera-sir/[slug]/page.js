@@ -1,6 +1,9 @@
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@/sanity/lib/image";
-import { getblogs, getPostBySlug, projectInfo } from "@/sanity/lib/api";
+import { projectInfo } from "@/sanity/lib/api";
+import { getArticleBySlug } from "@/lib/get-article";
+import { getArticlePath, getArticleUrl } from "@/lib/article-routes.mjs";
+import { unstable_rethrow } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import LeadForm from "../LeadForm";
@@ -55,7 +58,7 @@ const TrendingBlogItem = ({ post }) => {
   return (
     <Link
       key={post.slug?.current}
-      href={`/about-dholera-sir/${post.slug?.current}`}
+      href={getArticlePath(post) || "#"}
     >
       <div className="flex gap-4 items-center bg-white hover:bg-gray-50 p-4 rounded-lg border border-gray-100 transition-all hover:shadow-md mb-3">
         {post.mainImage && (
@@ -89,7 +92,7 @@ const TrendingBlogItem = ({ post }) => {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = await getArticleBySlug(slug, "about-dholera-sir");
 
   if (!post) {
     return {
@@ -102,9 +105,9 @@ export async function generateMetadata({ params }) {
     title: post.metaTitle || post.title,
     description: post.metaDescription || "",
     keywords: post.keywords || "",
-    robots: "index, dofollow",
+    robots: post.noIndex ? "noindex, follow" : "index, dofollow",
     alternates: {
-      canonical: `https://www.dholerainsider.com/about-dholera-sir/${post.slug.current}`,
+      canonical: getArticleUrl(post),
     },
     openGraph: {
       title: post.metaTitle || post.title,
@@ -116,7 +119,6 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogDetail({ params }) {
   const { slug } = await params;
-  const site = "dholera-insider";
 
   if (!slug) {
     return (
@@ -127,9 +129,9 @@ export default async function BlogDetail({ params }) {
   }
 
   try {
-    const [post, trendingBlogs, getPro] = await Promise.all([
-      getPostBySlug(slug, site),
-      getblogs(),
+    const [post, trendingBlogs] = await Promise.all([
+      getArticleBySlug(slug, "about-dholera-sir"),
+      projectInfo(6),
     ]);
 
     if (!post) {
@@ -668,6 +670,7 @@ export default async function BlogDetail({ params }) {
                   <div className="space-y-3">
                     {trendingBlogs && trendingBlogs.length > 0 ? (
                       trendingBlogs
+                        .filter((item) => item?.slug?.current && item.slug.current !== slug)
                         .slice(0, 5)
                         .map((post) => (
                           <TrendingBlogItem key={post._id} post={post} />
@@ -693,6 +696,7 @@ export default async function BlogDetail({ params }) {
       </div>
     );
   } catch (error) {
+    unstable_rethrow(error);
     console.error("Error loading blog post:", slug, error);
     return (
       <div className="min-h-screen flex items-center justify-center">

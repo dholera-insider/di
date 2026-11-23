@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { getArticlePath } from "@/lib/article-routes.mjs";
 
 export default function BlogCard({ post }) {
 
@@ -14,9 +15,7 @@ export default function BlogCard({ post }) {
 
   return (
     <Link
-      href={
-        post.slug?.current ? `/about-dholera-sir/${post.slug.current}` : "#"
-      }
+      href={getArticlePath(post) || "#"}
       className="group"
     >
       <div className="bg-white rounded-[8px] shadow-md overflow-hidden h-full hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-200">
