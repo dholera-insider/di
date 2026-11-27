@@ -1,3 +1,4 @@
+import PageSchema from "@/app/components/PageSchema";
 import socialImage from "@/app/assets/investor/dholera-insider-hong-kong-banner.webp";
 import HongKongInvestorPage from "./HongKongInvestorPage";
 import { hongKongFaqs } from "./data";
@@ -25,23 +26,12 @@ export const metadata = createInvestorMetadata({
   },
 });
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: hongKongFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
+
 
 export default function HongKongPage() {
   return (
     <div className="bg-[#F8F7F3] text-[#051A3A]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
-      />
+      <PageSchema metadata={metadata} country="Hong Kong" faqs={hongKongFaqs} />
       <HongKongInvestorPage />
     </div>
   );

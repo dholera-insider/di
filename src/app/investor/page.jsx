@@ -1,3 +1,4 @@
+import PageSchema from "@/app/components/PageSchema";
 import Link from "next/link";
 import { investorLanguages } from "./seo";
 
@@ -64,6 +65,7 @@ const markets = [
 export default function InvestorHubPage() {
   return (
     <main className="bg-[#F8F7F3] text-[#051A3A]">
+      <PageSchema metadata={metadata} type="CollectionPage" items={markets.map((market) => ({ name: market.name, url: market.href }))} />
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B77A00]">

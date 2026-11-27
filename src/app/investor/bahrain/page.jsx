@@ -1,3 +1,5 @@
+import PageSchema from "@/app/components/PageSchema";
+import { bahrainFaqs } from "./faq-data.mjs";
 import DholeraBahrainPage from "./Bahrain";
 import socialImage from "@/app/assets/investor/dholera-insider-bahrain-banner.webp";
 import { createInvestorMetadata } from "../seo";
@@ -25,5 +27,10 @@ export const metadata = createInvestorMetadata({
 });
 
 export default function Page() {
-  return <DholeraBahrainPage />;
+  return (
+    <>
+      <PageSchema metadata={metadata} country="Bahrain" faqs={bahrainFaqs} />
+      <DholeraBahrainPage />
+    </>
+  );
 }

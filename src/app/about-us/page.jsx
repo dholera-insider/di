@@ -1,3 +1,4 @@
+import JsonLd from "@/app/components/JsonLd";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { aboutPageSchema } from "../schemaMarkup";
@@ -154,10 +155,7 @@ function SectionHeading({
 export default function AboutUsPage() {
   return (
     <main className="bg-[#FDFCFA] text-[#162033]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
-      />
+      <JsonLd data={aboutPageSchema} />
 
       {/* Main banner section  */}
       <section

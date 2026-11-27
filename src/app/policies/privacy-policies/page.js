@@ -1,3 +1,4 @@
+import PageSchema from "@/app/components/PageSchema";
 import React from "react";
 import { Phone, Mail } from "lucide-react";
 
@@ -13,6 +14,7 @@ export const metadata = {
 export default function Copyright() {
   return (
     <div className="relative w-full bg-gray-900">
+      <PageSchema metadata={metadata} />
       <div className="max-w-7xl mx-auto min-h-screen site-gutter page-content">
         <div className="text-white">
           {/* =========================

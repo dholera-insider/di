@@ -1,5 +1,6 @@
 import ContactPageClient from "./ContactPageClient";
-import { contactPageSchema } from "../schemaMarkup";
+import PageSchema from "@/app/components/PageSchema";
+import { ORGANIZATION_ID } from "@/lib/structured-data.mjs";
 
 export const metadata = {
   title: "Contact Dholera Insider | Dholera Investment for NRIs",
@@ -44,30 +45,12 @@ const contactFaqs = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: contactFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+
 
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <PageSchema metadata={metadata} type="ContactPage" mainEntity={{ "@id": ORGANIZATION_ID }} faqs={contactFaqs} />
       <ContactPageClient faqs={contactFaqs} />
     </>
   );

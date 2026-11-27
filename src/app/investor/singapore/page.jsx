@@ -1,3 +1,5 @@
+import PageSchema from "@/app/components/PageSchema";
+import { singaporeFaqs } from "./faq-data.mjs";
 import SingaporeInvestorPage from "./SingaporeInvestorPage";
 import socialImage from "@/app/assets/investor/dholera-insider-singapore-banner.webp";
 import { createInvestorMetadata } from "../seo";
@@ -26,6 +28,7 @@ export const metadata = createInvestorMetadata({
 export default function SingaporePage() {
   return (
     <div className="bg-[#F8F7F3] text-[#051A3A]">
+      <PageSchema metadata={metadata} country="Singapore" faqs={singaporeFaqs} />
       <SingaporeInvestorPage />
     </div>
   );

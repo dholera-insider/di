@@ -1,3 +1,4 @@
+import PageSchema from "@/app/components/PageSchema";
 import { getblogs } from "@/sanity/lib/api";
 import { urlFor } from "@/sanity/lib/image";
 import { notFound } from "next/navigation";
@@ -132,6 +133,11 @@ async function BlogPosts({ searchParams }) {
 
   return (
     <div className="relative z-10">
+      <PageSchema
+        metadata={await generateMetadata({ searchParams: { page: currentPage } })}
+        type="CollectionPage"
+        items={visiblePosts.map((post) => ({ name: post.title, url: post.href }))}
+      />
       <div className="max-w-7xl mx-auto py-12 sm:py-16 site-gutter">
         {visiblePosts.length > 0 ? (
           <>

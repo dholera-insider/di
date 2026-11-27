@@ -1,13 +1,11 @@
+import JsonLd from "@/app/components/JsonLd";
 import HomePage from "./pages/home";
 import { homePageSchema } from "./schemaMarkup";
 
 export default function App() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }}
-      />
+      <JsonLd data={homePageSchema} />
 
       <title>Dholera Investment for NRI | Verified Residential Plots</title>
       <meta

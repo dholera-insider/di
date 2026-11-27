@@ -1,3 +1,5 @@
+import PageSchema from "@/app/components/PageSchema";
+import { dubaiFaqs } from "./faq-data.mjs";
 import DubaiNriClient from "./DubaiNriClient";
 import socialImage from "@/app/assets/investor/dholera-insider-dubai-banner.webp";
 import { createInvestorMetadata } from "../seo";
@@ -26,5 +28,10 @@ export const metadata = createInvestorMetadata({
 });
 
 export default function DubaiNriPage() {
-  return <DubaiNriClient />;
+  return (
+    <>
+      <PageSchema metadata={metadata} country="United Arab Emirates" faqs={dubaiFaqs} />
+      <DubaiNriClient />
+    </>
+  );
 }

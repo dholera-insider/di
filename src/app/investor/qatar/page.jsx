@@ -1,3 +1,4 @@
+import PageSchema from "@/app/components/PageSchema";
 import QatarInvestorPage from "./QatarInvestorPage";
 import { qatarFaqs } from "./data";
 import socialImage from "@/app/assets/investor/dholera-insider-qatar-banner.webp";
@@ -25,23 +26,12 @@ export const metadata = createInvestorMetadata({
   },
 });
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: qatarFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
+
 
 export default function QatarPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
-      />
+      <PageSchema metadata={metadata} country="Qatar" faqs={qatarFaqs} />
       <QatarInvestorPage />
     </>
   );

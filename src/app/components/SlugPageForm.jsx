@@ -291,9 +291,6 @@ export default function SlugPageForm() {
 
                     <div className="space-y-4 mb-6">
                       <div>
-                        <label htmlFor="fullName" className="block text-white text-sm font-medium mb-2">
-                          Full Name *
-                        </label>
                         <input
                           type="text"
                           id="fullName"
@@ -307,9 +304,6 @@ export default function SlugPageForm() {
                       </div>
 
                       <div>
-                        <label htmlFor="mobileNumber" className="block text-white text-sm font-medium mb-2">
-                          Mobile Number *
-                        </label>
                         <InternationalPhoneInput
                           value={formData.mobileNumber}
                           onChange={(phone) => {

@@ -1,3 +1,4 @@
+import PageSchema from "@/app/components/PageSchema";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import heroD from "../assets/hero/latest-updates-dholera-insider.webp";
@@ -133,6 +134,11 @@ export default async function UpdatesPage({ searchParams }) {
 
   return (
     <>
+      <PageSchema
+        metadata={await generateMetadata({ searchParams: { page: currentPage } })}
+        type="CollectionPage"
+        items={visibleBlogs.map((post) => ({ name: post.title, url: post.href }))}
+      />
       <div className="min-h-screen bg-white relative overflow-hidden">
         {/* Enhanced Hero Section - Responsive Height */}
         <div className="relative bg-white">

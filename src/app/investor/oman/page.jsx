@@ -1,3 +1,4 @@
+import PageSchema from "@/app/components/PageSchema";
 import socialImage from "@/app/assets/investor/dholera-insider-oman-banner.webp";
 import OmanInvestorPage from "./OmanInvestorPage";
 import { omanFaqs } from "./data";
@@ -25,23 +26,12 @@ export const metadata = createInvestorMetadata({
   },
 });
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: omanFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
+
 
 export default function OmanPage() {
   return (
     <div className="bg-[#F8F7F3] text-[#051A3A]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
-      />
+      <PageSchema metadata={metadata} country="Oman" faqs={omanFaqs} />
       <OmanInvestorPage />
     </div>
   );

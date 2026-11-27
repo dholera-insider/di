@@ -1,3 +1,5 @@
+import PageSchema from "@/app/components/PageSchema";
+import { saudiFaqs } from "./faq-data.mjs";
 import SaudiArabiaInvestorPage from "./SaudiArabiaInvestorPage";
 import socialImage from "@/app/assets/investor/dholera-insider-saudi-arabia-banner.webp";
 import { createInvestorMetadata } from "../seo";
@@ -25,5 +27,10 @@ export const metadata = createInvestorMetadata({
 });
 
 export default function SaudiArabiaPage() {
-  return <SaudiArabiaInvestorPage />;
+  return (
+    <>
+      <PageSchema metadata={metadata} country="Saudi Arabia" faqs={saudiFaqs} />
+      <SaudiArabiaInvestorPage />
+    </>
+  );
 }
