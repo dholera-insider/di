@@ -55,12 +55,19 @@ jobs:
 
       - name: Deploy on server via SSH
         uses: appleboy/ssh-action@v1.2.0
+        env:
+          TELECRM_API_KEY: ${{ secrets.TELECRM_API_KEY || secrets.NEXT_PUBLIC_TELECRM_API_KEY }}
+          RECAPTCHA_SECRET_KEY: ${{ secrets.RECAPTCHA_SECRET_KEY }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          envs: TELECRM_API_KEY,RECAPTCHA_SECRET_KEY
           script: |
+            set -e
+            : "${TELECRM_API_KEY:?Missing TeleCRM API key}"
+            : "${RECAPTCHA_SECRET_KEY:?Missing reCAPTCHA secret key}"
             cd /var/www/di
             tar -xzf app.tar.gz
-            pm2 restart app || pm2 start .next/standalone/server.js --name app
+            pm2 restart app --update-env || pm2 start .next/standalone/server.js --name app
             pm2 save

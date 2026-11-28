@@ -121,12 +121,17 @@ export async function POST(request) {
   }
 
   const apiKey =
-    process.env.TELECRM_API_KEY || process.env.NEXT_PUBLIC_TELECRM_API_KEY;
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
+    process.env.TELECRM_API_KEY?.trim() ||
+    process.env.NEXT_PUBLIC_TELECRM_API_KEY?.trim();
+  const secret = process.env.RECAPTCHA_SECRET_KEY?.trim();
 
   if (!apiKey || (!secret && !isLocalDevelopment)) {
     console.error(
       "Lead form server configuration is incomplete.",
+      "Missing:",
+      [!apiKey && "TELECRM_API_KEY", !secret && !isLocalDevelopment && "RECAPTCHA_SECRET_KEY"]
+        .filter(Boolean)
+        .join(", "),
     );
 
     return reply(503, {
@@ -252,18 +257,29 @@ export async function POST(request) {
       15000,
     );
 
-    if (!crm.ok) {
+    const result = parseJson(crm.text);
+    const outcomes = Array.isArray(result) ? result : [result];
+    const failedOutcome = outcomes.find((outcome) =>
+      outcome && typeof outcome === "object" && (
+        outcome.success === false ||
+        outcome.status === "Error" ||
+        outcome.error ||
+        outcome.errorMessage
+      )
+    );
+
+    if (!crm.ok || failedOutcome) {
       console.error(
         "TeleCRM rejected the lead request. HTTP status:",
         crm.status,
       );
 
-      const detail = parseJson(crm.text);
+      const detail = failedOutcome || result;
+      const errorMessage = detail?.message || detail?.errorMessage || detail?.error?.message;
 
       const message =
-        typeof detail?.message === "string" &&
-        detail.message
-          ? detail.message.slice(0, 300)
+        typeof errorMessage === "string" && errorMessage
+          ? errorMessage.slice(0, 300)
           : "Unable to submit your request right now. Please contact us directly.";
 
       return reply(
@@ -275,8 +291,8 @@ export async function POST(request) {
       );
     }
 
-    // Preserve the reference's HTTP-success criterion.
-    // Do not assume an undocumented TeleCRM response schema.
+    // The existing async endpoint can return an empty 204 on acceptance.
+    // Structured lead-level errors must be rejected even when HTTP is 200.
     return reply(200, {
       success: true,
       message:

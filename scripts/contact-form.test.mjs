@@ -7,6 +7,7 @@ import test from "node:test";
 
 const require = createRequire(import.meta.url);
 const { JSDOM } = require("jsdom");
+const { load: loadYaml } = require("js-yaml");
 const { transformSync } = require("next/dist/build/swc");
 const dom = new JSDOM("<!doctype html><html><head></head><body></body></html>", {
   url: "https://www.dholerainsider.com/",
@@ -472,3 +473,83 @@ test("a localhost CRM failure preserves the form and can retry without CAPTCHA",
   assert.equal(form.requests.length, 2);
   assert.match(document.body.textContent, /Thank You!/);
 });
+
+test("deployment passes private form credentials to PM2 at runtime and refreshes its environment", () => {
+  const workflow = loadYaml(readFileSync(new URL("../.github/workflows/deploy.yml", import.meta.url), "utf8"));
+  const deploy = workflow.jobs["build-and-deploy"].steps.find((step) => step.uses?.startsWith("appleboy/ssh-action@"));
+  assert.ok(deploy, "the production app needs an SSH deployment step");
+  const forwarded = deploy.with.envs.split(",").map((name) => name.trim());
+  for (const name of ["TELECRM_API_KEY", "RECAPTCHA_SECRET_KEY"]) {
+    assert.ok(forwarded.includes(name), `${name} must reach the server, beyond the build step`);
+    assert.match(deploy.env[name], /\$\{\{.*secrets\./, `${name} must come from GitHub secrets`);
+    const guard = deploy.with.script.indexOf(`\${${name}:?`);
+    assert.ok(guard >= 0 && guard < deploy.with.script.indexOf("tar -xzf"), `${name} must be checked before replacing the deployed app`);
+  }
+  assert.match(deploy.env.TELECRM_API_KEY, /secrets\.TELECRM_API_KEY\s*\|\|\s*secrets\.NEXT_PUBLIC_TELECRM_API_KEY/);
+  assert.match(deploy.with.script, /pm2 restart app --update-env/);
+});
+
+for (const [name, overrides, expectedKey] of [
+  ["private runtime credentials", { NEXT_PUBLIC_TELECRM_API_KEY: "" }, "test-server-key"],
+  ["the existing public key fallback", { TELECRM_API_KEY: "  ", NEXT_PUBLIC_TELECRM_API_KEY: "  fallback-key  " }, "fallback-key"],
+]) {
+  test(`the server submits the exact name and phone using ${name}`, async (t) => {
+    serverConfig(t, overrides);
+    const upstream = [];
+    t.mock.method(globalThis, "fetch", async (url, options) => {
+      upstream.push({ url, ...options });
+      return url.includes("siteverify") ? json({ success: true })
+        : json({ status: "Created", modifiedLeadIds: ["test-lead-id"], errorMessage: "" });
+    });
+    const response = await POST(leadRequest());
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).success, true);
+    assert.equal(upstream[1].headers.Authorization, `Bearer ${expectedKey}`);
+    assert.deepEqual(JSON.parse(upstream[1].body).fields, {
+      name: "Test Visitor", phone: "+919876543210", source: "Dholera Insider",
+    });
+  });
+}
+
+for (const [name, overrides] of [
+  ["TELECRM_API_KEY", { TELECRM_API_KEY: "", NEXT_PUBLIC_TELECRM_API_KEY: "" }],
+  ["RECAPTCHA_SECRET_KEY", { RECAPTCHA_SECRET_KEY: "   " }],
+]) {
+  test(`missing runtime ${name} is diagnosed without claiming success or contacting CRM`, async (t) => {
+    serverConfig(t, overrides);
+    const logs = [];
+    t.mock.method(console, "error", (...args) => logs.push(args.join(" ")));
+    const fetch = t.mock.method(globalThis, "fetch", () => assert.fail("missing configuration must not contact upstream services"));
+    const response = await POST(leadRequest());
+    assert.equal(response.status, 503);
+    assert.equal((await response.json()).success, false);
+    assert.equal(fetch.mock.callCount(), 0);
+    assert.ok(logs.some((line) => line.includes(name)));
+    assert.ok(logs.every((line) => !line.includes("test-server-key") && !line.includes("test-secret")));
+  });
+}
+
+for (const outcome of [
+  { status: "Error", errorMessage: "CRM could not save the lead." },
+  [{ status: "Error", errorMessage: "CRM could not save the lead." }],
+  { success: false, message: "CRM could not save the lead." },
+  { error: { message: "CRM could not save the lead." } },
+]) {
+  test(`HTTP 200 with a CRM failure never shows success: ${JSON.stringify(outcome)}`, async (t) => {
+    serverConfig(t);
+    const form = await mountForm(t);
+    t.mock.method(globalThis, "fetch", async (url, options) => {
+      if (url === "/api/country") return json({ country: "in" });
+      if (url === "/api/lead") return POST(leadRequest(JSON.parse(options.body)));
+      return url.includes("siteverify") ? json({ success: true }) : json(outcome);
+    });
+    await form.fill();
+    await form.verify();
+    await form.submit();
+    assert.match(form.alert(), /CRM could not save the lead/);
+    assert.doesNotMatch(document.body.textContent, /Thank You!/);
+    assert.equal(document.querySelector('input[name="fullName"]').value, "Test Visitor");
+    assert.equal(localStorage.getItem("formSubmissionCount"), null);
+    assert.deepEqual(window.dataLayer, []);
+  });
+}
