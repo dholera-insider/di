@@ -1,4 +1,5 @@
 import InvestorHero from "../InvestorHero";
+import Link from "next/link";
 import {
   BadgeCheck,
   Building2,
@@ -143,8 +144,18 @@ export default function HongKongInvestorPage() {
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
              Dholera Insider helps Hong Kong based NRIs explore residential
-              plots in Dholera Smart City, with project guidance, documentation
-              support and a convenient remote buying process.
+              plots in{" "}
+              <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                Dholera Smart City
+              </Link>, with project guidance,{" "}
+              <Link
+                href="/dholera-sir-blogs/dholera-legal-land-investment-guide"
+                prefetch={false}
+                className="underline underline-offset-4"
+              >
+                documentation support
+              </Link>{" "}
+              and a convenient remote buying process.
             </p>
 
 

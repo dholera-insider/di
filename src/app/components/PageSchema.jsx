@@ -1,4 +1,4 @@
-import { createPageGraph, ORGANIZATION_ID, SITE_URL } from "@/lib/structured-data.mjs";
+import { createPageGraph, ORGANIZATION_ID } from "@/lib/structured-data.mjs";
 import { withSiteSchema } from "@/app/schemaMarkup";
 import JsonLd from "./JsonLd";
 
@@ -17,7 +17,6 @@ export default function PageSchema({ metadata, country, ...options }) {
     url, name, description: metadata.description,
     image: metadata.openGraph?.images?.[0]?.url,
     ...(country ? {
-      parents: [{ name: "NRI Investor Guides", url: `${SITE_URL}/investor` }],
       mainEntity: { "@id": service["@id"] },
     } : {}),
     ...options,

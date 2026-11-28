@@ -1,4 +1,5 @@
 import InvestorHero from "../InvestorHero";
+import Link from "next/link";
 import {
   ArrowRight,
   Building2,
@@ -200,8 +201,18 @@ export default function DubaiNriClient() {
               <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
                 Looking for a smart way to diversify your investments in India?
                 Dholera Insider helps Dubai NRIs explore verified residential
-                plots in Dholera Smart City with transparent information, legal
-                clarity, and a smooth remote buying process.
+                plots in{" "}
+                <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                  Dholera Smart City
+                </Link>{" "}
+                with transparent information,{" "}
+                <Link
+                  href="/dholera-sir-blogs/dholera-legal-land-investment-guide"
+                  prefetch={false}
+                  className="underline underline-offset-4"
+                >
+                  legal clarity
+                </Link>, and a smooth remote buying process.
               </p>
 
               <a

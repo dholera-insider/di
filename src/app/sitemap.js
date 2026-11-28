@@ -49,7 +49,6 @@ export default async function sitemap() {
     { url: `${BASE_URL}/dholera-sir-updates`, priority: 0.7, changeFrequency: "daily" },
     { url: `${BASE_URL}/about-dholera-sir`, priority: 0.7, changeFrequency: "monthly" },
 
-    { url: `${BASE_URL}/investor`, priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE_URL}/investor/bahrain`, priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE_URL}/investor/dubai`, priority: 0.8, changeFrequency: "monthly" },
     { url: `${BASE_URL}/investor/hong-kong`, priority: 0.8, changeFrequency: "monthly" },

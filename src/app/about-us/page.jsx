@@ -346,7 +346,10 @@ export default function AboutUsPage() {
               >
                 Dholera Insider is a dedicated platform created
                 exclusively for NRIs looking to invest in verified
-                residential plots in Dholera Smart City.
+                residential plots in{" "}
+                <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                  Dholera Smart City
+                </Link>.
               </p>
             </div>
           </div>
@@ -394,7 +397,11 @@ export default function AboutUsPage() {
               >
                 As the exclusive channel partner of BookMyAssets, we
                 help overseas Indians understand Dholera, compare
-                residential projects, verify legal documents, and
+                residential projects, <Link
+                  href="/dholera-sir-blogs/dholera-legal-land-investment-guide"
+                  prefetch={false}
+                  className="underline underline-offset-4"
+                >verify legal documents</Link>, and
                 complete the buying process with confidence.
               </p>
             </div>

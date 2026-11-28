@@ -44,6 +44,7 @@ export const galleryImages = [
   },
   {
     id: 5,
+    href: "/about-dholera-sir/dholera-international-airport-project-update-2025",
     src: img5,
     alt: "Dholera International Airport Runway",
     caption: "Dholera International Airport development progress",
@@ -56,6 +57,7 @@ export const galleryImages = [
   },
   {
     id: 7,
+    href: "/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity",
     src: img7,
     alt: "Dholera Expressway Night View",
     caption: "Ahmedabad Dholera Expressway connectivity",
@@ -98,6 +100,7 @@ export const galleryImages = [
   },
   {
     id: 14,
+    href: "/about-dholera-sir/tata-semiconductor-plant-in-dholera",
     src: img14,
     alt: "Tata Semiconductor Plant Dholera",
     caption: "Tata Semiconductor Manufacturing Plant – Dholera",

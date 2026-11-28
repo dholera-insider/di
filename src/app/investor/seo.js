@@ -9,7 +9,6 @@ export const investorLanguages = {
   "en-QA": `${SITE_URL}/investor/qatar`,
   "en-HK": `${SITE_URL}/investor/hong-kong`,
   "en-SA": `${SITE_URL}/investor/saudi-arabia`,
-  "x-default": `${SITE_URL}/investor`,
 };
 
 export function createInvestorMetadata({

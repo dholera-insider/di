@@ -19,7 +19,7 @@ const ContactForm = dynamic(() => import("./Contactform"), {
 
 const Header = () => {
   const pathname = usePathname();
-  const isInvestorPage = pathname === "/investor" || pathname?.startsWith("/investor/");
+  const isInvestorPage = pathname?.startsWith("/investor/");
   const isBlogPage =
     pathname === "/dholera-sir-blogs" || pathname?.startsWith("/dholera-sir-blogs/");
   const prefetchLinks = isInvestorPage || isBlogPage ? false : null;

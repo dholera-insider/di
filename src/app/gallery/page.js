@@ -5,6 +5,7 @@ import { galleryImages } from "./images";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import Link from "next/link";
 import hero from "@/app/assets/dholera-insider-gallery-banner.webp";
 
 
@@ -211,7 +212,11 @@ export default function DholeraProgressPage() {
                     {selectedImage.alt}
                   </h3>
                   <p className="mt-1 text-sm sm:text-base text-gray-600 leading-relaxed">
-                    {selectedImage.caption}
+                    {selectedImage.href ? (
+                      <Link href={selectedImage.href} prefetch={false} className="underline underline-offset-4">
+                        {selectedImage.caption}
+                      </Link>
+                    ) : selectedImage.caption}
                   </p>
                 </div>
               </div>

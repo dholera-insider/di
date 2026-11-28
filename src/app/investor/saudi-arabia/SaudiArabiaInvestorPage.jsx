@@ -284,9 +284,18 @@ export default function SaudiArabiaInvestorPage() {
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               Planning to invest in property back home? Dholera Insider helps
-              NRIs in Saudi Arabia explore verified residential plots in
-              Dholera Smart City with transparent information, legal guidance,
-              and dedicated support from enquiry to registration.
+              NRIs in Saudi Arabia explore verified residential plots in{" "}
+              <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                Dholera Smart City
+              </Link>{" "}
+              with transparent information,{" "}
+              <Link
+                href="/dholera-sir-blogs/dholera-legal-land-investment-guide"
+                prefetch={false}
+                className="underline underline-offset-4"
+              >
+                legal guidance
+              </Link>, and dedicated support from enquiry to registration.
             </p>
 
               {/* CTA */}

@@ -10,13 +10,31 @@ const features = [
   {
     Icon: FileCheck,
     title: "Complete Legal Transparency",
-    description:
-      "Understand pricing, approvals, NA/NOC, and registry before investing.",
+    description: (
+      <>
+        Understand pricing,{" "}
+        <Link
+          href="/dholera-sir-blogs/dholera-legal-land-investment-guide"
+          prefetch={false}
+          className="underline underline-offset-4"
+        >
+          approvals, NA/NOC, and registry
+        </Link>{" "}
+        before investing.
+      </>
+    ),
   },
   {
     Icon: Users,
     title: "Dedicated NRI Support",
-    description: "Personal assistance from enquiry to registry.",
+    description: (
+      <>
+        <Link href="/contact" prefetch={false} className="underline underline-offset-4">
+          Personal assistance
+        </Link>{" "}
+        from enquiry to registry.
+      </>
+    ),
   },
   {
     Icon: MapPin,
@@ -60,7 +78,11 @@ export default function WhyDI() {
             <p className="text-[clamp(0.9rem,1vw,1.05rem)] leading-relaxed text-[#2B364D]">
               As the exclusive channel partner of BookMyAssets for NRI
               investors, Dholera Insider helps NRI investors with confidence
-              through our verified residential projects and transparent
+              through our{" "}
+              <Link href="/gallery" prefetch={false} className="underline underline-offset-4">
+                verified residential projects
+              </Link>{" "}
+              and transparent
               guidance.
             </p>
           </div>

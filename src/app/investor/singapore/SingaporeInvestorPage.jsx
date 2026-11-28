@@ -1,4 +1,5 @@
 import InvestorHero from "../InvestorHero";
+import Link from "next/link";
 import {
   BadgeCheck,
   Building2,
@@ -172,8 +173,18 @@ export default function SingaporeInvestorPage() {
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               Looking for a long term investment opportunity in India? Dholera
               Insider helps Singapore NRIs explore verified residential plots
-              in Dholera Smart City with complete transparency, verified
-              documentation, and expert guidance.
+              in{" "}
+              <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                Dholera Smart City
+              </Link>{" "}
+              with complete transparency,{" "}
+              <Link
+                href="/dholera-sir-blogs/dholera-legal-land-investment-guide"
+                prefetch={false}
+                className="underline underline-offset-4"
+              >
+                verified documentation
+              </Link>, and expert guidance.
             </p>
 
             <a

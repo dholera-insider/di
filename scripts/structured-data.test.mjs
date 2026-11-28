@@ -160,7 +160,7 @@ test("every public static route renders one connected JSON-LD graph", async (con
     const expectedType = pathname === "/gallery" ? "ImageGallery"
       : pathname === "/contact" ? "ContactPage"
       : ["/about-us", "/about-dholera-sir"].includes(pathname) ? "AboutPage"
-      : ["/investor", "/dholera-sir-blogs", "/dholera-sir-updates"].includes(pathname) ? "CollectionPage"
+      : ["/dholera-sir-blogs", "/dholera-sir-updates"].includes(pathname) ? "CollectionPage"
       : "WebPage";
     assert.equal(schemas[0]["@graph"].find((node) => node["@id"] === SITE_URL + pathname + "#webpage")["@type"], expectedType);
     assert.ok(!JSON.stringify(schemas[0]).includes("SearchAction"), "Do not advertise a nonexistent search endpoint");
@@ -201,10 +201,22 @@ test("gallery schema describes all 18 images from the same data as the gallery U
 
 test("each investor service identifies its actual provider and market", async () => {
   for (const market of ["bahrain", "dubai", "oman", "kuwait", "singapore", "qatar", "hong-kong", "saudi-arabia"]) {
-    const { schemas } = await renderRoute(path.join(root, "src/app/investor", market, "page.jsx"));
+    const file = path.join(root, "src/app/investor", market, "page.jsx");
+    const { schemas } = await renderRoute(file);
     const service = schemas[0]["@graph"].find((node) => node["@type"] === "Service");
     assert.ok(service.areaServed.name);
     assert.equal(service.provider["@id"], `${SITE_URL}/#organization`);
+    const breadcrumbs = schemas[0]["@graph"].find((node) => node["@type"] === "BreadcrumbList");
+    assert.deepEqual(breadcrumbs.itemListElement.map((item) => item.item), [
+      `${SITE_URL}/`, `${SITE_URL}/investor/${market}`,
+    ]);
+    const languages = routeLoader()(file).metadata.alternates.languages;
+    assert.equal(Object.keys(languages).length, 8);
+    for (const target of Object.values(languages)) {
+      const pathname = new URL(target).pathname;
+      assert.notEqual(pathname, "/investor", "language alternatives must not reference the removed overview");
+      assert.ok(existsSync(path.join(root, "src/app", pathname, "page.jsx")));
+    }
   }
 });
 

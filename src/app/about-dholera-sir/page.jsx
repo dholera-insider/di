@@ -235,9 +235,29 @@ export default function AboutDholeraSirPage() {
             >
               Dholera Smart City is India’s first Greenfield Smart City, being
               developed with planned infrastructure, industrial zones, and
-              residential areas. Major projects like the Ahmedabad Dholera
-              Expressway, Dholera International Airport, and Tata Semiconductor
-              Plant are driving its future growth.
+              residential areas. Major projects like the{" "}
+              <Link
+                href="/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity"
+                prefetch={false}
+                className="underline underline-offset-4"
+              >
+                Ahmedabad Dholera Expressway
+              </Link>,{" "}
+              <Link
+                href="/about-dholera-sir/dholera-international-airport-project-update-2025"
+                prefetch={false}
+                className="underline underline-offset-4"
+              >
+                Dholera International Airport
+              </Link>, and{" "}
+              <Link
+                href="/about-dholera-sir/tata-semiconductor-plant-in-dholera"
+                prefetch={false}
+                className="underline underline-offset-4"
+              >
+                Tata Semiconductor Plant
+              </Link>{" "}
+              are driving its future growth.
             </p>
 
             {/* =====================================
@@ -390,9 +410,29 @@ export default function AboutDholeraSirPage() {
               >
                 Dholera Smart City is India’s first Greenfield Smart City,
                 being developed with planned infrastructure, industrial zones,
-                and residential areas. Major projects like the Ahmedabad
-                Dholera Expressway, Dholera International Airport, and Tata
-                Semiconductor Plant are driving its future growth.
+                and residential areas. Major projects like the{" "}
+                <Link
+                  href="/about-dholera-sir/ahmedabad-dholera-expressway-transforming-gujarat-connectivity"
+                  prefetch={false}
+                  className="underline underline-offset-4"
+                >
+                  Ahmedabad Dholera Expressway
+                </Link>,{" "}
+                <Link
+                  href="/about-dholera-sir/dholera-international-airport-project-update-2025"
+                  prefetch={false}
+                  className="underline underline-offset-4"
+                >
+                  Dholera International Airport
+                </Link>, and{" "}
+                <Link
+                  href="/about-dholera-sir/tata-semiconductor-plant-in-dholera"
+                  prefetch={false}
+                  className="underline underline-offset-4"
+                >
+                  Tata Semiconductor Plant
+                </Link>{" "}
+                are driving its future growth.
               </p>
 
               {/* Desktop WhatsApp CTA */}

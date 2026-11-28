@@ -195,8 +195,14 @@ export default function QatarInvestorPage() {
                 </p>
 
                 <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
-                 Dholera Insider helps Qatar based NRIs explore residential plots in Dholera Smart City with clear information 
-                 and dedicated investment support.
+                 Dholera Insider helps Qatar based NRIs explore residential plots in{" "}
+                 <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                   Dholera Smart City
+                 </Link>{" "}
+                 with clear information and{" "}
+                 <Link href="/contact" prefetch={false} className="underline underline-offset-4">
+                   dedicated investment support
+                 </Link>.
                 </p>
     
                   {/* CTA */}

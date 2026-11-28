@@ -87,7 +87,7 @@ const previousUrls = process.argv[3]
     .map(match => new URL(match[1].replaceAll('&amp;', '&')))
   : [];
 const currentPaths = new Set(entries.map(url => url.pathname));
-const requiredPages = ['/investor', '/policies/terms-and-conditions', '/policies/copyright-policy'];
+const requiredPages = ['/policies/terms-and-conditions', '/policies/copyright-policy'];
 for (const pathname of requiredPages) {
   if (!currentPaths.has(pathname)) failures.push(`${pathname}: public page is missing from the sitemap`);
 }

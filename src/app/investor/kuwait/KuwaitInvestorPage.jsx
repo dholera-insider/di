@@ -230,7 +230,10 @@ export default function KuwaitInvestorPage() {
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               Dholera stands out because it is being developed as India&apos;s
-              first Greenfield Smart City, with major infrastructure and
+              first{" "}
+              <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                Greenfield Smart City
+              </Link>, with major infrastructure and
               industrial development taking place in phases.
             </p>
 

@@ -1,4 +1,5 @@
 import InvestorHero from "../InvestorHero";
+import Link from "next/link";
 import {
   Check,
   ClipboardCheck,
@@ -173,8 +174,19 @@ export default function OmanInvestorPage() {
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
               Living in Oman should not stop you from building a property asset
               in India. Dholera Insider helps Oman-based NRIs explore verified
-              residential plots in Dholera Smart City with clear information,
-              documentation guidance and remote buying support.
+              residential plots in{" "}
+              <Link href="/about-dholera-sir" prefetch={false} className="underline underline-offset-4">
+                Dholera Smart City
+              </Link>{" "}
+              with clear information,{" "}
+              <Link
+                href="/dholera-sir-blogs/dholera-legal-land-investment-guide"
+                prefetch={false}
+                className="underline underline-offset-4"
+              >
+                documentation guidance
+              </Link>{" "}
+              and remote buying support.
             </p>
 
             <a

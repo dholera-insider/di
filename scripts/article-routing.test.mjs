@@ -299,6 +299,7 @@ test('sitemap publishes one owning URL per article, including multi-category and
 test('sitemap includes every public static page exactly once', async () => {
   const sitemap = await compileSitemap([]);
   const paths = sitemap.map(entry => new URL(entry.url).pathname);
+  assert.ok(!paths.includes('/investor'), 'the removed investor overview must not be advertised');
   assert.deepEqual([...paths].sort(), publicPagePaths().sort());
   assert.equal(new Set(paths).size, paths.length);
 });
