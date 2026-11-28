@@ -1,9 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { FaUser } from "react-icons/fa";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import logo from "@/app/assets/icons/logo.png";
 import InternationalPhoneInput, {
   getInternationalPhoneValue,
   isValidInternationalPhone,
@@ -11,16 +9,21 @@ import InternationalPhoneInput, {
 
 export default function ContactForm({
   onClose,
-  title = "Talk to a expert",
+  title = "Talk to an Expert",
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "" });
   const [showPopup, setShowPopup] = useState(false);
-  const [submissionCount, setSubmissionCount] = useState(0);
-  const [lastSubmissionTime, setLastSubmissionTime] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [isLocalDevelopment, setIsLocalDevelopment] = useState(false);
   const recaptchaRef = useRef(null);
+  const widgetIdRef = useRef(null);
+  const submittingRef = useRef(false);
+  const mountedRef = useRef(false);
+  const closeTimerRef = useRef(null);
+  const submissionHistoryRef = useRef({ count: 0, time: 0 });
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleClose = () => {
@@ -29,58 +32,121 @@ export default function ContactForm({
     }
   };
 
-  
-
   useEffect(() => {
-    const loadRecaptcha = () => {
-      if (typeof window !== "undefined" && !window.grecaptcha) {
-        try {
-          const script = document.createElement("script");
-          script.src = "https://www.google.com/recaptcha/api.js";
-          script.async = true;
-          script.defer = true;
-          script.onload = () => setRecaptchaLoaded(true);
-          script.onerror = () => {
-            console.error("Failed to load reCAPTCHA script");
-            setRecaptchaLoaded(true);
-          };
-          document.head.appendChild(script);
-        } catch (err) {
-          console.error("reCAPTCHA script loading error:", err);
-          setRecaptchaLoaded(true);
-        }
-      } else if (window.grecaptcha) {
-        setRecaptchaLoaded(true);
-      }
-    };
+    mountedRef.current = true;
+    let readinessTimer;
+    let script;
+    let attempts = 0;
 
-    loadRecaptcha();
-
-    if (typeof window !== "undefined") {
-      setSubmissionCount(
-        parseInt(localStorage.getItem("formSubmissionCount") || "0", 10)
-      );
-      setLastSubmissionTime(
-        parseInt(localStorage.getItem("lastSubmissionTime") || "0", 10)
-      );
+    try {
+      submissionHistoryRef.current = {
+        count: Number(localStorage.getItem("formSubmissionCount")) || 0,
+        time: Number(localStorage.getItem("lastSubmissionTime")) || 0,
+      };
+    } catch {
+      // Browser storage restrictions must not prevent a CRM submission.
     }
 
-    const handleClickInside = (e) => {
-      e.stopPropagation();
+    const loadingFailed = () => {
+      window.clearTimeout(readinessTimer);
+      if (!mountedRef.current) return;
+      setRecaptchaLoaded(false);
+      setRecaptchaToken("");
+      setErrorMessage(
+        "Verification could not load. Please check your connection and refresh the page."
+      );
     };
 
-    const handleEscapeKey = (event) => {
-      if (event.key === 'Escape') {
-        handleClose();
+    const renderWhenReady = () => {
+      if (!mountedRef.current) return;
+
+      // api.js can finish loading before the widget API is ready.
+      if (typeof window.grecaptcha?.render !== "function") {
+        if (attempts++ < 150) {
+          readinessTimer = window.setTimeout(renderWhenReady, 100);
+        } else {
+          loadingFailed();
+        }
+        return;
+      }
+
+      try {
+        if (widgetIdRef.current === null) {
+          widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
+            sitekey: siteKey,
+            theme: "dark",
+            callback: (token) => {
+              if (!mountedRef.current) return;
+              setRecaptchaToken(token);
+              setErrorMessage("");
+            },
+            "expired-callback": () => {
+              if (!mountedRef.current || submittingRef.current) return;
+              setRecaptchaToken("");
+              setErrorMessage("Verification expired. Please verify again.");
+            },
+            "error-callback": () => {
+              if (!mountedRef.current || submittingRef.current) return;
+              setRecaptchaToken("");
+              setErrorMessage("Verification failed. Please check your connection and try again.");
+            },
+          });
+        }
+        setRecaptchaLoaded(true);
+      } catch {
+        loadingFailed();
       }
     };
 
-    document.addEventListener('keydown', handleEscapeKey);
+    const localDevelopment =
+      process.env.NODE_ENV === "development" &&
+      ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname);
+    setIsLocalDevelopment(localDevelopment);
 
+    if (localDevelopment) {
+      // Production keys may not allow localhost. The server checks this too.
+      setRecaptchaLoaded(true);
+    } else if (!siteKey) {
+      setErrorMessage("Verification is temporarily unavailable. Please contact us directly.");
+    } else {
+      // Share the existing script, but keep this form's widget and token separate.
+      script = document.querySelector('script[src^="https://www.google.com/recaptcha/api.js"]');
+      if (!script && typeof window.grecaptcha?.render !== "function") {
+        script = document.createElement("script");
+        script.src = "https://www.google.com/recaptcha/api.js";
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+      script?.addEventListener("error", loadingFailed);
+      renderWhenReady();
+    }
+
+    return () => {
+      mountedRef.current = false;
+      window.clearTimeout(readinessTimer);
+      window.clearTimeout(closeTimerRef.current);
+      script?.removeEventListener("error", loadingFailed);
+      if (widgetIdRef.current !== null) {
+        try {
+          window.grecaptcha?.reset(widgetIdRef.current);
+        } catch {
+          // The widget may already have been removed when the modal closes.
+        }
+      }
+    };
+  }, [siteKey]);
+
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape") onClose?.();
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
     return () => {
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [onClose]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -89,7 +155,7 @@ export default function ContactForm({
   };
 
   const validateForm = () => {
-    if (!formData.fullName || !formData.phone) {
+    if (!formData.fullName.trim() || !formData.phone) {
       setErrorMessage("Please fill in all fields");
       return false;
     }
@@ -100,13 +166,12 @@ export default function ContactForm({
     }
 
     const now = Date.now();
-    const hoursPassed = (now - lastSubmissionTime) / (1000 * 60 * 60);
+    const history = submissionHistoryRef.current;
+    const hoursPassed = (now - history.time) / (1000 * 60 * 60);
 
     if (hoursPassed >= 24) {
-      setSubmissionCount(0);
-      localStorage.setItem("formSubmissionCount", "0");
-      localStorage.setItem("lastSubmissionTime", now.toString());
-    } else if (submissionCount >= 3) {
+      submissionHistoryRef.current = { count: 0, time: 0 };
+    } else if (history.count >= 3) {
       setErrorMessage(
         "You have reached the maximum submission limit. Try again after 24 hours."
       );
@@ -116,101 +181,87 @@ export default function ContactForm({
     return true;
   };
 
-  const onRecaptchaSuccess = async (token) => {
-    try {
-      const now = Date.now();
-
-      const response = await fetch(
-        "https://api.telecrm.in/enterprise/67a30ac2989f94384137c2ff/autoupdatelead",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TELECRM_API_KEY}`,
-          },
-          body: JSON.stringify({
-            fullName: formData.fullName,
-            phone: getInternationalPhoneValue(formData.phone),
-            recaptchaToken: token,
-            source: "Dholera Insider",
-          }),
-        }
-      );
-
-      const data =
-        response.status !== 204 ? await response.json().catch(() => ({})) : {};
-
-      if (response.ok) {
-        setFormData({ fullName: "", phone: "" });
-        setShowPopup(true);
-        setSubmissionCount((prev) => {
-          const newCount = prev + 1;
-          localStorage.setItem("formSubmissionCount", newCount.toString());
-          localStorage.setItem("lastSubmissionTime", now.toString());
-          return newCount;
-        });
-
-        setTimeout(() => {
-          if (onClose) onClose();
-        }, 2000);
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "lead_form",
-        });
-      } else {
-        throw new Error(data.message || "Error submitting form");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setErrorMessage(
-        error.message || "Error submitting form. Please try again."
-      );
-    } finally {
-      setIsLoading(false);
-
-      if (window.grecaptcha && recaptchaRef.current) {
-        window.grecaptcha.reset(recaptchaRef.current);
-      }
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    if (submittingRef.current) return;
     setErrorMessage("");
 
-    if (!validateForm()) {
-      setIsLoading(false);
+    if (!validateForm()) return;
+
+    if (!isLocalDevelopment && (!recaptchaLoaded || !recaptchaToken)) {
+      setErrorMessage("Please complete the verification before submitting.");
       return;
     }
 
-    if (window.grecaptcha && recaptchaLoaded) {
-      try {
-        if (recaptchaRef.current && !recaptchaRef.current.innerHTML) {
-          window.grecaptcha.render(recaptchaRef.current, {
-            sitekey: siteKey,
-            callback: onRecaptchaSuccess,
-            theme: "dark",
-          });
-        } else {
-          window.grecaptcha.reset();
-          window.grecaptcha.execute();
-        }
-      } catch (error) {
-        console.error("Error rendering reCAPTCHA:", error);
-        setErrorMessage("Error with verification. Please try again.");
-        setIsLoading(false);
+    submittingRef.current = true;
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName.trim(),
+          phone: getInternationalPhoneValue(formData.phone),
+          ...(isLocalDevelopment
+            ? { formType: "contact-modal" }
+            : { recaptchaToken }),
+        }),
+      });
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || data?.success !== true) {
+        throw new Error(data?.message || "Unable to submit your request. Please try again.");
       }
-    } else {
-      setErrorMessage("reCAPTCHA not loaded. Please refresh and try again.");
-      setIsLoading(false);
+
+      if (!mountedRef.current) return;
+
+      setFormData({ fullName: "", phone: "" });
+      setShowPopup(true);
+      const history = {
+        count: submissionHistoryRef.current.count + 1,
+        time: Date.now(),
+      };
+      submissionHistoryRef.current = history;
+      try {
+        localStorage.setItem("formSubmissionCount", history.count.toString());
+        localStorage.setItem("lastSubmissionTime", history.time.toString());
+      } catch {
+        // The lead was accepted even if browser storage is unavailable.
+      }
+
+      closeTimerRef.current = window.setTimeout(() => onClose?.(), 2000);
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "lead_form" });
+      } catch {
+        // Analytics must not change the outcome of a successful submission.
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      if (mountedRef.current) {
+        setErrorMessage(error.message || "Error submitting form. Please try again.");
+      }
+    } finally {
+      submittingRef.current = false;
+      if (mountedRef.current) {
+        setIsLoading(false);
+        setRecaptchaToken("");
+        if (widgetIdRef.current !== null) {
+          try {
+            window.grecaptcha?.reset(widgetIdRef.current);
+          } catch {
+            setRecaptchaLoaded(false);
+          }
+        }
+      }
     }
   };
 
   return (
     <div
       className="fixed inset-0 flex justify-center items-start overflow-y-auto overscroll-contain bg-black bg-opacity-50 p-4 z-[1000]"
-      onClick={onClose}
+      onClick={handleClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-form-title"
@@ -227,7 +278,7 @@ export default function ContactForm({
           type="button"
           onClick={(e) => {
             e.stopPropagation();
-            onClose();
+            handleClose();
           }}
           className="absolute top-4 right-4 text-[#FDFCFA]/80 hover:text-[#F6C343] focus:outline-none"
           aria-label="Close form"
@@ -291,14 +342,14 @@ export default function ContactForm({
             </motion.div>
             <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
             <p className="text-[#FDFCFA]/80">
-              Your request has been submitted successfully. We'll contact you
+              Your request has been submitted successfully. We&apos;ll contact you
               shortly.
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             {errorMessage && (
-              <div className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
+              <div role="alert" className="rounded-lg border border-[#B42318] bg-[#B42318]/15 p-3 text-sm text-[#FDFCFA]">
                 {errorMessage}
               </div>
             )}
@@ -311,6 +362,9 @@ export default function ContactForm({
                 value={formData.fullName}
                 onChange={handleChange}
                 required
+                maxLength={200}
+                autoComplete="name"
+                disabled={isLoading}
                 className="w-full rounded-lg border border-[#2B364D] bg-[#FDFCFA] p-4 pl-12 text-[#162033] placeholder:text-[#6C7484] focus:outline-none focus:ring-2 focus:ring-[#F6C343]"
               />
             </div>
@@ -326,13 +380,16 @@ export default function ContactForm({
                   id: "phone",
                   name: "phone",
                   placeholder: "Phone Number",
+                  disabled: isLoading,
                 }}
               />
             </div>
 
-            <div className="flex justify-center">
-              <div ref={recaptchaRef}></div>
-            </div>
+            {!isLocalDevelopment && (
+              <div className="flex justify-center">
+                <div ref={recaptchaRef}></div>
+              </div>
+            )}
 
             <button
               type="submit"
@@ -340,7 +397,7 @@ export default function ContactForm({
               className="w-full py-3 px-6 bg-[#F6C343] text-[#051A3A] rounded-lg hover:bg-[#FDFCFA] transition-all shadow-lg hover:shadow-[#F6C343]/20 font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isLoading
-                ? "Verifying..."
+                ? "Submitting..."
                 : recaptchaLoaded
                   ? "Get a Call Back"
                   : "Loading..."}

@@ -106,7 +106,14 @@ export async function POST(request) {
     });
   }
 
-  if (!token) {
+  // Keep local development support scoped to this modal and loopback hosts.
+  // A client-provided form type alone must never skip production verification.
+  const isLocalDevelopment =
+    process.env.NODE_ENV === "development" &&
+    body?.formType === "contact-modal" &&
+    ["localhost", "127.0.0.1", "[::1]"].includes(new URL(request.url).hostname);
+
+  if (!token && !isLocalDevelopment) {
     return reply(400, {
       success: false,
       message: "Please complete the verification.",
@@ -117,7 +124,7 @@ export async function POST(request) {
     process.env.TELECRM_API_KEY || process.env.NEXT_PUBLIC_TELECRM_API_KEY;
   const secret = process.env.RECAPTCHA_SECRET_KEY;
 
-  if (!apiKey || !secret) {
+  if (!apiKey || (!secret && !isLocalDevelopment)) {
     console.error(
       "Lead form server configuration is incomplete.",
     );
@@ -132,84 +139,86 @@ export async function POST(request) {
   let stage = "verification";
 
   try {
-    // Verify the CAPTCHA before contacting TeleCRM.
-    const verification = await requestText(
-      "https://www.google.com/recaptcha/api/siteverify",
-      {
-        method: "POST",
+    if (!isLocalDevelopment) {
+      // Verify the CAPTCHA before contacting TeleCRM.
+      const verification = await requestText(
+        "https://www.google.com/recaptcha/api/siteverify",
+        {
+          method: "POST",
 
-        headers: {
-          "Content-Type":
-            "application/x-www-form-urlencoded",
+          headers: {
+            "Content-Type":
+              "application/x-www-form-urlencoded",
+          },
+
+          body: new URLSearchParams({
+            secret,
+            response: token,
+          }).toString(),
         },
+        10000,
+      );
 
-        body: new URLSearchParams({
-          secret,
-          response: token,
-        }).toString(),
-      },
-      10000,
-    );
-
-    const captcha = parseJson(verification.text);
-
-    if (
-      !verification.ok ||
-      typeof captcha?.success !== "boolean"
-    ) {
-      return reply(502, {
-        success: false,
-        message:
-          "Verification is temporarily unavailable. Please try again.",
-      });
-    }
-
-    if (!captcha.success) {
-      const codes = Array.isArray(captcha["error-codes"])
-        ? captcha["error-codes"]
-        : [];
+      const captcha = parseJson(verification.text);
 
       if (
-        codes.includes("invalid-input-secret") ||
-        codes.includes("missing-input-secret")
+        !verification.ok ||
+        typeof captcha?.success !== "boolean"
       ) {
-        console.error(
-          "Lead form reCAPTCHA secret is invalid or missing.",
-        );
-
-        return reply(503, {
+        return reply(502, {
           success: false,
           message:
-            "Verification is not configured correctly. Please contact us directly.",
+            "Verification is temporarily unavailable. Please try again.",
         });
       }
 
-      return reply(400, {
-        success: false,
-        message:
-          "Verification failed or expired. Please verify again.",
-      });
-    }
+      if (!captcha.success) {
+        const codes = Array.isArray(captcha["error-codes"])
+          ? captcha["error-codes"]
+          : [];
 
-    // Optional additional hostname check.
-    const allowedHosts = (
-      process.env.RECAPTCHA_ALLOWED_HOSTNAMES || ""
-    )
-      .split(",")
-      .map((host) => host.trim().toLowerCase())
-      .filter(Boolean);
+        if (
+          codes.includes("invalid-input-secret") ||
+          codes.includes("missing-input-secret")
+        ) {
+          console.error(
+            "Lead form reCAPTCHA secret is invalid or missing.",
+          );
 
-    if (
-      allowedHosts.length &&
-      !allowedHosts.includes(
-        String(captcha.hostname || "").toLowerCase(),
+          return reply(503, {
+            success: false,
+            message:
+              "Verification is not configured correctly. Please contact us directly.",
+          });
+        }
+
+        return reply(400, {
+          success: false,
+          message:
+            "Verification failed or expired. Please verify again.",
+        });
+      }
+
+      // Optional additional hostname check.
+      const allowedHosts = (
+        process.env.RECAPTCHA_ALLOWED_HOSTNAMES || ""
       )
-    ) {
-      return reply(400, {
-        success: false,
-        message:
-          "Verification is not valid for this website.",
-      });
+        .split(",")
+        .map((host) => host.trim().toLowerCase())
+        .filter(Boolean);
+
+      if (
+        allowedHosts.length &&
+        !allowedHosts.includes(
+          String(captcha.hostname || "").toLowerCase(),
+        )
+      ) {
+        return reply(400, {
+          success: false,
+          message:
+            "Verification is not valid for this website.",
+        });
+      }
     }
 
     stage = "crm";
