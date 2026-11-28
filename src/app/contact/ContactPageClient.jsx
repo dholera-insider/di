@@ -46,6 +46,7 @@ export default function ContactPageClient({ faqs = [] }) {
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const recaptchaRef = useRef(null);
+  const countryEditedRef = useRef(false);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   const [openIndex, setOpenIndex] = useState(-1);
   const headingId = useId();
@@ -128,6 +129,7 @@ export default function ContactPageClient({ faqs = [] }) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    if (name === "country") countryEditedRef.current = true;
     setFormData((currentData) => ({ ...currentData, [name]: value }));
     setErrorMessage("");
   };
@@ -800,6 +802,7 @@ export default function ContactPageClient({ faqs = [] }) {
         responseText.toLowerCase().includes("success")
       ) {
         setFormData(initialFormData);
+        countryEditedRef.current = false;
         setShowSuccess(true);
 
         const newCount = submissionCount + 1;
@@ -1634,6 +1637,10 @@ export default function ContactPageClient({ faqs = [] }) {
                             id="fullName"
                             name="fullName"
                             type="text"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                            autoComplete="name"
+                            required
                             placeholder="Your name"
                             className="
                               h-[48px]
@@ -1682,6 +1689,10 @@ export default function ContactPageClient({ faqs = [] }) {
                             id="country"
                             name="country"
                             type="text"
+                            value={formData.country}
+                            onChange={handleChange}
+                            autoComplete="country-name"
+                            required
                             placeholder="Country of residence"
                             className="
                               h-[48px]
@@ -1729,65 +1740,27 @@ export default function ContactPageClient({ faqs = [] }) {
                           Phone Number
                         </label>
 
-                        <div
-                          className="
-                            flex
-                            h-[48px]
-                            overflow-hidden
-                            rounded-[10px]
-                            border
-                            border-[#DBE2EC]
-                            bg-[#F8FAFC]
-                            transition-all
-                            duration-200
-
-                            focus-within:border-[#F6C343]
-                            focus-within:bg-white
-                            focus-within:ring-4
-                            focus-within:ring-[#F6C343]/10
-
-                            lg:h-[46px]
-                          "
-                        >
-                          <div
-                            className="
-                              flex
-                              shrink-0
-                              items-center
-                              gap-2
-                              border-r
-                              border-[#DBE2EC]
-                              px-4
-                              text-sm
-                              text-[#051A3A]
-                            "
-                          >
-                            <span className="text-[10px] font-semibold">
-                              IN
-                            </span>
-
-                            <span>+91</span>
-                          </div>
-
-                          <input
-                            id="phone"
-                            name="phone"
-                            type="tel"
-                            inputMode="tel"
-                            placeholder="Enter your phone number"
-                            className="
-                              min-w-0
-                              flex-1
-                              bg-transparent
-                              px-4
-                              text-sm
-                              text-[#051A3A]
-                              outline-none
-
-                              placeholder:text-[#A4AEC0]
-                            "
-                          />
-                        </div>
+                        <InternationalPhoneInput
+                          value={formData.phone}
+                          onChange={(phone, countryData) => {
+                            setFormData((currentData) => ({
+                              ...currentData,
+                              phone,
+                              country: countryEditedRef.current
+                                ? currentData.country
+                                : countryData?.name || currentData.country,
+                            }));
+                            setErrorMessage("");
+                          }}
+                          inputProps={{
+                            id: "phone",
+                            name: "phone",
+                            placeholder: "Enter your phone number",
+                          }}
+                          inputClass="!w-full !h-[48px] lg:!h-[46px] !rounded-[10px] !border !border-[#DBE2EC] !bg-[#F8FAFC] !py-3 !pl-14 !pr-4 !text-sm !text-[#051A3A] placeholder:!text-[#A4AEC0] focus:!border-[#F6C343] focus:!bg-white focus:!outline-none focus:!ring-4 focus:!ring-[#F6C343]/10"
+                          buttonClass="!rounded-l-[10px] !border !border-[#DBE2EC] !bg-[#F8FAFC] hover:!bg-white"
+                          dropdownClass="!z-[10000] !max-h-48 !max-w-[calc(100vw-4rem)] !bg-white !text-[#162033] !shadow-2xl"
+                        />
                       </div>
 
                       {/* =============================================
@@ -1823,6 +1796,8 @@ export default function ContactPageClient({ faqs = [] }) {
                         <textarea
                           id="message"
                           name="message"
+                          value={formData.message}
+                          onChange={handleChange}
                           rows={4}
                           placeholder="Tell us what you would like to know"
                           className="
